@@ -18,7 +18,7 @@ e = mc^2
 Check out the content pages bundled with this sample book to see more.
 
 
-Here is a [reference to the intro](intro.md). Here is a reference to [](section-label).
+Here is a [reference to the intro](intro.md). Here is a reference to [live code](julia-notebook.md).
 
 # Here is how we embed an image
 
