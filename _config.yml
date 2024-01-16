@@ -43,4 +43,4 @@ sphinx:
   config          :  # key-value pairs to directly over-ride the Sphinx configuration
   
   kernelOptions:
-    kernelName: "julia"
+    kernelName: "ijulia"
