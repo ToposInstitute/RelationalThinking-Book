@@ -4,4 +4,7 @@
 format: jb-book
 root: intro
 chapters:
+- file: book-msg
 - file: julia-notebook
+- file: Markdown
+
