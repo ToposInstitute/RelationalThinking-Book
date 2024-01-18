@@ -1,5 +1,5 @@
 # Book Messages
-by Brendan Fong \ 
+by Brendan Fong\ 
 minor edits: Priyaa Varshinee Srinivasan
 
 ## Potential messages
