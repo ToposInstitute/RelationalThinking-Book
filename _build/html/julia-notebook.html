@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>How to run live code? &#8212; What? Not How! - A Peek into Relational Thinking</title>
+    <title>Run live code here &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
   
   
@@ -168,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">How to run live code?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Run live code here</a></li>
 </ul>
 
     </div>
@@ -401,7 +401,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>How to run live code?</h1>
+    <h1>Run live code here</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -415,14 +415,79 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="how-to-run-live-code">
-<h1>How to run live code?<a class="headerlink" href="#how-to-run-live-code" title="Permalink to this heading">#</a></h1>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="run-live-code-here">
+<h1>Run live code here<a class="headerlink" href="#run-live-code-here" title="Permalink to this heading">#</a></h1>
+<p>This page allows live code execution. To run the code below, click the “rocket icon” on the top right corner of this page, and select “Live code”. This will invoke a pre-configured kernel from <a class="reference external" href="http://mybinder.org">mybinder.org</a>.</p>
+<p>The kernel runs <strong>Julia 1.10.0</strong></p>
+<p><strong>Installed Packages:</strong> graphviz</p>
+<p><strong>Supported dependencies:</strong> <br />
+AlgebraicDynamics<br />
+Catlab<br />
+LabelledArrays<br />
+Plots<br />
+PrettyTables\</p>
+<p>Each of the code blocks are editable</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">my_hidden_variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Testing Julia!&quot;</span>
 <span class="n">print</span><span class="p">(</span><span class="w"> </span><span class="n">my_hidden_variable</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Example directed wiring diagram</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">WiringDiagrams</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Programs</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Graphics</span>
+
+<span class="n">mood_pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WiringDiagram</span><span class="p">([],</span><span class="w"> </span><span class="p">[</span><span class="ss">:friend1_mood</span><span class="p">,</span><span class="w"> </span><span class="ss">:friend2_mood</span><span class="p">])</span>
+<span class="n">friend_1_box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_box!</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">,</span><span class="w"> </span><span class="n">Box</span><span class="p">(</span><span class="ss">:friend1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="ss">:my_mood</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="ss">:external_mood</span><span class="p">]))</span>
+<span class="n">friend_2_box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_box!</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">,</span><span class="w"> </span><span class="n">Box</span><span class="p">(</span><span class="ss">:friend2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="ss">:my_mood</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="ss">:external_mood</span><span class="p">]))</span>
+
+<span class="n">add_wires!</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">,</span><span class="w"> </span><span class="kt">Pair</span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">friend_1_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">friend_2_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">friend_2_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">friend_1_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">friend_1_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">output_id</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">friend_2_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">output_id</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Displaying the Directed Wiring Diagram</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="kt">WiringDiagram</span><span class="p">;</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">to_graphviz</span><span class="p">(</span><span class="n">d</span><span class="p">,</span>
+<span class="w">  </span><span class="n">orientation</span><span class="o">=</span><span class="n">LeftToRight</span><span class="p">,</span>
+<span class="w">  </span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">label_attr</span><span class="o">=</span><span class="ss">:xlabel</span>
+<span class="p">)</span>
+
+<span class="n">draw</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Example undirected wiring diagram </span>
+<span class="k">using</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">WiringDiagrams</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Programs</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Graphics</span>
+
+<span class="c"># Define the composition pattern</span>
+<span class="n">rf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@relation</span><span class="w"> </span><span class="p">(</span><span class="n">rabbits</span><span class="p">,</span><span class="n">foxes</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">growth</span><span class="p">(</span><span class="n">rabbits</span><span class="p">)</span><span class="w"> </span><span class="c"># box_name(junction_name)</span>
+<span class="w">    </span><span class="n">predation</span><span class="p">(</span><span class="n">rabbits</span><span class="p">,</span><span class="n">foxes</span><span class="p">)</span>
+<span class="w">    </span><span class="n">decline</span><span class="p">(</span><span class="n">foxes</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Displaying the undirected Wiring Diagram</span>
+
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span><span class="w"> </span><span class="n">box_labels</span><span class="o">=</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">junction_labels</span><span class="o">=</span><span class="ss">:variable</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
