@@ -5,6 +5,8 @@ format: jb-book
 root: intro
 chapters:
 - file: book-msg
+- file: RelationalThinking
 - file: julia-notebook
 - file: Markdown
+
 
