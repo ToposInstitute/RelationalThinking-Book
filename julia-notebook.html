@@ -94,21 +94,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>This page allows live code execution. To run the code below, click the “rocket icon” on the top right corner of this page, and select “Live code”. This will invoke a pre-configured kernel from mybinder.org.</p>
 <p>The kernel runs <strong>Julia 1.10.0</strong></p>
 <p><strong>Installed Packages:</strong> graphviz</p>
-<p><strong>Supported dependencies:</strong><br>
-AlgebraicDynamics<br>
+<p><strong>Supported Julia libraries:</strong><br>
 Catlab<br>
-LabelledArrays<br>
 Plots<br>
-PrettyTables<br>
-</p>
+PrettyTables</p>
 <p>Each of the code blocks are editable</p>
+<section id="how-to-run-the-code-in-this-page" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-run-the-code-in-this-page">How to run the code in this page?</h2>
+<p>This page allows live code execution. To run the code below, click the “rocket icon” at the top right corner of this page, and select “Live code”. This will invoke a pre-configured kernel from mybinder.org. Configuration details given above.</p>
+<div class="{note}">
+<p>The kernel may take sometime to build !!</p>
+</div>
+<p>If you would like to see the detailed status of the kernel invokation, select “Binder” under the rocket icon.</p>
+</section>
+<section id="julia-code" class="level2">
+<h2 class="anchored" data-anchor-id="julia-code">Julia code</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_hidden_variable <span class="op">=</span> <span class="st">"Testing Julia!"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( my_hidden_variable )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="drawing-directed-wiring-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="drawing-directed-wiring-diagrams">Drawing directed wiring diagrams</h2>
+<p>The below code generates a directed wiring diagram with two boxes each with one input and one output. The output of one each box is connected to the other.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example directed wiring diagram</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -125,6 +135,7 @@ PrettyTables<br>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    (friend_2_box, <span class="fl">1</span>)    <span class="op">=&gt;</span> (<span class="fu">output_id</span>(mood_pattern), <span class="fl">2</span>)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The following code draws the directed wiring diagram using Graphviz library</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the Directed Wiring Diagram</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(d<span class="op">::</span><span class="dt">WiringDiagram</span>; labels<span class="op">=</span><span class="cn">true</span>) <span class="op">=</span> <span class="fu">to_graphviz</span>(d,</span>
@@ -134,6 +145,11 @@ PrettyTables<br>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span>(mood_pattern, labels<span class="op">=</span><span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="drawing-undirected-wiring-diagrams" class="level2">
+<h2 class="anchored" data-anchor-id="drawing-undirected-wiring-diagrams">Drawing undirected wiring diagrams</h2>
+<p>The following code generates a UWD of Rabbit-Fox predation</p>
+<p>The following code draws UWD using Graphviz library</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example undirected wiring diagram </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Catlab.WiringDiagrams</span>, <span class="bu">Catlab.Programs</span>, <span class="bu">Catlab.Graphics</span></span>
@@ -151,6 +167,7 @@ PrettyTables<br>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">to_graphviz</span>(rf, box_labels<span class="op">=:</span>name, junction_labels<span class="op">=:</span>variable)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 
 </main>
 <!-- /main column -->

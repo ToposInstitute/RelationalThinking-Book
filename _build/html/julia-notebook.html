@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sample Markdown" href="Markdown.html" />
-    <link rel="prev" title="(Potential) Messages of the book" href="book-msg.html" />
+    <link rel="prev" title="Book Messages" href="book-msg.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="book-msg.html">(Potential) Messages of the book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book-msg.html">Book Messages</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Run live code here</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Markdown.html">Sample Markdown</a></li>
 
@@ -438,14 +438,19 @@ document.write(`
 <h1>Run live code here<a class="headerlink" href="#run-live-code-here" title="Permalink to this heading">#</a></h1>
 <p>The kernel runs <strong>Julia 1.10.0</strong></p>
 <p><strong>Installed Packages:</strong> graphviz</p>
-<p><strong>Supported dependencies:</strong> <br />
+<p><strong>Supported Julia libraries:</strong> <br />
 Catlab<br />
 Plots<br />
 PrettyTables</p>
 <p>Each of the code blocks are editable</p>
 <section id="how-to-run-the-code-in-this-page">
 <h2>How to run the code in this page?<a class="headerlink" href="#how-to-run-the-code-in-this-page" title="Permalink to this heading">#</a></h2>
-<p>This page allows live code execution. To run the code below, click the “rocket icon” on the top right corner of this page, and select “Live code”. This will invoke a pre-configured kernel from <a class="reference external" href="http://mybinder.org">mybinder.org</a>. Configuration details given above.</p>
+<p>This page allows live code execution. To run the code below, click the “rocket icon” at the top right corner of this page, and select “Live code”. This will invoke a pre-configured kernel from <a class="reference external" href="http://mybinder.org">mybinder.org</a>. Configuration details given above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The kernel may take sometime to build !!</p>
+</div>
+<p>If you would like to see the detailed status of the kernel invokation, select “Binder” under the rocket icon.</p>
 </section>
 <section id="julia-code">
 <h2>Julia code<a class="headerlink" href="#julia-code" title="Permalink to this heading">#</a></h2>
@@ -477,14 +482,9 @@ PrettyTables</p>
 <span class="w">    </span><span class="p">(</span><span class="n">friend_1_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">output_id</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
 <span class="w">    </span><span class="p">(</span><span class="n">friend_2_box</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">output_id</span><span class="p">(</span><span class="n">mood_pattern</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The following code draws the directed wiring diagram using Graphviz library</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Displaying the Directed Wiring Diagram</span>
+
+<span class="c"># Displaying the Directed Wiring Diagram using graphviz</span>
+
 <span class="n">draw</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="kt">WiringDiagram</span><span class="p">;</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">to_graphviz</span><span class="p">(</span><span class="n">d</span><span class="p">,</span>
 <span class="w">  </span><span class="n">orientation</span><span class="o">=</span><span class="n">LeftToRight</span><span class="p">,</span>
 <span class="w">  </span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">label_attr</span><span class="o">=</span><span class="ss">:xlabel</span>
@@ -511,15 +511,17 @@ PrettyTables</p>
 <span class="w">    </span><span class="n">predation</span><span class="p">(</span><span class="n">rabbits</span><span class="p">,</span><span class="n">foxes</span><span class="p">)</span>
 <span class="w">    </span><span class="n">decline</span><span class="p">(</span><span class="n">foxes</span><span class="p">)</span>
 <span class="k">end</span>
+
+<span class="c"># Displaying the undirected Wiring Diagram</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span><span class="w"> </span><span class="n">box_labels</span><span class="o">=</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">junction_labels</span><span class="o">=</span><span class="ss">:variable</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Try your own code in the block below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Displaying the undirected Wiring Diagram</span>
-
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span><span class="w"> </span><span class="n">box_labels</span><span class="o">=</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="n">junction_labels</span><span class="o">=</span><span class="ss">:variable</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Your code </span>
 </pre></div>
 </div>
 </div>
@@ -563,7 +565,7 @@ PrettyTables</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">(Potential) Messages of the book</p>
+        <p class="prev-next-title">Book Messages</p>
       </div>
     </a>
     <a class="right-next"
