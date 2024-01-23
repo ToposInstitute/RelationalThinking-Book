@@ -1,6 +1,6 @@
 # Guide to build the book
 
-This repo contains files to build a Jupyter Book with Thebe live code execution for code in Algebraic Julia. The book has been published online via Github Pages.
+This repo contains files to build a Jupyter Book with Thebe live code execution for code in Algebraic Julia. The book has been published online via Github Pages at https://toposinstitute.github.io/AlgJulia-Book/intro.html.
 
 To add content and build this book, refer to the steps below: 
 
@@ -28,4 +28,5 @@ To add content and build this book, refer to the steps below:
     ```
     ghp-import -n -p -f _build/html
     ```
+
         
