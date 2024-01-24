@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Guide to build the book &#8212; What? Not How! - A Peek into Relational Thinking</title>
+    <title>Guide to add contents and build the book &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
   
   
@@ -351,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -362,11 +364,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Guide to build the book</h1>
+    <h1>Guide to add contents and build the book</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-book">Build the book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters">Adding content to the book : adding new chapters, modifying existing chapters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-book-to-github-pages">Publishing the book to GitHub pages</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -376,35 +388,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="guide-to-build-the-book">
-<h1>Guide to build the book<a class="headerlink" href="#guide-to-build-the-book" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="guide-to-add-contents-and-build-the-book">
+<h1>Guide to add contents and build the book<a class="headerlink" href="#guide-to-add-contents-and-build-the-book" title="Permalink to this heading">#</a></h1>
 <p>This repo contains files to build a Jupyter Book with Thebe live code execution for code in Algebraic Julia. The book has been published online via Github Pages at <a class="reference external" href="https://toposinstitute.github.io/AlgJulia-Book/intro.html">https://toposinstitute.github.io/AlgJulia-Book/intro.html</a>.</p>
-<p>To add content and build this book, refer to the steps below:</p>
+<p>Clone this repo into a local folder.</p>
+<section id="build-the-book">
+<h2>Build the book<a class="headerlink" href="#build-the-book" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Install Jupyter Book in your local machine - <a class="reference external" href="https://jupyterbook.org/en/stable/start/overview.html">https://jupyterbook.org/en/stable/start/overview.html</a></p></li>
-<li><p>Clone this repo to a local folder</p></li>
-<li><p>Add new markdown files - <a class="reference external" href="https://jupyterbook.org/en/stable/start/new-file.html">https://jupyterbook.org/en/stable/start/new-file.html</a></p></li>
-<li><p>Rebuild the book using the command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">mybookname</span> 
+<li><p>To build the book, navigate to the folder of the book and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>The above command will provide a local link to view the book. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> once the changes are satsifactory.</p>
-</li>
-<li><p>To publish your changes to the online book hosted at the Github Pages, use <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code> - <a class="reference external" href="https://jupyterbook.org/en/stable/start/publish.html">https://jupyterbook.org/en/stable/start/publish.html</a></p>
-<ul class="simple">
-<li><p>Install <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code> using the command</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>To publish changes to the Github Pages, from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch execute</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
-</pre></div>
-</div>
+<p>The above command will provide a local link to view the book.</p>
+<p>Push the changes to the repository using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p>
 </li>
 </ol>
+</section>
+<section id="adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters">
+<h2>Adding content to the book : adding new chapters, modifying existing chapters<a class="headerlink" href="#adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters" title="Permalink to this heading">#</a></h2>
+<p>Refer to <a class="reference external" href="https://jupyterbook.org/en/stable/start/new-file.html">https://jupyterbook.org/en/stable/start/new-file.html</a></p>
+</section>
+<section id="publishing-the-book-to-github-pages">
+<h2>Publishing the book to GitHub pages<a class="headerlink" href="#publishing-the-book-to-github-pages" title="Permalink to this heading">#</a></h2>
+<p>To publish your changes to the online book hosted at the Github Pages, use <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code> - <a class="reference external" href="https://jupyterbook.org/en/stable/start/publish.html">https://jupyterbook.org/en/stable/start/publish.html</a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Install `ghp-import` using the command 
+
+```
+pip install ghp-import
+```
+
+- To publish changes to the Github Pages, from the `main` branch execute 
+```
+ghp-import -n -p -f _build/html
+```
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -444,7 +464,21 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-book">Build the book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters">Adding content to the book : adding new chapters, modifying existing chapters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-book-to-github-pages">Publishing the book to GitHub pages</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
