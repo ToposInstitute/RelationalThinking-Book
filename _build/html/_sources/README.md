@@ -26,15 +26,16 @@ Refer to https://jupyterbook.org/en/stable/start/new-file.html
 
 To publish your changes to the online book hosted at the Github Pages, use `ghp-import` - https://jupyterbook.org/en/stable/start/publish.html
 
-    - Install `ghp-import` using the command 
+- Install `ghp-import` using the command 
 
-    ```
-    pip install ghp-import
-    ```
+```
+pip install ghp-import
+```
 
-    - To publish changes to the Github Pages, from the `main` branch execute 
-    ```
-    ghp-import -n -p -f _build/html
-    ```
+- To publish changes to the Github Pages, from the `main` branch execute
+  
+```
+ghp-import -n -p -f _build/html
+```
 
         
