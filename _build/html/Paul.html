@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Guide to add contents and build the book &#8212; What? Not How! - A Peek into Relational Thinking</title>
+    <title>I am Paul and this is my heading &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
   
   
@@ -62,9 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Paul';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sample Markdown" href="Markdown.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +127,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -170,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="book-msg.html">Book Messages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RelationaThinking.html">What is this book about? (priyaa Version)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="julia-notebook.html">Run live code here</a></li>
@@ -178,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Paul.html">I am Paul and this is my heading</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">I am Paul and this is my heading</a></li>
 </ul>
 
     </div>
@@ -250,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/priyaasrini/AlgJulia-Book2/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/priyaasrini/AlgJulia-Book2/issues/new?title=Issue%20on%20page%20%2FPaul.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/README.md" target="_blank"
+      <li><a href="_sources/Paul.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,9 +350,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -364,21 +361,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Guide to add contents and build the book</h1>
+    <h1>I am Paul and this is my heading</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-book">Build the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters">Adding content to the book : adding new chapters, modifying existing chapters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-book-to-github-pages">Publishing the book to GitHub pages</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -388,43 +375,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="guide-to-add-contents-and-build-the-book">
-<h1>Guide to add contents and build the book<a class="headerlink" href="#guide-to-add-contents-and-build-the-book" title="Permalink to this heading">#</a></h1>
-<p>This repo contains files to build a Jupyter Book with Thebe live code execution for code in Algebraic Julia. The book has been published online via Github Pages at <a class="reference external" href="https://toposinstitute.github.io/AlgJulia-Book/intro.html">https://toposinstitute.github.io/AlgJulia-Book/intro.html</a>.</p>
-<p>Clone this repo into a local folder.</p>
-<section id="build-the-book">
-<h2>Build the book<a class="headerlink" href="#build-the-book" title="Permalink to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>Install Jupyter Book in your local machine - <a class="reference external" href="https://jupyterbook.org/en/stable/start/overview.html">https://jupyterbook.org/en/stable/start/overview.html</a></p></li>
-<li><p>To build the book, navigate to the folder of the book and run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
-</pre></div>
-</div>
-<p>The above command will provide a local link to view the book.</p>
-<p>Push the changes to the repository using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p>
-</li>
-</ol>
-</section>
-<section id="adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters">
-<h2>Adding content to the book : adding new chapters, modifying existing chapters<a class="headerlink" href="#adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters" title="Permalink to this heading">#</a></h2>
-<p>Refer to <a class="reference external" href="https://jupyterbook.org/en/stable/start/new-file.html">https://jupyterbook.org/en/stable/start/new-file.html</a></p>
-</section>
-<section id="publishing-the-book-to-github-pages">
-<h2>Publishing the book to GitHub pages<a class="headerlink" href="#publishing-the-book-to-github-pages" title="Permalink to this heading">#</a></h2>
-<p>To publish your changes to the online book hosted at the Github Pages, use <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code> - <a class="reference external" href="https://jupyterbook.org/en/stable/start/publish.html">https://jupyterbook.org/en/stable/start/publish.html</a></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Install `ghp-import` using the command 
-
-```
-pip install ghp-import
-```
-
-- To publish changes to the Github Pages, from the `main` branch execute 
-```
-ghp-import -n -p -f _build/html
-```
-</pre></div>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="i-am-paul-and-this-is-my-heading">
+<h1>I am Paul and this is my heading<a class="headerlink" href="#i-am-paul-and-this-is-my-heading" title="Permalink to this heading">#</a></h1>
+<p>I never made a heading before!</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -457,6 +410,15 @@ ghp-import -n -p -f _build/html
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Markdown.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sample Markdown</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -464,21 +426,7 @@ ghp-import -n -p -f _build/html
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-book">Build the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-content-to-the-book-adding-new-chapters-modifying-existing-chapters">Adding content to the book : adding new chapters, modifying existing chapters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-book-to-github-pages">Publishing the book to GitHub pages</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

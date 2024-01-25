@@ -1,2 +1,6 @@
 .metals
 .vscode
+_build/
+book-msg_files/
+intro_files/
+julia-notebook_files/
