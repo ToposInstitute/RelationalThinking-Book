@@ -1,8 +1,10 @@
 name: Build and Deploy Jupyter Book
 
 on:
+  workflow-dispatch:
   push:
     branches: [ main ]
+
 
 jobs:
   deploy-book:
