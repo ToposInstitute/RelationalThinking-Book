@@ -1,5 +1,7 @@
 .metals
 .vscode
+.DS_Store
+
 _build/
 book-msg_files/
 intro_files/
