@@ -1,9 +1,17 @@
 name: Build and Deploy Jupyter Book
 
 on:
-  workflow-dispatch:
   push:
     branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Action"
+        required: true
+      version:
+        description: "Tag and release version:"
+        required: false
 
 
 jobs:
