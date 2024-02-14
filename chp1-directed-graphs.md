@@ -13,10 +13,10 @@ kernelspec:
 # Chapter 1: Directed Graphs
 
 > The logjam you don’t even know you’re stuck in will be broken by a shift in representation.
-
-Michael Sorkin
-
-*Two Hundred Fifty Things an Architect Should Know*
+>
+>Michael Sorkin
+>
+>*Two Hundred Fifty Things an Architect Should Know*
 
 ## Part 1: Modeling with directed graphs
 
@@ -73,7 +73,7 @@ PLACEHOLDER FOR VIDEO
 
 The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.
 
-PLACEHOLDER FOR NEW INFOGRAPHIC
+![whoops!](./assets/Ch1/DataEntry.png)
 
 > DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!
 
@@ -93,6 +93,7 @@ b.
 3. Take your source and target maps from the last problem and convert them into lists of numbers.
 
 4. Take your lists of numbers from the last problem and enter them into the code below and hit Run. Do the graphs look the way you expected?
+
 
 ## Part 3: On the importance of finding the right abstractions ##
 
