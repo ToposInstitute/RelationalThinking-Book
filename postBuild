@@ -1,14 +1,9 @@
 #!/bin/bash
 set -e  # don't allow errors to fail silently
-julia --project=. --threads=auto --startup-file=no --heap-size-hint=1G -e '
+julia --project=. --threads=auto --startup-file=no --heap-size-hint=500M -e '
 using Pkg;
 Pkg.add("PrettyTables");
-Pkg.add("AlgebraicDynamics");
 Pkg.add("AlgebraicRewriting");
 Pkg.add("Catlab");
-Pkg.add("OrdinaryDiffEq");
-Pkg.add("Plots");
-Pkg.add("SciMLBase");
-Pkg.add("LabelledArrays")
 exit();
 '
