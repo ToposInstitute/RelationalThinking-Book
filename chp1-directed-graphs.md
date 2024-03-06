@@ -18,6 +18,8 @@ kernelspec:
 >
 >*Two Hundred Fifty Things an Architect Should Know*
 
+
+
 ## Part 1: Modeling with directed graphs
 
 We will begin our journey into systems thinking and Algebraic Julia by looking at a particularly simple modeling system called a *directed graph*. Anyone who's ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.
@@ -92,7 +94,34 @@ b.
 
 3. Take your source and target maps from the last problem and convert them into lists of numbers.
 
-4. Take your lists of numbers from the last problem and enter them into the code below and hit Run. Do the graphs look the way you expected?
+4. Take your lists of numbers from the last problem and enter them into the code below, replacing the '?'s under "src" and "tgt". Hit "run". Do the graphs look the way you expected?
+
++++
+
+```{code-cell}
+using Catlab.CategoricalAlgebra, Catlab.Graphs, Catlab.Graphics
+
+AJ_Problem4a = Graph()
+add_vertices!(AJ_Problem4a,2)
+add_parts!(AJ_Problem4a, :E, 2, src=[?,?], tgt=[?,?])
+to_graphviz(AJ_Problem4a)
+```
+
++++
+
+
++++
+
+```{code-cell}
+AJ_Problem4b = Graph()
+add_vertices!(AJ_Problem4b,6)
+add_parts!(AJ_Problem4b, :E, 3, src=[?,?,?], tgt=[?,?,?])
+to_graphviz(AJ_Problem4b)
+```
+
++++
+
+
 
 
 ## Part 3: On the importance of finding the right abstractions ##
