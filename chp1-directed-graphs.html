@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 1: Directed Graphs &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp1-directed-graphs';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -155,18 +160,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -473,14 +467,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-directed-graphs">
-<h1>Chapter 1: Directed Graphs<a class="headerlink" href="#chapter-1-directed-graphs" title="Link to this heading">#</a></h1>
+<h1>Chapter 1: Directed Graphs<a class="headerlink" href="#chapter-1-directed-graphs" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>The logjam you don’t even know you’re stuck in will be broken by a shift in representation.</p>
 <p>Michael Sorkin</p>
 <p><em>Two Hundred Fifty Things an Architect Should Know</em></p>
 </div></blockquote>
 <section id="part-1-modeling-with-directed-graphs">
-<h2>Part 1: Modeling with directed graphs<a class="headerlink" href="#part-1-modeling-with-directed-graphs" title="Link to this heading">#</a></h2>
+<h2>Part 1: Modeling with directed graphs<a class="headerlink" href="#part-1-modeling-with-directed-graphs" title="Permalink to this heading">#</a></h2>
 <p>We will begin our journey into systems thinking and Algebraic Julia by looking at a particularly simple modeling system called a <em>directed graph</em>. Anyone who’s ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.</p>
 <p><img alt="whoops!" src="_images/DirectedGraphs1.jpg" /></p>
 <p>What do these diagrams all have in common? First, they all have arrows. Second, they all have some “points” (players, footprints, questions, etc.), and every arrow connects one point to some other point. More formally these points are usually known as “vertices” (”vertex” when singular), and the official rules for directed graphs are:</p>
@@ -488,20 +482,20 @@ document.write(`
 <p>It’s a simple setup but many situations in life - many <em>systems</em> - are well-captured by this kind of diagram.</p>
 <p>Consider how we can use directed graphs to represent the following three situations:</p>
 <section id="mythological-romance">
-<h3>1. MYTHOLOGICAL ROMANCE:<a class="headerlink" href="#mythological-romance" title="Link to this heading">#</a></h3>
+<h3>1. MYTHOLOGICAL ROMANCE:<a class="headerlink" href="#mythological-romance" title="Permalink to this heading">#</a></h3>
 <p><strong>Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.</strong></p>
 <p>We can make a directed graph of these relationships in which the vertices are characters and an arrow indicates that the person at the source loves the person at the target.</p>
 <p><img alt="whoops!" src="_images/DGlove.jpg" /></p>
 </section>
 <section id="ski-trip-brochure">
-<h3>2. SKI TRIP BROCHURE:<a class="headerlink" href="#ski-trip-brochure" title="Link to this heading">#</a></h3>
+<h3>2. SKI TRIP BROCHURE:<a class="headerlink" href="#ski-trip-brochure" title="Permalink to this heading">#</a></h3>
 <p><strong>From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don’t know how to ski. If that sounds like you, don’t worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.</strong></p>
 <p>In this directed graph, the vertices are locations and the arrows are “modes of transport” from one location to another.</p>
 <p><img alt="whoops!" src="assets/Ch1/DGski.jpg" /></p>
 <p>If you squint, you can look at this like a simplified map. We’ve left out the trees and the geography and the distances from one place to another. We’ve distilled our wayfinding to only the most essential details needed for getting around.</p>
 </section>
 <section id="whose-turn-is-it-to-do-the-dishes">
-<h3>3. WHOSE TURN IS IT TO DO THE DISHES?<a class="headerlink" href="#whose-turn-is-it-to-do-the-dishes" title="Link to this heading">#</a></h3>
+<h3>3. WHOSE TURN IS IT TO DO THE DISHES?<a class="headerlink" href="#whose-turn-is-it-to-do-the-dishes" title="Permalink to this heading">#</a></h3>
 <p><strong>My wife and I used to trade off doing the dishes each day. Then our friend Tuco moved in who loves doing dishes and he has done them ever since. I think my wife was the last one to do the dishes before Tuco took over.</strong></p>
 <p>In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.</p>
 <p><img alt="whoops!" src="_images/DGdishes.jpg" /></p>
@@ -511,7 +505,7 @@ document.write(`
 </section>
 </section>
 <section id="part-2-directed-graphs-with-a-computer">
-<h2>Part 2: Directed graphs with a computer<a class="headerlink" href="#part-2-directed-graphs-with-a-computer" title="Link to this heading">#</a></h2>
+<h2>Part 2: Directed graphs with a computer<a class="headerlink" href="#part-2-directed-graphs-with-a-computer" title="Permalink to this heading">#</a></h2>
 <p>Note how, in the examples above, the written description of each situation required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
 <p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way the computer can understand.</p>
 <p>PLACEHOLDER FOR VIDEO</p>
@@ -521,7 +515,7 @@ document.write(`
 <div><p>DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!</p>
 </div></blockquote>
 <section id="problems">
-<h3>Problems<a class="headerlink" href="#problems" title="Link to this heading">#</a></h3>
+<h3>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Get out a pencil and paper and see if you can draw the directed graphs described by these source and target maps</p></li>
 </ol>
@@ -560,7 +554,7 @@ document.write(`
 </section>
 </section>
 <section id="part-3-on-the-importance-of-finding-the-right-abstractions">
-<h2>Part 3: On the importance of finding the right abstractions<a class="headerlink" href="#part-3-on-the-importance-of-finding-the-right-abstractions" title="Link to this heading">#</a></h2>
+<h2>Part 3: On the importance of finding the right abstractions<a class="headerlink" href="#part-3-on-the-importance-of-finding-the-right-abstractions" title="Permalink to this heading">#</a></h2>
 <p>We’ve come up with one way to describe a directed graph to a computer. But is it the best way? Are there other approaches we should consider?</p>
 <p>Under our current method each arrow is assigned a unique source vertex and a unique target vertex. What would happen if we flip the direction of the assignment? That is, instead of the assignment starting from arrow, we can instead start from vertices, and assign to each vertex a source arrow and/or a target arrow.</p>
 <p><img alt="whoops!" src="_images/WhichWay.gif" />
@@ -689,7 +683,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
