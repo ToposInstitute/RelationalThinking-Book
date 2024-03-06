@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Chapter 1: Directed Graphs &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
@@ -29,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp1-directed-graphs';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -160,7 +155,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -421,7 +427,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -437,6 +445,24 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-modeling-with-directed-graphs">Part 1: Modeling with directed graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mythological-romance">1. MYTHOLOGICAL ROMANCE:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ski-trip-brochure">2. SKI TRIP BROCHURE:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whose-turn-is-it-to-do-the-dishes">3. WHOSE TURN IS IT TO DO THE DISHES?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-directed-graphs-with-a-computer">Part 2: Directed graphs with a computer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-on-the-importance-of-finding-the-right-abstractions">Part 3: On the importance of finding the right abstractions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +473,121 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-directed-graphs">
-<h1>Chapter 1: Directed Graphs<a class="headerlink" href="#chapter-1-directed-graphs" title="Permalink to this heading">#</a></h1>
+<h1>Chapter 1: Directed Graphs<a class="headerlink" href="#chapter-1-directed-graphs" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>The logjam you don’t even know you’re stuck in will be broken by a shift in representation.</p>
+<p>Michael Sorkin</p>
+<p><em>Two Hundred Fifty Things an Architect Should Know</em></p>
+</div></blockquote>
+<section id="part-1-modeling-with-directed-graphs">
+<h2>Part 1: Modeling with directed graphs<a class="headerlink" href="#part-1-modeling-with-directed-graphs" title="Link to this heading">#</a></h2>
+<p>We will begin our journey into systems thinking and Algebraic Julia by looking at a particularly simple modeling system called a <em>directed graph</em>. Anyone who’s ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.</p>
+<p><img alt="whoops!" src="_images/DirectedGraphs1.jpg" /></p>
+<p>What do these diagrams all have in common? First, they all have arrows. Second, they all have some “points” (players, footprints, questions, etc.), and every arrow connects one point to some other point. More formally these points are usually known as “vertices” (”vertex” when singular), and the official rules for directed graphs are:</p>
+<p><img alt="whoops!" src="_images/Rules.jpg" /></p>
+<p>It’s a simple setup but many situations in life - many <em>systems</em> - are well-captured by this kind of diagram.</p>
+<p>Consider how we can use directed graphs to represent the following three situations:</p>
+<section id="mythological-romance">
+<h3>1. MYTHOLOGICAL ROMANCE:<a class="headerlink" href="#mythological-romance" title="Link to this heading">#</a></h3>
+<p><strong>Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.</strong></p>
+<p>We can make a directed graph of these relationships in which the vertices are characters and an arrow indicates that the person at the source loves the person at the target.</p>
+<p><img alt="whoops!" src="_images/DGlove.jpg" /></p>
+</section>
+<section id="ski-trip-brochure">
+<h3>2. SKI TRIP BROCHURE:<a class="headerlink" href="#ski-trip-brochure" title="Link to this heading">#</a></h3>
+<p><strong>From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don’t know how to ski. If that sounds like you, don’t worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.</strong></p>
+<p>In this directed graph, the vertices are locations and the arrows are “modes of transport” from one location to another.</p>
+<p><img alt="whoops!" src="assets/Ch1/DGski.jpg" /></p>
+<p>If you squint, you can look at this like a simplified map. We’ve left out the trees and the geography and the distances from one place to another. We’ve distilled our wayfinding to only the most essential details needed for getting around.</p>
+</section>
+<section id="whose-turn-is-it-to-do-the-dishes">
+<h3>3. WHOSE TURN IS IT TO DO THE DISHES?<a class="headerlink" href="#whose-turn-is-it-to-do-the-dishes" title="Link to this heading">#</a></h3>
+<p><strong>My wife and I used to trade off doing the dishes each day. Then our friend Tuco moved in who loves doing dishes and he has done them ever since. I think my wife was the last one to do the dishes before Tuco took over.</strong></p>
+<p>In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.</p>
+<p><img alt="whoops!" src="_images/DGdishes.jpg" /></p>
+<p>Looked at individually each of the above situations seem quite different. But their directed graphs make it clear that they all share the same essential structure. Abstractly, they are all the same graph, which we can represent in unlabeled form:</p>
+<p><img alt="whoops!" src="_images/SimpleDG.jpg" /></p>
+<p>When used casually like this, directed graphs are little more than convenient pictures–visual heuristics that make it easier to think about the underlying situations. These simple examples may not seem to require any mathematical considerations or computational aid. But we will come to see that if we represent these structures formally in a computer a surprising array of computational powers become available to us.</p>
+</section>
+</section>
+<section id="part-2-directed-graphs-with-a-computer">
+<h2>Part 2: Directed graphs with a computer<a class="headerlink" href="#part-2-directed-graphs-with-a-computer" title="Link to this heading">#</a></h2>
+<p>Note how, in the examples above, the written description of each situation required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
+<p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way the computer can understand.</p>
+<p>PLACEHOLDER FOR VIDEO</p>
+<p>The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.</p>
+<p><img alt="whoops!" src="_images/DataEntry.png" /></p>
+<blockquote>
+<div><p>DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!</p>
+</div></blockquote>
+<section id="problems">
+<h3>Problems<a class="headerlink" href="#problems" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Get out a pencil and paper and see if you can draw the directed graphs described by these source and target maps</p></li>
+</ol>
+<p>a.
+<img alt="whoops!" src="_images/Problem1a.gif" /></p>
+<p>b.
+<img alt="whoops!" src="_images/Problem1b.gif" /></p>
+<ol class="arabic simple" start="2">
+<li><p>Examine the following directed graphs and see if you can draw their source and target maps.
+<img alt="whoops!" src="_images/Problem2.jpg" /></p></li>
+<li><p>Take your source and target maps from the last problem and convert them into lists of numbers.</p></li>
+<li><p>Take your lists of numbers from the last problem and enter them into the code below, replacing the ‘?’s under “src” and “tgt”. Hit “run”. Do the graphs look the way you expected?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">CategoricalAlgebra</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Graphs</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Graphics</span>
+
+<span class="n">AJ_Problem4a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">add_vertices!</span><span class="p">(</span><span class="n">AJ_Problem4a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">add_parts!</span><span class="p">(</span><span class="n">AJ_Problem4a</span><span class="p">,</span><span class="w"> </span><span class="ss">:E</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">],</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">])</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">AJ_Problem4a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">AJ_Problem4b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">add_vertices!</span><span class="p">(</span><span class="n">AJ_Problem4b</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">add_parts!</span><span class="p">(</span><span class="n">AJ_Problem4b</span><span class="p">,</span><span class="w"> </span><span class="ss">:E</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">],</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">])</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">AJ_Problem4b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-3-on-the-importance-of-finding-the-right-abstractions">
+<h2>Part 3: On the importance of finding the right abstractions<a class="headerlink" href="#part-3-on-the-importance-of-finding-the-right-abstractions" title="Link to this heading">#</a></h2>
+<p>We’ve come up with one way to describe a directed graph to a computer. But is it the best way? Are there other approaches we should consider?</p>
+<p>Under our current method each arrow is assigned a unique source vertex and a unique target vertex. What would happen if we flip the direction of the assignment? That is, instead of the assignment starting from arrow, we can instead start from vertices, and assign to each vertex a source arrow and/or a target arrow.</p>
+<p><img alt="whoops!" src="_images/WhichWay.gif" />
+<em>What does it mean when connections flow in opposite directions?</em></p>
+<p>Is there a difference between “arrows-first” and “vertices-first” representations?
+<img alt="whoops!" src="_images/WhyNot.gif" /></p>
+<p>At first glance, these might seem like the exact same thing. But in fact, a whole bunch of <em>problems</em> arise if we try to think about directed graphs in the second way!</p>
+<p>Two lovely features of our former “arrows-first” approach were:</p>
+<ul class="simple">
+<li><p>Every source and target map corresponded to <em>some</em> directed graph.</p></li>
+<li><p>E<em>very</em> directed graph can be expressed this way.</p></li>
+</ul>
+<p>Neither of these things is true with the “vertices-first” approach.</p>
+<p>Suppose we created a random graph using the vertices-first approach, just throwing together source and target maps, arbitrarily connecting things without giving any thought to what the resulting graph will be like.
+<img alt="whoops!" src="_images/Random.gif" />
+<em>“Random” source and target maps</em></p>
+<p>In this case, when we try reconstruct the graph from this random data, we get a mutant!
+<img alt="whoops!" src="_images/MutantGraph.jpg" /></p>
+<p>Dangling arrows, arrows that have to come out of multiple vertices somehow, arrows floating off by themselves unattached to anything. It’s carnage! By designing our maps in the vertices-first approach we open up the possibility of creating <em>nonsense</em>: maps which may appear valid at first, but which produce broken directed graphs when we try to interpret them.</p>
+<p>To make matters worse, there are many directed graphs that can’t be expressed this way at all - at least not without relaxing some of our rules for making source and target maps.
+<img alt="whoops!" src="_images/Branchy.gif" /></p>
+<p>In the above graph, some vertices need to map to <em>many</em> arrows while others don’t map to any. So instead of the simplicity we had in the arrows-first approach–with each arrow having <em>one-and-only-one source vertex</em> and <em>one-and-only one target vertex</em>–we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? List won’t do it anymore. It turns our you’ll now have to enter <em>lists of lists!</em></p>
+<p>Our purpose in comparing these approaches is to highlight the difference between “good” and “bad” representations. It’s hard to escape the feeling that the arrows-first approach is somehow the natural way to describe directed graphs. There is an <em>exact</em> correspondence between what we’re interested in (directed graphs!) and what the maps are capable of expressing. By contrast, the vertices-first approach produces the typical problems of “bad” representations, which force you to countenance nonsense and deal with problematic edge cases. In a word, they’re <em>fussy</em>. And this kind of fussiness is not just annoying, it turns out to be a barrier to abstraction.</p>
+<p>As we go through this book we will take a series of increasingly abstract points of view on graphs. The beauty of beginning this journey with a good representation is that it permits us to move up the ladder of abstractions cleanly, at each stage fully disregarding the details of the previous level and being able to take for granted that everything below our current view will naturally take care of itself.</p>
+<p><img alt="whoops!" src="_images/Ladder.png" /></p>
+<p>In this chapter we have moved up our first rung on this ladder of abstractions - from directed graphs to source and target maps. In the coming sections we will continue to climb, moving on to “Schemas” in section 2 and “Categories” in section 3. At each step, we will obtain new capabilities and new ways of thinking about structures and modeling. But as we will see, we’re only able to reap the cumulative benefits of abstraction because we’re choosing the more elegant representation at the start.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -505,7 +645,30 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-modeling-with-directed-graphs">Part 1: Modeling with directed graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mythological-romance">1. MYTHOLOGICAL ROMANCE:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ski-trip-brochure">2. SKI TRIP BROCHURE:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whose-turn-is-it-to-do-the-dishes">3. WHOSE TURN IS IT TO DO THE DISHES?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-directed-graphs-with-a-computer">Part 2: Directed graphs with a computer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-on-the-importance-of-finding-the-right-abstractions">Part 3: On the importance of finding the right abstractions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -526,7 +689,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

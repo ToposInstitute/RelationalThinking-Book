@@ -17,14 +17,9 @@ The kernel runs **Julia 1.10.0**
 **Installed Packages:** graphviz
 
 **Supported Julia libraries:** \
-AlgebraicDynamics v0.2.2
-AlgebraicRewriting v0.3.0
-Catlab v0.16.5
-LabelledArrays v1.15.0
-OrdinaryDiffEq v6.66.0
-Plots v1.40.0
-PrettyTables v2.3.1
-SciMLBase v2.10.0
+Catlab\
+Plots\
+PrettyTables
 
 Each of the code blocks are editable
 
