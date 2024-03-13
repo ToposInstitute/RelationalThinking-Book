@@ -7,11 +7,12 @@ chapters:
 - file: book-msg
 - file: chp1-directed-graphs
 - file: chp2-dwd
-- file: chp3-schemas
-- file: chp4-uwd
-- file: chp5-dpo
-- file: chp6-dpo-application
+- file: chp3-graph-relationships
+- file: chp4-schemas
+- file: chp5-graph-gluing
+- file: chp6-dpo
+- file: chp7-dpo-application
 - file: julia-notebook
-- file: Markdown
+- file: afterword
 
 

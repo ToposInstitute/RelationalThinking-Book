@@ -10,4 +10,4 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 6: Double-Pushout Rewriting Examples
+# Chapter 4: Schemas
