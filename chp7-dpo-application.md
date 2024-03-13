@@ -12,7 +12,7 @@ header-includes:
   - \usepackage{amsmath}
 ---
 
-# Chapter 6: Double-Pushout Rewriting Applications
+# Chapter 7: Double-Pushout Rewriting Applications
 
 As we have seen, Double-pushout (DPO) rewriting is a concept that gives us access to the feature of adding and deleting elements in our data. At its core, DPO rewriting involves the use of two pushout diagrams in the $\mathsf{C}$-Set category that transforms one $\mathsf{C}$-Set object to another. This process can model a wide range of changes in schema-backed data, from the reconfiguration of physical objects to transformations in world knowledge.
 
