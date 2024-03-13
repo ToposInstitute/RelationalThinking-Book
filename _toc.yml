@@ -4,7 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: book-msg
 - file: chp1-directed-graphs
 - file: chp2-dwd
 - file: chp3-graph-relationships
@@ -14,5 +13,6 @@ chapters:
 - file: chp7-dpo-application
 - file: julia-notebook
 - file: afterword
+- file: acknowledgements
 
 

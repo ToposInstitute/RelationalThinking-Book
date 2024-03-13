@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Introduction (Draft)
+# Introduction
 By Brendan Fong
 
 ## Systems thinking through software
