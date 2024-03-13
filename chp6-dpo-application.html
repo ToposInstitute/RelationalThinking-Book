@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Chapter 6: Double-Pushout Rewriting Examples &#8212; What? Not How! - A Peek into Relational Thinking</title>
+    <title>Chapter 6: Double-Pushout Rewriting Applications &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp6-dpo-application';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -183,7 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Schemas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-uwd.html">Chapter 4: Undirected Wiring Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp5-dpo.html">Chapter 5: Double-Pushout Rewriting</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: Double-Pushout Rewriting Examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: Double-Pushout Rewriting Applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="julia-notebook.html">Sample Markdown with Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Markdown.html">Sample Markdown</a></li>
 
@@ -427,7 +429,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -438,11 +442,33 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 6: Double-Pushout Rewriting Examples</h1>
+    <h1>Chapter 6: Double-Pushout Rewriting Applications</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-cube-configuration">Example 1: Cube Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-need-to-figure-out-how-to-get-the-rule-to-match-such-that-face-face1">TODO: Need to figure out how to get the rule to match such that face = face1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-kitchen-world-schema">Example 2: Kitchen World Schema</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-add-make-rule-to-the-environment">TODO: Add make_rule to the environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -452,8 +478,241 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-double-pushout-rewriting-examples">
-<h1>Chapter 6: Double-Pushout Rewriting Examples<a class="headerlink" href="#chapter-6-double-pushout-rewriting-examples" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-double-pushout-rewriting-applications">
+<h1>Chapter 6: Double-Pushout Rewriting Applications<a class="headerlink" href="#chapter-6-double-pushout-rewriting-applications" title="Link to this heading">#</a></h1>
+<p>As we have seen, Double-pushout (DPO) rewriting is a concept that gives us access to the feature of adding and deleting elements in our data. At its core, DPO rewriting involves the use of two pushout diagrams in the <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set category that transforms one <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set object to another. This process can model a wide range of changes in schema-backed data, from the reconfiguration of physical objects to transformations in world knowledge.</p>
+<section id="example-1-cube-configuration">
+<h2>Example 1: Cube Configuration<a class="headerlink" href="#example-1-cube-configuration" title="Link to this heading">#</a></h2>
+<p>Consider a scenario where the index category, <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>, represents the schema for a cube, comprising three fundamental objects: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema is enriched with six non-identity morphisms: <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, which define the relationships between these objects. DPO rewriting in this context can model various transformations in the cube’s configuration, akin to unfolding a cardboard box.</p>
+<p>This can be expressed as a schema in AlgebraicJulia as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">Sch3DShape</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">Face</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">Edge</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">Vertex</span><span class="o">::</span><span class="kt">Ob</span>
+
+<span class="w">  </span><span class="n">top</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Face</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="p">)</span>
+<span class="w">  </span><span class="n">right</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Face</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="p">)</span>
+<span class="w">  </span><span class="n">bottom</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Face</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="p">)</span>
+<span class="w">  </span><span class="n">left</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Face</span><span class="p">,</span><span class="w"> </span><span class="n">Edge</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">src</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Vertex</span><span class="p">)</span>
+<span class="w">  </span><span class="n">tgt</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Edge</span><span class="p">,</span><span class="w"> </span><span class="n">Vertex</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">Sch3DShape</span><span class="p">)</span>
+<span class="nd">@acset_type</span><span class="w"> </span><span class="mi">3</span><span class="n">DShape</span><span class="p">(</span><span class="n">Sch3DShape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For instance, using DPO rewriting, we could model the action of opening or closing the top of the cube. This operation would involve redefining the relationships between the Faces and Edges objects to “remove” the connections that form the top face. Similarly, unfolding the cube into a flat layout would radically alter the connections between Faces, Edges, and Vertices to represent the cube in an unfolded state. Such transformations are powerful for visualizing and reasoning about the structural possibilities of objects in three-dimensional space.</p>
+<p>Let us say we want to have a cube represent a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it’s closed by explaining how the faces, edges, and vertices are defined relative to one another. In a cube, there are exactly six faces, which we can call <code class="docutils literal notranslate"><span class="pre">f1,</span> <span class="pre">f2,</span> <span class="pre">f3,</span> <span class="pre">f4,</span> <span class="pre">f5,</span> <span class="pre">f6</span></code>. Faces have exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as <code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">e3,</span> <span class="pre">e4,</span> <span class="pre">...</span></code>. If we want to say the top of edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e1</span></code>, then we can refer to the schema and express the the following part:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">top</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span> <span class="o">==</span> <span class="n">e1</span>
+</pre></div>
+</div>
+<p>Similarly, we can say the left edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e2</span></code> by saying:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bottom</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span> <span class="o">==</span> <span class="n">e2</span>
+</pre></div>
+</div>
+<p>Edges, on the other hand, have exactly two vertices, the source and target. This is reminiscent of how we came to understand edges in a graph. The schema for both the Cube and the Graph have two morphisms, <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, that map <code class="docutils literal notranslate"><span class="pre">Edge</span></code> to <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. So, if we would like to state what vertices bound the edge, <code class="docutils literal notranslate"><span class="pre">e1</span></code>, we can say</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">==</span> <span class="n">v1</span>
+<span class="n">tgt</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">==</span> <span class="n">v2</span>
+</pre></div>
+</div>
+<section id="a-closed-box">
+<h3>A closed box<a class="headerlink" href="#a-closed-box" title="Link to this heading">#</a></h3>
+<p>We can create an instance of a cube, by defining such a <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set, where <span class="math notranslate nohighlight">\(\mathsf{C}\)</span> is <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">closedCube</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset_colim</span><span class="w"> </span><span class="n">ySch3DShape</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="p">,</span><span class="w"> </span><span class="n">f4</span><span class="p">,</span><span class="w"> </span><span class="n">f5</span><span class="p">,</span><span class="w"> </span><span class="n">f6</span><span class="p">)</span><span class="o">::</span><span class="kt">Face</span>
+<span class="w">  </span><span class="p">(</span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e3</span><span class="p">,</span><span class="w"> </span><span class="n">e4</span><span class="p">,</span><span class="w"> </span><span class="n">e5</span><span class="p">,</span><span class="w"> </span><span class="n">e6</span><span class="p">,</span><span class="w"> </span><span class="n">e7</span><span class="p">,</span><span class="w"> </span><span class="n">e8</span><span class="p">,</span><span class="w"> </span><span class="n">e9</span><span class="p">,</span><span class="w"> </span><span class="n">e10</span><span class="p">,</span><span class="w"> </span><span class="n">e11</span><span class="p">,</span><span class="w"> </span><span class="n">e12</span><span class="p">)</span><span class="o">::</span><span class="kt">Edge</span>
+<span class="w">  </span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">,</span><span class="w"> </span><span class="n">v4</span><span class="p">,</span><span class="w"> </span><span class="n">v5</span><span class="p">,</span><span class="w"> </span><span class="n">v6</span><span class="p">,</span><span class="w"> </span><span class="n">v7</span><span class="p">,</span><span class="w"> </span><span class="n">v8</span><span class="p">)</span><span class="o">::</span><span class="kt">Vertex</span>
+
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e1</span><span class="p">;</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e4</span><span class="p">;</span><span class="w"> </span><span class="n">bottom</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e3</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e2</span>
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e8</span><span class="p">;</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e7</span><span class="p">;</span><span class="w"> </span><span class="n">bottom</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e5</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e4</span>
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">f3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e11</span><span class="p">;</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="n">f3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e7</span><span class="p">;</span><span class="w"> </span><span class="n">bottom</span><span class="p">(</span><span class="n">f3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e6</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="n">f3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e10</span>
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">f4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e12</span><span class="p">;</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="n">f4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e10</span><span class="p">;</span><span class="w"> </span><span class="n">bottom</span><span class="p">(</span><span class="n">f4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e9</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="n">f4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e2</span>
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">f5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e11</span><span class="p">;</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="n">f5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e8</span><span class="p">;</span><span class="w"> </span><span class="n">bottofm</span><span class="p">(</span><span class="n">f5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e1</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="n">f5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e12</span>
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">f6</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e6</span><span class="p">;</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="n">f6</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e5</span><span class="p">;</span><span class="w"> </span><span class="n">bottom</span><span class="p">(</span><span class="n">f6</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e3</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="n">f6</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e9</span>
+
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v1</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v2</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v1</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v3</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v3</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v4</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v4</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v2</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v4</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v8</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e6</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v7</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e6</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v8</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e7</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v8</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e7</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v6</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e8</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v6</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e8</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v2</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e9</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v7</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e9</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v3</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e10</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v7</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e10</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v5</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e11</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v6</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e11</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v5</span>
+<span class="w">  </span><span class="n">src</span><span class="p">(</span><span class="n">e12</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v5</span><span class="p">;</span><span class="w"> </span><span class="n">tgt</span><span class="p">(</span><span class="n">e12</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v1</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This instance defines a box that looks like Figure ??.</p>
+<p><strong>[INSERT FIGURE OF LABELED CUBE]</strong></p>
+<p>Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">L</span></code> part of the rule should represent the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has these qualities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset_colim</span><span class="w"> </span><span class="n">ySch3DShape</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="p">(</span><span class="n">face</span><span class="p">,</span><span class="w"> </span><span class="n">face1</span><span class="p">,</span><span class="w"> </span><span class="n">face2</span><span class="p">,</span><span class="w"> </span><span class="n">face3</span><span class="p">,</span><span class="w"> </span><span class="n">face4</span><span class="p">)</span><span class="o">::</span><span class="kt">Face</span>
+
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">face</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span>
+<span class="w">  </span><span class="n">right</span><span class="p">(</span><span class="n">face</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="n">face2</span><span class="p">)</span>
+<span class="w">  </span><span class="n">bottom</span><span class="p">(</span><span class="n">face</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="n">face3</span><span class="p">)</span>
+<span class="w">  </span><span class="n">left</span><span class="p">(</span><span class="n">face</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">R</span></code> part of the rule should represent the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset_colim</span><span class="w"> </span><span class="n">ySch3DShape</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="p">(</span><span class="n">face</span><span class="p">,</span><span class="w"> </span><span class="n">face1</span><span class="p">)</span><span class="o">::</span><span class="kt">Face</span>
+
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">face</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">K</span></code> part tells me that open face and the face that it is attached to are the same. They are also attached by the same edge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset_colim</span><span class="w"> </span><span class="n">ySch3DShape</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="p">(</span><span class="n">face</span><span class="p">,</span><span class="w"> </span><span class="n">face1</span><span class="p">)</span><span class="o">::</span><span class="kt">Face</span>
+
+<span class="w">  </span><span class="n">top</span><span class="p">(</span><span class="n">face</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">Face</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">Edge</span><span class="o">=</span><span class="n">collect</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">7</span><span class="p">),</span><span class="w"> </span><span class="n">Vertex</span><span class="o">=</span><span class="n">collect</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">14</span><span class="p">))</span>
+<span class="n">rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Rule</span><span class="p">{</span><span class="ss">:DPO</span><span class="p">}(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This rule is helpful, but the problem is that we can use it on <em>any</em> face of the box. This means that we can technically open the box from the bottom, releasing the cake to the floor. We can constrain this by defining a specific match for our DPO rule.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">homomorphisms</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">closedCube</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="todo-need-to-figure-out-how-to-get-the-rule-to-match-such-that-face-face1">
+<h4>TODO: Need to figure out how to get the rule to match such that face = face1<a class="headerlink" href="#todo-need-to-figure-out-how-to-get-the-rule-to-match-such-that-face-face1" title="Link to this heading">#</a></h4>
+<p>In summary, DPO rewriting can help us model various configurations of a box by manipulating the data in the <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code>-Set.</p>
+</section>
+</section>
+</section>
+<section id="example-2-kitchen-world-schema">
+<h2>Example 2: Kitchen World Schema<a class="headerlink" href="#example-2-kitchen-world-schema" title="Link to this heading">#</a></h2>
+<p>In a more abstract and complex domain, consider the index category, <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>, representing the schema for a “kitchen world.” In this model, objects include {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity}, with morphisms designed to reflect subtype relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food on Entity).</p>
+<p>If you recall from <a class="reference internal" href="#"><span class="xref myst">Chapter 4</span></a>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively, via <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set functors. This means that a morphism from Bread to Food says that all elements of Bread are a Food, and likewise, a morphism Food is on an Entity says that all elements of Food are on an Entity. This schema enforces a universal expectation about the types of objects and their arrangements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">Entity</span><span class="o">::</span><span class="kt">Ob</span>
+
+<span class="w">  </span><span class="n">Food</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">food_in_on</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Food</span><span class="p">,</span><span class="w"> </span><span class="n">Entity</span><span class="p">)</span>
+<span class="w">  </span><span class="n">food_is_entity</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Food</span><span class="p">,</span><span class="w"> </span><span class="n">Entity</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">Kitchenware</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">ware_in_on</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Kitchenware</span><span class="p">,</span><span class="w"> </span><span class="n">Entity</span><span class="p">)</span>
+<span class="w">  </span><span class="n">ware_is_entity</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Kitchenware</span><span class="p">,</span><span class="w"> </span><span class="n">Entity</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">Counter</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">counter_is_entity</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Counter</span><span class="p">,</span><span class="w"> </span><span class="n">Entity</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">BreadLoaf</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">bread_loaf_is_food</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">BreadLoaf</span><span class="p">,</span><span class="w"> </span><span class="n">Food</span><span class="p">)</span>
+<span class="w">  </span><span class="n">BreadSlice</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">bread_slice_is_food</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">BreadSlice</span><span class="p">,</span><span class="w"> </span><span class="n">Food</span><span class="p">)</span>
+<span class="w">  </span><span class="n">Egg</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">egg_is_food</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Egg</span><span class="p">,</span><span class="w"> </span><span class="n">Food</span><span class="p">)</span>
+<span class="w">  </span><span class="n">Cheese</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">cheese_is_food</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Cheese</span><span class="p">,</span><span class="w"> </span><span class="n">Food</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">Knife</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">knife_is_ware</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Knife</span><span class="p">,</span><span class="w"> </span><span class="n">Kitchenware</span><span class="p">)</span>
+<span class="w">  </span><span class="n">Plate</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">plate_is_ware</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">Plate</span><span class="p">,</span><span class="w"> </span><span class="n">Kitchenware</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">SchKitchen</span><span class="p">)</span>
+
+<span class="nd">@acset_type</span><span class="w"> </span><span class="n">Kitchen</span><span class="p">(</span><span class="n">SchKitchen</span><span class="p">)</span>
+
+<span class="n">yKitchen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yoneda</span><span class="p">(</span><span class="n">Kitchen</span><span class="p">,</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">;</span><span class="w"> </span><span class="n">cache</span><span class="o">=</span><span class="n">make_cache</span><span class="p">(</span><span class="n">Kitchen</span><span class="p">,</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Kitchen&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>DPO rewriting here can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering the morphisms to reflect this new arrangement. Another rule might model the process of putting a slice of bread on a place. This example demonstrates the potential of DPO rewriting for simulating and reasoning about the complex interactions and transformations of objects in a defined space.</p>
+<section id="put-cheese-on-bread">
+<h3>Put Cheese On Bread<a class="headerlink" href="#put-cheese-on-bread" title="Link to this heading">#</a></h3>
+<p>Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, and <code class="docutils literal notranslate"><span class="pre">K</span></code> components of this rewrite rule.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">put_cheese_on_bread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@migration</span><span class="p">(</span><span class="n">SchKitchen</span><span class="p">,</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">L</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">cheese</span><span class="o">::</span><span class="kt">Cheese</span>
+<span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="w">  </span><span class="n">K</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">cheese</span><span class="o">::</span><span class="kt">Cheese</span>
+<span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="w">  </span><span class="n">R</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">cheese</span><span class="o">::</span><span class="kt">Cheese</span>
+<span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
+<span class="w">    </span><span class="n">cheese_is_food</span><span class="p">(</span><span class="n">cheese</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bread_slice_is_food</span><span class="p">(</span><span class="n">slice</span><span class="p">)</span><span class="w">  </span><span class="c"># become one</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+<span class="n">put_cheese_on_bread_rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_rule</span><span class="p">(</span><span class="n">put_cheese_on_bread</span><span class="p">,</span><span class="w"> </span><span class="n">yKitchen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note: Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. Instead, we can compute the colimit of representables and infer the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
+<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. This is a knowledge engineering choice which demonstrates the flexibility of DPO-rewriting rules.</p>
+</section>
+<section id="plate-slice">
+<h3>Plate Slice<a class="headerlink" href="#plate-slice" title="Link to this heading">#</a></h3>
+<p>We can use the same idea to model a slice of bread being on a plate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plate_slice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@migration</span><span class="p">(</span><span class="n">SchRule</span><span class="p">,</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">,</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">L</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
+<span class="w">    </span><span class="n">plate</span><span class="o">::</span><span class="kt">Plate</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="w">  </span><span class="n">K</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
+<span class="w">    </span><span class="n">plate</span><span class="o">::</span><span class="kt">Plate</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="w">  </span><span class="n">R</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
+<span class="w">    </span><span class="n">plate</span><span class="o">::</span><span class="kt">Plate</span>
+<span class="w">    </span><span class="n">food_in_on</span><span class="p">(</span><span class="n">bread_slice_is_food</span><span class="p">(</span><span class="n">slice</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ware_is_entity</span><span class="p">(</span><span class="n">plate_is_ware</span><span class="p">(</span><span class="n">plate</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span><span class="p">)</span>
+<span class="n">plate_slice_rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_rule</span><span class="p">(</span><span class="n">plate_slice</span><span class="p">,</span><span class="w"> </span><span class="n">yKitchen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the <code class="docutils literal notranslate"><span class="pre">food_in_on</span></code> morphism and, in the case of plate, the function that maps it to entity is tied to the <code class="docutils literal notranslate"><span class="pre">ware_is_entity</span></code> morphism. This is effectively saying that the entity that the food is on is the same entity as the plate.</p>
+<section id="todo-add-make-rule-to-the-environment">
+<h4>TODO: Add make_rule to the environment<a class="headerlink" href="#todo-add-make-rule-to-the-environment" title="Link to this heading">#</a></h4>
+<p>Both examples illustrate the versatility of double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in systems defined using <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Sets.</p>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -511,7 +770,34 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-cube-configuration">Example 1: Cube Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-need-to-figure-out-how-to-get-the-rule-to-match-such-that-face-face1">TODO: Need to figure out how to get the rule to match such that face = face1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-kitchen-world-schema">Example 2: Kitchen World Schema</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-add-make-rule-to-the-environment">TODO: Add make_rule to the environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
