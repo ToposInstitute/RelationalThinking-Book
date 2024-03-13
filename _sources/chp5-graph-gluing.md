@@ -10,4 +10,4 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 5: Double-Pushout Rewriting
+# Chapter 5: Graph Gluing

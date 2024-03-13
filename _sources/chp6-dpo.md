@@ -10,4 +10,4 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 3: Schemas
+# Chapter 6: Cut-Copy-Glue Graphs

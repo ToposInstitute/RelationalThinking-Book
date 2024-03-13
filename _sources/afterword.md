@@ -9,3 +9,5 @@ kernelspec:
   language: julia
   name: julia-1.10
 ---
+
+# Afterword

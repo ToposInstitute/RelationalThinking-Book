@@ -10,4 +10,4 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 4: Undirected Wiring Diagrams
+# Chapter 3: Graph Relationships
