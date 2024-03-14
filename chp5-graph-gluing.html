@@ -471,9 +471,9 @@ document.write(`
 <p>As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.</p>
 <p><img alt="whoops!" src="_images/DGdishes1.jpg" /></p>
 <p>In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/Tuco.jpeg"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/Tuco.jpeg" style="width: 560px;" /></a>
+<a class="reference internal image-reference" href="_images/Tuco.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/Tuco.jpeg" style="width: 560px;" /></a>
 <p>Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/Tuco-glued.jpeg"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/Tuco-glued.jpeg" style="width: 560px;" /></a>
+<a class="reference internal image-reference" href="_images/Tuco-glued.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/Tuco-glued.jpeg" style="width: 560px;" /></a>
 <p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
 <p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs.</p>
 <p>The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking, also called as category theory by some! By playing this game, we focus is on “what” (a combined graph is) rather than “how” (to combine graphs).</p>
@@ -485,32 +485,32 @@ document.write(`
 <p>This animation is an instantiation of two commuting diagrams which define a graph embedding.</p>
 <p>We know that a graph is a purposeful (constrained) relationship between edges and vertices. This relationship is a pair of maps: a source and a target map from the set of edges to the set of vertices. A graph embedding is a purposeful relationship between two graphs. This relationship is also a pair of maps: a vertex map between vertices of the graphs and an arrow map between the edges of the graphs. What makes a graph embedding purposeful is its harmonious behavior with the existing source and the target maps in the domain and the codomain. This harmony is precisely encoded as a pair of commuting diagrams.</p>
 <p>Let us suppose we have two graphs and a graph embedding between them. So we have the following system maps:</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-commuting-diagram-1.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-commuting-diagram-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/2-commuting-diagram-1.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-1.png" style="width: 450px;" /></a>
 <p>The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in Graph-1 is preserved by the embedding.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-commuting-diagram-2.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-commuting-diagram-2.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/2-commuting-diagram-2.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-2.png" style="width: 400px;" /></a>
 <p>The second diagram tells that the target of each edge in Graph-1 is preserved by the embedding.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-commuting-diagram-3.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-commuting-diagram-3.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/2-commuting-diagram-3.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-3.png" style="width: 400px;" /></a>
 <p>Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an <em>origin</em> vertex which has only outgoing arrows (Edges of Graph-1), and a <em>destination</em> vertex which has only incoming arrows (Vertices of Graph-2). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of Graph-1”, following any of the path, will lead to the same vertex in “Vertices of Graph-2”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.</p>
 <p>Let us see have a closer look at the first commuting diagram.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-commuting-diagram-4.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-commuting-diagram-4.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/2-commuting-diagram-4.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-4.png" style="width: 450px;" /></a>
 <p>For any edge in Graph-1, following ‘Path 1’ will lead to the image of its source vertex in Graph-2. For the same edge, following ‘Path 2’ leads to the source vertex of its image in Graph-2. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are <em>aware</em> of the source and the target maps of Graph-1 and Graph-2.</p>
 <p>Note that there can be any number of graph embeddings between Graph-1 and Graph-2. But, all of them follow the commuting diagrams.</p>
 <p>Commuting diagrams are more general than for just graph embeddings. Commuting diagrams are of any closed shape like a triangle or a square and are non-cyclic. The arrows of a commuting diagram can belong to any rung: do you remember this picture from Chapter 1?</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/Ladder.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/Ladder.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/Ladder1.png"><img alt="Whoopsy!" class="align-center" src="_images/Ladder1.png" style="width: 400px;" /></a>
 <p>The above commuting diagrams (sort of belongs to rung 3). The vertices are sets (sets of vertices and sets of edges) and the arrows are set functions.</p>
 <p>A commuting diagram in rung 4 may look like this:</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-commuting-diagram-5.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-commuting-diagram-5.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/2-commuting-diagram-5.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-5.png" style="width: 400px;" /></a>
 <p>Graph 1 is the origin and Graph 3 is the destination. The above diagram says that embedding the choices of paths to embed Graph-1 inside Graph-3 are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-commuting-diagram-6.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-commuting-diagram-6.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/2-commuting-diagram-6.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-6.png" style="width: 400px;" /></a>
 <p>We know that each embedding has an arrows map and vertices map. The commuting diagram tells us that:</p>
 <ol class="arabic simple">
 <li><p>For any vertex in Graph-1 (drawn as the little blue ball), applying the green embedding to it produces a vertex in Graph-3 (green circle surrounding the black circle). Or applying the red embedding produces a vertex in Graph-2 (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in Graph-3 (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in Graph-3 are the same.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-same-vertex-2.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-same-vertex-2.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/2-same-vertex-2.png"><img alt="Whoopsy!" class="align-center" src="_images/2-same-vertex-2.png" style="width: 350px;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>For any edge in Graph-1 (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in Graph-3.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../../assets/Ch3/2-same-edge.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/2-same-edge.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/2-same-edge.png"><img alt="Whoopsy!" class="align-center" src="_images/2-same-edge.png" style="width: 350px;" /></a>
 </section>
 <section id="when-are-two-graphs-the-same">
 <h2>5.2 When are two graphs the same?<a class="headerlink" href="#when-are-two-graphs-the-same" title="Permalink to this heading">#</a></h2>
@@ -518,13 +518,13 @@ document.write(`
 <p>Brendan eats the same breakfast everyday (probably)!</p>
 <p>Steve Jobs wore the same outfit everyday!</p>
 <p>The word “same” has origin in the Sanskrit word “<em>sama</em>” which (sort of) translates to “equal”. The word “sama” invokes an image of a balanced weighing scale in my mind. Growing up in India, it was a common sight for me seeing shopkeepers weighing their produce using such scales.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/3-balance.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/3-balance.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/3-balance.png"><img alt="Whoopsy!" class="align-center" src="_images/3-balance.png" style="width: 350px;" /></a>
 <p>The idea of “sameness” or “sama” is that in certain context, two distinguishable objects are considered to be equal or identical — their meaning is considered to be the same. Under the context of color, all the outfits of Steve Jobs were identical / equal (can’t be told apart). Under the context of recipe, the breakfast Brendan eats are identical / equal (can’t be told apart).</p>
 <p>The ability to blur the lines between the meaning of objects and group them into one, by placing them in a certain context is quite natural to human thinking and is also useful. Imagine a world without weighing scales which is a practical demonstration of “sameness” (under the context of weight)! The concept of “sameness” is an instance of relational thinking in everyday life.</p>
 <p>When someone speaks of sameness of two things, there exists an (unspoken) context hidden in it. The idea of sameness is manifestation of this unspoken context. Relational thinking (in mathematical sense) supports making this context explicit thereby eliminating the room for arguments if two things are same or not. (Eugenia Cheng has explained this very beautifully. I think a reference to her explanation or a video embedding will be very helpful.)</p>
 <p>In this section, we want to explore the “sameness of graphs” through the lens of relational thinking. The question of finding out if two graphs are the same is an area of study by itself and beyond the scope of this book. We are more interesting in making explicit the relationship that makes two graphs the same.</p>
 <p>Let us play a simple game. Among these three graphs, circle the two graphs which you “think” are the same:</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/3-same-graphs-1.jpeg"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/3-same-graphs-1.jpeg" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/3-same-graphs-1.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3-same-graphs-1.jpeg" style="width: 350px;" /></a>
 <p>Did you circle (b) and (d)? Can you say out loud —</p>
 <ol class="arabic">
 <li><p>Why did you not circle (a) and (c)?</p>
@@ -538,9 +538,9 @@ document.write(`
 <p>Let us make the “no loss of information” more precise. Saying <em>two graphs are the same</em> amounts to providing two embeddings between them as shown below. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at. Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with. Similarly for the edges.</p>
 </li>
 </ol>
-<a class="reference internal image-reference" href="../../assets/Ch3/3-same-graphs-2.jpeg"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/3-same-graphs-2.jpeg" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/3-same-graphs-2.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3-same-graphs-2.jpeg" style="width: 350px;" /></a>
 <p>Before I end this section, I would like to entertain you with a personal story tangentially related to graphs and the idea of sameness! When we were young, my brother and I were very fond of “Maggi noodles”.  My mom considered Maggi noodles to be both unhealthy and expensive. But, because we were fond of it, she would occasionally bring home two packets of these noodles. It was brother’s task to cook these noodles. After cooking, he would spilt the noodles into two portions and I would be given a chance to pick one I wanted. I always had great trouble in making up my mind, since whichever portion I picked, mine looked lesser to me. Often, I would ask to change since my brother’s portion looked bigger. My mom with great annoyance would reply, “Both the portions are the same! It’s your eyes which are big!”.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/maggi.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/maggi.png" style="width: 150px;" /></a>
+<a class="reference internal image-reference" href="_images/maggi.png"><img alt="Whoopsy!" class="align-center" src="_images/maggi.png" style="width: 150px;" /></a>
 </section>
 <section id="combining-graphs-using-memes">
 <h2>5.3. Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
@@ -550,7 +550,7 @@ document.write(`
 <h3>A. Specifying the shape of the overlap<a class="headerlink" href="#a-specifying-the-shape-of-the-overlap" title="Permalink to this heading">#</a></h3>
 <p>To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the <em><strong>overlap</strong></em> of the two graphs. So, to combine two graphs, we need to know their overlap.</p>
 <p>In chapter 3, we saw that a graph embedding identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3, because we are concerned more concerned with how they are related to each other. We are concerned with the shape of the diagram  created by these relationships rather than what are the actual graphs inside these colored rectangles. Think of the rectangles as placeholders that can receive any graph in them.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/4.3-Diagram.png"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/4.3-Diagram.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/4.3-Diagram.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-Diagram.png" style="width: 350px;" /></a>
 <p>The relationships between the graphs in the above diagram are:</p>
 <ul class="simple">
 <li><p>Graph-1 embeds inside Graph-2.</p></li>
@@ -559,9 +559,9 @@ document.write(`
 </ul>
 <p>The “overlap” acts as a bridge between two graphs allowing one to navigate from one graph to the other via common vertices and edges.</p>
 <p>Theoretically, this means that we can combine Graph-2 and Graph-3 into a single graph. In this graph, we move from the vertices of the Graph-2 to the vertices of Graph-3 via the overlap. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/sheets.jpeg"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/sheets.jpeg" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="_images/sheets.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/sheets.jpeg" style="width: 250px;" /></a>
 <p>Another analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue.</p>
-<a class="reference internal image-reference" href="../../assets/Ch3/cup-handle.jpeg"><img alt="Whoopsy!" class="align-center" src="../../assets/Ch3/cup-handle.jpeg" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/cup-handle.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/cup-handle.jpeg" style="width: 450px;" /></a>
 <p>With this analogy in mind, let us think of the colimit graph of the diagram showed in Figure 1. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.</p>
 <p>We now know what it means for two graphs to overlap — it is a diagram of shape in Figure 1. We are also sort of convinced that two graphs can be combined along their overlap.</p>
 <div class="dropdown admonition">
