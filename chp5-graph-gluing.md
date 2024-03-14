@@ -27,7 +27,7 @@ As a step towards making sense of the idea of combining graphs, let us a revisit
 
 In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:
 
-```{image} ../../assets/Ch3/Tuco.jpeg
+```{image} assets/Ch3/Tuco.jpeg
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -35,7 +35,7 @@ In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuc
 
 Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:
 
-```{image} ../../assets/Ch3/Tuco-glued.jpeg
+```{image} assets/Ch3/Tuco-glued.jpeg
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -61,7 +61,7 @@ We know that a graph is a purposeful (constrained) relationship between edges an
 
 Let us suppose we have two graphs and a graph embedding between them. So we have the following system maps:
 
-```{image} ../../assets/Ch3/2-commuting-diagram-1.png
+```{image} assets/Ch3/2-commuting-diagram-1.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -69,7 +69,7 @@ Let us suppose we have two graphs and a graph embedding between them. So we have
 
 The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in Graph-1 is preserved by the embedding. 
 
-```{image} ../../assets/Ch3/2-commuting-diagram-2.png
+```{image} assets/Ch3/2-commuting-diagram-2.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -77,7 +77,7 @@ The following two commuting diagrams of graph embedding tells us how these syste
 
 The second diagram tells that the target of each edge in Graph-1 is preserved by the embedding.
 
-```{image} ../../assets/Ch3/2-commuting-diagram-3.png
+```{image} assets/Ch3/2-commuting-diagram-3.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -87,7 +87,7 @@ Hey, did you notice that commuting diagrams look like directed graphs?! But they
 
 Let us see have a closer look at the first commuting diagram.
 
-```{image} ../../assets/Ch3/2-commuting-diagram-4.png
+```{image} assets/Ch3/2-commuting-diagram-4.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -99,7 +99,7 @@ Note that there can be any number of graph embeddings between Graph-1 and Graph-
 
 Commuting diagrams are more general than for just graph embeddings. Commuting diagrams are of any closed shape like a triangle or a square and are non-cyclic. The arrows of a commuting diagram can belong to any rung: do you remember this picture from Chapter 1?
 
-```{image} ../../assets/Ch3/Ladder.png
+```{image} assets/Ch3/Ladder.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -109,14 +109,14 @@ The above commuting diagrams (sort of belongs to rung 3). The vertices are sets 
 
 A commuting diagram in rung 4 may look like this:
 
-```{image} ../../assets/Ch3/2-commuting-diagram-5.png
+```{image} assets/Ch3/2-commuting-diagram-5.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
 ```
 Graph 1 is the origin and Graph 3 is the destination. The above diagram says that embedding the choices of paths to embed Graph-1 inside Graph-3 are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:
 
-```{image} ../../assets/Ch3/2-commuting-diagram-6.png
+```{image} assets/Ch3/2-commuting-diagram-6.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -125,7 +125,7 @@ We know that each embedding has an arrows map and vertices map. The commuting di
 
 1.  For any vertex in Graph-1 (drawn as the little blue ball), applying the green embedding to it produces a vertex in Graph-3 (green circle surrounding the black circle). Or applying the red embedding produces a vertex in Graph-2 (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in Graph-3 (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in Graph-3 are the same.
 
-```{image} ../../assets/Ch3/2-same-vertex-2.png
+```{image} assets/Ch3/2-same-vertex-2.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -133,7 +133,7 @@ We know that each embedding has an arrows map and vertices map. The commuting di
 
 2.  For any edge in Graph-1 (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in Graph-3.
 
-```{image} ../../assets/Ch3/2-same-edge.png
+```{image} assets/Ch3/2-same-edge.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -149,7 +149,7 @@ Steve Jobs wore the same outfit everyday!
 
 The word “same” has origin in the Sanskrit word “*sama*” which (sort of) translates to “equal”. The word “sama” invokes an image of a balanced weighing scale in my mind. Growing up in India, it was a common sight for me seeing shopkeepers weighing their produce using such scales.
 
-```{image} ../../assets/Ch3/3-balance.png
+```{image} assets/Ch3/3-balance.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -165,7 +165,7 @@ In this section, we want to explore the “sameness of graphs” through the len
 
 Let us play a simple game. Among these three graphs, circle the two graphs which you “think” are the same:
 
-```{image} ../../assets/Ch3/3-same-graphs-1.jpeg
+```{image} assets/Ch3/3-same-graphs-1.jpeg
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -187,7 +187,7 @@ Did you circle (b) and (d)? Can you say out loud —
     
     Let us make the “no loss of information” more precise. Saying *two graphs are the same* amounts to providing two embeddings between them as shown below. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at. Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with. Similarly for the edges.
 
-```{image} ../../assets/Ch3/3-same-graphs-2.jpeg
+```{image} assets/Ch3/3-same-graphs-2.jpeg
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -195,7 +195,7 @@ Did you circle (b) and (d)? Can you say out loud —
 
 Before I end this section, I would like to entertain you with a personal story tangentially related to graphs and the idea of sameness! When we were young, my brother and I were very fond of “Maggi noodles”.  My mom considered Maggi noodles to be both unhealthy and expensive. But, because we were fond of it, she would occasionally bring home two packets of these noodles. It was brother’s task to cook these noodles. After cooking, he would spilt the noodles into two portions and I would be given a chance to pick one I wanted. I always had great trouble in making up my mind, since whichever portion I picked, mine looked lesser to me. Often, I would ask to change since my brother’s portion looked bigger. My mom with great annoyance would reply, “Both the portions are the same! It's your eyes which are big!”. 
 
-```{image} ../../assets/Ch3/maggi.png
+```{image} assets/Ch3/maggi.png
 :alt: Whoopsy!
 :width: 150px
 :align: center
@@ -213,7 +213,7 @@ To combine two graphs, we first need to know which vertices and edges are common
 
 In chapter 3, we saw that a graph embedding identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3, because we are concerned more concerned with how they are related to each other. We are concerned with the shape of the diagram  created by these relationships rather than what are the actual graphs inside these colored rectangles. Think of the rectangles as placeholders that can receive any graph in them.
 
-```{image} ../../assets/Ch3/4.3-Diagram.png
+```{image} assets/Ch3/4.3-Diagram.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -229,7 +229,7 @@ The “overlap” acts as a bridge between two graphs allowing one to navigate f
 
 Theoretically, this means that we can combine Graph-2 and Graph-3 into a single graph. In this graph, we move from the vertices of the Graph-2 to the vertices of Graph-3 via the overlap. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
 
-```{image} ../../assets/Ch3/sheets.jpeg
+```{image} assets/Ch3/sheets.jpeg
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -237,7 +237,7 @@ Theoretically, this means that we can combine Graph-2 and Graph-3 into a single 
 
 Another analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue. 
 
-```{image} ../../assets/Ch3/cup-handle.jpeg
+```{image} assets/Ch3/cup-handle.jpeg
 :alt: Whoopsy!
 :width: 450px
 :align: center
