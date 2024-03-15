@@ -540,8 +540,9 @@ document.write(`
 <p>[ Even though these two graphs have the same number of edges, there seems to be a mismatch in how the vertices are connected! ]</p>
 </li>
 <li><p>Why did you circle (b) and (d)? (reshape one into another)</p>
-<p>[ They both contain precisely the same connectivity. Because of this, (b) can be embedded inside (d) covering the whole graph. (d) can be embedded inside (b) covering the whole graph! No loss of information occurs in either direction of embedding.]</p>
-<p>Let us make the “no loss of information” more precise. Saying <em>two graphs are the same</em> amounts to providing two embeddings between them as shown below. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at. Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with. Similarly for the edges.</p>
+<p>[ They both contain precisely the same connectivity. Because of this, (b) can be “changed” to look like (d) and vice versa by repositioning the vertices and/or the edges. Thus, both the graphs are the same.]</p>
+<p>Graphs (b) and (d) are <strong>isomorphic</strong> – ‘iso’ means same, ‘morph’ means form. (b) and (d) are of same form.</p>
+<p>(b) and (d) are isomorphic means that there is an embedding of (b) in (d) (shown in red below), and an embedding of (d) in (b) (shown in green) such that one undoes the action of the other. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at (green undoes red). Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with (red undoes green). Similarly for the edges.</p>
 </li>
 </ol>
 <a class="reference internal image-reference" href="_images/3-same-graphs-2.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3-same-graphs-2.jpeg" style="width: 350px;" /></a>
@@ -697,7 +698,6 @@ document.write(`
 <div class="wrapper docutils">
 <p>In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison!</p>
 <a class="reference internal image-reference" href="_images/unique-3.png"><img alt="Whoopsy!" class="align-center" src="_images/unique-3.png" style="width: 450px;" /></a>
-</div>
 <p>Because, the shapes 1, 2, 3, 4 commute, we know that 13 and 24 commutes in the following diagram:</p>
 <a class="reference internal image-reference" href="_images/unique-4.png"><img alt="Whoopsy!" class="align-center" src="_images/unique-4.png" style="width: 450px;" /></a>
 <p>There is one other arrow from Graph X1 to Graph X2 which can make the above diagram commute: The “be-as-you-are” arrow</p>
@@ -707,6 +707,7 @@ document.write(`
 <p>“Graph X1 —&gt; Graph X2 —&gt; Graph X1” and “be-as-you-are” arrows are the same.</p>
 <p>Similarly, we can prove that “Graph X2 —&gt; Graph X1 —&gt; Graph X2” and “be-as-you-are” arrows are the same:</p>
 <a class="reference internal image-reference" href="_images/unique-7.png"><img alt="Whoopsy!" class="align-center" src="_images/unique-7.png" style="width: 450px;" /></a>
+</div>
 </div>
 <p>That is, graphs X1 and X2 are “practically the same” (This is NOT a requirement but a consequence of the existing requirements on relationships). For practical purposes, any graph that satisfies requirements 1 and 2 is the colimit graph we are looking for!!</p>
 </section>
@@ -781,14 +782,38 @@ document.write(`
 <p><strong>Solving Ex 1.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
-<span class="c"># Exercise 1</span>
-<span class="n">Overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">G2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">Graph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
-<span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset</span><span class="w"> </span><span class="n">Graph</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="k">end</span>
-<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Exercise 1</span>
+<span class="c">#-----------</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
+
+<span class="c"># Graph with a single isolated vertex</span>
+<span class="n">Overlap1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c"># Create a triangle</span>
+<span class="n">G2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="c"># Initialize this graph as an isolated edge</span>
+<span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># Then modify it to add a loop to vertex #2</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">G3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># There are three possible morphisms from the isolated vertex into a graph</span>
+<span class="c"># with three vertices. Because these three vertices are equivalent due to</span>
+<span class="c"># the symmetry of the triangle, it doesn&#39;t matter which one we pick. So,</span>
+<span class="c"># rather than manually specifying how Overlap1 matches to parts of G2, we</span>
+<span class="c"># use the automatic homomorphism search which will pick an arbitrary one.</span>
+<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
+
+<span class="c"># Because the two vertices of G3 are *not* equivalent (one has a loop,</span>
+<span class="c"># the other doesn&#39;t) we have to be more precise in our construction of</span>
+<span class="c"># the map from Overlap1 into G3. The only data required is saying where</span>
+<span class="c"># the vertex of Overlap1 is mapped to. We send it to vertex#1, which is</span>
+<span class="c"># the one which does *not* have a loop.</span>
+<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c"># Glue together G2 and G3 along their common overlap, Overlap1</span>
 <span class="n">colim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">G2_map</span><span class="p">,</span><span class="w"> </span><span class="n">G3_map</span><span class="p">));</span>
+
+<span class="c"># Visualize the result</span>
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">colim</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -799,12 +824,40 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Exercise 2</span>
-<span class="n">Overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">Graph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<span class="n">G2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">Graph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
-<span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset</span><span class="w"> </span><span class="n">Graph</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="k">end</span>
-<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
-<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">E</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="c">#-----------</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
+
+<span class="c"># Graph with a single isolated vertex</span>
+<span class="n">Overlap1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c"># Create a triangle</span>
+<span class="n">G2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="c"># Initialize this graph as an isolated edge</span>
+<span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># Then modify it to add a loop to vertex #2</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">G3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># Our overlap is an isolated edge</span>
+<span class="n">Overlap2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># Again, the three possible morphisms out of Overlap2 (each of</span>
+<span class="c"># which picks an edge of the triangle, G2) are equivalent, so</span>
+<span class="c"># we don&#39;t need to pick a specific one: we let the automatic</span>
+<span class="c"># search algorithm find it for us.</span>
+<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
+
+<span class="c"># Again, we need to be more precise in how we map into G3</span>
+<span class="c"># because it matters whether or not the overlapping edge is</span>
+<span class="c"># the loop or the other edge. Here, we specify the loop by</span>
+<span class="c"># initializing the homomorphism search (via the `initial`</span>
+<span class="c"># keyword). In this case, the morphism is fully determined</span>
+<span class="c"># once we declare that both vertices of Overlap2 are sent</span>
+<span class="c"># to vertex#2 in G3.</span>
+<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],))</span>
+
+<span class="c"># Once again we glue together G2 and G3 along Overlap2</span>
 <span class="n">colim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">G2_map</span><span class="p">,</span><span class="w"> </span><span class="n">G3_map</span><span class="p">));</span>
+
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">colim</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -815,10 +868,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Exercise 3</span>
-<span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">Graph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">Graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
-<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">)</span>
+<span class="c">#-----------</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
+
+<span class="c"># The graphs here are all discrete (no edges)</span>
+<span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># morphisms out of an empty graph are themselves &#39;empty&#39;</span>
+<span class="c"># (they require no data other than the domain and codomain)</span>
+<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
+<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">)</span>
+<span class="c"># We glue together the discrete graphs along the empty overlap</span>
 <span class="n">colim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">G2_map</span><span class="p">,</span><span class="w"> </span><span class="n">G3_map</span><span class="p">));</span>
+
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">colim</span><span class="p">))</span>
 </pre></div>
 </div>
