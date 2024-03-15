@@ -183,9 +183,11 @@ Did you circle (b) and (d)? Can you say out loud —
     
 3. Why did you circle (b) and (d)? (reshape one into another)
     
-    [ They both contain precisely the same connectivity. Because of this, (b) can be embedded inside (d) covering the whole graph. (d) can be embedded inside (b) covering the whole graph! No loss of information occurs in either direction of embedding.]
-    
-    Let us make the “no loss of information” more precise. Saying *two graphs are the same* amounts to providing two embeddings between them as shown below. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at. Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with. Similarly for the edges.
+    [ They both contain precisely the same connectivity. Because of this, (b) can be "changed" to look like (d) and vice versa by repositioning the vertices and/or the edges. Thus, both the graphs are the same.]
+
+    Graphs (b) and (d) are **isomorphic** -- 'iso' means same, 'morph' means form. (b) and (d) are of same form. 
+
+   (b) and (d) are isomorphic means that there is an embedding of (b) in (d) (shown in red below), and an embedding of (d) in (b) (shown in green) such that one undoes the action of the other. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at (green undoes red). Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with (red undoes green). Similarly for the edges. 
 
 ```{image} assets/Ch3/3-same-graphs-2.jpeg
 :alt: Whoopsy!
@@ -512,7 +514,7 @@ However, relationships between Graphs X1 and X2 tells us that these two unique e
 :::{admonition} Why are the unique embeddings inverses of each other?
 :class: dropdown
 
-```{div} wrapper 
+````{div} wrapper 
 In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison! 
 
 ```{image} assets/Ch3/unique-3.png
@@ -550,7 +552,7 @@ Similarly, we can prove that “Graph X2 —> Graph X1 —> Graph X2” and “b
 :alt: Whoopsy!
 :width: 450px
 :align: center
-```
+````
 :::
 
 
@@ -696,14 +698,38 @@ In the previous section, we hand-computed the colimits of the diagrams. This sec
 +++
 
 ```{code-cell}
-using Catlab
 # Exercise 1
-Overlap = Graph(1)
-G2 = cycle_graph(Graph, 3)
-G3 = @acset Graph begin V=2; E=2; src=[1,2]; tgt=[2,2] end
-G2_map = ACSetTransformation(Overlap, G2; V=[1])
-G3_map = ACSetTransformation(Overlap, G3; V=[1])
+#-----------
+
+using Catlab
+
+# Graph with a single isolated vertex
+Overlap1 = SymmetricGraph(1)
+# Create a triangle
+G2 = cycle_graph(SymmetricGraph, 3)
+# Initialize this graph as an isolated edge
+G3 = path_graph(SymmetricGraph, 2)
+# Then modify it to add a loop to vertex #2
+add_edge!(G3, 2, 2)
+
+# There are three possible morphisms from the isolated vertex into a graph
+# with three vertices. Because these three vertices are equivalent due to
+# the symmetry of the triangle, it doesn't matter which one we pick. So,
+# rather than manually specifying how Overlap1 matches to parts of G2, we
+# use the automatic homomorphism search which will pick an arbitrary one.
+G2_map = homomorphism(Overlap1, G2)
+
+# Because the two vertices of G3 are *not* equivalent (one has a loop,
+# the other doesn't) we have to be more precise in our construction of
+# the map from Overlap1 into G3. The only data required is saying where
+# the vertex of Overlap1 is mapped to. We send it to vertex#1, which is
+# the one which does *not* have a loop.
+G3_map = ACSetTransformation(Overlap1, G3; V=[1])
+
+# Glue together G2 and G3 along their common overlap, Overlap1
 colim = colimit(Span(G2_map, G3_map));
+
+# Visualize the result
 to_graphviz(apex(colim))
 ```
 
@@ -714,12 +740,40 @@ Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
 
 ```{code-cell}
 # Exercise 2
-Overlap = path_graph(Graph, 2)
-G2 = cycle_graph(Graph, 3)
-G3 = @acset Graph begin V=2; E=2; src=[1,2]; tgt=[2,2] end
-G2_map = homomorphism(Overlap, G2)
-G3_map = ACSetTransformation(Overlap, G3; V=[2,2], E=[2])
+#-----------
+
+using Catlab
+
+# Graph with a single isolated vertex
+Overlap1 = SymmetricGraph(1)
+# Create a triangle
+G2 = cycle_graph(SymmetricGraph, 3)
+# Initialize this graph as an isolated edge
+G3 = path_graph(SymmetricGraph, 2)
+# Then modify it to add a loop to vertex #2
+add_edge!(G3, 2, 2)
+
+# Our overlap is an isolated edge
+Overlap2 = path_graph(SymmetricGraph, 2)
+
+# Again, the three possible morphisms out of Overlap2 (each of
+# which picks an edge of the triangle, G2) are equivalent, so
+# we don't need to pick a specific one: we let the automatic
+# search algorithm find it for us.
+G2_map = homomorphism(Overlap2, G2)
+
+# Again, we need to be more precise in how we map into G3
+# because it matters whether or not the overlapping edge is
+# the loop or the other edge. Here, we specify the loop by
+# initializing the homomorphism search (via the `initial`
+# keyword). In this case, the morphism is fully determined
+# once we declare that both vertices of Overlap2 are sent
+# to vertex#2 in G3.
+G3_map = homomorphism(Overlap2, G3; initial=(V=[2, 2],))
+
+# Once again we glue together G2 and G3 along Overlap2
 colim = colimit(Span(G2_map, G3_map));
+
 to_graphviz(apex(colim))
 ```
 
@@ -733,10 +787,20 @@ Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
 
 ```{code-cell}
 # Exercise 3
-Overlap, G2, G3 = Graph(0), Graph(3), Graph(2)
-G2_map = homomorphism(Overlap, G2)
-G3_map = homomorphism(Overlap, G3)
+#-----------
+
+using Catlab
+
+# The graphs here are all discrete (no edges)
+Overlap3, G2, G3 = SymmetricGraph(0), SymmetricGraph(3), SymmetricGraph(2)
+
+# morphisms out of an empty graph are themselves 'empty'
+# (they require no data other than the domain and codomain)
+G2_map = ACSetTransformation(Overlap3, G2)
+G3_map = ACSetTransformation(Overlap3, G3)
+# We glue together the discrete graphs along the empty overlap
 colim = colimit(Span(G2_map, G3_map));
+
 to_graphviz(apex(colim))
 
 ```
