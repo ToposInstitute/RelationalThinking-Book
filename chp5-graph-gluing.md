@@ -45,7 +45,7 @@ We see new information emerging in the combined graph. Tuco “is a friend of a 
 
 The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs.
 
-The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking, also called as category theory by some! By playing this game, we focus is on “what” (a combined graph is) rather than “how” (to combine graphs).
+The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking, also called as category theory by some mathematicians! 
 
 The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is, so that the other person will know exactly what the graph is! We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.
 
@@ -203,15 +203,15 @@ Before I end this section, I would like to entertain you with a personal story t
 
 ## 5.3. Combining graphs using memes
 
-Having explored the idea of commuting diagrams and sameness, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe the combined graph of any two (overlapping) graphs without saying what the vertices, edges, source and target maps of the combined graph are. Let’s name this graph as the “***colimit graph***”. 
+Having explored the idea of commuting diagrams and sameness, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe the combined graph of any two (overlapping) graphs without saying what the vertices, edges, source and target maps of the combined graph are. Let’s us call the graph we are looking for as the “***colimit graph***”.
 
-In this game, all we know is that we are looking for a specific graph.  We will narrow down our search step by step by expressing requirements of the colimit graph using the memes we have learnt, until we end up with the colimit we are looking for. Let us begin!
+The colimit graph can be any graph in the space of all possible graphs.  We will narrow down our search step by step by expressing requirements of the colimit graph using the memes we have learnt, until we end up with the graph we are looking for. Let us begin!
 
 ### A. Specifying the shape of the overlap
 
 To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the ***overlap*** of the two graphs. So, to combine two graphs, we need to know their overlap. 
 
-In chapter 3, we saw that a graph embedding identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3, because we are concerned more concerned with how they are related to each other. We are concerned with the shape of the diagram  created by these relationships rather than what are the actual graphs inside these colored rectangles. Think of the rectangles as placeholders that can receive any graph in them.
+In chapter 3, we saw that a graph embedding identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3, because we are concerned more concerned with how they are related to each other and with the shape of the diagram  created by these relationships. Think of the rectangles as placeholders that can receive any graph in them.
 
 ```{image} assets/Ch3/4.3-Diagram.png
 :alt: Whoopsy!
@@ -223,11 +223,9 @@ The relationships between the graphs in the above diagram are:
 
 - Graph-1 embeds inside Graph-2.
 - Graph-1 embeds inside Graph-3.
-- Thus, Graph-2 and Graph-3 overlap in the parts where Graph-1 is embedded.
+- Thus, the regions in which Graph-1 embeds, Graph-2 and Graph-3 overlap.
 
-The “overlap” acts as a bridge between two graphs allowing one to navigate from one graph to the other via common vertices and edges. 
-
-Theoretically, this means that we can combine Graph-2 and Graph-3 into a single graph. In this graph, we move from the vertices of the Graph-2 to the vertices of Graph-3 via the overlap. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
+The “overlap” acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine Graph-2 and Graph-3 into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
 
 ```{image} assets/Ch3/sheets.jpeg
 :alt: Whoopsy!
@@ -235,7 +233,7 @@ Theoretically, this means that we can combine Graph-2 and Graph-3 into a single 
 :align: center
 ```
 
-Another analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue. 
+Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue. 
 
 ```{image} assets/Ch3/cup-handle.jpeg
 :alt: Whoopsy!
@@ -243,21 +241,20 @@ Another analogy that comes to mind for combining graphs is glueing a broken hand
 :align: center
 ```
 
-With this analogy in mind, let us think of the colimit graph of the diagram showed in Figure 1. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.  
 
-We now know what it means for two graphs to overlap — it is a diagram of shape in Figure 1. We are also sort of convinced that two graphs can be combined along their overlap. 
+With this analogy in mind, let us think of the colimit (glued graph) of the diagram showed in the beginning of this section. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.  
 
-```{admonition} Points to ponder
-:class: dropdown
-
-What would it mean to have Graph-1 to be empty (no vertices and no edges) in Figure 1? What will the “glued object” be if there is no glue?
-```
+We now know what it means for two graphs to overlap — it is a diagram of shape in the beginning of this section. We also saw how overlaps allows "gluing" graphs together. 
 
 ### B. Combining Graphs along overlap
 
-Now that, we know the overlap, the next step in this game is to narrow down the candidates for the colimit graph (for the diagram in Figure 1). Since we cannot talk about the colimit graph (individually) in terms of its source and target maps, we will look at the colimit graph from the perspective of other graphs and gather all that knowledge. This perspective is encoded as a relationship between a graph and the colimit graph. The immediate candidates to gather perspective are Graphs 1, 2, and 3. 
+Now that, we know the overlap, the next step in this game is to narrow down the candidates for the colimit graph (for the diagram in Figure 1). Since we cannot talk about the colimit graph directly or rather individually in terms of its source and target maps, we will look at the colimit graph from the perspective of another graph and ask, "What is a reasonable relationship between the colimit and this graph?" and gather the requirements. The most immediate candidates to gather perspective are Graph-2 and Graph-3 since colimit is a combination of Graph-2 and Graph-3 (along Graph-1 overlap). 
 
-How is the colimit graph is expected to be related to Graph-1, Graph-2, and Graph-3? We invite the reader to take a moment to ponder over this question using the picture below.
+:::{admonition} Pause and ponder!
+How do you expect Graph-2, and Graph-3 to relate to the colimit?
+:::
+
+We invite the reader to take a moment to ponder over this question using the picture below.
 
 ```{image} assets/Ch3/4.2-commute-1.png
 :alt: Whoopsy!
@@ -265,7 +262,7 @@ How is the colimit graph is expected to be related to Graph-1, Graph-2, and Grap
 :align: center
 ```
 
-Here are a few possible relationships. Since the colimit graph is given by glueing Graph-2 and Graph-3 along the shape of Graph-1, at the least, 
+Since the colimit graph is given by glueing Graph-2 and Graph-3 along the shape of Graph-1, at the least, we expect that: 
 
 1. Graph-2 must embed in the colimit graph (the cup is in the glued object). 
 2. Graph-3 must embed in the colimit graph (the handle is in the glued object). 
@@ -278,9 +275,7 @@ Let us add these relationships in the above diagram. Each arrow is a graph embed
 :align: center
 ```
 
-(Does this shape look familiar? Does it remind you of commuting diagrams we met in section 2?)
-
-Let us now shift our attention to the relationship between Graph-1 and the colimit graph.
+Does this shape look mildly familiar? Your answer is relevant to the relationship between Graph-1 and the colimit. 
 
 First of all, does Graph-1 embed inside the colimit graph? 
 
@@ -291,41 +286,44 @@ So, Graph-1 can be embeds the combined graph in two ways:
 - either through Graph-2,
 - or through Graph-3.
 
-Which of these should we pick to identify Graph-1 inside the combined graph? What is the guiding to principle to pick one relationship over the other? (Time to ponder!) 
+:::{admonition} Pause and ponder!
 
-The answer is that the choice of relationships MUST NOT matter!! Irrespective of the route of embedding, Graph-1 must embed precisely in the same location in the colimit graph because it's the overlap. In the cup-handle analogy, this amounts to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object. The rest of the points can be distinguished as belonging to the cup or to the handle. 
+Which of these is the correct way to identify Graph-1 inside the combined graph, in this context? What is the guiding to principle to pick one relationship over the other?
+:::
 
-Saying that “ the choice of relationships MUST NOT matter” is same as saying that “the above diagram commutes”! Irrespective of the two routes chosen  from the Graph-1 (origin), one will always end up in the same location (subset of vertices and edges) in the colimit graph (destination). 
+The answer is that, "Well, irrespective of the route of embedding, Graph-1 IS EXPECTED TO embed precisely in the same region in the colimit graph because it's the overlap." The region in which it embeds is common to both Graph-2 and Graph-3 in the colimit. In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object.  The rest of the points can be distinguished as belonging to the cup or to the handle. 
+
+All these amounts to saying that “the above diagram MUST COMMUTE! Irrespective of the two routes chosen  from the Graph-1 (origin), one will always end up in the same location (subset of vertices and edges) in the colimit graph (destination). 
 
 That completes our perspectives of the colimit graph from Graphs 1, 2 and 3. 
 
-The first set of requirements of the colimit graph are that: 
+The first set of requirements that will narrow down candidates for colimit: 
 
 1. Graph-2 must embed in the colimit graph. 
 2. Graph-3 must embed in the colimit graph. 
 3. Graph-1 embeds in colimit graph, however, the choice of path MUST NOT matter!
 
-:::{admonition} Exercise
-:class: dropdown
-
-Find at the least two graphs and the two embeddings which will make a commuting diagram. 
+:::{admonition} An exercise
+Find at least two potential colimits which will make the diagram commute. 
 
 (a diagram)
 
 :::{admonition} Solution 
 :class: dropdown
-
+```{div} wrapper 
 Possible solutions 
-
+```
 :::
 
 ### B. Combining Graphs along overlap
 
-Now, there can be many graphs satisfying the above requirements. Let us make this concrete by stepping outside the game for a moment and instantiating Graph-1, Graph-2 and Graph-3.
+As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we shall narrow down the potential candidates further by identifying more requirements. 
+
+We are going to do so by stepping outside the game for a moment and instantiating Graph-1, Graph-2 and Graph-3.
 
 ```{image} assets/Ch3/4.3-Graph1-3.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -333,11 +331,13 @@ Graph-1 embeds in Graph-2 and Graph-3 as follows:
 
 ```{image} assets/Ch3/4.3-Diagram.png
 :alt: Whoopsy!
-:width: 450px
+:width: 400px
 :align: center
 ```
 
-A few possible choices of colimit graphs of the above diagram satisfying the requirements of Graph 1-3 are: 
+A few possible choices of colimit graphs of the above diagram are: 
+
+Is the following a commuting diagram?
 
 ```{image} assets/Ch3/4.3-a.png
 :alt: Whoopsy!
@@ -345,7 +345,7 @@ A few possible choices of colimit graphs of the above diagram satisfying the req
 :align: center
 ```
 
-</br>
+Is the following a commuting diagram?
 
 ```{image} assets/Ch3/4.3-b.png
 :alt: Whoopsy!
@@ -353,7 +353,7 @@ A few possible choices of colimit graphs of the above diagram satisfying the req
 :align: center
 ```
 
-</br>
+Is the following a commuting diagram?
 
 ```{image} assets/Ch3/4.3-c.png
 :alt: Whoopsy!
@@ -361,7 +361,7 @@ A few possible choices of colimit graphs of the above diagram satisfying the req
 :align: center
 ```
 
-</br>
+Is the following a commuting diagram?
 
 ```{image} assets/Ch3/4.3-d.png
 :alt: Whoopsy!
@@ -371,7 +371,11 @@ A few possible choices of colimit graphs of the above diagram satisfying the req
 
 We invite the reader to to have a careful look at each choice and convince oneself that each of these diagrams commute. 
 
+:::{admonition} Pause and Ponder! 
+
 Which one the graphs inside the yellow boxes will be your choice of the colimit graph?
+
+:::
 
 We want the colimit graph to be “the most natural choice” among all the choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort (to integrate)” or the “path of least resistance” (as nature does). 
 
@@ -380,12 +384,13 @@ We want the colimit graph to be “the most natural choice” among all the choi
 While I will reveal my choice in a moment, let us have a look at each of the possible choices of colimit graphs. 
 
 - In (a), except for the overlaps, the vertices and edges from Graph-2, and the vertices and the edges from Graph-3 are clearly distinguishable. The information of Graph-2 and Graph-3 remain intact (except at the overlap).
-- In (b) and (c), the boundaries of Graph-2 and Graph-3 fade beyond the overlap region.
+- In (b) the boundaries of Graph-2 and Graph-3 fade beyond the overlap region.
+- In (c), there is an extra vertex and an edge.
 - Choice (d) represents maximal collapse of information - all the vertices and edges from Graph-2 and Graph-3 are squeezed into a single vertex and edge in the possible graph.
 
- Choice (a) has the feeling of the most lazy choice since Graph-2 and Graph-3 are kept apart as they are except in the overlap region. It does nothing extra like coarse-graining information like (b), and (d) or add extra information like (c). Indeed (a) is our choice! 
+ Choice (a) has the feeling of the most lazy choice since Graph-2 and Graph-3 are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like (b) and (d), or to add extra information like (c). Indeed (a) is our choice! 
 
-We shall now make our intuition of “least effort” precise by asking how choice (a) relates to all the other possible candidates! In other words, the criteria to narrow down a choice of “least effort” from all possible potential candidates.
+We shall now make our intuition of “least effort” precise by asking how choice (a) relates to all the other possible candidates! Remember, the rules of the game do not allow us to directly talk about the vertices and the edges of the colimit. So we need to find the criteria to narrow down “least effort” graphs from other potential candidates by asking "How does least effort graphs relate to other potential candidates?"
 
 **Let us compare choice (a) with choice (b)**
 
@@ -405,7 +410,7 @@ We have two commuting diagrams with Embedding A and Embedding B as common arrows
 
 There are many graph morphisms from graph (a) to graph (b). But there is exactly one choice that will make the triangle formed by the two blue arrows and the dotted arrow commute. This choice is again the most natural one, mapping blue to blue, green to green, orange to orange. The arrow from (a) to (b) is dotted to signify that there is only one such embedding. 
 
-As I mentioned earlier in this chapter, commuting diagrams are like ecosystems in balance. The above diagram has 4 ecosystems pasted together (including the 2 squares starting at Graph-1). Any change in one ecosystem will create a change in the other. When the “most natural” information flow along the morphisms, all the ecosystems are in balance.
+> Commuting diagrams are like ecosystems in balance. The above diagram has 4 ecosystems pasted together (including the 2 squares starting at Graph-1). Any change in one ecosystem will create a change in the other. When the “most natural” information flow along the morphisms, all the ecosystems are in balance.
 
 ```{image} assets/Ch3/4.3-compare-a-b-3.png
 :alt: Whoopsy!
@@ -457,7 +462,7 @@ However, (d) does not embed in (a) because (d) has  a self-loop and can embed on
 
 **Score** Choice (a): 1,  Choice (d): 0
 
-Our choice of colimit graph having such ‘universal’ nature, meaning there must be exactly one way to embed it into any other choice, is an indication that we got our plumbing right and now things will flow smoothly! In category theory, this is called a universal property. 
+Our choice of colimit graph having such ‘universal’ nature is an indication that we got our plumbing right and now things will flow smoothly! In category theory, this is called a universal property. 
 
 Whewww!! That is some hard core relational thinking!
 
@@ -486,9 +491,9 @@ Time to answer the final question:
 
 Suppose there are two choices that satisfies the requirements 1 and 2.  Lets called these call these graphs “X1” and “X2”
 
-Because X1 is universal, X1 has a unique embedding into X2.
+Because X1 is universal, X1 has a unique embedding into X2. The reason for using colored arrows into Graph X1 will become apparent in a moment. 
 
-```{image} assets/Ch3/4.1-req3.png
+```{image} assets/Ch3/unique-1.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -496,15 +501,60 @@ Because X1 is universal, X1 has a unique embedding into X2.
 
 Because X2 is universal, X2 has a unique embedding into X1. 
 
-```{image} assets/Ch3/4.1-req4.png
+```{image} assets/Ch3/unique-2.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
 
-However, requirements 1 and 2 tells us that these two unique embeddings are inverse of each of other!! That is, graphs X1 and X2 are “practically the same” (This is not a requirement but a consequence of the existing requirements on relationships). So, for practical purposes, any graph that satisfies requirements 1 and 2 is the colimit graph we are looking for!!
+However, relationships between Graphs X1 and X2 tells us that these two unique embeddings are inverse of each of other!! If are interested in the reasoning, check the box below. 
 
-Given two graphs with overlap, we now know how to precisely narrow down to their colimit  from the set of all graphs, purely based on the relationships between the colimit and all the other relevant graphs!
+:::{admonition} Why are the unique embeddings inverses of each other?
+:class: dropdown
+
+```{div} wrapper 
+In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison! 
+
+```{image} assets/Ch3/unique-3.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+Because, the shapes 1, 2, 3, 4 commute, we know that 13 and 24 commutes in the following diagram:
+
+```{image} assets/Ch3/unique-4.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+There is one other arrow from Graph X1 to Graph X2 which can make the above diagram commute: The “be-as-you-are” arrow
+```{image} assets/Ch3/unique-5.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+Because the embedding “Graph X1 —> Graph X2 —> Graph X1”  is unique, there cannot be a different arrow which makes “13” and “24” commute. Hence, 
+```{image} assets/Ch3/unique-6.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+“Graph X1 —> Graph X2 —> Graph X1” and “be-as-you-are” arrows are the same.
+
+Similarly, we can prove that “Graph X2 —> Graph X1 —> Graph X2” and “be-as-you-are” arrows are the same: 
+```{image} assets/Ch3/unique-7.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+:::
+
+
+That is, graphs X1 and X2 are “practically the same” (This is NOT a requirement but a consequence of the existing requirements on relationships). For practical purposes, any graph that satisfies requirements 1 and 2 is the colimit graph we are looking for!!
 
 
 ## 5.4. Collecting it all together
@@ -539,12 +589,12 @@ What we compute is a graph called “colimit” which satisfies the following re
 
 As a consequence of these requirements, all graphs which satisfy both these requirements **are “practically the same”**. 
 
-:::{note}
-Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.  
+
+> Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.  
 
 In this sense, relational thinking is non-invasive!
 
-:::
+
 
 ## 5.5. Time for pen and paper! 
 
@@ -559,10 +609,13 @@ Let us compute colimit for the following diagrams.
 
 :::{admonition} Solution
 :class: dropdown
+
+```{div} wrapper 
 ```{image} assets/Ch3/Ex-1-sol.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
+```
 ```
 :::
 
@@ -580,12 +633,14 @@ This one is a little tricky, because the two vertices (”A” and “B”) in G
 :::{admonition} Solution
 :class: dropdown
 
+```{div} wrapper 
 Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has only coarse-grained embedding of Graph-1, the embedding of Graph-2 in the colimit, coarse-grains the overlap region of Graph-2 to match the overlap region of Graph-3. 
 
 ```{image} assets/Ch3/Ex-2-sol.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
+```
 ```
 :::
 
@@ -604,15 +659,20 @@ In the beginning of this chapter, we said that combining graphs is analogous to 
 :::{admonition} Solution
 :class: dropdown
 
+```{div} wrapper 
+
 ```{image} assets/Ch3/Ex-3-sol.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
 When there is no glue (Graph 1 is empty), the colimit just has Graph-2 and Graph-3 side by side with no bridge in between them. Graph-2 has three vertices and no edges. Graph-3 has two vertices and no edges. The colimit graph has 5 vertices which is the sum of vertices in Graph-2 and vertices in Graph-3. Sum of two numbers is just a colimit . Isn't that cool ?!
+```
 :::
 
-**Ex 3. Finite colimits**
+
+
+**Ex 4. Finite colimits**
 
 Let us suppose, we want to glue more than two graphs together! That seems to be a reasonable ask! So we got a diagram like the one below. 
 
@@ -628,40 +688,73 @@ Clue: Extend the requirements in Section 5.4 from 2 to n graphs!
 
 ## 5.6. Operationalizing computing colimits
 
-In the previous section, we hand-computed the colimits of the diagrams. This section show cases how this computation can be performed on a computer using Algebraic Julia. 
+WORK IN PROGRESS.. 
 
-(Kris, is there anything interesting to tell about computing pushouts in AJ?)
+In the previous section, we hand-computed the colimits of the diagrams. This section shows how we can program a computer to compute colimits using Algebraic Julia. 
 
-Solving Ex 1. 
+**Solving Ex 1.**
 +++
 
 ```{code-cell}
-# AJ code goes here
+using Catlab
+# Exercise 1
+Overlap = Graph(1)
+G2 = cycle_graph(Graph, 3)
+G3 = @acset Graph begin V=2; E=2; src=[1,2]; tgt=[2,2] end
+G2_map = ACSetTransformation(Overlap, G2; V=[1])
+G3_map = ACSetTransformation(Overlap, G3; V=[1])
+colim = colimit(Span(G2_map, G3_map));
+to_graphviz(apex(colim))
+```
+
+Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
+
+**Solving Ex 2.**
++++
+
+```{code-cell}
+# Exercise 2
+Overlap = path_graph(Graph, 2)
+G2 = cycle_graph(Graph, 3)
+G3 = @acset Graph begin V=2; E=2; src=[1,2]; tgt=[2,2] end
+G2_map = homomorphism(Overlap, G2)
+G3_map = ACSetTransformation(Overlap, G3; V=[2,2], E=[2])
+colim = colimit(Span(G2_map, G3_map));
+to_graphviz(apex(colim))
+```
+
++++
+
+Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
+
+**Solving Ex 3.** 
+
++++
+
+```{code-cell}
+# Exercise 3
+Overlap, G2, G3 = Graph(0), Graph(3), Graph(2)
+G2_map = homomorphism(Overlap, G2)
+G3_map = homomorphism(Overlap, G3)
+colim = colimit(Span(G2_map, G3_map));
+to_graphviz(apex(colim))
 
 ```
 
 +++
 
+Use the code cell below to visualize Graph-2 and Graph-3.
 
-
-Solving Ex 2. 
 +++
 
 ```{code-cell}
-# AJ code goes here
+# Use this code cell for visualizing Graph-2 and Graph-3
 
-```
+# Uncomment the below line (remove the sharp) and run the code to view Graph-2
+# to_graphviz(G2) 
 
-+++
-
-
-
-Solving Ex 3. 
-+++
-
-```{code-cell}
-# AJ code goes here
-
+# Uncomment the below line (remove the sharp) and run the code to view Graph-2
+# to_graphviz(G3) 
 ```
 
 +++
