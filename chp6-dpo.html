@@ -419,7 +419,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -435,6 +437,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">Finding a pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-in-the-pattern">Adding vertices and edges in the pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-in-the-pattern">Removing vertices and edges in the pattern</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -446,6 +458,56 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-cut-copy-glue-graphs">
 <h1>Chapter 6: Cut-Copy-Glue Graphs<a class="headerlink" href="#chapter-6-cut-copy-glue-graphs" title="Permalink to this heading">#</a></h1>
+<p>[Not ready for review]</p>
+<p>[Our goal is not teaching how to do double pushout rewriting!</p>
+<p>Our goal is to demonstrate how to use graph glueing for a real world problem – graph rewriting. Or ask questions to guide the reader’s thinking to solve the problem. ]</p>
+<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world than being helpful! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or forcefully “replacing” an exisiting government of a country by another country for political reasons. (may be an ecology example).</p>
+<blockquote>
+<div><p>We know in hindsight that these are very bad decisions for a society! But, what was missed in the decision making process?</p>
+</div></blockquote>
+<p>Let us consider a fun and non-political example – the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is:</p>
+<a class="reference internal image-reference" href="_images/quit-sugar-1.png"><img alt="Whoopsy!" class="align-center" src="_images/quit-sugar-1.png" style="width: 550px;" /></a>
+<p>But the reality is:</p>
+<a class="reference internal image-reference" href="_images/quit-sugar-2.png"><img alt="Whoopsy!" class="align-center" src="_images/quit-sugar-2.png" style="width: 350px;" /></a>
+<p>because, the connections are broken causing the system to experience instability:</p>
+<a class="reference internal image-reference" href="_images/quit-sugar-3.png"><img alt="Whoopsy!" class="align-center" src="_images/quit-sugar-3.png" style="width: 350px;" /></a>
+<p>While being healthy makes a person happy, eating sugar makes a person happy in a different way. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is oversimplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change.</p>
+<p>If we want to make a change, it is recommended to start with something simple. The simple thing we shall do in this chapter is to build a way to make changes to an existing graph in a “good” way. By good, we mean that we do not end up with broken connections, and make precisely the changes that are intended.</p>
+<p>Making changes to a graph may involve adding new vertices/edges (hence adding new connections) or removing existing vertices/edges (hence removing existing connections) or both. And these changes happen over particular region(s) of the graph.</p>
+<p>A lot of concepts in the world around us are modelled as graphs. Hence, building a way to changing an existing graph that is guaranteed to be good is much more than just a theoretical exercise.</p>
+<p>Let us begin!</p>
+<p>Given a pattern (a graph), and its replacement, our mission is to build a way to “find” the pattern in any host graph and “replace” it in a good way.</p>
+<section id="finding-a-pattern">
+<h2>Finding a pattern<a class="headerlink" href="#finding-a-pattern" title="Permalink to this heading">#</a></h2>
+<p>Microsoft Word provides an interface as in the picture below, to find a text and replace it with another text. This interface applies to any big body of text content.</p>
+<a class="reference internal image-reference" href="_images/find-and-replace.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace.png" style="width: 350px;" /></a>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and ponder</p>
+<p>How would the interface for find-and-replace in graphs look like?</p>
+</div>
+<p>To begin with, let us think what would be filled in the “Find what:” and “Replace with:” boxes.</p>
+<p>“<em>Find what:</em>” box must take in a graph. This is the graph that will be “found” in a host graph. “<em>Replace-with:</em>” box should also take in a graph. This is the graph that will replace the graph provided in “<em>Find what:</em>”.</p>
+<p>Great, we are half-way through! We are only half-way through beacuse, we also need to know the <em>Find-what</em> and <em>Replace-with</em> relate to each other! This is because the <em>“Replace-with”</em> graph may retain some or all of the vertices/edges of <em>“Find-what”</em> graph. Hence, they may overlap. Hence, when the <em>Find-what</em> is spotted inside a host graph, the overlap must be retained as it is.</p>
+<p>ANIMATION NEED HERE</p>
+<p>A replacement does one or all of the following:</p>
+<ol class="arabic simple">
+<li><p>Remove vertices and/or edges from the “Find-what” graph.</p></li>
+<li><p>Add new vertices and/or edges from the “Find-what” graph.</p></li>
+</ol>
+</section>
+<section id="adding-vertices-and-edges-in-the-pattern">
+<h2>Adding vertices and edges in the pattern<a class="headerlink" href="#adding-vertices-and-edges-in-the-pattern" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="removing-vertices-and-edges-in-the-pattern">
+<h2>Removing vertices and edges in the pattern<a class="headerlink" href="#removing-vertices-and-edges-in-the-pattern" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>IGNORE!!</p>
+<p>We are familiar to performing ‘cut-copy-paste’ in text documents. Now, imagine, instead of a body of text we have a graph with numerous vertices and edges. We now want a “cut-copy-paste” analogue of text documents for graphs – ‘Cut’ feature to remove vertices and edges from a graph and ‘copy-paste’ feature to add new vertices and edges to the graph.</p>
+<p>You can already imagine the complications of performing “cut-copy-paste” on graphs. A text editor allows one to cut text from any position, and paste text into any position. What a disaster it would cause if this idea is imported directly to graphs!</p>
+<p>Cut vertex “A” from the graph. What remains is not even a graph anymore!</p>
+<p>What is meant by copy-paste of a graph into another graph?</p>
+<p>The challenge is that we want to modify a graph b</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -503,7 +565,22 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">Finding a pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-in-the-pattern">Adding vertices and edges in the pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-in-the-pattern">Removing vertices and edges in the pattern</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

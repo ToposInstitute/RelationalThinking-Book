@@ -11,3 +11,108 @@ kernelspec:
 ---
 
 # Chapter 6: Cut-Copy-Glue Graphs
+
+[Not ready for review]
+
+[Our goal is not teaching how to do double pushout rewriting! 
+
+Our goal is to demonstrate how to use graph glueing for a real world problem -- graph rewriting. Or ask questions to guide the reader's thinking to solve the problem. ]
+
+
+"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world than being helpful! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or forcefully "replacing" an exisiting government of a country by another country for political reasons. (may be an ecology example).  
+
+> We know in hindsight that these are very bad decisions for a society! But, what was missed in the decision making process? 
+
+Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is: 
+
+```{image} assets/Ch4/quit-sugar-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+But the reality is: 
+
+```{image} assets/Ch4/quit-sugar-2.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+because, the connections are broken causing the system to experience instability: 
+
+```{image} assets/Ch4/quit-sugar-3.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+While being healthy makes a person happy, eating sugar makes a person happy in a different way. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is oversimplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change. 
+
+If we want to make a change, it is recommended to start with something simple. The simple thing we shall do in this chapter is to build a way to make changes to an existing graph in a "good" way. By good, we mean that we do not end up with broken connections, and make precisely the changes that are intended. 
+
+Making changes to a graph may involve adding new vertices/edges (hence adding new connections) or removing existing vertices/edges (hence removing existing connections) or both. And these changes happen over particular region(s) of the graph.
+
+A lot of concepts in the world around us are modelled as graphs. Hence, building a way to changing an existing graph that is guaranteed to be good is much more than just a theoretical exercise.
+
+Let us begin! 
+
+Given a pattern (a graph), and its replacement, our mission is to build a way to "find" the pattern in any host graph and "replace" it in a good way. 
+
+## Finding a pattern 
+
+Microsoft Word provides an interface as in the picture below, to find a text and replace it with another text. This interface applies to any big body of text content. 
+
+```{image} assets/Ch4/find-and-replace.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+:::{admonition} Pause and ponder
+
+How would the interface for find-and-replace in graphs look like? 
+
+:::
+
+To begin with, let us think what would be filled in the "Find what:" and "Replace with:" boxes. 
+
+"*Find what:*" box must take in a graph. This is the graph that will be "found" in a host graph. "*Replace-with:*" box should also take in a graph. This is the graph that will replace the graph provided in "*Find what:*". 
+
+Great, we are half-way through! We are only half-way through beacuse, we also need to know the *Find-what* and *Replace-with* relate to each other! This is because the *"Replace-with"* graph may retain some or all of the vertices/edges of *"Find-what"* graph. Hence, they may overlap. Hence, when the *Find-what* is spotted inside a host graph, the overlap must be retained as it is. 
+
+ANIMATION NEED HERE
+
+A replacement does one or all of the following:
+
+1. Remove vertices and/or edges from the "Find-what" graph. 
+2. Add new vertices and/or edges from the "Find-what" graph. 
+
+
+
+
+## Adding vertices and edges in the pattern
+
+
+
+## Removing vertices and edges in the pattern
+
+
+
+
+
+----------
+IGNORE!!
+
+We are familiar to performing 'cut-copy-paste' in text documents. Now, imagine, instead of a body of text we have a graph with numerous vertices and edges. We now want a "cut-copy-paste" analogue of text documents for graphs -- 'Cut' feature to remove vertices and edges from a graph and 'copy-paste' feature to add new vertices and edges to the graph. 
+
+You can already imagine the complications of performing "cut-copy-paste" on graphs. A text editor allows one to cut text from any position, and paste text into any position. What a disaster it would cause if this idea is imported directly to graphs!
+
+Cut vertex "A" from the graph. What remains is not even a graph anymore! 
+
+
+
+
+What is meant by copy-paste of a graph into another graph? 
+
+The challenge is that we want to modify a graph b 
