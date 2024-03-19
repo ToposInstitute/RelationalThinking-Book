@@ -38,8 +38,10 @@ This can be expressed as a schema in AlgebraicJulia as follows:
   tgt::Hom(Edge, Vertex)
 end
 to_graphviz(Sch3DShape)
-@acset_type 3DShape(Sch3DShape)
+@acset_type Typ3DShape(Sch3DShape)
 ```
+
+![Sch3dShape](assets/Chp7/Sch3DShape.svg)
 
 We can see that the schema, `Sch3DShape`, closely resembles the schema for a graph, `SchGraph`. More pointedly, `Sch3DShape` extends `SchGraph` with the idea of a `Face` and edges of a face. 
 
@@ -60,6 +62,8 @@ end
 :::
 
 We can model various configurations of a cube, akin to unfolding a cardboard box. For instance, using DPO rewriting, we could model the action of opening or closing the top of the box. This operation would involve redefining the relationships between the Faces and Edges objects to "remove" the connections that form the top face. Similarly, unfolding the cube into a flat layout would radically alter the connections between Faces, Edges, and Vertices to represent the cube in an unfolded state. Such transformations are powerful for visualizing and reasoning about the structural possibilities of objects in three-dimensional space.
+
+![](assets/Ch7/TopOpening.gif)
 
 Let us say we want to have a cube represent a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it's closed by explaining how the faces, edges, and vertices are defined relative to one another. In a cube, there are exactly six faces, which we can call `f1, f2, f3, f4, f5, f6`. Faces have exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as `e1, e2, e3, e4, ...`. If we want to say the top of edge of `f1` is `e1`, then we can refer to the schema and express the the following part:
 
@@ -84,33 +88,49 @@ tgt(e1) == v2
 
 We can create an instance of a cube, by defining such a $\mathsf{C}$-Set, where $\mathsf{C}$ is `Sch3DShape`.
 
-**[INSERT FIGURE OF LABELED CUBE]**
+![](assets/Ch7/BoxAssembly.gif)
 
 ```{code-cell}
 closedCube = @acset_colim ySch3DShape begin
   (f1, f2, f3, f4, f5, f6)::Face
-  (e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12)::Edge
-  (v1, v2, v3, v4, v5, v6, v7, v8)::Vertex
 
-  top(f1) == e1; right(f1) == e4; bottom(f1) == e3; left(f1) == e2
-  top(f2) == e8; right(f2) == e7; bottom(f2) == e5; left(f2) == e4
-  top(f3) == e11; right(f3) == e7; bottom(f3) == e6; left(f3) == e10
-  top(f4) == e12; right(f4) == e10; bottom(f4) == e9; left(f4) == e2
-  top(f5) == e11; right(f5) == e8; bottofm(f5) == e1; left(f5) == e12
-  top(f6) == e6; right(f6) == e5; bottom(f6) == e3; left(f6) == e9
+  # top face (clockwise)
+  top(f1) == top(f5)        # e1
+  right(f1) == top(f2)      # e2
+  bottom(f1) == top(f3)     # e3
+  left(f1) == top(f4)       # e4
 
-  src(e1) == v1; tgt(e1) == v2
-  src(e2) == v1; tgt(e2) == v3
-  src(e3) == v3; tgt(e3) == v4
-  src(e4) == v4; tgt(e4) == v2
-  src(e5) == v4; tgt(e5) == v8
-  src(e6) == v7; tgt(e6) == v8
-  src(e7) == v8; tgt(e7) == v6
-  src(e8) == v6; tgt(e8) == v2
-  src(e9) == v7; tgt(e9) == v3
-  src(e10) == v7; tgt(e10) == v5
-  src(e11) == v6; tgt(e11) == v5
-  src(e12) == v5; tgt(e12) == v1
+  # wall faces (clockwise)
+  left(f2) == right(f3)     # e5
+  left(f3) == right(f4)     # e6
+  left(f4) == right(f5)     # e7
+  left(f5) == right(f2)     # e8
+
+  # bottom face (clockwise)
+  top(f6) == bottom(f5)     # e9
+  right(f6) == bottom(f2)   # e10
+  bottom(f6) == bottom(f3)  # e11
+  left(f6) == bottom(f4)    # e12
+
+  # top vertices
+  tgt(top(f1)) == src(right(f1))     # v1
+  tgt(top(f1)) == src(right(f2))
+  tgt(right(f1)) == src(bottom(f1))  # v2 
+  tgt(right(f1)) == src(right(f3))
+  tgt(bottom(f1)) == src(left(f1))   # v3 
+  tgt(bottom(f1)) == src(right(f4))
+  tgt(left(f1)) == src(top(f1))      # v4
+  tgt(left(f1)) == src(right(f5))
+
+  # bottom vertices
+  tgt(top(f6)) == src(right(f6))     # v5
+  tgt(top(f6)) == tgt(right(f2))
+  tgt(right(f6)) == src(bottom(f6))  # v6
+  tgt(right(f6)) == tgt(right(f3))
+  tgt(bottom(f6)) == src(left(f6))   # v7 
+  tgt(bottom(f6)) == tgt(right(f4))
+  tgt(left(f6)) == src(top(f6))      # v8
+  tgt(left(f6)) == tgt(right(f5))
 end
 ```
 
@@ -171,7 +191,7 @@ rule = Rule{:DPO}(l, r)
 
 This rule is helpful, but the problem is that we can use it on _any_ face of the box. This means that we can technically open the box from the bottom, releasing the cake to the floor. 
 
-**[INSERT GIF OF CAKE FALLING]**
+![](assets/Ch7/BottomOpening.gif)
 
 We can constrain this by defining a specific match for our DPO rule. In AlgebraicJulia, this can be expressed by saying the specific face we would like to match.
 
