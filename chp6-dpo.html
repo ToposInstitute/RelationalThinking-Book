@@ -443,8 +443,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">6.1 Finding a pattern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.2. Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-graph">6.3. Removing vertices and edges from graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-and-removing-in-one-go">6.4. Adding and removing in one go</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-organic-chemistry">6.5. Graph rewriting in organic chemistry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-game-design">6.6. Graph rewriting in game design</a></li>
@@ -464,7 +464,7 @@ document.write(`
 <p>[Not ready for review]</p>
 <p>[Our goal is not teaching how to do double pushout rewriting!</p>
 <p>Our goal is to demonstrate how to use graph glueing for a real world problem – graph rewriting. Or ask questions to guide the reader’s thinking to solve the problem. ]</p>
-<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world than being helpful! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or forcefully “replacing” an exisiting government of a country by another country for political reasons. (may be an ecology example).</p>
+<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world than being helpful! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country trying to replace the ruling government of another country for political reasons. (may be an ecology example).</p>
 <blockquote>
 <div><p>We know in hindsight that these are very bad decisions for a society! But, what was missed in the decision making process?</p>
 </div></blockquote>
@@ -504,9 +504,10 @@ document.write(`
 <a class="reference internal image-reference" href="_images/interface-1.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-1.png" style="width: 600px;" /></a>
 <p>A Microsoft Word version of the above interface would probably look like:</p>
 <p>[Picture]</p>
-<div class="admonition-write-the-following-find-and-replace-using-plus-minus-interface admonition">
-<p class="admonition-title">Write the following find-and-replace using plus-minus interface:</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title"><strong>Exercise</strong></p>
 <div class="wrapper docutils">
+<p>Write the following find-and-replace using plus-minus interface:</p>
 <p>Find and replace:</p>
 <a class="reference internal image-reference" href="_images/Ex-1-graphs.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-1-graphs.png" style="width: 550px;" /></a>
 <p>Interface:</p>
@@ -528,8 +529,8 @@ document.write(`
 <a class="reference internal image-reference" href="_images/Find-what-2.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-2.png" style="width: 450px;" /></a>
 <p>The following is an exact match.</p>
 <a class="reference internal image-reference" href="_images/Find-what-3.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-3.png" style="width: 450px;" /></a>
-<div class="admonition-how-many-matches admonition">
-<p class="admonition-title">How many matches? </p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title"><strong>Exercise</strong></p>
 <p>How many matches (graph morpshism) are from the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to the host graph?</p>
 <div class="wrapper docutils">
 <p>IMAGE</p>
@@ -541,12 +542,41 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key points</p>
+<p>The interface to find-and-replace for graphs includes 2 components:</p>
+<ol class="arabic simple">
+<li><p>An injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to add edges and vertices</p></li>
+<li><p>An injective morphism into <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to erase edges and vertices</p></li>
+</ol>
+<p>A <em>match</em> in a host graph is given by a morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host graph!</p>
+</div>
 </section>
-<section id="adding-vertices-and-edges-to-a-graph">
-<h2>6.2. Adding vertices and edges to a graph<a class="headerlink" href="#adding-vertices-and-edges-to-a-graph" title="Permalink to this heading">#</a></h2>
+<section id="adding-vertices-and-edges-to-host-graph">
+<h2>6.2. Adding vertices and edges to host graph<a class="headerlink" href="#adding-vertices-and-edges-to-host-graph" title="Permalink to this heading">#</a></h2>
+<p>Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the “find-and-replace”. Let us consider the first component of “find-and-replace” interface: an injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. This morphism says what new vertices and edges to be added to the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found.</p>
+<p>As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
+<a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 450px;" /></a>
+<p>We now want to compute a new graph which has the additional edges and vertices of <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> added to the host graph where the match has been found. Do you see how?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">The answer is</p>
+<p>Pushouts!!!</p>
+</div>
+<p>Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code>.</p>
+<p>Let us try out some examples to make the idea absolutely clear!</p>
+<p><strong>Example 1:</strong> Adding  one vertex and one edge</p>
+<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is a vertex with a self-loop. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> adds a new vertex and an edge. The host and the <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> graphs look the same in this example. An exact match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings.</p>
+<a class="reference internal image-reference" href="_images/example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/example-1.png" style="width: 550px;" /></a>
+<p><strong>Example 2:</strong> Adding a new edge (exact match)</p>
+<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> has two vertices connected by an edge. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> adds a new edge in between the vertices. An exact match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph.</p>
+<a class="reference internal image-reference" href="_images/example-2.png"><img alt="Whoopsy!" class="align-center" src="_images/example-2.png" style="width: 550px;" /></a>
+<p><strong>Example 3:</strong> Adding a new edge (coarse-grained match)</p>
+<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> has two vertices connected by an edge. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> has a new edge in between the vertices. The match merges the two vertices of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph.</p>
+<a class="reference internal image-reference" href="_images/example-3.png"><img alt="Whoopsy!" class="align-center" src="_images/example-3.png" style="width: 550px;" /></a>
+<p>Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code>. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are <strong>integrated</strong> into the host graph rather than the match being replaced as such!</p>
 </section>
-<section id="removing-vertices-and-edges-from-graph">
-<h2>6.3. Removing vertices and edges from graph<a class="headerlink" href="#removing-vertices-and-edges-from-graph" title="Permalink to this heading">#</a></h2>
+<section id="removing-vertices-and-edges-from-host-graph">
+<h2>6.3. Removing vertices and edges from host graph<a class="headerlink" href="#removing-vertices-and-edges-from-host-graph" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="adding-and-removing-in-one-go">
 <h2>6.4. Adding and removing in one go<a class="headerlink" href="#adding-and-removing-in-one-go" title="Permalink to this heading">#</a></h2>
@@ -631,8 +661,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">6.1 Finding a pattern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.2. Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-graph">6.3. Removing vertices and edges from graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-and-removing-in-one-go">6.4. Adding and removing in one go</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-organic-chemistry">6.5. Graph rewriting in organic chemistry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-game-design">6.6. Graph rewriting in game design</a></li>

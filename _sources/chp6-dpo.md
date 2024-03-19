@@ -19,7 +19,7 @@ kernelspec:
 Our goal is to demonstrate how to use graph glueing for a real world problem -- graph rewriting. Or ask questions to guide the reader's thinking to solve the problem. ]
 
 
-"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world than being helpful! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or forcefully "replacing" an exisiting government of a country by another country for political reasons. (may be an ecology example).  
+"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world than being helpful! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country trying to replace the ruling government of another country for political reasons. (may be an ecology example).  
 
 > We know in hindsight that these are very bad decisions for a society! But, what was missed in the decision making process? 
 
@@ -131,9 +131,11 @@ A Microsoft Word version of the above interface would probably look like:
 
 [Picture]
 
-:::{admonition} Write the following find-and-replace using plus-minus interface:
+:::{admonition} **Exercise** 
 
 ````{div} wrapper 
+
+Write the following find-and-replace using plus-minus interface:
 
 Find and replace:
 
@@ -195,7 +197,7 @@ The following is an exact match.
 :align: center
 ```
 
-:::{admonition} How many matches? 
+:::{admonition} **Exercise**
 
 How many matches (graph morpshism) are from the ```Find what``` to the host graph? 
 
@@ -212,11 +214,76 @@ IMAGE
 
 ::: 
 
-## 6.2. Adding vertices and edges to a graph
+:::{admonition} Key points
+
+The interface to find-and-replace for graphs includes 2 components: 
+1. An injective morphism from ```Find what``` to add edges and vertices 
+2. An injective morphism into ```Find what``` to erase edges and vertices
+  
+
+A *match* in a host graph is given by a morphism from ```Find what``` to a host graph! 
+
+:::
 
 
+## 6.2. Adding vertices and edges to host graph
 
-## 6.3. Removing vertices and edges from graph
+Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the "find-and-replace". Let us consider the first component of "find-and-replace" interface: an injective morphism from ```Find what```. This morphism says what new vertices and edges to be added to the `Find what` graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found. 
+
+As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
+
+```{image} assets/Ch4/add-1.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+We now want to compute a new graph which has the additional edges and vertices of `Additional only` added to the host graph where the match has been found. Do you see how? 
+
+::: {admonition} The answer is
+:class: dropdown
+
+Pushouts!!!
+
+:::
+
+Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and `Additional only`. 
+
+Let us try out some examples to make the idea absolutely clear! 
+
+**Example 1:** Adding  one vertex and one edge
+
+In the following example, the `Find what` is a vertex with a self-loop. The `Additional only` adds a new vertex and an edge. The host and the `Additional only` graphs look the same in this example. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. 
+
+```{image} assets/Ch4/example-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+**Example 2:** Adding a new edge (exact match)
+
+In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` adds a new edge in between the vertices. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph. 
+
+```{image} assets/Ch4/example-2.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+**Example 3:** Adding a new edge (coarse-grained match)
+
+In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` has a new edge in between the vertices. The match merges the two vertices of `Find what` into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph. 
+
+```{image} assets/Ch4/example-3.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in `Additional only`. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are **integrated** into the host graph rather than the match being replaced as such! 
+
+
+## 6.3. Removing vertices and edges from host graph
 
 
 ## 6.4. Adding and removing in one go
