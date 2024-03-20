@@ -142,63 +142,129 @@ Now, once we deliver the birthday cake, we want be able to open the box so the b
 
 **[INSERT GIF OF DPO RULE]**
 
+::: {admonition} Opening a box rule
+:class: dropdown
+
+```{code-cell}
+open_box = @migration(SchRule, Sch3DShape, begin
+  L => @join begin
+    (face, face1, face2, face3, face4)::Face
+
+    # top edges
+    top(face) == top(face1)
+    right(face) == top(face2)
+    bottom(face) == top(face3)
+    left(face) == top(face4)
+
+    # wall faces (clockwise)
+    left(face1) == right(face2)
+    left(face2) == right(face3)
+    left(face3) == right(face4)
+    left(face4) == right(face1)
+
+    # top vertices
+    src(right(face1)) == src(top(face1))
+    src(right(face1)) == tgt(top(face4))
+    src(right(face2)) == src(top(face2))
+    src(right(face2)) == tgt(top(face1))
+    src(right(face3)) == src(top(face3))
+    src(right(face3)) == tgt(top(face2))
+    src(right(face4)) == src(top(face4))
+    src(right(face4)) == tgt(top(face3))
+
+    # bottom vertices
+    tgt(right(face1)) == src(bottom(face1))
+    tgt(right(face1)) == tgt(bottom(face4))
+    tgt(right(face2)) == src(bottom(face2))
+    tgt(right(face2)) == tgt(bottom(face1))
+    tgt(right(face3)) == src(bottom(face3))
+    tgt(right(face3)) == tgt(bottom(face2))
+    tgt(right(face4)) == src(bottom(face4))
+    tgt(right(face4)) == tgt(bottom(face3))
+  end
+  K => @join begin
+    (face1, face2, face3, face4)::Face
+  end
+  R => @join begin
+    (face1, face2, face3, face4, faceNew)::Face
+    (edge1, edge2, edge3)::Edge
+
+    # top edges
+    top(faceNew) == top(face4)
+    right(faceNew) == edge1
+    bottom(faceNew) == edge2
+    left(faceNew) == edge3
+
+    # connect vertices of new edges
+    src(edge1) == tgt(top(face4))
+    tgt(edge1) == src(edge2)
+    tgt(edge2) == src(edge3)
+    tgt(edge3) == src(top(face4))
+
+    # wall faces (clockwise
+    left(face1) == right(face2)     # e5
+    left(face2) == right(face3)     # e6
+    left(face3) == right(face4)     # e7
+    left(face4) == right(face1)     # e8
+
+    # top vertices
+    src(right(face1)) == src(top(face1))
+    src(right(face1)) == tgt(top(face4))
+    src(right(face2)) == src(top(face2))
+    src(right(face2)) == tgt(top(face1))
+    src(right(face3)) == src(top(face3))
+    src(right(face3)) == tgt(top(face2))
+    src(right(face4)) == src(top(face4))
+    src(right(face4)) == tgt(top(face3))
+
+    # bottom vertices
+    tgt(right(face1)) == src(bottom(face1))
+    tgt(right(face1)) == tgt(bottom(face4))
+    tgt(right(face2)) == src(bottom(face2))
+    tgt(right(face2)) == tgt(bottom(face1))
+    tgt(right(face3)) == src(bottom(face3))
+    tgt(right(face3)) == tgt(bottom(face2))
+    tgt(right(face4)) == src(bottom(face4))
+    tgt(right(face4)) == tgt(bottom(face3))
+  end
+  l => begin
+    face1 => face1
+    face2 => face2
+    face3 => face3
+    face4 => face4
+  end
+  r => begin
+    face1 => face1
+    face2 => face2
+    face3 => face3
+    face4 => face4
+  end
+end)
+```
+
+Note: `@migration` is formatting the parts of the rule so that `L`, `K`, `R`, `l`, and `r` are clearly identified.
+:::
+
 The `L` part of the rule should represent the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has these qualities. Note: that the edges connecting the walls of the cube are not specified because they are not relevant to the rule.
 
-```{code-cell}
-L = @acset_colim ySch3DShape begin
-  (face, face1, face2, face3, face4)::Face
-
-  top(face) == top(face1)
-  right(face) == top(face2)
-  bottom(face) == top(face3)
-  left(face) == top(face4)
-end
-```
-
 The `K` part tells me that all the faces the hinging edge are the same between `L` and `R`. Notice that the hindging edge is the edge underlying both sides of this equality, `top(face) == top(face1)`. This is because `top` is a morphism from `Face` to `Edge`, so `top(face)` is some element in `Edge`.
-
-```{code-cell}
-K = @acset_colim ySch3DShape begin
-  (face, face1, face2, face3, face4)::Face
-  top(face) == top(face1)
-end
-```
 
 The `R` part of the rule should represent the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.
 
 ```{code-cell}
-R = @acset_colim ySch3DShape begin
-  (face, face1)::Face
-  (edge1, edge2, edge3)::Edge
-
-  top(face) == top(face1)
-  right(face) == edge1
-  bottom(face) == edge2
-  left(face) == edge3
-
-  src(top(face)) == tgt(edge3)
-  src(edge3) == tgt(edge2)
-  src(edge2) == tgt(edge1)
-  src(edge1) == tgt(top(face))
-end
+open_box_rule = make_rule(openBox, ySch3DShape)
 ```
 
-```{code-cell}
-l = homomorphisms(K, L)[2]
-r = ACSetTransformation(K, R, Face=[1, 2], Edge=collect(1:7), Vertex=collect(1:14))
-rule = Rule{:DPO}(l, r)
-```
+<!-- This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges.  -->
 
-This rule is helpful, but the problem is that we can use it on _any_ face of the box. This means that we can technically open the box from the bottom, releasing the cake to the floor. 
+<!-- ![](assets/Ch7/BottomOpening.gif) -->
 
-![](assets/Ch7/BottomOpening.gif)
+<!-- We can constrain this by defining a specific match for our DPO rule. In AlgebraicJulia, this can be expressed by saying the specific face we would like to match. -->
 
-We can constrain this by defining a specific match for our DPO rule. In AlgebraicJulia, this can be expressed by saying the specific face we would like to match.
-
-##### TODO: Need to figure out how to get the rule to match such that face = face1
+<!-- ##### TODO: Need to figure out how to get the rule to match such that face = face1
 ```
 match = homomorphisms(L, closedCube)[1]
-```
+``` -->
 
 In summary, DPO rewriting can help us model various configurations of a box by manipulating the data in the `Sch3DShape`-Set.
 
