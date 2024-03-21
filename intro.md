@@ -21,6 +21,9 @@ Yet the notion of system persists. Despite its own lack of clarity, it clearly p
 
 A challenge with systems thinking is that formal tools for thinking systemically are still a topic of active research -- we still are discovering the logic of systems, discovering effective ways to rigorously reason about them. Mathematics has not historically emphasised a systems perspective. Mathematical tools for thinking, including thinking systemically, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.
 
+
+
+
 There are some promising avenues, however, for mathematical systems thinking. A key tool for mathematical systems thinking, known as category theory, emerged in the 1940s. While this is almost a century ago, developing mathematics is a slow, patient, and intergenerational effort, and it's only in recent decades it is developing as a tool for systems thinking in the real world.
 
 A second challenge presents itself: mathematics itself can difficult to learn, especially while it is still an active topic of research by world-leading mathematicians, who do not always explain themselves well. In this book we hope to give the reader the experience of mathematical systems thinking without requiring the mastery of any of the abstract tools of category theory. This is made available to us by leaning on the encoding of these category theoretic ideas into software, via the AlgebraicJulia project.
@@ -34,3 +37,12 @@ This is a book written in two parts. In the first part, we
 The goal of this book is to inform and inspire.
 
 Our book is example driven, with references to the interested reader on where to learn more about both the programming and the mathematics. There are embedded sections of code,
+
+### A new medium for systems thinking
+As Andy Matuschak and Michael Nielsen write in their essay "How can we develop transformative tools for thought?"[^1]:
+
+[^1]: Andy Matuschak and Michael Nielsen, “How can we develop transformative tools for thought?”, https://numinous.productions/ttft, San Francisco (2019).
+
+> Such a medium creates a powerful immersive context, a context in which the user can have new kinds of thought, thoughts that were formerly impossible for them. Speaking loosely, the range of expressive thoughts possible in such a medium is an emergent property of the elementary objects and actions in that medium. If those are well chosen, the medium expands the possible range of human thought.
+
+We have not yet fully realised the potential of a new medium for systems thinking. But as Matuschak and Nielsen note, the range of possible thoughts is an emergent property of the elementary objects and actions. In systems thinking, these notions are ones of relationality; the same ones that category theorists have carefully studied for the last century. We believe the work we share here, grounded in the mathematics of category theory, thus gives a glimpse of a powerful start. The work of the AlgebraicJulia project is to expand this mathematical medium into an embodied, software technology, from mathematics to programming languages and eventually to computer applications. We invite you on this journey to expand the possible range of human thought to consider the world in a holistic, relational, and interconnected way.
