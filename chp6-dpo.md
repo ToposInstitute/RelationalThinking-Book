@@ -234,7 +234,7 @@ As always, let us begin by drawing diagrams. The advantage of drawing digrams is
 
 ```{image} assets/Ch4/add-1.png
 :alt: Whoopsy!
-:width: 450px
+:width: 350px
 :align: center
 ```
 
@@ -282,29 +282,227 @@ In the following example, the `Find what` has two vertices connected by an edge.
 
 Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in `Additional only`. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are **integrated** into the host graph rather than the match being replaced as such! 
 
-
 ## 6.3. Removing vertices and edges from host graph
 
+In the last section, we saw that adding vertices and edges to an existing graph is as simple as a computing pushout! What about removing edges and vertices from an existing graph? What role will pushouts play in this procedure? 
 
-## 6.4. Adding and removing in one go
+As before, let us begin by making a diagram of the information we have: 
+
+```{image} assets/Ch4/remove-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+We know that we cannot compute a pushout because computing a pushout requires two radiating arrows from a single graph. However, we know that the new graph which results after performing the changes is same as the host graph except for the vertices and edges that have been removed. Hence, there must exist a relationship (injection) between them, which we add to our first diagram:
+
+```{image} assets/Ch4/remove-2.png
+:alt: Whoopsy!
+:width: 750px
+:align: center
+```
+
+We also know that Graph-2 must relate to the new graph! (Why? Graph-1 has a match in the host graph Graph-2 injects into Graph-1. Since the new graph is simply the host graph with edges and vertices exclusive to Graph-1 removed, Graph-2 must have a match in the new graph.) We add this relationship too to the diagram. 
+
+```{image} assets/Ch4/remove-3.png
+:alt: Whoopsy!
+:width: 750px
+:align: center
+```
+
+Wait a minute!! That does like a pushout square where the host graph is in the pushout corner! The `Replace with [D]` is the overlap between the `Find what` and the New graph. `Find what` includes edges and vertices that has been removed. Glueing together `Find what` and the New graph gives the host graph!
+
+Since the new graph completes a pushout square we shall call it as the **Pushout complement**. 
+
+:::{Note} 
+
+Complement means *the thing that completes or brings to perfection*. 
+
+> A pushout complement is a pushout completement! 
+
+
+Let us practice a few exercises on computing "pushout **complement**" 
+
+:::{admonition} Exercise 1 
+
+What is the pushout complement?
+
+```{image} assets/Ch4/remove-5.png
+:alt: Whoopsy!
+:width: 750px
+:align: center
+```
+
+The nodes exclusive to Graph-1 must be removed from the host graph. Thus, the pushout out complement must include: 
+1.  all the parts of the host graph not under the match, and 
+2.  only those parts of the match which is included in the `Replace with [D]`. 
+
+:::{admonition} Solution
+:class: dropdown
+
+Only those parts of the match which is included in the `Replace with [D]` are vertices "1", and "2".
+
+````{div} wrapper 
+```{image} assets/Ch4/remove-6.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+````
+
+The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),  and includes those vertices and edges in the match which are in Graph-2.
+
+:::
+
+:::{admonition} Exercise 2 
+
+What is the pushout complement?
+
+
+This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are sent to the same vertex in the host graph. Simiarly vertices "3" and "4" are sent to the same vertex in the host graph.
+
+```{image} assets/Ch4/remove-8.png
+:alt: Whoopsy!
+:width: 750px
+:align: center
+```
+
+
+:::{admonition} Solution
+:class: dropdown
+
+````{div} wrapper 
+```{image} assets/Ch4/remove-9.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+````
+
+:::
+
+:::{admonition} Exercise 3 
+
+What is the pushout complement?
+
+
+```{image} assets/Ch4/remove-10.png
+:alt: Whoopsy!
+:width: 750px
+:align: center
+```
+
+
+:::{admonition} Solution
+:class: dropdown
+
+The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.
+
+````{div} wrapper 
+```{image} assets/Ch4/remove-11.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+````
+
+:::
+
+ONE MORE EXERCISE - WITH EDGESor VERTICES MERGED IN THE MATCH?
+
+### 6.4.1 Requirements on matching
+
+Erasing edges and vertices require care more than adding them. For example, suppose a vertex is erased in the host graph, then all the edges 
+connected to the vertex must also be erased. Otherwise, we will end up in a zombie-graph as shown in the introduction. Hence, care is needed when finding a match. 
+
+Suppose, we have the following specification for deletion: vertex 2 and edge '2-3' needs to be deleted! 
+```{image} assets/Ch4/remove-7.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+
+Can you see why the following match is incorrect even though it is a graph morphism? 
+
+```{image} assets/Ch4/dangling-2.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+
+Removing vertex 2 from the host graph will result in a dangling edge, see the diagram picture below!
+
+```{image} assets/Ch4/dangling-3.png
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
+
+An appropriate match will be:
+
+```{image} assets/Ch4/dangling-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+We know that a match need not be injective. This may lead to problems. For example, do you see why the following match doees not work?
+
+
+```{image} assets/Ch4/identification-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+The above match is not appropriate because vertex 2 needs to be deleted and vertex 1 needs to retained. However, the match identifies both 1 and 2 to the same vertex in the host graph. So what should we do now -- keep "1,2" or delete "1,2" from the host graph? A good match, in the first place, MUST avoid identifying 1 and 2 into the same bin since either choice is incorrect. 
+
+Thus, an appropriate match will leave all the edges connected after the replacement and will identify vertices / edges to be deleted seperate from the good vertices / edges in the host graph. In a nutshell, it will satsify the "no-dangling-edge" and the "right identification" conditions.
+
+In programming, there is a concept called "edge case". These are special situations where a code will fail to produce appropriate results. For example, a bug that occurs in only iPhone. They are called "edge cases" because these situations lie outside the normal flow of a code / algorithm and custom extra code is added for their special handling. There is an anecdote, "Edge cases are impossible to avoid, so keep them simple". 
+
+:::{admonition} Million dollar questions:
+
+What will happen when a match that violates the "no-dangling edge" requirement is supplied to pushout-completement procedure? 
+
+What will happen when a match that violates the "right identification" requirement is supplied to the pushout-completement procedure? 
+
+:::
+
+If the pushout-completement produces bad results, then these violations will be edge cases which needs to be handled outside the completement procedure -- like an algorithm to check if the match is appropriate. 
+
+The good news is that the *universal nature* of pushouts guarantee us that pushout-complement will exist ONLY for appropraite matches!! That is, replacement will be done only when the match is appropriate. Hence, there are no edge cases!!! We did all the heavy lifting early-on by relying on relational thinking, considering all the relevant relationships, and getting the *plumbing* right! The pay off is that things flow smoothly without the need for extra intervention! 
+
+> The procedure is the guard rail! 
+
+A final question we must ask is that are pushout complements unique? That is, is the new graph computed by removing the vertices and edges specified by the deletion rule unique. We want it to be unique!
+
+::: {admonition} Pause and ponder
+
+Why is the pushout complement computed for a deletion rule unique?
+
+:::
+
+In general pushout complements are not unique. We have shown an example below. However, because the deletion rule is an injection, guarantees that its pushout complement is unique. 
+
+:::{admonition} A general example where pushout complement is not unique. 
+:class: dropdown
+
+Two different pushout complement graphs for the same pushout graph.
+
+````{div} wrapper 
+IMAGE1, IMAGE2
+
+````
+:::
+
+
+## 6.4. Add and erase in one go!
+
+Here is a thing of beauty!!
 
 ## 6.5. Graph rewriting in organic chemistry
 
 ## 6.6. Graph rewriting in game design
 
-
-----------
-IGNORE!!
-
-We are familiar to performing 'cut-copy-paste' in text documents. Now, imagine, instead of a body of text we have a graph with numerous vertices and edges. We now want a "cut-copy-paste" analogue of text documents for graphs -- 'Cut' feature to remove vertices and edges from a graph and 'copy-paste' feature to add new vertices and edges to the graph. 
-
-You can already imagine the complications of performing "cut-copy-paste" on graphs. A text editor allows one to cut text from any position, and paste text into any position. What a disaster it would cause if this idea is imported directly to graphs!
-
-Cut vertex "A" from the graph. What remains is not even a graph anymore! 
-
-
-
-
-What is meant by copy-paste of a graph into another graph? 
-
-The challenge is that we want to modify a graph b 
+## 6.7. Making computer do the "find-and-integrate" changes!
