@@ -443,11 +443,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">6.1 Finding a pattern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-on-matching">6.4.1 Requirements on matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.2. Removing vertices and edges from host graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-on-matching">6.2.1 Requirements on matching</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-and-erase-in-one-go">6.4. Add and erase in one go!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-organic-chemistry">6.5. Graph rewriting in organic chemistry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-game-design">6.6. Graph rewriting in game design</a></li>
@@ -494,29 +494,33 @@ document.write(`
 </div>
 <p>To begin with, let us think what would be filled in the “Find what:” and “Replace with:” boxes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> box must take in a graph. This is the graph that will be “found” in a host graph. <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>: box should also take in a graph. This is the graph that will replace the graph provided in <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>.</p>
-<p>Great, we are half-way through! We are only half-way through beacuse, we also need to specify the relationship between <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>! This is because the <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> graph may retain some or all of the vertices/edges of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> graph. The replacement procedure must leave those vertices and edges intact in a host graph, and orient the replacement graph accordingly. There is only one way of replacing a text by another. But there are multiple ways to replace one graph by another depending how the replacement graph unless specified.</p>
-<p>In the following example, the single vertex in the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> can be replaced any of the two vertices in the “<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>” graph, or none (the vertex and the self loop is erased and a new graph is put in its place)!</p>
+<p>Great, we are half-way through! We are only half-way through beacuse, we also need to specify the relationship between <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified.</p>
+<p>Consider the following example:</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-2.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-2.png" style="width: 375px;" /></a>
-<p>Hence, the specification for “find and replace” needs to include information on what vertices and edges are the same between the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and the <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> graphs. The best way to do this would be to use an injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>.</p>
-<p>In the above example, there would be an injective morphism from <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> into <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> if the self-loop of the <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> had remained in the <code class="docutils literal notranslate"><span class="pre">Replace-with</span></code> (as shown below). The graph on the right can be viewed as the <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> plus a new vertex and an edge. Thus, an injection from a <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> specifies what are the new vertices and edges added to the graph.</p>
-<a class="reference internal image-reference" href="_images/injection-1.png"><img alt="Whoopsy!" class="align-center" src="_images/injection-1.png" style="width: 425px;" /></a>
-<p>Similarly, there would be an injective morphism from <code class="docutils literal notranslate"><span class="pre">Replace-with</span></code> into <code class="docutils literal notranslate"><span class="pre">Find-what</span></code>, if <code class="docutils literal notranslate"><span class="pre">Replace-with</span></code> has only vertices and edges which are  from <code class="docutils literal notranslate"><span class="pre">Find-what</span></code>, as shown below. The graph on the left can be viewed as the <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> minus the self-loop. Thus, an injection into a <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> graph specifies what existing vertices and edges is to be removed from the graph.</p>
-<a class="reference internal image-reference" href="_images/injection-2.png"><img alt="Whoopsy!" class="align-center" src="_images/injection-2.png" style="width: 350px;" /></a>
-<p>The two injective morphisms (one into <code class="docutils literal notranslate"><span class="pre">Find-what</span></code> and one out <code class="docutils literal notranslate"><span class="pre">Find-what</span></code>) together specify the <code class="docutils literal notranslate"><span class="pre">Replace-with</span></code> graph.</p>
-<a class="reference internal image-reference" href="_images/interface-2.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-2.png" style="width: 500px;" /></a>
-<p>Thus, an interface for “find-and-replace” in graph includes the following information:</p>
-<a class="reference internal image-reference" href="_images/interface-1.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-1.png" style="width: 600px;" /></a>
+<p>Our goal is to find a match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> in the host graph and to replace it with <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>. There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>, as shown below.</p>
+<a class="reference internal image-reference" href="_images/replacements.png"><img alt="Whoopsy!" class="align-center" src="_images/replacements.png" style="width: 475px;" /></a>
+<p>Replacement-1 replaces the search pattern (<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>) by matching it with the middle vertices of the replace pattern (<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>).</p>
+<a class="reference internal image-reference" href="_images/replacement-1.png"><img alt="Whoopsy!" class="align-center" src="_images/replacement-1.png" style="width: 475px;" /></a>
+</br>
+<p>Replacement-2 replaces the search pattern by deleting the self loop and by matching the remaining vertex with one of the end nodes of the replace pattern.</p>
+<a class="reference internal image-reference" href="_images/replacement-2.png"><img alt="Whoopsy!" class="align-center" src="_images/replacement-2.png" style="width: 475px;" /></a>
+</br>
+<p>To pick one of these replacements, the find-and-replace must specify where the search pattern (<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>) and the replace patterns (<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>) meet or overlap.</p>
+<p>We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with three graphs and two radiating arrows?</p>
+<a class="reference internal image-reference" href="_images/overlap.png"><img alt="Whoopsy!" class="align-center" src="_images/overlap.png" style="width: 300px;" /></a>
+<p>The only requirement in this case will be that the arrows needs to be <strong>injective morphisms</strong> (each vertex / edge of search pattern overlaps with at most one vertex / edge of the replacement pattern).</p>
+<p>Let us specify the overlaps for Replacement-1:</p>
+<a class="reference internal image-reference" href="_images/interface-1.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-1.png" style="width: 575px;" /></a>
+<p>and Replacement-2:</p>
+<a class="reference internal image-reference" href="_images/interface-2.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-2.png" style="width: 625px;" /></a>
+<p>Note that, the vertices and the edges of the search pattern which do not overlap are to be removed (from the host after finding a match). The vertices and the edges of the search pattern which do not overlap are to be added (to the host after finding a match). The overlap will be unchanged.</p>
+<p>In this sense, the overlap is what is retained from the search pattern in the replacement. It is precisely what remains after removing specified edges/vertices from the search pattern.</p>
 <p>A Microsoft Word version of the above interface would probably look like:</p>
 <p>[Picture]</p>
-<div class="admonition-exercise admonition">
-<p class="admonition-title"><strong>Exercise</strong></p>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title"><strong>Exercise 1</strong> </p>
 <div class="wrapper docutils">
-<p>Write the following find-and-replace using plus-minus interface:</p>
-<p>Find and replace:</p>
-<a class="reference internal image-reference" href="_images/Ex-1-graphs.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-1-graphs.png" style="width: 550px;" /></a>
-<p>Interface:</p>
-<a class="reference internal image-reference" href="_images/Ex-1-interface.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-1-interface.png" style="width: 550px;" /></a>
-</div>
+<p>Find the overlap between search and replace for the following replacement:</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
@@ -524,15 +528,33 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The final step is to answer how to find the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> graph inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters “Happy Priyaa”.</p>
+</div>
+<div class="admonition-exercise-2 admonition">
+<p class="admonition-title"><strong>Exercise 2</strong> </p>
+<div class="wrapper docutils">
+<p>Apply the following find and replace to the given host graph at the highlighted match:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="wrapper docutils">
+<p>IMAGE</p>
+</div>
+</div>
+</div>
+</div>
+<p>The final step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters “Happy Priyaa”.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-text.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-text.png" style="width: 250px;" /></a>
-<p>However, in graph, connectivity matters. So when finding a graph in a host graph, it is not necessarily an exact match, but a match which preserves connectivity. Does it ring bells? A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host graph. A few examples below:</p>
+<p>However, in graph, connectivity matters. So when finding a graph in a host graph, we do not look for 1-to-1 correspondence between vertices / edges. A match simply needs to have the same connectivity as the search pattern. Does it a ring bell? A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host graph.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host.</p>
+</div>
+<p>A few examples below:</p>
 <p>The following is an exact match.</p>
-<a class="reference internal image-reference" href="_images/Find-what-1.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-1.png" style="width: 450px;" /></a>
-<p>The following is not an exact match but connectivity is preserved.</p>
-<a class="reference internal image-reference" href="_images/Find-what-2.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/Find-what-1.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-1.png" style="width: 250px;" /></a>
+<p>The following is a coarse-grained match.</p>
+<a class="reference internal image-reference" href="_images/Find-what-2.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-2.png" style="width: 250px;" /></a>
 <p>The following is an exact match.</p>
-<a class="reference internal image-reference" href="_images/Find-what-3.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-3.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/Find-what-3.png"><img alt="Whoopsy!" class="align-center" src="_images/Find-what-3.png" style="width: 250px;" /></a>
 <div class="admonition-exercise admonition">
 <p class="admonition-title"><strong>Exercise</strong></p>
 <p>How many matches (graph morpshism) are from the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to the host graph?</p>
@@ -546,41 +568,15 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="admonition-key-points admonition">
+<div class="tip admonition">
 <p class="admonition-title">Key points</p>
-<p>The interface to find-and-replace for graphs includes 2 components:</p>
-<ol class="arabic simple">
-<li><p>An injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to add edges and vertices</p></li>
-<li><p>An injective morphism into <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to erase edges and vertices</p></li>
-</ol>
+<p>The interface to find-and-replace needs to have:</p>
+<a class="reference internal image-reference" href="_images/interface.png"><img alt="Whoopsy!" class="align-center" src="_images/interface.png" style="width: 450px;" /></a>
 <p>A <em>match</em> in a host graph is given by a morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host graph!</p>
 </div>
 </section>
-<section id="adding-vertices-and-edges-to-host-graph">
-<h2>6.2. Adding vertices and edges to host graph<a class="headerlink" href="#adding-vertices-and-edges-to-host-graph" title="Permalink to this heading">#</a></h2>
-<p>Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the “find-and-replace”. Let us consider the first component of “find-and-replace” interface: an injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. This morphism says what new vertices and edges to be added to the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found.</p>
-<p>As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
-<a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 350px;" /></a>
-<p>We now want to compute a new graph which has the additional edges and vertices of <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> added to the host graph where the match has been found. Do you see how?</p>
-<div class="dropdown admonition">
-<p class="admonition-title">The answer is</p>
-<p>Pushouts!!!</p>
-</div>
-<p>Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code>.</p>
-<p>Let us try out some examples to make the idea absolutely clear!</p>
-<p><strong>Example 1:</strong> Adding  one vertex and one edge</p>
-<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is a vertex with a self-loop. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> adds a new vertex and an edge. The host and the <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> graphs look the same in this example. An exact match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings.</p>
-<a class="reference internal image-reference" href="_images/example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/example-1.png" style="width: 550px;" /></a>
-<p><strong>Example 2:</strong> Adding a new edge (exact match)</p>
-<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> has two vertices connected by an edge. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> adds a new edge in between the vertices. An exact match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph.</p>
-<a class="reference internal image-reference" href="_images/example-2.png"><img alt="Whoopsy!" class="align-center" src="_images/example-2.png" style="width: 550px;" /></a>
-<p><strong>Example 3:</strong> Adding a new edge (coarse-grained match)</p>
-<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> has two vertices connected by an edge. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> has a new edge in between the vertices. The match merges the two vertices of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph.</p>
-<a class="reference internal image-reference" href="_images/example-3.png"><img alt="Whoopsy!" class="align-center" src="_images/example-3.png" style="width: 550px;" /></a>
-<p>Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code>. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are <strong>integrated</strong> into the host graph rather than the match being replaced as such!</p>
-</section>
 <section id="removing-vertices-and-edges-from-host-graph">
-<h2>6.3. Removing vertices and edges from host graph<a class="headerlink" href="#removing-vertices-and-edges-from-host-graph" title="Permalink to this heading">#</a></h2>
+<h2>6.2. Removing vertices and edges from host graph<a class="headerlink" href="#removing-vertices-and-edges-from-host-graph" title="Permalink to this heading">#</a></h2>
 <p>In the last section, we saw that adding vertices and edges to an existing graph is as simple as a computing pushout! What about removing edges and vertices from an existing graph? What role will pushouts play in this procedure?</p>
 <p>As before, let us begin by making a diagram of the information we have:</p>
 <a class="reference internal image-reference" href="_images/remove-1.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-1.png" style="width: 550px;" /></a>
@@ -642,7 +638,7 @@ document.write(`
 </div>
 <p>ONE MORE EXERCISE - WITH EDGESor VERTICES MERGED IN THE MATCH?</p>
 <section id="requirements-on-matching">
-<h3>6.4.1 Requirements on matching<a class="headerlink" href="#requirements-on-matching" title="Permalink to this heading">#</a></h3>
+<h3>6.2.1 Requirements on matching<a class="headerlink" href="#requirements-on-matching" title="Permalink to this heading">#</a></h3>
 <p>Erasing edges and vertices require care more than adding them. For example, suppose a vertex is erased in the host graph, then all the edges
 connected to the vertex must also be erased. Otherwise, we will end up in a zombie-graph as shown in the introduction. Hence, care is needed when finding a match.</p>
 <p>Suppose, we have the following specification for deletion: vertex 2 and edge ‘2-3’ needs to be deleted!</p>
@@ -682,6 +678,29 @@ connected to the vertex must also be erased. Otherwise, we will end up in a zomb
 </div>
 </div>
 </section>
+</section>
+<section id="adding-vertices-and-edges-to-host-graph">
+<h2>6.2. Adding vertices and edges to host graph<a class="headerlink" href="#adding-vertices-and-edges-to-host-graph" title="Permalink to this heading">#</a></h2>
+<p>Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the “find-and-replace”. Let us consider the first component of “find-and-replace” interface: an injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. This morphism says what new vertices and edges to be added to the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found.</p>
+<p>As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
+<a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 350px;" /></a>
+<p>We now want to compute a new graph which has the additional edges and vertices of <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> added to the host graph where the match has been found. Do you see how?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">The answer is</p>
+<p>Pushouts!!!</p>
+</div>
+<p>Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code>.</p>
+<p>Let us try out some examples to make the idea absolutely clear!</p>
+<p><strong>Example 1:</strong> Adding  one vertex and one edge</p>
+<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is a vertex with a self-loop. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> adds a new vertex and an edge. The host and the <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> graphs look the same in this example. An exact match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings.</p>
+<a class="reference internal image-reference" href="_images/example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/example-1.png" style="width: 550px;" /></a>
+<p><strong>Example 2:</strong> Adding a new edge (exact match)</p>
+<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> has two vertices connected by an edge. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> adds a new edge in between the vertices. An exact match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph.</p>
+<a class="reference internal image-reference" href="_images/example-2.png"><img alt="Whoopsy!" class="align-center" src="_images/example-2.png" style="width: 550px;" /></a>
+<p><strong>Example 3:</strong> Adding a new edge (coarse-grained match)</p>
+<p>In the following example, the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> has two vertices connected by an edge. The <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> has a new edge in between the vertices. The match merges the two vertices of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph.</p>
+<a class="reference internal image-reference" href="_images/example-3.png"><img alt="Whoopsy!" class="align-center" src="_images/example-3.png" style="width: 550px;" /></a>
+<p>Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code>. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are <strong>integrated</strong> into the host graph rather than the match being replaced as such!</p>
 </section>
 <section id="add-and-erase-in-one-go">
 <h2>6.4. Add and erase in one go!<a class="headerlink" href="#add-and-erase-in-one-go" title="Permalink to this heading">#</a></h2>
@@ -763,11 +782,11 @@ connected to the vertex must also be erased. Otherwise, we will end up in a zomb
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">6.1 Finding a pattern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-on-matching">6.4.1 Requirements on matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.2. Removing vertices and edges from host graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-on-matching">6.2.1 Requirements on matching</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-and-erase-in-one-go">6.4. Add and erase in one go!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-organic-chemistry">6.5. Graph rewriting in organic chemistry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-game-design">6.6. Graph rewriting in game design</a></li>

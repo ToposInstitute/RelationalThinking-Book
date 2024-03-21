@@ -25,7 +25,7 @@ Our goal is to demonstrate how to use graph glueing for a real world problem -- 
 
 Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is: 
 
-```{image} assets/Ch4/quit-sugar-1.png
+```{image} assets/Ch6/quit-sugar-1.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -33,7 +33,7 @@ Let us consider a fun and non-political example -- the struggle of qutting sugar
 
 But the reality is: 
 
-```{image} assets/Ch4/quit-sugar-2.png
+```{image} assets/Ch6/quit-sugar-2.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -41,7 +41,7 @@ But the reality is:
 
 because, the connections are broken causing the system to experience instability: 
 
-```{image} assets/Ch4/quit-sugar-3.png
+```{image} assets/Ch6/quit-sugar-3.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -63,7 +63,7 @@ Given a pattern (a graph), and its replacement, our mission is to build a way to
 
 Microsoft Word provides an interface as in the picture below, to find a text and replace it with another text. This interface applies to any big body of text content. 
 
-```{image} assets/Ch4/find-and-replace.png
+```{image} assets/Ch6/find-and-replace.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -79,91 +79,118 @@ To begin with, let us think what would be filled in the "Find what:" and "Replac
 
 ```Find what``` box must take in a graph. This is the graph that will be "found" in a host graph. ```Replace with```: box should also take in a graph. This is the graph that will replace the graph provided in ```Find what```. 
 
-Great, we are half-way through! We are only half-way through beacuse, we also need to specify the relationship between ```Find what``` and ```Replace with```! This is because the ```Replace with``` graph may retain some or all of the vertices/edges of ```Find what``` graph. The replacement procedure must leave those vertices and edges intact in a host graph, and orient the replacement graph accordingly. There is only one way of replacing a text by another. But there are multiple ways to replace one graph by another depending how the replacement graph unless specified. 
+Great, we are half-way through! We are only half-way through beacuse, we also need to specify the relationship between ```Find what``` and ```Replace with```! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. 
 
-In the following example, the single vertex in the ```Find what``` can be replaced any of the two vertices in the "```Replace with```" graph, or none (the vertex and the self loop is erased and a new graph is put in its place)!
+Consider the following example:
 
-```{image} assets/Ch4/find-and-replace-2.png
+
+```{image} assets/Ch6/find-and-replace-2.png
 :alt: Whoopsy!
 :width: 375px
 :align: center
 ```
 
-Hence, the specification for "find and replace" needs to include information on what vertices and edges are the same between the ```Find what``` and the ```Replace with``` graphs. The best way to do this would be to use an injective morphism from ```Find what``` to ```Replace with```. 
+Our goal is to find a match of `Find what` in the host graph and to replace it with `Replace with`. There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with `Replace with`, as shown below.  
 
-In the above example, there would be an injective morphism from ```Find-what``` into ``````Replace with`````` if the self-loop of the ```Find-what``` had remained in the ```Replace-with``` (as shown below). The graph on the right can be viewed as the ```Find-what``` plus a new vertex and an edge. Thus, an injection from a ```Find-what``` specifies what are the new vertices and edges added to the graph. 
-
-```{image} assets/Ch4/injection-1.png
+```{image} assets/Ch6/replacements.png
 :alt: Whoopsy!
-:width: 425px
+:width: 475px
 :align: center
 ```
 
-Similarly, there would be an injective morphism from ```Replace-with``` into ```Find-what```, if ```Replace-with``` has only vertices and edges which are  from ```Find-what```, as shown below. The graph on the left can be viewed as the ```Find-what``` minus the self-loop. Thus, an injection into a ```Find-what``` graph specifies what existing vertices and edges is to be removed from the graph.  
+Replacement-1 replaces the search pattern (`Find what`) by matching it with the middle vertices of the replace pattern (`Replace with`). 
 
-
-```{image} assets/Ch4/injection-2.png
+```{image} assets/Ch6/replacement-1.png
 :alt: Whoopsy!
-:width: 350px
+:width: 475px
+:align: center
+```
+</br>
+
+
+Replacement-2 replaces the search pattern by deleting the self loop and by matching the remaining vertex with one of the end nodes of the replace pattern.
+
+```{image} assets/Ch6/replacement-2.png
+:alt: Whoopsy!
+:width: 475px
 :align: center
 ```
 
-The two injective morphisms (one into ```Find-what``` and one out ```Find-what```) together specify the ```Replace-with``` graph.
+</br>
 
+To pick one of these replacements, the find-and-replace must specify where the search pattern (`Find what`) and the replace patterns (`Replace with`) meet or overlap. 
 
-```{image} assets/Ch4/interface-2.png
+We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with three graphs and two radiating arrows?
+
+```{image} assets/Ch6/overlap.png
 :alt: Whoopsy!
-:width: 500px
+:width: 300px
+:align: center
+```
+
+The only requirement in this case will be that the arrows needs to be **injective morphisms** (each vertex / edge of search pattern overlaps with at most one vertex / edge of the replacement pattern). 
+
+Let us specify the overlaps for Replacement-1: 
+
+```{image} assets/Ch6/interface-1.png
+:alt: Whoopsy!
+:width: 575px
+:align: center
+```
+
+ and Replacement-2:
+
+```{image} assets/Ch6/interface-2.png
+:alt: Whoopsy!
+:width: 625px
 :align: center
 ```
 
 
- Thus, an interface for "find-and-replace" in graph includes the following information: 
+Note that, the vertices and the edges of the search pattern which do not overlap are to be removed (from the host after finding a match). The vertices and the edges of the search pattern which do not overlap are to be added (to the host after finding a match). The overlap will be unchanged. 
 
-```{image} assets/Ch4/interface-1.png
-:alt: Whoopsy!
-:width: 600px
-:align: center
-```
-
+In this sense, the overlap is what is retained from the search pattern in the replacement. It is precisely what remains after removing specified edges/vertices from the search pattern.
 
 A Microsoft Word version of the above interface would probably look like: 
 
 [Picture]
 
-:::{admonition} **Exercise** 
+:::{admonition} **Exercise 1** 
 
 ````{div} wrapper 
 
-Write the following find-and-replace using plus-minus interface:
+Find the overlap between search and replace for the following replacement:
 
-Find and replace:
 
-```{image} assets/Ch4/Ex-1-graphs.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-
-Interface:
-```{image} assets/Ch4/Ex-1-interface.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-````
 
 
 :::{admonition} Solution 
 :class: dropdown
-```{div} wrapper 
+````{div} wrapper 
 IMAGE
-```
+````
+
+:::
+
+:::{admonition} **Exercise 2** 
+
+````{div} wrapper 
+
+Apply the following find and replace to the given host graph at the highlighted match:
+
+
+
+
+:::{admonition} Solution 
+:class: dropdown
+````{div} wrapper 
+IMAGE
+````
 
 :::
 
 
-The final step is to answer how to find the ```Find what``` graph inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
+The final step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
 ```{image} assets/Ch4/find-and-replace-text.png
 :alt: Whoopsy!
@@ -171,29 +198,37 @@ The final step is to answer how to find the ```Find what``` graph inside a host 
 :align: center
 ```
 
-However, in graph, connectivity matters. So when finding a graph in a host graph, it is not necessarily an exact match, but a match which preserves connectivity. Does it ring bells? A match is a graph morphism from ```Find what``` to a host graph. A few examples below: 
+However, in graph, connectivity matters. So when finding a graph in a host graph, we do not look for 1-to-1 correspondence between vertices / edges. A match simply needs to have the same connectivity as the search pattern. Does it a ring bell? A match is a graph morphism from ```Find what``` to a host graph. 
+
+:::{Note}
+
+A match is a graph morphism from `Find what` to a host.
+
+:::
+
+A few examples below: 
 
 The following is an exact match.
 
-```{image} assets/Ch4/Find-what-1.png
+```{image} assets/Ch6/Find-what-1.png
 :alt: Whoopsy!
-:width: 450px
+:width: 250px
 :align: center
 ```
 
-The following is not an exact match but connectivity is preserved.
+The following is a coarse-grained match.
 
-```{image} assets/Ch4/Find-what-2.png
+```{image} assets/Ch6/Find-what-2.png
 :alt: Whoopsy!
-:width: 450px
+:width: 250px
 :align: center
 ```
 
 The following is an exact match. 
 
-```{image} assets/Ch4/Find-what-3.png
+```{image} assets/Ch6/Find-what-3.png
 :alt: Whoopsy!
-:width: 450px
+:width: 250px
 :align: center
 ```
 
@@ -215,74 +250,24 @@ IMAGE
 ::: 
 
 :::{admonition} Key points
+:class: tip
 
-The interface to find-and-replace for graphs includes 2 components: 
-1. An injective morphism from ```Find what``` to add edges and vertices 
-2. An injective morphism into ```Find what``` to erase edges and vertices
+The interface to find-and-replace needs to have:
+
+```{image} assets/Ch6/interface.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+
   
 
 A *match* in a host graph is given by a morphism from ```Find what``` to a host graph! 
 
 :::
 
-
-## 6.2. Adding vertices and edges to host graph
-
-Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the "find-and-replace". Let us consider the first component of "find-and-replace" interface: an injective morphism from ```Find what```. This morphism says what new vertices and edges to be added to the `Find what` graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found. 
-
-As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
-
-```{image} assets/Ch4/add-1.png
-:alt: Whoopsy!
-:width: 350px
-:align: center
-```
-
-We now want to compute a new graph which has the additional edges and vertices of `Additional only` added to the host graph where the match has been found. Do you see how? 
-
-::: {admonition} The answer is
-:class: dropdown
-
-Pushouts!!!
-
-:::
-
-Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and `Additional only`. 
-
-Let us try out some examples to make the idea absolutely clear! 
-
-**Example 1:** Adding  one vertex and one edge
-
-In the following example, the `Find what` is a vertex with a self-loop. The `Additional only` adds a new vertex and an edge. The host and the `Additional only` graphs look the same in this example. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. 
-
-```{image} assets/Ch4/example-1.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-
-**Example 2:** Adding a new edge (exact match)
-
-In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` adds a new edge in between the vertices. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph. 
-
-```{image} assets/Ch4/example-2.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-**Example 3:** Adding a new edge (coarse-grained match)
-
-In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` has a new edge in between the vertices. The match merges the two vertices of `Find what` into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph. 
-
-```{image} assets/Ch4/example-3.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-
-Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in `Additional only`. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are **integrated** into the host graph rather than the match being replaced as such! 
-
-## 6.3. Removing vertices and edges from host graph
+## 6.2. Removing vertices and edges from host graph
 
 In the last section, we saw that adding vertices and edges to an existing graph is as simple as a computing pushout! What about removing edges and vertices from an existing graph? What role will pushouts play in this procedure? 
 
@@ -410,7 +395,7 @@ The pushout complement includes all the edges and vertices in the host graph tha
 
 ONE MORE EXERCISE - WITH EDGESor VERTICES MERGED IN THE MATCH?
 
-### 6.4.1 Requirements on matching
+### 6.2.1 Requirements on matching
 
 Erasing edges and vertices require care more than adding them. For example, suppose a vertex is erased in the host graph, then all the edges 
 connected to the vertex must also be erased. Otherwise, we will end up in a zombie-graph as shown in the introduction. Hence, care is needed when finding a match. 
@@ -495,6 +480,63 @@ IMAGE1, IMAGE2
 
 ````
 :::
+
+## 6.2. Adding vertices and edges to host graph
+
+Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the "find-and-replace". Let us consider the first component of "find-and-replace" interface: an injective morphism from ```Find what```. This morphism says what new vertices and edges to be added to the `Find what` graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found. 
+
+As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
+
+```{image} assets/Ch4/add-1.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+We now want to compute a new graph which has the additional edges and vertices of `Additional only` added to the host graph where the match has been found. Do you see how? 
+
+::: {admonition} The answer is
+:class: dropdown
+
+Pushouts!!!
+
+:::
+
+Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and `Additional only`. 
+
+Let us try out some examples to make the idea absolutely clear! 
+
+**Example 1:** Adding  one vertex and one edge
+
+In the following example, the `Find what` is a vertex with a self-loop. The `Additional only` adds a new vertex and an edge. The host and the `Additional only` graphs look the same in this example. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. 
+
+```{image} assets/Ch4/example-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+**Example 2:** Adding a new edge (exact match)
+
+In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` adds a new edge in between the vertices. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph. 
+
+```{image} assets/Ch4/example-2.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+**Example 3:** Adding a new edge (coarse-grained match)
+
+In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` has a new edge in between the vertices. The match merges the two vertices of `Find what` into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph. 
+
+```{image} assets/Ch4/example-3.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in `Additional only`. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are **integrated** into the host graph rather than the match being replaced as such! 
+
 
 
 ## 6.4. Add and erase in one go!
