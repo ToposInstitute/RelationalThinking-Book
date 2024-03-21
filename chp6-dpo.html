@@ -444,10 +444,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">6.1 Finding a pattern</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-and-removing-in-one-go">6.4. Adding and removing in one go</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-on-matching">6.4.1 Requirements on matching</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-and-erase-in-one-go">6.4. Add and erase in one go!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-organic-chemistry">6.5. Graph rewriting in organic chemistry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-game-design">6.6. Graph rewriting in game design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-computer-do-the-find-and-integrate-changes">6.7. Making computer do the “find-and-integrate” changes!</a></li>
 </ul>
             </nav>
         </div>
@@ -556,7 +560,7 @@ document.write(`
 <h2>6.2. Adding vertices and edges to host graph<a class="headerlink" href="#adding-vertices-and-edges-to-host-graph" title="Permalink to this heading">#</a></h2>
 <p>Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the “find-and-replace”. Let us consider the first component of “find-and-replace” interface: an injective morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. This morphism says what new vertices and edges to be added to the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found.</p>
 <p>As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
-<a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 350px;" /></a>
 <p>We now want to compute a new graph which has the additional edges and vertices of <code class="docutils literal notranslate"><span class="pre">Additional</span> <span class="pre">only</span></code> added to the host graph where the match has been found. Do you see how?</p>
 <div class="dropdown admonition">
 <p class="admonition-title">The answer is</p>
@@ -577,22 +581,120 @@ document.write(`
 </section>
 <section id="removing-vertices-and-edges-from-host-graph">
 <h2>6.3. Removing vertices and edges from host graph<a class="headerlink" href="#removing-vertices-and-edges-from-host-graph" title="Permalink to this heading">#</a></h2>
+<p>In the last section, we saw that adding vertices and edges to an existing graph is as simple as a computing pushout! What about removing edges and vertices from an existing graph? What role will pushouts play in this procedure?</p>
+<p>As before, let us begin by making a diagram of the information we have:</p>
+<a class="reference internal image-reference" href="_images/remove-1.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-1.png" style="width: 550px;" /></a>
+<p>We know that we cannot compute a pushout because computing a pushout requires two radiating arrows from a single graph. However, we know that the new graph which results after performing the changes is same as the host graph except for the vertices and edges that have been removed. Hence, there must exist a relationship (injection) between them, which we add to our first diagram:</p>
+<a class="reference internal image-reference" href="_images/remove-2.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-2.png" style="width: 750px;" /></a>
+<p>We also know that Graph-2 must relate to the new graph! (Why? Graph-1 has a match in the host graph Graph-2 injects into Graph-1. Since the new graph is simply the host graph with edges and vertices exclusive to Graph-1 removed, Graph-2 must have a match in the new graph.) We add this relationship too to the diagram.</p>
+<a class="reference internal image-reference" href="_images/remove-3.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-3.png" style="width: 750px;" /></a>
+<p>Wait a minute!! That does like a pushout square where the host graph is in the pushout corner! The <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span> <span class="pre">[D]</span></code> is the overlap between the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and the New graph. <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> includes edges and vertices that has been removed. Glueing together <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and the New graph gives the host graph!</p>
+<p>Since the new graph completes a pushout square we shall call it as the <strong>Pushout complement</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Complement means <em>the thing that completes or brings to perfection</em>.</p>
+<blockquote>
+<div><p>A pushout complement is a pushout completement!</p>
+</div></blockquote>
+<p>Let us practice a few exercises on computing “pushout <strong>complement</strong>”</p>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title">Exercise 1 </p>
+<p>What is the pushout complement?</p>
+<a class="reference internal image-reference" href="_images/remove-5.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-5.png" style="width: 750px;" /></a>
+<p>The nodes exclusive to Graph-1 must be removed from the host graph. Thus, the pushout out complement must include:</p>
+<ol class="arabic simple">
+<li><p>all the parts of the host graph not under the match, and</p></li>
+<li><p>only those parts of the match which is included in the <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span> <span class="pre">[D]</span></code>.</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Only those parts of the match which is included in the <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span> <span class="pre">[D]</span></code> are vertices “1”, and “2”.</p>
+<div class="wrapper docutils">
+<a class="reference internal image-reference" href="_images/remove-6.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-6.png" style="width: 650px;" /></a>
+</div>
+<p>The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),  and includes those vertices and edges in the match which are in Graph-2.</p>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-2 admonition">
+<p class="admonition-title">Exercise 2 </p>
+<p>What is the pushout complement?</p>
+<p>This problem has a coarse-grain match. Vertices “1” and “2” of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> are sent to the same vertex in the host graph. Simiarly vertices “3” and “4” are sent to the same vertex in the host graph.</p>
+<a class="reference internal image-reference" href="_images/remove-8.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-8.png" style="width: 750px;" /></a>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="wrapper docutils">
+<a class="reference internal image-reference" href="_images/remove-9.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-9.png" style="width: 650px;" /></a>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-3 admonition">
+<p class="admonition-title">Exercise 3 </p>
+<p>What is the pushout complement?</p>
+<a class="reference internal image-reference" href="_images/remove-10.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-10.png" style="width: 750px;" /></a>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.</p>
+<div class="wrapper docutils">
+<a class="reference internal image-reference" href="_images/remove-11.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-11.png" style="width: 650px;" /></a>
+</div>
+</div>
+</div>
+<p>ONE MORE EXERCISE - WITH EDGESor VERTICES MERGED IN THE MATCH?</p>
+<section id="requirements-on-matching">
+<h3>6.4.1 Requirements on matching<a class="headerlink" href="#requirements-on-matching" title="Permalink to this heading">#</a></h3>
+<p>Erasing edges and vertices require care more than adding them. For example, suppose a vertex is erased in the host graph, then all the edges
+connected to the vertex must also be erased. Otherwise, we will end up in a zombie-graph as shown in the introduction. Hence, care is needed when finding a match.</p>
+<p>Suppose, we have the following specification for deletion: vertex 2 and edge ‘2-3’ needs to be deleted!</p>
+<a class="reference internal image-reference" href="_images/remove-7.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-7.png" style="width: 650px;" /></a>
+<p>Can you see why the following match is incorrect even though it is a graph morphism?</p>
+<a class="reference internal image-reference" href="_images/dangling-2.png"><img alt="Whoopsy!" class="align-center" src="_images/dangling-2.png" style="width: 650px;" /></a>
+<p>Removing vertex 2 from the host graph will result in a dangling edge, see the diagram picture below!</p>
+<a class="reference internal image-reference" href="_images/dangling-3.png"><img alt="Whoopsy!" class="align-center" src="_images/dangling-3.png" style="width: 250px;" /></a>
+<p>An appropriate match will be:</p>
+<a class="reference internal image-reference" href="_images/dangling-1.png"><img alt="Whoopsy!" class="align-center" src="_images/dangling-1.png" style="width: 550px;" /></a>
+<p>We know that a match need not be injective. This may lead to problems. For example, do you see why the following match doees not work?</p>
+<a class="reference internal image-reference" href="_images/identification-1.png"><img alt="Whoopsy!" class="align-center" src="_images/identification-1.png" style="width: 550px;" /></a>
+<p>The above match is not appropriate because vertex 2 needs to be deleted and vertex 1 needs to retained. However, the match identifies both 1 and 2 to the same vertex in the host graph. So what should we do now – keep “1,2” or delete “1,2” from the host graph? A good match, in the first place, MUST avoid identifying 1 and 2 into the same bin since either choice is incorrect.</p>
+<p>Thus, an appropriate match will leave all the edges connected after the replacement and will identify vertices / edges to be deleted seperate from the good vertices / edges in the host graph. In a nutshell, it will satsify the “no-dangling-edge” and the “right identification” conditions.</p>
+<p>In programming, there is a concept called “edge case”. These are special situations where a code will fail to produce appropriate results. For example, a bug that occurs in only iPhone. They are called “edge cases” because these situations lie outside the normal flow of a code / algorithm and custom extra code is added for their special handling. There is an anecdote, “Edge cases are impossible to avoid, so keep them simple”.</p>
+<div class="admonition-million-dollar-questions admonition">
+<p class="admonition-title">Million dollar questions:</p>
+<p>What will happen when a match that violates the “no-dangling edge” requirement is supplied to pushout-completement procedure?</p>
+<p>What will happen when a match that violates the “right identification” requirement is supplied to the pushout-completement procedure?</p>
+</div>
+<p>If the pushout-completement produces bad results, then these violations will be edge cases which needs to be handled outside the completement procedure – like an algorithm to check if the match is appropriate.</p>
+<p>The good news is that the <em>universal nature</em> of pushouts guarantee us that pushout-complement will exist ONLY for appropraite matches!! That is, replacement will be done only when the match is appropriate. Hence, there are no edge cases!!! We did all the heavy lifting early-on by relying on relational thinking, considering all the relevant relationships, and getting the <em>plumbing</em> right! The pay off is that things flow smoothly without the need for extra intervention!</p>
+<blockquote>
+<div><p>The procedure is the guard rail!</p>
+</div></blockquote>
+<p>A final question we must ask is that are pushout complements unique? That is, is the new graph computed by removing the vertices and edges specified by the deletion rule unique. We want it to be unique!</p>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and ponder</p>
+<p>Why is the pushout complement computed for a deletion rule unique?</p>
+</div>
+<p>In general pushout complements are not unique. We have shown an example below. However, because the deletion rule is an injection, guarantees that its pushout complement is unique.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">A general example where pushout complement is not unique. </p>
+<p>Two different pushout complement graphs for the same pushout graph.</p>
+<div class="wrapper docutils">
+<p>IMAGE1, IMAGE2</p>
+</div>
+</div>
 </section>
-<section id="adding-and-removing-in-one-go">
-<h2>6.4. Adding and removing in one go<a class="headerlink" href="#adding-and-removing-in-one-go" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="add-and-erase-in-one-go">
+<h2>6.4. Add and erase in one go!<a class="headerlink" href="#add-and-erase-in-one-go" title="Permalink to this heading">#</a></h2>
+<p>Here is a thing of beauty!!</p>
 </section>
 <section id="graph-rewriting-in-organic-chemistry">
 <h2>6.5. Graph rewriting in organic chemistry<a class="headerlink" href="#graph-rewriting-in-organic-chemistry" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="graph-rewriting-in-game-design">
 <h2>6.6. Graph rewriting in game design<a class="headerlink" href="#graph-rewriting-in-game-design" title="Permalink to this heading">#</a></h2>
-<hr class="docutils" />
-<p>IGNORE!!</p>
-<p>We are familiar to performing ‘cut-copy-paste’ in text documents. Now, imagine, instead of a body of text we have a graph with numerous vertices and edges. We now want a “cut-copy-paste” analogue of text documents for graphs – ‘Cut’ feature to remove vertices and edges from a graph and ‘copy-paste’ feature to add new vertices and edges to the graph.</p>
-<p>You can already imagine the complications of performing “cut-copy-paste” on graphs. A text editor allows one to cut text from any position, and paste text into any position. What a disaster it would cause if this idea is imported directly to graphs!</p>
-<p>Cut vertex “A” from the graph. What remains is not even a graph anymore!</p>
-<p>What is meant by copy-paste of a graph into another graph?</p>
-<p>The challenge is that we want to modify a graph b</p>
+</section>
+<section id="making-computer-do-the-find-and-integrate-changes">
+<h2>6.7. Making computer do the “find-and-integrate” changes!<a class="headerlink" href="#making-computer-do-the-find-and-integrate-changes" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -662,10 +764,14 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-pattern">6.1 Finding a pattern</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-host-graph">6.2. Adding vertices and edges to host graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-and-removing-in-one-go">6.4. Adding and removing in one go</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-host-graph">6.3. Removing vertices and edges from host graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-on-matching">6.4.1 Requirements on matching</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-and-erase-in-one-go">6.4. Add and erase in one go!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-organic-chemistry">6.5. Graph rewriting in organic chemistry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-rewriting-in-game-design">6.6. Graph rewriting in game design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-computer-do-the-find-and-integrate-changes">6.7. Making computer do the “find-and-integrate” changes!</a></li>
 </ul>
   </nav></div>
 
