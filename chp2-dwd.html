@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 2: Directed Wiring Diagrams &#8212; What? Not How! - A Peek into Relational Thinking</title>
+    <title>Chapter 2: Dynamical Systems &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
   
   
@@ -172,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Directed Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: Directed Wiring Diagrams</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: Dynamical Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-graph-relationships.html">Chapter 3: Graph Relationships</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-schemas.html">Chapter 4: Schemas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Graph Gluing</a></li>
@@ -430,7 +430,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 2: Directed Wiring Diagrams</h1>
+    <h1>Chapter 2: Dynamical Systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -444,8 +444,79 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-directed-wiring-diagrams">
-<h1>Chapter 2: Directed Wiring Diagrams<a class="headerlink" href="#chapter-2-directed-wiring-diagrams" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-dynamical-systems">
+<h1>Chapter 2: Dynamical Systems<a class="headerlink" href="#chapter-2-dynamical-systems" title="Permalink to this heading">#</a></h1>
+<p>INTRO:</p>
+<p>In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn’t <em>do</em> anything. In this chapter we’ll bring these graphs to life, animating their evolving states over time</p>
+<p>Recall “example 2” (?) from the last chapter, in which our roommate Tuco took over dishes-duty from me and my wife.</p>
+<p><img alt="DGdishes.jpg" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/c1491185-3815-4f97-a55d-3f414ef619b7/6b943a5f-5028-45c4-93af-2a51094ecd16/DGdishes.jpg" /></p>
+<p>This model had an implicit notion of <em>time</em>. Every day it is <em>somebody’s</em> turn to the dishes and, with each passing day, this status gets updated. One is meant to “read” the diagram in an active way: Look at who’s turn it currently is (“my wife”), then trace along an arrow with your eyes to see who’s turn it will be tomorrow (“me”). Then follow an arrow again to see who’s turn it will be the day after tomorrow (“my wife”). And so on, ad infinitum.</p>
+<ul class="simple">
+<li><p>Looped GIF of who’s turn it is</p></li>
+</ul>
+<p>This is an example of what mathematicians call a <strong>dynamical system</strong> - a system that evolves in time according to formal rules.</p>
+<p>But rather than informally reading the system evolution ourselves, we would like to have the computer do it for us. How can we get the computer to simulate this step-by-step updating rule? The underlying directed graph provides a kind of blueprint, capturing the dependencies in our domain of interest. Now we must add some additional information that will allow the simulation process to unfold.</p>
+<p>Each vertex in our system will get loaded with a number of “states” and an “update rule” which dictates how those states change over time.</p>
+<p>—&gt; Here we introduce the notion of STATE.</p>
+<p><strong>On/Off light:</strong></p>
+<p>Let’s start with lightbulb (what could be simpler?) with the possible state values being either “on” or “off”.</p>
+<p>If you run the following code you will get an output of a lightbulb that is “off”:</p>
+<ul class="simple">
+<li><p>Code snippet with “off” lightbulb</p></li>
+</ul>
+<p>In the above code, set the lightbulb state from “0” to “1” and run it again. Congratulations! You’ve turned on the light.</p>
+<p>Of course we cannot yet call this a “dynamical” system. It’s completely static! The lightbulb just stays at whatever we set it to. Let’s make this lightbulb change its state over time, flashing on and off.</p>
+<p>—&gt; Here we introduce the notion of an UPDATE RULE.</p>
+<p><strong>Flashing light:</strong></p>
+<p>To accomplish this, we add an UPDATE RULE.  Update rules can take many forms, but for our purposes let’s make it a</p>
+<p>—&gt; Here we introduce the idea of INTERACTING PARTS</p>
+<p><strong>Two lights:</strong></p>
+<p>In the last example the flashing light was a self-contained system. But one of the interesting things about modeling dynamical systems is our ability to make different parts of the system affect one another - that an update rule can take into account that state of OTHER parts of the system.</p>
+<p>So let’s take two lightbulbs and have them reference each other’s states</p>
+<ul class="simple">
+<li><p>Copycat / Same (outcome: Static)</p></li>
+<li><p>Copycat / Different (outcome: Alternating)</p></li>
+<li><p>Opposites / Same (outcome: Mutual Flashing)</p></li>
+<li><p>Opposites / Different (outcome: Static)</p></li>
+</ul>
+<p><strong>String of lights:</strong></p>
+<p><strong>Single traffic light:</strong></p>
+<p><strong>Two interacting traffic lights:</strong></p>
+<p>Dynamical systems come in two broad flavors - discrete and continuous. Think a “drum vs. a trombone,” “chess vs. billiards” “sugar cubes vs. honey”</p>
+<p>The previous examples were all discrete, having binary on/off values changing in distinct time steps. As we mentioned, other dynamical systems of interest might be <strong>continuous</strong>, with states coming in a range of values that fluctuate smoothly in time. <em><strong>Compare the on/off nature of a light bulb to the height of a falling rock.</strong></em> Such systems can be modeled just as well, as the following example shows.</p>
+<p>EXAMPLE 2: MOOD SWINGS</p>
+<ul class="simple">
+<li><p>** Kiki and Bourba images</p></li>
+</ul>
+<p>Kiki and Bourba are hanging out. Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba’s mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki’s mood too. But when Kiki’s in a bad mood it only makes Bourba feel <em>worse</em>.</p>
+<p>How will these friends’ moods <em>interact</em>? Will Kiki manage to cheer Bourba up or will they both end up depressed? Or maybe their moods will alternate back and forth in and endless cycle of cheering up and bumming out:</p>
+<ul class="simple">
+<li><p>*** Looping GIF of Kiki and Bourba’s moods alternating</p></li>
+</ul>
+<p>First, let’s describe the interaction of their moods</p>
+<p>The mood change is dependent on three <strong>parameters</strong> namely susceptibility factor, tolerance levels and calm down rates.  Parameter values of a process block remain constant (does not change over time). They can be thought of as weights for the variables (inputs and current state) in the computation of dynamics.</p>
+<p>Here is a possible dynamics of mood change in words based on the above assumptions:</p>
+<blockquote>
+<div><p>At each instant of time, each friend takes in a certain amount of other person’s mood based on their susceptibility. They also release certain amount of their mood based on the calm down rate. If they reach their excitement or grumpiness maximum tolerance levels, then they just calm down; no more interaction!</p>
+</div></blockquote>
+<p>Here is a mathematical representation of the above dynamics:</p>
+<blockquote>
+<div><p>if the maximum grumpiness is reached or the maximum excitement is reached then</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  change in mood = - calm down rate x current mood → The amount by which the current mood moves towards the neutral
+</pre></div>
+</div>
+<p>else</p>
+<p>change_in_mood  = - calm down rate x current mood  + susceptibility factor x incoming mood → The amount of the incoming mood taken in.</p>
+</div></blockquote>
+<p>This is how the moods of Calvin and Hobbes will change over time. The negative signs in the calculation signifies the direction of change — the decrease in grumpiness or excitement. The calm down rates and susceptibility factors of Calvin and Hobbes has values between 0 and 1, inclusive.</p>
+<blockquote>
+<div><p>New mood level = change in mood + current mood</p>
+</div></blockquote>
+<p>CONCLUSION:</p>
+<p>Update rules can be anything - look up tables, logical conditionals, differential equations, automata, recurrence relations, other dynamical systems, etc.?</p>
+<p>Preview of more general powerful models in Algebraic Dynamics. Link so Sophie’s assets</p>
+<p>Dynamical systems and directed graphs are a useful framework for modeling the world. Indeed, they are a close match for how humans tend to conceptualize things. We instinctively look at the world in terms of cause and effect, in terms of procedures which play out over time, in terms of things-acting-upon-other-things.</p>
+<p>But this is just one way of looking at the world. And not all systems are best understood in these terms. In the coming sections we will develop to a more <em>relational</em> approach, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures. Systems that maintain a kind of equilibrium or balancing act between simultaneous constraints.</p>
 </section>
 
     <script type="text/x-thebe-config">
