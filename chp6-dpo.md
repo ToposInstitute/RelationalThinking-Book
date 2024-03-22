@@ -59,7 +59,7 @@ Let us begin!
 
 Given a pattern (a graph), and its replacement, our mission is to build a way to "find" the pattern in any host graph and "replace" it in a good way. 
 
-## 6.1 Finding a pattern 
+## 6.1. Specs for "find and replace"
 
 Microsoft Word provides an interface as in the picture below, to find a text and replace it with another text. This interface applies to any big body of text content. 
 
@@ -77,18 +77,20 @@ How would the interface for find-and-replace in graphs look like?
 
 To begin with, let us think what would be filled in the "Find what:" and "Replace with:" boxes. 
 
-```Find what``` box must take in a graph. This is the graph that will be "found" in a host graph. ```Replace with```: box should also take in a graph. This is the graph that will replace the graph provided in ```Find what```. 
+```Find what``` box must take in a graph. This is the search pattern that will be matched in a host graph. ```Replace with```: box should also take in a graph. This is the replace pattern that will replace the match. 
 
-Great, we are half-way through! We are only half-way through beacuse, we also need to specify the relationship between ```Find what``` and ```Replace with```! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. 
+Great, we are already half-way through! Next, we must how ```Find what``` and ```Replace with``` relate! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. 
 
 Consider the following example:
 
 
-```{image} assets/Ch6/find-and-replace-2.png
+```{image} assets/Ch6/find-and-replace-example.png
 :alt: Whoopsy!
 :width: 375px
 :align: center
 ```
+
+</br>
 
 Our goal is to find a match of `Find what` in the host graph and to replace it with `Replace with`. There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with `Replace with`, as shown below.  
 
@@ -147,13 +149,19 @@ Let us specify the overlaps for Replacement-1:
 ```
 
 
-Note that, the vertices and the edges of the search pattern which do not overlap are to be removed (from the host after finding a match). The vertices and the edges of the search pattern which do not overlap are to be added (to the host after finding a match). The overlap will be unchanged. 
+Note that, the vertices and the edges of the search pattern which do not overlap are to be removed (from the host after finding a match). So, the embedding from `overlap` to `Find what` is the **specification for deletion**.
 
-In this sense, the overlap is what is retained from the search pattern in the replacement. It is precisely what remains after removing specified edges/vertices from the search pattern.
+The vertices and the edges of the search pattern which do not overlap are to be added (to the host after finding a match). So, the embedding from `overlap` to `Replace with` is the **specification for addition**.
 
-A Microsoft Word version of the above interface would probably look like: 
+The overlap will be unchanged. It is precisely what remains after removing specified edges/vertices from the search pattern.
 
-[Picture]
+```{image} assets/Ch6/specification.png
+:alt: Whoopsy!
+:width: 625px
+:align: center
+```
+
+Neat, huh?!
 
 :::{admonition} **Exercise 1** 
 
@@ -189,8 +197,26 @@ IMAGE
 
 :::
 
+:::{admonition} Key points
+:class: tip
 
-The final step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
+The interface to find-and-replace needs to have:
+
+```{image} assets/Ch6/interface.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+- The embedding into `Find what` is the **specification for deletion**. 
+
+- The embedding into `Replace With` is the **specification for addition**.
+
+:::
+
+## 6.2. Finding a match
+
+The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
 ```{image} assets/Ch4/find-and-replace-text.png
 :alt: Whoopsy!
@@ -252,50 +278,115 @@ IMAGE
 :::{admonition} Key points
 :class: tip
 
-The interface to find-and-replace needs to have:
-
-```{image} assets/Ch6/interface.png
-:alt: Whoopsy!
-:width: 450px
-:align: center
-```
-
-
-  
-
 A *match* in a host graph is given by a morphism from ```Find what``` to a host graph! 
 
 :::
 
-## 6.2. Removing vertices and edges from host graph
+## 6.3. Removing vertices and edges from a graph
 
-In the last section, we saw that adding vertices and edges to an existing graph is as simple as a computing pushout! What about removing edges and vertices from an existing graph? What role will pushouts play in this procedure? 
+We now have the specification for "find-and-replace" and the specification for a match. What remains is to perform the find-and-replace! We will begin with the deletion specification!
 
-As before, let us begin by making a diagram of the information we have: 
+$$ {\sf overlap} \hookrightarrow {\sf Find~what} $$
 
-```{image} assets/Ch4/remove-1.png
+
+### 6.3.1. Finding a match to remove vertices/edges
+
+[Message: Tell what a good match is!]
+
+Erasing edges and vertices require care. Suppose a vertex in a match is specifed to be removed. There may be other vertices in the host graph which are connected to the vertex to be deleted. In that case, deleting the vertex will lead to zombie graphs which has edges not connected to any vertex. 
+
+The following example illustrates this situation. 
+
+Suppose, we have the following specification for deletion: vertex 2 and edge '2-3' will be deleted since they are not under the overlap region! 
+```{image} assets/Ch6/remove-7.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+</br>
+
+Can you see why the following match is bad even though it is a graph morphism? 
+
+```{image} assets/Ch6/bad-match-1.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+</br>
+
+Removing vertex 2 from the host graph will result in a dangling edge, see the diagram picture below!
+
+```{image} assets/Ch6/dangling-3.png
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
+
+An appropriate match will be:
+
+```{image} assets/Ch6/remove-8.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
 ```
 
-We know that we cannot compute a pushout because computing a pushout requires two radiating arrows from a single graph. However, we know that the new graph which results after performing the changes is same as the host graph except for the vertices and edges that have been removed. Hence, there must exist a relationship (injection) between them, which we add to our first diagram:
+</br>
 
-```{image} assets/Ch4/remove-2.png
+Another situation that needs care is that a match must not identify a vertex to be deleted and a vertex that needs to be retained (not to be deleted) in the search pattern to the same vertex in the host graph. By the deletion specification, vertex 1 must remain and vertex 2 needs to be deleted. However, the following match identifies vertices 1 and 2 of the search pattern to the same vertex ("1,2") in the host graph.
+
+```{image} assets/Ch6/identification-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+</br>
+
+So what should be done now -- keep "1,2" or delete "1,2" from the host graph? A good match, in the first place, MUST avoid identifying 1 and 2 into the same bin since either choice is incorrect. 
+
+:::{admonition}  Key points
+:class: tip
+
+ A **good match** of a search pattern (for deletion of vertices and edges) will: 
+-  satisfy the *no-dangling edge condition*.
+-  identify vertices / edges to be deleted and vertices / edges to remain seperately, called the *right identification condition*.
+
+:::
+
+We will talk more about "finding a good match" once the algorithm to perform the deletion specification is set up.
+
+
+### 6.3.2. Performing deletion
+
+[Message: Tell deletion is computing pushout compelements]
+
+We are given a deletion specification, a host graph and a match for the search pattern in the host graph. As before, let us begin by making a diagram of the information we have.
+
+```{image} assets/Ch6/remove-1.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+
+</br>
+
+The new graph which results after performing the replacement will have: 
+1. All the vertices and edges of the host graph which are outside the match, and
+2. Only those vertices and edges of the match which is also included in the overlap.
+   
+This means that `overlap` will have a match in the new graph **determined by the match found in the host graph**. The new graph will have an injective morphism into the host graph.
+
+</br>
+
+```{image} assets/Ch6/remove-2.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
 ```
+</br>
 
-We also know that Graph-2 must relate to the new graph! (Why? Graph-1 has a match in the host graph Graph-2 injects into Graph-1. Since the new graph is simply the host graph with edges and vertices exclusive to Graph-1 removed, Graph-2 must have a match in the new graph.) We add this relationship too to the diagram. 
+The above square commutes! Does this shape remind you of pushouts from chapter 5? It turns out that, the host graph is the pushout of `Find what` and the new graph!!
 
-```{image} assets/Ch4/remove-3.png
-:alt: Whoopsy!
-:width: 750px
-:align: center
-```
-
-Wait a minute!! That does like a pushout square where the host graph is in the pushout corner! The `Replace with [D]` is the overlap between the `Find what` and the New graph. `Find what` includes edges and vertices that has been removed. Glueing together `Find what` and the New graph gives the host graph!
+This indeed makes sense, because, the search pattern includes vertices and edges which has been removed. Glueing together `Find what` and the and the new graph along the overlap msut give the original host graph!
 
 Since the new graph completes a pushout square we shall call it as the **Pushout complement**. 
 
@@ -303,39 +394,52 @@ Since the new graph completes a pushout square we shall call it as the **Pushout
 
 Complement means *the thing that completes or brings to perfection*. 
 
+:::
+
 > A pushout complement is a pushout completement! 
 
+Let us look at an example of computing "pushout **complement**" 
 
-Let us practice a few exercises on computing "pushout **complement**" 
+:::{admonition} Example 
 
-:::{admonition} Exercise 1 
-
-What is the pushout complement?
-
-```{image} assets/Ch4/remove-5.png
+```{image} assets/Ch6/example-1.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
 ```
 
-The nodes exclusive to Graph-1 must be removed from the host graph. Thus, the pushout out complement must include: 
+The nodes exclusive to `Find what` must be removed from the host graph. Thus, the pushout out complement must include: 
 1.  all the parts of the host graph not under the match, and 
-2.  only those parts of the match which is included in the `Replace with [D]`. 
+2.  only those parts of the match which is included in the overlap. 
+
+In this example, the pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),  and includes those vertices and edges in the match which are under the image of `overlap` (vertices 1 and 2).
+
+:::
+
+:::{admonition} Exercise 1 
+
+What is the pushout complement?
+
+
+This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are sent to the same vertex in the host graph. Simiarly vertices "3" and "4" are sent to the same vertex in the host graph.
+
+```{image} assets/Ch6/Ex-1.png
+:alt: Whoopsy!
+:width: 750px
+:align: center
+```
+
 
 :::{admonition} Solution
 :class: dropdown
 
-Only those parts of the match which is included in the `Replace with [D]` are vertices "1", and "2".
-
 ````{div} wrapper 
-```{image} assets/Ch4/remove-6.png
+```{image} assets/Ch6/Ex1-sol.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
 ```
 ````
-
-The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),  and includes those vertices and edges in the match which are in Graph-2.
 
 :::
 
@@ -344,34 +448,7 @@ The pushout complement includes all the edges and vertices in the host graph tha
 What is the pushout complement?
 
 
-This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are sent to the same vertex in the host graph. Simiarly vertices "3" and "4" are sent to the same vertex in the host graph.
-
-```{image} assets/Ch4/remove-8.png
-:alt: Whoopsy!
-:width: 750px
-:align: center
-```
-
-
-:::{admonition} Solution
-:class: dropdown
-
-````{div} wrapper 
-```{image} assets/Ch4/remove-9.png
-:alt: Whoopsy!
-:width: 650px
-:align: center
-```
-````
-
-:::
-
-:::{admonition} Exercise 3 
-
-What is the pushout complement?
-
-
-```{image} assets/Ch4/remove-10.png
+```{image} assets/Ch6/Ex-2.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -384,7 +461,7 @@ What is the pushout complement?
 The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.
 
 ````{div} wrapper 
-```{image} assets/Ch4/remove-11.png
+```{image} assets/Ch6/Ex-2-sol.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -393,64 +470,17 @@ The pushout complement includes all the edges and vertices in the host graph tha
 
 :::
 
-ONE MORE EXERCISE - WITH EDGESor VERTICES MERGED IN THE MATCH?
+ONE MORE EXERCISE - WITH EDGES or VERTICES MERGED IN THE MATCH?
 
-### 6.2.1 Requirements on matching
-
-Erasing edges and vertices require care more than adding them. For example, suppose a vertex is erased in the host graph, then all the edges 
-connected to the vertex must also be erased. Otherwise, we will end up in a zombie-graph as shown in the introduction. Hence, care is needed when finding a match. 
-
-Suppose, we have the following specification for deletion: vertex 2 and edge '2-3' needs to be deleted! 
-```{image} assets/Ch4/remove-7.png
-:alt: Whoopsy!
-:width: 650px
-:align: center
-```
-
-Can you see why the following match is incorrect even though it is a graph morphism? 
-
-```{image} assets/Ch4/dangling-2.png
-:alt: Whoopsy!
-:width: 650px
-:align: center
-```
-
-Removing vertex 2 from the host graph will result in a dangling edge, see the diagram picture below!
-
-```{image} assets/Ch4/dangling-3.png
-:alt: Whoopsy!
-:width: 250px
-:align: center
-```
-
-An appropriate match will be:
-
-```{image} assets/Ch4/dangling-1.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-
-We know that a match need not be injective. This may lead to problems. For example, do you see why the following match doees not work?
-
-
-```{image} assets/Ch4/identification-1.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-
-The above match is not appropriate because vertex 2 needs to be deleted and vertex 1 needs to retained. However, the match identifies both 1 and 2 to the same vertex in the host graph. So what should we do now -- keep "1,2" or delete "1,2" from the host graph? A good match, in the first place, MUST avoid identifying 1 and 2 into the same bin since either choice is incorrect. 
-
-Thus, an appropriate match will leave all the edges connected after the replacement and will identify vertices / edges to be deleted seperate from the good vertices / edges in the host graph. In a nutshell, it will satsify the "no-dangling-edge" and the "right identification" conditions.
+### 6.2.3 Managing the requirements of a match
 
 In programming, there is a concept called "edge case". These are special situations where a code will fail to produce appropriate results. For example, a bug that occurs in only iPhone. They are called "edge cases" because these situations lie outside the normal flow of a code / algorithm and custom extra code is added for their special handling. There is an anecdote, "Edge cases are impossible to avoid, so keep them simple". 
 
 :::{admonition} Million dollar questions:
 
-What will happen when a match that violates the "no-dangling edge" requirement is supplied to pushout-completement procedure? 
+What will happen when a match that violates the "no-dangling edge" requirement is supplied for pushout-completement? 
 
-What will happen when a match that violates the "right identification" requirement is supplied to the pushout-completement procedure? 
+What will happen when a match that violates the "right identification" requirement is supplied for pushout-completement? 
 
 :::
 
@@ -460,28 +490,16 @@ The good news is that the *universal nature* of pushouts guarantee us that pusho
 
 > The procedure is the guard rail! 
 
-A final question we must ask is that are pushout complements unique? That is, is the new graph computed by removing the vertices and edges specified by the deletion rule unique. We want it to be unique!
+A final question we must ask is that are pushout complements unique? The pushout completement graph computed for a deletion rule is unique because the deletion rule is an injective morphism.
 
-::: {admonition} Pause and ponder
+:::{admonition} Key point
+:class: tip
 
-Why is the pushout complement computed for a deletion rule unique?
+Vertices and edges of a graph is removed by computing pushout complement.
 
-:::
+::: 
 
-In general pushout complements are not unique. We have shown an example below. However, because the deletion rule is an injection, guarantees that its pushout complement is unique. 
-
-:::{admonition} A general example where pushout complement is not unique. 
-:class: dropdown
-
-Two different pushout complement graphs for the same pushout graph.
-
-````{div} wrapper 
-IMAGE1, IMAGE2
-
-````
-:::
-
-## 6.2. Adding vertices and edges to host graph
+## 6.4. Adding vertices and edges to a graph
 
 Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the "find-and-replace". Let us consider the first component of "find-and-replace" interface: an injective morphism from ```Find what```. This morphism says what new vertices and edges to be added to the `Find what` graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found. 
 
@@ -539,12 +557,14 @@ Note that, in Example 3, the new edge (grey) to be added to the host graph is st
 
 
 
-## 6.4. Add and erase in one go!
+## 6.5. Find-and-replace machinery for graphs
 
 Here is a thing of beauty!!
 
-## 6.5. Graph rewriting in organic chemistry
+## 6.6. Find-and-replace in chemical reactions
 
-## 6.6. Graph rewriting in game design
+## 6.7. Find-and-replace in game design
 
-## 6.7. Making computer do the "find-and-integrate" changes!
+## 6.8. Running the Find-and-replace machinery
+
+## A note on vocabulary
