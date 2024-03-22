@@ -501,70 +501,123 @@ Vertices and edges of a graph is removed by computing pushout complement.
 
 ## 6.4. Adding vertices and edges to a graph
 
-Now that we have constructed the interface for graphs find-and-replace and know what a match (in a host graph) is, we shall move to performing the "find-and-replace". Let us consider the first component of "find-and-replace" interface: an injective morphism from ```Find what```. This morphism says what new vertices and edges to be added to the `Find what` graph. We shall use the idea of pushouts from the last chapter to say how to compute a new graph by adding these vertices and edges to a host graph once a match has been found. 
+We applied the deletion rule to remove the vertices and edges in the host graph as specified by the rule. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges  specified by the addition rule to the pushout complement. That will complete our replacement procedure! Hurray! 
 
-As always, let us begin by drawing diagrams. The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
+As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
 
-```{image} assets/Ch4/add-1.png
+```{image} assets/Ch6/add-1.png
 :alt: Whoopsy!
-:width: 350px
+:width: 550px
+:align: center
+```
+</br>
+
+We shall focus on the lower half of the diagram now where addition of vertices and edges shall proceed!
+
+```{image} assets/Ch6/add-2.png
+:alt: Whoopsy!
+:width: 550px
 :align: center
 ```
 
-We now want to compute a new graph which has the additional edges and vertices of `Additional only` added to the host graph where the match has been found. Do you see how? 
+</br>
 
-::: {admonition} The answer is
+We now want to compute a new graph by adding the vertices and edges exclusive to `Replace with` to the host graph at the match! Do you see how?! Does the shape of the diagram ringbells?
+
+::: {admonition} Yes, the answer is
 :class: dropdown
 
-Pushouts!!!
+Pushouts!!
 
 :::
 
-Computing the pushout of the above diagram, gives exactly what we want! Note that the Graph-1 is the overlap between the host graph and `Additional only`. 
+By computing the pushout of the above diagram, we glue vertices / edges to be added to the pushout complement along the overlap. Our completed diagram looks as follows now:
 
-Let us try out some examples to make the idea absolutely clear! 
-
-**Example 1:** Adding  one vertex and one edge
-
-In the following example, the `Find what` is a vertex with a self-loop. The `Additional only` adds a new vertex and an edge. The host and the `Additional only` graphs look the same in this example. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. 
-
-```{image} assets/Ch4/example-1.png
+```{image} assets/Ch6/pushout.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
 ```
 
-**Example 2:** Adding a new edge (exact match)
+Let us try out some examples to make sure we are right! We start from the example we saw in the previous section! 
 
-In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` adds a new edge in between the vertices. An exact match of `Find what` is spotted in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge to the host graph. 
+**Example 1:** Adding a single edge
 
-```{image} assets/Ch4/example-2.png
-:alt: Whoopsy!
-:width: 550px
-:align: center
-```
-**Example 3:** Adding a new edge (coarse-grained match)
+Suppose, we have an addition rule like this, and the match given by the pushout complement step:
 
-In the following example, the `Find what` has two vertices connected by an edge. The `Additional only` has a new edge in between the vertices. The match merges the two vertices of `Find what` into one vertex in the host graph. The graphs have been color-coded for easy identitification of the mappings. Computing the pushout adds the new edge (self-loop) to the host graph. 
-
-```{image} assets/Ch4/example-3.png
+```{image} assets/Ch6/add-example-rule.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
 ```
 
-Note that, in Example 3, the new edge (grey) to be added to the host graph is straight in `Additional only`. The edge when added to the host graph becomes a self-loop. Thus, when a match is found, the desired changes are **integrated** into the host graph rather than the match being replaced as such! 
+</br>
+
+The `Replace with` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace with` (`overlap` does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!
+
+```{image} assets/Ch6/add-example-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+The complete picture of the replacement procedure (deletion and addition) for this example is as follows: 
+
+We have the following replacement rule and a match in the host graph. 
+
+```{image} assets/Ch6/complete-example-rules.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+</br>
+
+Computing the pushout complement followed by the pushout completes the replacement procedure!
+
+```{image} assets/Ch6/complete-example.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+:::{admonition} Exercise 1 cont.. 
+
+:::
+
+:::{admonition} Exercise 2 cont..
 
 
+:::
 
-## 6.5. Find-and-replace machinery for graphs
 
-Here is a thing of beauty!!
+:::{admonition} Key point 1
+:class: tip
+
+Vertices and edges are added by computing pushout.
+
+::: 
+
+:::{admonition} Key point 2: Find-and-replace machinery for graphs
+:class: tip
+
+A thing of beauty!!
+
+A search pattern (`Find what`) found in a graph is carved into another pattern (`Replace with`) by computing pushout complement and followed by pushout.
+
+```{image} assets/Ch6/final-picture.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+
+::: 
+
+Common literature call our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO).
 
 ## 6.6. Find-and-replace in chemical reactions
 
 ## 6.7. Find-and-replace in game design
 
-## 6.8. Running the Find-and-replace machinery
+## 6.8. Exporting the Find-and-replace machinery to computers via Algebraic Julia
 
 ## A note on vocabulary
