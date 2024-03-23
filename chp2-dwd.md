@@ -12,9 +12,8 @@ kernelspec:
 
 # Chapter 2: Dynamical Systems
 
-INTRO:
 
-In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn't *do* anything. In this chapter we'll bring these graphs to life, animating their evolving states over time
+In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn't *do* anything. In this chapter we'll bring these graphs to life, animating their evolving states over time.
 
 Recall "example 2" (?) from the last chapter, in which our roommate Tuco took over dishes-duty from me and my wife. 
 
@@ -29,6 +28,8 @@ This is an example of what mathematicians call a **dynamical system** - a syst
 But rather than informally reading the system evolution ourselves, we would like to have the computer do it for us. How can we get the computer to simulate this step-by-step updating rule? The underlying directed graph provides a kind of blueprint, capturing the dependencies in our domain of interest. Now we must add some additional information that will allow the simulation process to unfold. 
 
 Each vertex in our system will get loaded with a number of “states” and an “update rule” which dictates how those states change over time.
+
+## Traffic Lights
 
 —> Here we introduce the notion of STATE. 
 
@@ -73,7 +74,7 @@ Dynamical systems come in two broad flavors - discrete and continuous. Think a 
 
 The previous examples were all discrete, having binary on/off values changing in distinct time steps. As we mentioned, other dynamical systems of interest might be **continuous**, with states coming in a range of values that fluctuate smoothly in time. ***Compare the on/off nature of a light bulb to the height of a falling rock.*** Such systems can be modeled just as well, as the following example shows.
 
-EXAMPLE 2: MOOD SWINGS
+## Mood Swings
 
 - ** Kiki and Bourba images
 
@@ -104,12 +105,12 @@ Here is a mathematical representation of the above dynamics:
 > change_in_mood  = - calm down rate x current mood  + susceptibility factor x incoming mood → The amount of the incoming mood taken in. 
 > 
 
-This is how the moods of Calvin and Hobbes will change over time. The negative signs in the calculation signifies the direction of change — the decrease in grumpiness or excitement. The calm down rates and susceptibility factors of Calvin and Hobbes has values between 0 and 1, inclusive.  
+This is how the moods of Kiki and Bourba will change over time. The negative signs in the calculation signifies the direction of change — the decrease in grumpiness or excitement. The calm down rates and susceptibility factors of Kiki and Bourba has values between 0 and 1, inclusive.  
 
 > New mood level = change in mood + current mood
 > 
 
-CONCLUSION:
+## Conclusions
 
 Update rules can be anything - look up tables, logical conditionals, differential equations, automata, recurrence relations, other dynamical systems, etc.?
 
