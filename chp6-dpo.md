@@ -616,7 +616,19 @@ Common literature call our "Find-and-replace machinery" for graphs as Double Pus
 
 ## 6.6. Find-and-replace in chemistry
 
-Find-and-carve rule
+In chemistry, **click reactions** give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder's reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery. 
+
+</br>
+
+```{image} assets/Ch6/reaction.png
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
+
+</br>
+
+In this section, we will see that Diel-Alder's reaction is a double pushout rewrite - the  "Find and replace" machinery which uses pushouts. In this example,  we will view molecules as undirected graphs where atoms are vertices and the chemical bonds are edges. Diel-Alder's reaction is the following, "Find-and-replace" rule for a specific molecule (we do not worry about the names of these molecules because that is not the point).
 
 ```{image} assets/Ch6/Adler-1.png
 :alt: Whoopsy!
@@ -626,7 +638,15 @@ Find-and-carve rule
 
 </br>
 
-Substrate 
+Standard chemistry books write this reaction as follows:
+
+```{image} assets/Ch6/Diel-Alder.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+Let us now use this rule on a substrate molecule which will act as the host graph.
 
 ```{image} assets/Ch6/Adler-substrate.png
 :alt: Whoopsy!
@@ -636,7 +656,7 @@ Substrate
 
 </br>
 
-Complete reaction as graph rewriting
+Applying the double-pushout find-and-replace, we precisely get the final product of this chemical reaction!!
 
 ```{image} assets/Ch6/Adler.png
 :alt: Whoopsy!
@@ -646,6 +666,42 @@ Complete reaction as graph rewriting
 
 ## 6.7. Find-and-replace in game design
 
+Bob is an expert in designing game layout. He designs environment for games. He uses a layout editor for designing cool layouts. The layout keeps track of Bob's design as an directed graph components of the environment are vertices. Two vertices are connected by an arrow if the player can navigate between these two components in the game in the direction of the arrow. 
+
+Bob is currently designing a game of Dungeons and Dragons, and have added two rooms to his dungeon -- Room 1 and Room 2, and made Room2 directly accessible from Room 1. 
+
+However, Bob thought for a moment, and told to himself, "Hey, how about a corridor in-between?". 
+
+```{image} assets/Ch6/corridor.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+</br>
+
+Now a corridor needs to be added between Room 1 and Room 2, and arrows need to be redrawn as follows!
+
+```{image} assets/Ch6/game-design-2.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+
+</br>
+
+Reshaping directed graph follows the same idea as undirected graphs. Now this "M-M" rule 
+
 ## 6.8. Exporting the Find-and-replace machinery to computers via Algebraic Julia
 
+....
+
 ## A note on vocabulary
+
+"Find and replace" procedure tuned to its environment. 
+
+"Match and Meet"
+
+"Graph reshaping"
+
+
