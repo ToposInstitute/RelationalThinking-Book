@@ -755,23 +755,42 @@ document.write(`
 </section>
 <section id="find-and-replace-in-chemistry">
 <h2>6.6. Find-and-replace in chemistry<a class="headerlink" href="#find-and-replace-in-chemistry" title="Permalink to this heading">#</a></h2>
-<p>Find-and-carve rule</p>
+<p>In chemistry, <strong>click reactions</strong> give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder’s reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery.</p>
+</br>
+<a class="reference internal image-reference" href="_images/reaction.png"><img alt="Whoopsy!" class="align-center" src="_images/reaction.png" style="width: 250px;" /></a>
+</br>
+<p>In this section, we will see that Diel-Alder’s reaction is a double pushout rewrite - the  “Find and replace” machinery which uses pushouts. In this example,  we will view molecules as undirected graphs where atoms are vertices and the chemical bonds are edges. Diel-Alder’s reaction is the following, “Find-and-replace” rule for a specific molecule (we do not worry about the names of these molecules because that is not the point).</p>
 <a class="reference internal image-reference" href="_images/Adler-1.png"><img alt="Whoopsy!" class="align-center" src="_images/Adler-1.png" style="width: 350px;" /></a>
 </br>
-<p>Substrate</p>
+<p>Standard chemistry books write this reaction as follows:</p>
+<a class="reference internal image-reference" href="_images/Diel-Alder.png"><img alt="Whoopsy!" class="align-center" src="_images/Diel-Alder.png" style="width: 350px;" /></a>
+<p>Let us now use this rule on a substrate molecule which will act as the host graph.</p>
 <a class="reference internal image-reference" href="_images/Adler-substrate.png"><img alt="Whoopsy!" class="align-center" src="_images/Adler-substrate.png" style="width: 650px;" /></a>
 </br>
-<p>Complete reaction as graph rewriting</p>
+<p>Applying the double-pushout find-and-replace, we precisely get the final product of this chemical reaction!!</p>
 <a class="reference internal image-reference" href="_images/Adler.png"><img alt="Whoopsy!" class="align-center" src="_images/Adler.png" style="width: 650px;" /></a>
 </section>
 <section id="find-and-replace-in-game-design">
 <h2>6.7. Find-and-replace in game design<a class="headerlink" href="#find-and-replace-in-game-design" title="Permalink to this heading">#</a></h2>
+<p>Bob is an expert in designing game layout. He designs environment for games. He uses a layout editor for designing cool layouts. The layout keeps track of Bob’s design as an directed graph components of the environment are vertices. Two vertices are connected by an arrow if the player can navigate between these two components in the game in the direction of the arrow.</p>
+<p>Bob is currently designing a game of Dungeons and Dragons, and have added two rooms to his dungeon – Room 1 and Room 2, and made Room2 directly accessible from Room 1.</p>
+<p>However, Bob thought for a moment, and told to himself, “Hey, how about a corridor in-between?”.</p>
+<a class="reference internal image-reference" href="_images/corridor.png"><img alt="Whoopsy!" class="align-center" src="_images/corridor.png" style="width: 350px;" /></a>
+</br>
+<p>Now a corridor needs to be added between Room 1 and Room 2, and arrows need to be redrawn as follows!</p>
+<a class="reference internal image-reference" href="_images/game-design-2.png"><img alt="Whoopsy!" class="align-center" src="_images/game-design-2.png" style="width: 650px;" /></a>
+</br>
+<p>Reshaping directed graph follows the same idea as undirected graphs. Now this “M-M” rule</p>
 </section>
 <section id="exporting-the-find-and-replace-machinery-to-computers-via-algebraic-julia">
 <h2>6.8. Exporting the Find-and-replace machinery to computers via Algebraic Julia<a class="headerlink" href="#exporting-the-find-and-replace-machinery-to-computers-via-algebraic-julia" title="Permalink to this heading">#</a></h2>
+<p>….</p>
 </section>
 <section id="a-note-on-vocabulary">
 <h2>A note on vocabulary<a class="headerlink" href="#a-note-on-vocabulary" title="Permalink to this heading">#</a></h2>
+<p>“Find and replace” procedure tuned to its environment.</p>
+<p>“Match and Meet”</p>
+<p>“Graph reshaping”</p>
 </section>
 </section>
 
