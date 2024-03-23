@@ -11,3 +11,5 @@ kernelspec:
 ---
 
 # Acknowledgements
+
+This work has been made possible by a grant from the [Mozilla Internet Ecosystem (MIECO) Program](https://future.mozilla.org/mieco/), to advance the future of the internet, and ensure it remains a force for good. We are grateful for their support.
