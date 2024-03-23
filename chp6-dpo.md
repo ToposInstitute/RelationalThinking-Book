@@ -614,7 +614,35 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 
 Common literature call our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO).
 
-## 6.6. Find-and-replace in chemical reactions
+## 6.6. Find-and-replace in chemistry
+
+Find-and-carve rule
+
+```{image} assets/Ch6/Adler-1.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+</br>
+
+Substrate 
+
+```{image} assets/Ch6/Adler-substrate.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+
+</br>
+
+Complete reaction as graph rewriting
+
+```{image} assets/Ch6/Adler.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
 
 ## 6.7. Find-and-replace in game design
 
