@@ -468,12 +468,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-cut-copy-glue-graphs">
 <h1>Chapter 6: Cut-Copy-Glue Graphs<a class="headerlink" href="#chapter-6-cut-copy-glue-graphs" title="Permalink to this heading">#</a></h1>
-<p>[Not ready for review]</p>
-<p>[Our goal is not teaching how to do double pushout rewriting!</p>
-<p>Our goal is to demonstrate how to use graph glueing for a real world problem – graph rewriting. Or ask questions to guide the reader’s thinking to solve the problem. ]</p>
-<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world than being helpful! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country trying to replace the ruling government of another country for political reasons. (may be an ecology example).</p>
+<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacted global climate.</p>
 <blockquote>
-<div><p>We know in hindsight that these are very bad decisions for a society! But, what was missed in the decision making process?</p>
+<div><p>We know in hindsight these approaches have lead humanity to face issues bigger than they the ones they intended to solve! So, what was missed in the decision making process?</p>
 </div></blockquote>
 <p>Let us consider a fun and non-political example – the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is:</p>
 <a class="reference internal image-reference" href="_images/quit-sugar-1.png"><img alt="Whoopsy!" class="align-center" src="_images/quit-sugar-1.png" style="width: 550px;" /></a>
@@ -483,25 +480,25 @@ document.write(`
 <a class="reference internal image-reference" href="_images/quit-sugar-3.png"><img alt="Whoopsy!" class="align-center" src="_images/quit-sugar-3.png" style="width: 350px;" /></a>
 <p>While being healthy makes a person happy, eating sugar makes a person happy in a different way. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is oversimplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change.</p>
 <p>If we want to make a change, it is recommended to start with something simple. The simple thing we shall do in this chapter is to build a way to make changes to an existing graph in a “good” way. By good, we mean that we do not end up with broken connections, and make precisely the changes that are intended.</p>
-<p>Making changes to a graph may involve adding new vertices/edges (hence adding new connections) or removing existing vertices/edges (hence removing existing connections) or both. And these changes happen over particular region(s) of the graph.</p>
+<p>Making changes to a graph means adding new vertices/edges or removing existing vertices/edges or both. And these changes happen over particular region(s) of the graph (like a textual find and replace).</p>
 <p>A lot of concepts in the world around us are modelled as graphs. Hence, building a way to changing an existing graph that is guaranteed to be good is much more than just a theoretical exercise.</p>
 <p>Let us begin!</p>
-<p>Given a pattern (a graph), and its replacement, our mission is to build a way to “find” the pattern in any host graph and “replace” it in a good way.</p>
+<p>Given a pattern (a graph), and its replacement, our mission is to “find” the pattern in any host graph and “replace” it in a good way – first by hand and then in computers.</p>
 <section id="specs-for-find-and-replace">
 <h2>6.1. Specs for “find and replace”<a class="headerlink" href="#specs-for-find-and-replace" title="Permalink to this heading">#</a></h2>
-<p>Microsoft Word provides an interface as in the picture below, to find a text and replace it with another text. This interface applies to any big body of text content.</p>
+<p>Suppose we want to find a text and replace it by some other text in a document. Microsoft Word provides an interface as in the picture belowfor this purpose.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace.png" style="width: 450px;" /></a>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and ponder</p>
 <p>How would the interface for find-and-replace in graphs look like?</p>
 </div>
 <p>To begin with, let us think what would be filled in the “Find what:” and “Replace with:” boxes.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> box must take in a graph. This is the search pattern that will be matched in a host graph. <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>: box should also take in a graph. This is the replace pattern that will replace the match.</p>
-<p>Great, we are already half-way through! Next, we must how <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> relate! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> box must take in a graph. This is the search pattern that will be matched in a host graph. <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> box should also take in a graph. This is the replace pattern that will replace the match.</p>
+<p>Great, we are already half-way through! Next, we must how <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> relate! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. Our goal is to find a match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> in the host graph and to replace it with <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>.</p>
 <p>Consider the following example:</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-example.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-example.png" style="width: 375px;" /></a>
 </br>
-<p>Our goal is to find a match of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> in the host graph and to replace it with <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>. There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>, as shown below.</p>
+<p>There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>, as shown below.</p>
 <a class="reference internal image-reference" href="_images/replacements.png"><img alt="Whoopsy!" class="align-center" src="_images/replacements.png" style="width: 475px;" /></a>
 <p>Replacement-1 replaces the search pattern (<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>) by matching it with the middle vertices of the replace pattern (<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>).</p>
 <a class="reference internal image-reference" href="_images/replacement-1.png"><img alt="Whoopsy!" class="align-center" src="_images/replacement-1.png" style="width: 475px;" /></a>
@@ -512,13 +509,20 @@ document.write(`
 <p>To pick one of these replacements, the find-and-replace must specify where the search pattern (<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>) and the replace patterns (<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>) meet or overlap.</p>
 <p>We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with three graphs and two radiating arrows?</p>
 <a class="reference internal image-reference" href="_images/overlap.png"><img alt="Whoopsy!" class="align-center" src="_images/overlap.png" style="width: 300px;" /></a>
-<p>The only requirement in this case will be that the arrows needs to be <strong>injective morphisms</strong> (each vertex / edge of search pattern overlaps with at most one vertex / edge of the replacement pattern).</p>
-<p>Let us specify the overlaps for Replacement-1:</p>
+<p>The only requirement in this case will be that the arrows needs to be <strong>injective morphisms</strong> (each vertex of the search pattern must overlap with a unique vertex of the replacement pattern. Similary for the edges).</p>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and ponder</p>
+<p>How does the search and the replace patterns overlap in the two different cases of replacement shown above?</p>
+</div>
+<p>The solutions are as follows!</p>
+<p>For replacement-1,</p>
 <a class="reference internal image-reference" href="_images/interface-1.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-1.png" style="width: 575px;" /></a>
-<p>and Replacement-2:</p>
+<p>and replacement-2:</p>
 <a class="reference internal image-reference" href="_images/interface-2.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-2.png" style="width: 625px;" /></a>
-<p>Note that, the vertices and the edges of the search pattern which do not overlap are to be removed (from the host after finding a match). So, the embedding from <code class="docutils literal notranslate"><span class="pre">overlap</span></code> to <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is the <strong>specification for deletion</strong>.</p>
-<p>The vertices and the edges of the search pattern which do not overlap are to be added (to the host after finding a match). So, the embedding from <code class="docutils literal notranslate"><span class="pre">overlap</span></code> to <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> is the <strong>specification for addition</strong>.</p>
+</br>
+<p>Note that, the vertices and the edges of the search pattern outside the overlap region are removed from the host. For example, in case 2, the self-loop of the search pattern is outside the overlap. So it has been removed during the replacement procedure. What overlaps in the search pattern is alone retained. So, the embedding from <code class="docutils literal notranslate"><span class="pre">overlap</span></code> to <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> is the <strong>specification for deletion</strong>.</p>
+<a class="reference internal image-reference" href="_images/interfaceExample.png"><img alt="Whoopsy!" class="align-center" src="_images/interfaceExample.png" style="width: 625px;" /></a>
+<p>The vertices and the edges of the replacement pattern outside the overlap region are added to the host grpah. In case 2, these are unlabelled yellow color nodes in <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> are outside the overlap region. They have been added to the host graph during the replacement. So, the embedding from <code class="docutils literal notranslate"><span class="pre">overlap</span></code> to <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> is the <strong>specification for addition</strong>.</p>
 <p>The overlap will be unchanged. It is precisely what remains after removing specified edges/vertices from the search pattern.</p>
 <a class="reference internal image-reference" href="_images/specification.png"><img alt="Whoopsy!" class="align-center" src="_images/specification.png" style="width: 625px;" /></a>
 <p>Neat, huh?!</p>
@@ -749,7 +753,7 @@ document.write(`
 <p>A search pattern (<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>) found in a graph is carved into another pattern (<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>) by computing pushout complement and followed by pushout.</p>
 <a class="reference internal image-reference" href="_images/final-picture.png"><img alt="Whoopsy!" class="align-center" src="_images/final-picture.png" style="width: 650px;" /></a>
 </div>
-<p>Common literature call our “Find-and-replace machinery” for graphs as Double Pushout Rewriting (DPO).</p>
+<p>Common literature calls our “Find-and-replace machinery” for graphs as Double Pushout Rewriting (DPO).</p>
 </section>
 <section id="find-and-replace-in-chemistry">
 <h2>6.6. Find-and-replace in chemistry<a class="headerlink" href="#find-and-replace-in-chemistry" title="Permalink to this heading">#</a></h2>
@@ -778,7 +782,7 @@ document.write(`
 <p>Now a corridor needs to be added between Room 1 and Room 2, and arrows need to be redrawn as follows!</p>
 <a class="reference internal image-reference" href="_images/game-design-2.png"><img alt="Whoopsy!" class="align-center" src="_images/game-design-2.png" style="width: 650px;" /></a>
 </br>
-<p>Reshaping directed graph follows the same idea as undirected graphs. Now this “M-M” rule</p>
+<p>Reshaping directed graph follows the same idea as undirected graphs. The find-and-replace rule shall be applied to reshape Bob’s game layoout!</p>
 </section>
 <section id="exporting-the-find-and-replace-machinery-to-computers-via-algebraic-julia">
 <h2>6.8. Exporting the Find-and-replace machinery to computers via Algebraic Julia<a class="headerlink" href="#exporting-the-find-and-replace-machinery-to-computers-via-algebraic-julia" title="Permalink to this heading">#</a></h2>
@@ -786,9 +790,14 @@ document.write(`
 </section>
 <section id="a-note-on-vocabulary">
 <h2>A note on vocabulary<a class="headerlink" href="#a-note-on-vocabulary" title="Permalink to this heading">#</a></h2>
-<p>“Find and replace” procedure tuned to its environment.</p>
-<p>“Match and Meet”</p>
-<p>“Graph reshaping”</p>
+<p>We would like to bring reader’s attention to the some vocabulary common in practice since language influences thinking and vice versa.</p>
+<p>The idea of “Find and replace” is a crude one in the sense it is unaware of the context of replacement. A text editor will allow me to replace “truth” by “lie” anywhere in the document. Context-unaware find and replace leads to chaos.</p>
+<p>The mathematics we used to “find-and-replace” in graphs tells us that it is not a replacement, rather it is integration of a new pattern in the place of an exisiting pattern. To integrate is organic and harmonoius by nature! While to replace has an air of superiority about it! Replace is useful – replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from “Find-and-replace” to “Find-and-integrate”.</p>
+<div class="tip admonition">
+<p class="admonition-title">Slogan</p>
+<p>Replace “replace” by “integrate”</p>
+</div>
+<p>This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter.</p>
 </section>
 </section>
 
