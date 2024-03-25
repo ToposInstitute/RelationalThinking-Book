@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Foreword: Systems thinking through software &#8212; What? Not How! - A Peek into Relational Thinking</title>
+    <title>Introduction &#8212; What? Not How! - A Peek into Relational Thinking</title>
   
   
   
@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Foreword: Systems thinking through software
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -431,7 +431,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Foreword: Systems thinking through software</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -441,9 +441,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-thinking-through-software">Systems thinking through software</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraicjulia">AlgebraicJulia</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-ideas">Key ideas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-ve-designed-this-book">How we’ve designed this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-ve-designed-this-book">How we’ve designed this book</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reader-background">Reader background</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-in-line-code">Live, in-line code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-new-medium-for-systems-thinking">A new medium for systems thinking</a></li>
 </ul>
             </nav>
@@ -456,24 +462,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="foreword-systems-thinking-through-software">
-<h1>Foreword: Systems thinking through software<a class="headerlink" href="#foreword-systems-thinking-through-software" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<section id="systems-thinking-through-software">
+<h2>Systems thinking through software<a class="headerlink" href="#systems-thinking-through-software" title="Permalink to this heading">#</a></h2>
 <p>We encounter the word system frequently, hearing talk of health care systems, computer systems, the solar system, and more. Yet the word itself is hard to define. A system is a bunch of things interacting together, somehow. It seems abstract, and often hard to think about. What does one do when part of a system? How does one act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn’t?</p>
 <p>Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically. It’s a way of thinking that emphasises relationships and context, and deemphasises analysis by deconstruction. That is, to seeking understanding about an object it looks outwards, asking how it interacts, rather than inwards, asking what it is made of.</p>
 <p>A challenge with systems thinking is that formal tools for thinking systemically are still a topic of active research – we still are discovering the logic of systems, discovering effective ways to rigorously reason about them. Mathematics has not historically emphasised a systems perspective. Mathematical tools for thinking, including thinking systemically, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.</p>
 <p>There are some promising avenues, however, for mathematical systems thinking. A key tool for mathematical systems thinking, known as category theory, emerged in the 1940s. While this is almost a century ago, developing mathematics is a slow, patient, and intergenerational effort, and it’s only in recent decades it is developing as a tool for systems thinking in the real world.</p>
 <p>A second challenge presents itself: mathematics itself can difficult to learn, especially while it is still an active topic of research by world-leading mathematicians, who do not always explain themselves well. In this book we hope to give the reader the experience of mathematical systems thinking without requiring the mastery of any of the abstract tools of category theory. This is made available to us by leaning on the encoding of these category theoretic ideas into software, via the AlgebraicJulia project.</p>
+</section>
 <section id="algebraicjulia">
 <h2>AlgebraicJulia<a class="headerlink" href="#algebraicjulia" title="Permalink to this heading">#</a></h2>
 <p>AlgebraicJulia is a collection of libraries in the programming language Julia that provides tools for model-driven science. A model is a simplified description of another thing, that highlights important features, and forgets the ones less relevant. For example, picture a collection of clay balls that represent the sun and planets in the solar system – it might capture some aspects of the relative sizes of the planets and their distance from the sun, but forget what the planets are composed of. (Jupiter is not made of clay!) Models make it easier to reason, and do data science, around complicated things we encounter in our lives. AlgebraicJulia lets us use a systems perspective to create models for scientific computing. Its design is heavily informed by the insights developed in category theory over the past 100 years.</p>
 <p>While AlgebraicJulia is still a software ecosystem under development, and is not yet ready to meet all general purpose scientific modelling needs, we believe it is mature enough to be a significant aid in practicing relational thinking.</p>
-<p>This is a book written in two parts. In the first part, we</p>
-<p>The goal of this book is to inform and inspire.</p>
-<p>Our book is example driven, with references to the interested reader on where to learn more about both the programming and the mathematics. There are embedded sections of code,</p>
 </section>
 <section id="key-ideas">
 <h2>Key ideas<a class="headerlink" href="#key-ideas" title="Permalink to this heading">#</a></h2>
-<p>B: Modelling (descriptive) vs thinking (operationalised). Modelling is about representating the world. Thinking is about cognitive switch in focus to relationships rather than objects. Models are the nouns of thought. Relational thinking works best with relational models. So first we need to construct relational models. Then we will learn to manipulate them to derive conclusions.</p>
+<p>The arc of this book is as follows. We begin by considering directed graphs: a simple language of dots and arrows between them. Our goal is to be able to think about these from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking.</p>
+<p>In learning how to think about directed graphs relationally, we see in a microcosm the broader, abstract lessons of relational thinking.</p>
+<p>Once at the top of this ladder, we can begin to appreciate the view.</p>
+<p>Modelling (descriptive) vs thinking (operationalised). Modelling is about representating the world. Thinking is about cognitive switch in focus to relationships rather than objects. Models are the nouns of thought. Relational thinking works best with relational models. So first we need to construct relational models. Then we will learn to manipulate them to derive conclusions.</p>
 <p>Getting the direction right is important — counting vs labelling</p>
 <p>Situate things in the context of other objects they relate to</p>
 <p>Explicitly identify the structure of composition
@@ -481,13 +490,39 @@ Identify the categorical world – contextualises models in the space of possibi
 Identify similar schemas
 explicitly describe maps/morphisms</p>
 <p>efficient because it allows reuse of ideas and code across contexts</p>
-<p>Doing this leads to insights. Doing this formally via a programming language meants we can automatically extract and benefit from those insights. Its’ a bit light: describe the wolrd, and get something for free!</p>
+<p>Doing this leads to insights. Doing this formally via a programming language meants we can automatically extract and benefit from those insights. Slogan: “Describe the world, and get something for free!”</p>
 </section>
 <section id="how-we-ve-designed-this-book">
 <h2>How we’ve designed this book<a class="headerlink" href="#how-we-ve-designed-this-book" title="Permalink to this heading">#</a></h2>
-<p>// Add difficult graph of chapters</p>
+<section id="reader-background">
+<h3>Reader background<a class="headerlink" href="#reader-background" title="Permalink to this heading">#</a></h3>
+<p>We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. But we hope that some readers will also use this book as a way to get acquianted with mathematical thought.</p>
+<p>// Add difficulty graph of chapters</p>
 <p>// Add dependency graph of chapters</p>
-<p>The problems in each chapter provide an opportunity to take an active role in exploring and internalising its key lessons. We encourage to you attempt them, spend some time with them, and play, even use them as a jumping off point for daydreaming about relational thinking. There is no rush.</p>
+<p>Our book is example driven, with references to the interested reader on where to learn more about both the programming and the mathematics. There are embedded sections of code,</p>
+</section>
+<section id="live-in-line-code">
+<h3>Live, in-line code<a class="headerlink" href="#live-in-line-code" title="Permalink to this heading">#</a></h3>
+<p>Similarly, a reader with an introductory experience to programming will find such experience helpful. For example, to deeply engage with AlgebraicJulia, it is useful to have a local installation of the Julia language and AlgebraicJulia libraries. Nonetheless, we have endeavoured to ensure this is not necessary to understand the main messages of this book. We have done this by embedding editable, executable in-line code blocks in most chapters.</p>
+<p>For example, here is one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;My in-line code is working, yay!&quot;</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To run the code, click the “rocket icon” at the top right corner of this page, and select “Live code”. Enabling live code will cause a button labelled “run” to appear in each executable code block. Clicking “run” will run the code in the block.</p>
+<p>The live code environment may take a little time to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a “Waiting for kernel…” message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.</p>
+</section>
+<section id="puzzles">
+<h3>Puzzles<a class="headerlink" href="#puzzles" title="Permalink to this heading">#</a></h3>
+<p>Each chapter contains a few puzzles. These puzzles provide an opportunity to take an active role in exploring and internalising the key lessons of the chapter. We encourage to you attempt them, spend some time with them, and play, even use them as a jumping off point for daydreaming about relational thinking. There is no rush.</p>
+<div class="admonition-puzzle admonition">
+<p class="admonition-title">Puzzle</p>
+<p>You can edit the code blocks, and run them again! See if you can edit the program above so it prints a sentence describing your motivation for reading this book, instead of just “My in-line code is working, yay!”.</p>
+</div>
+</section>
 </section>
 <section id="a-new-medium-for-systems-thinking">
 <h2>A new medium for systems thinking<a class="headerlink" href="#a-new-medium-for-systems-thinking" title="Permalink to this heading">#</a></h2>
@@ -562,9 +597,15 @@ explicitly describe maps/morphisms</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-thinking-through-software">Systems thinking through software</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraicjulia">AlgebraicJulia</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-ideas">Key ideas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-ve-designed-this-book">How we’ve designed this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-ve-designed-this-book">How we’ve designed this book</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reader-background">Reader background</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-in-line-code">Live, in-line code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-new-medium-for-systems-thinking">A new medium for systems thinking</a></li>
 </ul>
   </nav></div>
