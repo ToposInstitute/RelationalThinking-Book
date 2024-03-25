@@ -12,16 +12,9 @@ kernelspec:
 
 # Chapter 6: Cut-Copy-Glue Graphs
 
-[Not ready for review]
+"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacted global climate.
 
-[Our goal is not teaching how to do double pushout rewriting! 
-
-Our goal is to demonstrate how to use graph glueing for a real world problem -- graph rewriting. Or ask questions to guide the reader's thinking to solve the problem. ]
-
-
-"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world than being helpful! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country trying to replace the ruling government of another country for political reasons. (may be an ecology example).  
-
-> We know in hindsight that these are very bad decisions for a society! But, what was missed in the decision making process? 
+> We know in hindsight these approaches have lead humanity to face issues bigger than they the ones they intended to solve! So, what was missed in the decision making process? 
 
 Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is: 
 
@@ -51,17 +44,17 @@ While being healthy makes a person happy, eating sugar makes a person happy in a
 
 If we want to make a change, it is recommended to start with something simple. The simple thing we shall do in this chapter is to build a way to make changes to an existing graph in a "good" way. By good, we mean that we do not end up with broken connections, and make precisely the changes that are intended. 
 
-Making changes to a graph may involve adding new vertices/edges (hence adding new connections) or removing existing vertices/edges (hence removing existing connections) or both. And these changes happen over particular region(s) of the graph.
+Making changes to a graph means adding new vertices/edges or removing existing vertices/edges or both. And these changes happen over particular region(s) of the graph (like a textual find and replace).
 
 A lot of concepts in the world around us are modelled as graphs. Hence, building a way to changing an existing graph that is guaranteed to be good is much more than just a theoretical exercise.
 
 Let us begin! 
 
-Given a pattern (a graph), and its replacement, our mission is to build a way to "find" the pattern in any host graph and "replace" it in a good way. 
+Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- first by hand and then in computers. 
 
 ## 6.1. Specs for "find and replace"
 
-Microsoft Word provides an interface as in the picture below, to find a text and replace it with another text. This interface applies to any big body of text content. 
+Suppose we want to find a text and replace it by some other text in a document. Microsoft Word provides an interface as in the picture belowfor this purpose.  
 
 ```{image} assets/Ch6/find-and-replace.png
 :alt: Whoopsy!
@@ -77,9 +70,9 @@ How would the interface for find-and-replace in graphs look like?
 
 To begin with, let us think what would be filled in the "Find what:" and "Replace with:" boxes. 
 
-```Find what``` box must take in a graph. This is the search pattern that will be matched in a host graph. ```Replace with```: box should also take in a graph. This is the replace pattern that will replace the match. 
+```Find what``` box must take in a graph. This is the search pattern that will be matched in a host graph. ```Replace with``` box should also take in a graph. This is the replace pattern that will replace the match. 
 
-Great, we are already half-way through! Next, we must how ```Find what``` and ```Replace with``` relate! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. 
+Great, we are already half-way through! Next, we must how ```Find what``` and ```Replace with``` relate! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. Our goal is to find a match of `Find what` in the host graph and to replace it with `Replace with`. 
 
 Consider the following example:
 
@@ -92,7 +85,7 @@ Consider the following example:
 
 </br>
 
-Our goal is to find a match of `Find what` in the host graph and to replace it with `Replace with`. There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with `Replace with`, as shown below.  
+There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with `Replace with`, as shown below.  
 
 ```{image} assets/Ch6/replacements.png
 :alt: Whoopsy!
@@ -130,9 +123,17 @@ We know from Chapter 5, how to specify overlap between two graphs :) Do you reme
 :align: center
 ```
 
-The only requirement in this case will be that the arrows needs to be **injective morphisms** (each vertex / edge of search pattern overlaps with at most one vertex / edge of the replacement pattern). 
+The only requirement in this case will be that the arrows needs to be **injective morphisms** (each vertex of the search pattern must overlap with a unique vertex of the replacement pattern. Similary for the edges). 
 
-Let us specify the overlaps for Replacement-1: 
+:::{admonition} Pause and ponder
+
+How does the search and the replace patterns overlap in the two different cases of replacement shown above?
+
+:::
+
+The solutions are as follows!
+
+For replacement-1, 
 
 ```{image} assets/Ch6/interface-1.png
 :alt: Whoopsy!
@@ -140,7 +141,7 @@ Let us specify the overlaps for Replacement-1:
 :align: center
 ```
 
- and Replacement-2:
+ and replacement-2:
 
 ```{image} assets/Ch6/interface-2.png
 :alt: Whoopsy!
@@ -148,10 +149,19 @@ Let us specify the overlaps for Replacement-1:
 :align: center
 ```
 
+</br>
 
-Note that, the vertices and the edges of the search pattern which do not overlap are to be removed (from the host after finding a match). So, the embedding from `overlap` to `Find what` is the **specification for deletion**.
 
-The vertices and the edges of the search pattern which do not overlap are to be added (to the host after finding a match). So, the embedding from `overlap` to `Replace with` is the **specification for addition**.
+Note that, the vertices and the edges of the search pattern outside the overlap region are removed from the host. For example, in case 2, the self-loop of the search pattern is outside the overlap. So it has been removed during the replacement procedure. What overlaps in the search pattern is alone retained. So, the embedding from `overlap` to `Find what` is the **specification for deletion**. 
+
+
+```{image} assets/Ch6/interfaceExample.png
+:alt: Whoopsy!
+:width: 625px
+:align: center
+```
+
+The vertices and the edges of the replacement pattern outside the overlap region are added to the host grpah. In case 2, these are unlabelled yellow color nodes in `Replace with` are outside the overlap region. They have been added to the host graph during the replacement. So, the embedding from `overlap` to `Replace with` is the **specification for addition**.
 
 The overlap will be unchanged. It is precisely what remains after removing specified edges/vertices from the search pattern.
 
@@ -218,7 +228,7 @@ The interface to find-and-replace needs to have:
 
 The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
-```{image} assets/Ch4/find-and-replace-text.png
+```{image} assets/Ch6/find-and-replace-text.png
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -612,7 +622,7 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 
 ::: 
 
-Common literature call our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO).
+Common literature calls our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO). 
 
 ## 6.6. Find-and-replace in chemistry
 
@@ -690,7 +700,7 @@ Now a corridor needs to be added between Room 1 and Room 2, and arrows need to b
 
 </br>
 
-Reshaping directed graph follows the same idea as undirected graphs. Now this "M-M" rule 
+Reshaping directed graph follows the same idea as undirected graphs. The find-and-replace rule shall be applied to reshape Bob's game layoout!
 
 ## 6.8. Exporting the Find-and-replace machinery to computers via Algebraic Julia
 
@@ -698,10 +708,22 @@ Reshaping directed graph follows the same idea as undirected graphs. Now this "M
 
 ## A note on vocabulary
 
-"Find and replace" procedure tuned to its environment. 
+We would like to bring reader's attention to the some vocabulary common in practice since language influences thinking and vice versa.
 
-"Match and Meet"
+The idea of "Find and replace" is a crude one in the sense it is unaware of the context of replacement. A text editor will allow me to replace "truth" by "lie" anywhere in the document. Context-unaware find and replace leads to chaos.
 
-"Graph reshaping"
+The mathematics we used to "find-and-replace" in graphs tells us that it is not a replacement, rather it is integration of a new pattern in the place of an exisiting pattern. To integrate is organic and harmonoius by nature! While to replace has an air of superiority about it! Replace is useful -- replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from "Find-and-replace" to "Find-and-integrate". 
+
+:::{admonition} Slogan
+:class: tip
+
+ Replace "replace" by "integrate" 
+
+::: 
+
+This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter. 
+
+
+
 
 
