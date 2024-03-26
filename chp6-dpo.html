@@ -492,7 +492,8 @@ document.write(`
 <p>Making changes to a graph means adding new vertices/edges or removing existing vertices/edges or both. And these changes happen over particular region(s) of the graph (like a textual find and replace).</p>
 <p>A lot of concepts in the world around us are modelled as graphs. Hence, building a way to changing an existing graph that is guaranteed to be good is much more than just a theoretical exercise.</p>
 <p>Let us begin!</p>
-<p>Given a pattern (a graph), and its replacement, our mission is to “find” the pattern in any host graph and “replace” it in a good way – first by hand and then in computers.</p>
+<p>Given a pattern (a graph), and its replacement, our mission is to “find” the pattern in any host graph and “replace” it in a good way –
+first by hand and then in computers! <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="specs-for-find-and-replace">
 <h2>6.2. Specs for “find and replace”<a class="headerlink" href="#specs-for-find-and-replace" title="Permalink to this heading">#</a></h2>
@@ -537,9 +538,10 @@ document.write(`
 <a class="reference internal image-reference" href="_images/specification.png"><img alt="Whoopsy!" class="align-center" src="_images/specification.png" style="width: 625px;" /></a>
 <p>Neat, huh?!</p>
 <div class="admonition-puzzle-1 admonition">
-<p class="admonition-title"><strong>Puzzle 1</strong> </p>
+<p class="admonition-title">Puzzle 1</p>
 <div class="wrapper docutils">
 <p>Find the overlap between search and replace for the following replacement:</p>
+<p>…</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
@@ -549,9 +551,10 @@ document.write(`
 </div>
 </div>
 <div class="admonition-puzzle-2 admonition">
-<p class="admonition-title"><strong>Puzzle 2</strong> </p>
+<p class="admonition-title">Puzzle 2</p>
 <div class="wrapper docutils">
 <p>Apply the following find and replace to the given host graph at the highlighted match:</p>
+<p>…</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
@@ -589,8 +592,8 @@ document.write(`
 <p>The below match, has vertices “1” and “2” in the search pattern, mapped to the same vertex in the host graph.</p>
 <a class="reference internal image-reference" href="_images/match-example-2.png"><img alt="Whoopsy!" class="align-center" src="_images/match-example-2.png" style="width: 350px;" /></a>
 </br>
-<div class="admonition-puzzle-1 admonition">
-<p class="admonition-title"><strong>Puzzle 1</strong></p>
+<div class="admonition-puzzle-3 admonition">
+<p class="admonition-title">Puzzle 3</p>
 <p>Find at least two matches of the search pattern in the host graph.</p>
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/match-ex1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex1.png" style="width: 350px;" /></a>
@@ -605,8 +608,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="admonition-puzzle-2 admonition">
-<p class="admonition-title"><strong>Puzzle 2</strong></p>
+<div class="admonition-puzzle-4 admonition">
+<p class="admonition-title">Puzzle 4</p>
 <p>(Same as Paul’s Puzzle from chapter 1)</p>
 <p>How many matches (graph morphism) are from the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to the host graph?</p>
 <div class="wrapper docutils">
@@ -685,8 +688,8 @@ document.write(`
 <div><p>A pushout complement is a pushout completement!</p>
 </div></blockquote>
 <p>Let us look at an example of computing “pushout <strong>complement</strong>”</p>
-<div class="admonition-example admonition">
-<p class="admonition-title">Example</p>
+<div class="admonition-example-1 admonition">
+<p class="admonition-title">Example 1</p>
 <a class="reference internal image-reference" href="_images/example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/example-1.png" style="width: 750px;" /></a>
 <p>The nodes exclusive to <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> must be removed from the host graph. Thus, the pushout out complement must include:</p>
 <ol class="arabic simple">
@@ -695,8 +698,8 @@ document.write(`
 </ol>
 <p>In this example, the pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),  and includes those vertices and edges in the match which are under the image of <code class="docutils literal notranslate"><span class="pre">overlap</span></code> (vertices 1 and 2).</p>
 </div>
-<div class="admonition-exercise-1 admonition">
-<p class="admonition-title">Exercise 1 </p>
+<div class="admonition-puzzle-5 admonition">
+<p class="admonition-title">Puzzle 5</p>
 <p>What is the pushout complement?</p>
 <p>This problem has a coarse-grain match. Vertices “1” and “2” of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> are sent to the same vertex in the host graph. Simiarly vertices “3” and “4” are sent to the same vertex in the host graph.</p>
 <a class="reference internal image-reference" href="_images/Ex-11.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-11.png" style="width: 750px;" /></a>
@@ -707,8 +710,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="admonition-exercise-2 admonition">
-<p class="admonition-title">Exercise 2 </p>
+<div class="admonition-puzzle-6 admonition">
+<p class="admonition-title">Puzzle 6</p>
 <p>What is the pushout complement?</p>
 <a class="reference internal image-reference" href="_images/Ex-21.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-21.png" style="width: 750px;" /></a>
 <div class="dropdown admonition">
@@ -732,17 +735,17 @@ document.write(`
 </div>
 <p>If the pushout-completement produces bad results, then these violations will be edge cases which needs to be handled outside the completement procedure – like an algorithm to check if the match is appropriate.</p>
 <p>The good news is that the <em>universal nature</em> of pushouts guarantee us that pushout-complement will exist ONLY for appropraite matches!! That is, replacement will be done only when the match is appropriate. Hence, there are no edge cases!!! To drive home home this message, here are two examples. We leave it to the reader to check if a pushout complement exists in these cases.</p>
-<div class="admonition-example-1 admonition">
-<p class="admonition-title">Example 1</p>
+<div class="admonition-example-2 admonition">
+<p class="admonition-title">Example 2</p>
 <p>(Will be redrawn)</p>
-<p>Is there a pushout complement?</p>
+<p>Is there a pushout complement? If not, why?</p>
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/dangling.png"><img alt="Whoopsy!" class="align-center" src="_images/dangling.png" style="width: 350px;" /></a>
 </div>
 </div>
-<div class="admonition-example-2 admonition">
-<p class="admonition-title">Example 2</p>
-<p>Is there a pushout complement?</p>
+<div class="admonition-example-3 admonition">
+<p class="admonition-title">Example 3</p>
+<p>Is there a pushout complement? If not, why?</p>
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/right-identity.png"><img alt="Whoopsy!" class="align-center" src="_images/right-identity.png" style="width: 350px;" /></a>
 </div>
@@ -775,7 +778,7 @@ document.write(`
 <p>By computing the pushout of the above diagram, we glue vertices / edges to be added to the pushout complement along the overlap. Our completed diagram looks as follows now:</p>
 <a class="reference internal image-reference" href="_images/pushout.png"><img alt="Whoopsy!" class="align-center" src="_images/pushout.png" style="width: 550px;" /></a>
 <p>Let us try out some examples to make sure we are right! We start from the example we saw in the previous section!</p>
-<p><strong>Example 1:</strong> Adding a single edge</p>
+<p><strong>Example:</strong> Adding a single edge</p>
 <p>Suppose, we have an addition rule like this, and the match given by the pushout complement step:</p>
 <a class="reference internal image-reference" href="_images/add-example-rule.png"><img alt="Whoopsy!" class="align-center" src="_images/add-example-rule.png" style="width: 550px;" /></a>
 </br>
@@ -787,8 +790,8 @@ document.write(`
 </br>
 <p>Computing the pushout complement followed by the pushout completes the replacement procedure!</p>
 <a class="reference internal image-reference" href="_images/complete-example.png"><img alt="Whoopsy!" class="align-center" src="_images/complete-example.png" style="width: 550px;" /></a>
-<div class="admonition-exercise-1-continued-from-exercise-1-in-section admonition">
-<p class="admonition-title">Exercise 1 (continued from Exercise 1 in Section — )</p>
+<div class="admonition-puzzle-7-continued-from-puzzle-5-in-section admonition">
+<p class="admonition-title">Puzzle 7 (continued from Puzzle 5 in Section — )</p>
 <p>Compute the pushout:</p>
 <a class="reference internal image-reference" href="_images/DPO-ex-1.png"><img alt="Whoopsy!" class="align-center" src="_images/DPO-ex-1.png" style="width: 550px;" /></a>
 <div class="dropdown admonition">
@@ -799,8 +802,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="admonition-puzzle-2-continued-from-puzzle-2-in-section admonition">
-<p class="admonition-title">Puzzle 2 (continued from Puzzle 2 in Section — )</p>
+<div class="admonition-puzzle-8-continued-from-puzzle-6-in-section admonition">
+<p class="admonition-title">Puzzle 8 (continued from Puzzle 6 in Section — )</p>
 <a class="reference internal image-reference" href="_images/DPO-ex-2.png"><img alt="Whoopsy!" class="align-center" src="_images/DPO-ex-2.png" style="width: 550px;" /></a>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
@@ -855,18 +858,19 @@ document.write(`
 <h2>6.8. Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
 <section id="finding-matches-of-a-search-pattern">
 <h3>6.8.1. Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
+<p>Puzzle 3</p>
 </section>
 <section id="is-this-a-pushout-complement">
 <h3>6.8.2. Is this a pushout complement?<a class="headerlink" href="#is-this-a-pushout-complement" title="Permalink to this heading">#</a></h3>
-<p>….</p>
+<p>Example 2 and Example 3</p>
 </section>
 <section id="computing-pushout-complements">
 <h3>6.8.3. Computing Pushout complements<a class="headerlink" href="#computing-pushout-complements" title="Permalink to this heading">#</a></h3>
-<p>….</p>
+<p>Puzzle 5 and Puzzle 6</p>
 </section>
 <section id="computing-double-pushouts">
 <h3>6.8.4. Computing double-pushouts<a class="headerlink" href="#computing-double-pushouts" title="Permalink to this heading">#</a></h3>
-<p>….</p>
+<p>Puzzle 7 and Puzzle 8</p>
 </section>
 </section>
 <section id="a-note-on-vocabulary">
@@ -879,6 +883,11 @@ document.write(`
 <p>Replace “replace” by “integrate”</p>
 </div>
 <p>This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>A few examples in this chapter have been inspired by <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the handout</a> titled “Double Pushout Rewriting in Chemistry” authored by Georg Fischer, and Hannah Gschwentner, and <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the blog post</a> “Double pushouts on Graphs” by Mark Gritter!</p>
+</aside>
 </section>
 </section>
 
