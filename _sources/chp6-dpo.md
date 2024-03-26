@@ -12,6 +12,8 @@ kernelspec:
 
 # Chapter 6: Cut-Copy-Glue Graphs
 
+## 6.1. Introduction
+
 "Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacted global climate.
 
 > We know in hindsight these approaches have lead humanity to face issues bigger than they the ones they intended to solve! So, what was missed in the decision making process? 
@@ -52,7 +54,7 @@ Let us begin!
 
 Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- first by hand and then in computers. 
 
-## 6.1. Specs for "find and replace"
+## 6.2. Specs for "find and replace"
 
 Suppose we want to find a text and replace it by some other text in a document. Microsoft Word provides an interface as in the picture belowfor this purpose.  
 
@@ -173,7 +175,7 @@ The overlap will be unchanged. It is precisely what remains after removing speci
 
 Neat, huh?!
 
-:::{admonition} **Exercise 1** 
+:::{admonition} **Puzzle 1** 
 
 ````{div} wrapper 
 
@@ -190,7 +192,7 @@ IMAGE
 
 :::
 
-:::{admonition} **Exercise 2** 
+:::{admonition} **Puzzle 2** 
 
 ````{div} wrapper 
 
@@ -218,13 +220,13 @@ The interface to find-and-replace needs to have:
 :align: center
 ```
 
-- The embedding into `Find what` is the **specification for deletion**. 
+- The injective morphism into `Find what` is the **specification for deletion**. 
 
-- The embedding into `Replace With` is the **specification for addition**.
+- The injective morphism into `Replace With` is the **specification for addition**.
 
 :::
 
-## 6.2. Finding a match
+## 6.3. Finding a match
 
 The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
@@ -234,7 +236,7 @@ The next step is to answer how to find a match of a search pattern inside a host
 :align: center
 ```
 
-However, in graph, connectivity matters. So when finding a graph in a host graph, we do not look for 1-to-1 correspondence between vertices / edges. A match simply needs to have the same connectivity as the search pattern. Does it a ring bell? A match is a graph morphism from ```Find what``` to a host graph. 
+However, in graph, connectivity matters than finding exact match of the shape of the search pattern. So when searching for pattern in a host graph, we do not look for 1-to-1 correspondence between vertices / edges of the `Find what`. Rather, we need to look for matches which have similar connectivity as the search pattern. Do the words "similar connectivity" a ring bell? Similar connectivity implies  graph morphism.
 
 :::{Note}
 
@@ -242,35 +244,83 @@ A match is a graph morphism from `Find what` to a host.
 
 :::
 
-A few examples below: 
+Let us suppose we want to find a match of this search pattern in the host graph:
 
-The following is an exact match.
-
-```{image} assets/Ch6/Find-what-1.png
+```{image} assets/Ch6/match.png
 :alt: Whoopsy!
-:width: 250px
+:width: 350px
 :align: center
 ```
 
-The following is a coarse-grained match.
+</br>
 
-```{image} assets/Ch6/Find-what-2.png
+
+Here are two possible matches of the search pattern. The mapping (match) is shown using the labels on the vertices and the edges. 
+
+
+The below match is an injective morphism. 
+
+```{image} assets/Ch6/match-example-1.png
 :alt: Whoopsy!
-:width: 250px
+:width: 350px
 :align: center
 ```
 
-The following is an exact match. 
+</br>
 
-```{image} assets/Ch6/Find-what-3.png
+The below match, has vertices "1" and "2" in the search pattern, mapped to the same vertex in the host graph.
+
+```{image} assets/Ch6/match-example-2.png
 :alt: Whoopsy!
-:width: 250px
+:width: 350px
 :align: center
 ```
 
-:::{admonition} **Exercise**
+</br>
 
-How many matches (graph morpshism) are from the ```Find what``` to the host graph? 
+
+:::{admonition} **Puzzle 1**
+
+Find at least two matches of the search pattern in the host graph. 
+
+````{div} wrapper 
+```{image} assets/Ch6/match-ex1.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+````
+
+
+:::{admonition} Solution 
+:class: dropdown
+````{div} wrapper 
+
+An exact match: 
+
+```{image} assets/Ch6/match-ex-sol1.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+Non-injective match:
+
+```{image} assets/Ch6/match-ex-sol1.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+````
+
+::: 
+
+:::{admonition} **Puzzle 2**
+
+(Same as Paul's Puzzle from chapter 1)
+
+How many matches (graph morphism) are from the ```Find what``` to the host graph? 
 
 ```{div} wrapper 
 IMAGE
@@ -292,14 +342,14 @@ A *match* in a host graph is given by a morphism from ```Find what``` to a host 
 
 :::
 
-## 6.3. Removing vertices and edges from a graph
+## 6.4. Removing vertices and edges from a graph
 
 We now have the specification for "find-and-replace" and the specification for a match. What remains is to perform the find-and-replace! We will begin with the deletion specification!
 
 $$ {\sf overlap} \hookrightarrow {\sf Find~what} $$
 
 
-### 6.3.1. Finding a match to remove vertices/edges
+### 6.4.1. Finding a match to remove vertices/edges
 
 [Message: Tell what a good match is!]
 
@@ -365,7 +415,7 @@ So what should be done now -- keep "1,2" or delete "1,2" from the host graph? A 
 We will talk more about "finding a good match" once the algorithm to perform the deletion specification is set up.
 
 
-### 6.3.2. Performing deletion
+### 6.4.2. Performing deletion
 
 [Message: Tell deletion is computing pushout compelements]
 
@@ -480,23 +530,60 @@ The pushout complement includes all the edges and vertices in the host graph tha
 
 :::
 
-ONE MORE EXERCISE - WITH EDGES or VERTICES MERGED IN THE MATCH?
-
-### 6.2.3 Managing the requirements of a match
+### 6.4.3. Managing the requirements of a match
 
 In programming, there is a concept called "edge case". These are special situations where a code will fail to produce appropriate results. For example, a bug that occurs in only iPhone. They are called "edge cases" because these situations lie outside the normal flow of a code / algorithm and custom extra code is added for their special handling. There is an anecdote, "Edge cases are impossible to avoid, so keep them simple". 
 
 :::{admonition} Million dollar questions:
 
-What will happen when a match that violates the "no-dangling edge" requirement is supplied for pushout-completement? 
+1. What will happen when a match that violates the "no-dangling edge" requirement is supplied for pushout-completement? 
 
-What will happen when a match that violates the "right identification" requirement is supplied for pushout-completement? 
+2. What will happen when a match that violates the "right identification" requirement is supplied for pushout-completement? 
 
 :::
 
 If the pushout-completement produces bad results, then these violations will be edge cases which needs to be handled outside the completement procedure -- like an algorithm to check if the match is appropriate. 
 
-The good news is that the *universal nature* of pushouts guarantee us that pushout-complement will exist ONLY for appropraite matches!! That is, replacement will be done only when the match is appropriate. Hence, there are no edge cases!!! We did all the heavy lifting early-on by relying on relational thinking, considering all the relevant relationships, and getting the *plumbing* right! The pay off is that things flow smoothly without the need for extra intervention! 
+The good news is that the *universal nature* of pushouts guarantee us that pushout-complement will exist ONLY for appropraite matches!! That is, replacement will be done only when the match is appropriate. Hence, there are no edge cases!!! To drive home home this message, here are two examples. We leave it to the reader to check if a pushout complement exists in these cases. 
+
+:::{admonition} Example 1
+
+(Will be redrawn)
+
+Is there a pushout complement? 
+
+
+````{div} wrapper 
+```{image} assets/Ch6/dangling.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+````
+
+
+:::
+
+
+
+:::{admonition} Example 2
+
+Is there a pushout complement? 
+
+
+````{div} wrapper 
+```{image} assets/Ch6/right-identity.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+````
+
+:::
+
+
+
+We did all the heavy lifting early-on by relying on relational thinking, considering all the relevant relationships, and getting the *plumbing* right! The pay off is that things flow smoothly without the need for extra intervention! 
 
 > The procedure is the guard rail! 
 
@@ -509,7 +596,7 @@ Vertices and edges of a graph is removed by computing pushout complement.
 
 ::: 
 
-## 6.4. Adding vertices and edges to a graph
+## 6.5. Adding vertices and edges to a graph
 
 We applied the deletion rule to remove the vertices and edges in the host graph as specified by the rule. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges  specified by the addition rule to the pushout complement. That will complete our replacement procedure! Hurray! 
 
@@ -590,15 +677,52 @@ Computing the pushout complement followed by the pushout completes the replaceme
 :align: center
 ```
 
-:::{admonition} Exercise 1 cont.. 
+:::{admonition} Exercise 1 (continued from Exercise 1 in Section --- )
+
+Compute the pushout:
+
+```{image} assets/Ch6/DPO-ex-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+:::{admonition} Solution
+:class: dropdown
+
+[Explanation]
+
+````{div} wrapper 
+```{image} assets/Ch6/DPO-ex1-sol.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
+````
 
 :::
 
-:::{admonition} Exercise 2 cont..
+:::{admonition} Puzzle 2 (continued from Puzzle 2 in Section --- )
 
+```{image} assets/Ch6/DPO-ex-2.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+
+:::{admonition} Solution
+:class: dropdown
+
+[Explanation]
+
+````{div} wrapper 
+```{image} assets/Ch6/DPO-ex2-sol.png
+:alt: Whoopsy!
+:width: 650px
+:align: center
+```
 
 :::
-
 
 :::{admonition} Key point 1
 :class: tip
@@ -702,7 +826,19 @@ Now a corridor needs to be added between Room 1 and Room 2, and arrows need to b
 
 Reshaping directed graph follows the same idea as undirected graphs. The find-and-replace rule shall be applied to reshape Bob's game layoout!
 
-## 6.8. Exporting the Find-and-replace machinery to computers via Algebraic Julia
+## 6.8. Algebraic Julia for find-and-replace in graphs
+
+### 6.8.1. Finding matches of a search pattern
+
+### 6.8.2. Is this a pushout complement?
+
+....
+
+### 6.8.3. Computing Pushout complements
+
+....
+
+### 6.8.4. Computing double-pushouts
 
 ....
 
