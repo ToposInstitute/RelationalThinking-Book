@@ -440,7 +440,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traffic-lights">Traffic Lights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightbulbs">Lightbulbs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mood-swings">Mood Swings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>
@@ -458,54 +458,75 @@ document.write(`
 <h1>Chapter 2: Dynamical Systems<a class="headerlink" href="#chapter-2-dynamical-systems" title="Permalink to this heading">#</a></h1>
 <p>In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn’t <em>do</em> anything. In this chapter we’ll bring these graphs to life, animating their evolving states over time.</p>
 <p>Recall “example 2” (?) from the last chapter, in which our roommate Tuco took over dishes-duty from me and my wife.</p>
-<p><img alt="DGdishes.jpg" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/c1491185-3815-4f97-a55d-3f414ef619b7/6b943a5f-5028-45c4-93af-2a51094ecd16/DGdishes.jpg" /></p>
+<a class="reference internal image-reference" href="_images/DGdishes.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.jpg" style="width: 800px;" /></a>
 <p>This model had an implicit notion of <em>time</em>. Every day it is <em>somebody’s</em> turn to the dishes and, with each passing day, this status gets updated. One is meant to “read” the diagram in an active way: Look at who’s turn it currently is (“my wife”), then trace along an arrow with your eyes to see who’s turn it will be tomorrow (“me”). Then follow an arrow again to see who’s turn it will be the day after tomorrow (“my wife”). And so on, ad infinitum.</p>
-<ul class="simple">
-<li><p>Looped GIF of who’s turn it is</p></li>
-</ul>
 <p>This is an example of what mathematicians call a <strong>dynamical system</strong> - a system that evolves in time according to formal rules.</p>
 <p>But rather than informally reading the system evolution ourselves, we would like to have the computer do it for us. How can we get the computer to simulate this step-by-step updating rule? The underlying directed graph provides a kind of blueprint, capturing the dependencies in our domain of interest. Now we must add some additional information that will allow the simulation process to unfold.</p>
 <p>Each vertex in our system will get loaded with a number of “states” and an “update rule” which dictates how those states change over time.</p>
-<section id="traffic-lights">
-<h2>Traffic Lights<a class="headerlink" href="#traffic-lights" title="Permalink to this heading">#</a></h2>
-<p>—&gt; Here we introduce the notion of STATE.</p>
-<p><strong>On/Off light:</strong></p>
-<p>Let’s start with lightbulb (what could be simpler?) with the possible state values being either “on” or “off”.</p>
-<p>If you run the following code you will get an output of a lightbulb that is “off”:</p>
-<ul class="simple">
-<li><p>Code snippet with “off” lightbulb</p></li>
-</ul>
-<p>In the above code, set the lightbulb state from “0” to “1” and run it again. Congratulations! You’ve turned on the light.</p>
-<p>Of course we cannot yet call this a “dynamical” system. It’s completely static! The lightbulb just stays at whatever we set it to. Let’s make this lightbulb change its state over time, flashing on and off.</p>
-<p>—&gt; Here we introduce the notion of an UPDATE RULE.</p>
+<section id="lightbulbs">
+<h2>Lightbulbs<a class="headerlink" href="#lightbulbs" title="Permalink to this heading">#</a></h2>
+<p>Let’s start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either <code class="docutils literal notranslate"><span class="pre">OFF</span></code>:</p>
+<a class="reference internal image-reference" href="_images/LightbulbOFF.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbOFF.jpg" style="width: 800px;" /></a>
+<p>or <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
+<a class="reference internal image-reference" href="_images/LightbulbON.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbON.jpg" style="width: 800px;" /></a>
+<p>We model this using a directed graph in which the lightbulb is a vertex. We then add <em>extra data</em> to this vertex which gives on <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> condition of the lightbulb.</p>
+<p>ILLUSTRATION? CODE SHOWING LIGHTBULB ON OR OFF</p>
+<p>Of course we cannot yet call this a “dynamical” system. It’s completely static! The lightbulb just stays at whatever we set it to. Let’s make this lightbulb change its state over time.</p>
 <p><strong>Flashing light:</strong></p>
-<p>To accomplish this, we add an UPDATE RULE.  Update rules can take many forms, but for our purposes let’s make it a</p>
-<p>—&gt; Here we introduce the idea of INTERACTING PARTS</p>
+<p>Let’s see if we can update our model to have the lighbulb flash on and off, like this:</p>
+<a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 800px;" /></a>
+<p>In order to accomplish this the lightbuble has to consider its present state (say <code class="docutils literal notranslate"><span class="pre">ON</span></code>) and then decide to change to the opposite state (<code class="docutils literal notranslate"><span class="pre">OFF</span></code>). This is accomplished with what we call a <strong>update rule</strong>. Here is the directed graph that models this situation:</p>
+<a class="reference internal image-reference" href="_images/FlashingLight.png"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.png" style="width: 800px;" /></a>
+<p>We will think of an arrow as sending state value information from its source to its target. In this case, the lightbulb is looking at its own state. The update rule is a lookup table. Whatever the current state of the bulb is, it will be the opposite state in the next time step.</p>
+<p>Here’s how we can encode this update rule in Algebraic Julia:</p>
+<p>CODE CODE CODE CODE CODE</p>
+<p>And we can even export an animation showing that our simulation works!</p>
+<a class="reference internal image-reference" href="assets/Ch2/Flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch2/Flashing-light-JAVIS.gif" style="width: 250px;" /></a>
 <p><strong>Two lights:</strong></p>
 <p>In the last example the flashing light was a self-contained system. But one of the interesting things about modeling dynamical systems is our ability to make different parts of the system affect one another - that an update rule can take into account that state of OTHER parts of the system.</p>
-<p>So let’s take two lightbulbs and have them reference each other’s states</p>
-<ul class="simple">
-<li><p>Copycat / Same (outcome: Static)</p></li>
-<li><p>Copycat / Different (outcome: Alternating)</p></li>
-<li><p>Opposites / Same (outcome: Mutual Flashing)</p></li>
-<li><p>Opposites / Different (outcome: Static)</p></li>
-</ul>
+<p>Suppose we wanted two alternating lightbulbs:</p>
+<a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 800px;" /></a>
+<p>We can use a directed graph in which each lightbulb sends its state to the other. Each lightbuble uses an update rule in which it “copies” whatever state the other lightbulb is in.</p>
+<a class="reference internal image-reference" href="_images/Pair_Of_Lights.png"><img alt="Whoopsy!" class="align-center" src="_images/Pair_Of_Lights.png" style="width: 800px;" /></a>
+<p>We can set this up in Algebraic Julia, with one lightbulb initialized on <code class="docutils literal notranslate"><span class="pre">OFF</span></code> and the other to <code class="docutils literal notranslate"><span class="pre">ON</span></code>.</p>
+<p>CODE CODE CODE CODE</p>
+<p>And indeed we get two lightbulbs flashing at each other!</p>
+<a class="reference internal image-reference" href="_images/looped-light-2.gif"><img alt="Whoopsy!" class="align-center" src="_images/looped-light-2.gif" style="width: 250px;" /></a>
 <p><strong>String of lights:</strong></p>
-<p><strong>Single traffic light:</strong></p>
+<p>We might call this update rule the “copy” rule - in which a lightbulb just copies whatever state it recieves as an input. What happens if we string together three copying lightbulbs in a loop?</p>
+<a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 800px;" /></a>
+<p>Now we have a series of cycling lighbulbs in which one of them is always on. This models a familiar object - a traffic light! If we relabel our lights GREEN, YELLOW, and RED, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
+<a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 800px;" /></a>
+<p><strong>A smarter traffic light:</strong></p>
+<p>In the last example, we got traffic light behavior by letting each lightbulb decide for itself whether to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. We can achieve the same thing by introducing a CONTROL vertex, a mastermind which takes in the the state information from all the lights and decides which ones to turn on and off.</p>
+<a class="reference internal image-reference" href="_images/TrafficLight.png"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.png" style="width: 800px;" /></a>
+<p>The control vertex has three states: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the red light, <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the yellow light, and <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the green light. And it uses a new kind of update rule for the control vertex. Instead of a lookup table it a set of conditionals.</p>
+<p>NEED IMAGE DEPICTING INTERNAL STATES AND CONDITIONALS FOR TRAFFIC LIGHT</p>
+<p>Update rules can take many forms. Virtually any decision procedure that can be carried out by a computer can be used as an update rule. We can program the above into Algebraic Julia:</p>
+<p>CODE CODE CODE CODE</p>
+<p>And we get the following simulation:</p>
+<a class="reference internal image-reference" href="_images/flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/flashing-light-JAVIS.gif" style="width: 250px;" /></a>
 <p><strong>Two interacting traffic lights:</strong></p>
+<p>At an intersection traffic lights come in pairs. It’s mortally important to the drivers that when one traffic light is green the other must be red. We can model this by taking two copies of our traffic light, feed each controller the lightbulb information from the opposite light, and devise a new update rule.</p>
+<a class="reference internal image-reference" href="_images/TwoTrafficLights.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoTrafficLights.png" style="width: 800px;" /></a>
+<p>NEED TO SHOW/EXPLAIN UPDATE RULE</p>
+<p>CODE CODE CODE</p>
+<p>And here’s our simulation:</p>
+<a class="reference internal image-reference" href="_images/traffic_intersection_final.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic_intersection_final.gif" style="width: 250px;" /></a>
 <p>Dynamical systems come in two broad flavors - discrete and continuous. Think a “drum vs. a trombone,” “chess vs. billiards” “sugar cubes vs. honey”</p>
 <p>The previous examples were all discrete, having binary on/off values changing in distinct time steps. As we mentioned, other dynamical systems of interest might be <strong>continuous</strong>, with states coming in a range of values that fluctuate smoothly in time. <em><strong>Compare the on/off nature of a light bulb to the height of a falling rock.</strong></em> Such systems can be modeled just as well, as the following example shows.</p>
 </section>
 <section id="mood-swings">
 <h2>Mood Swings<a class="headerlink" href="#mood-swings" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>** Kiki and Bourba images</p></li>
+<li><p>** Kiki and Bouba images</p></li>
 </ul>
-<p>Kiki and Bourba are hanging out. Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba’s mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki’s mood too. But when Kiki’s in a bad mood it only makes Bourba feel <em>worse</em>.</p>
+<p>Kiki and Bouba are hanging out. Both friends can show a range of emotions, from grumpy to happy, which we can rate on a scale of -5 to +5:</p>
+<a class="reference internal image-reference" href="_images/MoodScaleKiki.jpg"><img alt="Whoopsy!" class="align-center" src="_images/MoodScaleKiki.jpg" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/MoodScaleBouba.jpg"><img alt="Whoopsy!" class="align-center" src="_images/MoodScaleBouba.jpg" style="width: 800px;" /></a>
+<p>Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba’s mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki’s mood too. But when Kiki’s in a bad mood it only makes Bourba feel <em>worse</em>.</p>
 <p>How will these friends’ moods <em>interact</em>? Will Kiki manage to cheer Bourba up or will they both end up depressed? Or maybe their moods will alternate back and forth in and endless cycle of cheering up and bumming out:</p>
-<ul class="simple">
-<li><p>*** Looping GIF of Kiki and Bourba’s moods alternating</p></li>
-</ul>
+<a class="reference internal image-reference" href="_images/MoodOscillator.gif"><img alt="Whoopsy!" class="align-center" src="_images/MoodOscillator.gif" style="width: 800px;" /></a>
 <p>First, let’s describe the interaction of their moods</p>
 <p>The mood change is dependent on three <strong>parameters</strong> namely susceptibility factor, tolerance levels and calm down rates.  Parameter values of a process block remain constant (does not change over time). They can be thought of as weights for the variables (inputs and current state) in the computation of dynamics.</p>
 <p>Here is a possible dynamics of mood change in words based on the above assumptions:</p>
@@ -525,6 +546,14 @@ document.write(`
 <blockquote>
 <div><p>New mood level = change in mood + current mood</p>
 </div></blockquote>
+<p>Kiki independently</p>
+<a class="reference internal image-reference" href="_images/Kiki.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki.png" style="width: 800px;" /></a>
+<p>Bouba independently</p>
+<a class="reference internal image-reference" href="_images/Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Bouba.png" style="width: 800px;" /></a>
+<p>Kiki &amp; Bouba interactive</p>
+<a class="reference internal image-reference" href="_images/Kiki&amp;Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki&amp;Bouba.png" style="width: 800px;" /></a>
+<p>Kiki &amp; Bouba &amp; Staff</p>
+<a class="reference internal image-reference" href="_images/KikiAndBoubaAndStaff.png"><img alt="Whoopsy!" class="align-center" src="_images/KikiAndBoubaAndStaff.png" style="width: 800px;" /></a>
 </section>
 <section id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
@@ -599,7 +628,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traffic-lights">Traffic Lights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightbulbs">Lightbulbs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mood-swings">Mood Swings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
 </ul>

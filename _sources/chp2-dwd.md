@@ -17,11 +17,13 @@ In the previous chapter we learned how to input directed graphs into a computer,
 
 Recall "example 2" (?) from the last chapter, in which our roommate Tuco took over dishes-duty from me and my wife. 
 
-![DGdishes.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/c1491185-3815-4f97-a55d-3f414ef619b7/6b943a5f-5028-45c4-93af-2a51094ecd16/DGdishes.jpg)
+```{image} assets/Ch1/DGdishes.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 This model had an implicit notion of *time*. Every day it is *somebody's* turn to the dishes and, with each passing day, this status gets updated. One is meant to "read" the diagram in an active way: Look at who's turn it currently is ("my wife"), then trace along an arrow with your eyes to see who's turn it will be tomorrow ("me"). Then follow an arrow again to see who's turn it will be the day after tomorrow ("my wife"). And so on, ad infinitum.
-
-- Looped GIF of who's turn it is
 
 This is an example of what mathematicians call a **dynamical system** - a system that evolves in time according to formal rules.
 
@@ -29,46 +31,166 @@ But rather than informally reading the system evolution ourselves, we would like
 
 Each vertex in our system will get loaded with a number of “states” and an “update rule” which dictates how those states change over time.
 
-## Traffic Lights
+## Lightbulbs
 
-—> Here we introduce the notion of STATE. 
+Let's start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either `OFF`:
 
-**On/Off light:**
+```{image} assets/Ch2/LightbulbOFF.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
-Let's start with lightbulb (what could be simpler?) with the possible state values being either “on” or “off”.
 
-If you run the following code you will get an output of a lightbulb that is “off”:
+or `ON`:
 
-- Code snippet with “off” lightbulb
 
-In the above code, set the lightbulb state from “0” to “1” and run it again. Congratulations! You've turned on the light.
+```{image} assets/Ch2/LightbulbON.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
-Of course we cannot yet call this a “dynamical” system. It's completely static! The lightbulb just stays at whatever we set it to. Let's make this lightbulb change its state over time, flashing on and off.
+We model this using a directed graph in which the lightbulb is a vertex. We then add _extra data_ to this vertex which gives on `ON`/`OFF` condition of the lightbulb.
 
-—> Here we introduce the notion of an UPDATE RULE.
+ILLUSTRATION? CODE SHOWING LIGHTBULB ON OR OFF
+
+Of course we cannot yet call this a “dynamical” system. It's completely static! The lightbulb just stays at whatever we set it to. Let's make this lightbulb change its state over time.
+
 
 **Flashing light:**
 
-To accomplish this, we add an UPDATE RULE.  Update rules can take many forms, but for our purposes let's make it a 
+Let's see if we can update our model to have the lighbulb flash on and off, like this:
 
-—> Here we introduce the idea of INTERACTING PARTS
+```{image} assets/Ch2/FlashingLight.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+In order to accomplish this the lightbuble has to consider its present state (say `ON`) and then decide to change to the opposite state (`OFF`). This is accomplished with what we call a **update rule**. Here is the directed graph that models this situation:
+
+```{image} assets/Ch2/FlashingLight.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+We will think of an arrow as sending state value information from its source to its target. In this case, the lightbulb is looking at its own state. The update rule is a lookup table. Whatever the current state of the bulb is, it will be the opposite state in the next time step.  
+
+Here's how we can encode this update rule in Algebraic Julia:
+
+CODE CODE CODE CODE CODE
+
+And we can even export an animation showing that our simulation works!
+
+```{image} assets/Ch2/Flashing-light-JAVIS.gif
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
 
 **Two lights:**
 
 In the last example the flashing light was a self-contained system. But one of the interesting things about modeling dynamical systems is our ability to make different parts of the system affect one another - that an update rule can take into account that state of OTHER parts of the system.
 
-So let's take two lightbulbs and have them reference each other's states 
+Suppose we wanted two alternating lightbulbs:
 
-- Copycat / Same (outcome: Static)
-- Copycat / Different (outcome: Alternating)
-- Opposites / Same (outcome: Mutual Flashing)
-- Opposites / Different (outcome: Static)
+```{image} assets/Ch2/AlternatingLights.gif
+:alt: Whoopsy!
+:width: 800
+:align: center
+```
+
+We can use a directed graph in which each lightbulb sends its state to the other. Each lightbuble uses an update rule in which it "copies" whatever state the other lightbulb is in.
+
+```{image} assets/Ch2/Pair_Of_Lights.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+We can set this up in Algebraic Julia, with one lightbulb initialized on `OFF` and the other to `ON`.
+
+CODE CODE CODE CODE
+
+And indeed we get two lightbulbs flashing at each other!
+
+```{image} assets/Ch2/looped-light-2.gif
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
 
 **String of lights:**
 
-**Single traffic light:**
+We might call this update rule the "copy" rule - in which a lightbulb just copies whatever state it recieves as an input. What happens if we string together three copying lightbulbs in a loop?
+
+```{image} assets/Ch2/3Loop.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Now we have a series of cycling lighbulbs in which one of them is always on. This models a familiar object - a traffic light! If we relabel our lights GREEN, YELLOW, and RED, then this model simulates the traffic light's behavior of cycling through green, yellow, red and back to green.
+
+
+```{image} assets/Ch2/TrafficLight.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+
+**A smarter traffic light:**
+
+In the last example, we got traffic light behavior by letting each lightbulb decide for itself whether to be `ON` or `OFF`. We can achieve the same thing by introducing a CONTROL vertex, a mastermind which takes in the the state information from all the lights and decides which ones to turn on and off.
+
+```{image} assets/Ch2/TrafficLight.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+The control vertex has three states: `ON`/`OFF` for the red light, `ON`/`OFF` for the yellow light, and `ON`/`OFF` for the green light. And it uses a new kind of update rule for the control vertex. Instead of a lookup table it a set of conditionals.
+
+NEED IMAGE DEPICTING INTERNAL STATES AND CONDITIONALS FOR TRAFFIC LIGHT
+
+Update rules can take many forms. Virtually any decision procedure that can be carried out by a computer can be used as an update rule. We can program the above into Algebraic Julia:
+
+CODE CODE CODE CODE
+
+And we get the following simulation:
+
+```{image} assets/Ch2/flashing-light-JAVIS.gif
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
 
 **Two interacting traffic lights:**
+
+At an intersection traffic lights come in pairs. It's mortally important to the drivers that when one traffic light is green the other must be red. We can model this by taking two copies of our traffic light, feed each controller the lightbulb information from the opposite light, and devise a new update rule.
+
+```{image} assets/Ch2/TwoTrafficLights.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+NEED TO SHOW/EXPLAIN UPDATE RULE
+
+CODE CODE CODE
+
+And here's our simulation:
+
+```{image} assets/Ch2/traffic_intersection_final.gif
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
+
+
 
 Dynamical systems come in two broad flavors - discrete and continuous. Think a "drum vs. a trombone," "chess vs. billiards" "sugar cubes vs. honey"
 
@@ -76,13 +198,31 @@ The previous examples were all discrete, having binary on/off values changing in
 
 ## Mood Swings
 
-- ** Kiki and Bourba images
+- ** Kiki and Bouba images
 
-Kiki and Bourba are hanging out. Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba's mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki's mood too. But when Kiki's in a bad mood it only makes Bourba feel *worse*.
+Kiki and Bouba are hanging out. Both friends can show a range of emotions, from grumpy to happy, which we can rate on a scale of -5 to +5:
+
+```{image} assets/Ch2/MoodScaleKiki.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+```{image} assets/Ch2/MoodScaleBouba.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba's mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki's mood too. But when Kiki's in a bad mood it only makes Bourba feel *worse*.
 
 How will these friends' moods *interact*? Will Kiki manage to cheer Bourba up or will they both end up depressed? Or maybe their moods will alternate back and forth in and endless cycle of cheering up and bumming out:
 
-- *** Looping GIF of Kiki and Bourba's moods alternating
+```{image} assets/Ch2/MoodOscillator.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 First, let's describe the interaction of their moods
 
@@ -109,6 +249,40 @@ This is how the moods of Kiki and Bourba will change over time. The negative sig
 
 > New mood level = change in mood + current mood
 > 
+Kiki independently
+```{image} assets/Ch2/Kiki.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+Bouba independently
+
+```{image} assets/Ch2/Bouba.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Kiki & Bouba interactive
+```{image} assets/Ch2/Kiki&Bouba.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Kiki & Bouba & Staff
+```{image} assets/Ch2/KikiAndBoubaAndStaff.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+
+
+
 
 ## Conclusions
 
