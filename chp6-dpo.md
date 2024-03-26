@@ -533,7 +533,7 @@ What is the pushout complement?
 The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.
 
 ````{div} wrapper 
-```{image} assets/Ch6/Ex-2-sol.png
+```{image} assets/Ch6/Ex2-sol.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -845,19 +845,126 @@ Reshaping directed graph follows the same idea as undirected graphs. The find-an
 
 ### 6.8.1. Finding matches of a search pattern
 
-Puzzle 3
++++
+
+```{code-cell}
+# Puzzle 3
+#-----------
+
+pattern = path_graph(SymmetricGraph, 3)
+host = cycle_graph(SymmetricGraph, 3)
+
+# There are 12 matches because the path can start 
+# at any of the three vertices of the cycle. 
+# There are two directions each can go. And for each we decide
+# for both edges whether they go clockwise or not, 
+# so that is 3 x 2 x 2 independent choices.
+
+matches = homomorphisms(pattern, host)
+
+```
+
++++
 
 ### 6.8.2. Is this a pushout complement?
 
-Example 2 and Example 3
+```{code-cell}
+# Example 2
+#-----------
+
+K = SymmetricGraph(1)
+L = path_graph(SymmetricGraph, 2)
+G = path_graph(SymmetricGraph, 3)
+
+# There is only one homomorphism (up to symmetry)
+# So we can pick an arbitrary one
+p = homomorphism(K, L)
+m = homomorphism(L, G)
+
+# We can check whether or not the pushout complement exists
+can_pushout_complement(p, m)
+
+# We can get a list of the specific violations
+gluing_conditions(ComposablePair(p, m))
+
+```
+
+```{code-cell}
+# Example 3
+#----------------------------------------
+ (K, L, p: K->L are all the same)
+#----------------------------------------
+G = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
+m = homomorphism(L, G)
+
+# We can check whether or not the pushout complement exists
+can_pushout_complement(p, m)
+
+# We can get a list of the specific violations
+gluing_conditions(ComposablePair(p, m))
+
+```
 
 ### 6.8.3. Computing Pushout complements
 
-Puzzle 5 and Puzzle 6 
+```{code-cell}
+# Puzzle 5
+# --------
+
+Overlap, Pattern₅, Host₅ = SymmetricGraph.([2, 4, 6])
+O_P₅ = ACSetTransformation(Overlap, Pattern₅; V=[1,2])
+P_H₅ = ACSetTransformation(Pattern₅, Host₅; V=[1,1,2,2])
+O_PC₅, PC_H₅ = pushout_complement(O_P₅, P_H₅)
+
+to_graphviz(dom(PC_H₅))
+
+
+```
+
+```{code-cell}
+# Puzzle 6
+# --------
+
+Pattern₆ = SymmetricGraph(3)
+add_edge!(Pattern₆, 2, 3)
+
+Host₆ = path_graph(SymmetricGraph, 6)
+
+O_P₆ = ACSetTransformation(Overlap, Pattern₆; V=[1,3])
+P_H₆ = homomorphism(Pattern₆, Host₆; initial=(V=[5,1,2],))
+
+O_PC₆, PC_H₆ = pushout_complement(O_P₆, P_H₆)
+
+to_graphviz(dom(PC_H₆))
+
+```
 
 ### 6.8.4. Computing double-pushouts
 
-Puzzle 7 and Puzzle 8 
+
+```{code-cell}
+
+# Puzzle 7
+#---------
+
+# Monic=true enforces that the two vertices in Overlap are not mapped to a
+# single vertex in the single-edge graph.
+add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
+
+fromR, fromPC = pushout(O_PC₅, add)
+to_graphviz(codom(fromR))
+
+```
+
+```{code-cell}
+
+# Puzzle 8
+#---------
+fromR, fromPC = pushout(O_PC₆, add)
+to_graphviz(codom(fromR))
+
+
+```
 
 ## 6.9 Why relational thinking is good? 
 
