@@ -2,9 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 #title: Diagrammatic Approaches to Relational Thinking
-title: What? Not How! - A Peek into Relational Thinking 
+title: "Relational thinking: How and why?" 
 author: The Jupyter Book Community
-logo: AJ.png
+logo: logo-temp.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
