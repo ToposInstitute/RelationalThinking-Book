@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 6: Cut-Copy-Glue Graphs &#8212; Relational thinking: How and why?</title>
+    <title>Chapter 6: Cut-Copy-Glue Graphs &#8212; My Jupyter Book</title>
   
   
   
@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Relational thinking: How and why?</p>
+    <p class="title logo__title">My Jupyter Book</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -229,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/priyaasrini/AlgJulia-Book2/main?urlpath=tree/./chp6-dpo.md" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp6-dpo.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/priyaasrini/AlgJulia-Book2" target="_blank"
+      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/priyaasrini/AlgJulia-Book2/issues/new?title=Issue%20on%20page%20%2Fchp6-dpo.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book/issues/new?title=Issue%20on%20page%20%2Fchp6-dpo.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -723,7 +723,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 <p class="admonition-title">Solution</p>
 <p>The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.</p>
 <div class="wrapper docutils">
-<a class="reference internal image-reference" href="_images/Ex-2-sol1.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-2-sol1.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/Ex2-sol.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex2-sol.png" style="width: 650px;" /></a>
 </div>
 </div>
 </div>
@@ -864,19 +864,135 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 <h2>6.8. Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
 <section id="finding-matches-of-a-search-pattern">
 <h3>6.8.1. Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
-<p>Puzzle 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 3</span>
+<span class="c">#-----------</span>
+
+<span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># There are 12 matches because the path can start </span>
+<span class="c"># at any of the three vertices of the cycle. </span>
+<span class="c"># There are two directions each can go. And for each we decide</span>
+<span class="c"># for both edges whether they go clockwise or not, </span>
+<span class="c"># so that is 3 x 2 x 2 independent choices.</span>
+
+<span class="n">matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="is-this-a-pushout-complement">
 <h3>6.8.2. Is this a pushout complement?<a class="headerlink" href="#is-this-a-pushout-complement" title="Permalink to this heading">#</a></h3>
-<p>Example 2 and Example 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Example 2</span>
+<span class="c">#-----------</span>
+
+<span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># There is only one homomorphism (up to symmetry)</span>
+<span class="c"># So we can pick an arbitrary one</span>
+<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
+<span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">)</span>
+
+<span class="c"># We can check whether or not the pushout complement exists</span>
+<span class="n">can_pushout_complement</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+
+<span class="c"># We can get a list of the specific violations</span>
+<span class="n">gluing_conditions</span><span class="p">(</span><span class="n">ComposablePair</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Example 3</span>
+<span class="c">#----------------------------------------</span>
+<span class="w"> </span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">:</span><span class="w"> </span><span class="n">K</span><span class="o">-&gt;</span><span class="n">L</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="p">)</span>
+<span class="c">#----------------------------------------</span>
+<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">inv</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">end</span>
+<span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">)</span>
+
+<span class="c"># We can check whether or not the pushout complement exists</span>
+<span class="n">can_pushout_complement</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+
+<span class="c"># We can get a list of the specific violations</span>
+<span class="n">gluing_conditions</span><span class="p">(</span><span class="n">ComposablePair</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="computing-pushout-complements">
 <h3>6.8.3. Computing Pushout complements<a class="headerlink" href="#computing-pushout-complements" title="Permalink to this heading">#</a></h3>
-<p>Puzzle 5 and Puzzle 6</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 5</span>
+<span class="c"># --------</span>
+
+<span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Pattern₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="o">.</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">])</span>
+<span class="n">O_P₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Pattern₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">P_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Pattern₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">O_PC₅</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">O_P₅</span><span class="p">,</span><span class="w"> </span><span class="n">P_H₅</span><span class="p">)</span>
+
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">dom</span><span class="p">(</span><span class="n">PC_H₅</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 6</span>
+<span class="c"># --------</span>
+
+<span class="n">Pattern₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">Pattern₆</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">Host₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">O_P₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Pattern₆</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">P_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Pattern₆</span><span class="p">,</span><span class="w"> </span><span class="n">Host₆</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],))</span>
+
+<span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">O_P₆</span><span class="p">,</span><span class="w"> </span><span class="n">P_H₆</span><span class="p">)</span>
+
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">dom</span><span class="p">(</span><span class="n">PC_H₆</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="computing-double-pushouts">
 <h3>6.8.4. Computing double-pushouts<a class="headerlink" href="#computing-double-pushouts" title="Permalink to this heading">#</a></h3>
-<p>Puzzle 7 and Puzzle 8</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 7</span>
+<span class="c">#---------</span>
+
+<span class="c"># Monic=true enforces that the two vertices in Overlap are not mapped to a</span>
+<span class="c"># single vertex in the single-edge graph.</span>
+<span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">monic</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+
+<span class="n">fromR</span><span class="p">,</span><span class="w"> </span><span class="n">fromPC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout</span><span class="p">(</span><span class="n">O_PC₅</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">)</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">codom</span><span class="p">(</span><span class="n">fromR</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 8</span>
+<span class="c">#---------</span>
+<span class="n">fromR</span><span class="p">,</span><span class="w"> </span><span class="n">fromPC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout</span><span class="p">(</span><span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">)</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">codom</span><span class="p">(</span><span class="n">fromR</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="why-relational-thinking-is-good">
@@ -919,7 +1035,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "priyaasrini/AlgJulia-Book2",
+            repo: "ToposInstitute/AlgJulia-Book",
             ref: "main",
         },
         codeMirrorConfig: {
