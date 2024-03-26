@@ -461,7 +461,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">6.8.4. Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-vocabulary">A note on vocabulary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-relational-thinking-is-good">6.9 Why relational thinking is good?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabularly">6.9.1. Relational thinking shifts vocabularly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">6.9.2 The order of processes</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -477,9 +481,9 @@ document.write(`
 <h1>Chapter 6: Cut-Copy-Glue Graphs<a class="headerlink" href="#chapter-6-cut-copy-glue-graphs" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>6.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacted global climate.</p>
+<p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacting global climate.</p>
 <blockquote>
-<div><p>We know in hindsight these approaches have lead humanity to face issues bigger than they the ones they intended to solve! So, what was missed in the decision making process?</p>
+<div><p>We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! So, what was missed in the decision making process?</p>
 </div></blockquote>
 <p>Let us consider a fun and non-political example – the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is:</p>
 <a class="reference internal image-reference" href="_images/quit-sugar-1.png"><img alt="Whoopsy!" class="align-center" src="_images/quit-sugar-1.png" style="width: 550px;" /></a>
@@ -578,8 +582,8 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p>The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters “Happy Priyaa”.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-text.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-text.png" style="width: 250px;" /></a>
 <p>However, in graph, connectivity matters than finding exact match of the shape of the search pattern. So when searching for pattern in a host graph, we do not look for 1-to-1 correspondence between vertices / edges of the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. Rather, we need to look for matches which have similar connectivity as the search pattern. Do the words “similar connectivity” a ring bell? Similar connectivity implies  graph morphism.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host.</p>
 </div>
 <p>Let us suppose we want to find a match of this search pattern in the host graph:</p>
@@ -592,8 +596,12 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p>The below match, has vertices “1” and “2” in the search pattern, mapped to the same vertex in the host graph.</p>
 <a class="reference internal image-reference" href="_images/match-example-2.png"><img alt="Whoopsy!" class="align-center" src="_images/match-example-2.png" style="width: 350px;" /></a>
 </br>
-<div class="admonition-puzzle-3 admonition">
-<p class="admonition-title">Puzzle 3</p>
+<div class="note admonition">
+<p class="admonition-title">Let us strengthen our understanding!</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Puzzle 3</label><div class="sd-tab-content docutils">
 <p>Find at least two matches of the search pattern in the host graph.</p>
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/match-ex1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex1.png" style="width: 350px;" /></a>
@@ -604,12 +612,13 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p>An exact match:</p>
 <a class="reference internal image-reference" href="_images/match-ex-sol1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex-sol1.png" style="width: 350px;" /></a>
 <p>Non-injective match:</p>
-<a class="reference internal image-reference" href="_images/match-ex-sol1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex-sol1.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/match-ex-sol2.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex-sol2.png" style="width: 350px;" /></a>
 </div>
 </div>
 </div>
-<div class="admonition-puzzle-4 admonition">
-<p class="admonition-title">Puzzle 4</p>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Puzzle 4</label><div class="sd-tab-content docutils">
 <p>(Same as Paul’s Puzzle from chapter 1)</p>
 <p>How many matches (graph morphism) are from the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to the host graph?</p>
 <div class="wrapper docutils">
@@ -619,6 +628,8 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
 <p>IMAGE</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -790,6 +801,7 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 </br>
 <p>Computing the pushout complement followed by the pushout completes the replacement procedure!</p>
 <a class="reference internal image-reference" href="_images/complete-example.png"><img alt="Whoopsy!" class="align-center" src="_images/complete-example.png" style="width: 550px;" /></a>
+<!----------------------------->
 <div class="admonition-puzzle-7-continued-from-puzzle-5-in-section admonition">
 <p class="admonition-title">Puzzle 7 (continued from Puzzle 5 in Section — )</p>
 <p>Compute the pushout:</p>
@@ -817,7 +829,7 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p class="admonition-title">Key point 1</p>
 <p>Vertices and edges are added by computing pushout.</p>
 </div>
-<div class="tip admonition">
+<div class="tip admonition" id="find-and-replace-machinery">
 <p class="admonition-title">Key point 2: Find-and-replace machinery for graphs</p>
 <p>A thing of beauty!!</p>
 <p>A search pattern (<code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>) found in a graph is carved into another pattern (<code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code>) by computing pushout complement and followed by pushout.</p>
@@ -873,8 +885,10 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p>Puzzle 7 and Puzzle 8</p>
 </section>
 </section>
-<section id="a-note-on-vocabulary">
-<h2>A note on vocabulary<a class="headerlink" href="#a-note-on-vocabulary" title="Permalink to this heading">#</a></h2>
+<section id="why-relational-thinking-is-good">
+<h2>6.9 Why relational thinking is good?<a class="headerlink" href="#why-relational-thinking-is-good" title="Permalink to this heading">#</a></h2>
+<section id="relational-thinking-shifts-vocabularly">
+<h3>6.9.1. Relational thinking shifts vocabularly<a class="headerlink" href="#relational-thinking-shifts-vocabularly" title="Permalink to this heading">#</a></h3>
 <p>We would like to bring reader’s attention to the some vocabulary common in practice since language influences thinking and vice versa.</p>
 <p>The idea of “Find and replace” is a crude one in the sense it is unaware of the context of replacement. A text editor will allow me to replace “truth” by “lie” anywhere in the document. Context-unaware find and replace leads to chaos.</p>
 <p>The mathematics we used to “find-and-replace” in graphs tells us that it is not a replacement, rather it is integration of a new pattern in the place of an exisiting pattern. To integrate is organic and harmonoius by nature! While to replace has an air of superiority about it! Replace is useful – replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from “Find-and-replace” to “Find-and-integrate”.</p>
@@ -883,11 +897,27 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p>Replace “replace” by “integrate”</p>
 </div>
 <p>This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter.</p>
+</section>
+<section id="the-order-of-processes">
+<h3>6.9.2 The order of processes<a class="headerlink" href="#the-order-of-processes" title="Permalink to this heading">#</a></h3>
+<p>Let us take a moment reflect on the process of changing a graph guided by relational thinking!</p>
+<p>Loosely speaking, in a free world, nothing prevents one from first adding what needs to be added and then remove what needs to be removed. But, a more economic way will be to first remove and then add, a procedure for the previous way needs to handle accidental errors like:</p>
+<ul class="simple">
+<li><p>Removing what has been added</p></li>
+<li><p>Adding over the removal region.</p></li>
+</ul>
+<p>It cleaner and elegant approach to is to first remove the intended vertices/edges and then add the new ones.</p>
+<p>The mathematics of relational thinking precisely does this! The math ‘knows’ that it must first remove by computing pushout complement and then add by computing pushout over that complement! Moreover, the order of processes cannot be reversed! How did the math get the ordering right?! That is a mystery. However, there is a message that is being conveyed.</p>
+<div class="tip admonition">
+<p class="admonition-title">Slogan</p>
+<p>Think relationally to get it right!!</p>
+</div>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>A few examples in this chapter have been inspired by <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the handout</a> titled “Double Pushout Rewriting in Chemistry” authored by Georg Fischer, and Hannah Gschwentner, and <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the blog post</a> “Double pushouts on Graphs” by Mark Gritter!</p>
 </aside>
+</section>
 </section>
 </section>
 
@@ -974,7 +1004,11 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">6.8.4. Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-vocabulary">A note on vocabulary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-relational-thinking-is-good">6.9 Why relational thinking is good?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabularly">6.9.1. Relational thinking shifts vocabularly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">6.9.2 The order of processes</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
