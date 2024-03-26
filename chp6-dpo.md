@@ -52,7 +52,8 @@ A lot of concepts in the world around us are modelled as graphs. Hence, building
 
 Let us begin! 
 
-Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- first by hand and then in computers. 
+Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- 
+first by hand and then in computers! [^1]. 
 
 ## 6.2. Specs for "find and replace"
 
@@ -175,14 +176,14 @@ The overlap will be unchanged. It is precisely what remains after removing speci
 
 Neat, huh?!
 
-:::{admonition} **Puzzle 1** 
+:::{admonition} Puzzle 1
 
 ````{div} wrapper 
 
 Find the overlap between search and replace for the following replacement:
 
 
-
+... 
 
 :::{admonition} Solution 
 :class: dropdown
@@ -192,12 +193,13 @@ IMAGE
 
 :::
 
-:::{admonition} **Puzzle 2** 
+:::{admonition} Puzzle 2
 
 ````{div} wrapper 
 
 Apply the following find and replace to the given host graph at the highlighted match:
 
+...
 
 
 
@@ -279,7 +281,7 @@ The below match, has vertices "1" and "2" in the search pattern, mapped to the s
 </br>
 
 
-:::{admonition} **Puzzle 1**
+:::{admonition} Puzzle 3
 
 Find at least two matches of the search pattern in the host graph. 
 
@@ -316,7 +318,7 @@ Non-injective match:
 
 ::: 
 
-:::{admonition} **Puzzle 2**
+:::{admonition} Puzzle 4
 
 (Same as Paul's Puzzle from chapter 1)
 
@@ -460,7 +462,7 @@ Complement means *the thing that completes or brings to perfection*.
 
 Let us look at an example of computing "pushout **complement**" 
 
-:::{admonition} Example 
+:::{admonition} Example 1
 
 ```{image} assets/Ch6/example-1.png
 :alt: Whoopsy!
@@ -476,7 +478,7 @@ In this example, the pushout complement includes all the edges and vertices in t
 
 :::
 
-:::{admonition} Exercise 1 
+:::{admonition} Puzzle 5
 
 What is the pushout complement?
 
@@ -503,7 +505,7 @@ This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are s
 
 :::
 
-:::{admonition} Exercise 2 
+:::{admonition} Puzzle 6
 
 What is the pushout complement?
 
@@ -546,11 +548,11 @@ If the pushout-completement produces bad results, then these violations will be 
 
 The good news is that the *universal nature* of pushouts guarantee us that pushout-complement will exist ONLY for appropraite matches!! That is, replacement will be done only when the match is appropriate. Hence, there are no edge cases!!! To drive home home this message, here are two examples. We leave it to the reader to check if a pushout complement exists in these cases. 
 
-:::{admonition} Example 1
+:::{admonition} Example 2
 
 (Will be redrawn)
 
-Is there a pushout complement? 
+Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
@@ -566,9 +568,9 @@ Is there a pushout complement?
 
 
 
-:::{admonition} Example 2
+:::{admonition} Example 3
 
-Is there a pushout complement? 
+Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
@@ -638,7 +640,7 @@ By computing the pushout of the above diagram, we glue vertices / edges to be ad
 
 Let us try out some examples to make sure we are right! We start from the example we saw in the previous section! 
 
-**Example 1:** Adding a single edge
+**Example:** Adding a single edge
 
 Suppose, we have an addition rule like this, and the match given by the pushout complement step:
 
@@ -677,7 +679,7 @@ Computing the pushout complement followed by the pushout completes the replaceme
 :align: center
 ```
 
-:::{admonition} Exercise 1 (continued from Exercise 1 in Section --- )
+:::{admonition} Puzzle 7 (continued from Puzzle 5 in Section --- )
 
 Compute the pushout:
 
@@ -702,7 +704,7 @@ Compute the pushout:
 
 :::
 
-:::{admonition} Puzzle 2 (continued from Puzzle 2 in Section --- )
+:::{admonition} Puzzle 8 (continued from Puzzle 6 in Section --- )
 
 ```{image} assets/Ch6/DPO-ex-2.png
 :alt: Whoopsy!
@@ -830,17 +832,19 @@ Reshaping directed graph follows the same idea as undirected graphs. The find-an
 
 ### 6.8.1. Finding matches of a search pattern
 
+Puzzle 3
+
 ### 6.8.2. Is this a pushout complement?
 
-....
+Example 2 and Example 3
 
 ### 6.8.3. Computing Pushout complements
 
-....
+Puzzle 5 and Puzzle 6 
 
 ### 6.8.4. Computing double-pushouts
 
-....
+Puzzle 7 and Puzzle 8 
 
 ## A note on vocabulary
 
@@ -861,5 +865,6 @@ This slogan probably is the answer to all the political issues mentioned in the 
 
 
 
+[^1]: A few examples in this chapter have been inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
 
 
