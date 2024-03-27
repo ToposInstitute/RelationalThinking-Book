@@ -51,7 +51,11 @@ Figures built from these chunky arrows are known as schemas. In moving from an
 
 What is the schema that represents a directed graph? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices. 
 
-WAIT... "Rung 2 representation of a graph" GIF source and target maps again.
+```{image} assets/Ch4/Graph1ST.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 Instead of representing these maps side by side like this, let's combine them so that they run in parallel. Our chunky arrows will then be in this configuration:
 
