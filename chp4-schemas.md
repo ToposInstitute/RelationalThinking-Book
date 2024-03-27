@@ -292,6 +292,8 @@ On the more "applied" side, we have the example of Petri nets, a sophisticated m
 :align: center
 ```
 
+## Databases
+
 Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found here along with several examples of scientific models using Petri nets, including population dynamics, epidemiological models and enzyme reactions.
 
 Databases?:
