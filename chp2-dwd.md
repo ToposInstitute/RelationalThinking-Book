@@ -12,6 +12,21 @@ kernelspec:
 
 # Chapter 2: Dynamical Systems
 
+## Introduction
+
+Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about -- visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!
+
+```{image} assets/Ch2/Kiki-Bouba-friends.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+## Making graphs dynamical
+
+[**Message**: Graphs are animated when we add "states" to vertices and "update rules" to evolve the states. Simplistically, dynamical systems are animated graphs.]
+
+(Content below will be revisited)
 
 In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn't *do* anything. In this chapter we'll bring these graphs to life, animating their evolving states over time.
 
@@ -33,21 +48,18 @@ Each vertex in our system will get loaded with a number of “states” and an �
 
 ## Lightbulbs
 
-Let's start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either `OFF`:
+Let's start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either `OFF` or `ON`:
 
 ```{image} assets/Ch2/LightbulbOFF.jpg
 :alt: Whoopsy!
-:width: 800px
+:width: 400px
 :align: center
 ```
-
-
-or `ON`:
-
+<br/>
 
 ```{image} assets/Ch2/LightbulbON.jpg
 :alt: Whoopsy!
-:width: 800px
+:width: 400px
 :align: center
 ```
 
@@ -64,17 +76,24 @@ Let's see if we can update our model to have the lighbulb flash on and off, like
 
 ```{image} assets/Ch2/FlashingLight.gif
 :alt: Whoopsy!
-:width: 800px
+:width: 400px
 :align: center
 ```
+<br/>
 
 In order to accomplish this the lightbuble has to consider its present state (say `ON`) and then decide to change to the opposite state (`OFF`). This is accomplished with what we call a **update rule**. Here is the directed graph that models this situation:
 
 ```{image} assets/Ch2/FlashingLight.png
 :alt: Whoopsy!
-:width: 800px
+:width: 400px
 :align: center
 ```
+
+<br/>
+
+
+The current state information is fedback from the vertex (bulb) to itself through this arrow. The vertex (bulb) will change its state based on the information received -- move to `OFF` if `ON` is received, move to `ON` if `OFF` is received! 
+
 We will think of an arrow as sending state value information from its source to its target. In this case, the lightbulb is looking at its own state. The update rule is a lookup table. Whatever the current state of the bulb is, it will be the opposite state in the next time step.  
 
 Here's how we can encode this update rule in Algebraic Julia:
