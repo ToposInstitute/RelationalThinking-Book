@@ -16,7 +16,11 @@ kernelspec:
 
 We encounter the word 'system' frequently, hearing talk of health care systems, computer systems, the solar system, and more. Yet the word itself is hard to define. A system is a bunch of things interacting together, somehow. It seems abstract, and often hard to think about. What does one do when part of a system? How does one act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
 
-Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically. It's a way of thinking that emphasises relationships and context, and deemphasises analysis by deconstruction. That is, to seeking understanding about an object it looks outwards, asking how it interacts, rather than inwards, asking what it is made of.
+Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically.[^1] It's a way of thinking that emphasises relationships and context, and deemphasises analysis by deconstruction. That is
+
+[^1]: For an excellent introduction to thinking in systems, see: Meadows, D. H. (2015). [Thinking in Systems](https://donellameadows.org/systems-thinking-book-sale/). Chelsea Green Publishing.
+
+In this book, we will focus on a specific aspect of systems thinking we term 'relational thinking'. Relational thinking seeks understanding about an object by looking outwards, asking how the object interacts, rather than inwards, asking what the object is made of.
 
 A challenge with systems thinking is that formal tools for thinking systemically are still a topic of active research -- we still are discovering the logic of systems, discovering effective ways to rigorously reason about them. Mathematics has not historically emphasised a systems perspective. Mathematical tools for thinking, including thinking systemically, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.
 
