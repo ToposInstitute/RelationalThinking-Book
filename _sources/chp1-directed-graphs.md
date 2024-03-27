@@ -71,7 +71,7 @@ Note how, in the examples above, the written description of each situation requi
 
 When we look at a directed graph we can instantly see many relationships: *this* arrow is connected to *these* vertices, *this* vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are *not* visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way the computer can understand.
 
-PLACEHOLDER FOR VIDEO
+<iframe width="560" height="315" src="https://youtu.be/QfvtWgopGiY" title="Representing Graphs with Source and Target Maps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.
 

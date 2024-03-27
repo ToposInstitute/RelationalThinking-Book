@@ -14,7 +14,7 @@ kernelspec:
 
 ## Systems thinking through software
 
-We encounter the word system frequently, hearing talk of health care systems, computer systems, the solar system, and more. Yet the word itself is hard to define. A system is a bunch of things interacting together, somehow. It seems abstract, and often hard to think about. What does one do when part of a system? How does one act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
+We encounter the word 'system' frequently, hearing talk of health care systems, computer systems, the solar system, and more. Yet the word itself is hard to define. A system is a bunch of things interacting together, somehow. It seems abstract, and often hard to think about. What does one do when part of a system? How does one act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
 
 Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically. It's a way of thinking that emphasises relationships and context, and deemphasises analysis by deconstruction. That is, to seeking understanding about an object it looks outwards, asking how it interacts, rather than inwards, asking what it is made of.
 
@@ -34,7 +34,7 @@ While AlgebraicJulia is still a software ecosystem under development, and is not
 
 The arc of this book is as follows. We begin by considering directed graphs: a simple language of dots and arrows between them. Our goal is to be able to think about these from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking.
 
-In learning how to think about directed graphs relationally, we see in a microcosm the broader, abstract lessons of relational thinking.
+In learning how to think about directed graphs relationally, we see in a microcosm the broader, general lessons of relational thinking.
 
 Once at the top of this ladder, we can begin to appreciate the view. 
 
