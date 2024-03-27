@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 6: Cut-copy-glue graphs using double pushout &#8212; Relational thinking: Abstraction to Applications</title>
+    <title>Chapter 6: Cut-copy-glue graphs using double pushout &#8212; Relational thinking: from Abstraction to Applications</title>
   
   
   
@@ -152,14 +152,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/Logo-temp.png" class="logo__image only-light" alt="Relational thinking: Abstraction to Applications - Home"/>
-    <script>document.write(`<img src="_static/Logo-temp.png" class="logo__image only-dark" alt="Relational thinking: Abstraction to Applications - Home"/>`);</script>
   
+    <p class="title logo__title">Relational thinking: from Abstraction to Applications</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -582,10 +576,7 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 <p>The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters “Happy Priyaa”.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-text.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-text.png" style="width: 250px;" /></a>
 <p>However, in graph, connectivity matters than finding exact match of the shape of the search pattern. So when searching for pattern in a host graph, we do not look for 1-to-1 correspondence between vertices / edges of the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. Rather, we need to look for matches which have similar connectivity as the search pattern. Do the words “similar connectivity” a ring bell? Similar connectivity implies  graph morphism.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host.</p>
-</div>
+<p><mark>A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> to a host.</mark></p>
 <p>Let us suppose we want to find a match of this search pattern in the host graph:</p>
 <a class="reference internal image-reference" href="_images/match.png"><img alt="Whoopsy!" class="align-center" src="_images/match.png" style="width: 350px;" /></a>
 </br>

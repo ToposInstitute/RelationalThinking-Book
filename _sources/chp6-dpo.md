@@ -240,11 +240,7 @@ The next step is to answer how to find a match of a search pattern inside a host
 
 However, in graph, connectivity matters than finding exact match of the shape of the search pattern. So when searching for pattern in a host graph, we do not look for 1-to-1 correspondence between vertices / edges of the `Find what`. Rather, we need to look for matches which have similar connectivity as the search pattern. Do the words "similar connectivity" a ring bell? Similar connectivity implies  graph morphism.
 
-:::{Important}
-
-A match is a graph morphism from `Find what` to a host.
-
-:::
+<mark>A match is a graph morphism from `Find what` to a host.</mark>
 
 Let us suppose we want to find a match of this search pattern in the host graph:
 

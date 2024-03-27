@@ -13,12 +13,12 @@ kernelspec:
 # Chapter 5: Graph gluing using pushout
 
 :::{attention}
-This chapter will engage you in deep relational thinking!
+This chapter will engage you in deep relational thinking! 
 :::
 
-In the previous chapters, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph embedding. A graph embedding may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain.
+So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and the every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
 
-In this chapter, we are interested in combining two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The goal of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.
+Inside this universe, we are interested in the mechanism of combining two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.
 
 As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.
 
@@ -27,7 +27,7 @@ As a step towards making sense of the idea of combining graphs, let us a revisit
 
 In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:
 
-```{image} assets/Ch3/Tuco.jpeg
+```{image} assets/Ch5/Tuco.jpeg
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -35,7 +35,7 @@ In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuc
 
 Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:
 
-```{image} assets/Ch3/Tuco-glued.jpeg
+```{image} assets/Ch5/Tuco-glued.jpeg
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -43,179 +43,46 @@ Read each edge in the above graphs as “is a friend of”. Combining the above 
 
 We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.
 
-The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs.
+The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs [^1].
 
-The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking, also called as category theory by some mathematicians! 
-
-The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is, so that the other person will know exactly what the graph is! We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.
-
-## 5.1 Commuting diagrams
-
-You have met this meme in Chapter 3 when Paul introduced you to graph embeddings. Do you recollect this animation from Chapter 3?
-
-![whoops!](./assets/Ch3/FullHomomorphism.gif)
-
-This animation is an instantiation of two commuting diagrams which define a graph embedding.
-
-We know that a graph is a purposeful (constrained) relationship between edges and vertices. This relationship is a pair of maps: a source and a target map from the set of edges to the set of vertices. A graph embedding is a purposeful relationship between two graphs. This relationship is also a pair of maps: a vertex map between vertices of the graphs and an arrow map between the edges of the graphs. What makes a graph embedding purposeful is its harmonious behavior with the existing source and the target maps in the domain and the codomain. This harmony is precisely encoded as a pair of commuting diagrams.
-
-Let us suppose we have two graphs and a graph embedding between them. So we have the following system maps:
-
-```{image} assets/Ch3/2-commuting-diagram-1.png
+```{image} assets/Ch5/complex-graph.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
+<center> A graph generated by real-world data </center>
 
-The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in Graph-1 is preserved by the embedding. 
+</br>
 
-```{image} assets/Ch3/2-commuting-diagram-2.png
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
+[^1]: Image source: https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg
 
-The second diagram tells that the target of each edge in Graph-1 is preserved by the embedding.
+The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking. Relational thinking is popularly known as category theory in the mathematics community! 
 
-```{image} assets/Ch3/2-commuting-diagram-3.png
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
+The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A *combined* graph needs to be aware of graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!
 
-Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an *origin* vertex which has only outgoing arrows (Edges of Graph-1), and a *destination* vertex which has only incoming arrows (Vertices of Graph-2). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of Graph-1”, following any of the path, will lead to the same vertex in “Vertices of Graph-2”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.
+[FROM HERE, THE NEXT TWO SECTIONS MUST BE INTRODUCED IN CHAPTER 4.]
 
-Let us see have a closer look at the first commuting diagram.
+We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.
 
-```{image} assets/Ch3/2-commuting-diagram-4.png
-:alt: Whoopsy!
-:width: 450px
-:align: center
-```
+## 5.1. Combining graphs using memes
 
-For any edge in Graph-1, following ‘Path 1’ will lead to the image of its source vertex in Graph-2. For the same edge, following ‘Path 2’ leads to the source vertex of its image in Graph-2. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are *aware* of the source and the target maps of Graph-1 and Graph-2.
+The two memes we will use to play this game are, 1. Commuting diagrams, and 2. Graph isomorphisms.
 
-Note that there can be any number of graph embeddings between Graph-1 and Graph-2. But, all of them follow the commuting diagrams.
+Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe what a combined graph of any two (overlapping) graphs is without saying what the vertices, edges, source and target maps of the combined graph are! Given two overlapping graphs, let us call their combined graph as the “pushout” of the two graphs along the overlap.
 
-Commuting diagrams are more general than for just graph embeddings. Commuting diagrams are of any closed shape like a triangle or a square and are non-cyclic. The arrows of a commuting diagram can belong to any rung: do you remember this picture from Chapter 1?
+A pushout is a graph in the space of all possible graphs. We need to spot what graph it is! We will narrow down our search step-by-step by expressing requirements of a pushout using the memes we have learnt. We will continue this process until we end up with the graph we are looking for. 
 
-```{image} assets/Ch3/Ladder.png
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
+We will draw lots and lots of diagrams for this narrowing down process! Diagrams are basic to relational thinking!
 
-The above commuting diagrams (sort of belongs to rung 3). The vertices are sets (sets of vertices and sets of edges) and the arrows are set functions.
+Let us begin!
 
-A commuting diagram in rung 4 may look like this:
-
-```{image} assets/Ch3/2-commuting-diagram-5.png
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
-Graph 1 is the origin and Graph 3 is the destination. The above diagram says that embedding the choices of paths to embed Graph-1 inside Graph-3 are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:
-
-```{image} assets/Ch3/2-commuting-diagram-6.png
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
-We know that each embedding has an arrows map and vertices map. The commuting diagram tells us that:
-
-1.  For any vertex in Graph-1 (drawn as the little blue ball), applying the green embedding to it produces a vertex in Graph-3 (green circle surrounding the black circle). Or applying the red embedding produces a vertex in Graph-2 (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in Graph-3 (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in Graph-3 are the same.
-
-```{image} assets/Ch3/2-same-vertex-2.png
-:alt: Whoopsy!
-:width: 350px
-:align: center
-```
-
-2.  For any edge in Graph-1 (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in Graph-3.
-
-```{image} assets/Ch3/2-same-edge.png
-:alt: Whoopsy!
-:width: 350px
-:align: center
-```
-
-## 5.2 When are two graphs the same?
-
-We already met the idea of “sameness” in the previous section. In our every day conversations, we use the word “same” quite often — 
-
-Brendan eats the same breakfast everyday (probably)! 
-
-Steve Jobs wore the same outfit everyday! 
-
-The word “same” has origin in the Sanskrit word “*sama*” which (sort of) translates to “equal”. The word “sama” invokes an image of a balanced weighing scale in my mind. Growing up in India, it was a common sight for me seeing shopkeepers weighing their produce using such scales.
-
-```{image} assets/Ch3/3-balance.png
-:alt: Whoopsy!
-:width: 350px
-:align: center
-```
-
-The idea of “sameness” or “sama” is that in certain context, two distinguishable objects are considered to be equal or identical — their meaning is considered to be the same. Under the context of color, all the outfits of Steve Jobs were identical / equal (can't be told apart). Under the context of recipe, the breakfast Brendan eats are identical / equal (can't be told apart). 
-
-The ability to blur the lines between the meaning of objects and group them into one, by placing them in a certain context is quite natural to human thinking and is also useful. Imagine a world without weighing scales which is a practical demonstration of “sameness” (under the context of weight)! The concept of “sameness” is an instance of relational thinking in everyday life. 
-
-When someone speaks of sameness of two things, there exists an (unspoken) context hidden in it. The idea of sameness is manifestation of this unspoken context. Relational thinking (in mathematical sense) supports making this context explicit thereby eliminating the room for arguments if two things are same or not. (Eugenia Cheng has explained this very beautifully. I think a reference to her explanation or a video embedding will be very helpful.)
-
-In this section, we want to explore the “sameness of graphs” through the lens of relational thinking. The question of finding out if two graphs are the same is an area of study by itself and beyond the scope of this book. We are more interesting in making explicit the relationship that makes two graphs the same.
-
-Let us play a simple game. Among these three graphs, circle the two graphs which you “think” are the same:
-
-```{image} assets/Ch3/3-same-graphs-1.jpeg
-:alt: Whoopsy!
-:width: 350px
-:align: center
-```
-
-Did you circle (b) and (d)? Can you say out loud — 
-
-1. Why did you not circle (a) and (c)? 
-    
-    [ They are not the same because (c) has more arrows than (a). ]
-    
-2. Why did you not circle (a) and (b)? 
-    
-    [ Even though these two graphs have the same number of edges, there seems to be a mismatch in how the vertices are connected! ]
-    
-3. Why did you circle (b) and (d)? (reshape one into another)
-    
-    [ They both contain precisely the same connectivity. Because of this, (b) can be "changed" to look like (d) and vice versa by repositioning the vertices and/or the edges. Thus, both the graphs are the same.]
-
-    Graphs (b) and (d) are **isomorphic** -- 'iso' means same, 'morph' means form. (b) and (d) are of same form. 
-
-   (b) and (d) are isomorphic means that there is an embedding of (b) in (d) (shown in red below), and an embedding of (d) in (b) (shown in green) such that one undoes the action of the other. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at (green undoes red). Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with (red undoes green). Similarly for the edges. 
-
-```{image} assets/Ch3/3-same-graphs-2.jpeg
-:alt: Whoopsy!
-:width: 350px
-:align: center
-```
-
-Before I end this section, I would like to entertain you with a personal story tangentially related to graphs and the idea of sameness! When we were young, my brother and I were very fond of “Maggi noodles”.  My mom considered Maggi noodles to be both unhealthy and expensive. But, because we were fond of it, she would occasionally bring home two packets of these noodles. It was brother’s task to cook these noodles. After cooking, he would spilt the noodles into two portions and I would be given a chance to pick one I wanted. I always had great trouble in making up my mind, since whichever portion I picked, mine looked lesser to me. Often, I would ask to change since my brother’s portion looked bigger. My mom with great annoyance would reply, “Both the portions are the same! It's your eyes which are big!”. 
-
-```{image} assets/Ch3/maggi.png
-:alt: Whoopsy!
-:width: 150px
-:align: center
-```
-
-## 5.3. Combining graphs using memes
-
-Having explored the idea of commuting diagrams and sameness, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe the combined graph of any two (overlapping) graphs without saying what the vertices, edges, source and target maps of the combined graph are. Let’s us call the graph we are looking for as the “***colimit graph***”.
-
-The colimit graph can be any graph in the space of all possible graphs.  We will narrow down our search step by step by expressing requirements of the colimit graph using the memes we have learnt, until we end up with the graph we are looking for. Let us begin!
-
-### A. Specifying the shape of the overlap
+### 5.1.1. Shape of the overlap
 
 To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the ***overlap*** of the two graphs. So, to combine two graphs, we need to know their overlap. 
 
-In chapter 3, we saw that a graph embedding identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3, because we are concerned more concerned with how they are related to each other and with the shape of the diagram  created by these relationships. Think of the rectangles as placeholders that can receive any graph in them.
+We saw in previous chapters that a graph morphism identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3! Remember, we live in universe and do not peek inside graphs! The rectangles are placeholders which can receive any graph in them.
 
-```{image} assets/Ch3/4.3-Diagram.png
+```{image} assets/Ch5/4.3-Diagram.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -223,13 +90,13 @@ In chapter 3, we saw that a graph embedding identifies one graph inside another.
 
 The relationships between the graphs in the above diagram are: 
 
-- Graph-1 embeds inside Graph-2.
-- Graph-1 embeds inside Graph-3.
+- Graph-1 maps into Graph-2.
+- Graph-1 maps into Graph-3.
 - Thus, the regions in which Graph-1 embeds, Graph-2 and Graph-3 overlap.
 
 The “overlap” acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine Graph-2 and Graph-3 into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
 
-```{image} assets/Ch3/sheets.jpeg
+```{image} assets/Ch5/sheets.jpeg
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -237,93 +104,143 @@ The “overlap” acts as a bridge between two graphs. Theoretically, presence o
 
 Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue. 
 
-```{image} assets/Ch3/cup-handle.jpeg
+```{image} assets/Ch5/cup-handle.jpeg
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
 
 
-With this analogy in mind, let us think of the colimit (glued graph) of the diagram showed in the beginning of this section. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.  
+With this analogy in mind, let us think of the pushout of a diagram with two graphs and their overlap as shown above. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.  
 
-We now know what it means for two graphs to overlap — it is a diagram of shape in the beginning of this section. We also saw how overlaps allows "gluing" graphs together. 
+:::{admonition} Key points
+:class: tip
 
-### B. Combining Graphs along overlap
+We now know what it means for two graphs to overlap — it is a diagram of two radiating graph morphisms. 
 
-Now that, we know the overlap, the next step in this game is to narrow down the candidates for the colimit graph (for the diagram in Figure 1). Since we cannot talk about the colimit graph directly or rather individually in terms of its source and target maps, we will look at the colimit graph from the perspective of another graph and ask, "What is a reasonable relationship between the colimit and this graph?" and gather the requirements. The most immediate candidates to gather perspective are Graph-2 and Graph-3 since colimit is a combination of Graph-2 and Graph-3 (along Graph-1 overlap). 
+```{image} assets/Ch5/4.3-Diagram.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+<center> Overlap diagram </center> <!-- May be style this later -->
+
+Overlapping graphs can be glued together.
+
+:::
+
+
+
+### 5.1.2. Combining Graphs along overlap
+
+Now that, we know the overlap, the next step in this game is to narrow down the candidates for the pushout. Right now, it could be any graph in the universe!
+
+We cannot talk about pushout (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the pushout from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,
+
+> *How is the pushout related to you?*
+
+> An old spanish saying goes like this. *Tell me who your friends are, and I will tell you who you are!*
+
+The most immediate candidates for this enquiry are Graph-2 and Graph-3 since the pushout is given by combining Graph-2 and Graph-3 (along Graph-1 overlap). 
 
 :::{admonition} Pause and ponder!
-How do you expect Graph-2, and Graph-3 to relate to the colimit?
+If you are Graph-2, how do you expect to be related to the pushout? 
 :::
 
 We invite the reader to take a moment to ponder over this question using the picture below.
 
-```{image} assets/Ch3/4.2-commute-1.png
+```{image} assets/Ch5/4.2-commute-1.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
 
-Since the colimit graph is given by glueing Graph-2 and Graph-3 along the shape of Graph-1, at the least, we expect that: 
+Since the pushout is given by glueing Graph-2 and Graph-3 along the shape of Graph-1, at the least, there must: 
 
-1. Graph-2 must embed in the colimit graph (the cup is in the glued object). 
-2. Graph-3 must embed in the colimit graph (the handle is in the glued object). 
+1. Graph-2 must map into the pushout (the cup is in the glued object). 
+2. Graph-3 must map into the pushout (the handle is in the glued object). 
 
-Let us add these relationships in the above diagram. Each arrow is a graph embedding:
+Let us add these morphisms to the overlap diagram:
 
-```{image} assets/Ch3/4.2-commute-2.png
+```{image} assets/Ch5/4.2-commute-2.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
 
-Does this shape look mildly familiar? Your answer is relevant to the relationship between Graph-1 and the colimit. 
+Does this shape look vaguely familiar? Hurray, if this reminds of you of commuting diagrams. Let us first just look at the diagram. There are two paths from Graph-1 to the pushout.
 
-First of all, does Graph-1 embed inside the colimit graph? 
-
-It does! Since Graph-1 embeds in Graph-2, and Graph-2 embeds in the colimit graph, Graph-1 embeds in the colimit graph via Graph-2. Similarly, Graph-1 embeds in Graph-3, and Graph-3 embeds inside the colimit graph. Through these relationships too, Graph-1 embeds in the colimit graph. Thereby, we have two choices of embeddings of Graph-1 in Graph-3: 
-
-So, Graph-1 can be embeds the combined graph in two ways: 
+So, Graph-1 can be indentified inside the pushout in two ways: 
 
 - either through Graph-2,
 - or through Graph-3.
 
 :::{admonition} Pause and ponder!
 
-Which of these is the correct way to identify Graph-1 inside the combined graph, in this context? What is the guiding to principle to pick one relationship over the other?
+Which of these is the correct way to identify Graph-1 inside the combined graph, in this context? 
+
 :::
 
-The answer is that, "Well, irrespective of the route of embedding, Graph-1 IS EXPECTED TO embed precisely in the same region in the colimit graph because it's the overlap." The region in which it embeds is common to both Graph-2 and Graph-3 in the colimit. In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object.  The rest of the points can be distinguished as belonging to the cup or to the handle. 
+The answer is that, "Well, irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it's the overlap." The region in which it is mapped into is common to both Graph-2 and Graph-3 in the pushout. 
 
-All these amounts to saying that “the above diagram MUST COMMUTE! Irrespective of the two routes chosen  from the Graph-1 (origin), one will always end up in the same location (subset of vertices and edges) in the colimit graph (destination). 
+```{image} assets/Ch5/glued-object.jpeg
+:alt: Whoopsy!
+:width: 150px
+:align: center
+```
 
-That completes our perspectives of the colimit graph from Graphs 1, 2 and 3. 
+In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object (blue points).  The rest of the points can be distinguished as belonging to the cup (green points) or to the handle (orange points). 
 
-The first set of requirements that will narrow down candidates for colimit: 
+> Irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it's the overlap. = The  diagram MUST COMMUTE!
 
-1. Graph-2 must embed in the colimit graph. 
-2. Graph-3 must embed in the colimit graph. 
-3. Graph-1 embeds in colimit graph, however, the choice of path MUST NOT matter!
+All these amounts to saying that “the diagram MUST COMMUTE! For any vertex (or edge) in Graph-1, both the paths must lead to the same vertex (or edge) in the pushout.
 
-:::{admonition} An exercise
-Find at least two potential colimits which will make the diagram commute. 
+Thus, our enquiry to Graph-2 and Graph-3 have resulted in a condition that the pushout needs to satisfy!
+
+
+:::{admonition} Key point
+
+1. Graph-2 must map into the pushout. 
+2. Graph-3 must map into the pushout. 
+3. The diagram with these two maps MUST COMMUTE!
+
+```{image} assets/Ch5/4.2-commute-2.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+<center> Commuting square of pushout </center>
+
+:::
+
+### 5.1.3. Combining Graphs along overlap
+
+While not all graphs can make up such a commuting square of pushout, there can more than one graph that can produce a commuting square.
+
+:::{admonition} Puzzle
+
+Find at least two graphs which will make the diagram commute. 
 
 (a diagram)
 
 :::{admonition} Solution 
 :class: dropdown
+
 ```{div} wrapper 
 Possible solutions 
 ```
+
 :::
 
-### B. Combining Graphs along overlap
+As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we must narrow down further. We will follow the same technique of asking other graphs, 
 
-As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we shall narrow down the potential candidates further by identifying more requirements. 
+> *What is your relationship with the pushout?*
 
-We are going to do so by stepping outside the game for a moment and instantiating Graph-1, Graph-2 and Graph-3.
+Now, we have to find graphs to whom this question can be asked. We have already covered Graph-2, Graph-3, Graph-1. There is another set of graphs are familiar with -- all those graphs which satisfy the commuting square of a pushout. The pushout we are looking for is inside this set! Do you agree?
 
-```{image} assets/Ch3/4.3-Graph1-3.png
+To spot the pushout inside this set, we are going to do step outside the game for a moment and sharpen our instinct about pushouts. For this, we will move say concretely what Graph-1, Graph-2 and Graph-3!
+
+```{image} assets/Ch5/4.3-Graph1-3.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -331,11 +248,13 @@ We are going to do so by stepping outside the game for a moment and instantiatin
 
 Graph-1 embeds in Graph-2 and Graph-3 as follows:
 
-```{image} assets/Ch3/4.3-Diagram.png
+```{image} assets/Ch5/4.3-Diagram.png
 :alt: Whoopsy!
-:width: 400px
+:width: 300px
 :align: center
 ```
+
+[NEEDS TO BE REVISED FROM HERE]
 
 A few possible choices of colimit graphs of the above diagram are: 
 
@@ -343,7 +262,7 @@ Is the following a commuting diagram?
 
 ```{image} assets/Ch3/4.3-a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 350px
 :align: center
 ```
 
@@ -830,3 +749,160 @@ Congratulations!! You have crossed Chapter 5 successfully!
 Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by the means of graph colimits. 
 
 It only gets easier from here!!
+
+
+
+## 5.1 Commuting diagrams: Move to 4
+
+You have met this meme in Chapter 3 when Paul introduced you to graph embeddings. Do you recollect this animation from Chapter 3?
+
+![whoops!](./assets/Ch3/FullHomomorphism.gif)
+
+This animation is an instantiation of two commuting diagrams which define a graph embedding.
+
+We know that a graph is a purposeful (constrained) relationship between edges and vertices. This relationship is a pair of maps: a source and a target map from the set of edges to the set of vertices. A graph embedding is a purposeful relationship between two graphs. This relationship is also a pair of maps: a vertex map between vertices of the graphs and an arrow map between the edges of the graphs. What makes a graph embedding purposeful is its harmonious behavior with the existing source and the target maps in the domain and the codomain. This harmony is precisely encoded as a pair of commuting diagrams.
+
+Let us suppose we have two graphs and a graph embedding between them. So we have the following system maps:
+
+```{image} assets/Ch3/2-commuting-diagram-1.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in Graph-1 is preserved by the embedding. 
+
+```{image} assets/Ch3/2-commuting-diagram-2.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+The second diagram tells that the target of each edge in Graph-1 is preserved by the embedding.
+
+```{image} assets/Ch3/2-commuting-diagram-3.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an *origin* vertex which has only outgoing arrows (Edges of Graph-1), and a *destination* vertex which has only incoming arrows (Vertices of Graph-2). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of Graph-1”, following any of the path, will lead to the same vertex in “Vertices of Graph-2”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.
+
+Let us see have a closer look at the first commuting diagram.
+
+```{image} assets/Ch3/2-commuting-diagram-4.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+For any edge in Graph-1, following ‘Path 1’ will lead to the image of its source vertex in Graph-2. For the same edge, following ‘Path 2’ leads to the source vertex of its image in Graph-2. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are *aware* of the source and the target maps of Graph-1 and Graph-2.
+
+Note that there can be any number of graph embeddings between Graph-1 and Graph-2. But, all of them follow the commuting diagrams.
+
+Commuting diagrams are more general than for just graph embeddings. Commuting diagrams are of any closed shape like a triangle or a square and are non-cyclic. The arrows of a commuting diagram can belong to any rung: do you remember this picture from Chapter 1?
+
+```{image} assets/Ch3/Ladder.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+The above commuting diagrams (sort of belongs to rung 3). The vertices are sets (sets of vertices and sets of edges) and the arrows are set functions.
+
+A commuting diagram in rung 4 may look like this:
+
+```{image} assets/Ch3/2-commuting-diagram-5.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+Graph 1 is the origin and Graph 3 is the destination. The above diagram says that embedding the choices of paths to embed Graph-1 inside Graph-3 are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:
+
+```{image} assets/Ch3/2-commuting-diagram-6.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+We know that each embedding has an arrows map and vertices map. The commuting diagram tells us that:
+
+1.  For any vertex in Graph-1 (drawn as the little blue ball), applying the green embedding to it produces a vertex in Graph-3 (green circle surrounding the black circle). Or applying the red embedding produces a vertex in Graph-2 (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in Graph-3 (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in Graph-3 are the same.
+
+```{image} assets/Ch3/2-same-vertex-2.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+2.  For any edge in Graph-1 (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in Graph-3.
+
+```{image} assets/Ch3/2-same-edge.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+## 5.2 When are two graphs the same?: Move to 4
+
+We already met the idea of “sameness” in the previous section. In our every day conversations, we use the word “same” quite often — 
+
+Brendan eats the same breakfast everyday (probably)! 
+
+Steve Jobs wore the same outfit everyday! 
+
+The word “same” has origin in the Sanskrit word “*sama*” which (sort of) translates to “equal”. The word “sama” invokes an image of a balanced weighing scale in my mind. Growing up in India, it was a common sight for me seeing shopkeepers weighing their produce using such scales.
+
+```{image} assets/Ch3/3-balance.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+The idea of “sameness” or “sama” is that in certain context, two distinguishable objects are considered to be equal or identical — their meaning is considered to be the same. Under the context of color, all the outfits of Steve Jobs were identical / equal (can't be told apart). Under the context of recipe, the breakfast Brendan eats are identical / equal (can't be told apart). 
+
+The ability to blur the lines between the meaning of objects and group them into one, by placing them in a certain context is quite natural to human thinking and is also useful. Imagine a world without weighing scales which is a practical demonstration of “sameness” (under the context of weight)! The concept of “sameness” is an instance of relational thinking in everyday life. 
+
+When someone speaks of sameness of two things, there exists an (unspoken) context hidden in it. The idea of sameness is manifestation of this unspoken context. Relational thinking (in mathematical sense) supports making this context explicit thereby eliminating the room for arguments if two things are same or not. (Eugenia Cheng has explained this very beautifully. I think a reference to her explanation or a video embedding will be very helpful.)
+
+In this section, we want to explore the “sameness of graphs” through the lens of relational thinking. The question of finding out if two graphs are the same is an area of study by itself and beyond the scope of this book. We are more interesting in making explicit the relationship that makes two graphs the same.
+
+Let us play a simple game. Among these three graphs, circle the two graphs which you “think” are the same:
+
+```{image} assets/Ch3/3-same-graphs-1.jpeg
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+Did you circle (b) and (d)? Can you say out loud — 
+
+1. Why did you not circle (a) and (c)? 
+    
+    [ They are not the same because (c) has more arrows than (a). ]
+    
+2. Why did you not circle (a) and (b)? 
+    
+    [ Even though these two graphs have the same number of edges, there seems to be a mismatch in how the vertices are connected! ]
+    
+3. Why did you circle (b) and (d)? (reshape one into another)
+    
+    [ They both contain precisely the same connectivity. Because of this, (b) can be "changed" to look like (d) and vice versa by repositioning the vertices and/or the edges. Thus, both the graphs are the same.]
+
+    Graphs (b) and (d) are **isomorphic** -- 'iso' means same, 'morph' means form. (b) and (d) are of same form. 
+
+   (b) and (d) are isomorphic means that there is an embedding of (b) in (d) (shown in red below), and an embedding of (d) in (b) (shown in green) such that one undoes the action of the other. Take any vertex in (b). Follow it through the red followed by the green embedding. You will reach the same vertex you started at (green undoes red). Take any vertex in (d). Follow it through the green followed by the red embedding. You will reach the same vertex you started with (red undoes green). Similarly for the edges. 
+
+```{image} assets/Ch3/3-same-graphs-2.jpeg
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+
+Before I end this section, I would like to entertain you with a personal story tangentially related to graphs and the idea of sameness! When we were young, my brother and I were very fond of “Maggi noodles”.  My mom considered Maggi noodles to be both unhealthy and expensive. But, because we were fond of it, she would occasionally bring home two packets of these noodles. It was brother’s task to cook these noodles. After cooking, he would spilt the noodles into two portions and I would be given a chance to pick one I wanted. I always had great trouble in making up my mind, since whichever portion I picked, mine looked lesser to me. Often, I would ask to change since my brother’s portion looked bigger. My mom with great annoyance would reply, “Both the portions are the same! It's your eyes which are big!”. 
+
+```{image} assets/Ch3/maggi.png
+:alt: Whoopsy!
+:width: 150px
+:align: center
+```
+
