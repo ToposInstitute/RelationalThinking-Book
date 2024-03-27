@@ -476,13 +476,13 @@ document.write(`
 <a class="reference internal image-reference" href="_images/SummerWinter.png"><img alt="Whoopsy!" class="align-center" src="_images/SummerWinter.png" style="width: 800px;" /></a>
 <p>Note that the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship?</p>
 <p>In the previous chapter we thought about relationships in terms of maps. We can do something similar here. For the Summer graph to be a “part” of the Winter graph means, in effect, that we can map the Summer graph <em>into</em> the Winter graph, taking vertices to vertices and arrows to arrows.</p>
-<a class="reference internal image-reference" href="assets/Ch3/InjectSki.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/InjectSki.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/InjectSki.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectSki.gif" style="width: 800px;" /></a>
 <p>We call this a “graph injection”. In order to visualize injections clearly let’s introduce some new visuals.</p>
 <p><em>Figuratively:</em></p>
 <p>Let’s step away from the ski lodge and look at graph injections more generally. We want to represent the injection of graph 1 into graph 2:</p>
 <p>First, let’s redesign graph 2 to be a “recipient” of the graph 1, moving the colors and shapes out of the way.</p>
 <p>We now place the first graph inside of the second graph.</p>
-<a class="reference internal image-reference" href="assets/Ch3/DefineInjection.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/DefineInjection.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/DefineInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/DefineInjection.gif" style="width: 800px;" /></a>
 <p>This gives us an image of “what went where” in our injection. We sometimes call this the “image” of the first graph in the second.</p>
 <p>It’s important to understand that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process.</p>
 <a class="reference internal image-reference" href="_images/DanglingEdge.png"><img alt="Whoopsy!" class="align-center" src="_images/DanglingEdge.png" style="width: 800px;" /></a>
@@ -524,9 +524,9 @@ document.write(`
 <a class="reference internal image-reference" href="_images/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/OpenSquare.gif" style="width: 500px;" /></a>
 <p>That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A’s source” is <em>different</em> from “The vertex that is the source of A’s image.”</p>
 <p>Thus we can actually DEFINE what we mean by a graph injection as a square in which all arrows have closed loops going either way around.</p>
-<a class="reference internal image-reference" href="assets/Ch3/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/InjectionFadethrough.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectionFadethrough.gif" style="width: 500px;" /></a>
 <p>Of course, the same maps must also have closed loops for the arrows and their targets. Together, all of the “data” describing this embedding is caputred in the following diagrams:</p>
-<a class="reference internal image-reference" href="assets/Ch3/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/GraphInjection.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphInjection.gif" style="width: 800px;" /></a>
 <p>We have defined one thing – graph connectivity in injections – in terms of another thing – closed loops. Imposing the rule that the certain loops must close is called a “commutativity condition”.</p>
 <p>It turns out there are a lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>As we’ll see, one of the benefits of describing injections and dangling edge conditions in terms of maps is that maps and commutativity conditions are easy for the computer to understand maps and inspect. This allows the computer a way to be of use to us without that computer needing to have any actual understanding ideas like vertices, arrows, attachments..the semantics of graphs.</p>
@@ -534,9 +534,9 @@ document.write(`
 </section>
 <section id="graph-morphisms">
 <h2>2. Graph Morphisms<a class="headerlink" href="#graph-morphisms" title="Permalink to this heading">#</a></h2>
-<a class="reference internal image-reference" href="assets/Ch3/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/ChoreHanded.png" style="width: 500px;" /></a>
-<a class="reference internal image-reference" href="assets/Ch3/EmbeddingHanded.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/EmbeddingHanded.gif" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="assets/Ch3/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/EMBED.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="_images/ChoreHanded.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/EmbeddingHanded.gif"><img alt="Whoopsy!" class="align-center" src="_images/EmbeddingHanded.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
