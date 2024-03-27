@@ -18,8 +18,6 @@ We encounter the word 'system' frequently, hearing talk of health care systems, 
 
 Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically.[^1] It's a way of thinking that emphasises relationships and context, and deemphasises analysis by deconstruction. That is
 
-[^1]: For an excellent introduction to thinking in systems, see: Meadows, D. H. (2015). [Thinking in Systems](https://donellameadows.org/systems-thinking-book-sale/). Chelsea Green Publishing.
-
 In this book, we will focus on a specific aspect of systems thinking we term 'relational thinking'. Relational thinking seeks understanding about an object by looking outwards, asking how the object interacts, rather than inwards, asking what the object is made of.
 
 A challenge with systems thinking is that formal tools for thinking systemically are still a topic of active research -- we still are discovering the logic of systems, discovering effective ways to rigorously reason about them. Mathematics has not historically emphasised a systems perspective. Mathematical tools for thinking, including thinking systemically, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.
@@ -82,7 +80,14 @@ print( "My in-line code is working, yay!" )
 
 To run the code, click the "rocket icon" at the top right corner of this page, and select "Live code". Enabling live code will cause a button labelled "run" to appear in each executable code block. Clicking "run" will run the code in the block.
 
-The live code environment may take a little time to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a "Waiting for kernel..." message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.
+```{image} assets/Ch4/Binder_Instructions.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+The live code environment may take a little time[^2] to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a "Waiting for kernel..." message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.
+
 
 
 
@@ -95,12 +100,19 @@ You can edit the code blocks, and run them again! See if you can edit the progra
 ```
 
 ## A new medium for systems thinking
-As Andy Matuschak and Michael Nielsen write in their essay "How can we develop transformative tools for thought?"[^1]:
-
-[^1]: Andy Matuschak and Michael Nielsen, “How can we develop transformative tools for thought?”, https://numinous.productions/ttft, San Francisco (2019).
+As Andy Matuschak and Michael Nielsen write in their essay "How can we develop transformative tools for thought?"[^3]:
 
 > Such a medium creates a powerful immersive context, a context in which the user can have new kinds of thought, thoughts that were formerly impossible for them. Speaking loosely, the range of expressive thoughts possible in such a medium is an emergent property of the elementary objects and actions in that medium. If those are well chosen, the medium expands the possible range of human thought.
 
 We have not yet fully realised the potential of a new medium for systems thinking. But as Matuschak and Nielsen note, the range of possible thoughts is an emergent property of the elementary objects and actions. In systems thinking, these notions are ones of relationality; the same ones that category theorists have carefully studied for the last century. We believe the work we share here, grounded in the mathematics of category theory, thus gives a glimpse of a powerful start. The work of the AlgebraicJulia project is to expand this mathematical medium into an embodied, software technology, from mathematics to programming languages and eventually to computer applications. We invite you on this journey to expand the possible range of human thought to consider the world in a holistic, relational, and interconnected way.
 
 Many of the great challenges of today are a result of our shared struggle to see the world in its beautiful, complex, interconnected glory. We hope that this book is a contribution to facing these challenges together.
+
+
+## Footnotes and references
+
+[^1]: For an excellent introduction to thinking in systems, see: Meadows, D. H. (2015). [Thinking in Systems](https://donellameadows.org/systems-thinking-book-sale/). Chelsea Green Publishing.
+
+[^2]: We gratefully use the free service provided by [Binder](https://mybinder.org), which runs our (Algebraic)Julia code on a server they host. Availability depends on a number of factors, and in our experience the kernel can take anywhere from a few minutes to half an hour to start up. If it's taking too long, consider running a version of the code on your own computer. You can find instructions in Chapter 2.
+
+[^3]: Andy Matuschak and Michael Nielsen, “How can we develop transformative tools for thought?”, https://numinous.productions/ttft, San Francisco (2019).
