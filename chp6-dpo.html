@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 6: Cut-Copy-Glue Graphs &#8212; Relational thinking: How and why?</title>
+    <title>Chapter 6: Cut-copy-glue graphs using double pushout &#8212; Relational thinking: Abstraction to Applications</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp6-dpo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 7: Double-Pushout Rewriting Applications" href="chp7-dpo-application.html" />
-    <link rel="prev" title="Chapter 5: Graph Gluing" href="chp5-graph-gluing.html" />
+    <link rel="next" title="Chapter 7: Double-pushout applications" href="chp7-dpo-application.html" />
+    <link rel="prev" title="Chapter 5: Graph gluing using pushout" href="chp5-graph-gluing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/Logo-temp.png" class="logo__image only-light" alt="Relational thinking: How and why? - Home"/>
-    <script>document.write(`<img src="_static/Logo-temp.png" class="logo__image only-dark" alt="Relational thinking: How and why? - Home"/>`);</script>
+    <img src="_static/Logo-temp.png" class="logo__image only-light" alt="Relational thinking: Abstraction to Applications - Home"/>
+    <script>document.write(`<img src="_static/Logo-temp.png" class="logo__image only-dark" alt="Relational thinking: Abstraction to Applications - Home"/>`);</script>
   
   
 </a></div>
@@ -177,9 +177,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-graph-relationships.html">Chapter 3: Graph Relationships</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-schemas.html">Chapter 4: Schemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Graph Gluing</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: Cut-Copy-Glue Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: Double-Pushout Rewriting Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Graph gluing using pushout</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: Cut-copy-glue graphs using double pushout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: Double-pushout applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
 </ul>
 
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 6: Cut-Copy-Glue Graphs</h1>
+    <h1>Chapter 6: Cut-copy-glue graphs using double pushout</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -461,7 +461,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">6.8.4. Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-relational-thinking-is-good">6.9 Why relational thinking is good?</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-relational-thinking">6.9 Goodness of relational thinking</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabularly">6.9.1. Relational thinking shifts vocabularly</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">6.9.2 The order of processes</a></li>
 </ul>
@@ -477,8 +477,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-cut-copy-glue-graphs">
-<h1>Chapter 6: Cut-Copy-Glue Graphs<a class="headerlink" href="#chapter-6-cut-copy-glue-graphs" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-cut-copy-glue-graphs-using-double-pushout">
+<h1>Chapter 6: Cut-copy-glue graphs using double pushout<a class="headerlink" href="#chapter-6-cut-copy-glue-graphs-using-double-pushout" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>6.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacting global climate.</p>
@@ -1001,8 +1001,8 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
-<section id="why-relational-thinking-is-good">
-<h2>6.9 Why relational thinking is good?<a class="headerlink" href="#why-relational-thinking-is-good" title="Permalink to this heading">#</a></h2>
+<section id="goodness-of-relational-thinking">
+<h2>6.9 Goodness of relational thinking<a class="headerlink" href="#goodness-of-relational-thinking" title="Permalink to this heading">#</a></h2>
 <section id="relational-thinking-shifts-vocabularly">
 <h3>6.9.1. Relational thinking shifts vocabularly<a class="headerlink" href="#relational-thinking-shifts-vocabularly" title="Permalink to this heading">#</a></h3>
 <p>We would like to bring reader’s attention to the some vocabulary common in practice since language influences thinking and vice versa.</p>
@@ -1016,17 +1016,17 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </section>
 <section id="the-order-of-processes">
 <h3>6.9.2 The order of processes<a class="headerlink" href="#the-order-of-processes" title="Permalink to this heading">#</a></h3>
-<p>Let us take a moment reflect on the process of changing a graph guided by relational thinking!</p>
-<p>Loosely speaking, in a free world, nothing prevents one from first adding what needs to be added and then remove what needs to be removed. But, a more economic way will be to first remove and then add, a procedure for the previous way needs to handle accidental errors like:</p>
+<p>Let us take a moment reflect on the process of modifying a graph guided by relational thinking!</p>
+<p>As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations – first add new vertices and edges and then remove, even though remove-first and add-next is more economic. A add-first and remove-next procedure must handle accidental errors like which are otherwise absent in the other order:</p>
 <ul class="simple">
 <li><p>Removing what has been added</p></li>
 <li><p>Adding over the removal region.</p></li>
 </ul>
-<p>It cleaner and elegant approach to is to first remove the intended vertices/edges and then add the new ones.</p>
-<p>The mathematics of relational thinking precisely does this! The math ‘knows’ that it must first remove by computing pushout complement and then add by computing pushout over that complement! Moreover, the order of processes cannot be reversed! How did the math get the ordering right?! That is a mystery. However, there is a message that is being conveyed.</p>
+<p>Hence, to remove first and to add next is elegant and as well as cleaner!</p>
+<p>As we saw in double pushouts, relational thinking precisely follows this order! Somehow, the mathematics ‘knew’ that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed.</p>
 <div class="tip admonition">
 <p class="admonition-title">Slogan</p>
-<p>Think relationally to get it right!!</p>
+<p>Think relationally to get it right rightaway!!</p>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
@@ -1073,7 +1073,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Chapter 5: Graph Gluing</p>
+        <p class="prev-next-title">Chapter 5: Graph gluing using pushout</p>
       </div>
     </a>
     <a class="right-next"
@@ -1081,7 +1081,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 7: Double-Pushout Rewriting Applications</p>
+        <p class="prev-next-title">Chapter 7: Double-pushout applications</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1120,7 +1120,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">6.8.4. Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-relational-thinking-is-good">6.9 Why relational thinking is good?</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-relational-thinking">6.9 Goodness of relational thinking</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabularly">6.9.1. Relational thinking shifts vocabularly</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">6.9.2 The order of processes</a></li>
 </ul>

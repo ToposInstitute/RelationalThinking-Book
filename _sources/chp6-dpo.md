@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 6: Cut-Copy-Glue Graphs
+# Chapter 6: Cut-copy-glue graphs using double pushout
 
 ## 6.1. Introduction
 
@@ -966,7 +966,7 @@ to_graphviz(codom(fromR))
 
 ```
 
-## 6.9 Why relational thinking is good? 
+## 6.9 Goodness of relational thinking 
 
 ### 6.9.1. Relational thinking shifts vocabularly
 
@@ -987,21 +987,21 @@ This slogan probably is the answer to all the political issues mentioned in the 
 
 ### 6.9.2 The order of processes
 
-Let us take a moment reflect on the process of changing a graph guided by relational thinking! 
+Let us take a moment reflect on the process of modifying a graph guided by relational thinking! 
 
-Loosely speaking, in a free world, nothing prevents one from first adding what needs to be added and then remove what needs to be removed. But, a more economic way will be to first remove and then add, a procedure for the previous way needs to handle accidental errors like: 
+As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations -- first add new vertices and edges and then remove, even though remove-first and add-next is more economic. A add-first and remove-next procedure must handle accidental errors like which are otherwise absent in the other order: 
 - Removing what has been added
 - Adding over the removal region. 
 
-It cleaner and elegant approach to is to first remove the intended vertices/edges and then add the new ones. 
+Hence, to remove first and to add next is elegant and as well as cleaner!  
 
-The mathematics of relational thinking precisely does this! The math 'knows' that it must first remove by computing pushout complement and then add by computing pushout over that complement! Moreover, the order of processes cannot be reversed! How did the math get the ordering right?! That is a mystery. However, there is a message that is being conveyed. 
+As we saw in double pushouts, relational thinking precisely follows this order! Somehow, the mathematics 'knew' that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed. 
 
 
 :::{admonition} Slogan
 :class: tip
 
- Think relationally to get it right!!
+ Think relationally to get it right rightaway!!
 
 ::: 
 
