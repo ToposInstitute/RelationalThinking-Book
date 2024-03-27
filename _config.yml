@@ -4,7 +4,7 @@
 #title: Diagrammatic Approaches to Relational Thinking
 title: "Relational thinking: from Abstraction to Applications" 
 author: The Jupyter Book Community
-#logo: Logo-temp.png
+logo: assets/logo/logo-white-cropped.jpg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
