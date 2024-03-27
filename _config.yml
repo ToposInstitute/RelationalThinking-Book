@@ -2,9 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 #title: Diagrammatic Approaches to Relational Thinking
-title: "Relational thinking: Abstraction to Applications" 
+title: "Relational thinking: from Abstraction to Applications" 
 author: The Jupyter Book Community
-logo: Logo-temp.png
+#logo: Logo-temp.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
