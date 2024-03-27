@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 2: Dynamical Systems &#8212; Relational thinking: from Abstraction to Applications</title>
+    <title>Chapter 2: Dynamical Systems &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -155,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo-white-cropped.jpg" class="logo__image only-light" alt="Relational thinking: from Abstraction to Applications - Home"/>
-    <script>document.write(`<img src="_static/logo-white-cropped.jpg" class="logo__image only-dark" alt="Relational thinking: from Abstraction to Applications - Home"/>`);</script>
+    <img src="_static/logo-white-cropped.jpg" class="logo__image only-light" alt="Relational thinking: from Abstractions to Applications - Home"/>
+    <script>document.write(`<img src="_static/logo-white-cropped.jpg" class="logo__image only-dark" alt="Relational thinking: from Abstractions to Applications - Home"/>`);</script>
   
   
 </a></div>
@@ -440,6 +440,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">Making graphs dynamical</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightbulbs">Lightbulbs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mood-swings">Mood Swings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
@@ -456,6 +458,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-dynamical-systems">
 <h1>Chapter 2: Dynamical Systems<a class="headerlink" href="#chapter-2-dynamical-systems" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about – visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!</p>
+<a class="reference internal image-reference" href="_images/Kiki-Bouba-friends.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-friends.png" style="width: 400px;" /></a>
+</section>
+<section id="making-graphs-dynamical">
+<h2>Making graphs dynamical<a class="headerlink" href="#making-graphs-dynamical" title="Permalink to this heading">#</a></h2>
+<p>[<strong>Message</strong>: Graphs are animated when we add “states” to vertices and “update rules” to evolve the states. Simplistically, dynamical systems are animated graphs.]</p>
+<p>(Content below will be revisited)</p>
 <p>In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn’t <em>do</em> anything. In this chapter we’ll bring these graphs to life, animating their evolving states over time.</p>
 <p>Recall “example 2” (?) from the last chapter, in which our roommate Tuco took over dishes-duty from me and my wife.</p>
 <a class="reference internal image-reference" href="_images/DGdishes.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.jpg" style="width: 800px;" /></a>
@@ -463,20 +474,24 @@ document.write(`
 <p>This is an example of what mathematicians call a <strong>dynamical system</strong> - a system that evolves in time according to formal rules.</p>
 <p>But rather than informally reading the system evolution ourselves, we would like to have the computer do it for us. How can we get the computer to simulate this step-by-step updating rule? The underlying directed graph provides a kind of blueprint, capturing the dependencies in our domain of interest. Now we must add some additional information that will allow the simulation process to unfold.</p>
 <p>Each vertex in our system will get loaded with a number of “states” and an “update rule” which dictates how those states change over time.</p>
+</section>
 <section id="lightbulbs">
 <h2>Lightbulbs<a class="headerlink" href="#lightbulbs" title="Permalink to this heading">#</a></h2>
-<p>Let’s start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either <code class="docutils literal notranslate"><span class="pre">OFF</span></code>:</p>
-<a class="reference internal image-reference" href="_images/LightbulbOFF.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbOFF.jpg" style="width: 800px;" /></a>
-<p>or <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
-<a class="reference internal image-reference" href="_images/LightbulbON.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbON.jpg" style="width: 800px;" /></a>
+<p>Let’s start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either <code class="docutils literal notranslate"><span class="pre">OFF</span></code> or <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
+<a class="reference internal image-reference" href="_images/LightbulbOFF.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbOFF.jpg" style="width: 400px;" /></a>
+<br/>
+<a class="reference internal image-reference" href="_images/LightbulbON.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbON.jpg" style="width: 400px;" /></a>
 <p>We model this using a directed graph in which the lightbulb is a vertex. We then add <em>extra data</em> to this vertex which gives on <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> condition of the lightbulb.</p>
 <p>ILLUSTRATION? CODE SHOWING LIGHTBULB ON OR OFF</p>
 <p>Of course we cannot yet call this a “dynamical” system. It’s completely static! The lightbulb just stays at whatever we set it to. Let’s make this lightbulb change its state over time.</p>
 <p><strong>Flashing light:</strong></p>
 <p>Let’s see if we can update our model to have the lighbulb flash on and off, like this:</p>
-<a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 400px;" /></a>
+<br/>
 <p>In order to accomplish this the lightbuble has to consider its present state (say <code class="docutils literal notranslate"><span class="pre">ON</span></code>) and then decide to change to the opposite state (<code class="docutils literal notranslate"><span class="pre">OFF</span></code>). This is accomplished with what we call a <strong>update rule</strong>. Here is the directed graph that models this situation:</p>
-<a class="reference internal image-reference" href="_images/FlashingLight.png"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/FlashingLight.png"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.png" style="width: 400px;" /></a>
+<br/>
+<p>The current state information is fedback from the vertex (bulb) to itself through this arrow. The vertex (bulb) will change its state based on the information received – move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> if <code class="docutils literal notranslate"><span class="pre">ON</span></code> is received, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if <code class="docutils literal notranslate"><span class="pre">OFF</span></code> is received!</p>
 <p>We will think of an arrow as sending state value information from its source to its target. In this case, the lightbulb is looking at its own state. The update rule is a lookup table. Whatever the current state of the bulb is, it will be the opposite state in the next time step.</p>
 <p>Here’s how we can encode this update rule in Algebraic Julia:</p>
 <p>CODE CODE CODE CODE CODE</p>
@@ -628,6 +643,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">Making graphs dynamical</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightbulbs">Lightbulbs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mood-swings">Mood Swings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
