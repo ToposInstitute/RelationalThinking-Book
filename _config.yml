@@ -2,9 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 #title: Diagrammatic Approaches to Relational Thinking
-title: What? Not How! - A Peek into Relational Thinking 
+title: "Relational thinking: from Abstraction to Applications" 
 author: The Jupyter Book Community
-logo: AJ.png
+logo: assets/logo/logo-white-cropped.jpg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -23,9 +23,10 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/priyaasrini/AlgJulia-Book2  # Online location of your book
+  url: https://github.com/ToposInstitute/AlgJulia-Book  # Online location of your book
   path_to_book: ./  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
+  use_repository_button: true
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository

@@ -10,13 +10,13 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 6: Cut-Copy-Glue Graphs
+# Chapter 6: Cut-copy-glue graphs using double pushout
 
 ## 6.1. Introduction
 
-"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacted global climate.
+"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacting global climate.
 
-> We know in hindsight these approaches have lead humanity to face issues bigger than they the ones they intended to solve! So, what was missed in the decision making process? 
+> We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! So, what was missed in the decision making process? 
 
 Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is: 
 
@@ -240,11 +240,7 @@ The next step is to answer how to find a match of a search pattern inside a host
 
 However, in graph, connectivity matters than finding exact match of the shape of the search pattern. So when searching for pattern in a host graph, we do not look for 1-to-1 correspondence between vertices / edges of the `Find what`. Rather, we need to look for matches which have similar connectivity as the search pattern. Do the words "similar connectivity" a ring bell? Similar connectivity implies  graph morphism.
 
-:::{Note}
-
-A match is a graph morphism from `Find what` to a host.
-
-:::
+<mark>A match is a graph morphism from `Find what` to a host.</mark>
 
 Let us suppose we want to find a match of this search pattern in the host graph:
 
@@ -281,8 +277,13 @@ The below match, has vertices "1" and "2" in the search pattern, mapped to the s
 </br>
 
 
-:::{admonition} Puzzle 3
 
+:::::{admonition} Let us strengthen our understanding!
+:class: note
+
+::::{tab-set}
+
+:::{tab-item} Puzzle 3
 Find at least two matches of the search pattern in the host graph. 
 
 ````{div} wrapper 
@@ -296,6 +297,7 @@ Find at least two matches of the search pattern in the host graph.
 
 :::{admonition} Solution 
 :class: dropdown
+
 ````{div} wrapper 
 
 An exact match: 
@@ -308,7 +310,7 @@ An exact match:
 
 Non-injective match:
 
-```{image} assets/Ch6/match-ex-sol1.png
+```{image} assets/Ch6/match-ex-sol2.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -316,9 +318,9 @@ Non-injective match:
 
 ````
 
-::: 
+:::
 
-:::{admonition} Puzzle 4
+:::{tab-item} Puzzle 4
 
 (Same as Paul's Puzzle from chapter 1)
 
@@ -335,7 +337,11 @@ IMAGE
 IMAGE
 ```
 
-::: 
+:::
+
+::::
+
+:::::
 
 :::{admonition} Key points
 :class: tip
@@ -523,7 +529,7 @@ What is the pushout complement?
 The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.
 
 ````{div} wrapper 
-```{image} assets/Ch6/Ex-2-sol.png
+```{image} assets/Ch6/Ex2-sol.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -679,6 +685,8 @@ Computing the pushout complement followed by the pushout completes the replaceme
 :align: center
 ```
 
+<!----------------------------->
+
 :::{admonition} Puzzle 7 (continued from Puzzle 5 in Section --- )
 
 Compute the pushout:
@@ -735,6 +743,7 @@ Vertices and edges are added by computing pushout.
 
 :::{admonition} Key point 2: Find-and-replace machinery for graphs
 :class: tip
+:name: Find-and-replace-machinery
 
 A thing of beauty!!
 
@@ -832,21 +841,130 @@ Reshaping directed graph follows the same idea as undirected graphs. The find-an
 
 ### 6.8.1. Finding matches of a search pattern
 
-Puzzle 3
++++
+
+```{code-cell}
+# Puzzle 3
+#-----------
+
+pattern = path_graph(SymmetricGraph, 3)
+host = cycle_graph(SymmetricGraph, 3)
+
+# There are 12 matches because the path can start 
+# at any of the three vertices of the cycle. 
+# There are two directions each can go. And for each we decide
+# for both edges whether they go clockwise or not, 
+# so that is 3 x 2 x 2 independent choices.
+
+matches = homomorphisms(pattern, host)
+
+```
+
++++
 
 ### 6.8.2. Is this a pushout complement?
 
-Example 2 and Example 3
+```{code-cell}
+# Example 2
+#-----------
+
+K = SymmetricGraph(1)
+L = path_graph(SymmetricGraph, 2)
+G = path_graph(SymmetricGraph, 3)
+
+# There is only one homomorphism (up to symmetry)
+# So we can pick an arbitrary one
+p = homomorphism(K, L)
+m = homomorphism(L, G)
+
+# We can check whether or not the pushout complement exists
+can_pushout_complement(p, m)
+
+# We can get a list of the specific violations
+gluing_conditions(ComposablePair(p, m))
+
+```
+
+```{code-cell}
+# Example 3
+#----------------------------------------
+ (K, L, p: K->L are all the same)
+#----------------------------------------
+G = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
+m = homomorphism(L, G)
+
+# We can check whether or not the pushout complement exists
+can_pushout_complement(p, m)
+
+# We can get a list of the specific violations
+gluing_conditions(ComposablePair(p, m))
+
+```
 
 ### 6.8.3. Computing Pushout complements
 
-Puzzle 5 and Puzzle 6 
+```{code-cell}
+# Puzzle 5
+# --------
+
+Overlap, Pattern₅, Host₅ = SymmetricGraph.([2, 4, 6])
+O_P₅ = ACSetTransformation(Overlap, Pattern₅; V=[1,2])
+P_H₅ = ACSetTransformation(Pattern₅, Host₅; V=[1,1,2,2])
+O_PC₅, PC_H₅ = pushout_complement(O_P₅, P_H₅)
+
+to_graphviz(dom(PC_H₅))
+
+
+```
+
+```{code-cell}
+# Puzzle 6
+# --------
+
+Pattern₆ = SymmetricGraph(3)
+add_edge!(Pattern₆, 2, 3)
+
+Host₆ = path_graph(SymmetricGraph, 6)
+
+O_P₆ = ACSetTransformation(Overlap, Pattern₆; V=[1,3])
+P_H₆ = homomorphism(Pattern₆, Host₆; initial=(V=[5,1,2],))
+
+O_PC₆, PC_H₆ = pushout_complement(O_P₆, P_H₆)
+
+to_graphviz(dom(PC_H₆))
+
+```
 
 ### 6.8.4. Computing double-pushouts
 
-Puzzle 7 and Puzzle 8 
 
-## A note on vocabulary
+```{code-cell}
+
+# Puzzle 7
+#---------
+
+# Monic=true enforces that the two vertices in Overlap are not mapped to a
+# single vertex in the single-edge graph.
+add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
+
+fromR, fromPC = pushout(O_PC₅, add)
+to_graphviz(codom(fromR))
+
+```
+
+```{code-cell}
+
+# Puzzle 8
+#---------
+fromR, fromPC = pushout(O_PC₆, add)
+to_graphviz(codom(fromR))
+
+
+```
+
+## 6.9 Goodness of relational thinking 
+
+### 6.9.1. Relational thinking shifts vocabularly
 
 We would like to bring reader's attention to the some vocabulary common in practice since language influences thinking and vice versa.
 
@@ -863,6 +981,25 @@ The mathematics we used to "find-and-replace" in graphs tells us that it is not 
 
 This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter. 
 
+### 6.9.2 The order of processes
+
+Let us take a moment reflect on the process of modifying a graph guided by relational thinking! 
+
+As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations -- first add new vertices and edges and then remove, even though remove-first and add-next is more economic. A add-first and remove-next procedure must handle accidental errors like which are otherwise absent in the other order: 
+- Removing what has been added
+- Adding over the removal region. 
+
+Hence, to remove first and to add next is elegant and as well as cleaner!  
+
+As we saw in double pushouts, relational thinking precisely follows this order! Somehow, the mathematics 'knew' that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed. 
+
+
+:::{admonition} Slogan
+:class: tip
+
+ Think relationally to get it right rightaway!!
+
+::: 
 
 
 [^1]: A few examples in this chapter have been inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
