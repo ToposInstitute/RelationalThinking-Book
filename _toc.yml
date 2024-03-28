@@ -4,6 +4,7 @@
 format: jb-book
 root: intro
 chapters:
+- file: chp0
 - file: chp1-directed-graphs
 - file: chp2-dwd
 - file: chp3-graph-relationships
