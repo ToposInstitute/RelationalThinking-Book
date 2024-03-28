@@ -20,6 +20,12 @@ This work has been made possible by a grant from the [Mozilla Internet Ecosystem
 :align: center
 ```
 
+**Logo**
+
+Thank you to Avik Tripura for creating the Logo and Namista Tabassum for the consultation!  
+
+The authors thank Pawel Sobocinski for inspiring the fun characters Kiki and Bouba in Chapter 2. We love Kiki and Bouba appear in the logo of this book too! 
+
 **People**
 
 This work would not have been possible without the support of the Algebraic Julia team at the Topos Institute! A million thanks to each one of  them!
@@ -28,12 +34,23 @@ The authors thank Evan for guiding setting up live code execution, Kris coded up
 
 Priyaa personally thanks David for drafting an initial schedule for the project and helping setting up the initial theme of the book! 
 
+The authors thank Beth for all the conversations about project management and for inspiring the introduction of Chapter 6.
+
+**About the authors**
+
+- **Angeline Aguinaldo** - ... 
+
+- **Paul Dancstep** - ... 
+
+- **Brendan Fong** - ... 
+
+- **Priyaa Varshinee Srinivasan** - ... 
+
 **Behind the scenes**
 
-This book is an experimental project, one of its kind in trying to use the modern features of technology to convey category theory concepts to a general science audience. The authors had to make lots of design decisions to honor the limits of technology, to have the book open source, and above all to keep the content light, fun, and useful! 
+This book is an experimental project, one of its kind in trying to use the modern features of technology to convey category theory concepts to a general science audience. The authors had to make a lot of design decisions to honor the limits of technology, to have the book open source, and above all to keep the content light, fun, and useful! 
 
 Here are a few pictures we clicked during our group writing retreats!
-
 
 ```{image} assets/Credits/Paul-hard-at-work.jpg
 :alt: Whoopsy!
@@ -42,6 +59,22 @@ Here are a few pictures we clicked during our group writing retreats!
 ```
 <center> <em> Paul hard at work </em> </center>
 
+</br>
 
+```{image} assets/Credits/Brendan-at-board.jpg
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+<center> <em> Brendan at the board </em> </center>
+
+</br>
+
+```{image} assets/Credits/Book-team.jpg
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+<center> <em> The book-team after dinner with Brendan's family! </em> </center>
 
 
