@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 4: Schemas
+# Chapter 3: Schemas
 
 
 ```{image} assets/Ch4/Binder_Instructions.png

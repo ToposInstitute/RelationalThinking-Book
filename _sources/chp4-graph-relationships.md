@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 3: Graph Morphisms
+# Chapter 4: Graph Morphisms
 
 ## Introduction
 

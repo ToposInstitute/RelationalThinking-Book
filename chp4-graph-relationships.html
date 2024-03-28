@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 3: Graph Morphisms &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 4: Graph Morphisms &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chp3-graph-relationships';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chp4-graph-relationships';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 4: Schemas" href="chp4-schemas.html" />
-    <link rel="prev" title="Chapter 2: Dynamical Systems" href="chp2-dwd.html" />
+    <link rel="next" title="Chapter 5: Graph gluing using pushout" href="chp5-graph-gluing.html" />
+    <link rel="prev" title="Chapter 3: Schemas" href="chp3-schemas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,8 +174,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Directed Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3: Graph Morphisms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp4-schemas.html">Chapter 4: Schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Schemas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 4: Graph Morphisms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Graph gluing using pushout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Cut-copy-glue graphs using double pushout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: Double-pushout applications</a></li>
@@ -234,7 +234,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp3-graph-relationships.md" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp4-graph-relationships.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book/issues/new?title=Issue%20on%20page%20%2Fchp3-graph-relationships.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book/issues/new?title=Issue%20on%20page%20%2Fchp4-graph-relationships.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +330,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/chp3-graph-relationships.ipynb" target="_blank"
+      <li><a href="_sources/chp4-graph-relationships.ipynb" target="_blank"
    class="btn btn-sm btn-download-notebook-button dropdown-item"
    title="Download notebook file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -347,7 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/chp3-graph-relationships.md" target="_blank"
+      <li><a href="_sources/chp4-graph-relationships.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -431,7 +431,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 3: Graph Morphisms</h1>
+    <h1>Chapter 4: Graph Morphisms</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -461,8 +461,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-graph-morphisms">
-<h1>Chapter 3: Graph Morphisms<a class="headerlink" href="#chapter-3-graph-morphisms" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-graph-morphisms">
+<h1>Chapter 4: Graph Morphisms<a class="headerlink" href="#chapter-4-graph-morphisms" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In the previous section we took a look at directed graphs; what they are, what they can represent, and how we can describe them to a computer. In that chapter we investigated the relationships within a graph. In this chapter, we’re going to investigate relationships <em>between</em> entire graphs.</p>
@@ -580,20 +580,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="chp2-dwd.html"
+       href="chp3-schemas.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Chapter 2: Dynamical Systems</p>
+        <p class="prev-next-title">Chapter 3: Schemas</p>
       </div>
     </a>
     <a class="right-next"
-       href="chp4-schemas.html"
+       href="chp5-graph-gluing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 4: Schemas</p>
+        <p class="prev-next-title">Chapter 5: Graph gluing using pushout</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
