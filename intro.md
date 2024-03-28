@@ -36,6 +36,8 @@ While AlgebraicJulia is still a software ecosystem under development, and is not
 
 The arc of this book is as follows. We begin by considering directed graphs: a simple language of dots and arrows between them. Our goal is to be able to think about these from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking.
 
+![whoops!](./assets/Ch1/Ladder.png)
+
 In learning how to think about directed graphs relationally, we see in a microcosm the broader, general lessons of relational thinking.
 
 Once at the top of this ladder, we can begin to appreciate the view. 

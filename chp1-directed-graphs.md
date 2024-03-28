@@ -79,7 +79,7 @@ The virtue of making these relationships explicit is that the information can no
 
 > DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!
 
-### Problems ###
+### Puzzles ###
 
 1. Get out a pencil and paper and see if you can draw the directed graphs described by these source and target maps
 
