@@ -27,7 +27,7 @@ As a step towards making sense of the idea of combining graphs, let us a revisit
 
 In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:
 
-```{image} assets/Ch5/Tuco.jpeg
+```{image} assets/Ch5/3b.png
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -35,7 +35,7 @@ In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuc
 
 Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:
 
-```{image} assets/Ch5/Tuco-glued.jpeg
+```{image} assets/Ch5/3c.png
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -104,7 +104,7 @@ The “overlap” acts as a bridge between two graphs. Theoretically, presence o
 
 Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue. 
 
-```{image} assets/Ch5/cup-handle.jpeg
+```{image} assets/Ch5/4.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -240,7 +240,7 @@ Now, we have to find graphs to whom this question can be asked. We have already 
 
 To spot the pushout inside this set, we are going to do step outside the game for a moment and sharpen our instinct about pushouts. For this, we will move say concretely what Graph-1, Graph-2 and Graph-3!
 
-```{image} assets/Ch5/4.3-Graph1-3.png
+```{image} assets/Ch5/6.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -315,17 +315,17 @@ We shall now make our intuition of “least effort” precise by asking how choi
 
 **Let us compare choice (a) with choice (b)**
 
-```{image} assets/Ch3/4.3-compare-a-b-1.png
+```{image} assets/Ch5/8a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 We have two commuting diagrams with Embedding A and Embedding B as common arrows. Next we would like to see how (a) and (b) are related. 
 
-```{image} assets/Ch3/4.3-compare-a-b-2.png
+```{image} assets/Ch5/8b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -333,9 +333,9 @@ There are many graph morphisms from graph (a) to graph (b). But there is exactly
 
 > Commuting diagrams are like ecosystems in balance. The above diagram has 4 ecosystems pasted together (including the 2 squares starting at Graph-1). Any change in one ecosystem will create a change in the other. When the “most natural” information flow along the morphisms, all the ecosystems are in balance.
 
-```{image} assets/Ch3/4.3-compare-a-b-3.png
+```{image} assets/Ch5/8c.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -347,17 +347,17 @@ Can we embed (b) in (a) such that the diagrams (1), (2), (3) will commute simult
 
 Again, there is exactly one (obvious) choice of morphism from (a) to (c) that will make the  yellow and the blue triangles commute. 
 
-```{image} assets/Ch3/4.3-compare-a-c-1.png
+```{image} assets/Ch5/9b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 However, there are at least two ways in which (c) embeds in (a) to make the shapes (1), (2), and (3) commute. Both these choices are equally good! The grey vertex in (c) can be mapped to two blue vertices in (a). Because, (c) has extra information, that is vertex and edge not from Graphs 1-3, there are many ways of embedding this extra information in the most lazy choice (a).
 
-```{image} assets/Ch3/4.3-compare-a-c-2.png
+```{image} assets/Ch5/9c.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -367,17 +367,17 @@ However, there are at least two ways in which (c) embeds in (a) to make the shap
 
 There is exactly one (obvious) choice of morphism from (a) to (d) that will make the  yellow and the blue triangles commute. 
 
-```{image} assets/Ch3/4.3-compare-a-d-1.png
+```{image} assets/Ch5/10b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 However, (d) does not embed in (a) because (d) has  a self-loop and can embed only in graphs with at least one self-loop. 
 
-```{image} assets/Ch3/4.3-compare-a-d-2.png
+```{image} assets/Ch5/10c.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 

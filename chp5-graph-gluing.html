@@ -476,9 +476,9 @@ document.write(`
 <p>As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.</p>
 <p><img alt="whoops!" src="_images/DGdishes1.jpg" /></p>
 <p>In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:</p>
-<a class="reference internal image-reference" href="_images/Tuco.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/Tuco.jpeg" style="width: 560px;" /></a>
+<a class="reference internal image-reference" href="_images/3b.png"><img alt="Whoopsy!" class="align-center" src="_images/3b.png" style="width: 560px;" /></a>
 <p>Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
-<a class="reference internal image-reference" href="_images/Tuco-glued.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/Tuco-glued.jpeg" style="width: 560px;" /></a>
+<a class="reference internal image-reference" href="_images/3c.png"><img alt="Whoopsy!" class="align-center" src="_images/3c.png" style="width: 560px;" /></a>
 <p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
 <p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <a class="reference internal image-reference" href="_images/complex-graph.png"><img alt="Whoopsy!" class="align-center" src="_images/complex-graph.png" style="width: 450px;" /></a>
@@ -509,7 +509,7 @@ document.write(`
 <p>The “overlap” acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine Graph-2 and Graph-3 into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.</p>
 <a class="reference internal image-reference" href="_images/sheets.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/sheets.jpeg" style="width: 250px;" /></a>
 <p>Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue.</p>
-<a class="reference internal image-reference" href="_images/cup-handle.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/cup-handle.jpeg" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/4.png"><img alt="Whoopsy!" class="align-center" src="_images/4.png" style="width: 450px;" /></a>
 <p>With this analogy in mind, let us think of the pushout of a diagram with two graphs and their overlap as shown above. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.</p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
@@ -592,7 +592,7 @@ document.write(`
 </div></blockquote>
 <p>Now, we have to find graphs to whom this question can be asked. We have already covered Graph-2, Graph-3, Graph-1. There is another set of graphs are familiar with – all those graphs which satisfy the commuting square of a pushout. The pushout we are looking for is inside this set! Do you agree?</p>
 <p>To spot the pushout inside this set, we are going to do step outside the game for a moment and sharpen our instinct about pushouts. For this, we will move say concretely what Graph-1, Graph-2 and Graph-3!</p>
-<a class="reference internal image-reference" href="_images/4.3-Graph1-3.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-Graph1-3.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/6.png"><img alt="Whoopsy!" class="align-center" src="_images/6.png" style="width: 500px;" /></a>
 <p>Graph-1 embeds in Graph-2 and Graph-3 as follows:</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 500px;" /></a>
 <p>[NEEDS TO BE REVISED FROM HERE]</p>
@@ -622,27 +622,27 @@ document.write(`
 <p>Choice (a) has the feeling of the most lazy choice since Graph-2 and Graph-3 are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like (b) and (d), or to add extra information like (c). Indeed (a) is our choice!</p>
 <p>We shall now make our intuition of “least effort” precise by asking how choice (a) relates to all the other possible candidates! Remember, the rules of the game do not allow us to directly talk about the vertices and the edges of the colimit. So we need to find the criteria to narrow down “least effort” graphs from other potential candidates by asking “How does least effort graphs relate to other potential candidates?”</p>
 <p><strong>Let us compare choice (a) with choice (b)</strong></p>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-b-1.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-b-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/8a.png"><img alt="Whoopsy!" class="align-center" src="_images/8a.png" style="width: 500px;" /></a>
 <p>We have two commuting diagrams with Embedding A and Embedding B as common arrows. Next we would like to see how (a) and (b) are related.</p>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-b-2.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-b-2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
 <p>There are many graph morphisms from graph (a) to graph (b). But there is exactly one choice that will make the triangle formed by the two blue arrows and the dotted arrow commute. This choice is again the most natural one, mapping blue to blue, green to green, orange to orange. The arrow from (a) to (b) is dotted to signify that there is only one such embedding.</p>
 <blockquote>
 <div><p>Commuting diagrams are like ecosystems in balance. The above diagram has 4 ecosystems pasted together (including the 2 squares starting at Graph-1). Any change in one ecosystem will create a change in the other. When the “most natural” information flow along the morphisms, all the ecosystems are in balance.</p>
 </div></blockquote>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-b-3.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-b-3.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/8c.png"><img alt="Whoopsy!" class="align-center" src="_images/8c.png" style="width: 500px;" /></a>
 <p>Can we embed (b) in (a) such that the diagrams (1), (2), (3) will commute simultaneously? Yes, there is no such embedding — the orange-green vertex of (b) can embed in either the orange or the green vertex of (a). It embeds in the orange vertex, then diagram (2) does not commute. If it embeds in the green vertex, then diagram (3) does not commute. Since the choice (b) has coarse-grained the information of Graph-2 and Graph-3, the information cannot be fine-grained again!</p>
 <p><strong>Score</strong> Choice (a): 1,  Choice (b): 0</p>
 <p><strong>Let us compare choice (a) with choice (c)</strong></p>
 <p>Again, there is exactly one (obvious) choice of morphism from (a) to (c) that will make the  yellow and the blue triangles commute.</p>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-c-1.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-c-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/9b.png"><img alt="Whoopsy!" class="align-center" src="_images/9b.png" style="width: 500px;" /></a>
 <p>However, there are at least two ways in which (c) embeds in (a) to make the shapes (1), (2), and (3) commute. Both these choices are equally good! The grey vertex in (c) can be mapped to two blue vertices in (a). Because, (c) has extra information, that is vertex and edge not from Graphs 1-3, there are many ways of embedding this extra information in the most lazy choice (a).</p>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-c-2.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-c-2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/9c.png"><img alt="Whoopsy!" class="align-center" src="_images/9c.png" style="width: 500px;" /></a>
 <p><strong>Score</strong> Choice (a): 1,  Choice (c): 0</p>
 <p><strong>Let us compare (a) with (d)</strong></p>
 <p>There is exactly one (obvious) choice of morphism from (a) to (d) that will make the  yellow and the blue triangles commute.</p>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-d-1.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-d-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/10b.png"><img alt="Whoopsy!" class="align-center" src="_images/10b.png" style="width: 500px;" /></a>
 <p>However, (d) does not embed in (a) because (d) has  a self-loop and can embed only in graphs with at least one self-loop.</p>
-<a class="reference internal image-reference" href="_images/4.3-compare-a-d-2.png"><img alt="Whoopsy!" class="align-center" src="_images/4.3-compare-a-d-2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/10c.png"><img alt="Whoopsy!" class="align-center" src="_images/10c.png" style="width: 500px;" /></a>
 <p><strong>Score</strong> Choice (a): 1,  Choice (d): 0</p>
 <p>Our choice of colimit graph having such ‘universal’ nature is an indication that we got our plumbing right and now things will flow smoothly! In category theory, this is called a universal property.</p>
 <p>Whewww!! That is some hard core relational thinking!</p>
