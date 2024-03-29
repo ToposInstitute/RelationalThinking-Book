@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 7: Double-pushout applications &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 7: Looking beyond &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -180,7 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Graph Morphisms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Pushout graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Double pushout graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: Double-pushout applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: Looking beyond</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
 </ul>
 
@@ -433,7 +433,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 7: Double-pushout applications</h1>
+    <h1>Chapter 7: Looking beyond</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -467,12 +467,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-double-pushout-applications">
-<h1>Chapter 7: Double-pushout applications<a class="headerlink" href="#chapter-7-double-pushout-applications" title="Permalink to this heading">#</a></h1>
-<p>As we have seen, Double-pushout (DPO) rewriting is a concept that gives us access to the feature of adding and deleting elements in our data. At its core, DPO rewriting involves the use of two colimits in the <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set category that transforms one <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set object to another. This process can model a wide range of changes in schema-backed data, from the reconfiguration of physical objects to transformations in world knowledge.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-looking-beyond">
+<h1>Chapter 7: Looking beyond<a class="headerlink" href="#chapter-7-looking-beyond" title="Permalink to this heading">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This chapter will extend the previously learned concepts from graphs to the world!</p>
+</div>
+<p>So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using <em>schemas</em>, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using <em>double-pushout (DPO) rewriting</em>, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design.</p>
+<p>Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household. We would have to do quite a bit of mental book-keeping to talk in the language of graphs– “Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator… and the edge between them means that the Coca-Cola soda <strong>is in</strong> the refridgerator,… but this other edge between the soda and a node representing a box of Mentos means that the Mentos should <strong>never</strong> be put in the soda…”</p>
+<p>Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples for this.</p>
 <section id="example-1-cube-configuration">
 <h2>Example 1: Cube Configuration<a class="headerlink" href="#example-1-cube-configuration" title="Permalink to this heading">#</a></h2>
-<p>Consider a scenario where the index category, <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>, represents the schema for a three-dimensional (3D) shape, comprising three fundamental objects: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema is enriched with six non-identity morphisms: <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, which define the relationships between these objects. DPO rewriting in this context can model various transformations of a 3D object including cube,or box.</p>
+<p>Let’s start by simply extending the graph schema with another concept, like faces to model a cube. Consider a scenario where the index category, <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>, represents the schema for a three-dimensional (3D) shape, comprising three fundamental objects: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema is enriched with six non-identity morphisms: <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, which define the relationships between these objects. DPO rewriting in this context can model various transformations of a 3D object including cube,or box.</p>
 <p>This can be expressed as a schema in AlgebraicJulia as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
