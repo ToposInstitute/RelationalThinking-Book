@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 6: Cut-copy-glue graphs using double pushout
+# Chapter 6: Double pushout graphs
 
 ## 6.1. Introduction
 

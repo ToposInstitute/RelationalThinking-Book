@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 2: Dynamical Systems &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 2: Dynamical systems &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -173,11 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Directed Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: Dynamical Systems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: Dynamical systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Schemas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Graph Morphisms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Graph gluing using pushout</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Cut-copy-glue graphs using double pushout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Pushout graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Double pushout graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: Double-pushout applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
 </ul>
@@ -431,7 +431,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 2: Dynamical Systems</h1>
+    <h1>Chapter 2: Dynamical systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -441,11 +441,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">Making graphs dynamical</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightbulbs">Lightbulbs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mood-swings">Mood Swings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">2.2. Making graphs dynamical</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3. Light bulbs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">2.3.1. Single light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">2.3.3. String of lights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">2.3.4. A traffic light</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-intersection">2.3.4. A traffic intersection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4. Kiki and Bouba</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-by-themselves">2.4.1. Kiki and Bouba by themselves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-talking-to-each-other">2.4.2. Kiki and Bouba talking to each other</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chef-bouba-and-his-helpers">2.4.3. Chef Bouba and his helpers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -458,92 +470,252 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-dynamical-systems">
-<h1>Chapter 2: Dynamical Systems<a class="headerlink" href="#chapter-2-dynamical-systems" title="Permalink to this heading">#</a></h1>
+<h1>Chapter 2: Dynamical systems<a class="headerlink" href="#chapter-2-dynamical-systems" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>2.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about – visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-friends.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-friends.png" style="width: 400px;" /></a>
 </section>
 <section id="making-graphs-dynamical">
-<h2>Making graphs dynamical<a class="headerlink" href="#making-graphs-dynamical" title="Permalink to this heading">#</a></h2>
+<h2>2.2. Making graphs dynamical<a class="headerlink" href="#making-graphs-dynamical" title="Permalink to this heading">#</a></h2>
 <p>[<strong>Message</strong>: Graphs are animated when we add “states” to vertices and “update rules” to evolve the states. Simplistically, dynamical systems are animated graphs.]</p>
-<p>(Content below will be revisited)</p>
-<p>In the previous chapter we learned how to input directed graphs into a computer, but those directed graphs didn’t <em>do</em> anything. In this chapter we’ll bring these graphs to life, animating their evolving states over time.</p>
-<p>Recall “example 2” (?) from the last chapter, in which our roommate Tuco took over dishes-duty from me and my wife.</p>
-<a class="reference internal image-reference" href="_images/DGdishes.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.jpg" style="width: 800px;" /></a>
-<p>This model had an implicit notion of <em>time</em>. Every day it is <em>somebody’s</em> turn to the dishes and, with each passing day, this status gets updated. One is meant to “read” the diagram in an active way: Look at who’s turn it currently is (“my wife”), then trace along an arrow with your eyes to see who’s turn it will be tomorrow (“me”). Then follow an arrow again to see who’s turn it will be the day after tomorrow (“my wife”). And so on, ad infinitum.</p>
-<p>This is an example of what mathematicians call a <strong>dynamical system</strong> - a system that evolves in time according to formal rules.</p>
-<p>But rather than informally reading the system evolution ourselves, we would like to have the computer do it for us. How can we get the computer to simulate this step-by-step updating rule? The underlying directed graph provides a kind of blueprint, capturing the dependencies in our domain of interest. Now we must add some additional information that will allow the simulation process to unfold.</p>
-<p>Each vertex in our system will get loaded with a number of “states” and an “update rule” which dictates how those states change over time.</p>
+<aside class="sidebar">
+<p class="sidebar-title">Whose turn is to do dishes?</p>
+<a class="reference internal image-reference" href="_images/Tony-Tuco.png"><img alt="Whoopsy!" class="align-left" src="_images/Tony-Tuco.png" style="width: 400px;" /></a>
+</aside>
+<aside class="sidebar">
+<p class="sidebar-title">Ski trip brochure</p>
+<a class="reference internal image-reference" href="_images/Ski-lift.png"><img alt="Whoopsy!" class="align-center" src="_images/Ski-lift.png" style="width: 400px;" /></a>
+</aside>
+<p>We start with directed graphs. Each one of the directed graphs we met in the last chapter, “Whose turn is it to do dishes”, or the “Ski trip brochure”, or “Mythological romance”, is a blueprint of situations happening over time.</p>
+<p>For example, here are few situations based on the “Ski trip brochure”:</p>
+<p>Situation 1: A person was at the lodge. They took the lift up the mountain and skied downhill to the village.</p>
+<p>Situation 2: A person was the village. The cross-country skiied in the village.</p>
+<p>We can manifest these blueprints (directed graphs) into actual occurences by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some <em>additional information</em>, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a period of time (Kiki and Bouba talking for 60 minutes) or can be simulated as occuring over discrete time steps.</p>
+<div class="admonition-key-point admonition">
+<p class="admonition-title">Key point </p>
+<p>The <em>additional information</em> has two pieces – for every vertex,</p>
+<ol class="arabic simple">
+<li><p>One or more <mark>states</mark></p></li>
+<li><p><mark>Update rule</mark> for each state</p></li>
+</ol>
+</div>
+<p>We will start with a very simple example, and see show to apply these two pieces of information to a directed graph and simulate an event or dynamics in a computer!</p>
 </section>
-<section id="lightbulbs">
-<h2>Lightbulbs<a class="headerlink" href="#lightbulbs" title="Permalink to this heading">#</a></h2>
-<p>Let’s start with a lightbulb (what could be simpler?). A lightbulb is always in one of two states. It is either <code class="docutils literal notranslate"><span class="pre">OFF</span></code> or <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
-<a class="reference internal image-reference" href="_images/LightbulbOFF.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbOFF.jpg" style="width: 400px;" /></a>
+<section id="light-bulbs">
+<h2>2.3. Light bulbs<a class="headerlink" href="#light-bulbs" title="Permalink to this heading">#</a></h2>
+<p>Let’s start with a light bulb (what could be simpler?!).</p>
+<section id="single-light-bulb">
+<h3>2.3.1. Single light bulb<a class="headerlink" href="#single-light-bulb" title="Permalink to this heading">#</a></h3>
+<p>We can <em>model</em> a light bulb using a directed graph with a single vertex and no edge. The light bulb is the vertex.</p>
+<a class="reference internal image-reference" href="_images/bulb-vertex.png"><img alt="Whoopsy!" class="align-center" src="_images/bulb-vertex.png" style="width: 100px;" /></a>
+<p>A light bulb is always in one of two “states” – either <code class="docutils literal notranslate"><span class="pre">OFF</span></code> or <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
+<a class="reference internal image-reference" href="_images/light-bulb-state.png"><img alt="Whoopsy!" class="align-center" src="_images/light-bulb-state.png" style="width: 400px;" /></a>
 <br/>
-<a class="reference internal image-reference" href="_images/LightbulbON.jpg"><img alt="Whoopsy!" class="align-center" src="_images/LightbulbON.jpg" style="width: 400px;" /></a>
-<p>We model this using a directed graph in which the lightbulb is a vertex. We then add <em>extra data</em> to this vertex which gives on <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> condition of the lightbulb.</p>
-<p>ILLUSTRATION? CODE SHOWING LIGHTBULB ON OR OFF</p>
-<p>Of course we cannot yet call this a “dynamical” system. It’s completely static! The lightbulb just stays at whatever we set it to. Let’s make this lightbulb change its state over time.</p>
-<p><strong>Flashing light:</strong></p>
-<p>Let’s see if we can update our model to have the lighbulb flash on and off, like this:</p>
-<a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 400px;" /></a>
+<p>We then add extra data to this vertex called <em>state</em> which gives on <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> condition of the light bulb. At any instant of time, the state value is either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p>
+<a class="reference internal image-reference" href="_images/bulb-state-vertex.png"><img alt="Whoopsy!" class="align-center" src="_images/bulb-state-vertex.png" style="width: 100px;" /></a>
+</br>
+<p>The above graph can interpreted a snapshot of the bulb at an instant in time! The graph has some dynamic nature to it in the sense that the state can be either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. However, once set to <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, the vertex (light bulb) just stays at whatever state we set it to.</p>
+<blockquote>
+<div><p>Adding state information to the vertices makes a graph slightly dynamic. A directed graph with a state for each vertex is a snapshot of an event in time.</p>
+</div></blockquote>
+<p>We would like the state of the light bulb to change over time!</p>
+</section>
+<section id="flashing-light-bulb">
+<h3>2.3.2. Flashing light bulb<a class="headerlink" href="#flashing-light-bulb" title="Permalink to this heading">#</a></h3>
+<p>Let us update our model (graph) to have the lighbulb flash on and off, like this:</p>
+<a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 300px;" /></a>
 <br/>
-<p>In order to accomplish this the lightbuble has to consider its present state (say <code class="docutils literal notranslate"><span class="pre">ON</span></code>) and then decide to change to the opposite state (<code class="docutils literal notranslate"><span class="pre">OFF</span></code>). This is accomplished with what we call a <strong>update rule</strong>. Here is the directed graph that models this situation:</p>
+<p>In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If the present state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">ON</span></code>. It must perform this operation at every time step. What we described just now is called an  <strong>update rule</strong> – rule saying how a state is to be updated!</p>
+<blockquote>
+<div><p>Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!</p>
+</div></blockquote>
+<p>&#64;Paul:  THE SELF-LOOP NEEDS TO BE REMOVED. EVERY VERTEX ALWAYS HAS ACCESS TO ITS OWN STATE. PLEASE SEE THE CODE</p>
+<p>Here is the directed graph that models a flashing bulb:</p>
 <a class="reference internal image-reference" href="_images/FlashingLight.png"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.png" style="width: 400px;" /></a>
 <br/>
-<p>The current state information is fedback from the vertex (bulb) to itself through this arrow. The vertex (bulb) will change its state based on the information received – move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> if <code class="docutils literal notranslate"><span class="pre">ON</span></code> is received, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if <code class="docutils literal notranslate"><span class="pre">OFF</span></code> is received!</p>
-<p>We will think of an arrow as sending state value information from its source to its target. In this case, the lightbulb is looking at its own state. The update rule is a lookup table. Whatever the current state of the bulb is, it will be the opposite state in the next time step.</p>
-<p>Here’s how we can encode this update rule in Algebraic Julia:</p>
-<p>CODE CODE CODE CODE CODE</p>
-<p>And we can even export an animation showing that our simulation works!</p>
-<a class="reference internal image-reference" href="assets/Ch2/Flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch2/Flashing-light-JAVIS.gif" style="width: 250px;" /></a>
-<p><strong>Two lights:</strong></p>
-<p>In the last example the flashing light was a self-contained system. But one of the interesting things about modeling dynamical systems is our ability to make different parts of the system affect one another - that an update rule can take into account that state of OTHER parts of the system.</p>
-<p>Suppose we wanted two alternating lightbulbs:</p>
-<a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 800px;" /></a>
-<p>We can use a directed graph in which each lightbulb sends its state to the other. Each lightbuble uses an update rule in which it “copies” whatever state the other lightbulb is in.</p>
-<a class="reference internal image-reference" href="_images/Pair_Of_Lights.png"><img alt="Whoopsy!" class="align-center" src="_images/Pair_Of_Lights.png" style="width: 800px;" /></a>
-<p>We can set this up in Algebraic Julia, with one lightbulb initialized on <code class="docutils literal notranslate"><span class="pre">OFF</span></code> and the other to <code class="docutils literal notranslate"><span class="pre">ON</span></code>.</p>
-<p>CODE CODE CODE CODE</p>
-<p>And indeed we get two lightbulbs flashing at each other!</p>
-<a class="reference internal image-reference" href="_images/looped-light-2.gif"><img alt="Whoopsy!" class="align-center" src="_images/looped-light-2.gif" style="width: 250px;" /></a>
-<p><strong>String of lights:</strong></p>
-<p>We might call this update rule the “copy” rule - in which a lightbulb just copies whatever state it recieves as an input. What happens if we string together three copying lightbulbs in a loop?</p>
-<a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 800px;" /></a>
-<p>Now we have a series of cycling lighbulbs in which one of them is always on. This models a familiar object - a traffic light! If we relabel our lights GREEN, YELLOW, and RED, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
-<a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 800px;" /></a>
-<p><strong>A smarter traffic light:</strong></p>
-<p>In the last example, we got traffic light behavior by letting each lightbulb decide for itself whether to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. We can achieve the same thing by introducing a CONTROL vertex, a mastermind which takes in the the state information from all the lights and decides which ones to turn on and off.</p>
-<a class="reference internal image-reference" href="_images/TrafficLight.png"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.png" style="width: 800px;" /></a>
-<p>The control vertex has three states: <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the red light, <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the yellow light, and <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the green light. And it uses a new kind of update rule for the control vertex. Instead of a lookup table it a set of conditionals.</p>
-<p>NEED IMAGE DEPICTING INTERNAL STATES AND CONDITIONALS FOR TRAFFIC LIGHT</p>
-<p>Update rules can take many forms. Virtually any decision procedure that can be carried out by a computer can be used as an update rule. We can program the above into Algebraic Julia:</p>
-<p>CODE CODE CODE CODE</p>
+<p>At each time step, the light bulb move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
+<p>Given a directed graph <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> , state information of its vertices, and update rules for each state, we can bring this graph to life – simulate an event represented by this directed graph using Algebraic Julia.</p>
+<p>Here’s how we encode this update rule in Algebraic Julia:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in the Github - flashing-light.jl</span>
+
+<span class="c1"># Bulb states</span>
+<span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
+    <span class="n">BULB_ON</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="n">BULB_OFF</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">end</span>
+
+<span class="c1"># Update rule</span>
+<span class="n">Transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">xor</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">))]</span> <span class="c1"># toggle bulb state</span>
+
+<span class="c1"># Transmission of state information using the arrow</span>
+<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
+</pre></div>
+</div>
+<p>And we can even export an animation showing that our simulation works (using Javis library) as shown below!</p>
+<a class="reference internal image-reference" href="_images/flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/flashing-light-JAVIS.gif" style="width: 75px;" /></a>
+<div class="tip admonition">
+<p class="admonition-title">Key point</p>
+<p>At each time step, an update rule allows states of the vertices to be updated! An update rule acts on the current state(s) at its vertex to produce a new state for the vertex.</p>
+</div>
+</section>
+<section id="string-of-lights">
+<h3>2.3.3. String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
+<p>Flashing light is more exciting than bulb than never flashes! However, what’s more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved.</p>
+<p>Suppose, we have a string of three light bulbs in a loop that perform a dance like this:</p>
+<p>&#64;Paul: ANIMATION OF STRINGED LIGHTS (like 3Loop.png)</p>
+<p>At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor.</p>
+<p>The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark></p>
+<p>The graph model looks as follows:</p>
+<p>&#64;Paul: ILLUSTRATION WITH UPDATE RULE</p>
+<p>We now have new update rule:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in looped-light.jl</span>
+
+<span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
+    <span class="n">BULB_ON</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="n">BULB_OFF</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">end</span>
+
+<span class="c1"># Update state to incoming state </span>
+<span class="n">Transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>  
+
+<span class="c1"># transmit current state </span>
+<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
+</pre></div>
+</div>
+<p>Our computer simulation of stringed light bulbs produces the following animation:</p>
+<a class="reference internal image-reference" href="_images/looped-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/looped-light-JAVIS.gif" style="width: 150px;" /></a>
+</br>
+<div class="tip admonition">
+<p class="admonition-title">Key points</p>
+<ul class="simple">
+<li><p>The <strong>arrow between two vertices serve as a coduit</strong> through which state information is transmitted from the source to the target vertex.</p></li>
+<li><p>The source transmits its state in one time step. The target receives this state information in the next time step.</p></li>
+<li><p>The target may update its state based on this incoming information.</p></li>
+</ul>
+</div>
+<p>Now we have a series of cycling light bulbs in which one of them is always on. This models a familiar object - a traffic light! If we relabel our lights GREEN, YELLOW, and RED, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
+<a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 400px;" /></a>
+</br>
+</br>
+</section>
+<section id="a-traffic-light">
+<h3>2.3.4. A traffic light<a class="headerlink" href="#a-traffic-light" title="Permalink to this heading">#</a></h3>
+<p>In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbour to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. This works in most cases! Let us say some accident happens, we want the RED to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and the rest of the lights to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>! We can handle these cases by introducing a CONTROL vertex, a mastermind which will <em>decide</em> which light bulb must be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and which light must be <code class="docutils literal notranslate"><span class="pre">OFF</span></code> at any instant in time.</p>
+<p>Let us model a traffic light with a control vertex.</p>
+<a class="reference internal image-reference" href="_images/TrafficLight.png"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.png" style="width: 400px;" /></a>
+<p>[&#64;PAUL: THE ABOVE PICTURE NEEDS TO BE CHANGED AS PER THE DWD BELOW. The Arrows towards the controller needs to be removed]</p>
+<a class="reference internal image-reference" href="_images/traffic-DWD.png"><img alt="Whoopsy!" class="align-center" src="_images/traffic-DWD.png" style="width: 250px;" /></a>
+</br>
+<p>The control vertex has three states:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the red light,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the yellow light, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the green light.</p></li>
+</ul>
+<p>The update rule for the control vertex is as follows:</p>
+<a class="reference internal image-reference" href="_images/traffic-controller-update.png"><img alt="Whoopsy!" class="align-center" src="_images/traffic-controller-update.png" style="width: 400px;" /></a>
+</br>
+<p>Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in traffic-light.jl</span>
+
+<span class="c1"># update rule for indvidual bulbs</span>
+<span class="n">BulbTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> 
+
+<span class="c1"># update rule for the controller box</span>
+<span class="n">ControllerTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">begin</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span><span class="p">)</span>  <span class="c1">#Red is ON, the rest of OFF</span>
+        <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span> 
+    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span><span class="p">)</span>  <span class="c1"># Green is ON</span>
+        <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">]</span>
+    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span><span class="p">)</span>  <span class="c1"># Yellow is ON, the rest is OFF</span>
+        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span>
+    <span class="k">else</span> <span class="c1">#non-sense </span>
+        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span>
+    <span class="n">end</span>
+<span class="n">end</span>
+
+<span class="c1"># transmission of state</span>
+<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
+</pre></div>
+</div>
 <p>And we get the following simulation:</p>
-<a class="reference internal image-reference" href="_images/flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/flashing-light-JAVIS.gif" style="width: 250px;" /></a>
-<p><strong>Two interacting traffic lights:</strong></p>
-<p>At an intersection traffic lights come in pairs. It’s mortally important to the drivers that when one traffic light is green the other must be red. We can model this by taking two copies of our traffic light, feed each controller the lightbulb information from the opposite light, and devise a new update rule.</p>
-<a class="reference internal image-reference" href="_images/TwoTrafficLights.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoTrafficLights.png" style="width: 800px;" /></a>
-<p>NEED TO SHOW/EXPLAIN UPDATE RULE</p>
-<p>CODE CODE CODE</p>
+<a class="reference internal image-reference" href="_images/traffic-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic-light-JAVIS.gif" style="width: 75px;" /></a>
+<div class="tip admonition">
+<p class="admonition-title">Key point</p>
+<p>Different vertices may have different update rules for its states.</p>
+</div>
+</section>
+<section id="a-traffic-intersection">
+<h3>2.3.4. A traffic intersection<a class="headerlink" href="#a-traffic-intersection" title="Permalink to this heading">#</a></h3>
+<p>(&#64;PAUL: What is the purpose of this example? The update rule and the code is too complicated! we may loose the readers at this point!)</p>
+<p>Here is the final upgrade to our traffic light example – a traffic intersection simulation! At an intersection traffic lights come in pairs. It’s mortally important to the drivers that when one traffic light is green the other must be red.</p>
+<p>We model a traffic intersection by taking two copies of traffic light, redesign the update rules of the controllers to listen to the other controller before changing the color. For this, the state of the bulbs in one controller is fed to the other controller!</p>
+<a class="reference internal image-reference" href="_images/TwoTrafficLights.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoTrafficLights.png" style="width: 400px;" /></a>
+<p>Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller’s turn to GO GREEN!)</p>
+<p>Here is the update rule for controller in Algebraic Julia:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TwinControllerTransition_R</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">begin</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="p">)</span>  <span class="c1"># if your state is green, go to yellow</span>
+        <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> 
+    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="p">)</span> <span class="c1"># if your state is yellow, go to red</span>
+        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="p">)</span> <span class="c1"># if your state is red</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span>  <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span><span class="p">)</span> <span class="c1"># if your input is red</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span><span class="p">)</span> <span class="c1">#  prev input is yellow</span>
+                <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span> <span class="c1"># go green </span>
+            <span class="k">else</span> 
+                <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="c1"># stay red</span>
+            <span class="n">end</span>
+        <span class="k">else</span> 
+            <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="c1"># stay red</span>
+        <span class="n">end</span>
+    <span class="k">else</span> <span class="c1"># any other case (red state and input is green)</span>
+        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="c1">#stay red</span>
+    <span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+</div>
 <p>And here’s our simulation:</p>
 <a class="reference internal image-reference" href="_images/traffic_intersection_final.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic_intersection_final.gif" style="width: 250px;" /></a>
-<p>Dynamical systems come in two broad flavors - discrete and continuous. Think a “drum vs. a trombone,” “chess vs. billiards” “sugar cubes vs. honey”</p>
-<p>The previous examples were all discrete, having binary on/off values changing in distinct time steps. As we mentioned, other dynamical systems of interest might be <strong>continuous</strong>, with states coming in a range of values that fluctuate smoothly in time. <em><strong>Compare the on/off nature of a light bulb to the height of a falling rock.</strong></em> Such systems can be modeled just as well, as the following example shows.</p>
 </section>
-<section id="mood-swings">
-<h2>Mood Swings<a class="headerlink" href="#mood-swings" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="kiki-and-bouba">
+<h2>2.4. Kiki and Bouba<a class="headerlink" href="#kiki-and-bouba" title="Permalink to this heading">#</a></h2>
+<p>Now for the grand finale, we are ready to build a model of Kiki’s and Bouba’s interaction and visualize their mood levels!</p>
+<p>Let us recollect what we have seen so far:</p>
 <ul class="simple">
-<li><p>** Kiki and Bouba images</p></li>
+<li><p>In the model of flashing light bulb, (at each time step) each vertex updated it state only based on its current state.</p></li>
+<li><p>In the model of stringed light bulb, (at each time step) each vertex updated its state only based on the state received from its neighbour.</p></li>
+<li><p>In the model of smart traffic light, (at each time step) the controller updated its state only based on its current state. The light bulbs updated their states only based on the input received from the controller.</p></li>
 </ul>
-<p>Kiki and Bouba are hanging out. Both friends can show a range of emotions, from grumpy to happy, which we can rate on a scale of -5 to +5:</p>
-<a class="reference internal image-reference" href="_images/MoodScaleKiki.jpg"><img alt="Whoopsy!" class="align-center" src="_images/MoodScaleKiki.jpg" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="_images/MoodScaleBouba.jpg"><img alt="Whoopsy!" class="align-center" src="_images/MoodScaleBouba.jpg" style="width: 800px;" /></a>
+<p>The talking friends model will have slighty different features:</p>
+<ul class="simple">
+<li><p>In this model, we will see that each vertex will update its state based on both its current state as well as the incoming state.</p></li>
+</ul>
+<p><strong>The story of two friends (recollected from introduction)</strong>: Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?!</p>
+<a class="reference internal image-reference" href="_images/Kiki-Bouba-friends-2.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-friends-2.png" style="width: 350px;" /></a>
+</br>
+<p>Let us get creative and sketch out some details of their interaction – <strong>what are the states and the update rules</strong>? – in steps!</p>
+<p>[THE REST OF THE CHAPTER IS YET TO BE WRITTEN.]</p>
+<section id="kiki-and-bouba-by-themselves">
+<h3>2.4.1. Kiki and Bouba by themselves<a class="headerlink" href="#kiki-and-bouba-by-themselves" title="Permalink to this heading">#</a></h3>
+<p>Let us start with a single person - either Kiki or Bouba - and see how their mood will change over time when they are by themselves.</p>
+<p>Each one of them can show a range of emotions, from grumpy to happy. Let us rate these emotions on a scale -5 to +5:</p>
+<a class="reference internal image-reference" href="_images/MoodScaleKiki.jpg"><img alt="Whoopsy!" class="align-center" src="_images/MoodScaleKiki.jpg" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/MoodScaleBouba.jpg"><img alt="Whoopsy!" class="align-center" src="_images/MoodScaleBouba.jpg" style="width: 400px;" /></a>
+<p>Kiki independently</p>
+<a class="reference internal image-reference" href="_images/Kiki.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki.png" style="width: 100px;" /></a>
+<p>Bouba independently</p>
+<a class="reference internal image-reference" href="_images/Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Bouba.png" style="width: 100px;" /></a>
+</section>
+<section id="kiki-and-bouba-talking-to-each-other">
+<h3>2.4.2. Kiki and Bouba talking to each other<a class="headerlink" href="#kiki-and-bouba-talking-to-each-other" title="Permalink to this heading">#</a></h3>
 <p>Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba’s mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki’s mood too. But when Kiki’s in a bad mood it only makes Bourba feel <em>worse</em>.</p>
 <p>How will these friends’ moods <em>interact</em>? Will Kiki manage to cheer Bourba up or will they both end up depressed? Or maybe their moods will alternate back and forth in and endless cycle of cheering up and bumming out:</p>
-<a class="reference internal image-reference" href="_images/MoodOscillator.gif"><img alt="Whoopsy!" class="align-center" src="_images/MoodOscillator.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/MoodOscillator.gif"><img alt="Whoopsy!" class="align-center" src="_images/MoodOscillator.gif" style="width: 400px;" /></a>
 <p>First, let’s describe the interaction of their moods</p>
+<p>Kiki &amp; Bouba interactive</p>
+<a class="reference internal image-reference" href="_images/Kiki&amp;Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki&amp;Bouba.png" style="width: 400px;" /></a>
 <p>The mood change is dependent on three <strong>parameters</strong> namely susceptibility factor, tolerance levels and calm down rates.  Parameter values of a process block remain constant (does not change over time). They can be thought of as weights for the variables (inputs and current state) in the computation of dynamics.</p>
 <p>Here is a possible dynamics of mood change in words based on the above assumptions:</p>
 <blockquote>
@@ -562,21 +734,27 @@ document.write(`
 <blockquote>
 <div><p>New mood level = change in mood + current mood</p>
 </div></blockquote>
-<p>Kiki independently</p>
-<a class="reference internal image-reference" href="_images/Kiki.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki.png" style="width: 800px;" /></a>
-<p>Bouba independently</p>
-<a class="reference internal image-reference" href="_images/Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Bouba.png" style="width: 800px;" /></a>
-<p>Kiki &amp; Bouba interactive</p>
-<a class="reference internal image-reference" href="_images/Kiki&amp;Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki&amp;Bouba.png" style="width: 800px;" /></a>
-<p>Kiki &amp; Bouba &amp; Staff</p>
-<a class="reference internal image-reference" href="_images/KikiAndBoubaAndStaff.png"><img alt="Whoopsy!" class="align-center" src="_images/KikiAndBoubaAndStaff.png" style="width: 800px;" /></a>
 </section>
-<section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
+<section id="chef-bouba-and-his-helpers">
+<h3>2.4.3. Chef Bouba and his helpers<a class="headerlink" href="#chef-bouba-and-his-helpers" title="Permalink to this heading">#</a></h3>
+<p>Kiki &amp; Bouba &amp; Staff</p>
+<a class="reference internal image-reference" href="_images/KikiAndBoubaAndStaff.png"><img alt="Whoopsy!" class="align-center" src="_images/KikiAndBoubaAndStaff.png" style="width: 400px;" /></a>
+</section>
+</section>
+<section id="summary">
+<h2>2.5. Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>recollect the purpose of this chapter</p>
+<p>Discrete vs continuous</p>
+<p>The update rule of the above graph is a <em>lookup table</em> which says given the current state what the next state must be. Whatever the current state of the bulb is, it will be the opposite state in the next time step, based on this update rule.</p>
 <p>Update rules can be anything - look up tables, logical conditionals, differential equations, automata, recurrence relations, other dynamical systems, etc.?</p>
 <p>Preview of more general powerful models in Algebraic Dynamics. Link so Sophie’s assets</p>
 <p>Dynamical systems and directed graphs are a useful framework for modeling the world. Indeed, they are a close match for how humans tend to conceptualize things. We instinctively look at the world in terms of cause and effect, in terms of procedures which play out over time, in terms of things-acting-upon-other-things.</p>
 <p>But this is just one way of looking at the world. And not all systems are best understood in these terms. In the coming sections we will develop to a more <em>relational</em> approach, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures. Systems that maintain a kind of equilibrium or balancing act between simultaneous constraints.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>These are special sorts of directed graphs called Directed Wiring Diagrams. They are slightly different than directed graphs and have richer capabilities nested modelling.</p>
+</aside>
 </section>
 </section>
 
@@ -644,11 +822,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">Making graphs dynamical</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightbulbs">Lightbulbs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mood-swings">Mood Swings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">2.2. Making graphs dynamical</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3. Light bulbs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">2.3.1. Single light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">2.3.3. String of lights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">2.3.4. A traffic light</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-intersection">2.3.4. A traffic intersection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4. Kiki and Bouba</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-by-themselves">2.4.1. Kiki and Bouba by themselves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-talking-to-each-other">2.4.2. Kiki and Bouba talking to each other</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chef-bouba-and-his-helpers">2.4.3. Chef Bouba and his helpers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5. Summary</a></li>
 </ul>
   </nav></div>
 
