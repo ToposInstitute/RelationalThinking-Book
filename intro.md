@@ -16,11 +16,11 @@ kernelspec:
 
 We encounter the word 'system' frequently, hearing talk of health care systems, computer systems, the solar system, and more. Yet the word itself is hard to define. A system is a bunch of things interacting together, somehow. It seems abstract, and often hard to think about. What does one do when part of a system? How does one act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
 
-Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically.[^1] It's a way of thinking that emphasises relationships and context, and deemphasises analysis by deconstruction. That is
+Yet the notion of system persists. Despite its own lack of clarity, it clearly points to some real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically.[^1] It's a way of thinking that emphasises relationships and context, and deemphasises analysis by reduction and deconstruction. 
 
 In this book, we will focus on a specific aspect of systems thinking we term 'relational thinking'. Relational thinking seeks understanding about an object by looking outwards, asking how the object interacts, rather than inwards, asking what the object is made of.
 
-A challenge with systems thinking is that formal tools for thinking systemically are still a topic of active research -- we still are discovering the logic of systems, discovering effective ways to rigorously reason about them. Mathematics has not historically emphasised a systems perspective. Mathematical tools for thinking, including thinking systemically, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.
+A challenge with systems thinking is that formal tools for thinking systemically are still a topic of active research: we still are discovering the logic of systems, discovering effective ways to rigorously reason about them. Mathematics has not historically emphasised a systems perspective. Mathematical tools for thinking, including thinking systemically, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.
 
 There are some promising avenues, however, for mathematical systems thinking. A key tool for mathematical systems thinking, known as category theory, emerged in the 1940s. While this is almost a century ago, developing mathematics is a slow, patient, and intergenerational effort, and it's only in recent decades it is developing as a tool for systems thinking in the real world.
 
@@ -30,46 +30,39 @@ A second challenge presents itself: mathematics itself can difficult to learn, e
 
 [AlgebraicJulia](https://www.algebraicjulia.org) is a collection of libraries in the programming language Julia, that provide tools for model-driven science. A model is a simplified description of another thing, that highlights important features, and forgets the ones less relevant. For example, picture a collection of clay balls that represent the sun and planets in the solar system -- it might capture some aspects of the relative sizes of the planets and their distance from the sun, but forget what the planets are composed of. (Jupiter is not made of clay!) Models make it easier to reason, and do data science, around complicated things we encounter in our lives. AlgebraicJulia lets us use a systems perspective to create models for scientific computing. Its design is heavily informed by the insights developed in category theory over the past 100 years.
 
-While AlgebraicJulia is still a software ecosystem under development, and is not yet ready to meet all general purpose scientific modelling needs, we believe it is mature enough to be a significant aid in practicing relational thinking.
+While AlgebraicJulia is still a software ecosystem under development, and is not yet ready to meet all general purpose scientific modelling needs, we believe it is mature enough to be a significant aid in practicing relational thinking. 
 
 ## Key ideas
 
-The arc of this book is as follows. We begin by considering directed graphs: a simple language of dots and arrows between them. Our goal is to be able to think about these from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking.
+The goal of this book is to give you, the reader, an experience of relational thinking. This differs from many mathematical texts, in that we do not seek to give abstract definitions, construct general theory, and prove mathematical theorems. Instead, we focus on a particular example that, while simple in nature, allows for deep dive through relational thought. Although we focus on a particular, simple example, the relational patterns of thought we will experience are general in nature, and apply much more broadly.
+
+The example we have chosen is that of directed graphs: a simple language of dots and arrows between them. This is possibly the barest example we could have chosen. Yet we will see that even in this simple case, it is not clear how to think in a systemic way, with both precision that both allows formal description with a computer, and that resolves questions about what we shall call 'dangling edges'. 
+
+This book has two parts. Our first goal is to be able to think about directed graphs from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking. 
 
 ![whoops!](./assets/Ch1/Ladder.png)
 
-In learning how to think about directed graphs relationally, we see in a microcosm the broader, general lessons of relational thinking.
+Beginning in the concrete world of directed graphs as pictures made up of dots and arrows, each rung takes us through a conceptual shift that is required to move us into a world of relational models. 
 
-Once at the top of this ladder, we can begin to appreciate the view. 
+In Chapter Zero, we meet a few examples of directed graphs, as well as the problem of dangling edges. Chapter One moves us into the world of data, showing how we can provide an abstract representation of directed graphs that captures their core essence, no more or less. We reflect on what makes a good abstraction. This allows us to represent graphs as data, and hence make them amendable to computer reasoning, through tools like AlgebraicJulia. After the more mathematical nature of Chapter One, Chapter Two then shows the immediate payoff: we learn a bit about AlgebraicJulia, and how to use directed graphs as data to program dynamical systems.
 
-Modelling (descriptive) vs thinking (operationalised). Modelling is about representating the world. Thinking is about cognitive switch in focus to relationships rather than objects. Models are the nouns of thought. Relational thinking works best with relational models. So first we need to construct relational models. Then we will learn to manipulate them to derive conclusions.
+In Chapter Three we move from the world of data to the world of blueprints. Also called schema, blueprints provide a framework for describing different sorts of data. For example, while we focus on the blueprint for directed graphs, we see directed graphs as part of a family of different sorts of data, including undirected graphs, three and higher dimensional shapes, interacting processes, and more. The payoff of understanding the blueprint for graphs is that it immediately helps us understand the appropriate notion of relationship between graphs, and hence the universe of possible graphs. This is the focus of Chapter Four, which moves us from the world of blueprints to the world of universes, also known as categories. This takes us to the top of our ladder of relational thinking.
 
-Getting the direction right is important — counting vs labelling
+Once at the top of our ladder, we can begin to appreciate the view. Now in the world of relational models, our second goal, is to use these models to *think* relationally. Chapter Five uses relationships between graphs to help us think about when two graphs are the same, when a graph is a part of another graph, how to describing a collection of interrelated graphs, and ultimately how to construct new graphs by gluing graphs together. Chapter Six then builds on this to describe how graphs evolve, or change over time. Finally, Chapter Seven shows the payoff, extending this to more complicated blueprints, so that we may model changes in our physical world, or reason about processes like making a sandwich in your kitchen.
 
-Situate things in the context of other objects they relate to
-
-Explicitly identify the structure of composition
-Identify the categorical world -- contextualises models in the space of possibilities, allows reasoning about variation
-Identify similar schemas
-explicitly describe maps/morphisms
-
-efficient because it allows reuse of ideas and code across contexts
-
-Doing this leads to insights. Doing this formally via a programming language meants we can automatically extract and benefit from those insights. Slogan: "Describe the world, and get something for free!"
-
+Ultimately, through this experience, we hope that you'll come away with a sense of the importance of finding good abstractions, identifying the ways objects relate to each other, situating them in the context of other objects they relate to, and contextualing them models in the space of possibilities. We also hope that you'll see the concrete payoffs, especially by doing this formally via a programming language, so that we can automatically extract and benefit from the insights that come from a relational perspective. Indeed, while it may seem in the beginning like we're just finding different, more abstruse ways of describing directed graphs, we hope that in the problem of dangling edges you'll see how the payoff naturally emerges, with seemingly little effort. 
 
 ## How we've designed this book
-
-
 ### Reader background
 
 We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. But we hope that some readers will also use this book as a way to get acquianted with mathematical thought.  
 
+In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter Five. Again, however, once we're at the top, we can begin to appreciate the view, and we focus more on unpacking the beautiful implications of our ideas, rather than introducing new complexity.
 // Add difficulty graph of chapters
 
-// Add dependency graph of chapters
+The book is intended to be read somewhat linearly, with each chapter depending on the last. The exception is Chapter Two, which provides a bit of relief in our climb to introduce more of AlgebraicJulia, and provide some fun ways to program and explore dynamical systems using directed graphs. 
 
-Our book is example driven, with references to the interested reader on where to learn more about both the programming and the mathematics. There are embedded sections of code,
+// Add dependency graph of chapters
 
 ### Live, in-line code
 
@@ -89,8 +82,6 @@ To run the code, click the "rocket icon" at the top right corner of this page, a
 ```
 
 The live code environment may take a little time[^2] to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a "Waiting for kernel..." message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.
-
-
 
 
 ### Puzzles
