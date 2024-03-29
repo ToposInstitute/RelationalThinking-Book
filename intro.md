@@ -57,11 +57,12 @@ Ultimately, through this experience, we hope that you'll come away with a sense 
 
 We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. But we hope that some readers will also use this book as a way to get acquianted with mathematical thought.  
 
+In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter Five. Again, however, once we're at the top, we can begin to appreciate the view, and we focus more on unpacking the beautiful implications of our ideas, rather than introducing new complexity.
 // Add difficulty graph of chapters
 
-// Add dependency graph of chapters
+The book is intended to be read somewhat linearly, with each chapter depending on the last. The exception is Chapter Two, which provides a bit of relief in our climb to introduce more of AlgebraicJulia, and provide some fun ways to program and explore dynamical systems using directed graphs. 
 
-Our book is example driven, with references to the interested reader on where to learn more about both the programming and the mathematics. There are embedded sections of code,
+// Add dependency graph of chapters
 
 ### Live, in-line code
 
@@ -81,8 +82,6 @@ To run the code, click the "rocket icon" at the top right corner of this page, a
 ```
 
 The live code environment may take a little time[^2] to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a "Waiting for kernel..." message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.
-
-
 
 
 ### Puzzles
