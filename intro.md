@@ -58,7 +58,12 @@ Ultimately, through this experience, we hope that you'll come away with a sense 
 We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. But we hope that some readers will also use this book as a way to get acquianted with mathematical thought.  
 
 In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter Five. Again, however, once we're at the top, we can begin to appreciate the view, and we focus more on unpacking the beautiful implications of our ideas, rather than introducing new complexity.
-// Add difficulty graph of chapters
+
+```{image} assets/Intro/chapters-difficulty.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
 
 The book is intended to be read somewhat linearly, with each chapter depending on the last. The exception is Chapter Two, which provides a bit of relief in our climb to introduce more of AlgebraicJulia, and provide some fun ways to program and explore dynamical systems using directed graphs. 
 
