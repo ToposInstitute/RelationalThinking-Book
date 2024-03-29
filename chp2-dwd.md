@@ -85,6 +85,11 @@ A light bulb is always in one of two "states" -- either `OFF` or `ON`:
 :width: 400px
 :align: center
 ```
+```{image} assets/Ch2/LightbulbOn.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
 <br/>
 
 We then add extra data to this vertex called *state* which gives on `ON`/`OFF` condition of the light bulb. At any instant of time, the state value is either `ON` or `OFF`. 
