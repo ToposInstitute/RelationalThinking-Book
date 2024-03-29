@@ -488,7 +488,7 @@ The goal of our dumb charades game is to say “what is colimit graph” without
 
 We start with a graph which embeds into two graphs:
 
-```{image} assets/Ch3/colimit-diagram.png
+```{image} assets/Ch5/19a.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -498,7 +498,7 @@ What we compute is a graph called “colimit” which satisfies the following re
 
 **Requirement 1**: The square commutes
 
-```{image} assets/Ch3/5-req1.png
+```{image} assets/Ch5/19b.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -506,7 +506,7 @@ What we compute is a graph called “colimit” which satisfies the following re
 
 **Requirement 2**: For any choice of graph which satisfies requirement 1, there is exactly one way (a unique) embedding of the colimit into that choice. The triangles made by the embedding commute. 
 
-```{image} assets/Ch3/5-req2.png
+```{image} assets/Ch5/19c.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
