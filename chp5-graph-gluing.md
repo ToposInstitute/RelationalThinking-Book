@@ -601,7 +601,7 @@ When there is no glue (Graph 1 is empty), the colimit just has Graph-2 and Graph
 
 Let us suppose, we want to glue more than two graphs together! That seems to be a reasonable ask! So we got a diagram like the one below. 
 
-```{image} assets/Ch3/Ex-4.png
+```{image} assets/Ch5/23.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
