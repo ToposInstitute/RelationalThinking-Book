@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 5: Graph gluing using pushout
+# Chapter 5: Pushout graphs
 
 :::{attention}
 This chapter will engage you in deep relational thinking! 
