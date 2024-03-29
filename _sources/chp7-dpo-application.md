@@ -99,7 +99,7 @@ tgt(e1) == v2
 
 ### A closed box
 
-We can create an instance of a cube, by defining such a $\mathsf{C}$-Set, where $\mathsf{C}$ is `Sch3DShape`.
+We can create an instance of a cube, by associating data with the schema `Sch3DShape`.
 
 ![](assets/Ch7/BoxAssembly.gif)
 
