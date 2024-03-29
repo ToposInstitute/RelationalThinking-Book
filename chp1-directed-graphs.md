@@ -57,7 +57,11 @@ If you squint, you can look at this like a simplified map. We've left out the tr
 
 In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.
 
-![whoops!](./assets/Ch1/DGdishes.jpg)
+```{image} assets/Ch5/DGdishes.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 Looked at individually each of the above situations seem quite different. But their directed graphs make it clear that they all share the same essential structure. Abstractly, they are all the same graph, which we can represent in unlabeled form:
 

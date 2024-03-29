@@ -22,7 +22,11 @@ Inside this universe, we are interested in the mechanism of combining two graphs
 
 As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.
 
-![whoops!](./assets/Ch3/DGdishes.jpg)
+```{image} assets/Ch5/DGdishes.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 
 In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:
