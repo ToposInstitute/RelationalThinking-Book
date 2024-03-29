@@ -27,7 +27,7 @@ Kiki and Bouba are great friends but are quite different characters! It is fun w
 [**Message**: Graphs are animated when we add "states" to vertices and "update rules" to evolve the states. Simplistically, dynamical systems are animated graphs.]
 
 ````{sidebar} Whose turn is to do dishes?
-```{image} assets/Ch2/Tony-Tuco.png
+```{image} assets/Ch2/ChoresSmall.png
 :alt: Whoopsy!
 :width: 400px
 :align: left
@@ -35,7 +35,7 @@ Kiki and Bouba are great friends but are quite different characters! It is fun w
 ````
 
 ````{sidebar} Ski trip brochure
-```{image} assets/Ch2/Ski-lift.png
+```{image} assets/Ch2/SkiSmall.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
