@@ -526,9 +526,9 @@ In this sense, relational thinking is non-invasive!
 Let us compute colimit for the following diagrams.
 
 **Ex 1. Colimit using a single vertex**
-```{image} assets/Ch3/Ex-1.png
+```{image} assets/Ch5/20a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -536,9 +536,9 @@ Let us compute colimit for the following diagrams.
 :class: dropdown
 
 ```{div} wrapper 
-```{image} assets/Ch3/Ex-1-sol.png
+```{image} assets/Ch5/20b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 ```
@@ -549,9 +549,9 @@ Let us compute colimit for the following diagrams.
 
 This one is a little tricky, because the two vertices (”A” and “B”) in Graph-1 embeds into the same vertex of Graph-3 (”A,B”), thereby coarse-graining the information in Graph-1. However, vertices “A” and “B” in Graph-1 embeds in separate vertices in Graph-2. So, how would the overlap region look in the colimit graph? 
 
-```{image} assets/Ch3/Ex-2.png
+```{image} assets/Ch5/21a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -561,9 +561,9 @@ This one is a little tricky, because the two vertices (”A” and “B”) in G
 ```{div} wrapper 
 Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has only coarse-grained embedding of Graph-1, the embedding of Graph-2 in the colimit, coarse-grains the overlap region of Graph-2 to match the overlap region of Graph-3. 
 
-```{image} assets/Ch3/Ex-2-sol.png
+```{image} assets/Ch5/21b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 ```
@@ -574,9 +574,9 @@ Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has on
 
 In the beginning of this chapter, we said that combining graphs is analogous to adding numbers. Can you see how this problem demonstrates this analogy?
 
-```{image} assets/Ch3/Ex-3.png
+```{image} assets/Ch5/22a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 (An empty graph is the graph with its set of vertices and the set of edges to be empty set. The sources and the target maps sends “no vertex” to “no edge”.)
@@ -586,9 +586,9 @@ In the beginning of this chapter, we said that combining graphs is analogous to 
 
 ```{div} wrapper 
 
-```{image} assets/Ch3/Ex-3-sol.png
+```{image} assets/Ch5/22b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 When there is no glue (Graph 1 is empty), the colimit just has Graph-2 and Graph-3 side by side with no bridge in between them. Graph-2 has three vertices and no edges. Graph-3 has two vertices and no edges. The colimit graph has 5 vertices which is the sum of vertices in Graph-2 and vertices in Graph-3. Sum of two numbers is just a colimit . Isn't that cool ?!
