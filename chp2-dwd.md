@@ -412,13 +412,20 @@ The talking friends model will have slighty different features:
 
 Let us get creative and sketch out some details of their interaction -- **what are the states and the update rules**? -- in steps!
 
-[THE REST OF THE CHAPTER IS YET TO BE WRITTEN.]
-
 ### 2.4.1. Kiki and Bouba by themselves
 
 Let us start with a single person - either Kiki or Bouba - and see how their mood will change over time when they are by themselves. 
 
-Each one of them can show a range of emotions, from grumpy to happy. Let us rate these emotions on a scale -5 to +5: 
+Each one of them can show a range of emotions, from grumpy to happy. 
+
+```{image} assets/Ch2/MoodOscillator.gif
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+</br>
+
+Let us rate these emotions on a scale -5 to +5: 
 
 ```{image} assets/Ch2/MoodScaleKiki.jpg
 :alt: Whoopsy!
@@ -432,24 +439,73 @@ Each one of them can show a range of emotions, from grumpy to happy. Let us rate
 :align: center
 ```
 
+</br>
 
+As with the bulb, we model Kiki and Bouba by themselves as a graph with two just vertices. The state of each vertex is called "Mood level".
 
-
-Kiki independently
-```{image} assets/Ch2/Kiki.png
+```{image} assets/Ch2/Kiki-Bouba-by-themselves.png
 :alt: Whoopsy!
-:width: 100px
+:width: 400px
 :align: center
 ```
 
+</br>
 
-Bouba independently
+As mentioned earlier, the mood level can be anywhere between -5 to +5 (on a real line).
 
-```{image} assets/Ch2/Bouba.png
+The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a parameter called **calmdown rate**.
+
+The update rule is coded as follows:
+
++++
+
+```{code}
+
+# complete code available in the Github file, kiki-bouba-by-themselves.jl 
+
+# change in mood level = -(current mood level x calmdown rate)
+# pay attention to the negative sign in the front; 
+# negative sign because it is calm "down" rate and not calm "up"
+
+# here, change in mood is the amount by which the mood moves towards zero
+dotmood(mood, input, param, t) = [ - (mood[1] * param.calmdown_rate[1]) ] 
+
+```
+
++++
+
+We set the initial mood of Kiki to 4.5 and Bouba to be -4.5. We set their calmdown rates to be 5% (0.05) for Kiki and 3% (0.03) for Bouba. 
+
++++
+
+```{code}
+
+initial_moods = [4.5, -4.5]
+params = LVector(calmdown_rate=[.05, .03])
+
+```
+
++++
+
+Are you ready to visualize their mood change when they are by themselves?
+
+```{image} assets/Ch2/Kiki-Bouba-standalone-plot.svg
 :alt: Whoopsy!
-:width: 100px
+:width: 500px
 :align: center
 ```
+
+</br>
+
+As we see, their moods move towards 0 (neutral) with no external stimulus! 
+
+:::{admonition} Food for thought
+
+The moods will never become zero! Can you see why?
+
+:::
+
+[THE REST OF THE CHAPTER IS YET TO BE WRITTEN.]
 
 ### 2.4.2. Kiki and Bouba talking to each other
 
@@ -457,11 +513,7 @@ Bourba is feeling super grouchy today but luckily being around Kiki tends to imp
 
 How will these friends' moods *interact*? Will Kiki manage to cheer Bourba up or will they both end up depressed? Or maybe their moods will alternate back and forth in and endless cycle of cheering up and bumming out:
 
-```{image} assets/Ch2/MoodOscillator.gif
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
+
 
 First, let's describe the interaction of their moods
 
