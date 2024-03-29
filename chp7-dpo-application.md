@@ -17,12 +17,14 @@ header-includes:
 # Chapter 7: Looking beyond
 
 :::{attention}
-This chapter will extend the previously learned concepts from graphs to the world!
+This chapter will extend the previously learned concepts from graphs to the world.
 :::
 
-So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using _schemas_, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using _double-pushout (DPO) rewriting_, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design. 
+So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using **schemas**, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using **double-pushout (DPO) rewriting**, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design. 
 
-Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household. We would have to do quite a bit of mental book-keeping to talk in the language of graphs-- "Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator... and the edge between them means that the Coca-Cola soda **is in** the refridgerator,... but this other edge between the soda and a node representing a box of Mentos means that the Mentos should **never** be put in the soda..."
+Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household. We would have to do quite a bit of mental book-keeping to talk in the language of graphs--
+
+> "Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator... and the edge between them means that the Coca-Cola soda _is in_ the refridgerator,... but this other edge between the soda and a node representing a box of Mentos means that the Mentos should _never be put in_ the soda..."
 
 :::{admonition}
 If you put Mentos in a soda, it will explode.
