@@ -187,9 +187,9 @@ Which of these is the correct way to identify Graph-1 inside the combined graph,
 
 The answer is that, "Well, irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it's the overlap." The region in which it is mapped into is common to both Graph-2 and Graph-3 in the pushout. 
 
-```{image} assets/Ch5/glued-object.jpeg
+```{image} assets/Ch5/GluedObject.png
 :alt: Whoopsy!
-:width: 150px
+:width: 250px
 :align: center
 ```
 
