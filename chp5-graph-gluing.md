@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 5: Graph gluing using pushout
+# Chapter 5: Pushout graphs
 
 :::{attention}
 This chapter will engage you in deep relational thinking! 
@@ -82,9 +82,9 @@ To combine two graphs, we first need to know which vertices and edges are common
 
 We saw in previous chapters that a graph morphism identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3! Remember, we live in universe and do not peek inside graphs! The rectangles are placeholders which can receive any graph in them.
 
-```{image} assets/Ch5/4.3-Diagram.png
+```{image} assets/Ch5/1.png
 :alt: Whoopsy!
-:width: 350px
+:width: 800px
 :align: center
 ```
 
@@ -118,9 +118,9 @@ With this analogy in mind, let us think of the pushout of a diagram with two gra
 
 We now know what it means for two graphs to overlap — it is a diagram of two radiating graph morphisms. 
 
-```{image} assets/Ch5/4.3-Diagram.png
+```{image} assets/Ch5/1.png
 :alt: Whoopsy!
-:width: 350px
+:width: 500px
 :align: center
 ```
 <center> Overlap diagram </center> <!-- May be style this later -->
@@ -149,7 +149,7 @@ If you are Graph-2, how do you expect to be related to the pushout?
 
 We invite the reader to take a moment to ponder over this question using the picture below.
 
-```{image} assets/Ch5/4.2-commute-1.png
+```{image} assets/Ch5/2.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -162,7 +162,7 @@ Since the pushout is given by glueing Graph-2 and Graph-3 along the shape of Gra
 
 Let us add these morphisms to the overlap diagram:
 
-```{image} assets/Ch5/4.2-commute-2.png
+```{image} assets/Ch5/3.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -248,9 +248,9 @@ To spot the pushout inside this set, we are going to do step outside the game fo
 
 Graph-1 embeds in Graph-2 and Graph-3 as follows:
 
-```{image} assets/Ch5/4.3-Diagram.png
+```{image} assets/Ch5/1.png
 :alt: Whoopsy!
-:width: 300px
+:width: 500px
 :align: center
 ```
 
@@ -260,33 +260,33 @@ A few possible choices of colimit graphs of the above diagram are:
 
 Is the following a commuting diagram?
 
-```{image} assets/Ch3/4.3-a.png
+```{image} assets/Ch5/7a.png
 :alt: Whoopsy!
-:width: 350px
+:width: 500px
 :align: center
 ```
 
 Is the following a commuting diagram?
 
-```{image} assets/Ch3/4.3-b.png
+```{image} assets/Ch5/7b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 Is the following a commuting diagram?
 
-```{image} assets/Ch3/4.3-c.png
+```{image} assets/Ch5/7c.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 Is the following a commuting diagram?
 
-```{image} assets/Ch3/4.3-d.png
+```{image} assets/Ch5/7d.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
