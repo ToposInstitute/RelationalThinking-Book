@@ -181,6 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Pushout graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Double pushout graphs</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: Looking beyond</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
 </ul>
 
@@ -443,6 +444,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 7: Looking beyond</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-cube-configuration">Example 1: Cube Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-closed-box">Opening a closed box</a></li>
@@ -450,13 +452,14 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-kitchen-world-schema">Example 2: Kitchen World Schema</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-add-make-rule-to-the-environment">TODO: Add make_rule to the environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -478,8 +481,8 @@ document.write(`
 <p>Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples for this.</p>
 <section id="example-1-cube-configuration">
 <h2>Example 1: Cube Configuration<a class="headerlink" href="#example-1-cube-configuration" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by simply extending the graph schema with another concept, like faces to model a cube. Consider a scenario where the index category, <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>, represents the schema for a three-dimensional (3D) shape, comprising three fundamental objects: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema is enriched with six non-identity morphisms: <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, which define the relationships between these objects. DPO rewriting in this context can model various transformations of a 3D object including cube,or box.</p>
-<p>This can be expressed as a schema in AlgebraicJulia as follows:</p>
+<p>Let’s start by simply extending the graph schema with another concept, like faces to model a cube. The schema for a three-dimensional (3D) shape consists of three fundamental ideas: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema models the relationships <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, as the connectivity between faces, edges, and vertices. DPO rewriting in this context can model various transformations of a 3D object including cube,or box.</p>
+<p>In AlgebraicJulia, this schema can be expressed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">Sch3DShape</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
@@ -610,14 +613,14 @@ document.write(`
 ```
 match = homomorphisms(L, closedCube)[1]
 ``` -->
-<p>In summary, DPO rewriting can help us model various configurations of a box by manipulating the data in the <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code>-Set.</p>
+<p>In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code> schema.</p>
 </section>
 </section>
 <section id="example-2-kitchen-world-schema">
 <h2>Example 2: Kitchen World Schema<a class="headerlink" href="#example-2-kitchen-world-schema" title="Permalink to this heading">#</a></h2>
-<p>This machinery can be used to not only represent geometric objects, but it can also be used to capture more abstract semantics, such as the presence of items in a kitchen.</p>
-<p>Consider the index category, <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>, representing the schema for a “kitchen world.” In this model, objects include {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity}, with morphisms designed to reflect subtype relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food on Entity).</p>
-<p>If you recall from <span class="xref myst">Chapter 4</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively, via <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Set functors. This means that a morphism from Bread to Food says that all elements of Bread are a Food, and likewise, a morphism Food is on an Entity says that all elements of Food are on an Entity. This schema enforces a universal expectation about the types of objects and their arrangements.</p>
+<p>This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.</p>
+<p>Concider a schema for a kitchen world. This schema contains ideas about <code class="docutils literal notranslate"><span class="pre">{Food,</span> <span class="pre">Egg,</span> <span class="pre">Bread,</span> <span class="pre">Cheese,</span> <span class="pre">BreadSlice,</span> <span class="pre">Counter,</span> <span class="pre">Kitchenware,</span> <span class="pre">Entity}</span></code> and their subtyping relationships (e.g., <code class="docutils literal notranslate"><span class="pre">Egg</span></code>, <code class="docutils literal notranslate"><span class="pre">Bread</span></code>, <code class="docutils literal notranslate"><span class="pre">Cheese</span></code>, <code class="docutils literal notranslate"><span class="pre">BreadSlice</span></code> are <code class="docutils literal notranslate"><span class="pre">Food</span></code>) and spatial relationships (e.g., <code class="docutils literal notranslate"><span class="pre">Counter</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, <code class="docutils literal notranslate"><span class="pre">Kitchenware</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, and <code class="docutils literal notranslate"><span class="pre">Food</span></code> on `Entity``).</p>
+<p>If you recall from <span class="xref myst">Chapter 4</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from <code class="docutils literal notranslate"><span class="pre">Bread</span></code> to <code class="docutils literal notranslate"><span class="pre">Food</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Bread</span></code> are a <code class="docutils literal notranslate"><span class="pre">Food</span></code>, and likewise, a morphism <code class="docutils literal notranslate"><span class="pre">Food</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Food</span></code> are on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
@@ -657,7 +660,7 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<p>DPO rewriting here can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering the morphisms to reflect this new arrangement. Another rule might model the process of putting a slice of bread on a place. This example demonstrates the potential of DPO rewriting for simulating and reasoning about the complex interactions and transformations of objects in a defined space.</p>
+<p>DPO rewriting here can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering their relationships to reflect this new arrangement.</p>
 <section id="put-cheese-on-bread">
 <h3>Put Cheese On Bread<a class="headerlink" href="#put-cheese-on-bread" title="Permalink to this heading">#</a></h3>
 <p>Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, and <code class="docutils literal notranslate"><span class="pre">K</span></code> components of this rewrite rule.</p>
@@ -683,7 +686,6 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<p>Note: Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. Instead, we can compute the colimit of representables and infer the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
 <p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. This is a knowledge engineering choice which demonstrates the flexibility of DPO-rewriting rules.</p>
 </section>
 <section id="plate-slice">
@@ -712,12 +714,12 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 <p>In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the <code class="docutils literal notranslate"><span class="pre">food_in_on</span></code> morphism and, in the case of plate, the function that maps it to entity is tied to the <code class="docutils literal notranslate"><span class="pre">ware_is_entity</span></code> morphism. This is effectively saying that the entity that the food is on is the same entity as the plate.</p>
-<section id="todo-add-make-rule-to-the-environment">
-<h4>TODO: Add make_rule to the environment<a class="headerlink" href="#todo-add-make-rule-to-the-environment" title="Permalink to this heading">#</a></h4>
-<p>Both examples illustrate the versatility of double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in systems defined using <span class="math notranslate nohighlight">\(\mathsf{C}\)</span>-Sets.</p>
 </section>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -784,6 +786,7 @@ match = homomorphisms(L, closedCube)[1]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 7: Looking beyond</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-cube-configuration">Example 1: Cube Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-closed-box">Opening a closed box</a></li>
@@ -791,13 +794,14 @@ match = homomorphisms(L, closedCube)[1]
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-kitchen-world-schema">Example 2: Kitchen World Schema</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-add-make-rule-to-the-environment">TODO: Add make_rule to the environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

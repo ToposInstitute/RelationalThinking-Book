@@ -31,9 +31,9 @@ If you put Mentos in a soda, it will explode.
 Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples for this.
 
 ## Example 1: Cube Configuration
-Let's start by simply extending the graph schema with another concept, like faces to model a cube. Consider a scenario where the index category, $\mathsf{C}$, represents the schema for a three-dimensional (3D) shape, comprising three fundamental objects: `Face`, `Edge`, `Vertex`. This schema is enriched with six non-identity morphisms: `top`, `bottom`, `left`, `right`, `src`, `tgt`, which define the relationships between these objects. DPO rewriting in this context can model various transformations of a 3D object including cube,or box. 
+Let's start by simply extending the graph schema with another concept, like faces to model a cube. The schema for a three-dimensional (3D) shape consists of three fundamental ideas: `Face`, `Edge`, `Vertex`. This schema models the relationships `top`, `bottom`, `left`, `right`, `src`, `tgt`, as the connectivity between faces, edges, and vertices. DPO rewriting in this context can model various transformations of a 3D object including cube,or box. 
 
-This can be expressed as a schema in AlgebraicJulia as follows:
+In AlgebraicJulia, this schema can be expressed as follows:
 
 ```{code-cell}
 @present Sch3DShape(FreeSchema) begin
@@ -56,7 +56,6 @@ to_graphviz(Sch3DShape)
 ![Sch3dShape](assets/Chp7/Sch3DShape.svg)
 
 We can see that the schema, `Sch3DShape`, closely resembles the schema for a graph, `SchGraph`. More pointedly, `Sch3DShape` extends `SchGraph` with the idea of a `Face` and edges of a face. 
-
 
 :::{admonition} Extending schemas
 In AlgebraicJulia, inheritence of schemas can be programmed using `<:`. In the case of `Sch3DShape` and `SchGraph`, this can be written as:
@@ -278,14 +277,14 @@ open_box_rule = make_rule(openBox, ySch3DShape)
 match = homomorphisms(L, closedCube)[1]
 ``` -->
 
-In summary, DPO rewriting can help us model various configurations of a box by manipulating the data in the `Sch3DShape`-Set.
+In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the `Sch3DShape` schema.
 
 ## Example 2: Kitchen World Schema
-This machinery can be used to not only represent geometric objects, but it can also be used to capture more abstract semantics, such as the presence of items in a kitchen.
+This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.
 
-Consider the index category, $\mathsf{C}$, representing the schema for a "kitchen world." In this model, objects include {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity}, with morphisms designed to reflect subtype relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food on Entity).
+Concider a schema for a kitchen world. This schema contains ideas about `{Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity}` and their subtyping relationships (e.g., `Egg`, `Bread`, `Cheese`, `BreadSlice` are `Food`) and spatial relationships (e.g., `Counter` is on an `Entity`, `Kitchenware` is on an `Entity`, and `Food` on `Entity``).
 
-If you recall from [Chapter 4](), objects and morphisms in a schema are eventually mapped to sets and functions, respectively, via $\mathsf{C}$-Set functors. This means that a morphism from Bread to Food says that all elements of Bread are a Food, and likewise, a morphism Food is on an Entity says that all elements of Food are on an Entity. This schema enforces a universal expectation about the types of objects and their arrangements.
+If you recall from [Chapter 4](), objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from `Bread` to `Food` says that all elements of `Bread` are a `Food`, and likewise, a morphism `Food` is on an `Entity` says that all elements of `Food` are on an `Entity`. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.
 
 ```{code-cell}
 @present SchKitchen(FreeSchema) begin
@@ -323,7 +322,7 @@ to_graphviz(SchKitchen)
 yKitchen = yoneda(Kitchen, SchKitchen; cache=make_cache(Kitchen, SchKitchen, "Kitchen"))
 ```
 
-DPO rewriting here can model transformations in the kitchen's state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering the morphisms to reflect this new arrangement. Another rule might model the process of putting a slice of bread on a place. This example demonstrates the potential of DPO rewriting for simulating and reasoning about the complex interactions and transformations of objects in a defined space.
+DPO rewriting here can model transformations in the kitchen's state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering their relationships to reflect this new arrangement. 
 
 ### Put Cheese On Bread
 Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define `L`, `R`, and `K` components of this rewrite rule.
@@ -347,7 +346,9 @@ end)
 put_cheese_on_bread_rule = make_rule(put_cheese_on_bread, yKitchen)
 ```
 
+:::{admonition}
 Note: Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an `ACSetTransformation` for `l` and `r`. Instead, we can compute the colimit of representables and infer the homomorphism maps, `l` and `r`. This functionality is subsumed in `make_rule()`.
+:::
 
 As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending `cheese` to the same food element as `bread_slice`. This is a knowledge engineering choice which demonstrates the flexibility of DPO-rewriting rules.
 
@@ -376,7 +377,6 @@ plate_slice_rule = make_rule(plate_slice, yKitchen)
 
 In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the `food_in_on` morphism and, in the case of plate, the function that maps it to entity is tied to the `ware_is_entity` morphism. This is effectively saying that the entity that the food is on is the same entity as the plate. 
 
-#### TODO: Add make_rule to the environment
-
-Both examples illustrate the versatility of double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in systems defined using $\mathsf{C}$-Sets.
+# Conclusion
+Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs.
 
