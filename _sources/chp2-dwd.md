@@ -458,7 +458,7 @@ As with the bulb, we model Kiki and Bouba by themselves as a graph with two just
 
 As mentioned earlier, the mood level can be anywhere between -5 to +5 (on a real line).
 
-The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a parameter called **calmdown rate**.
+The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a **parameter** called **calm down rate**.
 
 The update rule is coded as follows:
 
@@ -514,13 +514,9 @@ The moods will never become zero! Can you see why?
 
 ### 2.4.2. Kiki and Bouba talking to each other
 
-Bourba is feeling super grouchy today but luckily being around Kiki tends to improve Bourba's mood. Kiki, on the other hand, is feeling great! Unfortunately, when Bourba is down in the dumps, it really drags down Kiki's mood too. But when Kiki's in a bad mood it only makes Bourba feel *worse*.
+Kiki and Bouba met at a restaurant for dinner! It looks like they both had a long day! Let us see how these two friends affect each other's mood! Are they going to go back home happier or grumpier?
 
-How will these friends' moods *interact*? Will Kiki manage to cheer Bourba up or will they both end up depressed? Or maybe their moods will alternate back and forth in and endless cycle of cheering up and bumming out:
-
-
-
-First, let's describe the interaction of their moods
+To answer this question, we will modify our model of Kiki and Bouba by themselves (a graph with just two vertices) to allow for their interaction. The updated model is as follows:
 
 Kiki & Bouba interactive
 ```{image} assets/Ch2/Kiki&Bouba.png
@@ -529,29 +525,148 @@ Kiki & Bouba interactive
 :align: center
 ```
 
-The mood change is dependent on three **parameters** namely susceptibility factor, tolerance levels and calm down rates.  Parameter values of a process block remain constant (does not change over time). They can be thought of as weights for the variables (inputs and current state) in the computation of dynamics. 
+The arrow from Kiki to Bouba allows Kiki's mood to be fed into Bouba system. The arrow from Bouba to Kiki allows Bouba's mood to be fed into Kiki's system. Recall, <mark> arrow = conduit for state information</mark>.
 
-Here is a possible dynamics of mood change in words based on the above assumptions:
+Now that we have extra state information flowing into the vertices, we would need to modify our exisiting update rule too!
 
-> At each instant of time, each friend takes in a certain amount of other person’s mood based on their susceptibility. They also release certain amount of their mood based on the calm down rate. If they reach their excitement or grumpiness maximum tolerance levels, then they just calm down; no more interaction!
-> 
+By our current update rule, Kiki and Bouba's mood changes only as per the calm down rate:
+
+:::{admonition} Stand-alone Kiki and Bouba update rule
+
+change in mood level = -(current mood level x calmdown rate)
+
+:::
+
+Let us update this rule to include the other person mood too when producing a new mood level (for either Kiki or Bouba)! For this, we make up the following dynamics:
+
+- At each instant in time, Kiki imbibes a certain fraction of other Bouba's mood based on Kiki's susceptibility factor. Similarly, Bouba imbibes a fraction of of Kiki's mood based on Bouba's susceptibility factor. So we got a **parameter** called **suspectability factor** in the new update rule.
+
+- Suppose either Kiki or Bouba reach their maximum tolerance of excitment or grumpiness, then they refuse to listen to the other person so that they can calm down! This will add two more paramters to the update rule to consider namely **maximum excitment tolerance:** and **maximum grumpiness tolerance**.
+```{image} assets/Ch2/Talk-later.png
+:alt: Whoopsy!
+:width: 200px
+:align: center
+```
+<center> At maximum excitment or grumpiness tolerance </center>
+
+</br>
 
 Here is a mathematical representation of the above dynamics: 
+```{image} assets/Ch2/Kiki-Bouba-dynamics.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
 
-> if the maximum grumpiness is reached or the maximum excitement is reached then
-> 
-> 
->       change in mood = - calm down rate x current mood → The amount by which the current mood moves towards the neutral
-> 
-> else 
-> 
-> change_in_mood  = - calm down rate x current mood  + susceptibility factor x incoming mood → The amount of the incoming mood taken in. 
-> 
+</br>
 
-This is how the moods of Kiki and Bourba will change over time. The negative signs in the calculation signifies the direction of change — the decrease in grumpiness or excitement. The calm down rates and susceptibility factors of Kiki and Bourba has values between 0 and 1, inclusive.  
+Here is the code for the new update rule that Kiki by the above diagram. The logic of updating Bouba's mood is the same.
 
-> New mood level = change in mood + current mood
-> 
++++ 
+
+```{code}
+
+# Full code available in Ch2/Kiki-Bouba.jl
+
+# Update rule for Kiki's mood level 
+
+dotmood_Kiki(mood, input, param, t) = # [ - mood[1] * param.calmdown_rate[1] ]
+ begin
+    if ( mood[1] <= param.grumpiness_tolerance[1] || mood[1] >= param.excitement_tolerance[1] )
+     [ - (mood[1] * param.calmdown_rate[1]) ] # pay attention to the negative sign in the front; here, change in mood is the amount by which the mood moves towards zero
+    else
+     [ input[1] * param.susceptability[1] - mood[1] * param.calmdown_rate[1] ]
+    end
+end 
+
+```
+
++++
+
+Its time for visualization of change in mood :) Let us set the initial mood of Kiki and Bouba, Kiki's and Bouba's susceptability factors and their tolerance levels.
+
++++
+
+```{code}
+# Kiki is super-excited with mood level of 4.5.
+# Bouba is a bit grumpy with mood level of -2.8. 
+initial_moods = [4.5, -2.8]
+
+# Each parameter has two values - first one for Kiki and the second one for Bouba!
+params = 
+    LVector(
+        susceptability=[0.2, 0.1], 
+        calmdown_rate=[.05, .03], 
+        grumpiness_tolerance=[-4,-4.8], 
+        excitement_tolerance=[4.5,4])
+
+```
+
++++
+
+Here is the plot showing how Kiki and Bouba's moods oscillate during their 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!
+
+```{image} assets/Ch2/Kiki-Bouba-talking-plot.svg
+:alt: Whoopsy!
+:width: 600px
+:align: center
+```
+
+:::{admonition} What happens if Kiki and Bouba start at different initial moods?
+
+Let us make Kiki slightly less excited!
+
++++
+
+```{code}
+# Kiki is kinda-excited with mood level of 3.5.
+# Bouba is a bit grumpy with mood level of -2.8. 
+initial_moods = [3.5, -2.8]
+```
+
++++
+
+:::
+
+This seems to be a little of bad news!
+
+```{image} assets/Ch2/Kiki-Bouba-talking-plot-2.svg
+:alt: Whoopsy!
+:width: 600px
+:align: center
+```
+
+:::{admonition} Can we make this situation better for the friends by reducing Kiki's susceptability factor?
+
+Let us reduce Kiki's susceptability factor from 0.2 (20%) to 0.02 (2%).
+
++++
+
+```{code}
+initial_moods = [3.5, -2.8]
+
+
+# Kiki's susceptability reduced to 2% from 20%
+params = 
+    LVector(
+        susceptability=[0.2, 0.1], 
+        calmdown_rate=[.05, .03], 
+        grumpiness_tolerance=[-4,-4.8], 
+        excitement_tolerance=[4.5,4])```
+
+```
+
++++
+
+:::
+
+Our solution seems to be working!!
+
+```{image} assets/Ch2/Kiki-Bouba-talking-plot-3.svg
+:alt: Whoopsy!
+:width: 600px
+:align: center
+```
 
 
 ### 2.4.3. Chef Bouba and his helpers
@@ -562,6 +677,8 @@ Kiki & Bouba & Staff
 :width: 400px
 :align: center
 ```
+
+
 
 ## 2.5. Summary
 
