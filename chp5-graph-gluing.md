@@ -440,40 +440,40 @@ However, relationships between Graphs X1 and X2 tells us that these two unique e
 ````{div} wrapper 
 In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison! 
 
-```{image} assets/Ch3/unique-3.png
+```{image} assets/Ch5/17a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 Because, the shapes 1, 2, 3, 4 commute, we know that 13 and 24 commutes in the following diagram:
 
-```{image} assets/Ch3/unique-4.png
+```{image} assets/Ch5/17b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 There is one other arrow from Graph X1 to Graph X2 which can make the above diagram commute: The “be-as-you-are” arrow
-```{image} assets/Ch3/unique-5.png
+```{image} assets/Ch5/17c.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 Because the embedding “Graph X1 —> Graph X2 —> Graph X1”  is unique, there cannot be a different arrow which makes “13” and “24” commute. Hence, 
-```{image} assets/Ch3/unique-6.png
+```{image} assets/Ch5/18a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 “Graph X1 —> Graph X2 —> Graph X1” and “be-as-you-are” arrows are the same.
 
 Similarly, we can prove that “Graph X2 —> Graph X1 —> Graph X2” and “be-as-you-are” arrows are the same: 
-```{image} assets/Ch3/unique-7.png
+```{image} assets/Ch5/18b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ````
 :::
