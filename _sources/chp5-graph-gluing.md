@@ -204,7 +204,7 @@ Thus, our enquiry to Graph-2 and Graph-3 have resulted in a condition that the p
 2. Graph-3 must map into the pushout. 
 3. The diagram with these two maps MUST COMMUTE!
 
-```{image} assets/Ch5/4.2-commute-2.png
+```{image} assets/Ch5/13a.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -393,16 +393,16 @@ Let us review what we have done so far! In this game, to begin with, a guess of 
 
 By asking the first question, we narrowed down the possible set of guesses from the space of all graphs to those graphs which makes  commute.
 
-```{image} assets/Ch3/4.1-req1.png
+```{image} assets/Ch5/13a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 By asking the second question, we narrowed down the guesses further to those graphs which has exactly one embedding for any other choice that makes the previous diagram commute. The embedding makes diagrams (1) and (2) commute simultaneously. 
 
-```{image} assets/Ch3/4.1-req2.png
+```{image} assets/Ch5/13b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
@@ -414,17 +414,17 @@ Suppose there are two choices that satisfies the requirements 1 and 2.  Lets cal
 
 Because X1 is universal, X1 has a unique embedding into X2. The reason for using colored arrows into Graph X1 will become apparent in a moment. 
 
-```{image} assets/Ch3/unique-1.png
+```{image} assets/Ch5/16b.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
 Because X2 is universal, X2 has a unique embedding into X1. 
 
-```{image} assets/Ch3/unique-2.png
+```{image} assets/Ch5/16a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 500px
 :align: center
 ```
 
