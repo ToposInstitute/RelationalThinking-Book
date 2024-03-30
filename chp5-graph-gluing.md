@@ -10,11 +10,13 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 5: Pushout graphs
+# Chapter 5: Combining Graphs
 
 :::{attention}
 This chapter will engage you in deep relational thinking! 
 :::
+
+## 5.1 Introduction
 
 So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and the every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
 
@@ -747,7 +749,7 @@ Use the code cell below to visualize Graph-2 and Graph-3.
 +++
 
 
-## 5.7. Conclusion 
+## 5.7. Summary 
 Congratulations!! You have crossed Chapter 5 successfully!
 
 Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by the means of graph colimits. 
