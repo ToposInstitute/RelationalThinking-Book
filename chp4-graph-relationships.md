@@ -22,7 +22,6 @@ But an understanding of graph relationships are also an important thinking tool
 
 ## 1. Graph Injections
 
-
 In what way might two graphs be related? One of the most obvious possibilities is that there may be a copy of one graph inside of the other.
 
 In Chapter 1 we saw an example of a directed graph which described the layout of a ski resort. In this account, you could ride the ski lift up and down the mountain or ski from the top of the mountain into a nearby village.
@@ -105,7 +104,11 @@ Answer:
 
 Twelve?
 
-*Formally:*
+PAUSE AND PONDER: What strategies did you use to count the injections? Were you systematic or did you do it through trial and error? Could you design an algorithm that a computer could use to solve these problems for you?
+
+
+
+
 
 In chapter 1 we used source and target maps to describe a directed graph. Maps can also be used to describe an injection. In this case the a “vertex map” and an “arrow map” run vertically, telling where each vertex and arrow ends up in the injection.
 
