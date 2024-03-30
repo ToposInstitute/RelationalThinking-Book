@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Schemas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Graph Morphisms</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 5: Combining Graphs</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Evolving Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: A Look Beyond: Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
@@ -441,21 +442,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 5: Combining Graphs</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.1. Combining graphs using memes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-of-the-overlap">5.1.1. Shape of the overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-overlap">5.1.2. Combining Graphs along overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.3. Combining Graphs along overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-uniqueness-of-the-colimit">D. Uniqueness of the colimit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shape-of-the-overlap">The shape of the overlap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-an-overlap">Combining graphs along an overlap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-overlap">Combining Graphs along overlap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueness-of-the-colimit">Uniqueness of the colimit</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-it-all-together">5.4. Collecting it all together</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-for-pen-and-paper">5.5. Time for pen and paper!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operationalizing-computing-colimits">5.6. Operationalizing computing colimits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.7. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-diagrams-move-to-4">5.1 Commuting diagrams: Move to 4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-are-two-graphs-the-same-move-to-4">5.2 When are two graphs the same?: Move to 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-it-all-together">5.3 Collecting it all together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-for-pen-and-paper">5.4 Time for pen and paper!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operationalizing-computing-colimits">5.5 Operationalizing computing colimits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#move-content-below-to-chapter-4">Move content below to Chapter 4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-diagrams-move-to-4">Commuting diagrams: Move to 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-are-two-graphs-the-same-move-to-4">When are two graphs the same?: Move to 4</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -483,7 +491,7 @@ document.write(`
 <p>Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
 <a class="reference internal image-reference" href="_images/3c.png"><img alt="Whoopsy!" class="align-center" src="_images/3c.png" style="width: 560px;" /></a>
 <p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
-<p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <a class="reference internal image-reference" href="_images/complex-graph.png"><img alt="Whoopsy!" class="align-center" src="_images/complex-graph.png" style="width: 450px;" /></a>
 <center> A graph generated by real-world data </center>
 </br>
@@ -493,14 +501,14 @@ document.write(`
 <p>We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.</p>
 </section>
 <section id="combining-graphs-using-memes">
-<h2>5.1. Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
+<h2>5.2 Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
 <p>The two memes we will use to play this game are, 1. Commuting diagrams, and 2. Graph isomorphisms.</p>
 <p>Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe what a combined graph of any two (overlapping) graphs is without saying what the vertices, edges, source and target maps of the combined graph are! Given two overlapping graphs, let us call their combined graph as the “pushout” of the two graphs along the overlap.</p>
 <p>A pushout is a graph in the space of all possible graphs. We need to spot what graph it is! We will narrow down our search step-by-step by expressing requirements of a pushout using the memes we have learnt. We will continue this process until we end up with the graph we are looking for.</p>
 <p>We will draw lots and lots of diagrams for this narrowing down process! Diagrams are basic to relational thinking!</p>
 <p>Let us begin!</p>
-<section id="shape-of-the-overlap">
-<h3>5.1.1. Shape of the overlap<a class="headerlink" href="#shape-of-the-overlap" title="Permalink to this heading">#</a></h3>
+<section id="the-shape-of-the-overlap">
+<h3>The shape of the overlap<a class="headerlink" href="#the-shape-of-the-overlap" title="Permalink to this heading">#</a></h3>
 <p>To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the <em><strong>overlap</strong></em> of the two graphs. So, to combine two graphs, we need to know their overlap.</p>
 <p>We saw in previous chapters that a graph morphism identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3! Remember, we live in universe and do not peek inside graphs! The rectangles are placeholders which can receive any graph in them.</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 800px;" /></a>
@@ -523,8 +531,8 @@ document.write(`
 <p>Overlapping graphs can be glued together.</p>
 </div>
 </section>
-<section id="combining-graphs-along-overlap">
-<h3>5.1.2. Combining Graphs along overlap<a class="headerlink" href="#combining-graphs-along-overlap" title="Permalink to this heading">#</a></h3>
+<section id="combining-graphs-along-an-overlap">
+<h3>Combining graphs along an overlap<a class="headerlink" href="#combining-graphs-along-an-overlap" title="Permalink to this heading">#</a></h3>
 <p>Now that, we know the overlap, the next step in this game is to narrow down the candidates for the pushout. Right now, it could be any graph in the universe!</p>
 <p>We cannot talk about pushout (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the pushout from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,</p>
 <blockquote>
@@ -576,8 +584,8 @@ document.write(`
 <center> Commuting square of pushout </center>
 </div>
 </section>
-<section id="id2">
-<h3>5.1.3. Combining Graphs along overlap<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="combining-graphs-along-overlap">
+<h3>Combining Graphs along overlap<a class="headerlink" href="#combining-graphs-along-overlap" title="Permalink to this heading">#</a></h3>
 <p>While not all graphs can make up such a commuting square of pushout, there can more than one graph that can produce a commuting square.</p>
 <div class="admonition-puzzle admonition">
 <p class="admonition-title">Puzzle</p>
@@ -651,8 +659,8 @@ document.write(`
 <p>Our choice of colimit graph having such ‘universal’ nature is an indication that we got our plumbing right and now things will flow smoothly! In category theory, this is called a universal property.</p>
 <p>Whewww!! That is some hard core relational thinking!</p>
 </section>
-<section id="d-uniqueness-of-the-colimit">
-<h3>D. Uniqueness of the colimit<a class="headerlink" href="#d-uniqueness-of-the-colimit" title="Permalink to this heading">#</a></h3>
+<section id="uniqueness-of-the-colimit">
+<h3>Uniqueness of the colimit<a class="headerlink" href="#uniqueness-of-the-colimit" title="Permalink to this heading">#</a></h3>
 <p>Let us review what we have done so far! In this game, to begin with, a guess of a colimit graph could be any graph in the space of all possible graphs. Since we do not know what this graph is, we will name this as “Graph X”.</p>
 <p>By asking the first question, we narrowed down the possible set of guesses from the space of all graphs to those graphs which makes  commute.</p>
 <a class="reference internal image-reference" href="_images/13a.png"><img alt="Whoopsy!" class="align-center" src="_images/13a.png" style="width: 500px;" /></a>
@@ -686,7 +694,7 @@ document.write(`
 </section>
 </section>
 <section id="collecting-it-all-together">
-<h2>5.4. Collecting it all together<a class="headerlink" href="#collecting-it-all-together" title="Permalink to this heading">#</a></h2>
+<h2>5.3 Collecting it all together<a class="headerlink" href="#collecting-it-all-together" title="Permalink to this heading">#</a></h2>
 <p>The goal of our dumb charades game is to say “what is colimit graph” without talking about its connectivity (vertices and edges). We used the relationships between graphs and commuting diagrams to describe what the colimit graph of a diagram must look like! Let us summarize our description of colimit of a diagram.</p>
 <p>We start with a graph which embeds into two graphs:</p>
 <a class="reference internal image-reference" href="_images/19a.png"><img alt="Whoopsy!" class="align-center" src="_images/19a.png" style="width: 450px;" /></a>
@@ -702,7 +710,7 @@ document.write(`
 <p>In this sense, relational thinking is non-invasive!</p>
 </section>
 <section id="time-for-pen-and-paper">
-<h2>5.5. Time for pen and paper!<a class="headerlink" href="#time-for-pen-and-paper" title="Permalink to this heading">#</a></h2>
+<h2>5.4 Time for pen and paper!<a class="headerlink" href="#time-for-pen-and-paper" title="Permalink to this heading">#</a></h2>
 <p>Let us compute colimit for the following diagrams.</p>
 <p><strong>Puzzle 1. Colimit using a single vertex</strong></p>
 <a class="reference internal image-reference" href="_images/20a.png"><img alt="Whoopsy!" class="align-center" src="_images/20a.png" style="width: 500px;" /></a>
@@ -749,7 +757,7 @@ document.write(`
 <p>Clue: Extend the requirements in Section 5.4 from 2 to n graphs!</p>
 </section>
 <section id="operationalizing-computing-colimits">
-<h2>5.6. Operationalizing computing colimits<a class="headerlink" href="#operationalizing-computing-colimits" title="Permalink to this heading">#</a></h2>
+<h2>5.5 Operationalizing computing colimits<a class="headerlink" href="#operationalizing-computing-colimits" title="Permalink to this heading">#</a></h2>
 <p>WORK IN PROGRESS..</p>
 <p>In the previous section, we hand-computed the colimits of the diagrams. This section shows how we can program a computer to compute colimits using Algebraic Julia.</p>
 <p><strong>Solving Ex 1.</strong></p>
@@ -876,13 +884,16 @@ document.write(`
 </div>
 </section>
 <section id="summary">
-<h2>5.7. Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>5.6 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Congratulations!! You have crossed Chapter 5 successfully!</p>
 <p>Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by the means of graph colimits.</p>
 <p>It only gets easier from here!!</p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="move-content-below-to-chapter-4">
+<h1>Move content below to Chapter 4<a class="headerlink" href="#move-content-below-to-chapter-4" title="Permalink to this heading">#</a></h1>
 <section id="commuting-diagrams-move-to-4">
-<h2>5.1 Commuting diagrams: Move to 4<a class="headerlink" href="#commuting-diagrams-move-to-4" title="Permalink to this heading">#</a></h2>
+<h2>Commuting diagrams: Move to 4<a class="headerlink" href="#commuting-diagrams-move-to-4" title="Permalink to this heading">#</a></h2>
 <p>You have met this meme in Chapter 3 when Paul introduced you to graph embeddings. Do you recollect this animation from Chapter 3?</p>
 <p><img alt="whoops!" src="_images/FullHomomorphism.gif" /></p>
 <p>This animation is an instantiation of two commuting diagrams which define a graph embedding.</p>
@@ -916,7 +927,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/2-same-edge.png"><img alt="Whoopsy!" class="align-center" src="_images/2-same-edge.png" style="width: 350px;" /></a>
 </section>
 <section id="when-are-two-graphs-the-same-move-to-4">
-<h2>5.2 When are two graphs the same?: Move to 4<a class="headerlink" href="#when-are-two-graphs-the-same-move-to-4" title="Permalink to this heading">#</a></h2>
+<h2>When are two graphs the same?: Move to 4<a class="headerlink" href="#when-are-two-graphs-the-same-move-to-4" title="Permalink to this heading">#</a></h2>
 <p>We already met the idea of “sameness” in the previous section. In our every day conversations, we use the word “same” quite often —</p>
 <p>Brendan eats the same breakfast everyday (probably)!</p>
 <p>Steve Jobs wore the same outfit everyday!</p>
@@ -946,7 +957,7 @@ document.write(`
 <p>Before I end this section, I would like to entertain you with a personal story tangentially related to graphs and the idea of sameness! When we were young, my brother and I were very fond of “Maggi noodles”.  My mom considered Maggi noodles to be both unhealthy and expensive. But, because we were fond of it, she would occasionally bring home two packets of these noodles. It was brother’s task to cook these noodles. After cooking, he would spilt the noodles into two portions and I would be given a chance to pick one I wanted. I always had great trouble in making up my mind, since whichever portion I picked, mine looked lesser to me. Often, I would ask to change since my brother’s portion looked bigger. My mom with great annoyance would reply, “Both the portions are the same! It’s your eyes which are big!”.</p>
 <a class="reference internal image-reference" href="_images/maggi.png"><img alt="Whoopsy!" class="align-center" src="_images/maggi.png" style="width: 150px;" /></a>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id3" role="note">
+<aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Image source: <a class="reference external" href="https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg">https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg</a></p>
 </aside>
@@ -1017,21 +1028,28 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 5: Combining Graphs</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.1. Combining graphs using memes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-of-the-overlap">5.1.1. Shape of the overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-overlap">5.1.2. Combining Graphs along overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.3. Combining Graphs along overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-uniqueness-of-the-colimit">D. Uniqueness of the colimit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shape-of-the-overlap">The shape of the overlap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-an-overlap">Combining graphs along an overlap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-overlap">Combining Graphs along overlap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueness-of-the-colimit">Uniqueness of the colimit</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-it-all-together">5.4. Collecting it all together</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-for-pen-and-paper">5.5. Time for pen and paper!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operationalizing-computing-colimits">5.6. Operationalizing computing colimits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.7. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-diagrams-move-to-4">5.1 Commuting diagrams: Move to 4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-are-two-graphs-the-same-move-to-4">5.2 When are two graphs the same?: Move to 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-it-all-together">5.3 Collecting it all together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-for-pen-and-paper">5.4 Time for pen and paper!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operationalizing-computing-colimits">5.5 Operationalizing computing colimits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#move-content-below-to-chapter-4">Move content below to Chapter 4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-diagrams-move-to-4">Commuting diagrams: Move to 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-are-two-graphs-the-same-move-to-4">When are two graphs the same?: Move to 4</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

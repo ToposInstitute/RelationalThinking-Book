@@ -70,7 +70,7 @@ The challenge of this game is to communicate “the connectivity of any combined
 
 We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.
 
-## 5.1. Combining graphs using memes
+## 5.2 Combining graphs using memes
 
 The two memes we will use to play this game are, 1. Commuting diagrams, and 2. Graph isomorphisms.
 
@@ -82,7 +82,7 @@ We will draw lots and lots of diagrams for this narrowing down process! Diagrams
 
 Let us begin!
 
-### 5.1.1. Shape of the overlap
+### The shape of the overlap
 
 To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the ***overlap*** of the two graphs. So, to combine two graphs, we need to know their overlap. 
 
@@ -137,7 +137,7 @@ Overlapping graphs can be glued together.
 
 
 
-### 5.1.2. Combining Graphs along overlap
+### Combining graphs along an overlap
 
 Now that, we know the overlap, the next step in this game is to narrow down the candidates for the pushout. Right now, it could be any graph in the universe!
 
@@ -219,7 +219,7 @@ Thus, our enquiry to Graph-2 and Graph-3 have resulted in a condition that the p
 
 :::
 
-### 5.1.3. Combining Graphs along overlap
+### Combining Graphs along overlap
 
 While not all graphs can make up such a commuting square of pushout, there can more than one graph that can produce a commuting square.
 
@@ -393,7 +393,7 @@ Our choice of colimit graph having such ‘universal’ nature is an indication 
 
 Whewww!! That is some hard core relational thinking!
 
-### D. Uniqueness of the colimit
+### Uniqueness of the colimit
 
 Let us review what we have done so far! In this game, to begin with, a guess of a colimit graph could be any graph in the space of all possible graphs. Since we do not know what this graph is, we will name this as “Graph X”. 
 
@@ -484,7 +484,7 @@ Similarly, we can prove that “Graph X2 —> Graph X1 —> Graph X2” and “b
 That is, graphs X1 and X2 are “practically the same” (This is NOT a requirement but a consequence of the existing requirements on relationships). For practical purposes, any graph that satisfies requirements 1 and 2 is the colimit graph we are looking for!!
 
 
-## 5.4. Collecting it all together
+## 5.3 Collecting it all together
 
 The goal of our dumb charades game is to say “what is colimit graph” without talking about its connectivity (vertices and edges). We used the relationships between graphs and commuting diagrams to describe what the colimit graph of a diagram must look like! Let us summarize our description of colimit of a diagram. 
 
@@ -523,7 +523,7 @@ In this sense, relational thinking is non-invasive!
 
 
 
-## 5.5. Time for pen and paper! 
+## 5.4 Time for pen and paper! 
 
 Let us compute colimit for the following diagrams.
 
@@ -613,7 +613,7 @@ What are the requirements for a graph to be colimit of the above diagram?
 
 Clue: Extend the requirements in Section 5.4 from 2 to n graphs! 
 
-## 5.6. Operationalizing computing colimits
+## 5.5 Operationalizing computing colimits
 
 WORK IN PROGRESS.. 
 
@@ -749,7 +749,7 @@ Use the code cell below to visualize Graph-2 and Graph-3.
 +++
 
 
-## 5.7. Summary 
+## 5.6 Summary 
 Congratulations!! You have crossed Chapter 5 successfully!
 
 Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by the means of graph colimits. 
@@ -758,7 +758,9 @@ It only gets easier from here!!
 
 
 
-## 5.1 Commuting diagrams: Move to 4
+# Move content below to Chapter 4
+
+## Commuting diagrams: Move to 4
 
 You have met this meme in Chapter 3 when Paul introduced you to graph embeddings. Do you recollect this animation from Chapter 3?
 
@@ -848,7 +850,7 @@ We know that each embedding has an arrows map and vertices map. The commuting di
 :align: center
 ```
 
-## 5.2 When are two graphs the same?: Move to 4
+## When are two graphs the same?: Move to 4
 
 We already met the idea of “sameness” in the previous section. In our every day conversations, we use the word “same” quite often — 
 
