@@ -1,0 +1,143 @@
+<svg width="324pt" height="318pt" viewBox="0.00 0.00 324.34 317.81" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.81)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-313.81 320.34,-313.81 320.34,4 -4,4"></polygon>
+<!-- n1 -->
+<g id="node1" class="node">
+<title>n1</title>
+<ellipse fill="none" stroke="black" cx="133.83" cy="-172.37" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="133.83" y="-167.32" font-family="Times,serif" font-size="14.00">Entity</text>
+</g>
+<!-- n2 -->
+<g id="node2" class="node">
+<title>n2</title>
+<ellipse fill="none" stroke="black" cx="207.17" cy="-217.74" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="207.17" y="-212.69" font-family="Times,serif" font-size="14.00">Food</text>
+</g>
+<!-- n2&#45;&gt;n1 -->
+<g id="edge1" class="edge">
+<title>n2-&gt;n1</title>
+<path fill="none" stroke="black" d="M192.86,-202.02C185.84,-196.77 177.08,-191.02 168.47,-185.95"></path>
+<polygon fill="black" stroke="black" points="170.3,-182.96 159.86,-181.11 166.87,-189.06 170.3,-182.96"></polygon>
+<text text-anchor="middle" x="196.23" y="-180.68" font-family="Times,serif" font-size="14.00">food_in_on</text>
+</g>
+<!-- n2&#45;&gt;n1 -->
+<g id="edge2" class="edge">
+<title>n2-&gt;n1</title>
+<path fill="none" stroke="black" d="M182.7,-209.88C174.44,-205.49 165.26,-199.94 157.09,-194.43"></path>
+<polygon fill="black" stroke="black" points="159.18,-191.62 149,-188.68 155.12,-197.33 159.18,-191.62"></polygon>
+<text text-anchor="middle" x="130.9" y="-205.35" font-family="Times,serif" font-size="14.00">food_is_entity</text>
+</g>
+<!-- n3 -->
+<g id="node3" class="node">
+<title>n3</title>
+<ellipse fill="none" stroke="black" cx="104.07" cy="-94.38" rx="38.82" ry="18"></ellipse>
+<text text-anchor="middle" x="104.07" y="-89.33" font-family="Times,serif" font-size="14.00">Kitchenware</text>
+</g>
+<!-- n3&#45;&gt;n1 -->
+<g id="edge3" class="edge">
+<title>n3-&gt;n1</title>
+<path fill="none" stroke="black" d="M105.01,-112.53C107.62,-122.43 112.01,-134.84 116.69,-145.8"></path>
+<polygon fill="black" stroke="black" points="113.43,-147.1 120.77,-154.75 119.8,-144.2 113.43,-147.1"></polygon>
+<text text-anchor="middle" x="78.97" y="-132.36" font-family="Times,serif" font-size="14.00">ware_in_on</text>
+</g>
+<!-- n3&#45;&gt;n1 -->
+<g id="edge4" class="edge">
+<title>n3-&gt;n1</title>
+<path fill="none" stroke="black" d="M116.96,-111.55C121.42,-120.78 126.05,-132.39 129.54,-142.99"></path>
+<polygon fill="black" stroke="black" points="126.16,-143.92 132.38,-152.5 132.87,-141.91 126.16,-143.92"></polygon>
+<text text-anchor="middle" x="163" y="-130.47" font-family="Times,serif" font-size="14.00">ware_is_entity</text>
+</g>
+<!-- n4 -->
+<g id="node4" class="node">
+<title>n4</title>
+<ellipse fill="none" stroke="black" cx="62.95" cy="-215.55" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="62.95" y="-210.5" font-family="Times,serif" font-size="14.00">Counter</text>
+</g>
+<!-- n4&#45;&gt;n1 -->
+<g id="edge5" class="edge">
+<title>n4-&gt;n1</title>
+<path fill="none" stroke="black" d="M83.07,-203.29C89.71,-199.25 97.24,-194.66 104.43,-190.28"></path>
+<polygon fill="black" stroke="black" points="105.89,-193.49 112.61,-185.3 102.25,-187.51 105.89,-193.49"></polygon>
+<text text-anchor="middle" x="46.88" y="-183.49" font-family="Times,serif" font-size="14.00">counter_is_entity</text>
+</g>
+<!-- n5 -->
+<g id="node5" class="node">
+<title>n5</title>
+<ellipse fill="none" stroke="black" cx="244.77" cy="-290.29" rx="32.49" ry="18"></ellipse>
+<text text-anchor="middle" x="244.77" y="-285.24" font-family="Times,serif" font-size="14.00">BreadLoaf</text>
+</g>
+<!-- n5&#45;&gt;n2 -->
+<g id="edge6" class="edge">
+<title>n5-&gt;n2</title>
+<path fill="none" stroke="black" d="M235.67,-272.72C231.37,-264.44 226.15,-254.35 221.35,-245.1"></path>
+<polygon fill="black" stroke="black" points="224.59,-243.75 216.88,-236.48 218.38,-246.97 224.59,-243.75"></polygon>
+<text text-anchor="middle" x="176.01" y="-245.61" font-family="Times,serif" font-size="14.00">bread_loaf_is_food</text>
+</g>
+<!-- n6 -->
+<g id="node6" class="node">
+<title>n6</title>
+<ellipse fill="none" stroke="black" cx="169.24" cy="-291.81" rx="33.33" ry="18"></ellipse>
+<text text-anchor="middle" x="169.24" y="-286.76" font-family="Times,serif" font-size="14.00">BreadSlice</text>
+</g>
+<!-- n6&#45;&gt;n2 -->
+<g id="edge7" class="edge">
+<title>n6-&gt;n2</title>
+<path fill="none" stroke="black" d="M178.23,-274.26C182.67,-265.59 188.13,-254.92 193.1,-245.2"></path>
+<polygon fill="black" stroke="black" points="196.11,-247.01 197.55,-236.51 189.88,-243.82 196.11,-247.01"></polygon>
+<text text-anchor="middle" x="131.29" y="-262.93" font-family="Times,serif" font-size="14.00">bread_slice_is_food</text>
+</g>
+<!-- n7 -->
+<g id="node7" class="node">
+<title>n7</title>
+<ellipse fill="none" stroke="black" cx="260.92" cy="-155.44" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="260.92" y="-150.39" font-family="Times,serif" font-size="14.00">Egg</text>
+</g>
+<!-- n7&#45;&gt;n2 -->
+<g id="edge8" class="edge">
+<title>n7-&gt;n2</title>
+<path fill="none" stroke="black" d="M247.36,-171.16C241.55,-177.89 234.62,-185.92 228.17,-193.39"></path>
+<polygon fill="black" stroke="black" points="225.79,-190.8 221.9,-200.66 231.09,-195.37 225.79,-190.8"></polygon>
+<text text-anchor="middle" x="271.14" y="-185.48" font-family="Times,serif" font-size="14.00">egg_is_food</text>
+</g>
+<!-- n8 -->
+<g id="node8" class="node">
+<title>n8</title>
+<ellipse fill="none" stroke="black" cx="289.34" cy="-223.25" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="289.34" y="-218.2" font-family="Times,serif" font-size="14.00">Cheese</text>
+</g>
+<!-- n8&#45;&gt;n2 -->
+<g id="edge9" class="edge">
+<title>n8-&gt;n2</title>
+<path fill="none" stroke="black" d="M261.98,-221.42C256.71,-221.06 251.11,-220.69 245.56,-220.32"></path>
+<polygon fill="black" stroke="black" points="246.13,-216.85 235.92,-219.67 245.66,-223.83 246.13,-216.85"></polygon>
+<text text-anchor="middle" x="212.15" y="-224.07" font-family="Times,serif" font-size="14.00">cheese_is_food</text>
+</g>
+<!-- n9 -->
+<g id="node9" class="node">
+<title>n9</title>
+<ellipse fill="none" stroke="black" cx="28.02" cy="-68.98" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="28.02" y="-63.93" font-family="Times,serif" font-size="14.00">Knife</text>
+</g>
+<!-- n9&#45;&gt;n3 -->
+<g id="edge10" class="edge">
+<title>n9-&gt;n3</title>
+<path fill="none" stroke="black" d="M52.5,-77.15C55.34,-78.1 58.29,-79.08 61.27,-80.08"></path>
+<polygon fill="black" stroke="black" points="60.11,-83.38 70.7,-83.23 62.33,-76.74 60.11,-83.38"></polygon>
+<text text-anchor="middle" x="95.14" y="-65.32" font-family="Times,serif" font-size="14.00">knife_is_ware</text>
+</g>
+<!-- n10 -->
+<g id="node10" class="node">
+<title>n10</title>
+<ellipse fill="none" stroke="black" cx="128.27" cy="-18" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="128.27" y="-12.95" font-family="Times,serif" font-size="14.00">Plate</text>
+</g>
+<!-- n10&#45;&gt;n3 -->
+<g id="edge11" class="edge">
+<title>n10-&gt;n3</title>
+<path fill="none" stroke="black" d="M122.65,-35.71C119.86,-44.55 116.4,-55.47 113.23,-65.47"></path>
+<polygon fill="black" stroke="black" points="109.96,-64.2 110.28,-74.79 116.63,-66.31 109.96,-64.2"></polygon>
+<text text-anchor="middle" x="80.44" y="-37.29" font-family="Times,serif" font-size="14.00">plate_is_ware</text>
+</g>
+</g>
+</svg>

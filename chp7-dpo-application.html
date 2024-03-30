@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 7: A Look Beyond: Evolving World Models &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 7: A Look Beyond– Evolving World Models &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Combining Graphs</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Evolving Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: A Look Beyond: Evolving World Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: A Look Beyond– Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
 </ul>
 
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 7: A Look Beyond: Evolving World Models</h1>
+    <h1>Chapter 7: A Look Beyond– Evolving World Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -454,6 +454,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.4 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -466,7 +467,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-a-look-beyond-evolving-world-models">
-<h1>Chapter 7: A Look Beyond: Evolving World Models<a class="headerlink" href="#chapter-7-a-look-beyond-evolving-world-models" title="Permalink to this heading">#</a></h1>
+<h1>Chapter 7: A Look Beyond– Evolving World Models<a class="headerlink" href="#chapter-7-a-look-beyond-evolving-world-models" title="Permalink to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This chapter will extend the previously learned concepts from graphs to the world.</p>
@@ -474,19 +475,23 @@ document.write(`
 <section id="introduction">
 <h2>7.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using <strong>schemas</strong>, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using <strong>double-pushout (DPO) rewriting</strong>, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design.</p>
-<p>Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household. We would have to do quite a bit of mental book-keeping to talk in the language of graphs–</p>
+<p>Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household? What parts go inside the other? What is wet and what is dry? And what items shouldn’t be combined at all costs? We would have to do quite a bit of mental book-keeping to talk in the language of graphs–</p>
 <blockquote>
 <div><p>“Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator… and the edge between them means that the Coca-Cola soda <em>is in</em> the refridgerator,… but this other edge between the soda and a node representing a box of Mentos means that the Mentos should <em>never be put in</em> the soda…”</p>
 </div></blockquote>
-<p>Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples for this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you put Mentos in a soda, it will explode.</p>
+</div>
+<p>Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples of this.</p>
 </section>
 <section id="cube-configuration">
 <h2>7.2 Cube Configuration<a class="headerlink" href="#cube-configuration" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by simply extending the graph schema with another concept, like faces to model a cube. The schema for a three-dimensional (3D) shape consists of three fundamental ideas: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema models the relationships <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, as the connectivity between faces, edges, and vertices. DPO rewriting in this context can model various transformations of a 3D object including cube,or box.</p>
+<p>Let’s start by simply extending the graph schema with another concept, like faces. Let us we want to model a cube. A face in a cube has four edges. The schema for a cube would then consist of three parts: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema also models the relationships between faces and edges, and edges and vertices– <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>. DPO rewriting in this context can model various transformations of a cube as if it were a packaging box.</p>
 <p>In AlgebraicJulia, this schema can be expressed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">Sch3DShape</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">SchCube</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">  </span><span class="n">Face</span><span class="o">::</span><span class="kt">Ob</span>
 <span class="w">  </span><span class="n">Edge</span><span class="o">::</span><span class="kt">Ob</span>
 <span class="w">  </span><span class="n">Vertex</span><span class="o">::</span><span class="kt">Ob</span>
@@ -505,11 +510,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p><img alt="Sch3dShape" src="assets/Chp7/Sch3DShape.svg" /></p>
-<p>We can see that the schema, <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code>, closely resembles the schema for a graph, <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>. More pointedly, <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code> extends <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code> with the idea of a <code class="docutils literal notranslate"><span class="pre">Face</span></code> and edges of a face.</p>
+<a class="reference internal image-reference" href="_images/Sch3DShape.svg"><img alt="_images/Sch3DShape.svg" class="align-center" src="_images/Sch3DShape.svg" width="350px" /></a>
+<p>We can see that the schema, <code class="docutils literal notranslate"><span class="pre">SchCube</span></code>, closely resembles the schema for a graph, <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>. More pointedly, <code class="docutils literal notranslate"><span class="pre">SchCube</span></code> extends <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code> with the idea of a <code class="docutils literal notranslate"><span class="pre">Face</span></code> its edges.</p>
 <div class="admonition-extending-schemas admonition">
 <p class="admonition-title">Extending schemas</p>
-<p>In AlgebraicJulia, inheritence of schemas can be programmed using <code class="docutils literal notranslate"><span class="pre">&lt;:</span></code>. In the case of <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code> and <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>, this can be written as:</p>
+<p>In AlgebraicJulia, inheritence of schemas can be programmed using <code class="docutils literal notranslate"><span class="pre">&lt;:</span></code>. In the case of <code class="docutils literal notranslate"><span class="pre">SchCube</span></code> and <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>, this can be written as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span> <span class="n">Sch3DShape</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span> <span class="o">&lt;</span><span class="p">:</span> <span class="n">SchGraph</span> <span class="n">begin</span>
   <span class="n">Face</span><span class="p">::</span><span class="n">Ob</span>
 
@@ -521,9 +526,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p>We can model various configurations of a cube, akin to unfolding a cardboard box. For instance, using DPO rewriting, we could model the action of opening or closing the top of the box. This operation would involve redefining the relationships between the Faces and Edges objects to “remove” the connections that form the top face. Similarly, unfolding the cube into a flat layout would radically alter the connections between Faces, Edges, and Vertices to represent the cube in an unfolded state. Such transformations are powerful for visualizing and reasoning about the structural possibilities of objects in three-dimensional space.</p>
-<p><img alt="" src="_images/TopOpening.gif" /></p>
-<p>Let us say we want to have a cube represent a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it’s closed by explaining how the faces, edges, and vertices are defined relative to one another. In a cube, there are exactly six faces, which we can call <code class="docutils literal notranslate"><span class="pre">f1,</span> <span class="pre">f2,</span> <span class="pre">f3,</span> <span class="pre">f4,</span> <span class="pre">f5,</span> <span class="pre">f6</span></code>. Faces have exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as <code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">e3,</span> <span class="pre">e4,</span> <span class="pre">...</span></code>. If we want to say the top of edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e1</span></code>, then we can refer to the schema and express the the following part:</p>
+<p>We can model various configurations of a cube, akin to unfolding a cardboard box. For instance, using DPO rewriting, we could model the action of opening or closing the top of the box. This operation would involve redefining the relationships between the Faces and Edges objects to “remove” the connections that form the top face. Similarly, unfolding the cube into a flat layout would radically alter the connections between Faces, Edges, and Vertices to represent the cube in an unfolded state. Such transformations are powerful for visualizing and reasoning about the structural possibilities of boxes in three-dimensional space.</p>
+<div class="docutils">
+<a class="reference internal image-reference" href="_images/TopOpening.gif"><img alt="_images/TopOpening.gif" class="align-center" src="_images/TopOpening.gif" style="width: 350px;" /></a>
+</br>
+</div>
+<p>Let us say we want to have a cube represent a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it’s closed by explaining how the faces, edges, and vertices are defined relative to one another. In a cube, there are exactly six faces, which we can call <code class="docutils literal notranslate"><span class="pre">f1,</span> <span class="pre">f2,</span> <span class="pre">f3,</span> <span class="pre">f4,</span> <span class="pre">f5,</span> <span class="pre">f6</span></code>. Faces have exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as <code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">e3,</span> <span class="pre">e4,</span> <span class="pre">...</span></code>. If we want to say the top of edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e1</span></code>, then we can refer to the schema and express the the following piece of data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">top</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span> <span class="o">==</span> <span class="n">e1</span>
 </pre></div>
 </div>
@@ -538,11 +546,22 @@ document.write(`
 </div>
 <section id="a-closed-box">
 <h3>A closed box<a class="headerlink" href="#a-closed-box" title="Permalink to this heading">#</a></h3>
-<p>We can create an instance of a cube, by associating data with the schema <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code>.</p>
-<p><img alt="" src="_images/BoxAssembly.gif" /></p>
+<p>We can create an instance of a cube, by associating data with the schema <code class="docutils literal notranslate"><span class="pre">SchCube</span></code>.</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/PartsLayout.png"><img alt="_images/PartsLayout.png" src="_images/PartsLayout.png" style="width: 550px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">A layout of the faces, edges, and vertices for our box.</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="_images/BoxAssembly.gif"><img alt="_images/BoxAssembly.gif" src="_images/BoxAssembly.gif" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The faces, edges, and vertices labeled for our box.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">closedCube</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset_colim</span><span class="w"> </span><span class="n">ySch3DShape</span><span class="w"> </span><span class="k">begin</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">closedCube</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset_colim</span><span class="w"> </span><span class="n">ySchCube</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">  </span><span class="p">(</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="p">,</span><span class="w"> </span><span class="n">f4</span><span class="p">,</span><span class="w"> </span><span class="n">f5</span><span class="p">,</span><span class="w"> </span><span class="n">f6</span><span class="p">)</span><span class="o">::</span><span class="kt">Face</span>
 
 <span class="w">  </span><span class="c"># top face (clockwise)</span>
@@ -587,41 +606,147 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This instance defines a box that looks like Figure ??.</p>
+<p>This instance defines a box that looks like <em>Fig. 1</em>.</p>
 </section>
 <section id="opening-a-closed-box">
 <h3>Opening a closed box<a class="headerlink" href="#opening-a-closed-box" title="Permalink to this heading">#</a></h3>
 <p>Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box.</p>
-<p><strong>[INSERT GIF OF DPO RULE]</strong></p>
+<figure class="align-center" id="id13">
+<img alt="_images/BoxDPO0.png" src="_images/BoxDPO0.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">The DPO rewrite rules for opening a closed box.</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="dropdown admonition">
 <p class="admonition-title">Opening a box rule</p>
-<p>Note: <code class="docutils literal notranslate"><span class="pre">&#64;migration</span></code> is formatting the parts of the rule so that <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">K</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, and <code class="docutils literal notranslate"><span class="pre">r</span></code> are clearly identified.</p>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">L</span></code> part of the rule should represent the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has these qualities. Note: that the edges connecting the walls of the cube are not specified because they are not relevant to the rule.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">K</span></code> part tells me that all the faces the hinging edge are the same between <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code>. Notice that the hindging edge is the edge underlying both sides of this equality, <code class="docutils literal notranslate"><span class="pre">top(face)</span> <span class="pre">==</span> <span class="pre">top(face1)</span></code>. This is because <code class="docutils literal notranslate"><span class="pre">top</span></code> is a morphism from <code class="docutils literal notranslate"><span class="pre">Face</span></code> to <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, so <code class="docutils literal notranslate"><span class="pre">top(face)</span></code> is some element in <code class="docutils literal notranslate"><span class="pre">Edge</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">R</span></code> part of the rule should represent the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">open_box_rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_rule</span><span class="p">(</span><span class="n">openBox</span><span class="p">,</span><span class="w"> </span><span class="n">ySch3DShape</span><span class="p">)</span>
+<p>The open box rule has the following <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">K</span></code>, and <code class="docutils literal notranslate"><span class="pre">R</span></code> parts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">open_box</span> <span class="o">=</span> <span class="nd">@migration</span><span class="p">(</span><span class="n">SchRule</span><span class="p">,</span> <span class="n">Sch3DShape</span><span class="p">,</span> <span class="n">begin</span>
+  <span class="n">L</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
+    <span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">)::</span><span class="n">Face</span>
+
+    <span class="c1"># top edges</span>
+    <span class="n">top</span><span class="p">(</span><span class="n">face</span><span class="p">)</span> <span class="o">==</span> <span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span>
+    <span class="n">right</span><span class="p">(</span><span class="n">face</span><span class="p">)</span> <span class="o">==</span> <span class="n">top</span><span class="p">(</span><span class="n">face2</span><span class="p">)</span>
+    <span class="n">bottom</span><span class="p">(</span><span class="n">face</span><span class="p">)</span> <span class="o">==</span> <span class="n">top</span><span class="p">(</span><span class="n">face3</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face</span><span class="p">)</span> <span class="o">==</span> <span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span>
+
+    <span class="c1"># wall faces (clockwise)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face2</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face3</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span>
+
+    <span class="c1"># top vertices</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+
+    <span class="c1"># bottom vertices</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+  <span class="n">end</span>
+  <span class="n">K</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
+    <span class="p">(</span><span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">)::</span><span class="n">Face</span>
+  <span class="n">end</span>
+  <span class="n">R</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
+    <span class="p">(</span><span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">,</span> <span class="n">faceNew</span><span class="p">)::</span><span class="n">Face</span>
+    <span class="p">(</span><span class="n">edge1</span><span class="p">,</span> <span class="n">edge2</span><span class="p">,</span> <span class="n">edge3</span><span class="p">)::</span><span class="n">Edge</span>
+
+    <span class="c1"># top edges</span>
+    <span class="n">top</span><span class="p">(</span><span class="n">faceNew</span><span class="p">)</span> <span class="o">==</span> <span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span>
+    <span class="n">right</span><span class="p">(</span><span class="n">faceNew</span><span class="p">)</span> <span class="o">==</span> <span class="n">edge1</span>
+    <span class="n">bottom</span><span class="p">(</span><span class="n">faceNew</span><span class="p">)</span> <span class="o">==</span> <span class="n">edge2</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">faceNew</span><span class="p">)</span> <span class="o">==</span> <span class="n">edge3</span>
+
+    <span class="c1"># connect vertices of new edges</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">edge1</span><span class="p">)</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">edge1</span><span class="p">)</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">edge2</span><span class="p">)</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">edge2</span><span class="p">)</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">edge3</span><span class="p">)</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">edge3</span><span class="p">)</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+
+    <span class="c1"># wall faces (clockwise</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">)</span>     <span class="c1"># e5</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face2</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">)</span>     <span class="c1"># e6</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face3</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span>     <span class="c1"># e7</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">face4</span><span class="p">)</span> <span class="o">==</span> <span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">)</span>     <span class="c1"># e8</span>
+
+    <span class="c1"># top vertices</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">src</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">top</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+
+    <span class="c1"># bottom vertices</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face1</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face2</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
+    <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
+  <span class="n">end</span>
+  <span class="n">l</span> <span class="o">=&gt;</span> <span class="n">begin</span>
+    <span class="n">face1</span> <span class="o">=&gt;</span> <span class="n">face1</span>
+    <span class="n">face2</span> <span class="o">=&gt;</span> <span class="n">face2</span>
+    <span class="n">face3</span> <span class="o">=&gt;</span> <span class="n">face3</span>
+    <span class="n">face4</span> <span class="o">=&gt;</span> <span class="n">face4</span>
+  <span class="n">end</span>
+  <span class="n">r</span> <span class="o">=&gt;</span> <span class="n">begin</span>
+    <span class="n">face1</span> <span class="o">=&gt;</span> <span class="n">face1</span>
+    <span class="n">face2</span> <span class="o">=&gt;</span> <span class="n">face2</span>
+    <span class="n">face3</span> <span class="o">=&gt;</span> <span class="n">face3</span>
+    <span class="n">face4</span> <span class="o">=&gt;</span> <span class="n">face4</span>
+  <span class="n">end</span>
+<span class="n">end</span><span class="p">)</span>
+<span class="n">open_box_rule</span> <span class="o">=</span> <span class="n">make_rule</span><span class="p">(</span><span class="n">openBox</span><span class="p">,</span> <span class="n">ySchCube</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">&#64;migration</span></code> is formatting the parts of the rule so that <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">K</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, and <code class="docutils literal notranslate"><span class="pre">r</span></code> are clearly identified.</p>
 </div>
-</div>
-<!-- This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges.  -->
-<!-- ![](assets/Ch7/BottomOpening.gif) -->
+<aside class="sidebar">
+<p class="sidebar-title">The box never opens from underneath!</p>
+<a class="reference internal image-reference" href="_images/BottomOpening.gif"><img alt="Whoopsy!" class="align-left" src="_images/BottomOpening.gif" style="width: 400px;" /></a>
+</aside>
+<p>The rule looks for the top face of the cube, deletes it, and adds another face that is connected by only one edge to the rest of the cube.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">L</span></code> part of the rule represents the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has all but the bottom face. The bottom face is excluded because it is not relevant to the rule.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">K</span></code> part tells us that all the wall faces are the same between <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">R</span></code> part of the rule represents the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.</p>
+<p>This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges. That means the box will never open from underneath!</p>
+<!-- ![](assets/Ch7/BottomOpening.gif)
+
 <!-- We can constrain this by defining a specific match for our DPO rule. In AlgebraicJulia, this can be expressed by saying the specific face we would like to match. -->
 <!-- ##### TODO: Need to figure out how to get the rule to match such that face = face1
 ```
 match = homomorphisms(L, closedCube)[1]
 ``` -->
-<p>In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code> schema.</p>
+<p>In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the <code class="docutils literal notranslate"><span class="pre">SchCube</span></code> schema.</p>
 </section>
 </section>
 <section id="working-in-a-kitchen">
 <h2>7.3 Working in a Kitchen<a class="headerlink" href="#working-in-a-kitchen" title="Permalink to this heading">#</a></h2>
 <p>This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.</p>
-<p>Concider a schema for a kitchen world. This schema contains ideas about <code class="docutils literal notranslate"><span class="pre">{Food,</span> <span class="pre">Egg,</span> <span class="pre">Bread,</span> <span class="pre">Cheese,</span> <span class="pre">BreadSlice,</span> <span class="pre">Counter,</span> <span class="pre">Kitchenware,</span> <span class="pre">Entity}</span></code> and their subtyping relationships (e.g., <code class="docutils literal notranslate"><span class="pre">Egg</span></code>, <code class="docutils literal notranslate"><span class="pre">Bread</span></code>, <code class="docutils literal notranslate"><span class="pre">Cheese</span></code>, <code class="docutils literal notranslate"><span class="pre">BreadSlice</span></code> are <code class="docutils literal notranslate"><span class="pre">Food</span></code>) and spatial relationships (e.g., <code class="docutils literal notranslate"><span class="pre">Counter</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, <code class="docutils literal notranslate"><span class="pre">Kitchenware</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, and <code class="docutils literal notranslate"><span class="pre">Food</span></code> on `Entity``).</p>
-<p>If you recall from <span class="xref myst">Chapter 4</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from <code class="docutils literal notranslate"><span class="pre">Bread</span></code> to <code class="docutils literal notranslate"><span class="pre">Food</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Bread</span></code> are a <code class="docutils literal notranslate"><span class="pre">Food</span></code>, and likewise, a morphism <code class="docutils literal notranslate"><span class="pre">Food</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Food</span></code> are on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.</p>
+<div class="docutils">
+<a class="reference internal image-reference" href="_images/KitchenBefore.png"><img alt="_images/KitchenBefore.png" class="align-center" src="_images/KitchenBefore.png" style="width: 500px;" /></a>
+</br>
+</div>
+<p>Concider a schema for a kitchen world. This schema contains ideas about {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity} and their subtyping relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food is on an Entity).</p>
+<p>If you recall from <span class="xref myst">Chapter 3</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from <code class="docutils literal notranslate"><span class="pre">Bread</span></code> to <code class="docutils literal notranslate"><span class="pre">Food</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Bread</span></code> are a <code class="docutils literal notranslate"><span class="pre">Food</span></code>, and likewise, a morphism <code class="docutils literal notranslate"><span class="pre">Food</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Food</span></code> are on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
@@ -661,7 +786,7 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<p>DPO rewriting here can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering their relationships to reflect this new arrangement.</p>
+<img alt="_images/SchKitchen.svg" class="align-center" src="_images/SchKitchen.svg" /><p>DPO rewriting here can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering their relationships to reflect this new arrangement.</p>
 <section id="put-cheese-on-bread">
 <h3>Put Cheese On Bread<a class="headerlink" href="#put-cheese-on-bread" title="Permalink to this heading">#</a></h3>
 <p>Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, and <code class="docutils literal notranslate"><span class="pre">K</span></code> components of this rewrite rule.</p>
@@ -687,7 +812,17 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. This is a knowledge engineering choice which demonstrates the flexibility of DPO-rewriting rules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note: Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. Instead, we can compute the colimit of representables <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and infer the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
+</div>
+<figure class="align-center" id="id14">
+<img alt="_images/KitchenDPO.png" src="_images/KitchenDPO.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">The DPO rewrite rules for putting cheese on bread.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules.</p>
 </section>
 <section id="plate-slice">
 <h3>Plate Slice<a class="headerlink" href="#plate-slice" title="Permalink to this heading">#</a></h3>
@@ -715,11 +850,39 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 <p>In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the <code class="docutils literal notranslate"><span class="pre">food_in_on</span></code> morphism and, in the case of plate, the function that maps it to entity is tied to the <code class="docutils literal notranslate"><span class="pre">ware_is_entity</span></code> morphism. This is effectively saying that the entity that the food is on is the same entity as the plate.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Visualize in your head what the parts of the double-pushout (DPO) square would look like based on this rule.</p>
+</div>
 </section>
 </section>
 <section id="summary">
 <h2>7.4 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs.</p>
+<p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics <a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics <a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>MacLane, S. 1971. Categories for the Working Mathematician. New York: Springer-Verlag. Graduate Texts in Mathematics, Vol. 5.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Aguinaldo, A., Patterson, E., Fairbanks, J., Regli, W., &amp; Ruiz, J. A Categorical Representation Language and Computational System for Knowledge-Based Planning. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.</p>
+</aside>
+<aside class="footnote brackets" id="id10" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.</p>
+</aside>
 </section>
 </section>
 
@@ -799,6 +962,7 @@ match = homomorphisms(L, closedCube)[1]
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.4 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
