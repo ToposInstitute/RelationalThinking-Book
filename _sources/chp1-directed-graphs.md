@@ -85,6 +85,8 @@ The virtue of making these relationships explicit is that the information can no
 
 ### Puzzles ###
 
+::::{admonition} Puzzle 1
+
 1. Get out a pencil and paper and see if you can draw the directed graphs described by these source and target maps
 
 a.
@@ -93,12 +95,26 @@ a.
 b.
 ![whoops!](./assets/Ch1/Problem1b.gif)
 
+::::
+
+::::{admonition} Puzzle 2
+
 2. Examine the following directed graphs and see if you can draw their source and target maps.
 ![whoops!](./assets/Ch1/Problem2.jpg)
 
+::::
+
+::::{admonition} Puzzle 3
+
 3. Take your source and target maps from the last problem and convert them into lists of numbers.
 
+::::
+
+:::: {admonition} Puzzle 4
+
 4. Take your lists of numbers from the last problem and enter them into the code below, replacing the '?'s under "src" and "tgt". Hit "run". Do the graphs look the way you expected?
+
+::::
 
 +++
 
@@ -124,8 +140,6 @@ to_graphviz(AJ_Problem4b)
 ```
 
 +++
-
-
 
 
 ## Part 3: On the importance of finding the right abstractions ##

@@ -525,7 +525,7 @@ In this sense, relational thinking is non-invasive!
 
 Let us compute colimit for the following diagrams.
 
-**Ex 1. Colimit using a single vertex**
+**Puzzle 1. Colimit using a single vertex**
 ```{image} assets/Ch5/20a.png
 :alt: Whoopsy!
 :width: 500px
@@ -545,7 +545,7 @@ Let us compute colimit for the following diagrams.
 :::
 
 
-**Ex 2. Colimit using a single edge**
+**Puzzle 2. Colimit using a single edge**
 
 This one is a little tricky, because the two vertices (”A” and “B”) in Graph-1 embeds into the same vertex of Graph-3 (”A,B”), thereby coarse-graining the information in Graph-1. However, vertices “A” and “B” in Graph-1 embeds in separate vertices in Graph-2. So, how would the overlap region look in the colimit graph? 
 
@@ -570,7 +570,7 @@ Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has on
 :::
 
 
-**Ex 3. Colimit using a empty graph**
+**Puzzle 3. Colimit using a empty graph**
 
 In the beginning of this chapter, we said that combining graphs is analogous to adding numbers. Can you see how this problem demonstrates this analogy?
 
@@ -621,7 +621,7 @@ In the previous section, we hand-computed the colimits of the diagrams. This sec
 +++
 
 ```{code-cell}
-# Exercise 1
+# Puzzle 1
 #-----------
 
 using Catlab
@@ -662,7 +662,7 @@ Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
 +++
 
 ```{code-cell}
-# Exercise 2
+# Puzzle 2
 #-----------
 
 using Catlab
@@ -709,7 +709,7 @@ Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
 +++
 
 ```{code-cell}
-# Exercise 3
+# Puzzle 3
 #-----------
 
 using Catlab

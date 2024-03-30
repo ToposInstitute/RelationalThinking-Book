@@ -12,7 +12,7 @@ kernelspec:
 
 # Introduction
 
-## Systems thinking through software
+## Relational thinking through software
 
 We encounter the word 'system' frequently, hearing talk of health care systems, computer systems, the solar system, and more. Yet the word itself is hard to define. A system is a bunch of things interacting together, somehow. It seems abstract, and often hard to think about. What does one do when part of a system? How does one act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
 

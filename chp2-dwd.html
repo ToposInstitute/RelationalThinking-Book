@@ -536,7 +536,7 @@ document.write(`
 <p>At each time step, the light bulb move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
 <p>Given a directed graph <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> , state information of its vertices, and update rules for each state, we can bring this graph to life – simulate an event represented by this directed graph using Algebraic Julia.</p>
 <p>Here’s how we encode this <strong>update rule in Algebraic Julia</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in the Github - flashing-light.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in the Github - Ch2/flashing-light.jl</span>
 
 <span class="c1"># Bulb states</span>
 <span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
@@ -580,7 +580,7 @@ document.write(`
 <p>The graph model looks as follows:</p>
 <a class="reference internal image-reference" href="assets/Ch2/Pair_Of_lights.png"><img alt="Whoopsy!" class="align-center" src="assets/Ch2/Pair_Of_lights.png" style="width: 375px;" /></a>
 <p>We now have new update rule:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in two-lights.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/two-lights.jl</span>
 
 <span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
     <span class="n">BULB_ON</span> <span class="o">=</span> <span class="n">true</span>
@@ -635,7 +635,7 @@ document.write(`
 <p class="admonition-title">Puzzle: initial state</p>
 <p>How would this system behave if we set initial states for the three bulbs as the following:</p>
 <a class="reference internal image-reference" href="_images/3loop-initial-state.png"><img alt="Whoopsy!" class="align-center" src="_images/3loop-initial-state.png" style="width: 400px;" /></a>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#full code available in Ch2/looped0light.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#full code available in Ch2/looped-light.jl</span>
 
 <span class="c1"># Bulb 1 is ON, bulb 2 is OFF, bulb 3 is OFF</span>
 <span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">)]</span> 
@@ -667,7 +667,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/traffic-controller-update.png"><img alt="Whoopsy!" class="align-center" src="_images/traffic-controller-update.png" style="width: 400px;" /></a>
 </br>
 <p>Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in traffic-light.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/traffic-light.jl</span>
 
 <span class="c1"># update rule for indvidual bulbs</span>
 <span class="n">BulbTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> 
@@ -758,7 +758,7 @@ And here's our simulation with the first system starting :
 <p>As mentioned earlier, the mood level can be anywhere between -5 to +5 (on a real line).</p>
 <p>The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a <strong>parameter</strong> called <strong>calm down rate</strong>.</p>
 <p>The update rule is coded as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># complete code available in the Github file, kiki-bouba-by-themselves.jl </span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># complete code available in Ch2/Kiki-bouba-standalone.jl </span>
 
 <span class="c1"># change in mood level = -(current mood level x calmdown rate)</span>
 <span class="c1"># pay attention to the negative sign in the front; </span>
@@ -781,7 +781,6 @@ And here's our simulation with the first system starting :
 <p class="admonition-title">Food for thought</p>
 <p>The moods will never become zero! Can you see why?</p>
 </div>
-<p>[THE REST OF THE CHAPTER IS YET TO BE WRITTEN.]</p>
 </section>
 <section id="kiki-and-bouba-talking-to-each-other">
 <h3>2.4.2. Kiki and Bouba talking to each other<a class="headerlink" href="#kiki-and-bouba-talking-to-each-other" title="Permalink to this heading">#</a></h3>
@@ -808,7 +807,7 @@ And here's our simulation with the first system starting :
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-dynamics.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-dynamics.png" style="width: 500px;" /></a>
 </br>
 <p>Here is the code for the new update rule that Kiki by the above diagram. The logic of updating Bouba’s mood is the same.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Full code available in Ch2/Kiki-Bouba.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/Kiki-Bouba-talking.jl</span>
 
 <span class="c1"># Update rule for Kiki&#39;s mood level </span>
 
@@ -874,7 +873,7 @@ params =
 <a class="reference internal image-reference" href="_images/KikiAndBoubaAndStaff.png"><img alt="Whoopsy!" class="align-center" src="_images/KikiAndBoubaAndStaff.png" style="width: 600px;" /></a>
 </br>
 <p>The mood level of Bouba’s crew is updated using the same logic as above! The crew as a single entity has a susceptablity factor, a calm down rate, and tolerance levels.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Kiki-Bouba-group.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/Kiki-Bouba-Crew.jl</span>
 
 <span class="n">initial_moods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="c1"># Kiki, Bouba, Group</span>
 <span class="n">params</span> <span class="o">=</span> <span class="n">LVector</span><span class="p">(</span>
