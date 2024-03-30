@@ -12,7 +12,7 @@ kernelspec:
 
 # Introduction
 
-## Relational thinking through software
+## Systems thinking, relational thinking, and software
 
 Biological systems, computer systems, healthcare systems, the solar system, and on and on...
 
