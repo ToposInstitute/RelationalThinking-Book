@@ -397,7 +397,7 @@ put_cheese_on_bread_rule = make_rule(put_cheese_on_bread, yKitchen)
 ```
 
 :::{note}
-Note: Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an `ACSetTransformation` for `l` and `r`. Instead, we can compute the colimit of representables [^1] and infer the homomorphism maps, `l` and `r`. This functionality is subsumed in `make_rule()`.
+Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an `ACSetTransformation` for `l` and `r`. Instead, we can compute the colimit of representables [^1] and infer the homomorphism maps, `l` and `r`. This functionality is subsumed in `make_rule()`.
 :::
 
 ```{figure} assets/Ch7/KitchenDPO.png
