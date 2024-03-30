@@ -462,13 +462,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-schemas">
 <h1>Chapter 3: Schemas<a class="headerlink" href="#chapter-3-schemas" title="Permalink to this heading">#</a></h1>
-<a class="reference internal image-reference" href="_images/Binder_Instructions.png"><img alt="Whoopsy!" class="align-center" src="_images/Binder_Instructions.png" style="width: 400px;" /></a>
-<p>In the last chapter we saw how graph morphisms could be explored in Algebraic Julia. The details were, admittedly, a bit complicated and perhaps somewhat visually overwhelming. In this chapter we’re going to do some much needed tidying up with our abstraction. But what will begin as a routine matter of housekeeping will, in fact, set us up to think about graphs in a more general and flexible way.</p>
+<p>We have now seen how directed graphs can be useful for modeling the world. However, in some situations they’re not actually the best choice.</p>
+<p>Suppose we were making a directed graph to represent the social network on Tiktok:</p>
+<ul class="simple">
+<li><p>Vertices are people</p></li>
+<li><p>Arrows are “follows”, going from a person to someone they follow.</p></li>
+</ul>
+<p>A piece of our graph would look like this:</p>
+<a class="reference internal image-reference" href="_images/TikTok.png"><img alt="Whoopsy!" class="align-center" src="_images/TikTok.png" style="width: 500px;" /></a>
+<p>In this case, directed graphs are the perfect choice for modeling because TikTok follows are <em>directional</em>. Someone you follow may not follow you back.</p>
+<p>Now let’s imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional.</p>
+<p>To model this kind of social network we need a different kind of graph. We call these “undirected graphs” and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices instead of arrows.</p>
+<a class="reference internal image-reference" href="_images/LinkedIn.png"><img alt="Whoopsy!" class="align-center" src="_images/LinkedIn.png" style="width: 500px;" /></a>
+<p>PAUSE AND PONDER: How is the data of an undirected graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?</p>
+<p>In this chapter we’re going to look at a few different flavors of graphs. In the process, we’ll develop a general and flexible framwork for working with all kinds of graphs in AlgebraicJulia.</p>
 <section id="introducing-schemas-for-directed-graphs">
 <h2>Introducing Schemas for directed graphs<a class="headerlink" href="#introducing-schemas-for-directed-graphs" title="Permalink to this heading">#</a></h2>
-<p>The basic building block we’ve been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:</p>
+<p>We’ll begin this chapter with a little tidying up. The basic building block we’ve been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:</p>
 <a class="reference internal image-reference" href="_images/SourceMap.gif"><img alt="Whoopsy!" class="align-center" src="_images/SourceMap.gif" style="width: 500px;" /></a>
-<p>We’re now going to introduce a new abstraction that hides all of this detail. We’re going to:</p>
+<p>Source and target maps can be a little <em><em>busy</em></em> to look at so we’re going to simplify our view! Let’s introduce a new abstraction that hides all of this detail. We’re going to:</p>
 <ul class="simple">
 <li><p>wrap these connections in one big tube</p></li>
 <li><p>put an arrow point on this tube so we can remember which direction the connections were going</p></li>
@@ -486,28 +498,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/DirectedGraphSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DirectedGraphSchema.jpg" style="width: 500px;" /></a>
 <p>Any <em>particular</em> pair of maps between the same arrows and vertices is said to be an “instance” of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.</p>
 <a class="reference internal image-reference" href="_images/DGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGraphInstance.gif" style="width: 800px;" /></a>
-<p>In Chapter 3 we saw how to represent a graph morphisms between these two graphs with the following pattern of maps:</p>
-<a class="reference internal image-reference" href="_images/GraphMorphism.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphMorphism.gif" style="width: 800px;" /></a>
-<p>The schema for this data looks like this:</p>
-<p>WAIT…//graph morphism schema</p>
-<p>But recall that there was an extra “loop condition” that the maps needed to satisfy in order to represent a proper graph morphism:</p>
-<a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
-<p>Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 <em>if and only if</em> these maps satisfy the closed loop condition.</p>
-<p>For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, S2•A for the lower route and V•S1 for the upper route.</p>
-<a class="reference internal image-reference" href="_images/GraphMorphismSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/GraphMorphismSchema.jpg" style="width: 800px;" /></a>
-<p>(Note how the order in which we write the arrows seems backwards from the order in which you would actually traverse those arrows along the route. Unfortunately this is the notational convention! One way to think of it is to read the symbol • as the word “after.” So “V•S2” is understood to mean “V after S2.”)
-We express our closed loop condition by saying that these two paths must be equal, and we write this equation next to our schema.</p>
-<p>//commutativity condition with schema</p>
-<p>Any way of filling in this schema that satisfies the commutativity constraint can be interpreted as a morphism between graphs.</p>
-<p>///GIF of graph morphism instance</p>
-<p>The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.</p>
-<p>The data of a schema includes both the pattern of arrows and this equation. The arrows show us the pattern of maps which may form an instance. The equation provides and additional constraint on which collections of maps can be considered valid instances of the schema.</p>
-<p>We understand this to mean that, first of all, any instance of this schema consists of a bunch of maps “under the hood” which are arranged in the pattern. But additionally, we have a guarantee that if we inspect those maps we will find a closed loops, of the sort characterized by the equation. Any ways of filling in the schema that do not satisfy the commutativity constraint are not considered valid instances of this schema.</p>
-<p>Point out that Schemas ARE directed graphs.</p>
-<p>We have thus taken a geometric idea - the condition that certain loops must all be closed - and have found a way to represent it as an equation. And one nice thing about equations is that they can be easily communicated to a computer! Indeed, if you go back to the last chapter you see that we have 
-Note on using directed graph notation to define schemas, and then expressing your commutativity conditions as constraints on those arrows. (much like adding data like state and update rule).
-//sample code for 
-We have seen that it is possible to express the geometric idea of graph morphisms in terms of a commutativity constraint on a schema. But this isn’t the only thing that can be expressed this way. A surprising and lovely fact of life is that an enormous number of ideas can be captured using schemas and constraints. Let’s look at some other examples.</p>
+<p>Having given a general characterization of directed graphs as a schema, we will now show how we can <em>modify</em> this schema to define other kinds of graphs.</p>
 </section>
 <section id="reflexive-graphs">
 <h2>Reflexive Graphs<a class="headerlink" href="#reflexive-graphs" title="Permalink to this heading">#</a></h2>
@@ -520,10 +511,10 @@ We have seen that it is possible to express the geometric idea of graph morphism
 <a class="reference internal image-reference" href="_images/TicTacToe.jpg"><img alt="Whoopsy!" class="align-center" src="_images/TicTacToe.jpg" style="width: 500px;" /></a>
 <p>Now let’s imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to “pass.” That is, one of the available moves at any given turn is to stay in the current state. Thus, every vertex in this graph is going to have one arrow that loops back on it.</p>
 <a class="reference internal image-reference" href="_images/GO.jpg"><img alt="Whoopsy!" class="align-center" src="_images/GO.jpg" style="width: 500px;" /></a>
-<p>Often, when we’re modeling with directed graphs, we’ll find ourselves in such a situation; where every vertex needs to have a special looped arrow attached to it. It happens so frequently that we give these graphs a special name - they’re called “Reflexive Graphs.”</p>
-<p>By definition, in a reflexive graph, every vertex has a special self-looping arrow. We can express this as a map, with connections going from each vertex to its corresponding self-loop.</p>
+<p>This happens a lot when modeling with directed graphs: we’ll find ourselves in a situation where every vertex needs to have a special looped arrow attached to it. It happens so frequently that we give these graphs a special name - they’re called “reflexive graphs.”</p>
+<p>A reflexive graph is defined as a directed graph in which “every vertex has a special self-pointing arrow.” We can express this idea with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.</p>
 <a class="reference internal image-reference" href="_images/ReflexiveMap.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveMap.gif" style="width: 500px;" /></a>
-<p>We can attach this map to our directed graphs schema. (Notice that it goes in the opposite direction from our source and target maps!)</p>
+<p>We call this the reflexive map or <code class="docutils literal notranslate"><span class="pre">ref</span></code>.</p>
 <a class="reference internal image-reference" href="_images/ReflexiveGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphInstance.gif" style="width: 800px;" /></a>
 <p>Now think about the following sentence:</p>
 <p>“Every vertex is the source and target of its self-looping arrow.”</p>
@@ -542,12 +533,6 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
 </section>
 <section id="undirected-graphs">
 <h2>Undirected Graphs<a class="headerlink" href="#undirected-graphs" title="Permalink to this heading">#</a></h2>
-<p>Suppose we were making a directed graph to represent the social network on Tiktok:Vertices are peopleArrows are “follows”, going from a person to someone they follow.A piece of our graph would look like this:</p>
-<a class="reference internal image-reference" href="_images/TikTok.png"><img alt="Whoopsy!" class="align-center" src="_images/TikTok.png" style="width: 500px;" /></a>
-<p>Note that TikTok follows are directional; a person who you follow may not follow you back.</p>
-<p>Now let’s imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional. 
-To model this kind of social network we need a different kind of graph. We call these “undirected graphs” and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices instead of arrows.</p>
-<a class="reference internal image-reference" href="_images/LinkedIn.png"><img alt="Whoopsy!" class="align-center" src="_images/LinkedIn.png" style="width: 500px;" /></a>
 <p>Surprisingly, we can think of undirected graphs as <em>special cases</em> of directed graphs.</p>
 <p>An arrow in a directed graph is like a one-way street, a unidirectional pointer from its source to its target. An edge in an undirected graph is more like like a <em>two-way street</em>, which the connection goes mutually in both directions. If we take this “two-way street” idea literally we can see that every undirected graph is <em>equivalent</em> to a directed graph with pairs of arrows in place of each edge.</p>
 <a class="reference internal image-reference" href="_images/TwoWayStreet.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoWayStreet.png" style="width: 500px;" /></a>
