@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 7: Looking beyond &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 7: A Look Beyond: Evolving World Models &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -178,8 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Graph Morphisms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Combining Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Evolving Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: Looking beyond</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: A Look Beyond: Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Credits</a></li>
 </ul>
 
@@ -432,7 +431,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 7: Looking beyond</h1>
+    <h1>Chapter 7: A Look Beyond: Evolving World Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,22 +441,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 7: Looking beyond</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-cube-configuration">Example 1: Cube Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-configuration">7.2 Cube Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-closed-box">Opening a closed box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-kitchen-world-schema">Example 2: Kitchen World Schema</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-a-kitchen">7.3 Working in a Kitchen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.4 Summary</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -468,20 +464,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-looking-beyond">
-<h1>Chapter 7: Looking beyond<a class="headerlink" href="#chapter-7-looking-beyond" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-a-look-beyond-evolving-world-models">
+<h1>Chapter 7: A Look Beyond: Evolving World Models<a class="headerlink" href="#chapter-7-a-look-beyond-evolving-world-models" title="Permalink to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This chapter will extend the previously learned concepts from graphs to the world.</p>
 </div>
+<section id="introduction">
+<h2>7.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using <strong>schemas</strong>, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using <strong>double-pushout (DPO) rewriting</strong>, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design.</p>
 <p>Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household. We would have to do quite a bit of mental book-keeping to talk in the language of graphs–</p>
 <blockquote>
 <div><p>“Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator… and the edge between them means that the Coca-Cola soda <em>is in</em> the refridgerator,… but this other edge between the soda and a node representing a box of Mentos means that the Mentos should <em>never be put in</em> the soda…”</p>
 </div></blockquote>
 <p>Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples for this.</p>
-<section id="example-1-cube-configuration">
-<h2>Example 1: Cube Configuration<a class="headerlink" href="#example-1-cube-configuration" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="cube-configuration">
+<h2>7.2 Cube Configuration<a class="headerlink" href="#cube-configuration" title="Permalink to this heading">#</a></h2>
 <p>Let’s start by simply extending the graph schema with another concept, like faces to model a cube. The schema for a three-dimensional (3D) shape consists of three fundamental ideas: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema models the relationships <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>, as the connectivity between faces, edges, and vertices. DPO rewriting in this context can model various transformations of a 3D object including cube,or box.</p>
 <p>In AlgebraicJulia, this schema can be expressed as follows:</p>
 <div class="cell docutils container">
@@ -617,8 +616,8 @@ match = homomorphisms(L, closedCube)[1]
 <p>In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the <code class="docutils literal notranslate"><span class="pre">Sch3DShape</span></code> schema.</p>
 </section>
 </section>
-<section id="example-2-kitchen-world-schema">
-<h2>Example 2: Kitchen World Schema<a class="headerlink" href="#example-2-kitchen-world-schema" title="Permalink to this heading">#</a></h2>
+<section id="working-in-a-kitchen">
+<h2>7.3 Working in a Kitchen<a class="headerlink" href="#working-in-a-kitchen" title="Permalink to this heading">#</a></h2>
 <p>This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.</p>
 <p>Concider a schema for a kitchen world. This schema contains ideas about <code class="docutils literal notranslate"><span class="pre">{Food,</span> <span class="pre">Egg,</span> <span class="pre">Bread,</span> <span class="pre">Cheese,</span> <span class="pre">BreadSlice,</span> <span class="pre">Counter,</span> <span class="pre">Kitchenware,</span> <span class="pre">Entity}</span></code> and their subtyping relationships (e.g., <code class="docutils literal notranslate"><span class="pre">Egg</span></code>, <code class="docutils literal notranslate"><span class="pre">Bread</span></code>, <code class="docutils literal notranslate"><span class="pre">Cheese</span></code>, <code class="docutils literal notranslate"><span class="pre">BreadSlice</span></code> are <code class="docutils literal notranslate"><span class="pre">Food</span></code>) and spatial relationships (e.g., <code class="docutils literal notranslate"><span class="pre">Counter</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, <code class="docutils literal notranslate"><span class="pre">Kitchenware</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>, and <code class="docutils literal notranslate"><span class="pre">Food</span></code> on `Entity``).</p>
 <p>If you recall from <span class="xref myst">Chapter 4</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from <code class="docutils literal notranslate"><span class="pre">Bread</span></code> to <code class="docutils literal notranslate"><span class="pre">Food</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Bread</span></code> are a <code class="docutils literal notranslate"><span class="pre">Food</span></code>, and likewise, a morphism <code class="docutils literal notranslate"><span class="pre">Food</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Food</span></code> are on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.</p>
@@ -717,10 +716,10 @@ match = homomorphisms(L, closedCube)[1]
 <p>In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the <code class="docutils literal notranslate"><span class="pre">food_in_on</span></code> morphism and, in the case of plate, the function that maps it to entity is tied to the <code class="docutils literal notranslate"><span class="pre">ware_is_entity</span></code> morphism. This is effectively saying that the entity that the food is on is the same entity as the plate.</p>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<section id="summary">
+<h2>7.4 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -787,22 +786,19 @@ match = homomorphisms(L, closedCube)[1]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 7: Looking beyond</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-cube-configuration">Example 1: Cube Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-configuration">7.2 Cube Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-closed-box">Opening a closed box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-kitchen-world-schema">Example 2: Kitchen World Schema</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-a-kitchen">7.3 Working in a Kitchen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.4 Summary</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

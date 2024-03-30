@@ -14,11 +14,13 @@ header-includes:
 
 
 
-# Chapter 7: Looking beyond
+# Chapter 7: A Look Beyond: Evolving World Models
 
 :::{attention}
 This chapter will extend the previously learned concepts from graphs to the world.
 :::
+
+## 7.1 Introduction
 
 So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using **schemas**, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using **double-pushout (DPO) rewriting**, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design. 
 
@@ -32,7 +34,7 @@ If you put Mentos in a soda, it will explode.
 
 Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples for this.
 
-## Example 1: Cube Configuration
+## 7.2 Cube Configuration
 Let's start by simply extending the graph schema with another concept, like faces to model a cube. The schema for a three-dimensional (3D) shape consists of three fundamental ideas: `Face`, `Edge`, `Vertex`. This schema models the relationships `top`, `bottom`, `left`, `right`, `src`, `tgt`, as the connectivity between faces, edges, and vertices. DPO rewriting in this context can model various transformations of a 3D object including cube,or box. 
 
 In AlgebraicJulia, this schema can be expressed as follows:
@@ -281,7 +283,7 @@ match = homomorphisms(L, closedCube)[1]
 
 In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the `Sch3DShape` schema.
 
-## Example 2: Kitchen World Schema
+## 7.3 Working in a Kitchen
 This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.
 
 Concider a schema for a kitchen world. This schema contains ideas about `{Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity}` and their subtyping relationships (e.g., `Egg`, `Bread`, `Cheese`, `BreadSlice` are `Food`) and spatial relationships (e.g., `Counter` is on an `Entity`, `Kitchenware` is on an `Entity`, and `Food` on `Entity``).
@@ -379,6 +381,6 @@ plate_slice_rule = make_rule(plate_slice, yKitchen)
 
 In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the `food_in_on` morphism and, in the case of plate, the function that maps it to entity is tied to the `ware_is_entity` morphism. This is effectively saying that the entity that the food is on is the same entity as the plate. 
 
-# Conclusion
+## 7.4 Summary
 Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs.
 
