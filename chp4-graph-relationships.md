@@ -215,6 +215,60 @@ As we'll see, one of the benefits of describing injections and dangling edge con
 ## Footnotes and References
 
 
+In Chapter 3 we saw how to represent a graph morphisms between these two graphs with the following pattern of maps:
+
+```{image} assets/Ch4/GraphMorphism.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+The schema for this data looks like this:
+
+WAIT...//graph morphism schema
+
+But recall that there was an extra "loop condition" that the maps needed to satisfy in order to represent a proper graph morphism:
+
+```{image} assets/Ch4/MorphismInstance.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 _if and only if_ these maps satisfy the closed loop condition.
+
+For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, S2•A for the lower route and V•S1 for the upper route.
+
+```{image} assets/Ch4/GraphMorphismSchema.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+(Note how the order in which we write the arrows seems backwards from the order in which you would actually traverse those arrows along the route. Unfortunately this is the notational convention! One way to think of it is to read the symbol • as the word "after." So "V•S2" is understood to mean "V after S2.")
+We express our closed loop condition by saying that these two paths must be equal, and we write this equation next to our schema.
+
+//commutativity condition with schema
+
+Any way of filling in this schema that satisfies the commutativity constraint can be interpreted as a morphism between graphs.
+
+
+///GIF of graph morphism instance
+
+The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.
+
+
+
+The data of a schema includes both the pattern of arrows and this equation. The arrows show us the pattern of maps which may form an instance. The equation provides and additional constraint on which collections of maps can be considered valid instances of the schema.
+
+We understand this to mean that, first of all, any instance of this schema consists of a bunch of maps "under the hood" which are arranged in the pattern. But additionally, we have a guarantee that if we inspect those maps we will find a closed loops, of the sort characterized by the equation. Any ways of filling in the schema that do not satisfy the commutativity constraint are not considered valid instances of this schema.
+
+
+Point out that Schemas ARE directed graphs. 
+
+We have thus taken a geometric idea - the condition that certain loops must all be closed - and have found a way to represent it as an equation. And one nice thing about equations is that they can be easily communicated to a computer! Indeed, if you go back to the last chapter you see that we have 
+Note on using directed graph notation to define schemas, and then expressing your commutativity conditions as constraints on those arrows. (much like adding data like state and update rule).
+//sample code for 
+We have seen that it is possible to express the geometric idea of graph morphisms in terms of a commutativity constraint on a schema. But this isn't the only thing that can be expressed this way. A surprising and lovely fact of life is that an enormous number of ideas can be captured using schemas and constraints. Let's look at some other examples.
 
 
 

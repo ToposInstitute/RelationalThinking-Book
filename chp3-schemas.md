@@ -13,20 +13,38 @@ kernelspec:
 # Chapter 3: Schemas
 
 
-```{image} assets/Ch4/Binder_Instructions.png
+We have now seen how directed graphs can be useful for modeling the world. However, in some situations they're not actually the best choice.
+
+Suppose we were making a directed graph to represent the social network on Tiktok:
+* Vertices are people
+* Arrows are "follows", going from a person to someone they follow.
+
+A piece of our graph would look like this:
+
+```{image} assets/Ch4/TikTok.png
 :alt: Whoopsy!
-:width: 400px
+:width: 500px
 :align: center
 ```
 
+In this case, directed graphs are the perfect choice for modeling because TikTok follows are _directional_. Someone you follow may not follow you back.
 
+Now let's imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional.
 
+To model this kind of social network we need a different kind of graph. We call these "undirected graphs" and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices instead of arrows.
 
-In the last chapter we saw how graph morphisms could be explored in Algebraic Julia. The details were, admittedly, a bit complicated and perhaps somewhat visually overwhelming. In this chapter we're going to do some much needed tidying up with our abstraction. But what will begin as a routine matter of housekeeping will, in fact, set us up to think about graphs in a more general and flexible way.
+```{image} assets/Ch4/LinkedIn.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+PAUSE AND PONDER: How is the data of an undirected graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
+
+In this chapter we're going to look at a few different flavors of graphs. In the process, we'll develop a general and flexible framwork for working with all kinds of graphs in AlgebraicJulia.
 
 ## Introducing Schemas for directed graphs
 
-The basic building block we've been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:
+We'll begin this chapter with a little tidying up. The basic building block we've been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:
 
 ```{image} assets/Ch4/SourceMap.gif
 :alt: Whoopsy!
@@ -34,7 +52,7 @@ The basic building block we've been working with so far is a map, a bundle of c
 :align: center
 ```
 
-We're now going to introduce a new abstraction that hides all of this detail. We're going to:
+Source and target maps can be a little _*busy*_ to look at so we're going to simplify our view! Let's introduce a new abstraction that hides all of this detail. We're going to:
 * wrap these connections in one big tube 
 * put an arrow point on this tube so we can remember which direction the connections were going
 * wrap the items at either end in labelled spheres
@@ -81,61 +99,7 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 :width: 800px
 :align: center
 ```
-In Chapter 3 we saw how to represent a graph morphisms between these two graphs with the following pattern of maps:
-
-```{image} assets/Ch4/GraphMorphism.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-The schema for this data looks like this:
-
-WAIT...//graph morphism schema
-
-But recall that there was an extra "loop condition" that the maps needed to satisfy in order to represent a proper graph morphism:
-
-```{image} assets/Ch4/MorphismInstance.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 _if and only if_ these maps satisfy the closed loop condition.
-
-For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, S2•A for the lower route and V•S1 for the upper route.
-
-```{image} assets/Ch4/GraphMorphismSchema.jpg
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-(Note how the order in which we write the arrows seems backwards from the order in which you would actually traverse those arrows along the route. Unfortunately this is the notational convention! One way to think of it is to read the symbol • as the word "after." So "V•S2" is understood to mean "V after S2.")
-We express our closed loop condition by saying that these two paths must be equal, and we write this equation next to our schema.
-
-//commutativity condition with schema
-
-Any way of filling in this schema that satisfies the commutativity constraint can be interpreted as a morphism between graphs.
-
-
-///GIF of graph morphism instance
-
-The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.
-
-
-
-The data of a schema includes both the pattern of arrows and this equation. The arrows show us the pattern of maps which may form an instance. The equation provides and additional constraint on which collections of maps can be considered valid instances of the schema.
-
-We understand this to mean that, first of all, any instance of this schema consists of a bunch of maps "under the hood" which are arranged in the pattern. But additionally, we have a guarantee that if we inspect those maps we will find a closed loops, of the sort characterized by the equation. Any ways of filling in the schema that do not satisfy the commutativity constraint are not considered valid instances of this schema.
-
-
-Point out that Schemas ARE directed graphs. 
-
-We have thus taken a geometric idea - the condition that certain loops must all be closed - and have found a way to represent it as an equation. And one nice thing about equations is that they can be easily communicated to a computer! Indeed, if you go back to the last chapter you see that we have 
-Note on using directed graph notation to define schemas, and then expressing your commutativity conditions as constraints on those arrows. (much like adding data like state and update rule).
-//sample code for 
-We have seen that it is possible to express the geometric idea of graph morphisms in terms of a commutativity constraint on a schema. But this isn't the only thing that can be expressed this way. A surprising and lovely fact of life is that an enormous number of ideas can be captured using schemas and constraints. Let's look at some other examples.
-
+Having given a general characterization of directed graphs as a schema, we will now show how we can _modify_ this schema to define other kinds of graphs.
 
 ## Reflexive Graphs
 
@@ -159,9 +123,9 @@ Now let's imagine doing the same thing for the ancient board game Go. An importa
 :width: 500px
 :align: center
 ```
-Often, when we're modeling with directed graphs, we'll find ourselves in such a situation; where every vertex needs to have a special looped arrow attached to it. It happens so frequently that we give these graphs a special name - they're called "Reflexive Graphs." 
+This happens a lot when modeling with directed graphs: we'll find ourselves in a situation where every vertex needs to have a special looped arrow attached to it. It happens so frequently that we give these graphs a special name - they're called "reflexive graphs." 
 
-By definition, in a reflexive graph, every vertex has a special self-looping arrow. We can express this as a map, with connections going from each vertex to its corresponding self-loop. 
+A reflexive graph is defined as a directed graph in which "every vertex has a special self-pointing arrow." We can express this idea with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
 ```{image} assets/Ch4/ReflexiveMap.gif
 :alt: Whoopsy!
@@ -169,24 +133,61 @@ By definition, in a reflexive graph, every vertex has a special self-looping arr
 :align: center
 ```
 
-We can attach this map to our directed graphs schema. (Notice that it goes in the opposite direction from our source and target maps!)
+We call this the reflexive map or `ref`.
+
+We can put this reflexive map together with our source and target maps for this graph. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
+
 
 ```{image} assets/Ch4/ReflexiveGraphInstance.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
-Now think about the following sentence: 
 
-"Every vertex is the source and target of its self-looping arrow." 
+What can we say about this graph?
 
-On the one hand, this is effectively the definition of a reflexive graph. On the other hand, we can easily translate this sentence into a closed loop condition on the above maps. 
+PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this sytem of connections?
 
-In words:
+Consider that, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
 
-"If we start from any vertex and follow the reflexive map and then either the source or target maps from there, we should always wind up at the back where we started." 
+* follow the reflexive map from a vertex to its self-looping arrow
 
-As an equation:
+...and then 
+
+* follow the source map from that arrow back to a vertex 
+
+...we should always end up back where we stared.
+
+IMAGE OF SINGLE SOURCE LOOP
+
+That is, the above sequence of connections should always form a closed loop. 
+
+By the same reasoning, the target map following the reflexive map should always form a closed loop as well.
+
+IMAGE OF SINGLE TARGET LOOP
+
+If we examine the instance data we indeed see that all such loops are closed. 
+
+IMAGE OF FADETHROUGH
+
+This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed if and only if there is a reflexive arrow that is not self-pointing. 
+
+PAUSE AND PONDER: Why?
+
+In first defining reflexive graphs we relied on semantic ideas like "self-loops" and phrases like "for every vertex..." to establish what we meant. We have now found an equivalent way of saying the same thing in terms of a maps and the presence or absence of certain closed loops. 
+
+And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
+
+
+## Into the computer
+
+Let's encode a reflexive graph schema in AlgebraicJulia!
+
+First off, you may have noticed that schemase _are_ a kind of directed graph. So we can use our familiar source and target map formalism to input the general schema shape.
+
+Now we want to add the closed loop conditions. We can express these as text...
+
+
 
 ```{image} assets/Ch4/ReflexiveGraph.jpg
 :alt: Whoopsy!
@@ -208,24 +209,6 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
 
 ## Undirected Graphs
 
-Suppose we were making a directed graph to represent the social network on Tiktok:Vertices are peopleArrows are "follows", going from a person to someone they follow.A piece of our graph would look like this:
-
-```{image} assets/Ch4/TikTok.png
-:alt: Whoopsy!
-:width: 500px
-:align: center
-```
-
-Note that TikTok follows are directional; a person who you follow may not follow you back. 
-
-Now let's imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional. 
-To model this kind of social network we need a different kind of graph. We call these "undirected graphs" and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices instead of arrows.
-
-```{image} assets/Ch4/LinkedIn.png
-:alt: Whoopsy!
-:width: 500px
-:align: center
-```
 
 Surprisingly, we can think of undirected graphs as _special cases_ of directed graphs. 
 
@@ -257,12 +240,9 @@ An arrow in a directed graph is like a one-way street, a unidirectional pointer 
 :align: center
 ```
 
+PAUSE AND PONDER: Consider the difference between your understanding of a graph and Algebraic Julia's. For you, an undirected graph and a 'directed-graph-with-paired-arrows' are two different mental interpretations of the same data. AlgebraicJulia deals with your dieas at the level of schemas, maps and commutativity conditions. It has no idea what those things mean to you.
 
-
-
-
-
-And in the next chapter we will focus on examples using undirected graphs instead of directed graphs. They're a little simpler to draw and think about, and are perfectly useful for telling the rest of our story. 
+We use thought bubbel to indicate that what is here is onvisible to the computer, only the in mind of the progammer. Entirely in the eye of the beholder.
 
 ## Other kinds of schemas
 
@@ -292,10 +272,21 @@ On the more "applied" side, we have the example of Petri nets, a sophisticated m
 :align: center
 ```
 
-## Databases
+
 
 Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found here along with several examples of scientific models using Petri nets, including population dynamics, epidemiological models and enzyme reactions.
 
-Databases?:
+## Databases
 
-Conclusion*** That “embedding” might seem a little useless/artificial/formal. In the next section we develop tools that*** That the tool we develop in the final section: “Double Pushout Rewriting” can be applied to all of the “special” examples above.
+The whole concept of a schema originally comes from datase theory. We can think of the underlying connections in a schema as a kind of linked data, say poeple linked accoridn to their relationships, building a schema is tehn just "structuring a query" on that databse by definining new relatinships in terms of existing ones.
+
+IMAGE OF DATBASE WITH TOY HUMAN RELATIONSHIPS
+
+
+
+One of the major difficulties in database management is communication between different databases. Data often gets corrupted when transferred between incompatible contexts. Data corruption is the analog of our dangling edge condition. Much as DPOs are a high level tool that will resolve our dangling edge problems, there are high level category theoretic techniques for data migration, offereing a canonical way of migrating data that automatically takes care of various annoying edge conditions. 
+
+In the same way, if you represent your database in AlgebraicJulia, there are some high level tools at your disposal...
+
+See FDM for details.
+
