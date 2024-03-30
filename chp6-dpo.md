@@ -847,6 +847,8 @@ Reshaping directed graph follows the same idea as undirected graphs. The find-an
 # Puzzle 3
 #-----------
 
+using Catlab
+
 pattern = path_graph(SymmetricGraph, 3)
 host = cycle_graph(SymmetricGraph, 3)
 
@@ -868,6 +870,8 @@ matches = homomorphisms(pattern, host)
 # Example 2
 #-----------
 
+using Catlab
+using AlgebraicRewriting.CSets
 K = SymmetricGraph(1)
 L = path_graph(SymmetricGraph, 2)
 G = path_graph(SymmetricGraph, 3)
@@ -886,10 +890,15 @@ gluing_conditions(ComposablePair(p, m))
 ```
 
 ```{code-cell}
+
 # Example 3
 #----------------------------------------
- (K, L, p: K->L are all the same)
+# (K, L, p: K->L are all the same)
 #----------------------------------------
+
+using Catlab
+using AlgebraicRewriting.CSets
+
 G = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
 m = homomorphism(L, G)
 
@@ -907,6 +916,9 @@ gluing_conditions(ComposablePair(p, m))
 # Puzzle 5
 # --------
 
+using Catlab
+using AlgebraicRewriting.CSets
+
 Overlap, Pattern₅, Host₅ = SymmetricGraph.([2, 4, 6])
 O_P₅ = ACSetTransformation(Overlap, Pattern₅; V=[1,2])
 P_H₅ = ACSetTransformation(Pattern₅, Host₅; V=[1,1,2,2])
@@ -920,6 +932,8 @@ to_graphviz(dom(PC_H₅))
 ```{code-cell}
 # Puzzle 6
 # --------
+
+using Catlab
 
 Pattern₆ = SymmetricGraph(3)
 add_edge!(Pattern₆, 2, 3)
@@ -943,6 +957,8 @@ to_graphviz(dom(PC_H₆))
 # Puzzle 7
 #---------
 
+using Catlab
+
 # Monic=true enforces that the two vertices in Overlap are not mapped to a
 # single vertex in the single-edge graph.
 add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
@@ -956,6 +972,9 @@ to_graphviz(codom(fromR))
 
 # Puzzle 8
 #---------
+
+using Catlab
+
 fromR, fromPC = pushout(O_PC₆, add)
 to_graphviz(codom(fromR))
 

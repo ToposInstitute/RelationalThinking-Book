@@ -24,11 +24,11 @@ This work has been made possible by a grant from the [Mozilla Internet Ecosystem
 
 Thank you to Avik Tripura for creating the Logo and Namista Tabassum for the consultation!  
 
-The authors thank Pawel Sobocinski for inspiring the fun characters Kiki and Bouba in Chapter 2. We love Kiki and Bouba appear in the logo of this book too! 
+Thanks to Pawel Sobocinski for the inspiration behind the Kiki and Bouba example in Chapter 2. We loved Kiki and Bouba so much that they made it to the logo of this book! 
 
 **People**
 
-This work would not have been possible without the support of the Algebraic Julia team at the Topos Institute! A million thanks to each one of  them!
+This work would not have been possible without the support of the Algebraic Julia team at the Topos Institute! A million thanks to each one of them!
 
 The authors thank Evan for guiding setting up live code execution, Kris coded up solutions for chapters 5 and 6, Owen for discussions on stand-alone code execution! 
 
@@ -75,6 +75,6 @@ Here are a few pictures we clicked during our group writing retreats!
 :width: 450px
 :align: center
 ```
-<center> <em> The book-team after dinner with Brendan's family! </em> </center>
+<center> <em> The book-team after dinner with Brendan's family! (Paul is waving from his car)  </em> </center>
 
 

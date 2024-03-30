@@ -139,7 +139,7 @@ Here's how we encode this **update rule in Algebraic Julia**:
 
 ```{code}
 
-# Complete code available in the Github - flashing-light.jl
+# Complete code available in the Github - Ch2/flashing-light.jl
 
 # Bulb states
 @enum BulbState begin
@@ -225,7 +225,7 @@ We now have new update rule:
 
 ```{code}
 
-# Complete code available in two-lights.jl
+# Complete code available in Ch2/two-lights.jl
 
 @enum BulbState begin
     BULB_ON = true
@@ -335,7 +335,7 @@ How would this system behave if we set initial states for the three bulbs as the
 
 ```{code}
 
-#full code available in Ch2/looped0light.jl
+#full code available in Ch2/looped-light.jl
 
 # Bulb 1 is ON, bulb 2 is OFF, bulb 3 is OFF
 initial_state = [Bool(BULB_ON), Bool(BULB_OFF), Bool(BULB_OFF)] 
@@ -408,7 +408,7 @@ Informally, an update is any decision procedure that can be carried out by a com
 
 ```{code}
 
-# Complete code available in traffic-light.jl
+# Complete code available in Ch2/traffic-light.jl
 
 # update rule for indvidual bulbs
 BulbTransition(state, input, param, t) = [input[1]] 
@@ -560,7 +560,7 @@ The update rule is coded as follows:
 
 ```{code}
 
-# complete code available in the Github file, kiki-bouba-by-themselves.jl 
+# complete code available in Ch2/Kiki-bouba-standalone.jl 
 
 # change in mood level = -(current mood level x calmdown rate)
 # pay attention to the negative sign in the front; 
@@ -603,8 +603,6 @@ As we see, their moods move towards 0 (neutral) with no external stimulus!
 The moods will never become zero! Can you see why?
 
 :::
-
-[THE REST OF THE CHAPTER IS YET TO BE WRITTEN.]
 
 ### 2.4.2. Kiki and Bouba talking to each other
 
@@ -660,7 +658,7 @@ Here is the code for the new update rule that Kiki by the above diagram. The log
 
 ```{code}
 
-# Full code available in Ch2/Kiki-Bouba.jl
+# Complete code available in Ch2/Kiki-Bouba-talking.jl
 
 # Update rule for Kiki's mood level 
 
@@ -780,7 +778,7 @@ The mood level of Bouba's crew is updated using the same logic as above! The cre
 +++
 
 ```{code}
-# Complete code available in Kiki-Bouba-group.jl
+# Complete code available in Ch2/Kiki-Bouba-Crew.jl
 
 initial_moods = [4.5, -2.8, 0.5] # Kiki, Bouba, Group
 params = LVector(
