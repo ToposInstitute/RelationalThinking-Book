@@ -449,7 +449,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">2.3.3. String of lights</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">2.3.4. A traffic light</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-intersection">2.3.4. A traffic intersection</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4. Kiki and Bouba</a><ul class="nav section-nav flex-column">
@@ -480,7 +479,6 @@ document.write(`
 </section>
 <section id="making-graphs-dynamical">
 <h2>2.2. Making graphs dynamical<a class="headerlink" href="#making-graphs-dynamical" title="Permalink to this heading">#</a></h2>
-<p>[<strong>Message</strong>: Graphs are animated when we add “states” to vertices and “update rules” to evolve the states. Simplistically, dynamical systems are animated graphs.]</p>
 <aside class="sidebar">
 <p class="sidebar-title">Whose turn is to do dishes?</p>
 <a class="reference internal image-reference" href="_images/ChoresSmall.png"><img alt="Whoopsy!" class="align-left" src="_images/ChoresSmall.png" style="width: 400px;" /></a>
@@ -537,7 +535,7 @@ document.write(`
 <br/>
 <p>At each time step, the light bulb move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
 <p>Given a directed graph <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> , state information of its vertices, and update rules for each state, we can bring this graph to life – simulate an event represented by this directed graph using Algebraic Julia.</p>
-<p>Here’s how we encode this update rule in Algebraic Julia:</p>
+<p>Here’s how we encode this <strong>update rule in Algebraic Julia</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in the Github - flashing-light.jl</span>
 
 <span class="c1"># Bulb states</span>
@@ -553,8 +551,7 @@ document.write(`
 <span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
 </pre></div>
 </div>
-<p>To simulate the code, we need to provide an initial state for the bulb which will then get updated
-during every time instant as per the above update rule!</p>
+<p>To simulate the code, we need to provide an <strong>initial state (starting state)</strong> for the bulb which will then get updated at every time instant as per the above update rule!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">on</span><span class="p">]</span> <span class="c1"># needs to be an array</span>
 </pre></div>
 </div>
@@ -572,6 +569,14 @@ during every time instant as per the above update rule!</p>
 <a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 375px;" /></a>
 <p>At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor.</p>
 <p>The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark></p>
+<div class="tip admonition">
+<p class="admonition-title">Key points</p>
+<ul class="simple">
+<li><p>The <strong>arrow between two vertices serve as a coduit</strong> through which state information is transmitted from the source to the target vertex.</p></li>
+<li><p>The source transmits its state in one time step. The target receives this state information in the next time step.</p></li>
+<li><p>The target may update its state based on this incoming information.</p></li>
+</ul>
+</div>
 <p>The graph model looks as follows:</p>
 <a class="reference internal image-reference" href="assets/Ch2/Pair_Of_lights.png"><img alt="Whoopsy!" class="align-center" src="assets/Ch2/Pair_Of_lights.png" style="width: 375px;" /></a>
 <p>We now have new update rule:</p>
@@ -589,29 +594,68 @@ during every time instant as per the above update rule!</p>
 <span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
 </pre></div>
 </div>
-<p>Our computer simulation of stringed light bulbs produces the following animation:</p>
+<p>We now have to set the initial states of the bulbs before we can ask the computer to simulate the two light bulbs system for us!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># One bulb is ON and the other bulb is OFF</span>
+
+<span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">)]</span> 
+
+</pre></div>
+</div>
+<p>Animating the simulation results produces a result like that:</p>
 <a class="reference internal image-reference" href="_images/two-lights-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/two-lights-JAVIS.gif" style="width: 150px;" /></a>
 </br>
+<div class="admonition-puzzle-a-different-initial-state admonition">
+<p class="admonition-title">Puzzle: a different initial state</p>
+<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Both the bulbs are in ON state</span>
+
+<span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">)]</span> 
+
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>In such case, we get the following result because, each bulb continuously copies the state of the other bulb!</p>
+<div class="wrapper docutils">
+<a class="reference internal image-reference" href="_images/two-lights-ON-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/two-lights-ON-JAVIS.gif" style="width: 150px;" /></a>
+</div>
+</div>
+</div>
+<p>Thus, the behaviour of the system is also determined not just by the update rules but also by initial states.</p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
-<ul class="simple">
-<li><p>The <strong>arrow between two vertices serve as a coduit</strong> through which state information is transmitted from the source to the target vertex.</p></li>
-<li><p>The source transmits its state in one time step. The target receives this state information in the next time step.</p></li>
-<li><p>The target may update its state based on this incoming information.</p></li>
-</ul>
+<p>Initial states too determine the behaviour of a system!</p>
 </div>
-<p>Now we have a series of cycling light bulbs in which one of them is always on. This models a familiar object - a traffic light! If we relabel our lights GREEN, YELLOW, and RED, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
-<a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 400px;" /></a>
-</br>
-</br>
 </section>
 <section id="a-traffic-light">
 <h3>2.3.4. A traffic light<a class="headerlink" href="#a-traffic-light" title="Permalink to this heading">#</a></h3>
+<p>Now, imagine adding one more bulb to the above model with the same update rule:</p>
+<a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 400px;" /></a>
+<div class="admonition-puzzle-initial-state admonition">
+<p class="admonition-title">Puzzle: initial state</p>
+<p>How would this system behave if we set initial states for the three bulbs as the following:</p>
+<a class="reference internal image-reference" href="_images/3loop-initial-state.png"><img alt="Whoopsy!" class="align-center" src="_images/3loop-initial-state.png" style="width: 400px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#full code available in Ch2/looped0light.jl</span>
+
+<span class="c1"># Bulb 1 is ON, bulb 2 is OFF, bulb 3 is OFF</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">)]</span> 
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">See answer!</p>
+<div class="wrapper docutils">
+<p>Looped light bulb where exactly one light bulb is <code class="docutils literal notranslate"><span class="pre">ON</span></code> at any instant in time!</p>
+<a class="reference internal image-reference" href="_images/looped-lights.gif"><img alt="Whoopsy!" class="align-center" src="_images/looped-lights.gif" style="width: 400px;" /></a>
+</div>
+</div>
+</div>
+<p>With this idea, we can model a familiar object – a traffic light !! If we relabel our lights RED, YELLOW, and GREEN, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
+<a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 400px;" /></a>
+</br>
+</br>
 <p>In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbour to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. This works in most cases! Let us say some accident happens, we want the RED to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and the rest of the lights to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>! We can handle these cases by introducing a CONTROL vertex, a mastermind which will <em>decide</em> which light bulb must be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and which light must be <code class="docutils literal notranslate"><span class="pre">OFF</span></code> at any instant in time.</p>
 <p>Let us model a traffic light with a control vertex.</p>
 <a class="reference internal image-reference" href="_images/TrafficLight.png"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.png" style="width: 400px;" /></a>
-<p>[&#64;PAUL: THE ABOVE PICTURE NEEDS TO BE CHANGED AS PER THE DWD BELOW. The Arrows towards the controller needs to be removed]</p>
-<a class="reference internal image-reference" href="_images/traffic-DWD.png"><img alt="Whoopsy!" class="align-center" src="_images/traffic-DWD.png" style="width: 250px;" /></a>
 </br>
 <p>The control vertex has three states:</p>
 <ul class="simple">
@@ -645,44 +689,40 @@ during every time instant as per the above update rule!</p>
 <span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
 </pre></div>
 </div>
-<p>And we get the following simulation:</p>
+<p>We need to set the inital states carefully (in a meaningful way)! We set the controller to begin in <code class="docutils literal notranslate"><span class="pre">ON</span></code> for the RED light state and <code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the other two lights (3 states for the controller). For the three light bulbs, we set RED to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, GREEN to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, and YELLOW to be <code class="docutils literal notranslate"><span class="pre">ON</span></code>. So in the next instant in time, controller will send it current state (RED) to the respective light bulbs and move to the next state of GREEN.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#first three states represent controller, last three states represent initial states of the light</span>
+<span class="n">initial_states</span> <span class="o">=</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Simulation of the results creates the following animation of traffic light! We got our initial states right!!</p>
 <a class="reference internal image-reference" href="_images/traffic-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic-light-JAVIS.gif" style="width: 75px;" /></a>
 <div class="tip admonition">
 <p class="admonition-title">Key point</p>
-<p>Different vertices may have different update rules for its states.</p>
+<p>Different vertices may have different update rules for its states. Setting initial states carefully is important to simulate meaningful behavior!</p>
 </div>
-</section>
-<section id="a-traffic-intersection">
-<h3>2.3.4. A traffic intersection<a class="headerlink" href="#a-traffic-intersection" title="Permalink to this heading">#</a></h3>
-<p>(&#64;PAUL: What is the purpose of this example? The update rule and the code is too complicated! we may loose the readers at this point!)</p>
-<p>Here is the final upgrade to our traffic light example – a traffic intersection simulation! At an intersection traffic lights come in pairs. It’s mortally important to the drivers that when one traffic light is green the other must be red.</p>
-<p>We model a traffic intersection by taking two copies of traffic light, redesign the update rules of the controllers to listen to the other controller before changing the color. For this, the state of the bulbs in one controller is fed to the other controller!</p>
-<a class="reference internal image-reference" href="_images/TwoTrafficLights.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoTrafficLights.png" style="width: 400px;" /></a>
-<p>Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller’s turn to GO GREEN!)</p>
-<p>Here is the update rule for controller in Algebraic Julia:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TwinControllerTransition_R</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">begin</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="p">)</span>  <span class="c1"># if your state is green, go to yellow</span>
-        <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> 
-    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="p">)</span> <span class="c1"># if your state is yellow, go to red</span>
-        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
-    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="p">)</span> <span class="c1"># if your state is red</span>
-        <span class="k">if</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span>  <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span><span class="p">)</span> <span class="c1"># if your input is red</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span><span class="p">)</span> <span class="c1">#  prev input is yellow</span>
-                <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span> <span class="c1"># go green </span>
-            <span class="k">else</span> 
-                <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="c1"># stay red</span>
-            <span class="n">end</span>
-        <span class="k">else</span> 
-            <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="c1"># stay red</span>
-        <span class="n">end</span>
-    <span class="k">else</span> <span class="c1"># any other case (red state and input is green)</span>
-        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="c1">#stay red</span>
-    <span class="n">end</span>
-<span class="n">end</span>
-</pre></div>
-</div>
-<p>And here’s our simulation:</p>
-<a class="reference internal image-reference" href="_images/traffic_intersection_final.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic_intersection_final.gif" style="width: 250px;" /></a>
+<!--
+### 2.3.4. A traffic intersection
+
+Here is a bonus -- a traffic intersection simulation! At an intersection traffic lights come in pairs. 
+
+We model a traffic intersection by taking two copies of traffic light, redesign the update rules of the controllers to listen to the other controller before changing the color. For this, the state of the bulbs in one controller is fed to the other controller!
+
+```{image} assets/Ch2/TwoTrafficLights.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!) 
+
+And here's our simulation with the first system starting :
+
+```{image} assets/Ch2/traffic_intersection_final.gif
+:alt: Whoopsy!
+:width: 250px
+:align: center
+```
+-->
 </section>
 </section>
 <section id="kiki-and-bouba">
@@ -762,7 +802,7 @@ during every time instant as per the above update rule!</p>
 <li><p>Suppose either Kiki or Bouba reach their maximum tolerance of excitment or grumpiness, then they refuse to listen to the other person so that they can calm down! This will add two more paramters to the update rule to consider namely <strong>maximum excitment tolerance:</strong> and <strong>maximum grumpiness tolerance</strong>.</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/Talk-later.png"><img alt="Whoopsy!" class="align-center" src="_images/Talk-later.png" style="width: 200px;" /></a>
-<center> At maximum excitment or grumpiness tolerance </center>
+<center> Kiki at maximum excitment or grumpiness tolerance </center>
 </br>
 <p>Here is a mathematical representation of the above dynamics:</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-dynamics.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-dynamics.png" style="width: 500px;" /></a>
@@ -867,8 +907,8 @@ params =
 </section>
 <section id="what-next">
 <h2>2.6. What next?<a class="headerlink" href="#what-next" title="Permalink to this heading">#</a></h2>
-<p>Dynamical systems and directed graphs are a useful framework for modeling the world. Indeed, they are a close match for how humans tend to conceptualize things. We instinctively look at the world in terms of cause and effect, in terms of procedures which play out over time, in terms of things-acting-upon-other-things.</p>
-<p>But this is just one way of looking at the world. And not all systems are best understood in these terms. In the coming sections we will develop to a more <em>relational</em> approach, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures. Systems that maintain a kind of equilibrium or balancing act between simultaneous constraints.</p>
+<p>Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things – in terms of cause and effect, in terms of events which play out over time, and in terms of systems influencing one another!</p>
+<p>But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous <a class="reference external" href="http://constraints.In">constraints.In</a> the coming chapters we will develop to a more <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
@@ -949,7 +989,6 @@ params =
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">2.3.3. String of lights</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">2.3.4. A traffic light</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-intersection">2.3.4. A traffic intersection</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4. Kiki and Bouba</a><ul class="nav section-nav flex-column">

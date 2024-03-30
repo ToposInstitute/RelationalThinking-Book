@@ -24,8 +24,6 @@ Kiki and Bouba are great friends but are quite different characters! It is fun w
 
 ## 2.2. Making graphs dynamical
 
-[**Message**: Graphs are animated when we add "states" to vertices and "update rules" to evolve the states. Simplistically, dynamical systems are animated graphs.]
-
 ````{sidebar} Whose turn is to do dishes?
 ```{image} assets/Ch2/ChoresSmall.png
 :alt: Whoopsy!
@@ -135,7 +133,7 @@ Given a directed graph [^1] , state information of its vertices, and update rule
 
 [^1]: These are special sorts of directed graphs called Directed Wiring Diagrams. They are slightly different than directed graphs and have richer capabilities nested modelling.
 
-Here's how we encode this update rule in Algebraic Julia:
+Here's how we encode this **update rule in Algebraic Julia**:
 
 +++
 
@@ -159,8 +157,7 @@ Readout(state, p, t) = state
 
 +++
 
-To simulate the code, we need to provide an initial state for the bulb which will then get updated 
-during every time instant as per the above update rule!
+To simulate the code, we need to provide an **initial state (starting state)** for the bulb which will then get updated at every time instant as per the above update rule!
 
 
 +++
@@ -204,6 +201,18 @@ At each time step, each bulb copies (switches to) the state it recevies from its
 
 The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark> 
 
+:::{admonition} Key points
+:class: tip
+
+* The **arrow between two vertices serve as a coduit** through which state information is transmitted from the source to the target vertex. 
+  
+* The source transmits its state in one time step. The target receives this state information in the next time step. 
+  
+* The target may update its state based on this incoming information. 
+
+:::
+
+
 The graph model looks as follows:
 
 ```{image} assets/Ch2/Pair_Of_lights.png
@@ -230,7 +239,22 @@ Transition(state, input, param, t) = [input[1]]
 Readout(state, p, t) = state
 
 ```
-Our computer simulation of stringed light bulbs produces the following animation:
+We now have to set the initial states of the bulbs before we can ask the computer to simulate the two light bulbs system for us!
+
++++ 
+
+```{code}
+
+# One bulb is ON and the other bulb is OFF
+
+initial_state = [Bool(BULB_ON), Bool(BULB_OFF)] 
+
+
+```
+
++++
+
+Animating the simulation results produces a result like that:
 
 ```{image} assets/Ch2/two-lights-JAVIS.gif
 :alt: Whoopsy!
@@ -240,18 +264,104 @@ Our computer simulation of stringed light bulbs produces the following animation
 
 </br>
 
-:::{admonition} Key points
-:class: tip
+::::{admonition} Puzzle: a different initial state
 
-* The **arrow between two vertices serve as a coduit** through which state information is transmitted from the source to the target vertex. 
-  
-* The source transmits its state in one time step. The target receives this state information in the next time step. 
-  
-* The target may update its state based on this incoming information. 
+What if we set the initial state of the both the bulbs to `ON`?
+
++++ 
+
+```{code}
+
+# Both the bulbs are in ON state
+
+initial_state = [Bool(BULB_ON), Bool(BULB_ON)] 
+
+
+```
+
++++
+
+:::{admonition} Solution
+:class: dropdown
+
+In such case, we get the following result because, each bulb continuously copies the state of the other bulb!
+
+````{div} wrapper
+
+```{image} assets/Ch2/two-lights-ON-JAVIS.gif
+:alt: Whoopsy!
+:width: 150px
+:align: center
+```
+
+````
 
 :::
 
-Now we have a series of cycling light bulbs in which one of them is always on. This models a familiar object - a traffic light! If we relabel our lights GREEN, YELLOW, and RED, then this model simulates the traffic light's behavior of cycling through green, yellow, red and back to green.
+::::
+
+
+
+Thus, the behaviour of the system is also determined not just by the update rules but also by initial states. 
+
+
+:::{admonition} Key points
+:class: tip
+
+ Initial states too determine the behaviour of a system!
+
+:::
+
+
+### 2.3.4. A traffic light
+
+Now, imagine adding one more bulb to the above model with the same update rule:
+
+```{image} assets/Ch2/3Loop.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+::::{admonition} Puzzle: initial state
+
+How would this system behave if we set initial states for the three bulbs as the following:
+
+```{image} assets/Ch2/3loop-initial-state.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+
+```{code}
+
+#full code available in Ch2/looped0light.jl
+
+# Bulb 1 is ON, bulb 2 is OFF, bulb 3 is OFF
+initial_state = [Bool(BULB_ON), Bool(BULB_OFF), Bool(BULB_OFF)] 
+
+```
+
+::: {admonition} See answer!
+:class: dropdown
+
+````{div} wrapper
+
+Looped light bulb where exactly one light bulb is `ON` at any instant in time!
+
+```{image} assets/Ch2/looped-lights.gif
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+````
+
+:::
+
+::::
+
+
+ With this idea, we can model a familiar object -- a traffic light !! If we relabel our lights RED, YELLOW, and GREEN, then this model simulates the traffic light's behavior of cycling through green, yellow, red and back to green.
 
 
 ```{image} assets/Ch2/TrafficLight.gif
@@ -265,8 +375,6 @@ Now we have a series of cycling light bulbs in which one of them is always on. T
 </br>
 
 
-### 2.3.4. A traffic light
-
 In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbour to be `ON` or `OFF`. This works in most cases! Let us say some accident happens, we want the RED to be `ON` and the rest of the lights to be `OFF`! We can handle these cases by introducing a CONTROL vertex, a mastermind which will *decide* which light bulb must be `ON` and which light must be `OFF` at any instant in time.
 
 Let us model a traffic light with a control vertex.
@@ -274,14 +382,6 @@ Let us model a traffic light with a control vertex.
 ```{image} assets/Ch2/TrafficLight.png
 :alt: Whoopsy!
 :width: 400px
-:align: center
-```
-
-[@PAUL: THE ABOVE PICTURE NEEDS TO BE CHANGED AS PER THE DWD BELOW. The Arrows towards the controller needs to be removed]
-
-```{image} assets/Ch2/traffic-DWD.png
-:alt: Whoopsy!
-:width: 250px
 :align: center
 ```
 
@@ -332,7 +432,19 @@ Readout(state, p, t) = state
 
 +++
 
-And we get the following simulation:
+We need to set the inital states carefully (in a meaningful way)! We set the controller to begin in `ON` for the RED light state and `OFF` for the other two lights (3 states for the controller). For the three light bulbs, we set RED to be `OFF`, GREEN to be `OFF`, and YELLOW to be `ON`. So in the next instant in time, controller will send it current state (RED) to the respective light bulbs and move to the next state of GREEN. 
+
++++ 
+
+```{code}
+
+#first three states represent controller, last three states represent initial states of the light
+initial_states = [true, false, false, false, true, false]
+
+```
++++
+
+Simulation of the results creates the following animation of traffic light! We got our initial states right!!
 
 ```{image} assets/Ch2/traffic-light-JAVIS.gif
 :alt: Whoopsy!
@@ -343,15 +455,14 @@ And we get the following simulation:
 :::{admonition} Key point
 :class: tip
 
-Different vertices may have different update rules for its states.
+Different vertices may have different update rules for its states. Setting initial states carefully is important to simulate meaningful behavior!
 
 :::
 
+<!--
 ### 2.3.4. A traffic intersection
 
-(@PAUL: What is the purpose of this example? The update rule and the code is too complicated! we may loose the readers at this point!)
-
-Here is the final upgrade to our traffic light example -- a traffic intersection simulation! At an intersection traffic lights come in pairs. It's mortally important to the drivers that when one traffic light is green the other must be red. 
+Here is a bonus -- a traffic intersection simulation! At an intersection traffic lights come in pairs. 
 
 We model a traffic intersection by taking two copies of traffic light, redesign the update rules of the controllers to listen to the other controller before changing the color. For this, the state of the bulbs in one controller is fed to the other controller!
 
@@ -361,46 +472,16 @@ We model a traffic intersection by taking two copies of traffic light, redesign 
 :align: center
 ```
 
-Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!)
+Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!) 
 
-Here is the update rule for controller in Algebraic Julia: 
-
-+++
-
-```{code}
-
-TwinControllerTransition_R(state, input, param, t) = begin
-    if(state[1] == false && state[2] == true && state[3] == false )  # if your state is green, go to yellow
-        [false, false, true, input[1], input[2], input[3]] 
-    elseif(state[1] == false && state[2] == false && state[3] == true ) # if your state is yellow, go to red
-        [true, false, false, input[1], input[2], input[3]]
-    elseif(state[1] == true && state[2] == false && state[3] == false ) # if your state is red
-        if(input[1] == true &&  input[2]== false && input[3] == false) # if your input is red
-            if(state[4] == false && state[5] == false && state[6] == true) #  prev input is yellow
-                [false, true, false, input[1], input[2], input[3] ] # go green 
-            else 
-                [true, false, false, input[1], input[2], input[3]] # stay red
-            end
-        else 
-            [true, false, false, input[1], input[2], input[3]] # stay red
-        end
-    else # any other case (red state and input is green)
-        [true, false, false, input[1], input[2], input[3]] #stay red
-    end
-end
-
-```
-
-+++
-
-And here's our simulation:
+And here's our simulation with the first system starting :
 
 ```{image} assets/Ch2/traffic_intersection_final.gif
 :alt: Whoopsy!
 :width: 250px
 :align: center
 ```
-
+-->
 
 ## 2.4. Kiki and Bouba
 
@@ -560,7 +641,7 @@ Let us update this rule to include the other person mood too when producing a ne
 :width: 200px
 :align: center
 ```
-<center> At maximum excitment or grumpiness tolerance </center>
+<center> Kiki at maximum excitment or grumpiness tolerance </center>
 
 </br>
 
@@ -743,6 +824,7 @@ For readers who are interested to explore further about using Algebraic Julia to
 
 ## 2.6. What next?
 
-Dynamical systems and directed graphs are a useful framework for modeling the world. Indeed, they are a close match for how humans tend to conceptualize things. We instinctively look at the world in terms of cause and effect, in terms of procedures which play out over time, in terms of things-acting-upon-other-things. 
+Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things -- in terms of cause and effect, in terms of events which play out over time, and in terms of systems influencing one another! 
 
-But this is just one way of looking at the world. And not all systems are best understood in these terms. In the coming sections we will develop to a more *relational* approach, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures. Systems that maintain a kind of equilibrium or balancing act between simultaneous constraints.
+But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints.In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
+
