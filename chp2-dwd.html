@@ -443,20 +443,20 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1 Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamic">2.2 Making graphs dynamic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3. Light bulbs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">2.3.1. Single light bulb</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">2.3.3. String of lights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">2.3.4. A traffic light</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3 Light bulbs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">Single light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">Flashing light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">String of lights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">A traffic light</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4. Kiki and Bouba</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-by-themselves">2.4.1. Kiki and Bouba by themselves</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-talking-to-each-other">2.4.2. Kiki and Bouba talking to each other</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chef-bouba-and-his-helpers">2.4.3. Chef Bouba and his helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4 Kiki and Bouba</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-by-themselves">Kiki and Bouba by themselves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-talking-to-each-other">Kiki and Bouba talking to each other</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chef-bouba-and-his-helpers">Chef Bouba and his helpers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5 Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -501,10 +501,10 @@ document.write(`
 <p>We will start with a very simple example, and see show to apply these two pieces of information to a directed graph and simulate an event or dynamics in a computer!</p>
 </section>
 <section id="light-bulbs">
-<h2>2.3. Light bulbs<a class="headerlink" href="#light-bulbs" title="Permalink to this heading">#</a></h2>
+<h2>2.3 Light bulbs<a class="headerlink" href="#light-bulbs" title="Permalink to this heading">#</a></h2>
 <p>Let’s start with a light bulb (what could be simpler?!).</p>
 <section id="single-light-bulb">
-<h3>2.3.1. Single light bulb<a class="headerlink" href="#single-light-bulb" title="Permalink to this heading">#</a></h3>
+<h3>Single light bulb<a class="headerlink" href="#single-light-bulb" title="Permalink to this heading">#</a></h3>
 <p>We can <em>model</em> a light bulb using a directed graph with a single vertex and no edge. The light bulb is the vertex.</p>
 <a class="reference internal image-reference" href="_images/bulb-vertex.png"><img alt="Whoopsy!" class="align-center" src="_images/bulb-vertex.png" style="width: 100px;" /></a>
 <p>A light bulb is always in one of two “states” – either <code class="docutils literal notranslate"><span class="pre">OFF</span></code> or <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
@@ -520,7 +520,7 @@ document.write(`
 <p>We would like the state of the light bulb to change over time!</p>
 </section>
 <section id="flashing-light-bulb">
-<h3>2.3.2. Flashing light bulb<a class="headerlink" href="#flashing-light-bulb" title="Permalink to this heading">#</a></h3>
+<h3>Flashing light bulb<a class="headerlink" href="#flashing-light-bulb" title="Permalink to this heading">#</a></h3>
 <p>Let us update our model (graph) to have the lighbulb flash on and off, like this:</p>
 <a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 300px;" /></a>
 <br/>
@@ -561,7 +561,7 @@ document.write(`
 </div>
 </section>
 <section id="string-of-lights">
-<h3>2.3.3. String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
+<h3>String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
 <p>A flashing bulb is more exciting than a bulb than never flashes! However, what’s more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved.</p>
 <p>Suppose, we have a string of three light bulbs in a loop that perform a dance like this:</p>
 <a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 375px;" /></a>
@@ -626,7 +626,7 @@ document.write(`
 </div>
 </section>
 <section id="a-traffic-light">
-<h3>2.3.4. A traffic light<a class="headerlink" href="#a-traffic-light" title="Permalink to this heading">#</a></h3>
+<h3>A traffic light<a class="headerlink" href="#a-traffic-light" title="Permalink to this heading">#</a></h3>
 <p>Now, imagine adding one more bulb to the above model with the same update rule:</p>
 <a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 400px;" /></a>
 <div class="admonition-puzzle-initial-state admonition">
@@ -724,7 +724,7 @@ And here's our simulation with the first system starting :
 </section>
 </section>
 <section id="kiki-and-bouba">
-<h2>2.4. Kiki and Bouba<a class="headerlink" href="#kiki-and-bouba" title="Permalink to this heading">#</a></h2>
+<h2>2.4 Kiki and Bouba<a class="headerlink" href="#kiki-and-bouba" title="Permalink to this heading">#</a></h2>
 <p>Now for the grand finale, we are ready to build a model of Kiki’s and Bouba’s interaction and visualize their mood levels!</p>
 <p>Let us recollect what we have seen so far:</p>
 <ul class="simple">
@@ -741,7 +741,7 @@ And here's our simulation with the first system starting :
 </br>
 <p>Let us get creative and sketch out some details of their interaction – <strong>what are the states and the update rules</strong>? – in steps!</p>
 <section id="kiki-and-bouba-by-themselves">
-<h3>2.4.1. Kiki and Bouba by themselves<a class="headerlink" href="#kiki-and-bouba-by-themselves" title="Permalink to this heading">#</a></h3>
+<h3>Kiki and Bouba by themselves<a class="headerlink" href="#kiki-and-bouba-by-themselves" title="Permalink to this heading">#</a></h3>
 <p>Let us start with a single person - either Kiki or Bouba - and see how their mood will change over time when they are by themselves.</p>
 <p>Each one of them can show a range of emotions, from grumpy to happy.</p>
 <a class="reference internal image-reference" href="_images/MoodOscillator.gif"><img alt="Whoopsy!" class="align-center" src="_images/MoodOscillator.gif" style="width: 400px;" /></a>
@@ -781,7 +781,7 @@ And here's our simulation with the first system starting :
 </div>
 </section>
 <section id="kiki-and-bouba-talking-to-each-other">
-<h3>2.4.2. Kiki and Bouba talking to each other<a class="headerlink" href="#kiki-and-bouba-talking-to-each-other" title="Permalink to this heading">#</a></h3>
+<h3>Kiki and Bouba talking to each other<a class="headerlink" href="#kiki-and-bouba-talking-to-each-other" title="Permalink to this heading">#</a></h3>
 <p>Kiki and Bouba met at a restaurant for dinner! It looks like they both had a long day! Let us see how these two friends affect each other’s mood! Are they going to go back home happier or grumpier?</p>
 <p>To answer this question, we will modify our model of Kiki and Bouba by themselves (a graph with just two vertices) to allow for their interaction. The updated model is as follows:</p>
 <p>Kiki &amp; Bouba interactive</p>
@@ -866,7 +866,7 @@ params =
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-talking-plot-3.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-talking-plot-3.svg" width="600px" /></a>
 </section>
 <section id="chef-bouba-and-his-helpers">
-<h3>2.4.3. Chef Bouba and his helpers<a class="headerlink" href="#chef-bouba-and-his-helpers" title="Permalink to this heading">#</a></h3>
+<h3>Chef Bouba and his helpers<a class="headerlink" href="#chef-bouba-and-his-helpers" title="Permalink to this heading">#</a></h3>
 <p>Let us make things a little spicier! Bouba is actually a chef and he has a small crew to help him in his business. Bouba’s mood affects his crew but Bouba being their boss, Bouba’s crew disperse of the mood among themselves, and do not transmit their mood to Bouba. This interaction added to the model looks like this now:</p>
 <a class="reference internal image-reference" href="_images/KikiAndBoubaAndStaff.png"><img alt="Whoopsy!" class="align-center" src="_images/KikiAndBoubaAndStaff.png" style="width: 600px;" /></a>
 </br>
@@ -887,12 +887,12 @@ params =
 </section>
 </section>
 <section id="summary">
-<h2>2.5. Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>2.5 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>The purpose of this chapter is having fun with graphs by bringing them to life! Using “directed graphs” <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> we modeled systems which evolve over time! These systems are known as dynamical systems. We exported our models of dynamical systems to a computer as programs in Algebraic Julia. Using these programs, we visualized the evolution of these systems using plots and animations!</p>
 <p>We modeled two broad class of systems:</p>
 <ol class="arabic simple">
-<li><p><strong>Discrete systems:</strong> All the systems in section “2.3. Light bulb” fall under this category! Every light bulb and traffic controller has binary states - the value is either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p></li>
-<li><p><strong>Continous systems:</strong> All the systems in section “2.4. Kiki Bouba” fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.</p></li>
+<li><p><strong>Discrete systems:</strong> All the systems in Section 2.3 (Light bulbs) fall under this category! Every light bulb and traffic controller has binary states - the value is either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p></li>
+<li><p><strong>Continous systems:</strong> All the systems in Section 2.4 (Kiki and Bouba) fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.</p></li>
 </ol>
 <p>When modelling dynamical systems, we treated underlying graphs are blue prints. These graphs are special in the sense, they come with two pieces of information:</p>
 <ol class="arabic simple">
@@ -978,20 +978,20 @@ params =
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1 Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamic">2.2 Making graphs dynamic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3. Light bulbs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">2.3.1. Single light bulb</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">2.3.3. String of lights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">2.3.4. A traffic light</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3 Light bulbs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">Single light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">Flashing light bulb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-of-lights">String of lights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-traffic-light">A traffic light</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4. Kiki and Bouba</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-by-themselves">2.4.1. Kiki and Bouba by themselves</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-talking-to-each-other">2.4.2. Kiki and Bouba talking to each other</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chef-bouba-and-his-helpers">2.4.3. Chef Bouba and his helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba">2.4 Kiki and Bouba</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-by-themselves">Kiki and Bouba by themselves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kiki-and-bouba-talking-to-each-other">Kiki and Bouba talking to each other</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chef-bouba-and-his-helpers">Chef Bouba and his helpers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5 Summary</a></li>
 </ul>
   </nav></div>
 

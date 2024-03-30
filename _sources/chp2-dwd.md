@@ -62,11 +62,11 @@ The *additional information* has two pieces -- for every vertex:
 We will start with a very simple example, and see show to apply these two pieces of information to a directed graph and simulate an event or dynamics in a computer!
 
 
-## 2.3. Light bulbs
+## 2.3 Light bulbs
 
 Let's start with a light bulb (what could be simpler?!). 
 
-### 2.3.1. Single light bulb
+### Single light bulb
 
 We can *model* a light bulb using a directed graph with a single vertex and no edge. The light bulb is the vertex.
 
@@ -101,7 +101,7 @@ The above graph can interpreted a snapshot of the bulb at an instant in time! Th
 
 We would like the state of the light bulb to change over time!
 
-### 2.3.2. Flashing light bulb
+### Flashing light bulb
 
 Let us update our model (graph) to have the lighbulb flash on and off, like this:
 
@@ -185,7 +185,7 @@ At each time step, an update rule allows states of the vertices to be updated! A
 
 :::
 
-### 2.3.3. String of lights
+### String of lights
 
 A flashing bulb is more exciting than a bulb than never flashes! However, what's more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved.
 
@@ -313,7 +313,7 @@ Thus, the behaviour of the system is also determined not just by the update rule
 :::
 
 
-### 2.3.4. A traffic light
+### A traffic light
 
 Now, imagine adding one more bulb to the above model with the same update rule:
 
@@ -483,7 +483,7 @@ And here's our simulation with the first system starting :
 ```
 -->
 
-## 2.4. Kiki and Bouba
+## 2.4 Kiki and Bouba
 
 Now for the grand finale, we are ready to build a model of Kiki's and Bouba's interaction and visualize their mood levels! 
 
@@ -511,7 +511,7 @@ The talking friends model will have slighty different features:
 
 Let us get creative and sketch out some details of their interaction -- **what are the states and the update rules**? -- in steps!
 
-### 2.4.1. Kiki and Bouba by themselves
+### Kiki and Bouba by themselves
 
 Let us start with a single person - either Kiki or Bouba - and see how their mood will change over time when they are by themselves. 
 
@@ -604,7 +604,7 @@ The moods will never become zero! Can you see why?
 
 :::
 
-### 2.4.2. Kiki and Bouba talking to each other
+### Kiki and Bouba talking to each other
 
 Kiki and Bouba met at a restaurant for dinner! It looks like they both had a long day! Let us see how these two friends affect each other's mood! Are they going to go back home happier or grumpier?
 
@@ -761,7 +761,7 @@ Our solution seems to be working!!
 ```
 
 
-### 2.4.3. Chef Bouba and his helpers
+### Chef Bouba and his helpers
 
 Let us make things a little spicier! Bouba is actually a chef and he has a small crew to help him in his business. Bouba's mood affects his crew but Bouba being their boss, Bouba's crew disperse of the mood among themselves, and do not transmit their mood to Bouba. This interaction added to the model looks like this now:
 
@@ -801,15 +801,15 @@ The change in mood level of Kiki, Bouba, and Bouba's crew over 100 minutes!
 :align: center
 ```
 
-## 2.5. Summary
+## 2.5 Summary
 
 The purpose of this chapter is having fun with graphs by bringing them to life! Using "directed graphs" [^1] we modeled systems which evolve over time! These systems are known as dynamical systems. We exported our models of dynamical systems to a computer as programs in Algebraic Julia. Using these programs, we visualized the evolution of these systems using plots and animations!
 
 We modeled two broad class of systems:
 
-1. **Discrete systems:** All the systems in section "2.3. Light bulb" fall under this category! Every light bulb and traffic controller has binary states - the value is either `ON` or `OFF`. 
+1. **Discrete systems:** All the systems in Section 2.3 (Light bulbs) fall under this category! Every light bulb and traffic controller has binary states - the value is either `ON` or `OFF`. 
 
-2. **Continous systems:** All the systems in section "2.4. Kiki Bouba" fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.
+2. **Continous systems:** All the systems in Section 2.4 (Kiki and Bouba) fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.
 
 When modelling dynamical systems, we treated underlying graphs are blue prints. These graphs are special in the sense, they come with two pieces of information:
 
