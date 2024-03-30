@@ -85,11 +85,6 @@ A light bulb is always in one of two "states" -- either `OFF` or `ON`:
 :width: 400px
 :align: center
 ```
-```{image} assets/Ch2/LightbulbOn.png
-:alt: Whoopsy!
-:width: 400px
-:align: center
-```
 <br/>
 
 We then add extra data to this vertex called *state* which gives on `ON`/`OFF` condition of the light bulb. At any instant of time, the state value is either `ON` or `OFF`. 
@@ -122,8 +117,6 @@ Let us update our model (graph) to have the lighbulb flash on and off, like this
 In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is `ON`, it must switch `OFF`. If the present state is `OFF`, it must switch `ON`. It must perform this operation at every time step. What we described just now is called an  **update rule** -- rule saying how a state is to be updated! 
 
 > Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
-
-@Paul:  THE SELF-LOOP NEEDS TO BE REMOVED. EVERY VERTEX ALWAYS HAS ACCESS TO ITS OWN STATE. PLEASE SEE THE CODE
 
 Here is the directed graph that models a flashing bulb:
 
@@ -166,8 +159,21 @@ Readout(state, p, t) = state
 
 +++
 
+To simulate the code, we need to provide an initial state for the bulb which will then get updated 
+during every time instant as per the above update rule!
 
-And we can even export an animation showing that our simulation works (using Javis library) as shown below!
+
++++
+
+```{code}
+
+initial_state = [on] # needs to be an array
+
+```
+
++++
+
+The simulation reuslts are exported as an animation showing that our simulation works (using Javis library) as shown below!
 
 ```{image} assets/Ch2/flashing-light-JAVIS.gif
 :alt: Whoopsy!
@@ -188,7 +194,11 @@ Flashing light is more exciting than bulb than never flashes! However, what's mo
 
 Suppose, we have a string of three light bulbs in a loop that perform a dance like this:
 
-@Paul: ANIMATION OF STRINGED LIGHTS (like 3Loop.png)
+```{image} assets/Ch2/AlternatingLights.gif
+:alt: Whoopsy!
+:width: 375px
+:align: center
+```
 
 At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor. 
 
@@ -196,14 +206,17 @@ The arrow between any two light bulbs serves as uni-directional conduit for stat
 
 The graph model looks as follows:
 
-@Paul: ILLUSTRATION WITH UPDATE RULE
-
+```{image} assets/Ch2/Pair_Of_lights.png
+:alt: Whoopsy!
+:width: 375px
+:align: center
+```
 We now have new update rule:
 +++ 
 
 ```{code}
 
-# Complete code available in looped-light.jl
+# Complete code available in two-lights.jl
 
 @enum BulbState begin
     BULB_ON = true
@@ -219,7 +232,7 @@ Readout(state, p, t) = state
 ```
 Our computer simulation of stringed light bulbs produces the following animation:
 
-```{image} assets/Ch2/looped-light-JAVIS.gif
+```{image} assets/Ch2/two-lights-JAVIS.gif
 :alt: Whoopsy!
 :width: 150px
 :align: center
@@ -671,27 +684,64 @@ Our solution seems to be working!!
 
 ### 2.4.3. Chef Bouba and his helpers
 
-Kiki & Bouba & Staff
+Let us make things a little spicier! Bouba is actually a chef and he has a small crew to help him in his business. Bouba's mood affects his crew but Bouba being their boss, Bouba's crew disperse of the mood among themselves, and do not transmit their mood to Bouba. This interaction added to the model looks like this now:
+
 ```{image} assets/Ch2/KikiAndBoubaAndStaff.png
 :alt: Whoopsy!
-:width: 400px
+:width: 600px
 :align: center
 ```
 
+</br>
 
+The mood level of Bouba's crew is updated using the same logic as above! The crew as a single entity has a susceptablity factor, a calm down rate, and tolerance levels.
+
++++
+
+```{code}
+# Complete code available in Kiki-Bouba-group.jl
+
+initial_moods = [4.5, -2.8, 0.5] # Kiki, Bouba, Group
+params = LVector(
+    susceptability=[0.2, 0.1, 0.5], 
+    calmdown_rate=[.05, .03, 0.01], 
+    grumpiness_tolerance=[-4,-4.8, -3.5], 
+    excitement_tolerance=[4.5,4])
+
+
+```
+
++++
+
+
+The change in mood level of Kiki, Bouba, and Bouba's crew over 100 minutes!
+
+```{image} assets/Ch2/Kiki-Bouba-crew-plot.svg
+:alt: Whoopsy!
+:width: 600px
+:align: center
+```
 
 ## 2.5. Summary
 
-recollect the purpose of this chapter
+The purpose of this chapter is having fun with graphs by bringing them to life! Using "directed graphs" [^1] we modeled systems which evolve over time! These systems are known as dynamical systems. We exported our models of dynamical systems to a computer as programs in Algebraic Julia. Using these programs, we visualized the evolution of these systems using plots and animations!
 
-Discrete vs continuous
+We modeled two broad class of systems:
 
-The update rule of the above graph is a *lookup table* which says given the current state what the next state must be. Whatever the current state of the bulb is, it will be the opposite state in the next time step, based on this update rule.
+1. **Discrete systems:** All the systems in section "2.3. Light bulb" fall under this category! Every light bulb and traffic controller has binary states - the value is either `ON` or `OFF`. 
 
+2. **Continous systems:** All the systems in section "2.4. Kiki Bouba" fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.
 
-Update rules can be anything - look up tables, logical conditionals, differential equations, automata, recurrence relations, other dynamical systems, etc.?
+When modelling dynamical systems, we treated underlying graphs are blue prints. These graphs are special in the sense, they come with two pieces of information:
 
-Preview of more general powerful models in Algebraic Dynamics. Link so Sophie's assets
+1. One or more states for each vertex
+2. An update rule for each state
+
+The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.
+
+For readers who are interested to explore further about using Algebraic Julia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for [Algebraic Dynamics](https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/) package of Algebraic Julia! 
+
+## 2.6. What next?
 
 Dynamical systems and directed graphs are a useful framework for modeling the world. Indeed, they are a close match for how humans tend to conceptualize things. We instinctively look at the world in terms of cause and effect, in terms of procedures which play out over time, in terms of things-acting-upon-other-things. 
 
