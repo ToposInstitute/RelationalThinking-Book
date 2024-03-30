@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 2: Dynamical systems &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 2: A Dynamical Systems Detour with Kiki and Bouba &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Directed Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: Dynamical systems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2: A Dynamical Systems Detour with Kiki and Bouba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Schemas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Graph Morphisms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Pushout graphs</a></li>
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 2: Dynamical systems</h1>
+    <h1>Chapter 2: A Dynamical Systems Detour with Kiki and Bouba</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,8 +442,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">2.2. Making graphs dynamical</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamic">2.2 Making graphs dynamic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3. Light bulbs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">2.3.1. Single light bulb</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
@@ -458,7 +458,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-next">2.6. What next?</a></li>
 </ul>
             </nav>
         </div>
@@ -470,15 +469,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-dynamical-systems">
-<h1>Chapter 2: Dynamical systems<a class="headerlink" href="#chapter-2-dynamical-systems" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-a-dynamical-systems-detour-with-kiki-and-bouba">
+<h1>Chapter 2: A Dynamical Systems Detour with Kiki and Bouba<a class="headerlink" href="#chapter-2-a-dynamical-systems-detour-with-kiki-and-bouba" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>2.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about – visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!</p>
+<h2>2.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Kiki and Bouba are great friends, but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about – visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-friends.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-friends.png" style="width: 400px;" /></a>
 </section>
-<section id="making-graphs-dynamical">
-<h2>2.2. Making graphs dynamical<a class="headerlink" href="#making-graphs-dynamical" title="Permalink to this heading">#</a></h2>
+<section id="making-graphs-dynamic">
+<h2>2.2 Making graphs dynamic<a class="headerlink" href="#making-graphs-dynamic" title="Permalink to this heading">#</a></h2>
 <aside class="sidebar">
 <p class="sidebar-title">Whose turn is to do dishes?</p>
 <a class="reference internal image-reference" href="_images/ChoresSmall.png"><img alt="Whoopsy!" class="align-left" src="_images/ChoresSmall.png" style="width: 400px;" /></a>
@@ -487,17 +486,17 @@ document.write(`
 <p class="sidebar-title">Ski trip brochure</p>
 <a class="reference internal image-reference" href="_images/SkiSmall.png"><img alt="Whoopsy!" class="align-center" src="_images/SkiSmall.png" style="width: 400px;" /></a>
 </aside>
-<p>We start with directed graphs. Each one of the directed graphs we met in the last chapter, “Whose turn is it to do dishes”, or the “Ski trip brochure”, or “Mythological romance”, is a blueprint of situations happening over time.</p>
+<p>We start with directed graphs. Each one of the directed graphs we met in the last chapter, “Whose turn is it to do dishes”, or the “Ski trip brochure”, or “Mythological romance”, is a depiction of situations happening over time.</p>
 <p>For example, here are few situations based on the “Ski trip brochure”:</p>
 <p>Situation 1: A person was at the lodge. They took the lift up the mountain and skied downhill to the village.</p>
-<p>Situation 2: A person was the village. The cross-country skiied in the village.</p>
-<p>We can manifest these blueprints (directed graphs) into actual occurences by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some <em>additional information</em>, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a period of time (Kiki and Bouba talking for 60 minutes) or can be simulated as occuring over discrete time steps.</p>
+<p>Situation 2: A person was the village. The cross-country skied in the village.</p>
+<p>We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some <em>additional information</em>, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occuring over discrete time steps.</p>
 <div class="admonition-key-point admonition">
 <p class="admonition-title">Key point </p>
-<p>The <em>additional information</em> has two pieces – for every vertex,</p>
+<p>The <em>additional information</em> has two pieces – for every vertex:</p>
 <ol class="arabic simple">
-<li><p>One or more <mark>states</mark></p></li>
-<li><p><mark>Update rule</mark> for each state</p></li>
+<li><p>A set of one or more <mark>states</mark></p></li>
+<li><p>An <mark>update rule</mark> describing the dynamics in each state</p></li>
 </ol>
 </div>
 <p>We will start with a very simple example, and see show to apply these two pieces of information to a directed graph and simulate an event or dynamics in a computer!</p>
@@ -526,7 +525,7 @@ document.write(`
 <p>Let us update our model (graph) to have the lighbulb flash on and off, like this:</p>
 <a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 300px;" /></a>
 <br/>
-<p>In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If the present state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">ON</span></code>. It must perform this operation at every time step. What we described just now is called an  <strong>update rule</strong> – rule saying how a state is to be updated!</p>
+<p>In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If the present state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">ON</span></code>. It must perform this operation at every time step. What we described just now is called an  <strong>update rule</strong> – a rule saying how a state is to be updated!</p>
 <blockquote>
 <div><p>Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!</p>
 </div></blockquote>
@@ -564,7 +563,7 @@ document.write(`
 </section>
 <section id="string-of-lights">
 <h3>2.3.3. String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
-<p>Flashing light is more exciting than bulb than never flashes! However, what’s more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved.</p>
+<p>A flashing bulb is more exciting than a bulb than never flashes! However, what’s more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved.</p>
 <p>Suppose, we have a string of three light bulbs in a loop that perform a dance like this:</p>
 <a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 375px;" /></a>
 <p>At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor.</p>
@@ -579,7 +578,7 @@ document.write(`
 </div>
 <p>The graph model looks as follows:</p>
 <a class="reference internal image-reference" href="assets/Ch2/Pair_Of_lights.png"><img alt="Whoopsy!" class="align-center" src="assets/Ch2/Pair_Of_lights.png" style="width: 375px;" /></a>
-<p>We now have new update rule:</p>
+<p>We now have a new update rule:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/two-lights.jl</span>
 
 <span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
@@ -633,7 +632,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 400px;" /></a>
 <div class="admonition-puzzle-initial-state admonition">
 <p class="admonition-title">Puzzle: initial state</p>
-<p>How would this system behave if we set initial states for the three bulbs as the following:</p>
+<p>How would this system behave if we set initial states for the three bulbs as the following?</p>
 <a class="reference internal image-reference" href="_images/3loop-initial-state.png"><img alt="Whoopsy!" class="align-center" src="_images/3loop-initial-state.png" style="width: 400px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#full code available in Ch2/looped-light.jl</span>
 
@@ -644,7 +643,7 @@ document.write(`
 <div class="dropdown admonition">
 <p class="admonition-title">See answer!</p>
 <div class="wrapper docutils">
-<p>Looped light bulb where exactly one light bulb is <code class="docutils literal notranslate"><span class="pre">ON</span></code> at any instant in time!</p>
+<p>The system will be a ‘looped light bulb’ where exactly one light bulb is <code class="docutils literal notranslate"><span class="pre">ON</span></code> at any instant in time!</p>
 <a class="reference internal image-reference" href="_images/looped-lights.gif"><img alt="Whoopsy!" class="align-center" src="_images/looped-lights.gif" style="width: 400px;" /></a>
 </div>
 </div>
@@ -902,12 +901,9 @@ params =
 <li><p>An update rule for each state</p></li>
 </ol>
 <p>The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.</p>
-<p>For readers who are interested to explore further about using Algebraic Julia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/">Algebraic Dynamics</a> package of Algebraic Julia!</p>
-</section>
-<section id="what-next">
-<h2>2.6. What next?<a class="headerlink" href="#what-next" title="Permalink to this heading">#</a></h2>
+<p>For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/">AlgebraicDynamics</a> package of AlgebraicJulia!</p>
 <p>Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things – in terms of cause and effect, in terms of events which play out over time, and in terms of systems influencing one another!</p>
-<p>But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous <a class="reference external" href="http://constraints.In">constraints.In</a> the coming chapters we will develop to a more <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
+<p>But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints. In the coming chapters we will develop to a more <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
@@ -981,8 +977,8 @@ params =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamical">2.2. Making graphs dynamical</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-graphs-dynamic">2.2 Making graphs dynamic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">2.3. Light bulbs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-light-bulb">2.3.1. Single light bulb</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flashing-light-bulb">2.3.2. Flashing light bulb</a></li>
@@ -997,7 +993,6 @@ params =
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.5. Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-next">2.6. What next?</a></li>
 </ul>
   </nav></div>
 

@@ -10,11 +10,11 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 2: Dynamical systems
+# Chapter 2: A Dynamical Systems Detour with Kiki and Bouba
 
-## 2.1. Introduction
+## 2.1 Introduction
 
-Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about -- visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!
+Kiki and Bouba are great friends, but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about -- visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!
 
 ```{image} assets/Ch2/Kiki-Bouba-friends.png
 :alt: Whoopsy!
@@ -22,7 +22,7 @@ Kiki and Bouba are great friends but are quite different characters! It is fun w
 :align: center
 ```
 
-## 2.2. Making graphs dynamical
+## 2.2 Making graphs dynamic
 
 ````{sidebar} Whose turn is to do dishes?
 ```{image} assets/Ch2/ChoresSmall.png
@@ -40,22 +40,22 @@ Kiki and Bouba are great friends but are quite different characters! It is fun w
 ```
 ````
 
-We start with directed graphs. Each one of the directed graphs we met in the last chapter, "Whose turn is it to do dishes", or the "Ski trip brochure", or "Mythological romance", is a blueprint of situations happening over time. 
+We start with directed graphs. Each one of the directed graphs we met in the last chapter, "Whose turn is it to do dishes", or the "Ski trip brochure", or "Mythological romance", is a depiction of situations happening over time. 
 
 For example, here are few situations based on the "Ski trip brochure": 
 
 Situation 1: A person was at the lodge. They took the lift up the mountain and skied downhill to the village. 
 
-Situation 2: A person was the village. The cross-country skiied in the village. 
+Situation 2: A person was the village. The cross-country skied in the village. 
 
-We can manifest these blueprints (directed graphs) into actual occurences by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some *additional information*, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a period of time (Kiki and Bouba talking for 60 minutes) or can be simulated as occuring over discrete time steps.
+We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some *additional information*, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occuring over discrete time steps.
 
 :::{admonition} Key point 
 
-The *additional information* has two pieces -- for every vertex, 
+The *additional information* has two pieces -- for every vertex: 
 
-1. One or more <mark>states</mark>
-2. <mark>Update rule</mark> for each state
+1. A set of one or more <mark>states</mark>
+2. An <mark>update rule</mark> describing the dynamics in each state 
 
 :::
 
@@ -112,7 +112,7 @@ Let us update our model (graph) to have the lighbulb flash on and off, like this
 ```
 <br/>
 
-In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is `ON`, it must switch `OFF`. If the present state is `OFF`, it must switch `ON`. It must perform this operation at every time step. What we described just now is called an  **update rule** -- rule saying how a state is to be updated! 
+In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is `ON`, it must switch `OFF`. If the present state is `OFF`, it must switch `ON`. It must perform this operation at every time step. What we described just now is called an  **update rule** -- a rule saying how a state is to be updated! 
 
 > Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
 
@@ -187,7 +187,7 @@ At each time step, an update rule allows states of the vertices to be updated! A
 
 ### 2.3.3. String of lights
 
-Flashing light is more exciting than bulb than never flashes! However, what's more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved.
+A flashing bulb is more exciting than a bulb than never flashes! However, what's more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved.
 
 Suppose, we have a string of three light bulbs in a loop that perform a dance like this:
 
@@ -220,7 +220,7 @@ The graph model looks as follows:
 :width: 375px
 :align: center
 ```
-We now have new update rule:
+We now have a new update rule:
 +++ 
 
 ```{code}
@@ -325,7 +325,7 @@ Now, imagine adding one more bulb to the above model with the same update rule:
 
 ::::{admonition} Puzzle: initial state
 
-How would this system behave if we set initial states for the three bulbs as the following:
+How would this system behave if we set initial states for the three bulbs as the following?
 
 ```{image} assets/Ch2/3loop-initial-state.png
 :alt: Whoopsy!
@@ -347,7 +347,7 @@ initial_state = [Bool(BULB_ON), Bool(BULB_OFF), Bool(BULB_OFF)]
 
 ````{div} wrapper
 
-Looped light bulb where exactly one light bulb is `ON` at any instant in time!
+The system will be a 'looped light bulb' where exactly one light bulb is `ON` at any instant in time!
 
 ```{image} assets/Ch2/looped-lights.gif
 :alt: Whoopsy!
@@ -818,11 +818,9 @@ When modelling dynamical systems, we treated underlying graphs are blue prints. 
 
 The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.
 
-For readers who are interested to explore further about using Algebraic Julia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for [Algebraic Dynamics](https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/) package of Algebraic Julia! 
-
-## 2.6. What next?
+For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for [AlgebraicDynamics](https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/) package of AlgebraicJulia! 
 
 Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things -- in terms of cause and effect, in terms of events which play out over time, and in terms of systems influencing one another! 
 
-But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints.In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
+But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints. In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
 
