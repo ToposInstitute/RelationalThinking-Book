@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 6: Double pushout graphs
+# Chapter 6: Evolving Graphs
 
 ## 6.1. Introduction
 
@@ -981,9 +981,9 @@ to_graphviz(codom(fromR))
 
 ```
 
-## 6.9 Goodness of relational thinking 
+## 6.9 Summary 
 
-### 6.9.1. Relational thinking shifts vocabularly
+### 6.9.1. Relational thinking shifts vocabulary
 
 We would like to bring reader's attention to the some vocabulary common in practice since language influences thinking and vice versa.
 
@@ -1020,6 +1020,7 @@ As we saw in double pushouts, relational thinking precisely follows this order! 
 
 ::: 
 
+## Footnotes and References
 
 [^1]: A few examples in this chapter have been inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
 
