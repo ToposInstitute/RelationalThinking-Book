@@ -759,7 +759,8 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 
 Common literature calls our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO). 
 
-## 6.6. Find-and-replace in chemistry
+## 6.6 Further examples of find-and-replace
+### 6.6.1 Chemistry
 
 In chemistry, **click reactions** give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder's reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery. 
 
@@ -809,7 +810,7 @@ Applying the double-pushout find-and-replace, we precisely get the final product
 :align: center
 ```
 
-## 6.7. Find-and-replace in game design
+### 6.6.2 Game design
 
 Bob is an expert in designing game layout. He designs environment for games. He uses a layout editor for designing cool layouts. The layout keeps track of Bob's design as an directed graph components of the environment are vertices. Two vertices are connected by an arrow if the player can navigate between these two components in the game in the direction of the arrow. 
 
@@ -837,9 +838,9 @@ Now a corridor needs to be added between Room 1 and Room 2, and arrows need to b
 
 Reshaping directed graph follows the same idea as undirected graphs. The find-and-replace rule shall be applied to reshape Bob's game layoout!
 
-## 6.8. Algebraic Julia for find-and-replace in graphs
+## 6.7. Algebraic Julia for find-and-replace in graphs
 
-### 6.8.1. Finding matches of a search pattern
+### 6.7.1. Finding matches of a search pattern
 
 +++
 
@@ -864,7 +865,7 @@ matches = homomorphisms(pattern, host)
 
 +++
 
-### 6.8.2. Is this a pushout complement?
+### 6.7.2. Is this a pushout complement?
 
 ```{code-cell}
 # Example 2
@@ -910,7 +911,7 @@ gluing_conditions(ComposablePair(p, m))
 
 ```
 
-### 6.8.3. Computing Pushout complements
+### 6.7.3. Computing Pushout complements
 
 ```{code-cell}
 # Puzzle 5
@@ -949,7 +950,7 @@ to_graphviz(dom(PC_H₆))
 
 ```
 
-### 6.8.4. Computing double-pushouts
+### 6.7.4. Computing double-pushouts
 
 
 ```{code-cell}
@@ -981,9 +982,9 @@ to_graphviz(codom(fromR))
 
 ```
 
-## 6.9 Summary 
+## 6.8 Summary 
 
-### 6.9.1. Relational thinking shifts vocabulary
+#### Relational thinking shifts vocabulary
 
 We would like to bring reader's attention to the some vocabulary common in practice since language influences thinking and vice versa.
 
@@ -1000,7 +1001,7 @@ The mathematics we used to "find-and-replace" in graphs tells us that it is not 
 
 This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter. 
 
-### 6.9.2 The order of processes
+#### The order of processes
 
 Let us take a moment reflect on the process of modifying a graph guided by relational thinking! 
 
