@@ -135,6 +135,7 @@ A reflexive graph is defined as a directed graph in which "every vertex has a sp
 
 We call this the reflexive map or `ref`.
 
+We can put this reflexive map together with our source and target maps for this graph. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
 
 
 ```{image} assets/Ch4/ReflexiveGraphInstance.gif
@@ -142,17 +143,51 @@ We call this the reflexive map or `ref`.
 :width: 800px
 :align: center
 ```
-Now think about the following sentence: 
 
-"Every vertex is the source and target of its self-looping arrow." 
+What can we say about this graph?
 
-On the one hand, this is effectively the definition of a reflexive graph. On the other hand, we can easily translate this sentence into a closed loop condition on the above maps. 
+PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this sytem of connections?
 
-In words:
+Consider that, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
 
-"If we start from any vertex and follow the reflexive map and then either the source or target maps from there, we should always wind up at the back where we started." 
+* follow the reflexive map from a vertex to its self-looping arrow
 
-As an equation:
+...and then 
+
+* follow the source map from that arrow back to a vertex 
+
+...we should always end up back where we stared.
+
+IMAGE OF SINGLE SOURCE LOOP
+
+That is, the above sequence of connections should always form a closed loop. 
+
+By the same reasoning, the target map following the reflexive map should always form a closed loop as well.
+
+IMAGE OF SINGLE TARGET LOOP
+
+If we examine the instance data we indeed see that all such loops are closed. 
+
+IMAGE OF FADETHROUGH
+
+This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed if and only if there is a reflexive arrow that is not self-pointing. 
+
+PAUSE AND PONDER: Why?
+
+In first defining reflexive graphs we relied on semantic ideas like "self-loops" and phrases like "for every vertex..." to establish what we meant. We have now found an equivalent way of saying the same thing in terms of a maps and the presence or absence of certain closed loops. 
+
+And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
+
+
+## Into the computer
+
+Let's encode a reflexive graph schema in AlgebraicJulia!
+
+First off, you may have noticed that schemase _are_ a kind of directed graph. So we can use our familiar source and target map formalism to input the general schema shape.
+
+Now we want to add the closed loop conditions. We can express these as text...
+
+
 
 ```{image} assets/Ch4/ReflexiveGraph.jpg
 :alt: Whoopsy!
@@ -205,12 +240,9 @@ An arrow in a directed graph is like a one-way street, a unidirectional pointer 
 :align: center
 ```
 
+PAUSE AND PONDER: Consider the difference between your understanding of a graph and Algebraic Julia's. For you, an undirected graph and a 'directed-graph-with-paired-arrows' are two different mental interpretations of the same data. AlgebraicJulia deals with your dieas at the level of schemas, maps and commutativity conditions. It has no idea what those things mean to you.
 
-
-
-
-
-And in the next chapter we will focus on examples using undirected graphs instead of directed graphs. They're a little simpler to draw and think about, and are perfectly useful for telling the rest of our story. 
+We use thought bubbel to indicate that what is here is onvisible to the computer, only the in mind of the progammer. Entirely in the eye of the beholder.
 
 ## Other kinds of schemas
 
@@ -240,10 +272,21 @@ On the more "applied" side, we have the example of Petri nets, a sophisticated m
 :align: center
 ```
 
-## Databases
+
 
 Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found here along with several examples of scientific models using Petri nets, including population dynamics, epidemiological models and enzyme reactions.
 
-Databases?:
+## Databases
 
-Conclusion*** That “embedding” might seem a little useless/artificial/formal. In the next section we develop tools that*** That the tool we develop in the final section: “Double Pushout Rewriting” can be applied to all of the “special” examples above.
+The whole concept of a schema originally comes from datase theory. We can think of the underlying connections in a schema as a kind of linked data, say poeple linked accoridn to their relationships, building a schema is tehn just "structuring a query" on that databse by definining new relatinships in terms of existing ones.
+
+IMAGE OF DATBASE WITH TOY HUMAN RELATIONSHIPS
+
+
+
+One of the major difficulties in database management is communication between different databases. Data often gets corrupted when transferred between incompatible contexts. Data corruption is the analog of our dangling edge condition. Much as DPOs are a high level tool that will resolve our dangling edge problems, there are high level category theoretic techniques for data migration, offereing a canonical way of migrating data that automatically takes care of various annoying edge conditions. 
+
+In the same way, if you represent your database in AlgebraicJulia, there are some high level tools at your disposal...
+
+See FDM for details.
+
