@@ -33,7 +33,7 @@ As a step towards making sense of the idea of combining graphs, let us a revisit
 
 In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and Priyaa (co-authors of this book). Encoding these friendships as graphs, we get:
 
-```{image} assets/Ch5/3b.png
+```{image} assets/Ch5/3c.jpeg
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -41,9 +41,9 @@ In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuc
 
 Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:
 
-```{image} assets/Ch5/3c.png
+```{image} assets/Ch5/3b.jpeg
 :alt: Whoopsy!
-:width: 560px
+:width: 460px
 :align: center
 ```
 </br>
@@ -99,9 +99,10 @@ We saw in previous chapters that a graph morphism identifies one graph inside an
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
-:width: 800px
+:width: 400px
 :align: center
 ```
+</br>
 
 The relationships between the graphs in the above diagram are: 
 
@@ -133,8 +134,7 @@ With this analogy in mind, let us think of the `pushout` of a (overlap) diagram 
 :class: tip
 
 A diagram with two radiating maps into two graphs is a specification of an overlap of those graphs. 
-
-```{image} assets/Ch5/1.png
+```{image} assets/Ch5/1b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -226,7 +226,7 @@ Thus, our enquiry to `graph A` and `graph B` have resulted in a condition that a
 :width: 450px
 :align: center
 ```
-<center> Commuting square of a `pushout` </center>
+<center> Commuting square of a pushout </center>
 
 :::
 
@@ -260,7 +260,7 @@ To do so, we are going to do step outside the game for a moment and sharpen our 
 :align: center
 ```
 
-`overlap` embeds in `graph A` and `graph B` as follows:
+The `overlap` maps into `graph A` and `graph B` as follows:
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
@@ -337,8 +337,7 @@ Let's begin our quest for these relationships!
 :width: 500px
 :align: center
 ```
-
-
+</br>
 
 We have two commuting diagrams - one with `choice 1` and another one with `choice 2`. Next we see how they are related with each other.
 
@@ -347,6 +346,8 @@ We have two commuting diagrams - one with `choice 1` and another one with `choic
 :width: 500px
 :align: center
 ```
+
+</br>
 
 There are many graph morphisms from graph `choice 1` to graph `choice 2`. But there is exactly one arrow (dotted) that will make the 2 three-sided diagrams (2 triangles) formed by two yellow arrows and the dotted arrow commute. This dotted arrow is again the most intuitive one, mapping blue vertices/edges to blue, green vertices/edges to green, orange to orange. This arrow from `choice 1` to `choice 2` is dotted to signify that there is only one such morphism. 
 
@@ -359,6 +360,7 @@ There are many graph morphisms from graph `choice 1` to graph `choice 2`. But th
 :width: 500px
 :align: center
 ```
+</br>
 
 Now for the other direction, are there maps from `choice 2` to `choice 1` all possible closed shapes in the above diagram will commute simultaneously? Nope, there is no such embedding — the orange-green vertex of `choice 2` can be mapped to either the orange or the green vertex of `choice 1`. If it is mapped into the orange vertex, then the upper triangle does not commute. If it is mapped into the green vertex, then the lower triangle does not commute. Since `choice 2` has coarse-grained the information of `graph A` and `graph B`, the information cannot be fine-grained again! So no map in the backwards direction!
 
@@ -372,14 +374,16 @@ Now for the other direction, are there maps from `choice 2` to `choice 1` all po
 :width: 500px
 :align: center
 ```
+</br>
 
-As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 3` that will make the  yellow triangles commute. 
+As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 3` that will make the triangles commute. 
 
 ```{image} assets/Ch5/9c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+</br>
 
 However, there are at least two ways in `choice 3` maps into `choice 1` to make the triangles commute. The grey vertex in `choice 3` can be mapped to one of the two blue vertices in `choice 1`. Both these choices are equally good! Because, `choice 3` has extra information, that is a vertex and an edge neither from `graph A` nor from `graph B`, there is more than one way of mapping this extra information into the most lazy `choice 1`.
 
@@ -397,7 +401,7 @@ However, there are at least two ways in `choice 3` maps into `choice 1` to make 
 :align: center
 ```
 
-As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 4` that will make the  yellow triangles commute. 
+As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 4` that will make the triangles commute. 
 
 ```{image} assets/Ch5/10c.png
 :alt: Whoopsy!
@@ -421,9 +425,9 @@ Whewww!! That is some hard core relational thinking!
 :::{admonition} Key points
 :class: tip
 
-`pushout`s satisfy the universal property having a unique arrow into any other graph that will make a commuting square with the blue arrows!
+The `pushout` satisfies a universal property: the `pushout` has a unique arrow into any other graph which satisfies Pass 1, such that two triangles commute!
 
-```{image} assets/Ch5/8b.png
+```{image} assets/Ch5/13b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -435,22 +439,24 @@ Whewww!! That is some hard core relational thinking!
 
 We have progressed quite a bit! Let us review our progress so far! In this game, to begin with, a `pushout` could be any graph in the space of all possible graphs. 
 
+**Pass 1: Commuting square**:- 
 ```{image} assets/Ch5/13a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
-**Pass 1: Commuting square**:- By asking `overlap`, `graph A`, and `graph B`, "What is your relationship with the `pushout`?", we narrowed down a set of candidates for the `pushout` from the space of all graphs. Each one of these candidates (`graph X`) make the above diagram commute!
+By asking `overlap`, `graph A`, and `graph B`, "What is your relationship with the `pushout`?", we narrowed down a set of candidates for the `pushout` from the space of all graphs. Each one of these candidates (`graph X`) make the above diagram commute!
 
 
+**Pass 2: Universal property**:-
 ```{image} assets/Ch5/13b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
-**Pass 2: Universal property**:- By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two yellow triangles (in the above diagram) commute simultaneously. 
+ By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two triangles (in the above diagram) commute simultaneously. 
 
 Now, 
 
@@ -466,7 +472,7 @@ Our goal is to finally end up with one `pushout` graph!! Recall that the `pushou
 
 Suppose some `graph X` made it through Pass 2 along with the `pushout`. What is its relationship with the `pushout`?
 
-Both `graph X` and the `pushout` satisfy the commuting square requirement of Pass 1. However, `graph X` is universal (satisfies the universal property). So, `graph X` must have a unique map into the `pushout`. 
+Both `graph X` and the `pushout` satisfy the commuting square requirement of Pass 1. However, `graph X` is universal (satisfies the universal property). So, `graph X` must have a unique map into the `pushout` that makes the triangles commute. 
 
 ```{image} assets/Ch5/16b.png
 :alt: Whoopsy!
@@ -474,7 +480,7 @@ Both `graph X` and the `pushout` satisfy the commuting square requirement of Pas
 :align: center
 ```
 
-However, the `pushout` is also universal. So it must have a unique map into `graph X`.
+However, the `pushout` is also universal. So it must have a unique map into `graph X` that makes the triangles commute. 
 
 ```{image} assets/Ch5/16a.png
 :alt: Whoopsy!
@@ -488,7 +494,7 @@ However, all the commuting shapes of pass 1 and pass 2 tell us that these two ma
 :class: dropdown
 
 ````{div} wrapper 
-In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison! 
+In the above diagrams, the `pushout` has a unique mapping into `graph X`, and `graph X` has a unique mapping into X2. These two maps make all the four triangles commute in unison! 
 
 ```{image} assets/Ch5/17a.png
 :alt: Whoopsy!
@@ -496,7 +502,7 @@ In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely 
 :align: center
 ```
 
-Because, the shapes 1, 2, 3, 4 commute, we know that 13 and 24 commutes in the following diagram:
+Since the upper two triangles commute in the above diagram, the upper triangle in the below diagram commutes. Similarly for the lower triangle. 
 
 ```{image} assets/Ch5/17b.png
 :alt: Whoopsy!
@@ -504,14 +510,14 @@ Because, the shapes 1, 2, 3, 4 commute, we know that 13 and 24 commutes in the f
 :align: center
 ```
 
-There is one other arrow from Graph X1 to Graph X2 which can make the above diagram commute: The “be-as-you-are” arrow
+There is one other arrow from the `pushout` to `pushout` which can make the above diagram commute: The “be-as-you-are” arrow (that which maps each vertex to itself and each edge to itself):
 ```{image} assets/Ch5/17c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
-Because the embedding “Graph X1 —> Graph X2 —> Graph X1”  is unique, there cannot be a different arrow which makes “13” and “24” commute. Hence, 
+Because the map `pushout` —> `graph X` —> `pushout`  is unique, there is ONLY ONE arrow which makes the two (big) triangles commute. However, we have two mappings. So, both of them should be the same!   Hence, 
 ```{image} assets/Ch5/18a.png
 :alt: Whoopsy!
 :width: 500px
@@ -560,19 +566,21 @@ We compute the `pushout` of an overlap diagram. The `pushout` is a graph which s
 
 **Pass 1: Commuting square** :-  The following square must commute.
 
-```{image} assets/Ch5/19b.png
+```{image} assets/Ch5/13a.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
+</br>
 
-**Pass 2: Universal property**: For any other choice of graph which satisfies Pass 1's requirement, there is exactly one (a unique) map from the `pushout` into that choice such that yellow triangles commute. 
+**Pass 2: Universal property**: For any other choice of graph which satisfies Pass 1's requirement, there is exactly one (a unique) map from the `pushout` into that choice such that the triangles commute. 
 
 ```{image} assets/Ch5/19c.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
+</br>
 
 As a consequence of these requirements, all graphs which satisfy both these requirements **are “practically the same”**.  
 
