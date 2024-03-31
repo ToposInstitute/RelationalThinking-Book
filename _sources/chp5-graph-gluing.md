@@ -16,11 +16,11 @@ kernelspec:
 This chapter will engage you in deep relational thinking! 
 :::
 
-## 5.1 Introduction
+## 5.1. Introduction
 
-So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and the every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
+So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
 
-Inside this universe, we are interested in the mechanism of combining two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.
+Inside this universe, we are interested to know how to combine two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.
 
 As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.
 
@@ -29,9 +29,9 @@ As a step towards making sense of the idea of combining graphs, let us a revisit
 :width: 800px
 :align: center
 ```
+</br>
 
-
-In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:
+In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and Priyaa (co-authors of this book). Encoding these friendships as graphs, we get:
 
 ```{image} assets/Ch5/3b.png
 :alt: Whoopsy!
@@ -46,11 +46,11 @@ Read each edge in the above graphs as “is a friend of”. Combining the above 
 :width: 560px
 :align: center
 ```
+</br>
 
 We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.
 
-The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs [^1].
-
+The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex [^1]. 
 ```{image} assets/Ch5/complex-graph.png
 :alt: Whoopsy!
 :width: 450px
@@ -60,23 +60,32 @@ The above example is deceivingly simple. By eyeballing the two friendship graphs
 
 </br>
 
+In practice, combining such graphs using pen and paper is out question! However, it is the same common sense that is in play combining even the most complex graphs.
+
 [^1]: Image source: https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg
 
-The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking. Relational thinking is popularly known as category theory in the mathematics community! 
+The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)! 
 
-The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A *combined* graph needs to be aware of graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!
+The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A *combined* graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!
 
-[FROM HERE, THE NEXT TWO SECTIONS MUST BE INTRODUCED IN CHAPTER 4.]
-
-We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.
-
-## 5.2 Combining graphs using memes
+## 5.2. Combining graphs using memes
 
 The two memes we will use to play this game are, 1. Commuting diagrams, and 2. Graph isomorphisms.
 
-Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe what a combined graph of any two (overlapping) graphs is without saying what the vertices, edges, source and target maps of the combined graph are! Given two overlapping graphs, let us call their combined graph as the “pushout” of the two graphs along the overlap.
+Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play! 
 
-A pushout is a graph in the space of all possible graphs. We need to spot what graph it is! We will narrow down our search step-by-step by expressing requirements of a pushout using the memes we have learnt. We will continue this process until we end up with the graph we are looking for. 
+Let us first introduce some **terminology**: we call a combined graph of two overlapping graphs as their `pushout`.
+
+:::{admonition} Game description 
+:class: attention
+
+**Goal:** To describe the `pushout` of any two (overlapping) graphs!
+
+**Rule:** Description of a `pushout` MUST NOT include its vertices, edges, source and target maps.
+
+:::
+
+A `pushout` (of two overlapping graphs) is a graph in the space of all possible graphs. We need to spot that graph in this space! We will narrow down our search step-by-step using the memes we have learnt. We will continue this process until we end up with the graph we are looking for. 
 
 We will draw lots and lots of diagrams for this narrowing down process! Diagrams are basic to relational thinking!
 
@@ -84,9 +93,9 @@ Let us begin!
 
 ### The shape of the overlap
 
-To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the ***overlap*** of the two graphs. So, to combine two graphs, we need to know their overlap. 
+To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. 
 
-We saw in previous chapters that a graph morphism identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3! Remember, we live in universe and do not peek inside graphs! The rectangles are placeholders which can receive any graph in them.
+We saw in previous chapters that a graph morphism identifies one graph inside another. Suppose we are given two graphs -- `graph A` and `graph B`. An overlap of these two graphs is specified as the diagram below: a diagram with two radiating arrows, one into `graph A` and another one into `graph B`. Graph `overlap` specifies the vertices and edges common to `graph A` and `graph B`! Note that a relational specification of common vertices and edges as shown below ensures that the overlapping region will be a graph by itself (no dangling edges)!
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
@@ -96,11 +105,13 @@ We saw in previous chapters that a graph morphism identifies one graph inside an
 
 The relationships between the graphs in the above diagram are: 
 
-- Graph-1 maps into Graph-2.
-- Graph-1 maps into Graph-3.
-- Thus, the regions in which Graph-1 embeds, Graph-2 and Graph-3 overlap.
+- `overlap` maps into `graph A`.
+- `overlap` maps into `graph B`.
+- Thus, the regions in which `overlap` maps into `graph A` and `graph B` are common to the two graphs.
+ 
+(The morphisms in the above diagram are injective, but in general they need not be so! Connecitivity matters!)
 
-The “overlap” acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine Graph-2 and Graph-3 into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
+The `overlap` acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine `graph A` and `graph B` into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
 
 ```{image} assets/Ch5/sheets.jpeg
 :alt: Whoopsy!
@@ -116,13 +127,12 @@ Another (closer) analogy that comes to mind for combining graphs is glueing a br
 :align: center
 ```
 
-
-With this analogy in mind, let us think of the pushout of a diagram with two graphs and their overlap as shown above. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.  
+With this analogy in mind, let us think of the `pushout` of a (overlap) diagram with two radiating graph morphisms!  
 
 :::{admonition} Key points
 :class: tip
 
-We now know what it means for two graphs to overlap — it is a diagram of two radiating graph morphisms. 
+A diagram with two radiating maps into two graphs is a specification of an overlap of those graphs. 
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
@@ -137,20 +147,20 @@ Overlapping graphs can be glued together.
 
 
 
-### Combining graphs along an overlap
+### Pass 1: Commuting square
 
-Now that, we know the overlap, the next step in this game is to narrow down the candidates for the pushout. Right now, it could be any graph in the universe!
+Now that, we know the overlap, the next step in this game is to narrow down some potential candidates for the `pushout`. Right now, it could be any graph in the universe!
 
-We cannot talk about pushout (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the pushout from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,
+We cannot talk about `pushout` (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the `pushout` from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,
 
-> *How is the pushout related to you?*
+> *How is the `pushout` related to you?*
 
 > An old spanish saying goes like this. *Tell me who your friends are, and I will tell you who you are!*
 
-The most immediate candidates for this enquiry are Graph-2 and Graph-3 since the pushout is given by combining Graph-2 and Graph-3 (along Graph-1 overlap). 
+The most immediate candidates for this enquiry are `graph A` and `graph B` since the `pushout` is given by combining `graph A` and `graph B` (along `overlap`). 
 
 :::{admonition} Pause and ponder!
-If you are Graph-2, how do you expect to be related to the pushout? 
+If you are `graph A`, how do you expect yourself to be related to the `pushout`? 
 :::
 
 We invite the reader to take a moment to ponder over this question using the picture below.
@@ -161,10 +171,10 @@ We invite the reader to take a moment to ponder over this question using the pic
 :align: center
 ```
 
-Since the pushout is given by glueing Graph-2 and Graph-3 along the shape of Graph-1, at the least, there must: 
+Since the `pushout` is given by glueing `graph A` and `graph B` along the shape of `overlap`, at the least, there must: 
 
-1. Graph-2 must map into the pushout (the cup is in the glued object). 
-2. Graph-3 must map into the pushout (the handle is in the glued object). 
+1. `graph A` must map into the `pushout` (the cup is in the glued object). 
+2. `graph B` must map into the `pushout` (the handle is in the glued object). 
 
 Let us add these morphisms to the overlap diagram:
 
@@ -173,21 +183,24 @@ Let us add these morphisms to the overlap diagram:
 :width: 450px
 :align: center
 ```
+<center> Diagram: Four arrows </center>
 
-Does this shape look vaguely familiar? Hurray, if this reminds of you of commuting diagrams. Let us first just look at the diagram. There are two paths from Graph-1 to the pushout.
+</br>
 
-So, Graph-1 can be indentified inside the pushout in two ways: 
+Does this shape look vaguely familiar? If this reminds of you of commuting diagrams, Hurray!! Let us first just look at the diagram. There are two paths from `overlap` to the `pushout`.
 
-- either through Graph-2,
-- or through Graph-3.
+So, `overlap` can be indentified inside the `pushout` in two ways: 
+
+- either through `graph A`,
+- or through `graph B`.
 
 :::{admonition} Pause and ponder!
 
-Which of these is the correct way to identify Graph-1 inside the combined graph, in this context? 
+Which one of these is the correct way to identify `overlap` inside the `pushout`? 
 
 :::
 
-The answer is that, "Well, irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it's the overlap." The region in which it is mapped into is common to both Graph-2 and Graph-3 in the pushout. 
+Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'? Hence, the overlap must map into the same region of the pushout irrespective of the path.
 
 ```{image} assets/Ch5/GluedObject.png
 :alt: Whoopsy!
@@ -197,62 +210,33 @@ The answer is that, "Well, irrespective of the path, Graph-1 IS EXPECTED TO be i
 
 In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object (blue points).  The rest of the points can be distinguished as belonging to the cup (green points) or to the handle (orange points). 
 
-> Irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it's the overlap. = The  diagram MUST COMMUTE!
+> 'Irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`' = The  diagram with four arrows MUST COMMUTE!
 
-All these amounts to saying that “the diagram MUST COMMUTE! For any vertex (or edge) in Graph-1, both the paths must lead to the same vertex (or edge) in the pushout.
-
-Thus, our enquiry to Graph-2 and Graph-3 have resulted in a condition that the pushout needs to satisfy!
+Thus, our enquiry to `graph A` and `graph B` have resulted in a condition that a candidate for `pushout` MUST satisfy! That is, "Diagram: Four arrows" must commute.
 
 
-:::{admonition} Key point
+:::{admonition} Key points
 
-1. Graph-2 must map into the pushout. 
-2. Graph-3 must map into the pushout. 
-3. The diagram with these two maps MUST COMMUTE!
+1. `graph A` must map into the `pushout` (yellow arrow from `graph A`). 
+2. `graph B` must map into the `pushout` (yellow arrow from `graph B`). 
+3. The diagram MUST COMMUTE!
 
 ```{image} assets/Ch5/13a.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
-<center> Commuting square of pushout </center>
+<center> Commuting square of a `pushout` </center>
 
 :::
 
-### Combining Graphs along overlap
+### Pass 2: Universal Property
 
-While not all graphs can make up such a commuting square of pushout, there can more than one graph that can produce a commuting square.
+While not all graphs can make up such a commuting square of `pushout`, there can more than one graph that can produce a commuting square.
 
 :::{admonition} Puzzle
 
 Find at least two graphs which will make the diagram commute. 
-
-(a diagram)
-
-:::{admonition} Solution 
-:class: dropdown
-
-```{div} wrapper 
-Possible solutions 
-```
-
-:::
-
-As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we must narrow down further. We will follow the same technique of asking other graphs, 
-
-> *What is your relationship with the pushout?*
-
-Now, we have to find graphs to whom this question can be asked. We have already covered Graph-2, Graph-3, Graph-1. There is another set of graphs are familiar with -- all those graphs which satisfy the commuting square of a pushout. The pushout we are looking for is inside this set! Do you agree?
-
-To spot the pushout inside this set, we are going to do step outside the game for a moment and sharpen our instinct about pushouts. For this, we will move say concretely what Graph-1, Graph-2 and Graph-3!
-
-```{image} assets/Ch5/6.png
-:alt: Whoopsy!
-:width: 500px
-:align: center
-```
-
-Graph-1 embeds in Graph-2 and Graph-3 as follows:
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
@@ -260,11 +244,33 @@ Graph-1 embeds in Graph-2 and Graph-3 as follows:
 :align: center
 ```
 
-[NEEDS TO BE REVISED FROM HERE]
+:::
 
-A few possible choices of colimit graphs of the above diagram are: 
+As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we must narrow down further. We will follow the same technique of asking other graphs, 
 
-Is the following a commuting diagram?
+> *What is your relationship with the `pushout`?*
+
+So, to which graphs should we ask the above question? We have already covered `graph A`, `graph B`, `overlap` and have ended up with some potential candidates. The `pushout` we are looking for is inside this candidates set!  We shall ask the graphs in set, "What is your relationship with the `pushout`?"
+
+To do so, we are going to do step outside the game for a moment and sharpen our instinct about `pushout`s. For this, we will say concretely what `overlap`, `graph A` and `graph B`!
+
+```{image} assets/Ch5/6.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+`overlap` embeds in `graph A` and `graph B` as follows:
+
+```{image} assets/Ch5/1.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+A few possible choices of `pushout` graphs of the above diagram are: 
+
+(1) Is the following a commuting diagram?
 
 ```{image} assets/Ch5/7a.png
 :alt: Whoopsy!
@@ -272,7 +278,7 @@ Is the following a commuting diagram?
 :align: center
 ```
 
-Is the following a commuting diagram?
+(2) Is the following a commuting diagram?
 
 ```{image} assets/Ch5/7b.png
 :alt: Whoopsy!
@@ -280,7 +286,7 @@ Is the following a commuting diagram?
 :align: center
 ```
 
-Is the following a commuting diagram?
+(3) Is the following a commuting diagram?
 
 ```{image} assets/Ch5/7c.png
 :alt: Whoopsy!
@@ -288,7 +294,7 @@ Is the following a commuting diagram?
 :align: center
 ```
 
-Is the following a commuting diagram?
+(4) Is the following a commuting diagram?
 
 ```{image} assets/Ch5/7d.png
 :alt: Whoopsy!
@@ -300,26 +306,31 @@ We invite the reader to to have a careful look at each choice and convince onese
 
 :::{admonition} Pause and Ponder! 
 
-Which one the graphs inside the yellow boxes will be your choice of the colimit graph?
+Which one the graphs inside the yellow boxes will be your choice for `pushout`?
 
 :::
 
-We want the colimit graph to be “the most natural choice” among all the choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort (to integrate)” or the “path of least resistance” (as nature does). 
+We want the `pushout` to be “the most natural choice” among all possible choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort (to integrate)” or the “path of least resistance” (as nature does). 
 
-**In the above graphs what is your most natural choice for the colimit graph and why?** 
+**In the above graphs, which one is your most natural choice for a `pushout` and why?** 
 
-While I will reveal my choice in a moment, let us have a look at each of the possible choices of colimit graphs. 
+While we will reveal our choice in a moment, let us have a look at each one of the choices. 
 
-- In (a), except for the overlaps, the vertices and edges from Graph-2, and the vertices and the edges from Graph-3 are clearly distinguishable. The information of Graph-2 and Graph-3 remain intact (except at the overlap).
-- In (b) the boundaries of Graph-2 and Graph-3 fade beyond the overlap region.
-- In (c), there is an extra vertex and an edge.
-- Choice (d) represents maximal collapse of information - all the vertices and edges from Graph-2 and Graph-3 are squeezed into a single vertex and edge in the possible graph.
+- In `choice 1`, except for the overlaps, the vertices and edges from `graph A`, and the vertices and the edges from `graph B` are clearly distinguishable. The information of `graph A` and `graph B` remain intact (except at the overlap).
+- In `choice 2`, the boundaries of `graph A` and `graph B` fade beyond the overlap region.
+- In `choice 3`, there is an extra vertex and an edge.
+- `choice 4` represents maximal collapse of information - all the vertices and edges from `graph A` and `graph B` are squeezed into a single vertex and edge in the possible graph.
 
- Choice (a) has the feeling of the most lazy choice since Graph-2 and Graph-3 are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like (b) and (d), or to add extra information like (c). Indeed (a) is our choice! 
+`choice 1` has the feeling of *the most lazy choice* since `graph A` and `graph B` are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like `choice 2` and "choice D", or to add extra information like `choice 3`. Indeed `choice 1` is our choice! 
 
-We shall now make our intuition of “least effort” precise by asking how choice (a) relates to all the other possible candidates! Remember, the rules of the game do not allow us to directly talk about the vertices and the edges of the colimit. So we need to find the criteria to narrow down “least effort” graphs from other potential candidates by asking "How does least effort graphs relate to other potential candidates?"
+We shall now make our intuition of *least effort* precise by asking, 
 
-**Let us compare choice (a) with choice (b)**
+> What is the relationship of `choice 1` with all the other choices, and vice versa?
+
+Let's begin our quest for these relationships!
+
+---
+|| `choice 1` **vs** `choice 2` ||
 
 ```{image} assets/Ch5/8a.png
 :alt: Whoopsy!
@@ -327,7 +338,9 @@ We shall now make our intuition of “least effort” precise by asking how choi
 :align: center
 ```
 
-We have two commuting diagrams with Embedding A and Embedding B as common arrows. Next we would like to see how (a) and (b) are related. 
+
+
+We have two commuting diagrams - one with `choice 1` and another one with `choice 2`. Next we see how they are related with each other.
 
 ```{image} assets/Ch5/8b.png
 :alt: Whoopsy!
@@ -335,9 +348,11 @@ We have two commuting diagrams with Embedding A and Embedding B as common arrows
 :align: center
 ```
 
-There are many graph morphisms from graph (a) to graph (b). But there is exactly one choice that will make the triangle formed by the two blue arrows and the dotted arrow commute. This choice is again the most natural one, mapping blue to blue, green to green, orange to orange. The arrow from (a) to (b) is dotted to signify that there is only one such embedding. 
+There are many graph morphisms from graph `choice 1` to graph `choice 2`. But there is exactly one arrow (dotted) that will make the 2 three-sided diagrams (2 triangles) formed by two yellow arrows and the dotted arrow commute. This dotted arrow is again the most intuitive one, mapping blue vertices/edges to blue, green vertices/edges to green, orange to orange. This arrow from `choice 1` to `choice 2` is dotted to signify that there is only one such morphism. 
 
-> Commuting diagrams are like ecosystems in balance. The above diagram has 4 ecosystems pasted together (including the 2 squares starting at Graph-1). Any change in one ecosystem will create a change in the other. When the “most natural” information flow along the morphisms, all the ecosystems are in balance.
+> The above diagram has 4 commuting diagrams pasted together (including the 2 squares [^2] starting at `overlap`). Commuting diagrams are like ecosystems in balance. When ecosystems are pasted together along their edges, any change in one ecosystem will create a change in the other. When the “most natural” information flows along the morphisms, all the ecosystems are in balance.
+
+[^2]: A four-sided commuting diagram
 
 ```{image} assets/Ch5/8c.png
 :alt: Whoopsy!
@@ -345,13 +360,12 @@ There are many graph morphisms from graph (a) to graph (b). But there is exactly
 :align: center
 ```
 
-Can we embed (b) in (a) such that the diagrams (1), (2), (3) will commute simultaneously? Yes, there is no such embedding — the orange-green vertex of (b) can embed in either the orange or the green vertex of (a). It embeds in the orange vertex, then diagram (2) does not commute. If it embeds in the green vertex, then diagram (3) does not commute. Since the choice (b) has coarse-grained the information of Graph-2 and Graph-3, the information cannot be fine-grained again!
+Now for the other direction, are there maps from `choice 2` to `choice 1` all possible closed shapes in the above diagram will commute simultaneously? Nope, there is no such embedding — the orange-green vertex of `choice 2` can be mapped to either the orange or the green vertex of `choice 1`. If it is mapped into the orange vertex, then the upper triangle does not commute. If it is mapped into the green vertex, then the lower triangle does not commute. Since `choice 2` has coarse-grained the information of `graph A` and `graph B`, the information cannot be fine-grained again! So no map in the backwards direction!
 
-**Score** Choice (a): 1,  Choice (b): 0
+**Score** `choice 1`: 1,  `choice 2`: 0
 
-**Let us compare choice (a) with choice (c)**
-
-Again, there is exactly one (obvious) choice of morphism from (a) to (c) that will make the  yellow and the blue triangles commute. 
+---
+|| `choice 1` **vs** `choice 3` ||
 
 ```{image} assets/Ch5/9b.png
 :alt: Whoopsy!
@@ -359,7 +373,7 @@ Again, there is exactly one (obvious) choice of morphism from (a) to (c) that wi
 :align: center
 ```
 
-However, there are at least two ways in which (c) embeds in (a) to make the shapes (1), (2), and (3) commute. Both these choices are equally good! The grey vertex in (c) can be mapped to two blue vertices in (a). Because, (c) has extra information, that is vertex and edge not from Graphs 1-3, there are many ways of embedding this extra information in the most lazy choice (a).
+As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 3` that will make the  yellow triangles commute. 
 
 ```{image} assets/Ch5/9c.png
 :alt: Whoopsy!
@@ -367,11 +381,15 @@ However, there are at least two ways in which (c) embeds in (a) to make the shap
 :align: center
 ```
 
-**Score** Choice (a): 1,  Choice (c): 0
+However, there are at least two ways in `choice 3` maps into `choice 1` to make the triangles commute. The grey vertex in `choice 3` can be mapped to one of the two blue vertices in `choice 1`. Both these choices are equally good! Because, `choice 3` has extra information, that is a vertex and an edge neither from `graph A` nor from `graph B`, there is more than one way of mapping this extra information into the most lazy `choice 1`.
 
-**Let us compare (a) with (d)**
 
-There is exactly one (obvious) choice of morphism from (a) to (d) that will make the  yellow and the blue triangles commute. 
+
+**Score** `choice 1`: 1, `choice 4`: 0
+
+---
+|| `choice 1` **vs** `choice 4` ||
+
 
 ```{image} assets/Ch5/10b.png
 :alt: Whoopsy!
@@ -379,7 +397,7 @@ There is exactly one (obvious) choice of morphism from (a) to (d) that will make
 :align: center
 ```
 
-However, (d) does not embed in (a) because (d) has  a self-loop and can embed only in graphs with at least one self-loop. 
+As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 4` that will make the  yellow triangles commute. 
 
 ```{image} assets/Ch5/10c.png
 :alt: Whoopsy!
@@ -387,24 +405,44 @@ However, (d) does not embed in (a) because (d) has  a self-loop and can embed on
 :align: center
 ```
 
-**Score** Choice (a): 1,  Choice (d): 0
+However, `choice 4` does not embed in `choice 1` because of its self-loop. 
 
-Our choice of colimit graph having such ‘universal’ nature is an indication that we got our plumbing right and now things will flow smoothly! In category theory, this is called a universal property. 
+**Score** `choice 1`: 1,  `choice 4`: 0
+
+Our choice of a `pushout` graph having such <mark>universal nature</mark> is an indication that we got our plumbing right and things will flow smoothly! In category theory, this is called a universal property of an object. 
+
+:::{tip}
+Universal property is the mathematical name for "harmony" of relationships.
+:::
+
 
 Whewww!! That is some hard core relational thinking!
 
-### Uniqueness of the colimit
+:::{admonition} Key points
+:class: tip
 
-Let us review what we have done so far! In this game, to begin with, a guess of a colimit graph could be any graph in the space of all possible graphs. Since we do not know what this graph is, we will name this as “Graph X”. 
+`pushout`s satisfy the universal property having a unique arrow into any other graph that will make a commuting square with the blue arrows!
 
-By asking the first question, we narrowed down the possible set of guesses from the space of all graphs to those graphs which makes  commute.
+```{image} assets/Ch5/8b.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+:::
+
+### Pass 3: Uniqueness
+
+We have progressed quite a bit! Let us review our progress so far! In this game, to begin with, a `pushout` could be any graph in the space of all possible graphs. 
 
 ```{image} assets/Ch5/13a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
-By asking the second question, we narrowed down the guesses further to those graphs which has exactly one embedding for any other choice that makes the previous diagram commute. The embedding makes diagrams (1) and (2) commute simultaneously. 
+
+**Pass 1: Commuting square**:- By asking `overlap`, `graph A`, and `graph B`, "What is your relationship with the `pushout`?", we narrowed down a set of candidates for the `pushout` from the space of all graphs. Each one of these candidates (`graph X`) make the above diagram commute!
+
 
 ```{image} assets/Ch5/13b.png
 :alt: Whoopsy!
@@ -412,13 +450,23 @@ By asking the second question, we narrowed down the guesses further to those gra
 :align: center
 ```
 
-The final question to find “THE colimit” is that ***if there is only one choice of graph which satisfies requirement 1 and requirement 2***. 
+**Pass 2: Universal property**:- By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two yellow triangles (in the above diagram) commute simultaneously. 
 
-Time to answer the final question: 
+Now, 
 
-Suppose there are two choices that satisfies the requirements 1 and 2.  Lets called these call these graphs “X1” and “X2”
+> We repeat the same procedure of asking "What is your relationship with the `pushout`?" on the remaining candidates (candidates which satisfy both the requirements)! 
 
-Because X1 is universal, X1 has a unique embedding into X2. The reason for using colored arrows into Graph X1 will become apparent in a moment. 
+```{image} assets/Ch5/slogan.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+Our goal is to finally end up with one `pushout` graph!! Recall that the `pushout` we are looking for is one among the remaining candidates. 
+
+Suppose some `graph X` made it through Pass 2 along with the `pushout`. What is its relationship with the `pushout`?
+
+Both `graph X` and the `pushout` satisfy the commuting square requirement of Pass 1. However, `graph X` is universal (satisfies the universal property). So, `graph X` must have a unique map into the `pushout`. 
 
 ```{image} assets/Ch5/16b.png
 :alt: Whoopsy!
@@ -426,7 +474,7 @@ Because X1 is universal, X1 has a unique embedding into X2. The reason for using
 :align: center
 ```
 
-Because X2 is universal, X2 has a unique embedding into X1. 
+However, the `pushout` is also universal. So it must have a unique map into `graph X`.
 
 ```{image} assets/Ch5/16a.png
 :alt: Whoopsy!
@@ -434,9 +482,9 @@ Because X2 is universal, X2 has a unique embedding into X1.
 :align: center
 ```
 
-However, relationships between Graphs X1 and X2 tells us that these two unique embeddings are inverse of each of other!! If are interested in the reasoning, check the box below. 
+However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the `pushout` and `graph X` are inverse of each other -- isormorphisms (If are interested in the reasoning, check the box below. )! In other words, THE `pushout` AND `graph X` ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!
 
-:::{admonition} Why are the unique embeddings inverses of each other?
+:::{admonition} Why the two unique maps are isomorphisms?
 :class: dropdown
 
 ````{div} wrapper 
@@ -481,24 +529,36 @@ Similarly, we can prove that “Graph X2 —> Graph X1 —> Graph X2” and “b
 :::
 
 
-That is, graphs X1 and X2 are “practically the same” (This is NOT a requirement but a consequence of the existing requirements on relationships). For practical purposes, any graph that satisfies requirements 1 and 2 is the colimit graph we are looking for!!
+:::{important}
+
+Note that Pass 3 did NOT impose any requirement like Pass 1 and Pass 2 to narrow down candidates. The result of Pass 3 that all candidates which made through Pass 1 and Pass 2 are isomorphic is a consequence of the existing requirements. 
+
+:::
+
+:::{admonition} Key points
+:class: tip
+
+A pushout is any graph which makes it through Pass 2 (and Pass 1).
+
+:::
 
 
-## 5.3 Collecting it all together
 
-The goal of our dumb charades game is to say “what is colimit graph” without talking about its connectivity (vertices and edges). We used the relationships between graphs and commuting diagrams to describe what the colimit graph of a diagram must look like! Let us summarize our description of colimit of a diagram. 
+## 5.4. What is a pushout?
 
-We start with a graph which embeds into two graphs:
+The goal game was to say describe the `pushout` of an overlap diagram is without talking about its connectivity (vertices and edges). We used the relationships between various graphs and the `pushout` to describe what the `pushout` must be! Let us summarize our description of `pushout` of an overlap diagram. 
+
+We start with `overlap` with two radiating morphisms specifying the common vertices and edges of `graph A` and `graph B`. We call this an *overlap diagram*.
 
 ```{image} assets/Ch5/19a.png
 :alt: Whoopsy!
-:width: 450px
+:width: 350px
 :align: center
 ```
 
-What we compute is a graph called “colimit” which satisfies the following requirements:
+We compute the `pushout` of an overlap diagram. The `pushout` is a graph which satisfies:
 
-**Requirement 1**: The square commutes
+**Pass 1: Commuting square** :-  The following square must commute.
 
 ```{image} assets/Ch5/19b.png
 :alt: Whoopsy!
@@ -506,7 +566,7 @@ What we compute is a graph called “colimit” which satisfies the following re
 :align: center
 ```
 
-**Requirement 2**: For any choice of graph which satisfies requirement 1, there is exactly one way (a unique) embedding of the colimit into that choice. The triangles made by the embedding commute. 
+**Pass 2: Universal property**: For any other choice of graph which satisfies Pass 1's requirement, there is exactly one (a unique) map from the `pushout` into that choice such that yellow triangles commute. 
 
 ```{image} assets/Ch5/19c.png
 :alt: Whoopsy!
@@ -514,20 +574,30 @@ What we compute is a graph called “colimit” which satisfies the following re
 :align: center
 ```
 
-As a consequence of these requirements, all graphs which satisfy both these requirements **are “practically the same”**. 
+As a consequence of these requirements, all graphs which satisfy both these requirements **are “practically the same”**.  
 
 
-> Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.  
+```{image} assets/Ch5/certificate.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+
+:::{admonition} Key points
+:class: tip
+
+Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.  
 
 In this sense, relational thinking is non-invasive!
 
+:::
 
+## 5.5. Puzzle time! 
 
-## 5.4 Time for pen and paper! 
+Let us compute the `pushout` of the following diagrams.
 
-Let us compute colimit for the following diagrams.
-
-**Puzzle 1. Colimit using a single vertex**
+**Puzzle 1. Pushout using a single vertex**
 ```{image} assets/Ch5/20a.png
 :alt: Whoopsy!
 :width: 500px
@@ -547,9 +617,9 @@ Let us compute colimit for the following diagrams.
 :::
 
 
-**Puzzle 2. Colimit using a single edge**
+**Puzzle 2. Pushout using a single edge**
 
-This one is a little tricky, because the two vertices (”A” and “B”) in Graph-1 embeds into the same vertex of Graph-3 (”A,B”), thereby coarse-graining the information in Graph-1. However, vertices “A” and “B” in Graph-1 embeds in separate vertices in Graph-2. So, how would the overlap region look in the colimit graph? 
+This one is a little tricky, because the two vertices (”A” and “B”) in `overlap` embeds into the same vertex of `graph B` (”A,B”), thereby coarse-graining the information in `overlap`. However, vertices “A” and “B” in `overlap` embeds in separate vertices in `graph A`. So, how would the overlap region look in the `pushout` graph? 
 
 ```{image} assets/Ch5/21a.png
 :alt: Whoopsy!
@@ -561,7 +631,7 @@ This one is a little tricky, because the two vertices (”A” and “B”) in G
 :class: dropdown
 
 ```{div} wrapper 
-Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has only coarse-grained embedding of Graph-1, the embedding of Graph-2 in the colimit, coarse-grains the overlap region of Graph-2 to match the overlap region of Graph-3. 
+Since `graph A` and `graph B` has to agree in the overlap region, and `graph B` has only coarse-grained embedding of `overlap`, the embedding of `graph A` in the `pushout`, coarse-grains the overlap region of `graph A` to match the overlap region of `graph B`. 
 
 ```{image} assets/Ch5/21b.png
 :alt: Whoopsy!
@@ -572,7 +642,7 @@ Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has on
 :::
 
 
-**Puzzle 3. Colimit using a empty graph**
+**Puzzle 3. Pushout using a empty graph**
 
 In the beginning of this chapter, we said that combining graphs is analogous to adding numbers. Can you see how this problem demonstrates this analogy?
 
@@ -593,13 +663,13 @@ In the beginning of this chapter, we said that combining graphs is analogous to 
 :width: 500px
 :align: center
 ```
-When there is no glue (Graph 1 is empty), the colimit just has Graph-2 and Graph-3 side by side with no bridge in between them. Graph-2 has three vertices and no edges. Graph-3 has two vertices and no edges. The colimit graph has 5 vertices which is the sum of vertices in Graph-2 and vertices in Graph-3. Sum of two numbers is just a colimit . Isn't that cool ?!
+When there is no glue (graph O is empty), the `pushout` just has `graph A` and `graph B` side by side with no bridge in between them. `graph A` has three vertices and no edges. `graph B` has two vertices and no edges. The `pushout` has 5 vertices which is the sum of vertices in `graph A` and vertices in `graph B`. Sum of two numbers is just a `pushout` . Isn't that cool ?!
 ```
 :::
 
 
 
-**Ex 4. Finite colimits**
+**Ex 4. Finite Pushout**
 
 Let us suppose, we want to glue more than two graphs together! That seems to be a reasonable ask! So we got a diagram like the one below. 
 
@@ -609,15 +679,13 @@ Let us suppose, we want to glue more than two graphs together! That seems to be 
 :align: center
 ```
 
-What are the requirements for a graph to be colimit of the above diagram?
+What are the requirements for a graph to be `pushout` of the above diagram?
 
 Clue: Extend the requirements in Section 5.4 from 2 to n graphs! 
 
-## 5.5 Operationalizing computing colimits
+## 5.6. Computing pushouts in Algebraic Julia
 
-WORK IN PROGRESS.. 
-
-In the previous section, we hand-computed the colimits of the diagrams. This section shows how we can program a computer to compute colimits using Algebraic Julia. 
+In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using Algebraic Julia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!
 
 **Solving Ex 1.**
 +++
@@ -631,34 +699,34 @@ using Catlab
 # Graph with a single isolated vertex
 Overlap1 = SymmetricGraph(1)
 # Create a triangle
-G2 = cycle_graph(SymmetricGraph, 3)
+graph-A = cycle_graph(SymmetricGraph, 3)
 # Initialize this graph as an isolated edge
-G3 = path_graph(SymmetricGraph, 2)
+graph-B = path_graph(SymmetricGraph, 2)
 # Then modify it to add a loop to vertex #2
-add_edge!(G3, 2, 2)
+add_edge!(graph-B, 2, 2)
 
 # There are three possible morphisms from the isolated vertex into a graph
 # with three vertices. Because these three vertices are equivalent due to
 # the symmetry of the triangle, it doesn't matter which one we pick. So,
 # rather than manually specifying how Overlap1 matches to parts of G2, we
 # use the automatic homomorphism search which will pick an arbitrary one.
-G2_map = homomorphism(Overlap1, G2)
+graph-A_map = homomorphism(Overlap1, graph-A)
 
 # Because the two vertices of G3 are *not* equivalent (one has a loop,
 # the other doesn't) we have to be more precise in our construction of
 # the map from Overlap1 into G3. The only data required is saying where
 # the vertex of Overlap1 is mapped to. We send it to vertex#1, which is
 # the one which does *not* have a loop.
-G3_map = ACSetTransformation(Overlap1, G3; V=[1])
+graph-B_map = ACSetTransformation(Overlap1, graph-B; V=[1])
 
 # Glue together G2 and G3 along their common overlap, Overlap1
-colim = colimit(Span(G2_map, G3_map));
+pushout-graph = colimit(Span(graph-A_map, graph-B_map));
 
 # Visualize the result
-to_graphviz(apex(colim))
+to_graphviz(apex(pushout))
 ```
 
-Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
+Use the code cell at the end of the section to visualize `graph A` and `graph B`.
 
 **Solving Ex 2.**
 +++
@@ -672,11 +740,11 @@ using Catlab
 # Graph with a single isolated vertex
 Overlap1 = SymmetricGraph(1)
 # Create a triangle
-G2 = cycle_graph(SymmetricGraph, 3)
+graph-A = cycle_graph(SymmetricGraph, 3)
 # Initialize this graph as an isolated edge
-G3 = path_graph(SymmetricGraph, 2)
+graph-B = path_graph(SymmetricGraph, 2)
 # Then modify it to add a loop to vertex #2
-add_edge!(G3, 2, 2)
+add_edge!(graph-B, 2, 2)
 
 # Our overlap is an isolated edge
 Overlap2 = path_graph(SymmetricGraph, 2)
@@ -685,7 +753,7 @@ Overlap2 = path_graph(SymmetricGraph, 2)
 # which picks an edge of the triangle, G2) are equivalent, so
 # we don't need to pick a specific one: we let the automatic
 # search algorithm find it for us.
-G2_map = homomorphism(Overlap2, G2)
+graph-A_map = homomorphism(Overlap2, graph-A)
 
 # Again, we need to be more precise in how we map into G3
 # because it matters whether or not the overlapping edge is
@@ -694,17 +762,17 @@ G2_map = homomorphism(Overlap2, G2)
 # keyword). In this case, the morphism is fully determined
 # once we declare that both vertices of Overlap2 are sent
 # to vertex#2 in G3.
-G3_map = homomorphism(Overlap2, G3; initial=(V=[2, 2],))
+graph-B_map = homomorphism(Overlap2, graph-B; initial=(V=[2, 2],))
 
 # Once again we glue together G2 and G3 along Overlap2
-colim = colimit(Span(G2_map, G3_map));
+pushout = colimit(Span(graph-A_map, graph-B_map));
 
-to_graphviz(apex(colim))
+to_graphviz(apex(pushout))
 ```
 
 +++
 
-Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
+Use the code cell at the end of the section to visualize `graph A` and `graph B`.
 
 **Solving Ex 3.** 
 
@@ -717,33 +785,33 @@ Use the code cell at the end of the section to visualize Graph-2 and Graph-3.
 using Catlab
 
 # The graphs here are all discrete (no edges)
-Overlap3, G2, G3 = SymmetricGraph(0), SymmetricGraph(3), SymmetricGraph(2)
+Overlap3, graph-A, graph-B = SymmetricGraph(0), SymmetricGraph(3), SymmetricGraph(2)
 
 # morphisms out of an empty graph are themselves 'empty'
 # (they require no data other than the domain and codomain)
-G2_map = ACSetTransformation(Overlap3, G2)
-G3_map = ACSetTransformation(Overlap3, G3)
+graph-A_map = ACSetTransformation(Overlap3, graph-A)
+graph-B_map = ACSetTransformation(Overlap3, graph-B)
 # We glue together the discrete graphs along the empty overlap
-colim = colimit(Span(G2_map, G3_map));
+pushout = colimit(Span(graph-A_map, graph-B_map));
 
-to_graphviz(apex(colim))
+to_graphviz(apex(pushout))
 
 ```
 
 +++
 
-Use the code cell below to visualize Graph-2 and Graph-3.
+Use the code cell below to visualize `graph A` and `graph B`.
 
 +++
 
 ```{code-cell}
-# Use this code cell for visualizing Graph-2 and Graph-3
+# Use this code cell for visualizing `graph A` and `graph B`
 
-# Uncomment the below line (remove the sharp) and run the code to view Graph-2
-# to_graphviz(G2) 
+# Uncomment the below line (remove the sharp) and run the code to view `graph A`
+# to_graphviz(graph-A) 
 
-# Uncomment the below line (remove the sharp) and run the code to view Graph-2
-# to_graphviz(G3) 
+# Uncomment the below line (remove the sharp) and run the code to view `graph A`
+# to_graphviz(graph-B) 
 ```
 
 +++
@@ -752,11 +820,13 @@ Use the code cell below to visualize Graph-2 and Graph-3.
 ## 5.6 Summary 
 Congratulations!! You have crossed Chapter 5 successfully!
 
-Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by the means of graph colimits. 
+Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts. 
 
 It only gets easier from here!!
 
+[FROM HERE, THE NEXT TWO SECTIONS MUST BE INTRODUCED IN CHAPTER 4.]
 
+We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.
 
 # Move content below to Chapter 4
 
@@ -778,7 +848,7 @@ Let us suppose we have two graphs and a graph embedding between them. So we have
 :align: center
 ```
 
-The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in Graph-1 is preserved by the embedding. 
+The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in `overlap` is preserved by the embedding. 
 
 ```{image} assets/Ch3/2-commuting-diagram-2.png
 :alt: Whoopsy!
@@ -786,7 +856,7 @@ The following two commuting diagrams of graph embedding tells us how these syste
 :align: center
 ```
 
-The second diagram tells that the target of each edge in Graph-1 is preserved by the embedding.
+The second diagram tells that the target of each edge in `overlap` is preserved by the embedding.
 
 ```{image} assets/Ch3/2-commuting-diagram-3.png
 :alt: Whoopsy!
@@ -794,7 +864,7 @@ The second diagram tells that the target of each edge in Graph-1 is preserved by
 :align: center
 ```
 
-Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an *origin* vertex which has only outgoing arrows (Edges of Graph-1), and a *destination* vertex which has only incoming arrows (Vertices of Graph-2). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of Graph-1”, following any of the path, will lead to the same vertex in “Vertices of Graph-2”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.
+Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an *origin* vertex which has only outgoing arrows (Edges of `overlap`), and a *destination* vertex which has only incoming arrows (Vertices of `graph A`). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of `overlap`”, following any of the path, will lead to the same vertex in “Vertices of `graph A`”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.
 
 Let us see have a closer look at the first commuting diagram.
 
@@ -804,9 +874,9 @@ Let us see have a closer look at the first commuting diagram.
 :align: center
 ```
 
-For any edge in Graph-1, following ‘Path 1’ will lead to the image of its source vertex in Graph-2. For the same edge, following ‘Path 2’ leads to the source vertex of its image in Graph-2. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are *aware* of the source and the target maps of Graph-1 and Graph-2.
+For any edge in `overlap`, following ‘Path 1’ will lead to the image of its source vertex in `graph A`. For the same edge, following ‘Path 2’ leads to the source vertex of its image in `graph A`. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are *aware* of the source and the target maps of `overlap` and `graph A`.
 
-Note that there can be any number of graph embeddings between Graph-1 and Graph-2. But, all of them follow the commuting diagrams.
+Note that there can be any number of graph embeddings between `overlap` and `graph A`. But, all of them follow the commuting diagrams.
 
 Commuting diagrams are more general than for just graph embeddings. Commuting diagrams are of any closed shape like a triangle or a square and are non-cyclic. The arrows of a commuting diagram can belong to any rung: do you remember this picture from Chapter 1?
 
@@ -825,7 +895,7 @@ A commuting diagram in rung 4 may look like this:
 :width: 400px
 :align: center
 ```
-Graph 1 is the origin and Graph 3 is the destination. The above diagram says that embedding the choices of paths to embed Graph-1 inside Graph-3 are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:
+graph O is the origin and graph B is the destination. The above diagram says that embedding the choices of paths to embed `overlap` inside `graph B` are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:
 
 ```{image} assets/Ch3/2-commuting-diagram-6.png
 :alt: Whoopsy!
@@ -834,7 +904,7 @@ Graph 1 is the origin and Graph 3 is the destination. The above diagram says tha
 ```
 We know that each embedding has an arrows map and vertices map. The commuting diagram tells us that:
 
-1.  For any vertex in Graph-1 (drawn as the little blue ball), applying the green embedding to it produces a vertex in Graph-3 (green circle surrounding the black circle). Or applying the red embedding produces a vertex in Graph-2 (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in Graph-3 (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in Graph-3 are the same.
+1.  For any vertex in `overlap` (drawn as the little blue ball), applying the green embedding to it produces a vertex in `graph B` (green circle surrounding the black circle). Or applying the red embedding produces a vertex in `graph A` (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in `graph B` (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in `graph B` are the same.
 
 ```{image} assets/Ch3/2-same-vertex-2.png
 :alt: Whoopsy!
@@ -842,7 +912,7 @@ We know that each embedding has an arrows map and vertices map. The commuting di
 :align: center
 ```
 
-2.  For any edge in Graph-1 (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in Graph-3.
+2.  For any edge in `overlap` (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in `graph B`.
 
 ```{image} assets/Ch3/2-same-edge.png
 :alt: Whoopsy!

@@ -443,17 +443,17 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 5: Combining Graphs</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2. Combining graphs using memes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shape-of-the-overlap">The shape of the overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-an-overlap">Combining graphs along an overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-overlap">Combining Graphs along overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueness-of-the-colimit">Uniqueness of the colimit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-1-commuting-square">Pass 1: Commuting square</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-2-universal-property">Pass 2: Universal Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-3-uniqueness">Pass 3: Uniqueness</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-it-all-together">5.3 Collecting it all together</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-for-pen-and-paper">5.4 Time for pen and paper!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operationalizing-computing-colimits">5.5 Operationalizing computing colimits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.4. What is a pushout?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.5. Puzzle time!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
 </ul>
 </li>
@@ -481,201 +481,223 @@ document.write(`
 <p>This chapter will engage you in deep relational thinking!</p>
 </div>
 <section id="introduction">
-<h2>5.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always <strong>preserves the connectivity</strong> of the domain. Finally, excitingly, with graph morphisms, we enter the “universe” where we can find every possible “graph-world” and the every possible relationships between these worlds. In this chapter, we “live” inside this universe where the only entities are graphs and morphisms between them.</p>
-<p>Inside this universe, we are interested in the mechanism of combining two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.</p>
+<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always <strong>preserves the connectivity</strong> of the domain. Finally, excitingly, with graph morphisms, we enter the “universe” where we can find every possible “graph-world” and every possible relationships between these worlds. In this chapter, we “live” inside this universe where the only entities are graphs and morphisms between them.</p>
+<p>Inside this universe, we are interested to know how to combine two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.</p>
 <p>As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.</p>
 <a class="reference internal image-reference" href="_images/DGdishes.png"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.png" style="width: 800px;" /></a>
-<p>In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and myself (co-authors of this book). Encoding these friendships as graphs, we got:</p>
+</br>
+<p>In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and Priyaa (co-authors of this book). Encoding these friendships as graphs, we get:</p>
 <a class="reference internal image-reference" href="_images/3b.png"><img alt="Whoopsy!" class="align-center" src="_images/3b.png" style="width: 560px;" /></a>
 <p>Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
 <a class="reference internal image-reference" href="_images/3c.png"><img alt="Whoopsy!" class="align-center" src="_images/3c.png" style="width: 560px;" /></a>
+</br>
 <p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
-<p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex. In practice, combining such graphs using pen and paper is out question! However, it is the same common sense in play combining even the most complex graphs <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <a class="reference internal image-reference" href="_images/complex-graph.png"><img alt="Whoopsy!" class="align-center" src="_images/complex-graph.png" style="width: 450px;" /></a>
 <center> A graph generated by real-world data </center>
 </br>
-<p>The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking. Relational thinking is popularly known as category theory in the mathematics community!</p>
-<p>The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A <em>combined</em> graph needs to be aware of graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!</p>
-<p>[FROM HERE, THE NEXT TWO SECTIONS MUST BE INTRODUCED IN CHAPTER 4.]</p>
-<p>We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.</p>
+<p>In practice, combining such graphs using pen and paper is out question! However, it is the same common sense that is in play combining even the most complex graphs.</p>
+<p>The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)!</p>
+<p>The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A <em>combined</em> graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!</p>
 </section>
 <section id="combining-graphs-using-memes">
-<h2>5.2 Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
+<h2>5.2. Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
 <p>The two memes we will use to play this game are, 1. Commuting diagrams, and 2. Graph isomorphisms.</p>
-<p>Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play our game of dumb charades of graphs! The goal of the game is to describe what a combined graph of any two (overlapping) graphs is without saying what the vertices, edges, source and target maps of the combined graph are! Given two overlapping graphs, let us call their combined graph as the “pushout” of the two graphs along the overlap.</p>
-<p>A pushout is a graph in the space of all possible graphs. We need to spot what graph it is! We will narrow down our search step-by-step by expressing requirements of a pushout using the memes we have learnt. We will continue this process until we end up with the graph we are looking for.</p>
+<p>Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play!</p>
+<p>Let us first introduce some <strong>terminology</strong>: we call a combined graph of two overlapping graphs as their <code class="docutils literal notranslate"><span class="pre">pushout</span></code>.</p>
+<div class="attention admonition">
+<p class="admonition-title">Game description </p>
+<p><strong>Goal:</strong> To describe the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of any two (overlapping) graphs!</p>
+<p><strong>Rule:</strong> Description of a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> MUST NOT include its vertices, edges, source and target maps.</p>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (of two overlapping graphs) is a graph in the space of all possible graphs. We need to spot that graph in this space! We will narrow down our search step-by-step using the memes we have learnt. We will continue this process until we end up with the graph we are looking for.</p>
 <p>We will draw lots and lots of diagrams for this narrowing down process! Diagrams are basic to relational thinking!</p>
 <p>Let us begin!</p>
 <section id="the-shape-of-the-overlap">
 <h3>The shape of the overlap<a class="headerlink" href="#the-shape-of-the-overlap" title="Permalink to this heading">#</a></h3>
-<p>To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. Let’s call the common vertices and edges as the <em><strong>overlap</strong></em> of the two graphs. So, to combine two graphs, we need to know their overlap.</p>
-<p>We saw in previous chapters that a graph morphism identifies one graph inside another.  Let us suppose we have three graphs, and two morphisms as shown in the diagram below. Let us not worry what exactly Graph-1, Graph-2, Graph-3! Remember, we live in universe and do not peek inside graphs! The rectangles are placeholders which can receive any graph in them.</p>
+<p>To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter.</p>
+<p>We saw in previous chapters that a graph morphism identifies one graph inside another. Suppose we are given two graphs – <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. An overlap of these two graphs is specified as the diagram below: a diagram with two radiating arrows, one into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and another one into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. Graph <code class="docutils literal notranslate"><span class="pre">overlap</span></code> specifies the vertices and edges common to <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>! Note that a relational specification of common vertices and edges as shown below ensures that the overlapping region will be a graph by itself (no dangling edges)!</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 800px;" /></a>
 <p>The relationships between the graphs in the above diagram are:</p>
 <ul class="simple">
-<li><p>Graph-1 maps into Graph-2.</p></li>
-<li><p>Graph-1 maps into Graph-3.</p></li>
-<li><p>Thus, the regions in which Graph-1 embeds, Graph-2 and Graph-3 overlap.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p></li>
+<li><p>Thus, the regions in which <code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are common to the two graphs.</p></li>
 </ul>
-<p>The “overlap” acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine Graph-2 and Graph-3 into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.</p>
+<p>(The morphisms in the above diagram are injective, but in general they need not be so! Connecitivity matters!)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">overlap</span></code> acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.</p>
 <a class="reference internal image-reference" href="_images/sheets.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/sheets.jpeg" style="width: 250px;" /></a>
 <p>Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue.</p>
 <a class="reference internal image-reference" href="_images/4.png"><img alt="Whoopsy!" class="align-center" src="_images/4.png" style="width: 450px;" /></a>
-<p>With this analogy in mind, let us think of the pushout of a diagram with two graphs and their overlap as shown above. The diagram in Figure 1 has all the information about the graphs to be combined and their overlap. Hence, we say “colimit graph of a diagram” similar to how we say “sum of two numbers”.</p>
+<p>With this analogy in mind, let us think of the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of a (overlap) diagram with two radiating graph morphisms!</p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
-<p>We now know what it means for two graphs to overlap — it is a diagram of two radiating graph morphisms.</p>
+<p>A diagram with two radiating maps into two graphs is a specification of an overlap of those graphs.</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 500px;" /></a>
 <center> Overlap diagram </center> <!-- May be style this later -->
 <p>Overlapping graphs can be glued together.</p>
 </div>
 </section>
-<section id="combining-graphs-along-an-overlap">
-<h3>Combining graphs along an overlap<a class="headerlink" href="#combining-graphs-along-an-overlap" title="Permalink to this heading">#</a></h3>
-<p>Now that, we know the overlap, the next step in this game is to narrow down the candidates for the pushout. Right now, it could be any graph in the universe!</p>
-<p>We cannot talk about pushout (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the pushout from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,</p>
+<section id="pass-1-commuting-square">
+<h3>Pass 1: Commuting square<a class="headerlink" href="#pass-1-commuting-square" title="Permalink to this heading">#</a></h3>
+<p>Now that, we know the overlap, the next step in this game is to narrow down some potential candidates for the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>. Right now, it could be any graph in the universe!</p>
+<p>We cannot talk about <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,</p>
 <blockquote>
-<div><p><em>How is the pushout related to you?</em></p>
+<div><p><em>How is the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> related to you?</em></p>
 </div></blockquote>
 <blockquote>
 <div><p>An old spanish saying goes like this. <em>Tell me who your friends are, and I will tell you who you are!</em></p>
 </div></blockquote>
-<p>The most immediate candidates for this enquiry are Graph-2 and Graph-3 since the pushout is given by combining Graph-2 and Graph-3 (along Graph-1 overlap).</p>
+<p>The most immediate candidates for this enquiry are <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> since the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is given by combining <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> (along <code class="docutils literal notranslate"><span class="pre">overlap</span></code>).</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and ponder!</p>
-<p>If you are Graph-2, how do you expect to be related to the pushout?</p>
+<p>If you are <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, how do you expect yourself to be related to the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</p>
 </div>
 <p>We invite the reader to take a moment to ponder over this question using the picture below.</p>
 <a class="reference internal image-reference" href="_images/2.png"><img alt="Whoopsy!" class="align-center" src="_images/2.png" style="width: 450px;" /></a>
-<p>Since the pushout is given by glueing Graph-2 and Graph-3 along the shape of Graph-1, at the least, there must:</p>
+<p>Since the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is given by glueing <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> along the shape of <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, at the least, there must:</p>
 <ol class="arabic simple">
-<li><p>Graph-2 must map into the pushout (the cup is in the glued object).</p></li>
-<li><p>Graph-3 must map into the pushout (the handle is in the glued object).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> must map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (the cup is in the glued object).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> must map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (the handle is in the glued object).</p></li>
 </ol>
 <p>Let us add these morphisms to the overlap diagram:</p>
 <a class="reference internal image-reference" href="_images/3.png"><img alt="Whoopsy!" class="align-center" src="_images/3.png" style="width: 450px;" /></a>
-<p>Does this shape look vaguely familiar? Hurray, if this reminds of you of commuting diagrams. Let us first just look at the diagram. There are two paths from Graph-1 to the pushout.</p>
-<p>So, Graph-1 can be indentified inside the pushout in two ways:</p>
+<center> Diagram: Four arrows </center>
+</br>
+<p>Does this shape look vaguely familiar? If this reminds of you of commuting diagrams, Hurray!! Let us first just look at the diagram. There are two paths from <code class="docutils literal notranslate"><span class="pre">overlap</span></code> to the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>.</p>
+<p>So, <code class="docutils literal notranslate"><span class="pre">overlap</span></code> can be indentified inside the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> in two ways:</p>
 <ul class="simple">
-<li><p>either through Graph-2,</p></li>
-<li><p>or through Graph-3.</p></li>
+<li><p>either through <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>,</p></li>
+<li><p>or through <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p></li>
 </ul>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and ponder!</p>
-<p>Which of these is the correct way to identify Graph-1 inside the combined graph, in this context?</p>
+<p>Which one of these is the correct way to identify <code class="docutils literal notranslate"><span class="pre">overlap</span></code> inside the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</p>
 </div>
-<p>The answer is that, “Well, irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it’s the overlap.” The region in which it is mapped into is common to both Graph-2 and Graph-3 in the pushout.</p>
+<p>Do you see that ‘irrespective of the path, <code class="docutils literal notranslate"><span class="pre">overlap</span></code> IS EXPECTED TO be indentified precisely in the same region in the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> because it is common to both <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>’? Hence, the overlap must map into the same region of the pushout irrespective of the path.</p>
 <a class="reference internal image-reference" href="_images/GluedObject.png"><img alt="Whoopsy!" class="align-center" src="_images/GluedObject.png" style="width: 250px;" /></a>
 <p>In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object (blue points).  The rest of the points can be distinguished as belonging to the cup (green points) or to the handle (orange points).</p>
 <blockquote>
-<div><p>Irrespective of the path, Graph-1 IS EXPECTED TO be indentified precisely in the same region in the pushout because it’s the overlap. = The  diagram MUST COMMUTE!</p>
+<div><p>‘Irrespective of the path, <code class="docutils literal notranslate"><span class="pre">overlap</span></code> IS EXPECTED TO be indentified precisely in the same region in the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> because it is common to both <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>’ = The  diagram with four arrows MUST COMMUTE!</p>
 </div></blockquote>
-<p>All these amounts to saying that “the diagram MUST COMMUTE! For any vertex (or edge) in Graph-1, both the paths must lead to the same vertex (or edge) in the pushout.</p>
-<p>Thus, our enquiry to Graph-2 and Graph-3 have resulted in a condition that the pushout needs to satisfy!</p>
-<div class="admonition-key-point admonition">
-<p class="admonition-title">Key point</p>
+<p>Thus, our enquiry to <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> have resulted in a condition that a candidate for <code class="docutils literal notranslate"><span class="pre">pushout</span></code> MUST satisfy! That is, “Diagram: Four arrows” must commute.</p>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key points</p>
 <ol class="arabic simple">
-<li><p>Graph-2 must map into the pushout.</p></li>
-<li><p>Graph-3 must map into the pushout.</p></li>
-<li><p>The diagram with these two maps MUST COMMUTE!</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> must map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (yellow arrow from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> must map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (yellow arrow from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>).</p></li>
+<li><p>The diagram MUST COMMUTE!</p></li>
 </ol>
 <a class="reference internal image-reference" href="_images/13a.png"><img alt="Whoopsy!" class="align-center" src="_images/13a.png" style="width: 450px;" /></a>
-<center> Commuting square of pushout </center>
+<center> Commuting square of a `pushout` </center>
 </div>
 </section>
-<section id="combining-graphs-along-overlap">
-<h3>Combining Graphs along overlap<a class="headerlink" href="#combining-graphs-along-overlap" title="Permalink to this heading">#</a></h3>
-<p>While not all graphs can make up such a commuting square of pushout, there can more than one graph that can produce a commuting square.</p>
+<section id="pass-2-universal-property">
+<h3>Pass 2: Universal Property<a class="headerlink" href="#pass-2-universal-property" title="Permalink to this heading">#</a></h3>
+<p>While not all graphs can make up such a commuting square of <code class="docutils literal notranslate"><span class="pre">pushout</span></code>, there can more than one graph that can produce a commuting square.</p>
 <div class="admonition-puzzle admonition">
 <p class="admonition-title">Puzzle</p>
 <p>Find at least two graphs which will make the diagram commute.</p>
-<p>(a diagram)</p>
-<div class="dropdown admonition">
-<p class="admonition-title">Solution</p>
-<div class="wrapper docutils">
-<p>Possible solutions</p>
-</div>
-</div>
+<a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 500px;" /></a>
 </div>
 <p>As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we must narrow down further. We will follow the same technique of asking other graphs,</p>
 <blockquote>
-<div><p><em>What is your relationship with the pushout?</em></p>
+<div><p><em>What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</em></p>
 </div></blockquote>
-<p>Now, we have to find graphs to whom this question can be asked. We have already covered Graph-2, Graph-3, Graph-1. There is another set of graphs are familiar with – all those graphs which satisfy the commuting square of a pushout. The pushout we are looking for is inside this set! Do you agree?</p>
-<p>To spot the pushout inside this set, we are going to do step outside the game for a moment and sharpen our instinct about pushouts. For this, we will move say concretely what Graph-1, Graph-2 and Graph-3!</p>
+<p>So, to which graphs should we ask the above question? We have already covered <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">overlap</span></code> and have ended up with some potential candidates. The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> we are looking for is inside this candidates set!  We shall ask the graphs in set, “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?”</p>
+<p>To do so, we are going to do step outside the game for a moment and sharpen our instinct about <code class="docutils literal notranslate"><span class="pre">pushout</span></code>s. For this, we will say concretely what <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>!</p>
 <a class="reference internal image-reference" href="_images/6.png"><img alt="Whoopsy!" class="align-center" src="_images/6.png" style="width: 500px;" /></a>
-<p>Graph-1 embeds in Graph-2 and Graph-3 as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">overlap</span></code> embeds in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> as follows:</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 500px;" /></a>
-<p>[NEEDS TO BE REVISED FROM HERE]</p>
-<p>A few possible choices of colimit graphs of the above diagram are:</p>
-<p>Is the following a commuting diagram?</p>
+<p>A few possible choices of <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graphs of the above diagram are:</p>
+<p>(1) Is the following a commuting diagram?</p>
 <a class="reference internal image-reference" href="_images/7a.png"><img alt="Whoopsy!" class="align-center" src="_images/7a.png" style="width: 500px;" /></a>
-<p>Is the following a commuting diagram?</p>
+<p>(2) Is the following a commuting diagram?</p>
 <a class="reference internal image-reference" href="_images/7b.png"><img alt="Whoopsy!" class="align-center" src="_images/7b.png" style="width: 500px;" /></a>
-<p>Is the following a commuting diagram?</p>
+<p>(3) Is the following a commuting diagram?</p>
 <a class="reference internal image-reference" href="_images/7c.png"><img alt="Whoopsy!" class="align-center" src="_images/7c.png" style="width: 500px;" /></a>
-<p>Is the following a commuting diagram?</p>
+<p>(4) Is the following a commuting diagram?</p>
 <a class="reference internal image-reference" href="_images/7d.png"><img alt="Whoopsy!" class="align-center" src="_images/7d.png" style="width: 500px;" /></a>
 <p>We invite the reader to to have a careful look at each choice and convince oneself that each of these diagrams commute.</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder! </p>
-<p>Which one the graphs inside the yellow boxes will be your choice of the colimit graph?</p>
+<p>Which one the graphs inside the yellow boxes will be your choice for <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</p>
 </div>
-<p>We want the colimit graph to be “the most natural choice” among all the choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort (to integrate)” or the “path of least resistance” (as nature does).</p>
-<p><strong>In the above graphs what is your most natural choice for the colimit graph and why?</strong></p>
-<p>While I will reveal my choice in a moment, let us have a look at each of the possible choices of colimit graphs.</p>
+<p>We want the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> to be “the most natural choice” among all possible choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort (to integrate)” or the “path of least resistance” (as nature does).</p>
+<p><strong>In the above graphs, which one is your most natural choice for a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> and why?</strong></p>
+<p>While we will reveal our choice in a moment, let us have a look at each one of the choices.</p>
 <ul class="simple">
-<li><p>In (a), except for the overlaps, the vertices and edges from Graph-2, and the vertices and the edges from Graph-3 are clearly distinguishable. The information of Graph-2 and Graph-3 remain intact (except at the overlap).</p></li>
-<li><p>In (b) the boundaries of Graph-2 and Graph-3 fade beyond the overlap region.</p></li>
-<li><p>In (c), there is an extra vertex and an edge.</p></li>
-<li><p>Choice (d) represents maximal collapse of information - all the vertices and edges from Graph-2 and Graph-3 are squeezed into a single vertex and edge in the possible graph.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>, except for the overlaps, the vertices and edges from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, and the vertices and the edges from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are clearly distinguishable. The information of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> remain intact (except at the overlap).</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>, the boundaries of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> fade beyond the overlap region.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code>, there is an extra vertex and an edge.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> represents maximal collapse of information - all the vertices and edges from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are squeezed into a single vertex and edge in the possible graph.</p></li>
 </ul>
-<p>Choice (a) has the feeling of the most lazy choice since Graph-2 and Graph-3 are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like (b) and (d), or to add extra information like (c). Indeed (a) is our choice!</p>
-<p>We shall now make our intuition of “least effort” precise by asking how choice (a) relates to all the other possible candidates! Remember, the rules of the game do not allow us to directly talk about the vertices and the edges of the colimit. So we need to find the criteria to narrow down “least effort” graphs from other potential candidates by asking “How does least effort graphs relate to other potential candidates?”</p>
-<p><strong>Let us compare choice (a) with choice (b)</strong></p>
-<a class="reference internal image-reference" href="_images/8a.png"><img alt="Whoopsy!" class="align-center" src="_images/8a.png" style="width: 500px;" /></a>
-<p>We have two commuting diagrams with Embedding A and Embedding B as common arrows. Next we would like to see how (a) and (b) are related.</p>
-<a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
-<p>There are many graph morphisms from graph (a) to graph (b). But there is exactly one choice that will make the triangle formed by the two blue arrows and the dotted arrow commute. This choice is again the most natural one, mapping blue to blue, green to green, orange to orange. The arrow from (a) to (b) is dotted to signify that there is only one such embedding.</p>
+<p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> has the feeling of <em>the most lazy choice</em> since <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> and “choice D”, or to add extra information like <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code>. Indeed <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> is our choice!</p>
+<p>We shall now make our intuition of <em>least effort</em> precise by asking,</p>
 <blockquote>
-<div><p>Commuting diagrams are like ecosystems in balance. The above diagram has 4 ecosystems pasted together (including the 2 squares starting at Graph-1). Any change in one ecosystem will create a change in the other. When the “most natural” information flow along the morphisms, all the ecosystems are in balance.</p>
+<div><p>What is the relationship of <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> with all the other choices, and vice versa?</p>
+</div></blockquote>
+<p>Let’s begin our quest for these relationships!</p>
+<hr class="docutils" />
+<p>|| <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> <strong>vs</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> ||</p>
+<a class="reference internal image-reference" href="_images/8a.png"><img alt="Whoopsy!" class="align-center" src="_images/8a.png" style="width: 500px;" /></a>
+<p>We have two commuting diagrams - one with <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> and another one with <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. Next we see how they are related with each other.</p>
+<a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
+<p>There are many graph morphisms from graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. But there is exactly one arrow (dotted) that will make the 2 three-sided diagrams (2 triangles) formed by two yellow arrows and the dotted arrow commute. This dotted arrow is again the most intuitive one, mapping blue vertices/edges to blue, green vertices/edges to green, orange to orange. This arrow from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> is dotted to signify that there is only one such morphism.</p>
+<blockquote>
+<div><p>The above diagram has 4 commuting diagrams pasted together (including the 2 squares <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> starting at <code class="docutils literal notranslate"><span class="pre">overlap</span></code>). Commuting diagrams are like ecosystems in balance. When ecosystems are pasted together along their edges, any change in one ecosystem will create a change in the other. When the “most natural” information flows along the morphisms, all the ecosystems are in balance.</p>
 </div></blockquote>
 <a class="reference internal image-reference" href="_images/8c.png"><img alt="Whoopsy!" class="align-center" src="_images/8c.png" style="width: 500px;" /></a>
-<p>Can we embed (b) in (a) such that the diagrams (1), (2), (3) will commute simultaneously? Yes, there is no such embedding — the orange-green vertex of (b) can embed in either the orange or the green vertex of (a). It embeds in the orange vertex, then diagram (2) does not commute. If it embeds in the green vertex, then diagram (3) does not commute. Since the choice (b) has coarse-grained the information of Graph-2 and Graph-3, the information cannot be fine-grained again!</p>
-<p><strong>Score</strong> Choice (a): 1,  Choice (b): 0</p>
-<p><strong>Let us compare choice (a) with choice (c)</strong></p>
-<p>Again, there is exactly one (obvious) choice of morphism from (a) to (c) that will make the  yellow and the blue triangles commute.</p>
+<p>Now for the other direction, are there maps from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> all possible closed shapes in the above diagram will commute simultaneously? Nope, there is no such embedding — the orange-green vertex of <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> can be mapped to either the orange or the green vertex of <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>. If it is mapped into the orange vertex, then the upper triangle does not commute. If it is mapped into the green vertex, then the lower triangle does not commute. Since <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> has coarse-grained the information of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, the information cannot be fine-grained again! So no map in the backwards direction!</p>
+<p><strong>Score</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>: 1,  <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>: 0</p>
+<hr class="docutils" />
+<p>|| <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> <strong>vs</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> ||</p>
 <a class="reference internal image-reference" href="_images/9b.png"><img alt="Whoopsy!" class="align-center" src="_images/9b.png" style="width: 500px;" /></a>
-<p>However, there are at least two ways in which (c) embeds in (a) to make the shapes (1), (2), and (3) commute. Both these choices are equally good! The grey vertex in (c) can be mapped to two blue vertices in (a). Because, (c) has extra information, that is vertex and edge not from Graphs 1-3, there are many ways of embedding this extra information in the most lazy choice (a).</p>
+<p>As before, there is exactly one (obvious) choice of morphism from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> that will make the  yellow triangles commute.</p>
 <a class="reference internal image-reference" href="_images/9c.png"><img alt="Whoopsy!" class="align-center" src="_images/9c.png" style="width: 500px;" /></a>
-<p><strong>Score</strong> Choice (a): 1,  Choice (c): 0</p>
-<p><strong>Let us compare (a) with (d)</strong></p>
-<p>There is exactly one (obvious) choice of morphism from (a) to (d) that will make the  yellow and the blue triangles commute.</p>
+<p>However, there are at least two ways in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> maps into <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to make the triangles commute. The grey vertex in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> can be mapped to one of the two blue vertices in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>. Both these choices are equally good! Because, <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> has extra information, that is a vertex and an edge neither from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> nor from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, there is more than one way of mapping this extra information into the most lazy <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>.</p>
+<p><strong>Score</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>: 1, <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code>: 0</p>
+<hr class="docutils" />
+<p>|| <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> <strong>vs</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> ||</p>
 <a class="reference internal image-reference" href="_images/10b.png"><img alt="Whoopsy!" class="align-center" src="_images/10b.png" style="width: 500px;" /></a>
-<p>However, (d) does not embed in (a) because (d) has  a self-loop and can embed only in graphs with at least one self-loop.</p>
+<p>As before, there is exactly one (obvious) choice of morphism from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> that will make the  yellow triangles commute.</p>
 <a class="reference internal image-reference" href="_images/10c.png"><img alt="Whoopsy!" class="align-center" src="_images/10c.png" style="width: 500px;" /></a>
-<p><strong>Score</strong> Choice (a): 1,  Choice (d): 0</p>
-<p>Our choice of colimit graph having such ‘universal’ nature is an indication that we got our plumbing right and now things will flow smoothly! In category theory, this is called a universal property.</p>
+<p>However, <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> does not embed in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> because of its self-loop.</p>
+<p><strong>Score</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>: 1,  <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code>: 0</p>
+<p>Our choice of a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph having such <mark>universal nature</mark> is an indication that we got our plumbing right and things will flow smoothly! In category theory, this is called a universal property of an object.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Universal property is the mathematical name for “harmony” of relationships.</p>
+</div>
 <p>Whewww!! That is some hard core relational thinking!</p>
+<div class="tip admonition">
+<p class="admonition-title">Key points</p>
+<p><code class="docutils literal notranslate"><span class="pre">pushout</span></code>s satisfy the universal property having a unique arrow into any other graph that will make a commuting square with the blue arrows!</p>
+<a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
+</div>
 </section>
-<section id="uniqueness-of-the-colimit">
-<h3>Uniqueness of the colimit<a class="headerlink" href="#uniqueness-of-the-colimit" title="Permalink to this heading">#</a></h3>
-<p>Let us review what we have done so far! In this game, to begin with, a guess of a colimit graph could be any graph in the space of all possible graphs. Since we do not know what this graph is, we will name this as “Graph X”.</p>
-<p>By asking the first question, we narrowed down the possible set of guesses from the space of all graphs to those graphs which makes  commute.</p>
+<section id="pass-3-uniqueness">
+<h3>Pass 3: Uniqueness<a class="headerlink" href="#pass-3-uniqueness" title="Permalink to this heading">#</a></h3>
+<p>We have progressed quite a bit! Let us review our progress so far! In this game, to begin with, a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> could be any graph in the space of all possible graphs.</p>
 <a class="reference internal image-reference" href="_images/13a.png"><img alt="Whoopsy!" class="align-center" src="_images/13a.png" style="width: 500px;" /></a>
-<p>By asking the second question, we narrowed down the guesses further to those graphs which has exactly one embedding for any other choice that makes the previous diagram commute. The embedding makes diagrams (1) and (2) commute simultaneously.</p>
+<p><strong>Pass 1: Commuting square</strong>:- By asking <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?”, we narrowed down a set of candidates for the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> from the space of all graphs. Each one of these candidates (<code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code>) make the above diagram commute!</p>
 <a class="reference internal image-reference" href="_images/13b.png"><img alt="Whoopsy!" class="align-center" src="_images/13b.png" style="width: 500px;" /></a>
-<p>The final question to find “THE colimit” is that <em><strong>if there is only one choice of graph which satisfies requirement 1 and requirement 2</strong></em>.</p>
-<p>Time to answer the final question:</p>
-<p>Suppose there are two choices that satisfies the requirements 1 and 2.  Lets called these call these graphs “X1” and “X2”</p>
-<p>Because X1 is universal, X1 has a unique embedding into X2. The reason for using colored arrows into Graph X1 will become apparent in a moment.</p>
+<p><strong>Pass 2: Universal property</strong>:- By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two yellow triangles (in the above diagram) commute simultaneously.</p>
+<p>Now,</p>
+<blockquote>
+<div><p>We repeat the same procedure of asking “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?” on the remaining candidates (candidates which satisfy both the requirements)!</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/slogan.png"><img alt="Whoopsy!" class="align-center" src="_images/slogan.png" style="width: 500px;" /></a>
+<p>Our goal is to finally end up with one <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph!! Recall that the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> we are looking for is one among the remaining candidates.</p>
+<p>Suppose some <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> made it through Pass 2 along with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>. What is its relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> and the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> satisfy the commuting square requirement of Pass 1. However, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> is universal (satisfies the universal property). So, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> must have a unique map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>.</p>
 <a class="reference internal image-reference" href="_images/16b.png"><img alt="Whoopsy!" class="align-center" src="_images/16b.png" style="width: 500px;" /></a>
-<p>Because X2 is universal, X2 has a unique embedding into X1.</p>
+<p>However, the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is also universal. So it must have a unique map into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code>.</p>
 <a class="reference internal image-reference" href="_images/16a.png"><img alt="Whoopsy!" class="align-center" src="_images/16a.png" style="width: 500px;" /></a>
-<p>However, relationships between Graphs X1 and X2 tells us that these two unique embeddings are inverse of each of other!! If are interested in the reasoning, check the box below.</p>
+<p>However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> are inverse of each other – isormorphisms (If are interested in the reasoning, check the box below. )! In other words, THE <code class="docutils literal notranslate"><span class="pre">pushout</span></code> AND <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Why are the unique embeddings inverses of each other?</p>
+<p class="admonition-title">Why the two unique maps are isomorphisms?</p>
 <div class="wrapper docutils">
 <p>In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison!</p>
 <a class="reference internal image-reference" href="_images/17a.png"><img alt="Whoopsy!" class="align-center" src="_images/17a.png" style="width: 500px;" /></a>
@@ -690,29 +712,38 @@ document.write(`
 <a class="reference internal image-reference" href="_images/18b.png"><img alt="Whoopsy!" class="align-center" src="_images/18b.png" style="width: 500px;" /></a>
 </div>
 </div>
-<p>That is, graphs X1 and X2 are “practically the same” (This is NOT a requirement but a consequence of the existing requirements on relationships). For practical purposes, any graph that satisfies requirements 1 and 2 is the colimit graph we are looking for!!</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note that Pass 3 did NOT impose any requirement like Pass 1 and Pass 2 to narrow down candidates. The result of Pass 3 that all candidates which made through Pass 1 and Pass 2 are isomorphic is a consequence of the existing requirements.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Key points</p>
+<p>A pushout is any graph which makes it through Pass 2 (and Pass 1).</p>
+</div>
 </section>
 </section>
-<section id="collecting-it-all-together">
-<h2>5.3 Collecting it all together<a class="headerlink" href="#collecting-it-all-together" title="Permalink to this heading">#</a></h2>
-<p>The goal of our dumb charades game is to say “what is colimit graph” without talking about its connectivity (vertices and edges). We used the relationships between graphs and commuting diagrams to describe what the colimit graph of a diagram must look like! Let us summarize our description of colimit of a diagram.</p>
-<p>We start with a graph which embeds into two graphs:</p>
-<a class="reference internal image-reference" href="_images/19a.png"><img alt="Whoopsy!" class="align-center" src="_images/19a.png" style="width: 450px;" /></a>
-<p>What we compute is a graph called “colimit” which satisfies the following requirements:</p>
-<p><strong>Requirement 1</strong>: The square commutes</p>
+<section id="what-is-a-pushout">
+<h2>5.4. What is a pushout?<a class="headerlink" href="#what-is-a-pushout" title="Permalink to this heading">#</a></h2>
+<p>The goal game was to say describe the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of an overlap diagram is without talking about its connectivity (vertices and edges). We used the relationships between various graphs and the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> to describe what the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> must be! Let us summarize our description of <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of an overlap diagram.</p>
+<p>We start with <code class="docutils literal notranslate"><span class="pre">overlap</span></code> with two radiating morphisms specifying the common vertices and edges of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. We call this an <em>overlap diagram</em>.</p>
+<a class="reference internal image-reference" href="_images/19a.png"><img alt="Whoopsy!" class="align-center" src="_images/19a.png" style="width: 350px;" /></a>
+<p>We compute the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of an overlap diagram. The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is a graph which satisfies:</p>
+<p><strong>Pass 1: Commuting square</strong> :-  The following square must commute.</p>
 <a class="reference internal image-reference" href="_images/19b.png"><img alt="Whoopsy!" class="align-center" src="_images/19b.png" style="width: 450px;" /></a>
-<p><strong>Requirement 2</strong>: For any choice of graph which satisfies requirement 1, there is exactly one way (a unique) embedding of the colimit into that choice. The triangles made by the embedding commute.</p>
+<p><strong>Pass 2: Universal property</strong>: For any other choice of graph which satisfies Pass 1’s requirement, there is exactly one (a unique) map from the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> into that choice such that yellow triangles commute.</p>
 <a class="reference internal image-reference" href="_images/19c.png"><img alt="Whoopsy!" class="align-center" src="_images/19c.png" style="width: 450px;" /></a>
 <p>As a consequence of these requirements, all graphs which satisfy both these requirements <strong>are “practically the same”</strong>.</p>
-<blockquote>
-<div><p>Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.</p>
-</div></blockquote>
+<a class="reference internal image-reference" href="_images/certificate.png"><img alt="Whoopsy!" class="align-center" src="_images/certificate.png" style="width: 450px;" /></a>
+<div class="tip admonition">
+<p class="admonition-title">Key points</p>
+<p>Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.</p>
 <p>In this sense, relational thinking is non-invasive!</p>
+</div>
 </section>
-<section id="time-for-pen-and-paper">
-<h2>5.4 Time for pen and paper!<a class="headerlink" href="#time-for-pen-and-paper" title="Permalink to this heading">#</a></h2>
-<p>Let us compute colimit for the following diagrams.</p>
-<p><strong>Puzzle 1. Colimit using a single vertex</strong></p>
+<section id="puzzle-time">
+<h2>5.5. Puzzle time!<a class="headerlink" href="#puzzle-time" title="Permalink to this heading">#</a></h2>
+<p>Let us compute the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of the following diagrams.</p>
+<p><strong>Puzzle 1. Pushout using a single vertex</strong></p>
 <a class="reference internal image-reference" href="_images/20a.png"><img alt="Whoopsy!" class="align-center" src="_images/20a.png" style="width: 500px;" /></a>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
@@ -723,20 +754,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p><strong>Puzzle 2. Colimit using a single edge</strong></p>
-<p>This one is a little tricky, because the two vertices (”A” and “B”) in Graph-1 embeds into the same vertex of Graph-3 (”A,B”), thereby coarse-graining the information in Graph-1. However, vertices “A” and “B” in Graph-1 embeds in separate vertices in Graph-2. So, how would the overlap region look in the colimit graph?</p>
+<p><strong>Puzzle 2. Pushout using a single edge</strong></p>
+<p>This one is a little tricky, because the two vertices (”A” and “B”) in <code class="docutils literal notranslate"><span class="pre">overlap</span></code> embeds into the same vertex of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> (”A,B”), thereby coarse-graining the information in <code class="docutils literal notranslate"><span class="pre">overlap</span></code>. However, vertices “A” and “B” in <code class="docutils literal notranslate"><span class="pre">overlap</span></code> embeds in separate vertices in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>. So, how would the overlap region look in the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph?</p>
 <a class="reference internal image-reference" href="_images/21a.png"><img alt="Whoopsy!" class="align-center" src="_images/21a.png" style="width: 500px;" /></a>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
-<p>Since Graph-2 and Graph-3 has to agree in the overlap region, and Graph-3 has only coarse-grained embedding of Graph-1, the embedding of Graph-2 in the colimit, coarse-grains the overlap region of Graph-2 to match the overlap region of Graph-3.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> has to agree in the overlap region, and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> has only coarse-grained embedding of <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, the embedding of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> in the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>, coarse-grains the overlap region of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> to match the overlap region of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p>
 <a class="reference internal image-reference" href="_images/21b.png"><img alt="Whoopsy!" class="align-center" src="_images/21b.png" style="width: 500px;" /></a>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
-<p><strong>Puzzle 3. Colimit using a empty graph</strong></p>
+<p><strong>Puzzle 3. Pushout using a empty graph</strong></p>
 <p>In the beginning of this chapter, we said that combining graphs is analogous to adding numbers. Can you see how this problem demonstrates this analogy?</p>
 <a class="reference internal image-reference" href="_images/22a.png"><img alt="Whoopsy!" class="align-center" src="_images/22a.png" style="width: 500px;" /></a>
 <p>(An empty graph is the graph with its set of vertices and the set of edges to be empty set. The sources and the target maps sends “no vertex” to “no edge”.)</p>
@@ -745,21 +776,20 @@ document.write(`
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/22b.png"><img alt="Whoopsy!" class="align-center" src="_images/22b.png" style="width: 500px;" /></a>
 </div>
-<p>When there is no glue (Graph 1 is empty), the colimit just has Graph-2 and Graph-3 side by side with no bridge in between them. Graph-2 has three vertices and no edges. Graph-3 has two vertices and no edges. The colimit graph has 5 vertices which is the sum of vertices in Graph-2 and vertices in Graph-3. Sum of two numbers is just a colimit . Isn’t that cool ?!</p>
+<p>When there is no glue (graph O is empty), the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> just has <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> side by side with no bridge in between them. <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> has three vertices and no edges. <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> has two vertices and no edges. The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> has 5 vertices which is the sum of vertices in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and vertices in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. Sum of two numbers is just a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> . Isn’t that cool ?!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
-<p><strong>Ex 4. Finite colimits</strong></p>
+<p><strong>Ex 4. Finite Pushout</strong></p>
 <p>Let us suppose, we want to glue more than two graphs together! That seems to be a reasonable ask! So we got a diagram like the one below.</p>
 <a class="reference internal image-reference" href="_images/23.png"><img alt="Whoopsy!" class="align-center" src="_images/23.png" style="width: 350px;" /></a>
-<p>What are the requirements for a graph to be colimit of the above diagram?</p>
+<p>What are the requirements for a graph to be <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of the above diagram?</p>
 <p>Clue: Extend the requirements in Section 5.4 from 2 to n graphs!</p>
 </section>
-<section id="operationalizing-computing-colimits">
-<h2>5.5 Operationalizing computing colimits<a class="headerlink" href="#operationalizing-computing-colimits" title="Permalink to this heading">#</a></h2>
-<p>WORK IN PROGRESS..</p>
-<p>In the previous section, we hand-computed the colimits of the diagrams. This section shows how we can program a computer to compute colimits using Algebraic Julia.</p>
+<section id="computing-pushouts-in-algebraic-julia">
+<h2>5.6. Computing pushouts in Algebraic Julia<a class="headerlink" href="#computing-pushouts-in-algebraic-julia" title="Permalink to this heading">#</a></h2>
+<p>In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using Algebraic Julia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!</p>
 <p><strong>Solving Ex 1.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -771,36 +801,36 @@ document.write(`
 <span class="c"># Graph with a single isolated vertex</span>
 <span class="n">Overlap1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c"># Create a triangle</span>
-<span class="n">G2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 <span class="c"># Initialize this graph as an isolated edge</span>
-<span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="c"># Then modify it to add a loop to vertex #2</span>
-<span class="n">add_edge!</span><span class="p">(</span><span class="n">G3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># There are three possible morphisms from the isolated vertex into a graph</span>
 <span class="c"># with three vertices. Because these three vertices are equivalent due to</span>
 <span class="c"># the symmetry of the triangle, it doesn&#39;t matter which one we pick. So,</span>
 <span class="c"># rather than manually specifying how Overlap1 matches to parts of G2, we</span>
 <span class="c"># use the automatic homomorphism search which will pick an arbitrary one.</span>
-<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">)</span>
 
 <span class="c"># Because the two vertices of G3 are *not* equivalent (one has a loop,</span>
 <span class="c"># the other doesn&#39;t) we have to be more precise in our construction of</span>
 <span class="c"># the map from Overlap1 into G3. The only data required is saying where</span>
 <span class="c"># the vertex of Overlap1 is mapped to. We send it to vertex#1, which is</span>
 <span class="c"># the one which does *not* have a loop.</span>
-<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c"># Glue together G2 and G3 along their common overlap, Overlap1</span>
-<span class="n">colim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">G2_map</span><span class="p">,</span><span class="w"> </span><span class="n">G3_map</span><span class="p">));</span>
+<span class="n">pushout</span><span class="o">-</span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="p">));</span>
 
 <span class="c"># Visualize the result</span>
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">colim</span><span class="p">))</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Use the code cell at the end of the section to visualize Graph-2 and Graph-3.</p>
+<p>Use the code cell at the end of the section to visualize <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p>
 <p><strong>Solving Ex 2.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,11 +842,11 @@ document.write(`
 <span class="c"># Graph with a single isolated vertex</span>
 <span class="n">Overlap1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c"># Create a triangle</span>
-<span class="n">G2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 <span class="c"># Initialize this graph as an isolated edge</span>
-<span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="c"># Then modify it to add a loop to vertex #2</span>
-<span class="n">add_edge!</span><span class="p">(</span><span class="n">G3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># Our overlap is an isolated edge</span>
 <span class="n">Overlap2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
@@ -825,7 +855,7 @@ document.write(`
 <span class="c"># which picks an edge of the triangle, G2) are equivalent, so</span>
 <span class="c"># we don&#39;t need to pick a specific one: we let the automatic</span>
 <span class="c"># search algorithm find it for us.</span>
-<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">)</span>
 
 <span class="c"># Again, we need to be more precise in how we map into G3</span>
 <span class="c"># because it matters whether or not the overlapping edge is</span>
@@ -834,17 +864,17 @@ document.write(`
 <span class="c"># keyword). In this case, the morphism is fully determined</span>
 <span class="c"># once we declare that both vertices of Overlap2 are sent</span>
 <span class="c"># to vertex#2 in G3.</span>
-<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],))</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],))</span>
 
 <span class="c"># Once again we glue together G2 and G3 along Overlap2</span>
-<span class="n">colim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">G2_map</span><span class="p">,</span><span class="w"> </span><span class="n">G3_map</span><span class="p">));</span>
+<span class="n">pushout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="p">));</span>
 
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">colim</span><span class="p">))</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Use the code cell at the end of the section to visualize Graph-2 and Graph-3.</p>
+<p>Use the code cell at the end of the section to visualize <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p>
 <p><strong>Solving Ex 3.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -854,30 +884,30 @@ document.write(`
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 
 <span class="c"># The graphs here are all discrete (no edges)</span>
-<span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># morphisms out of an empty graph are themselves &#39;empty&#39;</span>
 <span class="c"># (they require no data other than the domain and codomain)</span>
-<span class="n">G2_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
-<span class="n">G3_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">G3</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">)</span>
 <span class="c"># We glue together the discrete graphs along the empty overlap</span>
-<span class="n">colim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">G2_map</span><span class="p">,</span><span class="w"> </span><span class="n">G3_map</span><span class="p">));</span>
+<span class="n">pushout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="p">));</span>
 
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">colim</span><span class="p">))</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Use the code cell below to visualize Graph-2 and Graph-3.</p>
+<p>Use the code cell below to visualize <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Use this code cell for visualizing Graph-2 and Graph-3</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Use this code cell for visualizing `graph A` and `graph B`</span>
 
-<span class="c"># Uncomment the below line (remove the sharp) and run the code to view Graph-2</span>
-<span class="c"># to_graphviz(G2) </span>
+<span class="c"># Uncomment the below line (remove the sharp) and run the code to view `graph A`</span>
+<span class="c"># to_graphviz(graph-A) </span>
 
-<span class="c"># Uncomment the below line (remove the sharp) and run the code to view Graph-2</span>
-<span class="c"># to_graphviz(G3) </span>
+<span class="c"># Uncomment the below line (remove the sharp) and run the code to view `graph A`</span>
+<span class="c"># to_graphviz(graph-B) </span>
 </pre></div>
 </div>
 </div>
@@ -886,8 +916,10 @@ document.write(`
 <section id="summary">
 <h2>5.6 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Congratulations!! You have crossed Chapter 5 successfully!</p>
-<p>Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by the means of graph colimits.</p>
+<p>Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts.</p>
 <p>It only gets easier from here!!</p>
+<p>[FROM HERE, THE NEXT TWO SECTIONS MUST BE INTRODUCED IN CHAPTER 4.]</p>
+<p>We said that we are going to use memes from relational thinking to play this game. Sections 2 and 3 will introduce two such memes from relational thinking.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="move-content-below-to-chapter-4">
@@ -900,29 +932,29 @@ document.write(`
 <p>We know that a graph is a purposeful (constrained) relationship between edges and vertices. This relationship is a pair of maps: a source and a target map from the set of edges to the set of vertices. A graph embedding is a purposeful relationship between two graphs. This relationship is also a pair of maps: a vertex map between vertices of the graphs and an arrow map between the edges of the graphs. What makes a graph embedding purposeful is its harmonious behavior with the existing source and the target maps in the domain and the codomain. This harmony is precisely encoded as a pair of commuting diagrams.</p>
 <p>Let us suppose we have two graphs and a graph embedding between them. So we have the following system maps:</p>
 <a class="reference internal image-reference" href="_images/2-commuting-diagram-1.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-1.png" style="width: 450px;" /></a>
-<p>The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in Graph-1 is preserved by the embedding.</p>
+<p>The following two commuting diagrams of graph embedding tells us how these system of maps play with each other. The first diagram tells that the source of each edge in <code class="docutils literal notranslate"><span class="pre">overlap</span></code> is preserved by the embedding.</p>
 <a class="reference internal image-reference" href="_images/2-commuting-diagram-2.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-2.png" style="width: 400px;" /></a>
-<p>The second diagram tells that the target of each edge in Graph-1 is preserved by the embedding.</p>
+<p>The second diagram tells that the target of each edge in <code class="docutils literal notranslate"><span class="pre">overlap</span></code> is preserved by the embedding.</p>
 <a class="reference internal image-reference" href="_images/2-commuting-diagram-3.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-3.png" style="width: 400px;" /></a>
-<p>Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an <em>origin</em> vertex which has only outgoing arrows (Edges of Graph-1), and a <em>destination</em> vertex which has only incoming arrows (Vertices of Graph-2). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of Graph-1”, following any of the path, will lead to the same vertex in “Vertices of Graph-2”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.</p>
+<p>Hey, did you notice that commuting diagrams look like directed graphs?! But they are very specific sort of graphs - they have an <em>origin</em> vertex which has only outgoing arrows (Edges of <code class="docutils literal notranslate"><span class="pre">overlap</span></code>), and a <em>destination</em> vertex which has only incoming arrows (Vertices of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>). Hence, these graphs are non-cyclic. One follows any arrow from the origin to reach the destination. There are multiple choices of paths to take from the origin (two paths in each of the above diagrams). The word commuting refers to the fact that, for an edge in “Edges of <code class="docutils literal notranslate"><span class="pre">overlap</span></code>”, following any of the path, will lead to the same vertex in “Vertices of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>”. In a commuting diagram, all the paths are practically the same. Commuting diagrams signify diversity of paths but unity of purpose.</p>
 <p>Let us see have a closer look at the first commuting diagram.</p>
 <a class="reference internal image-reference" href="_images/2-commuting-diagram-4.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-4.png" style="width: 450px;" /></a>
-<p>For any edge in Graph-1, following ‘Path 1’ will lead to the image of its source vertex in Graph-2. For the same edge, following ‘Path 2’ leads to the source vertex of its image in Graph-2. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are <em>aware</em> of the source and the target maps of Graph-1 and Graph-2.</p>
-<p>Note that there can be any number of graph embeddings between Graph-1 and Graph-2. But, all of them follow the commuting diagrams.</p>
+<p>For any edge in <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, following ‘Path 1’ will lead to the image of its source vertex in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>. For the same edge, following ‘Path 2’ leads to the source vertex of its image in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>. The commuting diagram ensures us that both these vertices are the same. Interpret the second diagram similarly. The commuting diagrams convey that the arrow and the vertices maps are <em>aware</em> of the source and the target maps of <code class="docutils literal notranslate"><span class="pre">overlap</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>.</p>
+<p>Note that there can be any number of graph embeddings between <code class="docutils literal notranslate"><span class="pre">overlap</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>. But, all of them follow the commuting diagrams.</p>
 <p>Commuting diagrams are more general than for just graph embeddings. Commuting diagrams are of any closed shape like a triangle or a square and are non-cyclic. The arrows of a commuting diagram can belong to any rung: do you remember this picture from Chapter 1?</p>
 <a class="reference internal image-reference" href="_images/Ladder1.png"><img alt="Whoopsy!" class="align-center" src="_images/Ladder1.png" style="width: 400px;" /></a>
 <p>The above commuting diagrams (sort of belongs to rung 3). The vertices are sets (sets of vertices and sets of edges) and the arrows are set functions.</p>
 <p>A commuting diagram in rung 4 may look like this:</p>
 <a class="reference internal image-reference" href="_images/2-commuting-diagram-5.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-5.png" style="width: 400px;" /></a>
-<p>Graph 1 is the origin and Graph 3 is the destination. The above diagram says that embedding the choices of paths to embed Graph-1 inside Graph-3 are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:</p>
+<p>graph O is the origin and graph B is the destination. The above diagram says that embedding the choices of paths to embed <code class="docutils literal notranslate"><span class="pre">overlap</span></code> inside <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are exactly the same. But what does this sameness mean? To make this answer straightforward, let us color the embeddings:</p>
 <a class="reference internal image-reference" href="_images/2-commuting-diagram-6.png"><img alt="Whoopsy!" class="align-center" src="_images/2-commuting-diagram-6.png" style="width: 400px;" /></a>
 <p>We know that each embedding has an arrows map and vertices map. The commuting diagram tells us that:</p>
 <ol class="arabic simple">
-<li><p>For any vertex in Graph-1 (drawn as the little blue ball), applying the green embedding to it produces a vertex in Graph-3 (green circle surrounding the black circle). Or applying the red embedding produces a vertex in Graph-2 (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in Graph-3 (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in Graph-3 are the same.</p></li>
+<li><p>For any vertex in <code class="docutils literal notranslate"><span class="pre">overlap</span></code> (drawn as the little blue ball), applying the green embedding to it produces a vertex in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> (green circle surrounding the black circle). Or applying the red embedding produces a vertex in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> (red circle surrounding the black circle); applying the yellow embedding to this vertex produces a vertex in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> (yellow circle surrounding the red circle). Because the diagram commutes, both the vertices in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are the same.</p></li>
 </ol>
 <a class="reference internal image-reference" href="_images/2-same-vertex-2.png"><img alt="Whoopsy!" class="align-center" src="_images/2-same-vertex-2.png" style="width: 350px;" /></a>
 <ol class="arabic simple" start="2">
-<li><p>For any edge in Graph-1 (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in Graph-3.</p></li>
+<li><p>For any edge in <code class="docutils literal notranslate"><span class="pre">overlap</span></code> (drawn as a black line), applying the green embedding, or applying red embedding and then a yellow embedding (on the edge produced by the red embedding) will produce the same edge in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p></li>
 </ol>
 <a class="reference internal image-reference" href="_images/2-same-edge.png"><img alt="Whoopsy!" class="align-center" src="_images/2-same-edge.png" style="width: 350px;" /></a>
 </section>
@@ -957,9 +989,13 @@ document.write(`
 <p>Before I end this section, I would like to entertain you with a personal story tangentially related to graphs and the idea of sameness! When we were young, my brother and I were very fond of “Maggi noodles”.  My mom considered Maggi noodles to be both unhealthy and expensive. But, because we were fond of it, she would occasionally bring home two packets of these noodles. It was brother’s task to cook these noodles. After cooking, he would spilt the noodles into two portions and I would be given a chance to pick one I wanted. I always had great trouble in making up my mind, since whichever portion I picked, mine looked lesser to me. Often, I would ask to change since my brother’s portion looked bigger. My mom with great annoyance would reply, “Both the portions are the same! It’s your eyes which are big!”.</p>
 <a class="reference internal image-reference" href="_images/maggi.png"><img alt="Whoopsy!" class="align-center" src="_images/maggi.png" style="width: 150px;" /></a>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id2" role="note">
+<aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Image source: <a class="reference external" href="https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg">https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg</a></p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>A four-sided commuting diagram</p>
 </aside>
 </section>
 </section>
@@ -1029,17 +1065,17 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 5: Combining Graphs</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2. Combining graphs using memes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shape-of-the-overlap">The shape of the overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-an-overlap">Combining graphs along an overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-along-overlap">Combining Graphs along overlap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueness-of-the-colimit">Uniqueness of the colimit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-1-commuting-square">Pass 1: Commuting square</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-2-universal-property">Pass 2: Universal Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-3-uniqueness">Pass 3: Uniqueness</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-it-all-together">5.3 Collecting it all together</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-for-pen-and-paper">5.4 Time for pen and paper!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operationalizing-computing-colimits">5.5 Operationalizing computing colimits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.4. What is a pushout?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.5. Puzzle time!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
 </ul>
 </li>
