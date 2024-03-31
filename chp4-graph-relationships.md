@@ -22,6 +22,12 @@ In our ongoing quest to think about things in terms of relationships we can ask,
 
 In this chapter we will define a useful way of relating instances of a schema. Once we do, we will be ready to move up the last rung or in our ladder of abstactions, from schemas to categories. Yet another kind of directed graph at yet another level of abstraction (our last, mercifully!).
 
+```{image} assets/Ch4/InstanceDrift.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
 ## 1. Graph Injections
 
 In Chapter 1 we saw an example of a directed graph which described the layout of a ski resort. In this account, you could ride the ski lift up and down the mountain or ski from the top of the mountain into a nearby village.
@@ -286,7 +292,11 @@ It's important to note that when we collapse the graph like this it remains inta
 ```
 
 
-
+```{image} assets/Ch4/CategoryDrift.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 
 
