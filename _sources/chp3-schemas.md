@@ -239,15 +239,23 @@ Let's encode a reflexive graph schema in AlgebraicJulia!
 
 First off, you may have noticed that schemase _are_ a kind of directed graph. So we can use our familiar source and target map formalism to input the general schema shape.
 
-Now we want to add the closed loop conditions. We can express these as text...
+GRAPHIC OF CODE SHOWING src: tgt: definitions...
 
-(Note how the order in which we write the arrows seems backwards from the order in which you would actually traverse those arrows along the route. Unfortunately this is the notational convention! One way to think of it is to read the symbol • as the word "after." So "V•S2" is understood to mean "V after S2.")
+In order to specify our closed loop condition in a way that a computer can understand, we have to convert it into a text expression. Here's the system we'll use for writing.
+
+//WRITING SYSTEM:
+
+* `•` this is the character we will use to sequence paths. It means "following". So `A•B` means "A following B."
+
+//DISClAIMER: You many find this a way of writing a path very confusing at first, because the order of the letters is the *opposite* of the order in which you actually traverse those maps when you travel the path.
+
+Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don't like it any more than you do!)
+
+* `=` we'll use equals to equate the endpoints of two paths
+* `id` we will use this name to mean "end up back where you started." It refers to the "identity map", the happing equivalent of doing nothing.
+
 
 IN the chapter on dynamical systems we saw how to start with a directed graph and then add addtiional data - states and update rules - to turn it into a a psecific dunamical system. In AlgebraicJulia we do something similar. We define the underlingying grpah and then add the commutativity conditions we want the underlying maps to statisfy.
-
-We express these conditions as an equation. We use • notation, which means "following". We use "id" to mean a amap from a vertex to itself. Our condition "source map following ref map is the same as doing nothing." becomes scr•ref = id. 
-
-
 
 
 
@@ -272,6 +280,7 @@ set of loops with the existing maps in the directed graph schema. Thus, to work 
 If we were programming in terms of "things" we'd have to add to our codebase to 
 We think of reflexive graphs as special cases of directed graphs. Therefore any operations that are defined for directed graphs specialize to reflexive graphs as a subset.
 
+This is how we define reflexive graphs in AlebraicJulia. In the next chapter we'll see how to put this defintion to use.
 
 
 ### Undirected Graphs
