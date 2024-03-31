@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 1: Directed Graphs
+# Chapter 1: Data
 
 > The logjam you don’t even know you’re stuck in will be broken by a shift in representation.
 >
@@ -19,55 +19,6 @@ kernelspec:
 >*Two Hundred Fifty Things an Architect Should Know*
 
 
-
-## Part 1: Modeling with directed graphs
-
-We will begin our journey into systems thinking and Algebraic Julia by looking at a particularly simple modeling system called a *directed graph*. Anyone who's ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.
-
-![whoops!](./assets/Ch1/DirectedGraphs1.jpg)
-
-What do these diagrams all have in common? First, they all have arrows. Second, they all have some “points” (players, footprints, questions, etc.), and every arrow connects one point to some other point. More formally these points are usually known as "vertices" (”vertex” when singular), and the official rules for directed graphs are: 
-
-![whoops!](./assets/Ch1/Rules.jpg)
-
-It's a simple setup but many situations in life - many *systems* - are well-captured by this kind of diagram.
-
-Consider how we can use directed graphs to represent the following three situations:
-### 1. MYTHOLOGICAL ROMANCE: ###
-
-**Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.**
-
-We can make a directed graph of these relationships in which the vertices are characters and an arrow indicates that the person at the source loves the person at the target.
-
-![whoops!](./assets/Ch1/DGlove.jpg)
-
-### 2. SKI TRIP BROCHURE: ###
-
-**From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don't know how to ski. If that sounds like you, don't worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.**
-
-In this directed graph, the vertices are locations and the arrows are "modes of transport" from one location to another.
-
-![whoops!](./assets/Ch1/DGski.jpg)
-
-If you squint, you can look at this like a simplified map. We've left out the trees and the geography and the distances from one place to another. We've distilled our wayfinding to only the most essential details needed for getting around.
-
-### 3. WHOSE TURN IS IT TO DO THE DISHES? ###
-
-**My wife and I used to trade off doing the dishes each day. Then our friend Tuco moved in who loves doing dishes and he has done them ever since. I think my wife was the last one to do the dishes before Tuco took over.**
-
-In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.
-
-```{image} assets/Ch5/DGdishes.png
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-Looked at individually each of the above situations seem quite different. But their directed graphs make it clear that they all share the same essential structure. Abstractly, they are all the same graph, which we can represent in unlabeled form:
-
-![whoops!](./assets/Ch1/SimpleDG.jpg)
-
-When used casually like this, directed graphs are little more than convenient pictures–visual heuristics that make it easier to think about the underlying situations. These simple examples may not seem to require any mathematical considerations or computational aid. But we will come to see that if we represent these structures formally in a computer a surprising array of computational powers become available to us.
 
 ## Part 2: Directed graphs with a computer ##
 

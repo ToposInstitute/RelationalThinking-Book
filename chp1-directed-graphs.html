@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 1: Directed Graphs &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 1: Data &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Chapter 2: A Dynamical Systems Detour with Kiki and Bouba" href="chp2-dwd.html" />
-    <link rel="prev" title="Chapter 0" href="chp0.html" />
+    <link rel="prev" title="Chapter 0: Directed Graphs" href="chp0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,8 +171,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 1: Directed Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0: Directed Graphs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 1: Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: A Dynamical Systems Detour with Kiki and Bouba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Categories</a></li>
@@ -432,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 1: Directed Graphs</h1>
+    <h1>Chapter 1: Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,12 +442,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-modeling-with-directed-graphs">Part 1: Modeling with directed graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mythological-romance">1. MYTHOLOGICAL ROMANCE:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ski-trip-brochure">2. SKI TRIP BROCHURE:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whose-turn-is-it-to-do-the-dishes">3. WHOSE TURN IS IT TO DO THE DISHES?</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-directed-graphs-with-a-computer">Part 2: Directed graphs with a computer</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 </ul>
@@ -464,44 +458,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-directed-graphs">
-<h1>Chapter 1: Directed Graphs<a class="headerlink" href="#chapter-1-directed-graphs" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-data">
+<h1>Chapter 1: Data<a class="headerlink" href="#chapter-1-data" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>The logjam you don’t even know you’re stuck in will be broken by a shift in representation.</p>
 <p>Michael Sorkin</p>
 <p><em>Two Hundred Fifty Things an Architect Should Know</em></p>
 </div></blockquote>
-<section id="part-1-modeling-with-directed-graphs">
-<h2>Part 1: Modeling with directed graphs<a class="headerlink" href="#part-1-modeling-with-directed-graphs" title="Permalink to this heading">#</a></h2>
-<p>We will begin our journey into systems thinking and Algebraic Julia by looking at a particularly simple modeling system called a <em>directed graph</em>. Anyone who’s ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.</p>
-<p><img alt="whoops!" src="_images/DirectedGraphs1.jpg" /></p>
-<p>What do these diagrams all have in common? First, they all have arrows. Second, they all have some “points” (players, footprints, questions, etc.), and every arrow connects one point to some other point. More formally these points are usually known as “vertices” (”vertex” when singular), and the official rules for directed graphs are:</p>
-<p><img alt="whoops!" src="_images/Rules.jpg" /></p>
-<p>It’s a simple setup but many situations in life - many <em>systems</em> - are well-captured by this kind of diagram.</p>
-<p>Consider how we can use directed graphs to represent the following three situations:</p>
-<section id="mythological-romance">
-<h3>1. MYTHOLOGICAL ROMANCE:<a class="headerlink" href="#mythological-romance" title="Permalink to this heading">#</a></h3>
-<p><strong>Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.</strong></p>
-<p>We can make a directed graph of these relationships in which the vertices are characters and an arrow indicates that the person at the source loves the person at the target.</p>
-<p><img alt="whoops!" src="_images/DGlove.jpg" /></p>
-</section>
-<section id="ski-trip-brochure">
-<h3>2. SKI TRIP BROCHURE:<a class="headerlink" href="#ski-trip-brochure" title="Permalink to this heading">#</a></h3>
-<p><strong>From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don’t know how to ski. If that sounds like you, don’t worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.</strong></p>
-<p>In this directed graph, the vertices are locations and the arrows are “modes of transport” from one location to another.</p>
-<p><img alt="whoops!" src="assets/Ch1/DGski.jpg" /></p>
-<p>If you squint, you can look at this like a simplified map. We’ve left out the trees and the geography and the distances from one place to another. We’ve distilled our wayfinding to only the most essential details needed for getting around.</p>
-</section>
-<section id="whose-turn-is-it-to-do-the-dishes">
-<h3>3. WHOSE TURN IS IT TO DO THE DISHES?<a class="headerlink" href="#whose-turn-is-it-to-do-the-dishes" title="Permalink to this heading">#</a></h3>
-<p><strong>My wife and I used to trade off doing the dishes each day. Then our friend Tuco moved in who loves doing dishes and he has done them ever since. I think my wife was the last one to do the dishes before Tuco took over.</strong></p>
-<p>In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.</p>
-<a class="reference internal image-reference" href="_images/DGdishes.png"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.png" style="width: 800px;" /></a>
-<p>Looked at individually each of the above situations seem quite different. But their directed graphs make it clear that they all share the same essential structure. Abstractly, they are all the same graph, which we can represent in unlabeled form:</p>
-<p><img alt="whoops!" src="_images/SimpleDG.jpg" /></p>
-<p>When used casually like this, directed graphs are little more than convenient pictures–visual heuristics that make it easier to think about the underlying situations. These simple examples may not seem to require any mathematical considerations or computational aid. But we will come to see that if we represent these structures formally in a computer a surprising array of computational powers become available to us.</p>
-</section>
-</section>
 <section id="part-2-directed-graphs-with-a-computer">
 <h2>Part 2: Directed graphs with a computer<a class="headerlink" href="#part-2-directed-graphs-with-a-computer" title="Permalink to this heading">#</a></h2>
 <p>Note how, in the examples above, the written description of each situation required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
@@ -634,7 +597,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Chapter 0</p>
+        <p class="prev-next-title">Chapter 0: Directed Graphs</p>
       </div>
     </a>
     <a class="right-next"
@@ -662,12 +625,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-modeling-with-directed-graphs">Part 1: Modeling with directed graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mythological-romance">1. MYTHOLOGICAL ROMANCE:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ski-trip-brochure">2. SKI TRIP BROCHURE:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whose-turn-is-it-to-do-the-dishes">3. WHOSE TURN IS IT TO DO THE DISHES?</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-directed-graphs-with-a-computer">Part 2: Directed graphs with a computer</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 </ul>
