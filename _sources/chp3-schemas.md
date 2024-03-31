@@ -44,6 +44,7 @@ PAUSE AND PONDER: How is the data of an undirected graph different from the data
 
 <br>
 <br>
+
 Undirected graphs are just one example from a whole zoo of different _kinds_ of graphs we might want to model with. In this chapter we'll look at a few specimens from this zoo. In the process, we'll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.
 
 ## Introducing Schemas for directed graphs
@@ -57,7 +58,7 @@ We'll begin this chapter with a little tidying up. The basic building block we'v
 ```
 <br>
 
-Source and target maps can be a little _busy_ to look at so we're going to simplify our view! Let's introduce a new abstraction that hides all of this detail. We're going to:
+Source and target maps can be a little _busy_ looking so we're going to simplify our view! Let's introduce a new abstraction that hides all of this detail. We're going to:
 * wrap these connections in one big tube 
 * put an arrow point on this tube so we can remember which direction the connections were going
 * wrap the items at either end in labelled spheres
@@ -68,6 +69,8 @@ Source and target maps can be a little _busy_ to look at so we're going to simpl
 :width: 500px
 :align: center
 ```
+<br>
+
 A big chunky arrow like this is easier to draw and easier to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up "under the hood." This is just like in an algebra equation where, when we see the variable 'x', we know it stands for some specific number. Chunky arrows are like variables for maps.
 
 Figures built from these chunky arrows are known as schemas. In moving from an explicit map to its schema, we are moving from rung 2 ("data") to rung 3 ("blueprints") on our ladder of abstractions.
@@ -78,7 +81,7 @@ What is the schema that represents a directed graph? Recall that a directed grap
 
 ```{image} assets/Ch4/Graph1ST.gif
 :alt: Whoopsy!
-:width: 800px
+:width: 500px
 :align: center
 ```
 
@@ -139,7 +142,7 @@ Now let's imagine doing the same thing for the ancient board game Go. An importa
 
 This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special "self-looping" arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they're called "reflexive graphs." They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.
 
-HOW CAN WE WORK WITH REFLEXIVE GRAPHS IN AJ?
+PAUSE AND PONDER: How is the data of an reflexive graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
 
 We can define a reflexive graph as a _directed graph_ with the added condition that "every vertex has a special self-pointing arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
@@ -160,7 +163,7 @@ Every reflexive graph has such a map, called its reflexive map or `ref`. We can 
 ```
 <br>
 
-PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this sytem of connections?
+PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
 
 What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
 
@@ -185,13 +188,11 @@ If we look closely at the instance data for the source maps we indeed see that a
 
 IMAGE OF FADETHROUGH
 
-This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed if and only if an arrow is not self-pointing. 
+This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph. 
 
-PAUSE AND PONDER: Why?
+PAUSE AND PONDER: Can you think through why this is?
 
-In first defining reflexive graphs we relied on semantic ideas like "self-loops" and phrases like "for every vertex..." to establish what we meant. We have now found an equivalent way of saying the same thing in terms of a maps and the presence or absence of certain closed loops. 
-
-And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
+In first defining reflexive graphs we had to establish what we meant using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of a maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
 
 
 ## Into the computer
@@ -240,7 +241,7 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
 
 Now let's return to the question of undirected graphs. Can we design a schema for these? Surprisingly, it turns out that we can think of undirected graphs as _special cases_ of directed graphs. 
 
-An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a *two-way street* in which the connection goes mutually in both directions. If we take this “two-way street” idea literally we can see that every undirected graph is *equivalent* to a directed graph in which we've substituted a pair of opposing arrows in place of each undirected edge.
+An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a *two-way street* in which the connection goes mutually in both directions. If we take this “two-way street” analogy literally we can see that every undirected graph is *equivalent* to a directed graph in which we've substituted a pair of opposing arrows in place of each undirected edge.
 
 ```{image} assets/Ch4/TwoWayStreet.png
 :alt: Whoopsy!
@@ -251,7 +252,7 @@ Consider this simple undirected graph and its associated 'directed-graph-with-pa
 
 //IMAGE OF UNIDRECTED/DIRECTED VERSIONS OF THE SAME GRAPH
 
-In words, the conditions we want for the arrows of the directed graph is that "every arrow is associated with a unique partner arrow." We can express this idea as a map, in which each arrow gets connected to its pair:
+What must be true about a directed graph in order for it to correspond to an undirected graph? The condition on the directed graph is that "every arrow is associated with a unique partner arrow." We can express this idea as a map, in which each arrow gets connected to its unique partner:
 
 ```{image} assets/Ch3/InversionMap.gif
 :alt: Whoopsy!
@@ -259,17 +260,21 @@ In words, the conditions we want for the arrows of the directed graph is that "e
 :align: center
 ```
 
-We call this the inversion map or `inv`.
+We call this the inversion map or `inv`. We can combine this inversion map with the graph's source and target maps, attaching it as a self-point loop on the arrows.
 
 
-IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES.
+IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES. ADD "arrows" and "vertices" labels to the spheres
 ```{image} assets/Ch4/UndirectedGraphInstance.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
-The pairs of arrows must be "opposing". That is the source of one arrow must be the target of its pair. Once again, we can express this a closed loop condition. if we 
+Notice how the instance data represents a directed graph which in turn represents and undirected graph!
+
+PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
+
+What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this a closed loop condition. In words, if we 
 
 * pick any arrow and...
 * ...follow the source map from left to right, from an arrow to it's source vertex
@@ -279,7 +284,7 @@ The pairs of arrows must be "opposing". That is the source of one arrow must be 
 * followed the inverse map from that arrow to its partner arrow.
 * and then followed the target map from _that_ arrow to it's target vertex
 
-...we should always end up at the same final vertex.
+
 
 
 And similarly going the other way around for S/T maps.
@@ -295,21 +300,22 @@ Expressed in equations:
 
 
 
-PAUSE AND PONDER: Consider the difference between your understanding of a graph and Algebraic Julia's. For you, an undirected graph and a 'directed-graph-with-paired-arrows' are two different mental interpretations of the same data. AlgebraicJulia deals with your dieas at the level of schemas, maps and commutativity conditions. It has no idea what those things mean to you.
 
-We use thought bubbel to indicate that what is here is onvisible to the computer, only the in mind of the progammer. Entirely in the eye of the beholder.
+PAUSE AND PONDER: Consider the difference between your understanding of a graph and Algebraic Julia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. For AlgebraicJulia there is no interepretaion. Every idea is phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
+
+We chose to use thought bubbles to indicate these interepretations, signalling that they are ideas that exist only the in mind of the progammer.
 
 ## Other kinds of schemas
 
-In this chapter we have used schema constraints to look at a few different flavors of graphs. Graphs are relatively simple and that's why we chose to focus on them. It is easier to grasp the concept of a schema when the thing the schema represents is straightforward to understand, which graphs are.But the framework we have developed here can actually be extended beyond just graphs, to an extraordinary variety of elaborate and useful concepts. Indeed, one of the profound offerings of Algebraic Julia is the sheer number of mathematical abstractions it can handle in terms of schemas and constraints. In this final section we offer a brief glimpse at some more powerful models and ideas that are also captured by this framework.
+In this chapter we have used schemas and commutativity conditions to look at a few different flavors of graphs. But the framework we have developed here can actually be extended beyond just graphs, to an extraordinary variety of elaborate and useful concepts. Indeed, one of the profound offerings of AlgebraicJulia is the sheer number of mathematical abstractions it can handle in terms of schemas. In this final section we offer a brief glimpse at some more powerful models and ideas that are also captured by this framework.
 
-Disclaimer:It is out of scope to go into any detail on the following schemas. We mention them here, in passing, only to give some sense of the possibilities with Algebraic Julia. 
+DISCLAIMER: It is out of scope to go into any detail on the following schemas. We mention them here, in passing, only to give some sense of the possibilities available with AlgebraicJulia. 
 
 ## Simplicial sets
 
 We can generalize reflexive graphs to higher dimensions using schemas. The result is one of the algebraic topologist's favorite tools: simplicial sets. Ordinary graphs connect 0-dimensional vertices using 1-dimensional lines. With simplicial sets we can also attach 2-dimensional triangles, building up triangulated surfaces. Going up another dimension we can attach 3-dimensional tetrahedra to make solid figures. And so on.
 
-For the mathematician, simplicial sets are useful because they turn geometry into algebra: a simplicial triangulation of a topological space is a combinatorial object that can be reasoned about. For the applied scientist, simplicial sets may be useful as a way of 3D modeling, as we'll see in Chapter 7. Finally, in Algebraic Julia, simplicial sets are practical because all of the rules for how different parts must attach can be fully captured with a few compositionality constraints.
+For the mathematician, simplicial sets are useful because they turn geometry into algebra: a simplicial triangulation of a topological space is a combinatorial object that can be reasoned about. For the applied scientist, simplicial sets may be useful as a way of 3D modeling, as we'll see in Chapter 7. Finally, in AlgebraicJulia, simplicial sets are practical because all of the rules for how different parts must attach can be fully captured with a few commutativity conditions.
 
 ```{image} assets/Ch4/SimplicialSets.png
 :alt: Whoopsy!
@@ -319,7 +325,9 @@ For the mathematician, simplicial sets are useful because they turn geometry int
 
 ## Petri nets
 
-On the more "applied" side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960's, whose goal was to provide a system that could model parallel processes, synchronization, resource sharing, and which had an intuitive graphical notation. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.It's important to note that Petri nets were developed by practitioners, not mathematicians. It was born from necessity, designed to fill a utility gap in existing systems. But because Carl Petri gave the system an exact mathematical definition for its execution semantics, we are able to represent petri nets in terms of schemas and work with them in Algebraic Julia.
+On the more "applied" side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960's, whose goal was to provide a system that could model parallel processes, synchronization, resource sharing, and which had an intuitive graphical notation. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.
+
+It's important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics, we are able to represent Petri nets in terms of schemas and work with them in Algebraic Julia.
 
 ```{image} assets/Ch4/Petri_Net.jpg
 :alt: Whoopsy!
@@ -329,11 +337,11 @@ On the more "applied" side, we have the example of Petri nets, a sophisticated m
 
 
 
-Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found here along with several examples of scientific models using Petri nets, including population dynamics, epidemiological models and enzyme reactions.
+Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models using Petri nets, including population dynamics, epidemiological models and enzyme reactions.
 
 ## Databases
 
-The whole concept of a schema originally comes from datase theory. We can think of the underlying connections in a schema as a kind of linked data, say poeple linked accoridn to their relationships, building a schema is tehn just "structuring a query" on that databse by definining new relatinships in terms of existing ones.
+The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Building a schema is then just "structuring a query" on that database by defining new relationships in terms of existing ones.
 
 
 ```{image} assets/Ch3/DatabaseLabeled.png
@@ -341,10 +349,7 @@ The whole concept of a schema originally comes from datase theory. We can think 
 :width: 800px
 :align: center
 ```
+<br>
 
-One of the major difficulties in database management is communication between different databases. Data often gets corrupted when transferred between incompatible contexts. Data corruption is the analog of our dangling edge condition. Much as DPOs are a high level tool that will resolve our dangling edge problems, there are high level category theoretic techniques for data migration, offereing a canonical way of migrating data that automatically takes care of various annoying edge conditions. 
-
-In the same way, if you represent your database in AlgebraicJulia, there are some high level tools at your disposal...
-
-See FDM for details.
+Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our dangling edge condition on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See [here](https://arxiv.org/abs/1009.1166) for details.
 
