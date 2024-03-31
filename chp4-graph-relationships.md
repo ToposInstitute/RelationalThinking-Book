@@ -10,19 +10,16 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 4: Graph Morphisms
-
+# Chapter 4: Categories
 ## Introduction
 
-In the previous section we took a look at directed graphs; what they are, what they can represent, and how we can describe them to a computer. In that chapter we investigated the relationships within a graph. In this chapter, we're going to investigate relationships *between* entire graphs.
+A given schema will generally have many instances. We can think of the set of all theses instances as a swamr of thought bubbles - all the graphs this schema might refer to. 
 
-Comparing graphs is useful. Suppose there's some situation that we've modeled using a directed graph. If someone else has created a related directed graph we may want to be able to systematically compare it to ours or even merge the two.
+Every schema has a colletion of instances. We can imagine collecting them all into on big pile. Everything the schema might possibly refer to. In our ongoing quest to think about things in terms of relationships we will ask, "How are these instance related to one another?" 
 
-But an understanding of graph relationships are also an important thinking tool, and the next step on our journey to relational thinking. We are building up an understanding of graphs and, at each stage, we're paying special attention to the *relationships* that are relevant. Like any abstraction, this may seem a bit pedantic and unnecessary at first. Relational thinking takes time. By the end we will see that there are nice freebies you get when you build up your manner of thinking by focusing on relationships.
+In this chapter we will define a useful way of relating instances of a schema. Once we do, we will be ready to move up the last rung or in our ladder of abstactions, from schemas to categories. Yet another kind of directed graph at yet another level of abstraction (our last, mercifully!).
 
 ## 1. Graph Injections
-
-In what way might two graphs be related? One of the most obvious possibilities is that there may be a copy of one graph inside of the other.
 
 In Chapter 1 we saw an example of a directed graph which described the layout of a ski resort. In this account, you could ride the ski lift up and down the mountain or ski from the top of the mountain into a nearby village.
 
@@ -184,41 +181,9 @@ Of course, the same maps must also have closed loops for the arrows and their ta
 
 We have defined one thing – graph connectivity in injections – in terms of another thing – closed loops. Imposing the rule that the certain loops must close is called a "commutativity condition".
 
-It turns out there are a lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel's *Conceptual Mathematics*.[^1]
-
-[^1]: Lawvere, F. W.; Schanuel, S. H. (2009). Conceptual Mathematics: A First Introduction to Categories (2nd ed.). Cambridge: Cambridge University Press. https://doi.org/10.1017/CBO9780511804199
-
-
-As we'll see, one of the benefits of describing injections and dangling edge conditions in terms of maps is that maps and commutativity conditions are easy for the computer to understand maps and inspect. This allows the computer a way to be of use to us without that computer needing to have any actual understanding ideas like vertices, arrows, attachments..the semantics of graphs.
-
-
-## 2. Graph Morphisms
-
-
-```{image} assets//Ch3/ChoreHanded.png
-:alt: Whoopsy!
-:width: 500px
-:align: center
-```
-
-```{image} assets//Ch3/EmbeddingHanded.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-```{image} assets//Ch3/EMBED.gif
-:alt: Whoopsy!
-:width: 500px
-:align: center
-```
 
 
 
-## Footnotes and References
-
-
-In Chapter 3 we saw how to represent a graph morphisms between these two graphs with the following pattern of maps:
 
 ```{image} assets/Ch4/GraphMorphism.gif
 :alt: Whoopsy!
@@ -226,8 +191,6 @@ In Chapter 3 we saw how to represent a graph morphisms between these two graphs 
 :align: center
 ```
 The schema for this data looks like this:
-
-WAIT...//graph morphism schema
 
 But recall that there was an extra "loop condition" that the maps needed to satisfy in order to represent a proper graph morphism:
 
@@ -272,6 +235,73 @@ We have thus taken a geometric idea - the condition that certain loops must all 
 Note on using directed graph notation to define schemas, and then expressing your commutativity conditions as constraints on those arrows. (much like adding data like state and update rule).
 //sample code for 
 We have seen that it is possible to express the geometric idea of graph morphisms in terms of a commutativity constraint on a schema. But this isn't the only thing that can be expressed this way. A surprising and lovely fact of life is that an enormous number of ideas can be captured using schemas and constraints. Let's look at some other examples.
+
+
+
+
+
+
+
+It turns out there are a lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel's *Conceptual Mathematics*.[^1]
+
+[^1]: Lawvere, F. W.; Schanuel, S. H. (2009). Conceptual Mathematics: A First Introduction to Categories (2nd ed.). Cambridge: Cambridge University Press. https://doi.org/10.1017/CBO9780511804199
+
+
+As we'll see, one of the benefits of describing injections and dangling edge conditions in terms of maps is that maps and commutativity conditions are easy for the computer to understand maps and inspect. This allows the computer a way to be of use to us without that computer needing to have any actual understanding ideas like vertices, arrows, attachments..the semantics of graphs.
+
+It turns out that this schema captures mor than just injections!
+
+
+## 2. Graph Morphisms
+
+The vertex and arrow maps for our graph injections were all one-to-one. Each vertext in graph 1 was sent to a unique vertix in graph 2, and similarly each arrow was sent to a unique destination.
+
+Consider the following source map. First of all, we can see that it satisfies out commutativity condition:
+
+
+```{image} assets//Ch3/EMBED.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+But notice that the vertical maps _merge_ vertices and arrows in the image. If we show the result of this map we see that arrows and vertices get doubled up in the image:
+
+IMAGE OF GRAPH MORPHISM WITH DOUBLED ARROWS
+
+In general, any collection of maps satisfying our schema are called "graph morphisms." Graph injections are a special case of graph morphisms in whcih teh arrow and vertex maps are one-to-one.
+
+
+
+```{image} assets//Ch3/ChoreHanded.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+
+
+```{image} assets//Ch3/EmbeddingHanded.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## Footnotes and References
+
+
+
+
 
 
 

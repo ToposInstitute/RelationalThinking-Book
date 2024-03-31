@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 3: Schemas
+# Chapter 3: Blueprints
 
 
 We have now seen how directed graphs can be useful for modeling the world. However, in some situations they're not actually the best choice.
@@ -26,8 +26,9 @@ A piece of our graph would look like this:
 :width: 500px
 :align: center
 ```
+<br>
 
-In this case, directed graphs are the perfect choice for modeling because TikTok follows are _directional_. Someone you follow may not follow you back.
+In this case, directed graphs are the perfect choice for modeling the social network because TikTok follows are _directional_. Someone you follow may not follow you back.
 
 Now let's imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional.
 
@@ -38,9 +39,12 @@ To model this kind of social network we need a different kind of graph. We cal
 :width: 500px
 :align: center
 ```
+<br>
 PAUSE AND PONDER: How is the data of an undirected graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
 
-In this chapter we're going to look at a few different flavors of graphs. In the process, we'll develop a general and flexible framwork for working with all kinds of graphs in AlgebraicJulia.
+<br>
+<br>
+Undirected graphs are just one example from a whole zoo of different _kinds_ of graphs we might want to model with. In this chapter we'll look at a few specimens from this zoo. In the process, we'll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.
 
 ## Introducing Schemas for directed graphs
 
@@ -51,8 +55,9 @@ We'll begin this chapter with a little tidying up. The basic building block we'v
 :width: 500px
 :align: center
 ```
+<br>
 
-Source and target maps can be a little _*busy*_ to look at so we're going to simplify our view! Let's introduce a new abstraction that hides all of this detail. We're going to:
+Source and target maps can be a little _busy_ to look at so we're going to simplify our view! Let's introduce a new abstraction that hides all of this detail. We're going to:
 * wrap these connections in one big tube 
 * put an arrow point on this tube so we can remember which direction the connections were going
 * wrap the items at either end in labelled spheres
@@ -67,6 +72,8 @@ A big chunky arrow like this is easier to draw and easier to think about. Whene
 
 Figures built from these chunky arrows are known as schemas. In moving from an explicit map to its schema, we are moving from rung 2 ("data") to rung 3 ("blueprints") on our ladder of abstractions.
 
+### Directed graphs
+
 What is the schema that represents a directed graph? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices. 
 
 ```{image} assets/Ch4/Graph1ST.gif
@@ -74,6 +81,8 @@ What is the schema that represents a directed graph? Recall that a directed grap
 :width: 800px
 :align: center
 ```
+
+<br>
 
 Instead of representing these maps side by side like this, let's combine them so that they run in parallel. Our chunky arrows will then be in this configuration:
 
@@ -83,7 +92,7 @@ Instead of representing these maps side by side like this, let's combine them s
 :align: center
 ```
 
-A pair of parallel source and taget maps is the underlying pattern that is common to all directed graphs, their essential "blueprint". We generally draw this as two arrows marked `src` and `tgt`.
+A pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential "blueprint". We generally draw this as two arrows marked `src` and `tgt`.
 
 ```{image} assets/Ch4/DirectedGraphSchema.jpg
 :alt: Whoopsy!
@@ -99,11 +108,13 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 :width: 800px
 :align: center
 ```
+<br>
+
 Having given a general characterization of directed graphs as a schema, we will now show how we can _modify_ this schema to define other kinds of graphs.
 
 ## Reflexive Graphs
 
-Suppose we were making a directed graph to represent the game of tic tac toe, where:
+Suppose we were making a directed graph to represent the game of tic-tac-toe, where:
 
 * Vertices are the states of the game
 * Arrows are "moves" of the game, going from one state to another.
@@ -115,27 +126,31 @@ A piece of our graph would look like this:
 :width: 500px
 :align: center
 ```
+<br>
 
-Now let's imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to "pass." That is, one of the available moves at any given turn is to stay in the current state. Thus, every vertex in this graph is going to have one arrow that loops back on it.
+Now let's imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to "pass." That is, one of the available moves at any given turn is to stay in the current state. Thus, every vertex in this graph is going to have one special arrow that loops back on itself.
 
 ```{image} assets/Ch4/GO.jpg
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
-This happens a lot when modeling with directed graphs: we'll find ourselves in a situation where every vertex needs to have a special looped arrow attached to it. It happens so frequently that we give these graphs a special name - they're called "reflexive graphs." 
+<br>
 
-A reflexive graph is defined as a directed graph in which "every vertex has a special self-pointing arrow." We can express this idea with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
+This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special "self-looping" arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they're called "reflexive graphs." They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.
+
+HOW CAN WE WORK WITH REFLEXIVE GRAPHS IN AJ?
+
+We can define a reflexive graph as a _directed graph_ with the added condition that "every vertex has a special self-pointing arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
 ```{image} assets/Ch4/ReflexiveMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+<br>
 
-We call this the reflexive map or `ref`.
-
-We can put this reflexive map together with our source and target maps for this graph. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
+Every reflexive graph has such a map, called its reflexive map or `ref`. We can combine this reflexive map with the graph's source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
 
 
 ```{image} assets/Ch4/ReflexiveGraphInstance.gif
@@ -143,34 +158,34 @@ We can put this reflexive map together with our source and target maps for this 
 :width: 800px
 :align: center
 ```
-
-What can we say about this graph?
+<br>
 
 PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this sytem of connections?
 
-Consider that, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
+What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
 
-* follow the reflexive map from a vertex to its self-looping arrow
+* pick any vertex and...
+* ...follow the reflexive map from right to left, from a vertex to its self-looping arrow
 
 ...and then 
 
-* follow the source map from that arrow back to a vertex 
+* continue along the source map from _that_ arrow, moving from left to right to some vertex 
 
-...we should always end up back where we stared.
+...we should always end up back where we started. For example, starting from the heart we get the following loop:
 
 IMAGE OF SINGLE SOURCE LOOP
 
-That is, the above sequence of connections should always form a closed loop. 
+"Source following ref" should always from a closed loop.
 
 By the same reasoning, the target map following the reflexive map should always form a closed loop as well.
 
 IMAGE OF SINGLE TARGET LOOP
 
-If we examine the instance data we indeed see that all such loops are closed. 
+If we look closely at the instance data for the source maps we indeed see that all such loops are closed:
 
 IMAGE OF FADETHROUGH
 
-This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed if and only if there is a reflexive arrow that is not self-pointing. 
+This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed if and only if an arrow is not self-pointing. 
 
 PAUSE AND PONDER: Why?
 
@@ -189,6 +204,19 @@ Now we want to add the closed loop conditions. We can express these as text...
 
 
 
+IN the chapter on dynamical systems we saw how to start with a directed graph and then add addtiional data - states and update rules - to turn it into a a psecific dunamical system. In AlgebraicJulia we do something similar. We define the underlingying grpah and then add the commutativity conditions we want the underlying maps to statisfy.
+
+We express these conditions as an equation. We use • notation, which means "following". We use "id" to mean a amap from a vertex to itself. Our condition "source map following ref map is the same as doing nothing." becomes scr•ref = id. 
+
+
+
+
+
+
+
+
+
+
 ```{image} assets/Ch4/ReflexiveGraph.jpg
 :alt: Whoopsy!
 :width: 800px
@@ -199,7 +227,7 @@ set of loops with the existing maps in the directed graph schema. Thus, to work 
 
 //code snippet showing reflexive graph definition.
 
-Reflexive graphs are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs. But for our purposes, reflexive graphs are important because it's interesting to try and count the morphisms between two of them!
+ But for our purposes, reflexive graphs are important because it's interesting to try and count the morphisms between two of them!
 
 ...where the way we define our graph is by starting with all directed graphs and then specialize to only those which can satisfy the commutativity condition.
 If we were programming in terms of "things" we'd have to add to our codebase to 
@@ -210,17 +238,20 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
 ## Undirected Graphs
 
 
-Surprisingly, we can think of undirected graphs as _special cases_ of directed graphs. 
+Now let's return to the question of undirected graphs. Can we design a schema for these? Surprisingly, it turns out that we can think of undirected graphs as _special cases_ of directed graphs. 
 
-An arrow in a directed graph is like a one-way street, a unidirectional pointer from its source to its target. An edge in an undirected graph is more like like a *two-way street*, which the connection goes mutually in both directions. If we take this “two-way street” idea literally we can see that every undirected graph is *equivalent* to a directed graph with pairs of arrows in place of each edge.
+An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a *two-way street* in which the connection goes mutually in both directions. If we take this “two-way street” idea literally we can see that every undirected graph is *equivalent* to a directed graph in which we've substituted a pair of opposing arrows in place of each undirected edge.
 
 ```{image} assets/Ch4/TwoWayStreet.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+Consider this simple undirected graph and its associated 'directed-graph-with-paired-arrows':
 
+//IMAGE OF UNIDRECTED/DIRECTED VERSIONS OF THE SAME GRAPH
 
+In words, the conditions we want for the arrows of the directed graph is that "every arrow is associated with a unique partner arrow." We can express this idea as a map, in which each arrow gets connected to its pair:
 
 ```{image} assets/Ch4/InversionMap.gif
 :alt: Whoopsy!
@@ -228,17 +259,41 @@ An arrow in a directed graph is like a one-way street, a unidirectional pointer 
 :align: center
 ```
 
+We call this the inversion map or `inv`.
+
+
+IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES.
+```{image} assets/Ch4/UndirectedGraphInstance.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+The pairs of arrows must be "opposing". That is the source of one arrow must be the target of its pair. Once again, we can express this a closed loop condition. if we 
+
+* pick any arrow and...
+* ...follow the source map from left to right, from an arrow to it's source vertex
+
+...we end up in the same place as if we had..
+
+* followed the inverse map from that arrow to its partner arrow.
+* and then followed the target map from _that_ arrow to it's target vertex
+
+...we should always end up at the same final vertex.
+
+
+And similarly going the other way around for S/T maps.
+
+Expressed in equations:
+
+
 ```{image} assets/Ch4/UndirectedGraph.jpg
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
-```{image} assets/Ch4/UndirectedGraphInstance.gif
-:alt: Whoopsy!
-:width: 500px
-:align: center
-```
+
 
 PAUSE AND PONDER: Consider the difference between your understanding of a graph and Algebraic Julia's. For you, an undirected graph and a 'directed-graph-with-paired-arrows' are two different mental interpretations of the same data. AlgebraicJulia deals with your dieas at the level of schemas, maps and commutativity conditions. It has no idea what those things mean to you.
 
