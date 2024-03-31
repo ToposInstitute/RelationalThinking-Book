@@ -13,20 +13,26 @@ kernelspec:
 # Chapter 4: Categories
 ## 4.1 Introduction
 
-Given a schema, it will have many possible instances. We can imagine this set of all theses instances as a swarm of thought bubbles - all the graphs this schema might refer to. 
+For any given a schema there will be many possible instances. Below we show a few of the instance for our three graph schemas.
 
-IMAGE OF DIFFERENT SCHEMAS, EACH WITH ITS OWN SWARM OF THOUGHT BUBBLES.
-
-
-In our ongoing quest to think about things in terms of relationships we can ask, "How are these instance related to one another?"
-
-In this chapter we will define a useful way of relating instances of a schema. Once we do, we will be ready to move up the last rung or in our ladder of abstactions, from schemas to categories. Yet another kind of directed graph at yet another level of abstraction (our last, mercifully!).
+```{image} assets/Ch3/ThreeSchemas.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+Of course, all of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show them all, but it is possible to just imagine them, floating in space. One endless swarm of things a schema might refer to. 
 
 ```{image} assets/Ch4/InstanceDrift.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
+
+In our ongoing quest to think about things in terms of relationships, we should look at these instances, each floating in isolation separated from the others, and ask ourselves, "How are these instance related to one another?"
+
+For now, we will set this swarm aside. We will return to it at the end of the chapter, armed with a new idea for thinking about how they are related.
+
+In this chapter we will define a useful way of relating instances of a schema. Once we do, we will be ready to move up the last rung or in our ladder of abstactions, from schemas to categories where we will encounter yet another kind of directed graph at yet another level of abstraction (our last, mercifully!). Hang in there! You're almost at the top of the ladder.
 
 ## 4.2 Graph Injections
 
@@ -140,6 +146,9 @@ What is the data that defines a graph injection? We can actually capture all of 
 These two maps capture all the relevant information about the injection.
 <br>
 <br>
+
+
+///SAY SOMETHING ABOUT THE 1-1 NATURE OF THE MAPS!!!
 
 Recall our dangling edge condition: For these maps to represent a proper injection the arrows of the injected graph have to stay attached to their source and target vertices. Clearly these maps must be coordinated in some way to prevent breakage. What conditions must be true in order to ensure that a graph doesn't come apart on entry?
 
@@ -269,14 +278,19 @@ Consider the following source map. First of all, we can see that it satisfies ou
 ```
 But notice that the vertical maps _merge_ vertices and arrows in the image. If we show the result of this map we see that arrows and vertices get doubled up in the image:
 
-IMAGE OF GRAPH MORPHISM WITH DOUBLED ARROWS
-
-In general, any collection of maps satisfying our schema are called "graph morphisms." Graph injections are a special case of graph morphisms in which teh arrow and vertex maps are one-to-one.
 
 
-In Chapter 1 we saw an example of a directed graph which described who's turn it was to do the dishes. In this account, Alice and Bob originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty.
+IMAGES DEALING WTIH MORPHISM WITH DOUBLED ARROWS
 
-As it turns out, Alice and Bob are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.
+
+
+
+It may seem like "crushing" a directed graph this way would be an undesirable outcome. But this actually turns out to be a common thing to do when working with graphs. Crushing is different from breaking. The dangling edge condition is a problem for modeling because it renders any underlying model meaningless. But collapsing or merging the parts of a graph doesn't actually pose any danger to the integrity underlying model, as the following example will illustrate.
+
+
+In Chapter 1 we saw an example of a directed graph which described who's turn it was to do the dishes. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty.
+
+As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.
 
 
 ```{image} assets//Ch3/ChoreHanded.png
@@ -286,24 +300,7 @@ As it turns out, Alice and Bob are both right handed while Tuco is left handed. 
 ```
 
 
-The second model is a "course grained" version of the first. It is consistent with the first model but contains fewer details (ie it does not tell us which right handed person is doing the dishes). We can describe this course grained relationship in terms of closed loops as well.
-
-Let's construct a map that connects the Alice, Bob and Tuco (the vertices of the top directed graph) with their handedness (the vertices of the lower graph).
-
-Let's also construct a map of arrows --- WORK THIS OUT: each arrow in the top means "day after Alice" "day after Bob" ; each arrow on the bottoms means "day after righty" "day after lefty"
-
-Show that these are vertex and arrow maps that satisfy our same loop condition from injections
-
-//GIF of fadethroughs on source map.
-
-The difference is that these maps collapse vertices and arrows to the same target. We would represent this like so:
-
-//Image 
-
-In injections, the maps are one-to-one. They are a special case of these more general graph morphisms.
-
-It's important to note that when we collapse the graph like this it remains intact "inside" of the other. We have not broken the dangling edge condition.
-
+The second model is a "coarse grained" version of the first. It is consistent with the first model but contains fewer details (*ie* it does not tell us which right handed person is doing the dishes). This course-graining is exactly what is captured in a graph morphism.  
 
 
 ```{image} assets//Ch4/RightiesVSLefties.gif
@@ -312,10 +309,40 @@ It's important to note that when we collapse the graph like this it remains inta
 :align: center
 ```
 
+
+
+
+////GRAPHIC SHOWING RULES ABOUT WHAT CAN AND CANNOT BE MAPPED
+
+
+
+
 ### Puzzles
 
 ## 4.4 The category of instances
 
+We can now return to our question from the beginning of the chapter: What are teh relationships between the instances of a given schema?
+
+
+
+
+
+
+The productive answer turns out to be graph morphisms. W
+
+
+//IMPORANT GIF
+
+
+//QUESTION MARK BETWEEN GRAPH 1 AND GRAPH 2
+//THREE ARROWS FROM THOUGHT BUBBLE TO THOUGH BUBBLE
+
+
+
+//KEY POINTS, in the coming chapters we'll see a couple of "special cases" for these morphism arrows. We'll define them here so you'll know them when you see them.
+
+* Injections are hooked arrows
+* Isomorphisms are paired unidirectional bars
 
 
 
