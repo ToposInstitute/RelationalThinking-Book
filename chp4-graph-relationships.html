@@ -478,22 +478,23 @@ document.write(`
 <p>But suppose we visit this ski resort in the Summer when there’s no snow. At this time of year the resort lets guests ride up and down the mountain in the lift (which provides a <em>lovely</em> view!), but there is no way to get down the mountain into the village without a snow pack to ski on.</p>
 <p>Let’s compare the summer and winter maps for the ski resort.</p>
 <a class="reference internal image-reference" href="_images/SummerWinter.png"><img alt="Whoopsy!" class="align-center" src="_images/SummerWinter.png" style="width: 800px;" /></a>
-<p>One way to think about the relationship between these two graphs is that we can turn one into the other. Given the Summer map I can <em>turn it into</em> the winter map by adding the additional vertices and arrows associated with travelling to the village. On the other hand, vien the Winter map, I can create the summer map by <em>deleting</em> the arrows and vertices associated with the village.</p>
+<p>One way to think about the relationship between these two graphs is that we can turn one into the other. Given the Summer map I can <em>turn it into</em> the winter map by adding the additional vertices and arrows associated with travelling to the village. On the other hand, given the Winter map, I can create the Summer map by <em>deleting</em> the arrows and vertices associated with the village.</p>
 <p>This is a procedural way of looking at the Summer and Winter maps, a procedure that could be applied to transform one into the other.</p>
 <p>In our ongoing quest to think about things in terms of their relationships instead of in terms of the things themselves, we are going to recommedn another way of looking at these two graphs. Note how the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship? For the Summer graph to be a “part” of the Winter graph means, in effect, that we can map the Summer graph <em>into</em> the Winter graph, taking vertices to vertices and arrows to arrows.</p>
 <a class="reference internal image-reference" href="_images/InjectSki.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectSki.gif" style="width: 800px;" /></a>
+<br>
 <p>We call this a “graph injection”. In order to visualize injections clearly let’s introduce some new visuals.</p>
 <p>Let’s step away from the ski lodge and look at graph injections more generally. We want to represent the injection of graph 1 into graph 2:</p>
 <p>First, let’s redesign graph 2 to be a “recipient” of the graph 1, moving the colors and shapes out of the way.</p>
 <p>IMAGE DETAILING THIS FOR VERTICES AND ARROWS</p>
-<p>The process of placing the first graph inside of the second graph looks like this:</p>
+<p>The process of placing the first graph inside of the second graph now looks like this:</p>
 <a class="reference internal image-reference" href="_images/DefineInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/DefineInjection.gif" style="width: 800px;" /></a>
 <br>
-This gives us an image of "what went where" in our injection. We sometimes call this the "image" of the first graph in the second.
-<p>It’s important to understand that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process in order to avoid the dangling edge condition</p>
-<p>IMAGE SHOWING MAPS TO BE INJECTED.</p>
+The final result gives us an complete picture of "what went where" in our injection. We sometimes call this the "image" of the first graph in the second.
+<br>
+<br>
+<p>An important detail about graph injections is that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process in order to avoid the dangling edge condition and preserve the integrity of any underlying model.</p>
 <a class="reference internal image-reference" href="_images/DanglingEdge.png"><img alt="Whoopsy!" class="align-center" src="_images/DanglingEdge.png" style="width: 800px;" /></a>
-<p>Something something dangling edge.</p>
 <section id="problems">
 <h3>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
@@ -510,14 +511,17 @@ This gives us an image of "what went where" in our injection. We sometimes call 
 <p>Answer:</p>
 <p>Twelve?</p>
 <p>PAUSE AND PONDER: What strategies did you use to count the injections? Were you systematic or did you do it through trial and error? Could you design an algorithm that a computer could use to solve these problems for you?</p>
-<p>In chapter 1 we used source and target maps to describe a directed graph. Maps can also be used to describe an injection. In this case the a “vertex map” and an “arrow map” run vertically, telling where each vertex and arrow ends up in the injection.</p>
+<p>What is the data that defines a graph injection? We can actually capture all of the important details with a pair of maps. The first is a “vertex map”, connecting each vertex in graph 1 with its destination vertex in graph 2. The second is an “arrow map” which identifies where the arrows from graph 1 land inside the arrows of graph 2.</p>
 <a class="reference internal image-reference" href="_images/A,V,Maps.gif"><img alt="Whoopsy!" class="align-center" src="_images/A,V,Maps.gif" style="width: 800px;" /></a>
 <br>
 These two maps capture all the relevant information about the injection.
-<p>Recall our dangling edge condition: For these maps to represent a proper injection the arrows must stay attached to their source and target vertices. Clearly the above maps must work together in some way to prevent breakage. What conditions must be true in order to ensure that a graph doesn’t come apart on entry?</p>
-<p>To answer this, let’s arrange our maps into a square, with the source maps for graph 1 and graph 2 running horizontally and the “arrow map” and “vertex map” running vertically :</p>
+<br>
+<br>
+<p>Recall our dangling edge condition: For these maps to represent a proper injection the arrows of the injected graph have to stay attached to their source and target vertices. Clearly these maps must be coordinated in some way to prevent breakage. What conditions must be true in order to ensure that a graph doesn’t come apart on entry?</p>
+<p>To answer this, let’s arrange our maps into a square, with the source maps for graph 1 and graph 2 running horizontally and the “arrow map” and “vertex map” running vertically:</p>
 <a class="reference internal image-reference" href="_images/CommSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/CommSquare.gif" style="width: 800px;" /></a>
-<p>Note how the dashed lines seem to flow “out” from the arrows in the upper left and flow “in” to the vertices at the lower right. Starting from any given arrow there are two paths you can take around this square, an upper route and a lower route. Let’s focus on a specific arrow and consider what these routes “mean”. (We’ll label the endpoints as “A” and “V”)</p>
+<br>
+Note how the dashed lines seem to flow “out” from the arrows in the upper left and flow “in” to the vertices at the lower right. Starting from any arrow in the upper right, there are two paths you can take around this square: an upper route and a lower route. Let's focus on a specific arrow and consider what these routes “mean”. (We'll label the endpoints as "A" and "V")
 </section>
 <section id="upper-route">
 <h3>Upper Route<a class="headerlink" href="#upper-route" title="Permalink to this heading">#</a></h3>
@@ -528,35 +532,34 @@ These two maps capture all the relevant information about the injection.
 <h3>Lower Route<a class="headerlink" href="#lower-route" title="Permalink to this heading">#</a></h3>
 <a class="reference internal image-reference" href="_images/LowerRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/LowerRoute.gif" style="width: 500px;" /></a>
 <p>Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its “image”). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square is “the source of the image of A.”</p>
-<p>Let’s now revisit to our dangling edge condition. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square look like this:</p>
+<p>To complete the picture, let’s now revisit to our dangling edge condition. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square will look something like this:</p>
 <a class="reference internal image-reference" href="_images/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/OpenSquare.gif" style="width: 500px;" /></a>
-<p>That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A’s source” is <em>different</em> from “The vertex that is the source of A’s image.”</p>
-<p>Thus we can actually DEFINE what we mean by a graph injection as a square in which all arrows have closed loops going either way around.</p>
+<br>
+<p>That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A’s source” is <em>different</em> from “the vertex that is the source of A’s image.”</p>
+<p>So we can actually DEFINE a graph injection with a closed loop condition: starting from any arrown in the upper left, the paths going either way around the square form a closed loop.</p>
 <a class="reference internal image-reference" href="_images/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectionFadethrough.gif" style="width: 500px;" /></a>
-<p>Of course, the same maps must also have closed loops for the arrows and their targets. Together, all of the “data” describing this embedding is captured in the following diagrams:</p>
+<br>
+<p>Of course, these same arrow and vertex maps must also have closed loops for the <em>target maps</em>. All together, this is the complete set of “data” describing the injection:</p>
 <a class="reference internal image-reference" href="_images/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphInjection.gif" style="width: 800px;" /></a>
-<p>We have defined one thing – graph connectivity in injections – in terms of another thing – closed loops. Imposing the rule that the certain loops must close is called a “commutativity condition”.</p>
-<p>We can rearrange all of these maps into a single assembly like so:</p>
+<br>
+<br>
 <a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
 <p>Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 <em>if and only if</em> these maps satisfy the closed loop condition.</p>
 <p>The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.</p>
 <p>For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, <code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">2</span></code>•<code class="docutils literal notranslate"><span class="pre">arr</span></code> for the lower route and <code class="docutils literal notranslate"><span class="pre">vert</span></code>•<code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">1</span></code> for the upper route. And similarly for the targets.</p>
 <a class="reference internal image-reference" href="_images/GraphMorphismSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/GraphMorphismSchema.jpg" style="width: 800px;" /></a>
-<p>We express our closed loop condition by saying that these two paths must be equal, and we write this equation next to our schema.</p>
-<p>We have seen that it is possible to express the geometric idea of graph morphisms in terms of a commutativity constraint on a schema. But this isn’t the only thing that can be expressed this way. A surprising and lovely fact of life is that an enormous number of ideas can be captured using schemas and constraints. Let’s look at some other examples.</p>
-<p>It turns out there are a lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
-<p>As we’ll see, one of the benefits of describing injections and dangling edge conditions in terms of maps is that maps and commutativity conditions are easy for the computer to understand maps and inspect. This allows the computer a way to be of use to us without that computer needing to have any actual understanding ideas like vertices, arrows, attachments..the semantics of graphs.</p>
-<p>It turns out that this schema captures mor than just injections!</p>
+<p>In this chapter and the last we have seen that lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>In this section we have looked at one kind of relationship between graphs - the ways one graph can be injected into another - and we have characterized that relationship in terms of schemas and commutivity conditions. However, there is more to see. It turns out the this schema doesn’t just capture injections!</p>
 </section>
 </section>
 <section id="graph-morphisms">
 <h2>2. Graph Morphisms<a class="headerlink" href="#graph-morphisms" title="Permalink to this heading">#</a></h2>
-<p>The vertex and arrow maps for our graph injections were all one-to-one. Each vertext in graph 1 was sent to a unique vertix in graph 2, and similarly each arrow was sent to a unique destination.</p>
+<p>The vertex and arrow maps for our graph injections were all one-to-one. Each vertext in graph 1 was sent to a unique vertex in graph 2, and similarly each arrow was sent to a unique destination.</p>
 <p>Consider the following source map. First of all, we can see that it satisfies out commutativity condition, in that all squares from the upper left are closed.</p>
 <a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
 <p>But notice that the vertical maps <em>merge</em> vertices and arrows in the image. If we show the result of this map we see that arrows and vertices get doubled up in the image:</p>
 <p>IMAGE OF GRAPH MORPHISM WITH DOUBLED ARROWS</p>
-<p>In general, any collection of maps satisfying our schema are called “graph morphisms.” Graph injections are a special case of graph morphisms in whcih teh arrow and vertex maps are one-to-one.</p>
+<p>In general, any collection of maps satisfying our schema are called “graph morphisms.” Graph injections are a special case of graph morphisms in which teh arrow and vertex maps are one-to-one.</p>
 <p>In Chapter 1 we saw an example of a directed graph which described who’s turn it was to do the dishes. In this account, Alice and Bob originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty.</p>
 <p>As it turns out, Alice and Bob are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.</p>
 <a class="reference internal image-reference" href="_images/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="_images/ChoreHanded.png" style="width: 500px;" /></a>

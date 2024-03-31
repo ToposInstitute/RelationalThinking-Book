@@ -301,7 +301,7 @@ Expressed in equations:
 
 
 
-PAUSE AND PONDER: Consider the difference between your understanding of a graph and Algebraic Julia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. For AlgebraicJulia there is no interepretaion. Every idea is phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
+PAUSE AND PONDER: Consider the difference between your understanding of graphs and Algebraic Julia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Every idea is phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
 
 We chose to use thought bubbles to indicate these interepretations, signalling that they are ideas that exist only the in mind of the progammer.
 
@@ -327,17 +327,17 @@ For the mathematician, simplicial sets are useful because they turn geometry int
 
 On the more "applied" side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960's, whose goal was to provide a system that could model parallel processes, synchronization, resource sharing, and which had an intuitive graphical notation. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.
 
-It's important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics, we are able to represent Petri nets in terms of schemas and work with them in Algebraic Julia.
+It's important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics, we are able to represent Petri nets in terms of schemas and work with them in AlgebraicJulia.
 
 ```{image} assets/Ch4/Petri_Net.jpg
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
+<br>
 
 
-
-Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models using Petri nets, including population dynamics, epidemiological models and enzyme reactions.
+Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
 
 ## Databases
 
