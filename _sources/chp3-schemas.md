@@ -12,7 +12,7 @@ kernelspec:
 
 # Chapter 3: Blueprints
 
-
+## 3.1 Introduction
 We have now seen how directed graphs can be useful for modeling the world. However, in some situations they're not actually the best choice.
 
 Suppose we were making a directed graph to represent the social network on Tiktok:
@@ -40,14 +40,17 @@ To model this kind of social network we need a different kind of graph. We cal
 :align: center
 ```
 <br>
-PAUSE AND PONDER: How is the data of an undirected graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
 
-<br>
-<br>
+:::{admonition} Pause and Ponder! 
+How is the data of an undirected graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
+:::
+
 
 Undirected graphs are just one example from a whole zoo of different _kinds_ of graphs we might want to model with. In this chapter we'll look at a few specimens from this zoo. In the process, we'll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.
 
-## Introducing Schemas for directed graphs
+## 3.2 Introducing Schemas
+
+### Chunky arrows
 
 We'll begin this chapter with a little tidying up. The basic building block we've been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:
 
@@ -115,7 +118,9 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 
 Having given a general characterization of directed graphs as a schema, we will now show how we can _modify_ this schema to define other kinds of graphs.
 
-## Reflexive Graphs
+## 3.3 Other kinds of graphs
+
+### Reflexive Graphs (in theory)
 
 Suppose we were making a directed graph to represent the game of tic-tac-toe, where:
 
@@ -142,7 +147,10 @@ Now let's imagine doing the same thing for the ancient board game Go. An importa
 
 This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special "self-looping" arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they're called "reflexive graphs." They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.
 
-PAUSE AND PONDER: How is the data of an reflexive graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
+:::{admonition} Pause and Ponder! 
+How is the data of an reflexive graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
+:::
+
 
 We can define a reflexive graph as a _directed graph_ with the added condition that "every vertex has a special self-pointing arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
@@ -163,9 +171,16 @@ Every reflexive graph has such a map, called its reflexive map or `ref`. We can 
 ```
 <br>
 
-PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
+:::{admonition} Pause and Ponder! 
+Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
+:::
+
 
 What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
+
+:::{admonition} Comparing two routes 
+:class: attention
+
 
 * pick any vertex and...
 * ...follow the reflexive map from right to left, from a vertex to its self-looping arrow
@@ -174,7 +189,14 @@ What can we notice about the above instance? Well, for one thing, in order for a
 
 * continue along the source map from _that_ arrow, moving from left to right to some vertex 
 
-...we should always end up back where we started. For example, starting from the heart we get the following loop:
+...we should always end up back where we started. 
+
+
+:::
+
+
+
+For example, starting from the heart we get the following loop:
 
 IMAGE OF SINGLE SOURCE LOOP
 
@@ -188,14 +210,18 @@ If we look closely at the instance data for the source maps we indeed see that a
 
 IMAGE OF FADETHROUGH
 
-This closed loop condition turns out to be equivalent to the defition of a relfexive graph: A loop fails to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph. 
+This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop fails to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph. 
 
-PAUSE AND PONDER: Can you think through why this is?
+:::{admonition} Pause and Ponder! 
+Can you think through why this is?
+
+:::
+
 
 In first defining reflexive graphs we had to establish what we meant using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of a maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
 
 
-## Into the computer
+### Relfexive graphs (in a computer)
 
 Let's encode a reflexive graph schema in AlgebraicJulia!
 
@@ -236,7 +262,7 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
 
 
 
-## Undirected Graphs
+### Undirected Graphs
 
 
 Now let's return to the question of undirected graphs. Can we design a schema for these? Surprisingly, it turns out that we can think of undirected graphs as _special cases_ of directed graphs. 
@@ -272,9 +298,16 @@ IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES. ADD "arrows" and 
 
 Notice how the instance data represents a directed graph which in turn represents and undirected graph!
 
-PAUSE AND PONDER. Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
+:::{admonition} Pause and Ponder! 
+Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
+:::
 
 What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this a closed loop condition. In words, if we 
+
+:::{admonition} Comparing two routes 
+:class: attention
+
+
 
 * pick any arrow and...
 * ...follow the source map from left to right, from an arrow to it's source vertex
@@ -283,6 +316,13 @@ What can we notice about the above instance? The paired arrows of the directed g
 
 * followed the inverse map from that arrow to its partner arrow.
 * and then followed the target map from _that_ arrow to it's target vertex
+
+
+
+:::
+
+
+
 
 
 
@@ -299,19 +339,21 @@ Expressed in equations:
 ```
 
 
-
-
-PAUSE AND PONDER: Consider the difference between your understanding of graphs and Algebraic Julia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Every idea is phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
+:::{admonition} Pause and Ponder! 
+Consider the difference between your understanding of graphs and Algebraic Julia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Every idea is phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
 
 We chose to use thought bubbles to indicate these interepretations, signalling that they are ideas that exist only the in mind of the progammer.
+:::
 
-## Other kinds of schemas
+
+
+## 3.4 Other kinds of schemas
 
 In this chapter we have used schemas and commutativity conditions to look at a few different flavors of graphs. But the framework we have developed here can actually be extended beyond just graphs, to an extraordinary variety of elaborate and useful concepts. Indeed, one of the profound offerings of AlgebraicJulia is the sheer number of mathematical abstractions it can handle in terms of schemas. In this final section we offer a brief glimpse at some more powerful models and ideas that are also captured by this framework.
 
 DISCLAIMER: It is out of scope to go into any detail on the following schemas. We mention them here, in passing, only to give some sense of the possibilities available with AlgebraicJulia. 
 
-## Simplicial sets
+### Simplicial sets
 
 We can generalize reflexive graphs to higher dimensions using schemas. The result is one of the algebraic topologist's favorite tools: simplicial sets. Ordinary graphs connect 0-dimensional vertices using 1-dimensional lines. With simplicial sets we can also attach 2-dimensional triangles, building up triangulated surfaces. Going up another dimension we can attach 3-dimensional tetrahedra to make solid figures. And so on.
 
@@ -323,7 +365,7 @@ For the mathematician, simplicial sets are useful because they turn geometry int
 :align: center
 ```
 
-## Petri nets
+### Petri nets
 
 On the more "applied" side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960's, whose goal was to provide a system that could model parallel processes, synchronization, resource sharing, and which had an intuitive graphical notation. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.
 
@@ -339,7 +381,7 @@ It's important to note that Petri nets were developed by practitioners, not math
 
 Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
 
-## Databases
+### Databases
 
 The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Building a schema is then just "structuring a query" on that database by defining new relationships in terms of existing ones.
 

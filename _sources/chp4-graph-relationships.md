@@ -11,7 +11,7 @@ kernelspec:
 ---
 
 # Chapter 4: Categories
-## Introduction
+## 4.1 Introduction
 
 Given a schema, it will have many possible instances. We can imagine this set of all theses instances as a swarm of thought bubbles - all the graphs this schema might refer to. 
 
@@ -28,7 +28,9 @@ In this chapter we will define a useful way of relating instances of a schema. O
 :align: center
 ```
 
-## 1. Graph Injections
+## 4.2 Graph Injections
+
+### Graph injections, concretely
 
 In Chapter 1 we saw an example of a directed graph which described the layout of a ski resort. In this account, you could ride the ski lift up and down the mountain or ski from the top of the mountain into a nearby village.
 
@@ -88,7 +90,7 @@ An important detail about graph injections is that a graph is not allowed to com
 
 
 
-### Problems ###
+### Puzzles
 
 1. How many ways can you inject this upper graph into the lower graph?
 
@@ -117,10 +119,14 @@ Answer:
 
 Twelve?
 
-PAUSE AND PONDER: What strategies did you use to count the injections? Were you systematic or did you do it through trial and error? Could you design an algorithm that a computer could use to solve these problems for you?
+
+:::{admonition} Pause and Ponder! 
+What strategies did you use to count the injections? Were you systematic or did you do it through trial and error? Could you design an algorithm that a computer could use to solve these problems for you?
+:::
 
 
 
+### Graph injections as data
 
 
 What is the data that defines a graph injection? We can actually capture all of the important details with a pair of maps. The first is a "vertex map", connecting each vertex in graph 1 with its destination vertex in graph 2. The second is an "arrow map" which identifies where the arrows from graph 1 land inside the arrows of graph 2.
@@ -148,7 +154,12 @@ To answer this, let's arrange our maps into a square, with the source maps for g
 <br>
 Note how the dashed lines seem to flow “out” from the arrows in the upper left and flow “in” to the vertices at the lower right. Starting from any arrow in the upper right, there are two paths you can take around this square: an upper route and a lower route. Let's focus on a specific arrow and consider what these routes “mean”. (We'll label the endpoints as "A" and "V")
 
-### Upper Route ###
+
+
+
+
+
+:::{admonition} Upper route
 
 
 ```{image} assets//Ch3/UpperRoute.gif
@@ -159,7 +170,10 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 
 Reading across the top we have that the red arrow has the heart as its source. Reading down the right side we see that the heart gets sent to the square vertex in graph 2. So the square is "the vertex that receives A's source."
 
-### Lower Route ###
+:::
+
+
+:::{admonition} Lower route
 
 ```{image} assets//Ch3/LowerRoute.gif
 :alt: Whoopsy!
@@ -168,6 +182,12 @@ Reading across the top we have that the red arrow has the heart as its source. R
 ```
 
 Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its "image"). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square is "the source of the image of A."
+
+:::
+
+
+
+
 
 To complete the picture, let's now revisit to our dangling edge condition. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square will look something like this:
 
@@ -181,7 +201,7 @@ To complete the picture, let's now revisit to our dangling edge condition. “Co
 
 That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A's source” is *different* from “the vertex that is the source of A's image.”
 
-So we can actually DEFINE a graph injection with a closed loop condition: starting from any arrown in the upper left, the paths going either way around the square form a closed loop.
+So we can actually DEFINE a graph injection with a closed loop condition: starting from any arrown in the upper left, the paths going either way around the square will always form a closed loop.
 
 ```{image} assets//Ch3/InjectionFadethrough.gif
 :alt: Whoopsy!
@@ -200,6 +220,9 @@ Of course, these same arrow and vertex maps must also have closed loops for the 
 ```
 <br>
 <br>
+
+
+### Graph injection schema
 
 
 ```{image} assets/Ch4/MorphismInstance.gif
@@ -230,7 +253,9 @@ In this chapter and the last we have seen that lot of ideas that can be captured
 In this section we have looked at one kind of relationship between graphs - the ways one graph can be injected into another - and we have characterized that relationship in terms of schemas and commutivity conditions. However, there is more to see. It turns out the this schema doesn't just capture injections!
 
 
-## 2. Graph Morphisms
+## 4.3 Graph Morphisms
+
+### General morphisms
 
 The vertex and arrow maps for our graph injections were all one-to-one. Each vertext in graph 1 was sent to a unique vertex in graph 2, and similarly each arrow was sent to a unique destination.
 
@@ -286,6 +311,13 @@ It's important to note that when we collapse the graph like this it remains inta
 :width: 800px
 :align: center
 ```
+
+### Puzzles
+
+## 4.4 The category of instances
+
+
+
 
 
 ```{image} assets/Ch4/CategoryDrift.gif
