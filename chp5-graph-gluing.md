@@ -238,13 +238,10 @@ While not all graphs can make up such a commuting square of `pushout`, there can
 
 Find at least two graphs which will make the diagram commute. 
 
-(a diagram)
-
-:::{admonition} Solution 
-:class: dropdown
-
-```{div} wrapper 
-Possible solutions 
+```{image} assets/Ch5/1.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
 ```
 
 :::
