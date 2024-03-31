@@ -572,13 +572,13 @@ document.write(`
 <p>…we should always end up back where we started.</p>
 </div>
 <p>For example, starting from the heart we get the following loop:</p>
-<p>IMAGE OF SINGLE SOURCE LOOP</p>
+<a class="reference internal image-reference" href="_images/SourceLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/SourceLoop.gif" style="width: 500px;" /></a>
 <p>“Source following ref” should always from a closed loop.</p>
 <p>By the same reasoning, the target map following the reflexive map should always form a closed loop as well.</p>
-<p>IMAGE OF SINGLE TARGET LOOP</p>
+<a class="reference internal image-reference" href="_images/TargetLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/TargetLoop.gif" style="width: 500px;" /></a>
 <p>If we look closely at the instance data for the source maps we indeed see that all such loops are closed:</p>
-<p>IMAGE OF FADETHROUGH</p>
-<p>This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop fails to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph.</p>
+<a class="reference internal image-reference" href="_images/ReflexiveFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveFadethrough.gif" style="width: 500px;" /></a>
+<p>This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop would fail to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph.</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Can you think through why this is?</p>
@@ -614,12 +614,12 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
 <p>We call this the inversion map or <code class="docutils literal notranslate"><span class="pre">inv</span></code>. We can combine this inversion map with the graph’s source and target maps, attaching it as a self-point loop on the arrows.</p>
 <p>IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES. ADD “arrows” and “vertices” labels to the spheres</p>
 <a class="reference internal image-reference" href="_images/UndirectedGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/UndirectedGraphInstance.gif" style="width: 500px;" /></a>
-<p>Notice how the instance data represents a directed graph which in turn represents and undirected graph!</p>
+<p>Notice how the instance data represents a directed graph which in turn represents an undirected graph!</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
 </div>
-<p>What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this a closed loop condition. In words, if we</p>
+<p>What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this as a closed loop condition. In words, if we</p>
 <div class="attention admonition">
 <p class="admonition-title">Comparing two routes </p>
 <ul class="simple">
