@@ -143,7 +143,7 @@ HOW CAN WE WORK WITH REFLEXIVE GRAPHS IN AJ?
 
 We can define a reflexive graph as a _directed graph_ with the added condition that "every vertex has a special self-pointing arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
-```{image} assets/Ch4/ReflexiveMap.gif
+```{image} assets/Ch3/ReflexiveMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -253,7 +253,7 @@ Consider this simple undirected graph and its associated 'directed-graph-with-pa
 
 In words, the conditions we want for the arrows of the directed graph is that "every arrow is associated with a unique partner arrow." We can express this idea as a map, in which each arrow gets connected to its pair:
 
-```{image} assets/Ch4/InversionMap.gif
+```{image} assets/Ch3/InversionMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -311,9 +311,9 @@ We can generalize reflexive graphs to higher dimensions using schemas. The resul
 
 For the mathematician, simplicial sets are useful because they turn geometry into algebra: a simplicial triangulation of a topological space is a combinatorial object that can be reasoned about. For the applied scientist, simplicial sets may be useful as a way of 3D modeling, as we'll see in Chapter 7. Finally, in Algebraic Julia, simplicial sets are practical because all of the rules for how different parts must attach can be fully captured with a few compositionality constraints.
 
-```{image} assets/Ch4/SimplicialSets.jpg
+```{image} assets/Ch4/SimplicialSets.png
 :alt: Whoopsy!
-:width: 500px
+:width: 800px
 :align: center
 ```
 
@@ -323,7 +323,7 @@ On the more "applied" side, we have the example of Petri nets, a sophisticated m
 
 ```{image} assets/Ch4/Petri_Net.jpg
 :alt: Whoopsy!
-:width: 500px
+:width: 800px
 :align: center
 ```
 
@@ -335,9 +335,12 @@ Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Docu
 
 The whole concept of a schema originally comes from datase theory. We can think of the underlying connections in a schema as a kind of linked data, say poeple linked accoridn to their relationships, building a schema is tehn just "structuring a query" on that databse by definining new relatinships in terms of existing ones.
 
-IMAGE OF DATBASE WITH TOY HUMAN RELATIONSHIPS
 
-
+```{image} assets/Ch3/DatabaseLabeled.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 One of the major difficulties in database management is communication between different databases. Data often gets corrupted when transferred between incompatible contexts. Data corruption is the analog of our dangling edge condition. Much as DPOs are a high level tool that will resolve our dangling edge problems, there are high level category theoretic techniques for data migration, offereing a canonical way of migrating data that automatically takes care of various annoying edge conditions. 
 
