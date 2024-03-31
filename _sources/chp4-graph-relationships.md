@@ -13,9 +13,12 @@ kernelspec:
 # Chapter 4: Categories
 ## Introduction
 
-A given schema will generally have many instances. We can think of the set of all theses instances as a swamr of thought bubbles - all the graphs this schema might refer to. 
+Given a schema, it will have many possible instances. We can imagine this set of all theses instances as a swarm of thought bubbles - all the graphs this schema might refer to. 
 
-Every schema has a colletion of instances. We can imagine collecting them all into on big pile. Everything the schema might possibly refer to. In our ongoing quest to think about things in terms of relationships we will ask, "How are these instance related to one another?" 
+IMAGE OF DIFFERENT SCHEMAS, EACH WITH ITS OWN SWARM OF THOUGHT BUBBLES.
+
+
+In our ongoing quest to think about things in terms of relationships we can ask, "How are these instance related to one another?"
 
 In this chapter we will define a useful way of relating instances of a schema. Once we do, we will be ready to move up the last rung or in our ladder of abstactions, from schemas to categories. Yet another kind of directed graph at yet another level of abstraction (our last, mercifully!).
 
@@ -25,15 +28,19 @@ In Chapter 1 we saw an example of a directed graph which described the layout of
 
 But suppose we visit this ski resort in the Summer when there's no snow. At this time of year the resort lets guests ride up and down the mountain in the lift (which provides a *lovely* view!), but there is no way to get down the mountain into the village without a snow pack to ski on.
 
+Let's compare the summer and winter maps for the ski resort.
+
 ```{image} assets/Ch3/SummerWinter.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
 
-Note that the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship?
+One way to think about the relationship between these two graphs is that we can turn one into the other. Given the Summer map I can _turn it into_ the winter map by adding the additional vertices and arrows associated with travelling to the village. On the other hand, vien the Winter map, I can create the summer map by _deleting_ the arrows and vertices associated with the village.
 
-In the previous chapter we thought about relationships in terms of maps. We can do something similar here. For the Summer graph to be a "part" of the Winter graph means, in effect, that we can map the Summer graph *into* the Winter graph, taking vertices to vertices and arrows to arrows.
+This is a procedural way of looking at the Summer and Winter maps, a procedure that could be applied to transform one into the other.
+
+In our ongoing quest to think about things in terms of their relationships instead of in terms of the things themselves, we are going to recommedn another way of looking at these two graphs. Note how the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship? For the Summer graph to be a "part" of the Winter graph means, in effect, that we can map the Summer graph *into* the Winter graph, taking vertices to vertices and arrows to arrows.
 
 ```{image} assets/Ch3/InjectSki.gif
 :alt: Whoopsy!
@@ -43,25 +50,26 @@ In the previous chapter we thought about relationships in terms of maps. We can 
 
 We call this a "graph injection". In order to visualize injections clearly let's introduce some new visuals.
 
-*Figuratively:*
-
 Let's step away from the ski lodge and look at graph injections more generally. We want to represent the injection of graph 1 into graph 2:
 
 First, let's redesign graph 2 to be a "recipient" of the graph 1, moving the colors and shapes out of the way.
 
-We now place the first graph inside of the second graph.
+IMAGE DETAILING THIS FOR VERTICES AND ARROWS
+
+The process of placing the first graph inside of the second graph looks like this:
 
 ```{image} assets/Ch3/DefineInjection.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
-
-
-
+<br>
 This gives us an image of "what went where" in our injection. We sometimes call this the "image" of the first graph in the second.
 
-It's important to understand that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process.
+
+It's important to understand that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process in order to avoid the dangling edge condition
+
+IMAGE SHOWING MAPS TO BE INJECTED.
 
 ```{image} assets/Ch3/DanglingEdge.png
 :alt: Whoopsy!
@@ -69,7 +77,8 @@ It's important to understand that a graph is not allowed to come apart when gett
 :align: center
 ```
 
-For modeling purposes, it is the connectivity of the graph that matters. If an injection ruptures the graph this way it would also rupture any underlying meaning we may have ascribed to that graph. DEFINE Dangling edge condition (eg In the ski lodge example, ...?)
+Something something dangling edge.
+
 
 
 ### Problems ###
@@ -114,7 +123,7 @@ In chapter 1 we used source and target maps to describe a directed graph. Maps c
 :width: 800px
 :align: center
 ```
-
+<br>
 These two maps capture all the relevant information about the injection.
 
 Recall our dangling edge condition: For these maps to represent a proper injection the arrows must stay attached to their source and target vertices. Clearly the above maps must work together in some way to prevent breakage. What conditions must be true in order to ensure that a graph doesn't come apart on entry?
@@ -170,7 +179,7 @@ Thus we can actually DEFINE what we mean by a graph injection as a square in whi
 :align: center
 ```
 
-Of course, the same maps must also have closed loops for the arrows and their targets. Together, all of the “data” describing this embedding is caputred in the following diagrams:
+Of course, the same maps must also have closed loops for the arrows and their targets. Together, all of the “data” describing this embedding is captured in the following diagrams:
 
 
 ```{image} assets//Ch3/GraphInjection.gif
@@ -182,17 +191,7 @@ Of course, the same maps must also have closed loops for the arrows and their ta
 We have defined one thing – graph connectivity in injections – in terms of another thing – closed loops. Imposing the rule that the certain loops must close is called a "commutativity condition".
 
 
-
-
-
-```{image} assets/Ch4/GraphMorphism.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-The schema for this data looks like this:
-
-But recall that there was an extra "loop condition" that the maps needed to satisfy in order to represent a proper graph morphism:
+We can rearrange all of these maps into a single assembly like so:
 
 ```{image} assets/Ch4/MorphismInstance.gif
 :alt: Whoopsy!
@@ -202,7 +201,9 @@ But recall that there was an extra "loop condition" that the maps needed to sati
 
 Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 _if and only if_ these maps satisfy the closed loop condition.
 
-For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, S2•A for the lower route and V•S1 for the upper route.
+The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.
+
+For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, `src 2`•`arr` for the lower route and `vert`•`src 1` for the upper route. And similarly for the targets.
 
 ```{image} assets/Ch4/GraphMorphismSchema.jpg
 :alt: Whoopsy!
@@ -210,37 +211,12 @@ For our schema, we will impose this closed loop condition by writing it as an eq
 :align: center
 ```
 
-(Note how the order in which we write the arrows seems backwards from the order in which you would actually traverse those arrows along the route. Unfortunately this is the notational convention! One way to think of it is to read the symbol • as the word "after." So "V•S2" is understood to mean "V after S2.")
 We express our closed loop condition by saying that these two paths must be equal, and we write this equation next to our schema.
 
-//commutativity condition with schema
-
-Any way of filling in this schema that satisfies the commutativity constraint can be interpreted as a morphism between graphs.
-
-
-///GIF of graph morphism instance
-
-The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.
 
 
 
-The data of a schema includes both the pattern of arrows and this equation. The arrows show us the pattern of maps which may form an instance. The equation provides and additional constraint on which collections of maps can be considered valid instances of the schema.
-
-We understand this to mean that, first of all, any instance of this schema consists of a bunch of maps "under the hood" which are arranged in the pattern. But additionally, we have a guarantee that if we inspect those maps we will find a closed loops, of the sort characterized by the equation. Any ways of filling in the schema that do not satisfy the commutativity constraint are not considered valid instances of this schema.
-
-
-Point out that Schemas ARE directed graphs. 
-
-We have thus taken a geometric idea - the condition that certain loops must all be closed - and have found a way to represent it as an equation. And one nice thing about equations is that they can be easily communicated to a computer! Indeed, if you go back to the last chapter you see that we have 
-Note on using directed graph notation to define schemas, and then expressing your commutativity conditions as constraints on those arrows. (much like adding data like state and update rule).
-//sample code for 
 We have seen that it is possible to express the geometric idea of graph morphisms in terms of a commutativity constraint on a schema. But this isn't the only thing that can be expressed this way. A surprising and lovely fact of life is that an enormous number of ideas can be captured using schemas and constraints. Let's look at some other examples.
-
-
-
-
-
-
 
 It turns out there are a lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel's *Conceptual Mathematics*.[^1]
 
@@ -256,7 +232,7 @@ It turns out that this schema captures mor than just injections!
 
 The vertex and arrow maps for our graph injections were all one-to-one. Each vertext in graph 1 was sent to a unique vertix in graph 2, and similarly each arrow was sent to a unique destination.
 
-Consider the following source map. First of all, we can see that it satisfies out commutativity condition:
+Consider the following source map. First of all, we can see that it satisfies out commutativity condition, in that all squares from the upper left are closed.
 
 
 ```{image} assets//Ch3/EMBED.gif
@@ -271,12 +247,35 @@ IMAGE OF GRAPH MORPHISM WITH DOUBLED ARROWS
 In general, any collection of maps satisfying our schema are called "graph morphisms." Graph injections are a special case of graph morphisms in whcih teh arrow and vertex maps are one-to-one.
 
 
+In Chapter 1 we saw an example of a directed graph which described who's turn it was to do the dishes. In this account, Alice and Bob originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty.
+
+As it turns out, Alice and Bob are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.
+
 
 ```{image} assets//Ch3/ChoreHanded.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+
+
+The second model is a "course grained" version of the first. It is consistent with the first model but contains fewer details (ie it does not tell us which right handed person is doing the dishes). We can describe this course grained relationship in terms of closed loops as well.
+
+Let's construct a map that connects the Alice, Bob and Tuco (the vertices of the top directed graph) with their handedness (the vertices of the lower graph).
+
+Let's also construct a map of arrows --- WORK THIS OUT: each arrow in the top means "day after Alice" "day after Bob" ; each arrow on the bottoms means "day after righty" "day after lefty"
+
+Show that these are vertex and arrow maps that satisfy our same loop condition from injections
+
+//GIF of fadethroughs on source map.
+
+The difference is that these maps collapse vertices and arrows to the same target. We would represent this like so:
+
+//Image 
+
+In injections, the maps are one-to-one. They are a special case of these more general graph morphisms.
+
+It's important to note that when we collapse the graph like this it remains intact "inside" of the other. We have not broken the dangling edge condition.
 
 
 
