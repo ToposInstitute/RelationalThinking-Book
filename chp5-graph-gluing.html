@@ -493,9 +493,9 @@ document.write(`
 <a class="reference internal image-reference" href="_images/DGdishes.png"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.png" style="width: 800px;" /></a>
 </br>
 <p>In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and Priyaa (co-authors of this book). Encoding these friendships as graphs, we get:</p>
-<a class="reference internal image-reference" href="_images/3b.png"><img alt="Whoopsy!" class="align-center" src="_images/3b.png" style="width: 560px;" /></a>
+<a class="reference internal image-reference" href="_images/3c.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3c.jpeg" style="width: 560px;" /></a>
 <p>Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
-<a class="reference internal image-reference" href="_images/3c.png"><img alt="Whoopsy!" class="align-center" src="_images/3c.png" style="width: 560px;" /></a>
+<a class="reference internal image-reference" href="_images/3b.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3b.jpeg" style="width: 460px;" /></a>
 </br>
 <p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
 <p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
@@ -523,7 +523,8 @@ document.write(`
 <h3>The shape of the overlap<a class="headerlink" href="#the-shape-of-the-overlap" title="Permalink to this heading">#</a></h3>
 <p>To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter.</p>
 <p>We saw in previous chapters that a graph morphism identifies one graph inside another. Suppose we are given two graphs – <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. An overlap of these two graphs is specified as the diagram below: a diagram with two radiating arrows, one into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and another one into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. Graph <code class="docutils literal notranslate"><span class="pre">overlap</span></code> specifies the vertices and edges common to <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>! Note that a relational specification of common vertices and edges as shown below ensures that the overlapping region will be a graph by itself (no dangling edges)!</p>
-<a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 400px;" /></a>
+</br>
 <p>The relationships between the graphs in the above diagram are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>.</p></li>
@@ -539,7 +540,7 @@ document.write(`
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
 <p>A diagram with two radiating maps into two graphs is a specification of an overlap of those graphs.</p>
-<a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/1b.png"><img alt="Whoopsy!" class="align-center" src="_images/1b.png" style="width: 500px;" /></a>
 <center> Overlap diagram </center> <!-- May be style this later -->
 <p>Overlapping graphs can be glued together.</p>
 </div>
@@ -595,7 +596,7 @@ document.write(`
 <li><p>The diagram MUST COMMUTE!</p></li>
 </ol>
 <a class="reference internal image-reference" href="_images/13a.png"><img alt="Whoopsy!" class="align-center" src="_images/13a.png" style="width: 450px;" /></a>
-<center> Commuting square of a `pushout` </center>
+<center> Commuting square of a pushout </center>
 </div>
 </section>
 <section id="pass-2-universal-property">
@@ -613,7 +614,7 @@ document.write(`
 <p>So, to which graphs should we ask the above question? We have already covered <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">overlap</span></code> and have ended up with some potential candidates. The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> we are looking for is inside this candidates set!  We shall ask the graphs in set, “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?”</p>
 <p>To do so, we are going to do step outside the game for a moment and sharpen our instinct about <code class="docutils literal notranslate"><span class="pre">pushout</span></code>s. For this, we will say concretely what <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>!</p>
 <a class="reference internal image-reference" href="_images/6.png"><img alt="Whoopsy!" class="align-center" src="_images/6.png" style="width: 500px;" /></a>
-<p><code class="docutils literal notranslate"><span class="pre">overlap</span></code> embeds in <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> as follows:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> as follows:</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 500px;" /></a>
 <p>A few possible choices of <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graphs of the above diagram are:</p>
 <p>(1) Is the following a commuting diagram?</p>
@@ -647,26 +648,31 @@ document.write(`
 <hr class="docutils" />
 <p>|| <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> <strong>vs</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> ||</p>
 <a class="reference internal image-reference" href="_images/8a.png"><img alt="Whoopsy!" class="align-center" src="_images/8a.png" style="width: 500px;" /></a>
+</br>
 <p>We have two commuting diagrams - one with <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> and another one with <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. Next we see how they are related with each other.</p>
 <a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
+</br>
 <p>There are many graph morphisms from graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. But there is exactly one arrow (dotted) that will make the 2 three-sided diagrams (2 triangles) formed by two yellow arrows and the dotted arrow commute. This dotted arrow is again the most intuitive one, mapping blue vertices/edges to blue, green vertices/edges to green, orange to orange. This arrow from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> is dotted to signify that there is only one such morphism.</p>
 <blockquote>
 <div><p>The above diagram has 4 commuting diagrams pasted together (including the 2 squares <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> starting at <code class="docutils literal notranslate"><span class="pre">overlap</span></code>). Commuting diagrams are like ecosystems in balance. When ecosystems are pasted together along their edges, any change in one ecosystem will create a change in the other. When the “most natural” information flows along the morphisms, all the ecosystems are in balance.</p>
 </div></blockquote>
 <a class="reference internal image-reference" href="_images/8c.png"><img alt="Whoopsy!" class="align-center" src="_images/8c.png" style="width: 500px;" /></a>
+</br>
 <p>Now for the other direction, are there maps from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> all possible closed shapes in the above diagram will commute simultaneously? Nope, there is no such embedding — the orange-green vertex of <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> can be mapped to either the orange or the green vertex of <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>. If it is mapped into the orange vertex, then the upper triangle does not commute. If it is mapped into the green vertex, then the lower triangle does not commute. Since <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> has coarse-grained the information of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, the information cannot be fine-grained again! So no map in the backwards direction!</p>
 <p><strong>Score</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>: 1,  <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>: 0</p>
 <hr class="docutils" />
 <p>|| <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> <strong>vs</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> ||</p>
 <a class="reference internal image-reference" href="_images/9b.png"><img alt="Whoopsy!" class="align-center" src="_images/9b.png" style="width: 500px;" /></a>
-<p>As before, there is exactly one (obvious) choice of morphism from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> that will make the  yellow triangles commute.</p>
+</br>
+<p>As before, there is exactly one (obvious) choice of morphism from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> that will make the triangles commute.</p>
 <a class="reference internal image-reference" href="_images/9c.png"><img alt="Whoopsy!" class="align-center" src="_images/9c.png" style="width: 500px;" /></a>
+</br>
 <p>However, there are at least two ways in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> maps into <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to make the triangles commute. The grey vertex in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> can be mapped to one of the two blue vertices in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>. Both these choices are equally good! Because, <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code> has extra information, that is a vertex and an edge neither from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> nor from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, there is more than one way of mapping this extra information into the most lazy <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>.</p>
 <p><strong>Score</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>: 1, <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code>: 0</p>
 <hr class="docutils" />
 <p>|| <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> <strong>vs</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> ||</p>
 <a class="reference internal image-reference" href="_images/10b.png"><img alt="Whoopsy!" class="align-center" src="_images/10b.png" style="width: 500px;" /></a>
-<p>As before, there is exactly one (obvious) choice of morphism from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> that will make the  yellow triangles commute.</p>
+<p>As before, there is exactly one (obvious) choice of morphism from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> that will make the triangles commute.</p>
 <a class="reference internal image-reference" href="_images/10c.png"><img alt="Whoopsy!" class="align-center" src="_images/10c.png" style="width: 500px;" /></a>
 <p>However, <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> does not embed in <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> because of its self-loop.</p>
 <p><strong>Score</strong> <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code>: 1,  <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code>: 0</p>
@@ -678,17 +684,19 @@ document.write(`
 <p>Whewww!! That is some hard core relational thinking!</p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
-<p><code class="docutils literal notranslate"><span class="pre">pushout</span></code>s satisfy the universal property having a unique arrow into any other graph that will make a commuting square with the blue arrows!</p>
-<a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
+<p>The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> satisfies a universal property: the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> has a unique arrow into any other graph which satisfies Pass 1, such that two triangles commute!</p>
+<a class="reference internal image-reference" href="_images/13b.png"><img alt="Whoopsy!" class="align-center" src="_images/13b.png" style="width: 500px;" /></a>
 </div>
 </section>
 <section id="pass-3-uniqueness">
 <h3>Pass 3: Uniqueness<a class="headerlink" href="#pass-3-uniqueness" title="Permalink to this heading">#</a></h3>
 <p>We have progressed quite a bit! Let us review our progress so far! In this game, to begin with, a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> could be any graph in the space of all possible graphs.</p>
+<p><strong>Pass 1: Commuting square</strong>:-</p>
 <a class="reference internal image-reference" href="_images/13a.png"><img alt="Whoopsy!" class="align-center" src="_images/13a.png" style="width: 500px;" /></a>
-<p><strong>Pass 1: Commuting square</strong>:- By asking <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?”, we narrowed down a set of candidates for the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> from the space of all graphs. Each one of these candidates (<code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code>) make the above diagram commute!</p>
+<p>By asking <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code>, and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>, “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?”, we narrowed down a set of candidates for the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> from the space of all graphs. Each one of these candidates (<code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code>) make the above diagram commute!</p>
+<p><strong>Pass 2: Universal property</strong>:-</p>
 <a class="reference internal image-reference" href="_images/13b.png"><img alt="Whoopsy!" class="align-center" src="_images/13b.png" style="width: 500px;" /></a>
-<p><strong>Pass 2: Universal property</strong>:- By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two yellow triangles (in the above diagram) commute simultaneously.</p>
+<p>By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two triangles (in the above diagram) commute simultaneously.</p>
 <p>Now,</p>
 <blockquote>
 <div><p>We repeat the same procedure of asking “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?” on the remaining candidates (candidates which satisfy both the requirements)!</p>
@@ -696,21 +704,21 @@ document.write(`
 <a class="reference internal image-reference" href="_images/slogan.png"><img alt="Whoopsy!" class="align-center" src="_images/slogan.png" style="width: 500px;" /></a>
 <p>Our goal is to finally end up with one <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph!! Recall that the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> we are looking for is one among the remaining candidates.</p>
 <p>Suppose some <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> made it through Pass 2 along with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>. What is its relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</p>
-<p>Both <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> and the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> satisfy the commuting square requirement of Pass 1. However, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> is universal (satisfies the universal property). So, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> must have a unique map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>.</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> and the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> satisfy the commuting square requirement of Pass 1. However, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> is universal (satisfies the universal property). So, <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> must have a unique map into the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> that makes the triangles commute.</p>
 <a class="reference internal image-reference" href="_images/16b.png"><img alt="Whoopsy!" class="align-center" src="_images/16b.png" style="width: 500px;" /></a>
-<p>However, the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is also universal. So it must have a unique map into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code>.</p>
+<p>However, the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is also universal. So it must have a unique map into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> that makes the triangles commute.</p>
 <a class="reference internal image-reference" href="_images/16a.png"><img alt="Whoopsy!" class="align-center" src="_images/16a.png" style="width: 500px;" /></a>
 <p>However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> are inverse of each other – isormorphisms (If are interested in the reasoning, check the box below. )! In other words, THE <code class="docutils literal notranslate"><span class="pre">pushout</span></code> AND <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Why the two unique maps are isomorphisms?</p>
 <div class="wrapper docutils">
-<p>In the above diagrams, Graph X1 uniquely embeds into X2, and X2 embeds uniquely into X2. Together, they tells us 1,2,3,4 commute in unison!</p>
+<p>In the above diagrams, the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> has a unique mapping into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code>, and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> has a unique mapping into X2. These two maps make all the four triangles commute in unison!</p>
 <a class="reference internal image-reference" href="_images/17a.png"><img alt="Whoopsy!" class="align-center" src="_images/17a.png" style="width: 500px;" /></a>
-<p>Because, the shapes 1, 2, 3, 4 commute, we know that 13 and 24 commutes in the following diagram:</p>
+<p>Since the upper two triangles commute in the above diagram, the upper triangle in the below diagram commutes. Similarly for the lower triangle.</p>
 <a class="reference internal image-reference" href="_images/17b.png"><img alt="Whoopsy!" class="align-center" src="_images/17b.png" style="width: 500px;" /></a>
-<p>There is one other arrow from Graph X1 to Graph X2 which can make the above diagram commute: The “be-as-you-are” arrow</p>
+<p>There is one other arrow from the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> to <code class="docutils literal notranslate"><span class="pre">pushout</span></code> which can make the above diagram commute: The “be-as-you-are” arrow (that which maps each vertex to itself and each edge to itself):</p>
 <a class="reference internal image-reference" href="_images/17c.png"><img alt="Whoopsy!" class="align-center" src="_images/17c.png" style="width: 500px;" /></a>
-<p>Because the embedding “Graph X1 —&gt; Graph X2 —&gt; Graph X1”  is unique, there cannot be a different arrow which makes “13” and “24” commute. Hence,</p>
+<p>Because the map <code class="docutils literal notranslate"><span class="pre">pushout</span></code> —&gt; <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> —&gt; <code class="docutils literal notranslate"><span class="pre">pushout</span></code>  is unique, there is ONLY ONE arrow which makes the two (big) triangles commute. However, we have two mappings. So, both of them should be the same!   Hence,</p>
 <a class="reference internal image-reference" href="_images/18a.png"><img alt="Whoopsy!" class="align-center" src="_images/18a.png" style="width: 500px;" /></a>
 <p>“Graph X1 —&gt; Graph X2 —&gt; Graph X1” and “be-as-you-are” arrows are the same.</p>
 <p>Similarly, we can prove that “Graph X2 —&gt; Graph X1 —&gt; Graph X2” and “be-as-you-are” arrows are the same:</p>
@@ -734,9 +742,11 @@ document.write(`
 <a class="reference internal image-reference" href="_images/19a.png"><img alt="Whoopsy!" class="align-center" src="_images/19a.png" style="width: 350px;" /></a>
 <p>We compute the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of an overlap diagram. The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is a graph which satisfies:</p>
 <p><strong>Pass 1: Commuting square</strong> :-  The following square must commute.</p>
-<a class="reference internal image-reference" href="_images/19b.png"><img alt="Whoopsy!" class="align-center" src="_images/19b.png" style="width: 450px;" /></a>
-<p><strong>Pass 2: Universal property</strong>: For any other choice of graph which satisfies Pass 1’s requirement, there is exactly one (a unique) map from the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> into that choice such that yellow triangles commute.</p>
+<a class="reference internal image-reference" href="_images/13a.png"><img alt="Whoopsy!" class="align-center" src="_images/13a.png" style="width: 450px;" /></a>
+</br>
+<p><strong>Pass 2: Universal property</strong>: For any other choice of graph which satisfies Pass 1’s requirement, there is exactly one (a unique) map from the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> into that choice such that the triangles commute.</p>
 <a class="reference internal image-reference" href="_images/19c.png"><img alt="Whoopsy!" class="align-center" src="_images/19c.png" style="width: 450px;" /></a>
+</br>
 <p>As a consequence of these requirements, all graphs which satisfy both these requirements <strong>are “practically the same”</strong>.</p>
 <a class="reference internal image-reference" href="_images/certificate.png"><img alt="Whoopsy!" class="align-center" src="_images/certificate.png" style="width: 450px;" /></a>
 <div class="tip admonition">
