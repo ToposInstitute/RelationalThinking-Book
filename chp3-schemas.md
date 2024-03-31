@@ -198,19 +198,31 @@ What can we notice about the above instance? Well, for one thing, in order for a
 
 For example, starting from the heart we get the following loop:
 
-IMAGE OF SINGLE SOURCE LOOP
+```{image} assets/Ch3/SourceLoop.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
 
 "Source following ref" should always from a closed loop.
 
 By the same reasoning, the target map following the reflexive map should always form a closed loop as well.
 
-IMAGE OF SINGLE TARGET LOOP
+```{image} assets/Ch3/TargetLoop.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
 
 If we look closely at the instance data for the source maps we indeed see that all such loops are closed:
 
-IMAGE OF FADETHROUGH
+```{image} assets/Ch3/ReflexiveFadethrough.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
 
-This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop fails to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph. 
+This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop would fail to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph. 
 
 :::{admonition} Pause and Ponder! 
 Can you think through why this is?
@@ -296,13 +308,13 @@ IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES. ADD "arrows" and 
 :align: center
 ```
 
-Notice how the instance data represents a directed graph which in turn represents and undirected graph!
+Notice how the instance data represents a directed graph which in turn represents an undirected graph!
 
 :::{admonition} Pause and Ponder! 
 Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
 :::
 
-What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this a closed loop condition. In words, if we 
+What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this as a closed loop condition. In words, if we 
 
 :::{admonition} Comparing two routes 
 :class: attention

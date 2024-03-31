@@ -306,7 +306,7 @@ It's important to note that when we collapse the graph like this it remains inta
 
 
 
-```{image} assets//Ch3/EmbeddingHanded.gif
+```{image} assets//Ch4/RightiesVSLefties.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
