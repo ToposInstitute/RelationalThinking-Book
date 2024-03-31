@@ -687,10 +687,15 @@ Clue: Extend the requirements in Section 5.4 from 2 to n graphs!
 
 In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using Algebraic Julia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!
 
-**Solving Ex 1.**
+
+### Puzzle 1
+
 +++
 
 ```{code-cell}
+# Puzzle 1
+#-----------
+
 # Puzzle 1
 #-----------
 
@@ -699,36 +704,38 @@ using Catlab
 # Graph with a single isolated vertex
 Overlap1 = SymmetricGraph(1)
 # Create a triangle
-graph-A = cycle_graph(SymmetricGraph, 3)
+graphA = cycle_graph(SymmetricGraph, 3)
 # Initialize this graph as an isolated edge
-graph-B = path_graph(SymmetricGraph, 2)
+graphB = path_graph(SymmetricGraph, 2)
 # Then modify it to add a loop to vertex #2
-add_edge!(graph-B, 2, 2)
+add_edge!(graphB, 2, 2)
 
 # There are three possible morphisms from the isolated vertex into a graph
 # with three vertices. Because these three vertices are equivalent due to
 # the symmetry of the triangle, it doesn't matter which one we pick. So,
-# rather than manually specifying how Overlap1 matches to parts of G2, we
+# rather than manually specifying how Overlap1 matches to parts of graph A, we
 # use the automatic homomorphism search which will pick an arbitrary one.
-graph-A_map = homomorphism(Overlap1, graph-A)
+graphA_map = homomorphism(Overlap1, graphA)
 
-# Because the two vertices of G3 are *not* equivalent (one has a loop,
+# Because the two vertices of graph B are *not* equivalent (one has a loop,
 # the other doesn't) we have to be more precise in our construction of
-# the map from Overlap1 into G3. The only data required is saying where
+# the map from Overlap1 into graph B. The only data required is saying where
 # the vertex of Overlap1 is mapped to. We send it to vertex#1, which is
 # the one which does *not* have a loop.
-graph-B_map = ACSetTransformation(Overlap1, graph-B; V=[1])
+graphB_map = ACSetTransformation(Overlap1, graphB; V=[1])
 
-# Glue together G2 and G3 along their common overlap, Overlap1
-pushout-graph = colimit(Span(graph-A_map, graph-B_map));
+# Glue together graph A and graph B along their common overlap, Overlap1
+pushout_graph = colimit(Span(graphA_map, graphB_map));
 
 # Visualize the result
-to_graphviz(apex(pushout))
+to_graphviz(apex(pushout_graph))
 ```
 
 Use the code cell at the end of the section to visualize `graph A` and `graph B`.
 
-**Solving Ex 2.**
+
+### Puzzle 2
+
 +++
 
 ```{code-cell}
@@ -737,23 +744,20 @@ Use the code cell at the end of the section to visualize `graph A` and `graph B`
 
 using Catlab
 
-# Graph with a single isolated vertex
-Overlap1 = SymmetricGraph(1)
-# Create a triangle
-graph-A = cycle_graph(SymmetricGraph, 3)
-# Initialize this graph as an isolated edge
-graph-B = path_graph(SymmetricGraph, 2)
-# Then modify it to add a loop to vertex #2
-add_edge!(graph-B, 2, 2)
-
 # Our overlap is an isolated edge
 Overlap2 = path_graph(SymmetricGraph, 2)
+# Create a triangle
+graphA = cycle_graph(SymmetricGraph, 3)
+# Initialize this graph as an isolated edge
+graphB = path_graph(SymmetricGraph, 2)
+# Then modify it to add a loop to vertex #2
+add_edge!(graphB, 2, 2)
 
 # Again, the three possible morphisms out of Overlap2 (each of
 # which picks an edge of the triangle, G2) are equivalent, so
 # we don't need to pick a specific one: we let the automatic
 # search algorithm find it for us.
-graph-A_map = homomorphism(Overlap2, graph-A)
+graphA_map = homomorphism(Overlap2, graphA)
 
 # Again, we need to be more precise in how we map into G3
 # because it matters whether or not the overlapping edge is
@@ -762,19 +766,19 @@ graph-A_map = homomorphism(Overlap2, graph-A)
 # keyword). In this case, the morphism is fully determined
 # once we declare that both vertices of Overlap2 are sent
 # to vertex#2 in G3.
-graph-B_map = homomorphism(Overlap2, graph-B; initial=(V=[2, 2],))
+graphB_map = homomorphism(Overlap2, graphB; initial=(V=[2, 2],))
 
 # Once again we glue together G2 and G3 along Overlap2
-pushout = colimit(Span(graph-A_map, graph-B_map));
+pushout_graph = colimit(Span(graphA_map, graphB_map));
 
-to_graphviz(apex(pushout))
+to_graphviz(apex(pushout_graph))
 ```
 
 +++
 
 Use the code cell at the end of the section to visualize `graph A` and `graph B`.
 
-**Solving Ex 3.** 
+### Puzzle 3
 
 +++
 
@@ -785,16 +789,16 @@ Use the code cell at the end of the section to visualize `graph A` and `graph B`
 using Catlab
 
 # The graphs here are all discrete (no edges)
-Overlap3, graph-A, graph-B = SymmetricGraph(0), SymmetricGraph(3), SymmetricGraph(2)
+Overlap3, graphA, graphB = SymmetricGraph(0), SymmetricGraph(3), SymmetricGraph(2)
 
 # morphisms out of an empty graph are themselves 'empty'
 # (they require no data other than the domain and codomain)
-graph-A_map = ACSetTransformation(Overlap3, graph-A)
-graph-B_map = ACSetTransformation(Overlap3, graph-B)
+graphA_map = ACSetTransformation(Overlap3, graphA)
+graphB_map = ACSetTransformation(Overlap3, graphB)
 # We glue together the discrete graphs along the empty overlap
-pushout = colimit(Span(graph-A_map, graph-B_map));
+pushout_graph = colimit(Span(graphA_map, graphB_map));
 
-to_graphviz(apex(pushout))
+to_graphviz(apex(pushout_graph))
 
 ```
 
@@ -807,11 +811,11 @@ Use the code cell below to visualize `graph A` and `graph B`.
 ```{code-cell}
 # Use this code cell for visualizing `graph A` and `graph B`
 
-# Uncomment the below line (remove the sharp) and run the code to view `graph A`
-# to_graphviz(graph-A) 
+# UNCOMMENT the below line (remove the sharp) and run the code to view `graph A`
+# to_graphviz(graphA) 
 
-# Uncomment the below line (remove the sharp) and run the code to view `graph A`
-# to_graphviz(graph-B) 
+# UNCOMMENT the below line (remove the sharp) and run the code to view `graph A`
+# to_graphviz(graphB)
 ```
 
 +++

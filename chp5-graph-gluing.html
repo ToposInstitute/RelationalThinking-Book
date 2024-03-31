@@ -453,7 +453,12 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.4. What is a pushout?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.5. Puzzle time!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-1">Puzzle 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-2">Puzzle 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-3">Puzzle 3</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
 </ul>
 </li>
@@ -790,10 +795,14 @@ document.write(`
 <section id="computing-pushouts-in-algebraic-julia">
 <h2>5.6. Computing pushouts in Algebraic Julia<a class="headerlink" href="#computing-pushouts-in-algebraic-julia" title="Permalink to this heading">#</a></h2>
 <p>In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using Algebraic Julia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!</p>
-<p><strong>Solving Ex 1.</strong></p>
+<section id="puzzle-1">
+<h3>Puzzle 1<a class="headerlink" href="#puzzle-1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 1</span>
+<span class="c">#-----------</span>
+
+<span class="c"># Puzzle 1</span>
 <span class="c">#-----------</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
@@ -801,37 +810,39 @@ document.write(`
 <span class="c"># Graph with a single isolated vertex</span>
 <span class="n">Overlap1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c"># Create a triangle</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">graphA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 <span class="c"># Initialize this graph as an isolated edge</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">graphB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="c"># Then modify it to add a loop to vertex #2</span>
-<span class="n">add_edge!</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">graphB</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># There are three possible morphisms from the isolated vertex into a graph</span>
 <span class="c"># with three vertices. Because these three vertices are equivalent due to</span>
 <span class="c"># the symmetry of the triangle, it doesn&#39;t matter which one we pick. So,</span>
-<span class="c"># rather than manually specifying how Overlap1 matches to parts of G2, we</span>
+<span class="c"># rather than manually specifying how Overlap1 matches to parts of graph A, we</span>
 <span class="c"># use the automatic homomorphism search which will pick an arbitrary one.</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">)</span>
+<span class="n">graphA_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">graphA</span><span class="p">)</span>
 
-<span class="c"># Because the two vertices of G3 are *not* equivalent (one has a loop,</span>
+<span class="c"># Because the two vertices of graph B are *not* equivalent (one has a loop,</span>
 <span class="c"># the other doesn&#39;t) we have to be more precise in our construction of</span>
-<span class="c"># the map from Overlap1 into G3. The only data required is saying where</span>
+<span class="c"># the map from Overlap1 into graph B. The only data required is saying where</span>
 <span class="c"># the vertex of Overlap1 is mapped to. We send it to vertex#1, which is</span>
 <span class="c"># the one which does *not* have a loop.</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">graphB_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap1</span><span class="p">,</span><span class="w"> </span><span class="n">graphB</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-<span class="c"># Glue together G2 and G3 along their common overlap, Overlap1</span>
-<span class="n">pushout</span><span class="o">-</span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="p">));</span>
+<span class="c"># Glue together graph A and graph B along their common overlap, Overlap1</span>
+<span class="n">pushout_graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graphA_map</span><span class="p">,</span><span class="w"> </span><span class="n">graphB_map</span><span class="p">));</span>
 
 <span class="c"># Visualize the result</span>
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout</span><span class="p">))</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout_graph</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Use the code cell at the end of the section to visualize <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p>
-<p><strong>Solving Ex 2.</strong></p>
+</section>
+<section id="puzzle-2">
+<h3>Puzzle 2<a class="headerlink" href="#puzzle-2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 2</span>
@@ -839,23 +850,20 @@ document.write(`
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 
-<span class="c"># Graph with a single isolated vertex</span>
-<span class="n">Overlap1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="c"># Create a triangle</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
-<span class="c"># Initialize this graph as an isolated edge</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<span class="c"># Then modify it to add a loop to vertex #2</span>
-<span class="n">add_edge!</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-
 <span class="c"># Our overlap is an isolated edge</span>
 <span class="n">Overlap2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># Create a triangle</span>
+<span class="n">graphA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="c"># Initialize this graph as an isolated edge</span>
+<span class="n">graphB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># Then modify it to add a loop to vertex #2</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">graphB</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># Again, the three possible morphisms out of Overlap2 (each of</span>
 <span class="c"># which picks an edge of the triangle, G2) are equivalent, so</span>
 <span class="c"># we don&#39;t need to pick a specific one: we let the automatic</span>
 <span class="c"># search algorithm find it for us.</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">)</span>
+<span class="n">graphA_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">graphA</span><span class="p">)</span>
 
 <span class="c"># Again, we need to be more precise in how we map into G3</span>
 <span class="c"># because it matters whether or not the overlapping edge is</span>
@@ -864,18 +872,20 @@ document.write(`
 <span class="c"># keyword). In this case, the morphism is fully determined</span>
 <span class="c"># once we declare that both vertices of Overlap2 are sent</span>
 <span class="c"># to vertex#2 in G3.</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],))</span>
+<span class="n">graphB_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap2</span><span class="p">,</span><span class="w"> </span><span class="n">graphB</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],))</span>
 
 <span class="c"># Once again we glue together G2 and G3 along Overlap2</span>
-<span class="n">pushout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="p">));</span>
+<span class="n">pushout_graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graphA_map</span><span class="p">,</span><span class="w"> </span><span class="n">graphB_map</span><span class="p">));</span>
 
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout</span><span class="p">))</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout_graph</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Use the code cell at the end of the section to visualize <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p>
-<p><strong>Solving Ex 3.</strong></p>
+</section>
+<section id="puzzle-3">
+<h3>Puzzle 3<a class="headerlink" href="#puzzle-3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 3</span>
@@ -884,16 +894,16 @@ document.write(`
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 
 <span class="c"># The graphs here are all discrete (no edges)</span>
-<span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graphA</span><span class="p">,</span><span class="w"> </span><span class="n">graphB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># morphisms out of an empty graph are themselves &#39;empty&#39;</span>
 <span class="c"># (they require no data other than the domain and codomain)</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">A</span><span class="p">)</span>
-<span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B</span><span class="p">)</span>
+<span class="n">graphA_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graphA</span><span class="p">)</span>
+<span class="n">graphB_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap3</span><span class="p">,</span><span class="w"> </span><span class="n">graphB</span><span class="p">)</span>
 <span class="c"># We glue together the discrete graphs along the empty overlap</span>
-<span class="n">pushout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graph</span><span class="o">-</span><span class="n">A_map</span><span class="p">,</span><span class="w"> </span><span class="n">graph</span><span class="o">-</span><span class="n">B_map</span><span class="p">));</span>
+<span class="n">pushout_graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colimit</span><span class="p">(</span><span class="n">Span</span><span class="p">(</span><span class="n">graphA_map</span><span class="p">,</span><span class="w"> </span><span class="n">graphB_map</span><span class="p">));</span>
 
-<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout</span><span class="p">))</span>
+<span class="n">to_graphviz</span><span class="p">(</span><span class="n">apex</span><span class="p">(</span><span class="n">pushout_graph</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -903,15 +913,16 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Use this code cell for visualizing `graph A` and `graph B`</span>
 
-<span class="c"># Uncomment the below line (remove the sharp) and run the code to view `graph A`</span>
-<span class="c"># to_graphviz(graph-A) </span>
+<span class="c"># UNCOMMENT the below line (remove the sharp) and run the code to view `graph A`</span>
+<span class="c"># to_graphviz(graphA) </span>
 
-<span class="c"># Uncomment the below line (remove the sharp) and run the code to view `graph A`</span>
-<span class="c"># to_graphviz(graph-B) </span>
+<span class="c"># UNCOMMENT the below line (remove the sharp) and run the code to view `graph A`</span>
+<span class="c"># to_graphviz(graphB)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="summary">
 <h2>5.6 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
@@ -1075,7 +1086,12 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.4. What is a pushout?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.5. Puzzle time!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-1">Puzzle 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-2">Puzzle 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-3">Puzzle 3</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
 </ul>
 </li>
