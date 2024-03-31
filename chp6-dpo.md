@@ -33,6 +33,7 @@ But the reality is:
 :width: 350px
 :align: center
 ```
+<sub>(Image source: https://www.youtube.com/watch?v=86uC5fgraiI)</sub>
 
 because, the connections are broken causing the system to experience instability: 
 
