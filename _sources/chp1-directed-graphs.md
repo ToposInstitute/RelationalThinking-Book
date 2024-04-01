@@ -20,11 +20,30 @@ kernelspec:
 
 
 
-## Part 2: Directed graphs with a computer ##
+## 1.1 Introduction
 
-Note how, in the examples above, the written description of each situation required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.
+Reread the description from the Ski Trip Brochure in the last chapter:
 
-When we look at a directed graph we can instantly see many relationships: *this* arrow is connected to *these* vertices, *this* vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are *not* visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way the computer can understand.
+:::{admonition} Ski Trip Brochure:
+**From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don't know how to ski. If that sounds like you, don't worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.**
+:::
+
+Now, expand the panel below to see the directed graph that goes with this description.
+
+:::{admonition} Directed Graph
+:class: dropdown
+
+![whoops!](./assets/Ch1/DGski.jpg)
+:::
+
+
+
+
+Note how the written description of required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.
+
+When we look at a directed graph we can instantly see many relationships: *this* arrow is connected to *these* vertices, *this* vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are *not* visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.
+
+## 1.2 Source and Target Maps
 
 <center> <iframe width="560" height="315" src="https://www.youtube.com/embed/QfvtWgopGiY?si=JoJJP7jhe3-QoxEN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </center>
 
@@ -34,7 +53,7 @@ The virtue of making these relationships explicit is that the information can no
 
 > DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!
 
-### Puzzles ###
+### Puzzles
 
 ::::{admonition} Puzzle 1
 
@@ -93,7 +112,7 @@ to_graphviz(AJ_Problem4b)
 +++
 
 
-## Part 3: On the importance of finding the right abstractions ##
+## 1.3 On the importance of finding the right abstractions 
 
 We've come up with one way to describe a directed graph to a computer. But is it the best way? Are there other approaches we should consider?
 

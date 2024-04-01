@@ -13,14 +13,16 @@ kernelspec:
 # Chapter 4: Categories
 ## 4.1 Introduction
 
-For any given a schema there will be many possible instances. Below we show a few of the instance for our three graph schemas.
+For any given a schema there will be many possible instances. Below we show a few of the instance for each of our three graph schemas.
 
 ```{image} assets/Ch3/ThreeSchemas.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
-Of course, all of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show them all, but it is possible to just imagine them, floating in space. One endless swarm of things a schema might refer to. 
+<br>
+
+Of course, each of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show them all, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to. 
 
 ```{image} assets/Ch4/InstanceDrift.gif
 :alt: Whoopsy!
@@ -28,11 +30,18 @@ Of course, all of these schemas actually have an *infinite* number of possible i
 :align: center
 ```
 
-In our ongoing quest to think about things in terms of relationships, we should look at these instances, each floating in isolation separated from the others, and ask ourselves, "How are these instance related to one another?"
+<br>
 
-For now, we will set this swarm aside. We will return to it at the end of the chapter, armed with a new idea for thinking about how they are related.
+In our ongoing quest to think about things in terms of relationships we should look at these instances, each floating in isolation from the others, and ask ourselves, "How are these instance related to one another?"
 
-In this chapter we will define a useful way of relating instances of a schema. Once we do, we will be ready to move up the last rung or in our ladder of abstactions, from schemas to categories where we will encounter yet another kind of directed graph at yet another level of abstraction (our last, mercifully!). Hang in there! You're almost at the top of the ladder.
+In this chapter we will develop a powerful answer to this question. 
+
+Let's set this swarm aside for now and return to it at the end, armed with a new understanding of the instance relationships. At that point we will be ready to move up the fourth rung or in our ladder of abstactions (our last, mercifully!), from schemas to categories. 
+
+:::{attention}
+Hang in there! You're almost at the top of the ladder.
+:::
+
 
 ## 4.2 Graph Injections
 

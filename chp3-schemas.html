@@ -442,14 +442,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-schemas">3.2 Introducing Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blueprints">3.2 Blueprints</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chunky-arrows">Chunky arrows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directed-graphs">Directed graphs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-kinds-of-graphs">3.3 Other kinds of graphs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-theory">Reflexive Graphs (in theory)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relfexive-graphs-in-a-computer">Relfexive graphs (in a computer)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-a-computer">Reflexive graphs (in a computer)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#undirected-graphs">Undirected Graphs</a></li>
 </ul>
 </li>
@@ -494,8 +494,8 @@ document.write(`
 </div>
 <p>Undirected graphs are just one example from a whole zoo of different <em>kinds</em> of graphs we might want to model with. In this chapter we’ll look at a few specimens from this zoo. In the process, we’ll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.</p>
 </section>
-<section id="introducing-schemas">
-<h2>3.2 Introducing Schemas<a class="headerlink" href="#introducing-schemas" title="Permalink to this heading">#</a></h2>
+<section id="blueprints">
+<h2>3.2 Blueprints<a class="headerlink" href="#blueprints" title="Permalink to this heading">#</a></h2>
 <section id="chunky-arrows">
 <h3>Chunky arrows<a class="headerlink" href="#chunky-arrows" title="Permalink to this heading">#</a></h3>
 <p>We’ll begin this chapter with a little tidying up. The basic building block we’ve been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:</p>
@@ -510,7 +510,7 @@ document.write(`
 </ul>
 <a class="reference internal image-reference" href="_images/SchemaDef.gif"><img alt="Whoopsy!" class="align-center" src="_images/SchemaDef.gif" style="width: 500px;" /></a>
 <br>
-<p>A big chunky arrow like this is easier to draw and easier to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up “under the hood.” This is just like in an algebra equation where, when we see the variable ‘x’, we know it stands for some specific number. Chunky arrows are like variables for maps.</p>
+<p>A big chunky arrow like this is easy to draw and easy to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up “under the hood.” This is just like in an algebra equation where, when we see the variable ‘x’, we know it stands for some specific number. Chunky arrows are like variables for maps.</p>
 <p>Figures built from these chunky arrows are known as schemas. In moving from an explicit map to its schema, we are moving from rung 2 (“data”) to rung 3 (“blueprints”) on our ladder of abstractions.</p>
 </section>
 <section id="directed-graphs">
@@ -520,12 +520,12 @@ document.write(`
 <br>
 <p>Instead of representing these maps side by side like this, let’s combine them so that they run in parallel. Our chunky arrows will then be in this configuration:</p>
 <a class="reference internal image-reference" href="_images/DGInstance1.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGInstance1.gif" style="width: 500px;" /></a>
-<p>A pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential “blueprint”. We generally draw this as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
+<p>Such a pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential “blueprint”. We generally draw this as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
 <a class="reference internal image-reference" href="_images/DirectedGraphSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DirectedGraphSchema.jpg" style="width: 500px;" /></a>
 <p>Any <em>particular</em> pair of maps between the same arrows and vertices is said to be an “instance” of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.</p>
 <a class="reference internal image-reference" href="_images/DGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGraphInstance.gif" style="width: 800px;" /></a>
 <br>
-<p>Having given a general characterization of directed graphs as a schema, we will now show how we can <em>modify</em> this schema to define other kinds of graphs.</p>
+<p>Having given this general characterization of directed graphs as a schema, we will next see how we can <em>modify</em> this schema to define other kinds of graphs.</p>
 </section>
 </section>
 <section id="other-kinds-of-graphs">
@@ -540,7 +540,7 @@ document.write(`
 <p>A piece of our graph would look like this:</p>
 <a class="reference internal image-reference" href="_images/TicTacToe.jpg"><img alt="Whoopsy!" class="align-center" src="_images/TicTacToe.jpg" style="width: 500px;" /></a>
 <br>
-<p>Now let’s imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to “pass.” That is, one of the available moves at any given turn is to stay in the current state. Thus, every vertex in this graph is going to have one special arrow that loops back on itself.</p>
+<p>Now let’s imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to “pass.” That is, one of the available moves on any given turn is to stay in the current state. Thus, every vertex in our graph is going to have one special arrow that loops back on itself.</p>
 <a class="reference internal image-reference" href="_images/GO.jpg"><img alt="Whoopsy!" class="align-center" src="_images/GO.jpg" style="width: 500px;" /></a>
 <br>
 <p>This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special “self-looping” arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they’re called “reflexive graphs.” They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.</p>
@@ -558,22 +558,17 @@ document.write(`
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
 </div>
-<p>What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have <em>that vertex</em> as its source. In other words, if we</p>
+<p>What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have <em>that vertex</em> as its source. Another way to look at this is:</p>
 <div class="attention admonition">
-<p class="admonition-title">Comparing two routes </p>
-<ul class="simple">
-<li><p>pick any vertex and…</p></li>
-<li><p>…follow the reflexive map from right to left, from a vertex to its self-looping arrow</p></li>
-</ul>
-<p>…and then</p>
-<ul class="simple">
-<li><p>continue along the source map from <em>that</em> arrow, moving from left to right to some vertex</p></li>
-</ul>
-<p>…we should always end up back where we started.</p>
+<p class="admonition-title">The following path always takes you back to where you started:</p>
+<ol class="arabic simple">
+<li><p>Pick any vertiex</p></li>
+<li><p>Follow the reflexive map from this vertex to its self-looping arrow.</p></li>
+<li><p>Continue along the source map from that arrow to it its source vertex.</p></li>
+</ol>
 </div>
-<p>For example, starting from the heart we get the following loop:</p>
+<p>For example if we start at the heart, the reflexive map takes us to the reddish arrow, and the source map takes us back to the heart:</p>
 <a class="reference internal image-reference" href="_images/SourceLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/SourceLoop.gif" style="width: 500px;" /></a>
-<p>“Source following ref” should always from a closed loop.</p>
 <p>By the same reasoning, the target map following the reflexive map should always form a closed loop as well.</p>
 <a class="reference internal image-reference" href="_images/TargetLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/TargetLoop.gif" style="width: 500px;" /></a>
 <p>If we look closely at the instance data for the source maps we indeed see that all such loops are closed:</p>
@@ -585,8 +580,8 @@ document.write(`
 </div>
 <p>In first defining reflexive graphs we had to establish what we meant using semantic ideas like “self-loops” and phrases like “for every vertex…”. We have now found an equivalent way of saying the same thing in terms of a maps and whether or not certain paths form closed loops. And “maps and closed loops” are exactly the kind of thing AlgebraicJulia can understand!</p>
 </section>
-<section id="relfexive-graphs-in-a-computer">
-<h3>Relfexive graphs (in a computer)<a class="headerlink" href="#relfexive-graphs-in-a-computer" title="Permalink to this heading">#</a></h3>
+<section id="reflexive-graphs-in-a-computer">
+<h3>Reflexive graphs (in a computer)<a class="headerlink" href="#reflexive-graphs-in-a-computer" title="Permalink to this heading">#</a></h3>
 <p>Let’s encode a reflexive graph schema in AlgebraicJulia!</p>
 <p>First off, you may have noticed that schemase <em>are</em> a kind of directed graph. So we can use our familiar source and target map formalism to input the general schema shape.</p>
 <p>GRAPHIC OF CODE SHOWING src: tgt: definitions…</p>
@@ -745,14 +740,14 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-schemas">3.2 Introducing Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blueprints">3.2 Blueprints</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chunky-arrows">Chunky arrows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directed-graphs">Directed graphs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-kinds-of-graphs">3.3 Other kinds of graphs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-theory">Reflexive Graphs (in theory)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relfexive-graphs-in-a-computer">Relfexive graphs (in a computer)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-a-computer">Reflexive graphs (in a computer)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#undirected-graphs">Undirected Graphs</a></li>
 </ul>
 </li>

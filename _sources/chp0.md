@@ -12,9 +12,9 @@ kernelspec:
 
 # Chapter 0: Directed Graphs
 
-## Part 1: Modeling with directed graphs
+## 0.1 What is a directed graph?
 
-We will begin our journey into systems thinking and Algebraic Julia by looking at a particularly simple modeling system called a *directed graph*. Anyone who's ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.
+We will begin our journey into relational thinking with AlgebraicJulia by looking at a particularly simple modeling system called a *directed graph*. Anyone who's ever used a flow chart, studied a subway map, or learned the Charleston will have encountered the basic idea.
 
 ![whoops!](./assets/Ch1/DirectedGraphs1.jpg)
 
@@ -25,7 +25,10 @@ What do these diagrams all have in common? First, they all have arrows. Second
 It's a simple setup but many situations in life - many *systems* - are well-captured by this kind of diagram.
 
 Consider how we can use directed graphs to represent the following three situations:
-### 1. MYTHOLOGICAL ROMANCE: ###
+
+
+:::{admonition} Mythological Romance
+
 
 **Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.**
 
@@ -33,7 +36,13 @@ We can make a directed graph of these relationships in which the vertices are ch
 
 ![whoops!](./assets/Ch1/DGlove.jpg)
 
-### 2. SKI TRIP BROCHURE: ###
+
+:::
+
+
+
+:::{admonition} Ski Trip Brochure:
+
 
 **From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don't know how to ski. If that sounds like you, don't worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.**
 
@@ -43,9 +52,15 @@ In this directed graph, the vertices are locations and the arrows are "modes of 
 
 If you squint, you can look at this like a simplified map. We've left out the trees and the geography and the distances from one place to another. We've distilled our wayfinding to only the most essential details needed for getting around.
 
-### 3. WHOSE TURN IS IT TO DO THE DISHES? ###
 
-**My wife and I used to trade off doing the dishes each day. Then our friend Tuco moved in who loves doing dishes and he has done them ever since. I think my wife was the last one to do the dishes before Tuco took over.**
+:::
+
+
+
+:::{admonition} Whose Turn Is It To Do the Dishes?
+
+
+**Paul and his wife Toni used to trade off doing the dishes each day. Then their friend Tuco moved in who loves doing dishes and he has done them ever since. Toni was the last one to do the dishes before Tuco took over.**
 
 In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.
 
@@ -55,17 +70,26 @@ In this directed graph, the vertices are once again people and each arrow connec
 :align: center
 ```
 
+
+:::
+
 Looked at individually each of the above situations seem quite different. But their directed graphs make it clear that they all share the same essential structure. Abstractly, they are all the same graph, which we can represent in unlabeled form:
 
 ![whoops!](./assets/Ch1/SimpleDG.jpg)
 
-When used casually like this, directed graphs are little more than convenient pictures–visual heuristics that make it easier to think about the underlying situations. These simple examples may not seem to require any mathematical considerations or computational aid. But we will come to see that if we represent these structures formally in a computer a surprising array of computational powers become available to us.
+When used casually like this, directed graphs are little more than convenient pictures–visual heuristics that make it easier to think about the underlying situations. But directed graphs are also a powerful _formal_ tool, something we can be communicated to a computer. Over the course of this book we will unpack the details of AlgebraicJulia through an extended look at directed graphs and related ideas.
+
+
+
+## 0.2 Why directed graphs?
 
 
 
 
-1. Want to do thingsHaving established what a directed graph is we will now want to do things to directed graphs, expanding our repertoire of tools for graph manipulation. When working with directed graphs in practice we readily find a variety of manipulations and comparisons that would be convenient to perform. If we've modeled some situation and then our understanding of that situation changes we'll want to update the details of our graph to reflect this improved understanding, adding and deleting components as necessary. Informally, we can easily do this easily on a whiteboard or with pencil and paper. The problem is, there's nothing to stop us from writing nonsense. 
+Having established what a directed graph is we will now want to do things to directed graphs, expanding our repertoire of tools for graph manipulation. 
 
+When working with directed graphs in practice we readily find a variety of manipulations and comparisons that would be convenient to perform. If we've modeled some situation and then our understanding of that situation changes we'll want to update the details of our graph to reflect this improved understanding, adding and deleting components as necessary. Informally, we can easily do this easily on a whiteboard or with pencil and paper. The problem is, there's nothing to stop us from writing nonsense. 
+///MUTANT GRAPH IMAGE
 
 2. Broken models and the DANGLING EDGE conditionIf we're trying to represent the world with a directed graph then a broken graph is a problem because it invalidates the underlying model. It's not that the model becomes incorrect. It becomes meaningless. If "loves" needs both a lover and a beloved then the following is an undefined/ungrammatical..."Tuco loves"
 Rupturing our graph in this way also ruptures any underlying meaning the graph may have had---A "ruptured" graph is one that is suffering from a DANGLING EDGE CONDITION

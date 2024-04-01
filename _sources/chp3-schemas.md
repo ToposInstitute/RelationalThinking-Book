@@ -48,7 +48,7 @@ How is the data of an undirected graph different from the data of a directed gra
 
 Undirected graphs are just one example from a whole zoo of different _kinds_ of graphs we might want to model with. In this chapter we'll look at a few specimens from this zoo. In the process, we'll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.
 
-## 3.2 Introducing Schemas
+## 3.2 Blueprints
 
 ### Chunky arrows
 
@@ -74,7 +74,7 @@ Source and target maps can be a little _busy_ looking so we're going to simplify
 ```
 <br>
 
-A big chunky arrow like this is easier to draw and easier to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up "under the hood." This is just like in an algebra equation where, when we see the variable 'x', we know it stands for some specific number. Chunky arrows are like variables for maps.
+A big chunky arrow like this is easy to draw and easy to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up "under the hood." This is just like in an algebra equation where, when we see the variable 'x', we know it stands for some specific number. Chunky arrows are like variables for maps.
 
 Figures built from these chunky arrows are known as schemas. In moving from an explicit map to its schema, we are moving from rung 2 ("data") to rung 3 ("blueprints") on our ladder of abstractions.
 
@@ -98,7 +98,7 @@ Instead of representing these maps side by side like this, let's combine them s
 :align: center
 ```
 
-A pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential "blueprint". We generally draw this as two arrows marked `src` and `tgt`.
+Such a pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential "blueprint". We generally draw this as two arrows marked `src` and `tgt`.
 
 ```{image} assets/Ch4/DirectedGraphSchema.jpg
 :alt: Whoopsy!
@@ -116,7 +116,7 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 ```
 <br>
 
-Having given a general characterization of directed graphs as a schema, we will now show how we can _modify_ this schema to define other kinds of graphs.
+Having given this general characterization of directed graphs as a schema, we will next see how we can _modify_ this schema to define other kinds of graphs.
 
 ## 3.3 Other kinds of graphs
 
@@ -136,7 +136,7 @@ A piece of our graph would look like this:
 ```
 <br>
 
-Now let's imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to "pass." That is, one of the available moves at any given turn is to stay in the current state. Thus, every vertex in this graph is going to have one special arrow that loops back on itself.
+Now let's imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to "pass." That is, one of the available moves on any given turn is to stay in the current state. Thus, every vertex in our graph is going to have one special arrow that loops back on itself.
 
 ```{image} assets/Ch4/GO.jpg
 :alt: Whoopsy!
@@ -176,35 +176,24 @@ Let your eyes follow the dashed lines around the figure. Do you see any "pattern
 :::
 
 
-What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. In other words, if we 
+What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have _that vertex_ as its source. Another way to look at this is:
 
-:::{admonition} Comparing two routes 
+:::{admonition} The following path always takes you back to where you started:
 :class: attention
 
-
-* pick any vertex and...
-* ...follow the reflexive map from right to left, from a vertex to its self-looping arrow
-
-...and then 
-
-* continue along the source map from _that_ arrow, moving from left to right to some vertex 
-
-...we should always end up back where we started. 
-
+1. Pick any vertiex
+2. Follow the reflexive map from this vertex to its self-looping arrow.
+3. Continue along the source map from that arrow to it its source vertex.
 
 :::
 
-
-
-For example, starting from the heart we get the following loop:
+For example if we start at the heart, the reflexive map takes us to the reddish arrow, and the source map takes us back to the heart:
 
 ```{image} assets/Ch3/SourceLoop.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
-
-"Source following ref" should always from a closed loop.
 
 By the same reasoning, the target map following the reflexive map should always form a closed loop as well.
 
@@ -233,7 +222,7 @@ Can you think through why this is?
 In first defining reflexive graphs we had to establish what we meant using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of a maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
 
 
-### Relfexive graphs (in a computer)
+### Reflexive graphs (in a computer)
 
 Let's encode a reflexive graph schema in AlgebraicJulia!
 

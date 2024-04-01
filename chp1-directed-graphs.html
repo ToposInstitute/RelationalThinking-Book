@@ -441,11 +441,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-directed-graphs-with-a-computer">Part 2: Directed graphs with a computer</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-and-target-maps">1.2 Source and Target Maps</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-on-the-importance-of-finding-the-right-abstractions">Part 3: On the importance of finding the right abstractions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-importance-of-finding-the-right-abstractions">1.3 On the importance of finding the right abstractions</a></li>
 </ul>
             </nav>
         </div>
@@ -464,10 +465,23 @@ document.write(`
 <p>Michael Sorkin</p>
 <p><em>Two Hundred Fifty Things an Architect Should Know</em></p>
 </div></blockquote>
-<section id="part-2-directed-graphs-with-a-computer">
-<h2>Part 2: Directed graphs with a computer<a class="headerlink" href="#part-2-directed-graphs-with-a-computer" title="Permalink to this heading">#</a></h2>
-<p>Note how, in the examples above, the written description of each situation required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
-<p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way the computer can understand.</p>
+<section id="introduction">
+<h2>1.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Reread the description from the Ski Trip Brochure in the last chapter:</p>
+<div class="admonition-ski-trip-brochure admonition">
+<p class="admonition-title">Ski Trip Brochure:</p>
+<p><strong>From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don’t know how to ski. If that sounds like you, don’t worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.</strong></p>
+</div>
+<p>Now, expand the panel below to see the directed graph that goes with this description.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Directed Graph</p>
+<p><img alt="whoops!" src="assets/Ch1/DGski.jpg" /></p>
+</div>
+<p>Note how the written description of required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
+<p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.</p>
+</section>
+<section id="source-and-target-maps">
+<h2>1.2 Source and Target Maps<a class="headerlink" href="#source-and-target-maps" title="Permalink to this heading">#</a></h2>
 <center> <iframe width="560" height="315" src="https://www.youtube.com/embed/QfvtWgopGiY?si=JoJJP7jhe3-QoxEN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </center>
 <p>The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.</p>
 <p><img alt="whoops!" src="_images/DataEntry.png" /></p>
@@ -529,8 +543,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="part-3-on-the-importance-of-finding-the-right-abstractions">
-<h2>Part 3: On the importance of finding the right abstractions<a class="headerlink" href="#part-3-on-the-importance-of-finding-the-right-abstractions" title="Permalink to this heading">#</a></h2>
+<section id="on-the-importance-of-finding-the-right-abstractions">
+<h2>1.3 On the importance of finding the right abstractions<a class="headerlink" href="#on-the-importance-of-finding-the-right-abstractions" title="Permalink to this heading">#</a></h2>
 <p>We’ve come up with one way to describe a directed graph to a computer. But is it the best way? Are there other approaches we should consider?</p>
 <p>Under our current method each arrow is assigned a unique source vertex and a unique target vertex. What would happen if we flip the direction of the assignment? That is, instead of the assignment starting from arrow, we can instead start from vertices, and assign to each vertex a source arrow and/or a target arrow.</p>
 <p><img alt="whoops!" src="_images/WhichWay.gif" />
@@ -624,11 +638,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-directed-graphs-with-a-computer">Part 2: Directed graphs with a computer</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-and-target-maps">1.2 Source and Target Maps</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-on-the-importance-of-finding-the-right-abstractions">Part 3: On the importance of finding the right abstractions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-importance-of-finding-the-right-abstractions">1.3 On the importance of finding the right abstractions</a></li>
 </ul>
   </nav></div>
 
