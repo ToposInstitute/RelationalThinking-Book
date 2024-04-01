@@ -50,9 +50,10 @@ Our first task, then, is to learn to think about directed graphs from a relation
 
 ```{image} assets/Ch1/Ladder.png
 :alt: Whoopsy!
-:width: 400px
+:width: 500px
 :align: center
 ```
+</br>
 
 Beginning in the concrete world of directed graphs as pictures made up of dots and arrows, each rung takes us through a conceptual shift that is required to move us into a world of relational models. 
 
@@ -78,6 +79,7 @@ In terms of difficulty, the book starts very concretely, but ramps up in difficu
 :width: 400px
 :align: center
 ```
+</br>
 
 The book is intended to be read somewhat linearly, with each chapter depending on the last. The exception is Chapter Two, which provides a bit of relief in our climb to introduce more of AlgebraicJulia, and provide some fun ways to program and explore dynamical systems using directed graphs. 
 
@@ -99,6 +101,7 @@ To run the code, click the "rocket icon" at the top right corner of this page, a
 :width: 400px
 :align: center
 ```
+</br>
 
 The live code environment may take a little time[^2] to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a "Waiting for kernel..." message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.
 
