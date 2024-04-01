@@ -597,7 +597,13 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </section>
 <section id="id2">
 <h3>Puzzles<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<p>Puzzle 1</p>
+<div class="admonition-puzzle-1 admonition">
+<p class="admonition-title">Puzzle 1</p>
+<p>We have seen that Graph 1 can me mapped into Graph 2 with the following injection:</p>
+<a class="reference internal image-reference" href="_images/DefineInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/DefineInjection.gif" style="width: 800px;" /></a>
+<p>How many other morphisms are there from Graph 1 to Graph 2?</p>
+<p>We’ve programmed this problem into the executable code below. When you think you know the answer, execute code and see if you and AlgebraicJulia agree.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">CategoricalAlgebra</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Graphs</span><span class="p">,</span><span class="w"> </span><span class="n">Catlab</span><span class="o">.</span><span class="n">Graphics</span>
@@ -616,7 +622,15 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </div>
 </div>
 </div>
-<p>Puzzle 2</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>There are three distinct morphisms from Graph 1 to Graph 2; two injections and one way of collapsing the whole graph down to one vertex.</p>
+<p>As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema. They are very different approaches but they arrive at the same answer.</p>
+</div>
+<div class="admonition-puzzle-2 admonition">
+<p class="admonition-title">Puzzle 2</p>
+<p>How many ways can this map into that?</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Graph3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
@@ -633,7 +647,10 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </div>
 </div>
 </div>
-<p>Puzzle 3</p>
+<div class="admonition-puzzle-3 admonition">
+<p class="admonition-title">Puzzle 3</p>
+<p>How many ways can this triangle be mapped into this hexagon?</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">hexagon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
@@ -649,7 +666,14 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </div>
 </div>
 </div>
-<p>Puzzle 4</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Trick question! There are now ways of mapping the triangle into the hexagon.</p>
+</div>
+<div class="admonition-puzzle-4 admonition">
+<p class="admonition-title">Puzzle 4</p>
+<p>What about the other way around? How many ways can this hexagon be mapped into this triangle?</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">countTheMorphisms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">hexagon</span><span class="p">,</span><span class="w"> </span><span class="n">triangle</span><span class="p">))</span>
@@ -657,7 +681,14 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </div>
 </div>
 </div>
-<p>Puzzle 5</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Three!</p>
+</div>
+<div class="admonition-puzzle-4 admonition">
+<p class="admonition-title">Puzzle 4</p>
+<p>This puzzle is the same as puzzle 2, except we now think of these as reflexive graphs. This changes the answer!</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Graph5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReflexiveGraph</span><span class="p">()</span>
@@ -673,6 +704,11 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </pre></div>
 </div>
 </div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Five.</p>
+<p>Note how Algebraic Julia is able to specialize to the case of Reflexive graphs….something something.</p>
 </div>
 </section>
 </section>

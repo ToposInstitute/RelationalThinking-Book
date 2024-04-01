@@ -328,7 +328,23 @@ The second model is a "coarse grained" version of the first. It is consistent wi
 
 ### Puzzles
 
-Puzzle 1
+
+:::: {admonition} Puzzle 1
+
+We have seen that Graph 1 can me mapped into Graph 2 with the following injection:
+
+```{image} assets/Ch3/DefineInjection.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+How many other morphisms are there from Graph 1 to Graph 2? 
+
+We've programmed this problem into the executable code below. When you think you know the answer, execute code and see if you and AlgebraicJulia agree.
+
+::::
+
 +++
 
 ```{code-cell}
@@ -348,7 +364,20 @@ countTheMorphisms = length(homomorphisms(Graph1, Graph2))
 
 +++
 
-Puzzle 2
+:::{admonition} Answer
+:class: dropdown
+There are three distinct morphisms from Graph 1 to Graph 2; two injections and one way of collapsing the whole graph down to one vertex.
+
+As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema. They are very different approaches but they arrive at the same answer.
+
+:::
+
+
+:::: {admonition} Puzzle 2
+
+How many ways can this map into that?
+
+::::
 
 +++
 
@@ -368,7 +397,17 @@ countTheMorphisms = length(homomorphisms(Graph 3, Graph 4))
 
 +++
 
-Puzzle 3
+
+
+
+:::: {admonition} Puzzle 3
+
+How many ways can this triangle be mapped into this hexagon?
+
+::::
+
+
+
 
 +++
 
@@ -387,7 +426,18 @@ countTheMorphisms = length(homomorphisms(triangle, hexagon))
 
 +++
 
-Puzzle 4
+
+:::{admonition} Answer
+:class: dropdown
+Trick question! There are now ways of mapping the triangle into the hexagon.
+
+:::
+
+:::: {admonition} Puzzle 4
+
+What about the other way around? How many ways can this hexagon be mapped into this triangle?
+
+::::
 
 +++
 
@@ -399,7 +449,18 @@ countTheMorphisms = length(homomorphisms(hexagon, triangle))
 +++
 
 
-Puzzle 5
+
+:::{admonition} Answer
+:class: dropdown
+Three!
+
+:::
+
+:::: {admonition} Puzzle 4
+
+This puzzle is the same as puzzle 2, except we now think of these as reflexive graphs. This changes the answer!
+
+::::
 
 
 +++
@@ -419,6 +480,15 @@ countTheMorphisms = length(homomorphisms(Graph 5, Graph 6))
 ```
 
 +++
+
+
+:::{admonition} Answer
+:class: dropdown
+Five.
+
+Note how Algebraic Julia is able to specialize to the case of Reflexive graphs....something something.
+
+:::
 
 
 
