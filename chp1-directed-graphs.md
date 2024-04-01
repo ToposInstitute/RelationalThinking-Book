@@ -39,7 +39,7 @@ Now, expand the panel below to see the directed graph that goes with this descri
 
 
 
-Note how the written description of required some concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.
+Note how the written description required concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.
 
 When we look at a directed graph we can instantly see many relationships: *this* arrow is connected to *these* vertices, *this* vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are *not* visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.
 
@@ -116,7 +116,7 @@ to_graphviz(AJ_Problem4b)
 
 We've come up with one way to describe a directed graph to a computer. But is it the best way? Are there other approaches we should consider?
 
-Under our current method each arrow is assigned a unique source vertex and a unique target vertex. What would happen if we flip the direction of the assignment? That is, instead of the assignment starting from arrow, we can instead start from vertices, and assign to each vertex a source arrow and/or a target arrow.
+In our current approach each arrow gets assigned a unique source vertex and a unique target vertex. What would happen if we flip the direction of that assignment? That is, instead of the assignment starting from the arrows, we instead start from vertices, assigning each vertex as a source or target to the arrows.
 
 ![whoops!](./assets/Ch1/WhichWay.gif)
 *What does it mean when connections flow in opposite directions?*
@@ -126,34 +126,46 @@ Is there a difference between “arrows-first” and “vertices-first” repres
 
 At first glance, these might seem like the exact same thing. But in fact, a whole bunch of *problems* arise if we try to think about directed graphs in the second way! 
 
-Two lovely features of our former “arrows-first” approach were:
 
-- Every source and target map corresponded to *some* directed graph.
-- E*very* directed graph can be expressed this way.
 
-Neither of these things is true with the “vertices-first” approach.
+First of all, there are many directed graphs that can't be expressed this way at all - at least not without relaxing some of our rules for making source and target maps.
+
+```{image} assets/Ch1/Branchy.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
+
+In the above graph, some vertices need to map to *many* arrows while others don't map to any. So instead of the simplicity we had in the arrows-first approach–with each arrow having *one-and-only-one source vertex* and *one-and-only one target vertex*–we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? List won't do it anymore. It turns our you'll now have to enter *lists of lists!*  
+
+
+But more importantly, the vertex-first approach makes us vulnerable to the `DANGLING EDGE CONDITION`.
+
 
 Suppose we created a random graph using the vertices-first approach, just throwing together source and target maps, arbitrarily connecting things without giving any thought to what the resulting graph will be like.
 ![whoops!](./assets/Ch1/Random.gif)
 *"Random" source and target maps*
 
 In this case, when we try reconstruct the graph from this random data, we get a mutant!
-![whoops!](./assets/Ch1/MutantGraph.jpg)
+
+```{image} assets/Ch1/MutantGraph.jpg
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
 
 Dangling arrows, arrows that have to come out of multiple vertices somehow, arrows floating off by themselves unattached to anything. It's carnage! By designing our maps in the vertices-first approach we open up the possibility of creating *nonsense*: maps which may appear valid at first, but which produce broken directed graphs when we try to interpret them.
 
-To make matters worse, there are many directed graphs that can't be expressed this way at all - at least not without relaxing some of our rules for making source and target maps.
-![whoops!](./assets/Ch1/Branchy.gif)
 
-In the above graph, some vertices need to map to *many* arrows while others don't map to any. So instead of the simplicity we had in the arrows-first approach–with each arrow having *one-and-only-one source vertex* and *one-and-only one target vertex*–we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? List won't do it anymore. It turns our you'll now have to enter *lists of lists!*  
+
+
 
 Our purpose in comparing these approaches is to highlight the difference between “good” and “bad” representations. It's hard to escape the feeling that the arrows-first approach is somehow the natural way to describe directed graphs. There is an *exact* correspondence between what we're interested in (directed graphs!) and what the maps are capable of expressing. By contrast, the vertices-first approach produces the typical problems of “bad” representations, which force you to countenance nonsense and deal with problematic edge cases. In a word, they're *fussy*. And this kind of fussiness is not just annoying, it turns out to be a barrier to abstraction. 
 
 As we go through this book we will take a series of increasingly abstract points of view on graphs. The beauty of beginning this journey with a good representation is that it permits us to move up the ladder of abstractions cleanly, at each stage fully disregarding the details of the previous level and being able to take for granted that everything below our current view will naturally take care of itself.
 
-![whoops!](./assets/Ch1/Ladder.png)
-
-In this chapter we have moved up our first rung on this ladder of abstractions - from directed graphs to source and target maps. In the coming sections we will continue to climb, moving on to “Schemas” in section 2 and “Categories” in section 3. At each step, we will obtain new capabilities and new ways of thinking about structures and modeling. But as we will see, we're only able to reap the cumulative benefits of abstraction because we're choosing the more elegant representation at the start.
+In this chapter we have moved up our first rung on this ladder of abstractions - from directed graphs themselves to the graph _data_. In the coming chapters we will continue to climb, moving on to “Blueprints” in Chapter 3 and “Categories” in Chapter 4. At each step, we will obtain new capabilities and new ways of thinking about structures and modeling. But as we will see, we're only able to reap the cumulative benefits of abstraction because we're choosing the more elegant representation at the start.
 
 
 
