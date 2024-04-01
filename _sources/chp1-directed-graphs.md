@@ -33,7 +33,12 @@ Now, expand the panel below to see the directed graph that goes with this descri
 :::{admonition} Directed Graph
 :class: dropdown
 
-![whoops!](./assets/Ch1/DGski.jpg)
+```{image} assets/Ch1/DGSki.jpg
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
 :::
 
 
@@ -155,7 +160,7 @@ In this case, when we try reconstruct the graph from this random data, we get a 
 :align: center
 ```
 
-Dangling arrows, arrows that have to come out of multiple vertices somehow, arrows floating off by themselves unattached to anything. It's carnage! By designing our maps in the vertices-first approach we open up the possibility of creating *nonsense*: maps which may appear valid at first, but which produce broken directed graphs when we try to interpret them.
+Dangling arrows, arrows that have to come out of multiple vertices somehow, arrows floating off by themselves unattached to anything. It's carnage! By designing our maps in the vertices-first approach we open up the possibility of creating *nonsense*: maps which may appear valid at first, but which produce broken directed graphs when we try to interpret them. By contrast, any maps in the arrows-first approach can't help but be proper directed graphs.
 
 
 

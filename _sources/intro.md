@@ -16,7 +16,7 @@ kernelspec:
 
 Biological systems, computer systems, healthcare systems, the solar system, and on and on...
 
-Systems come in different flavors and forms! Even though the word "system" is quite familiar, it is quite hard to say precisely what it means! Loosely stated, a system is a bunch of things interacting together, somehow! The idea of a system seems quite abstract, and more often, hard to think about.  What should you or I do when we are part of a system? How does we act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
+Systems come in different flavors and forms. Even though the word "system" is quite familiar, it is quite hard to say precisely what it means! Loosely stated, a system is a bunch of things interacting together, somehow. The idea of a system seems quite abstract, and more often, hard to think about.  What should you or I do when we are part of a system? How does we act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn't?
 
 Yet the notion of system persists. Despite its own lack of clarity, it clearly points to a real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically [^1]. It's a way of thinking that emphasises relationships and context, and deemphasises analysis by reduction and deconstruction. 
 
