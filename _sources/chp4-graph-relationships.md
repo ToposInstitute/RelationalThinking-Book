@@ -319,6 +319,102 @@ The second model is a "coarse grained" version of the first. It is consistent wi
 
 ### Puzzles
 
+Puzzle 1
++++
+
+```{code-cell}
+using Catlab.CategoricalAlgebra, Catlab.Graphs, Catlab.Graphics
+
+Graph1 = Graph()
+add_vertices!(Graph1, 2)
+add_parts!(Graph1, :E, 2, src=[1,2], tgt=[2,1])
+
+
+Graph2 = Graph()
+add_vertices!(Graph2, 3)
+add_parts!(Graph2, :E, 4, src=[1,2,2,3], tgt=[2,3,1,3])
+
+countTheMorphisms = length(homomorphisms(Graph1, Graph2))
+```
+
++++
+
+Puzzle 2
+
++++
+
+```{code-cell}
+
+Graph3 = Graph()
+add_vertices!(Graph3, 2)
+add_parts!(Graph3, :E, 2, src= [1,1],tgt= [1,2])
+
+Graph4 = Graph()
+add_vertices!(Graph4, 4)
+add_parts!(Graph4, :E, 5, src=[1,1,1,1,4], tgt=[1,2,3,4,4])
+
+
+countTheMorphisms = length(homomorphisms(Graph 3, Graph 4))
+```
+
++++
+
+Puzzle 3
+
++++
+
+```{code-cell}
+
+hexagon = Graph()
+add_vertices!(hexagon, 6)
+add_parts!(hexagon, :E, 6, src=[1,2,3,4,5,6], tgt=[2,3,4,5,6,1])
+
+triangle = Graph()
+add_vertices!(triangle, 3)
+add_parts!(triangle, :E, 3, src=[1,2,3], tgt=[2,3,1])
+
+countTheMorphisms = length(homomorphisms(triangle, hexagon))
+```
+
++++
+
+Puzzle 4
+
++++
+
+```{code-cell}
+
+countTheMorphisms = length(homomorphisms(hexagon, triangle))
+```
+
++++
+
+
+Puzzle 5
+
+
++++
+
+```{code-cell}
+
+Graph5 = ReflexiveGraph()
+add_vertices!(Graph5, 2)
+add_parts!(Graph5, :E, 2, src= [1,1],tgt= [1,2])
+
+Graph6 = ReflexiveGraph()
+add_vertices!(Graph6, 4)
+add_parts!(Graph6, :E, 5, src=[1,1,1,1,4], tgt=[1,2,3,4,4])
+
+
+countTheMorphisms = length(homomorphisms(Graph 5, Graph 6))
+```
+
++++
+
+
+
+
+
 ## 4.4 The category of instances
 
 We can now return to our question from the beginning of the chapter: What are teh relationships between the instances of a given schema?
