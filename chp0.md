@@ -94,51 +94,21 @@ But the real reason we want to look at directed graphs because they are also _fr
 
 Suppose we've modeled some situation in a computer using a directed graph. If our understanding of that situation changes then we're going to want to update the details of our graph to reflect this improved understanding. Specifically, we'll need the ability to add and delete components as necessary. The problem seems to be that, if we have the ability to freely add and delete graph components then there's nothing to stop us from making _broken graphs_!
 
+//IMAGE OF BROKEN GRAPH
+
+
+
+ If we're trying to represent the world with a directed graph then a broken graph is a big problem because it invalidates the underlying model. It's not that the model becomes incorrect. It becomes meaningless. If "loves" needs both a lover and a beloved then the following is an undefined/ungrammatical..."Tuco loves". Rupturing our graph in this way also ruptures any underlying meaning the graph may have had.
+
+
+And an unfortunate fact of life is that directed graphs a prone to getting broken in this way. We can try to exercise care when merging graphs, separating subgraphs, performing surgical replacement on sections of graphs. All of these introduce complicated edge cases in which arrows and vertices may end up becoming detached. 
+
+The problem is that these tools exist at a level of abstraction that people are simply not accustomed to thinking about. We will have to move through many layers of abstraction to get where we're going, and much of it will seem unnecessarily abstract at first. . But in the end, we will arrive at the concept of a "Double Pushout Rewrite Rule," a category theoretic design pattern that allows us to perform intricate surgery on graphs without having to give a seconf thought to the dangling edge condition. In the process, and with the help of Algebraic Julia, you will learn new tools for thinking about relationships. 
+
+Although we will talk at length about directed graphs, this isn't really a book about directed graphs. The real goal of this book is to give you a taste of what we're calling "relational thinking." 
 
 
 
 
-
-
- If we're trying to represent the world with a directed graph then a broken graph is a problem because it invalidates the underlying model. It's not that the model becomes incorrect. It becomes meaningless. If "loves" needs both a lover and a beloved then the following is an undefined/ungrammatical..."Tuco loves"
-
-
-
-
-
-
-
-
-
-Broken models and the DANGLING EDGE condition.
-
-Rupturing our graph in this way also ruptures any underlying meaning the graph may have had---A "ruptured" graph is one that is suffering from a DANGLING EDGE CONDITION
-
-The problem is that directed graphs a prone to getting broken in this way. In a computation setting, directed graphs are _fragile_.
-
-Things get even worse when we try to enter these things into the computer because we now have to work formally instead of casually.The burden of formality. In order to work with graphs at the level of detail needed for a computer there will be lots of rules and conditions that need to be adhered to As we do more intricate thing: merging graphs, separating subgraphs, performing surgery. in order to avoid the dangling edge condition.
-
-If we have the ability to manipulate our graphs then we also have the ability to break them.
-
-
-
-An elegant solution - building up to DPOsIn this book we will show an elegant way to deal with this problem
-
-
-If you try to write computer programs about directed graphs entirely in terms of their arrows and vertices then it's going to be a real pain in the ass to manipulate them without breaking the dangling edge condition. With Algebraic Julia, we instead try to think about the relationships between arrows and vertices as the things we think about. We will pursue this strategy and some length, and much of it will seem unnecessarily abstract at first. 
-
-But in the end, we will arrive at the concept of a "Double Pushout Rewrite Rule," a category theoretic design pattern that allows us to perform intricate surgery on graphs without having to give a seconf thought to the dangling edge condition.
-
-The problem is that these tools exist at a level of abstraction that people are simply not accustomed to thinking about.
-
-In the process, and with the help of Algebraic Julia, you will learn new tools for thinking about relationships. 
-
-Although we will talk at length about directed graphs, this isn't really a book about directed graphs.
-
-The real goal of this book is to give you a taste of what we're calling "relational thinking." This is a style of thinking that tries to narrow down to a solution from the space of sensible structures by methodically reflecting on "what" it is that we're looking for rather than focusing on "how" to construct a solution and verify that the construction will always produce a sensible structure.
-
-Enoy!Graphs are a good example - simple! - but not representative of everything AJ can do. AJ is being developed to be a serious scientific modeling platform.
-part of that future is helping people get the hang of how to think about things with AlgebraicJulia.
-
-But in order to use AlgebraicJulia effectively you need to have some sense of the way to organize your thoughts on that platform. This is your introduction!
+AlgebraicJulia is being developed as an ecosystem serious scientific modeling platform. But in order to use AlgebraicJulia effectively you need to have some sense of the way to organize your thoughts on that platform. We wrote this book to show how a simple and chronic practical problem - `DANGLING EDGES` - can be handled elegantly from a relational viewpoint. We hope this simple example gives you a taste of how categorical computation works and an appetite to find out more.
 
