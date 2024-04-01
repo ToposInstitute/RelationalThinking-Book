@@ -48,7 +48,11 @@ The example we have chosen is that of directed graphs: a simple language of dots
 
 Our first task, then, is to learn to think about directed graphs from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking. This cover the first part of the book.
 
-![whoops!](./assets/Ch1/Ladder.png)
+```{image} assets/Ch1/Ladder.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
 
 Beginning in the concrete world of directed graphs as pictures made up of dots and arrows, each rung takes us through a conceptual shift that is required to move us into a world of relational models. 
 
