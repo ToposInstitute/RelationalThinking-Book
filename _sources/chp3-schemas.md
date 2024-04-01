@@ -32,7 +32,7 @@ In this case, directed graphs are the perfect choice for modeling the social net
 
 Now let's imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional.
 
-To model this kind of social network we need a different kind of graph. We call these "undirected graphs" and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices instead of arrows.
+To model this kind of social network we need a different kind of graph. We call these "undirected graphs" and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices.
 
 ```{image} assets/Ch4/LinkedIn.png
 :alt: Whoopsy!
@@ -48,7 +48,7 @@ How is the data of an undirected graph different from the data of a directed gra
 
 Undirected graphs are just one example from a whole zoo of different _kinds_ of graphs we might want to model with. In this chapter we'll look at a few specimens from this zoo. In the process, we'll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.
 
-## 3.2 Blueprints
+## 3.2 Introducing Schemas
 
 ### Chunky arrows
 
@@ -76,11 +76,10 @@ Source and target maps can be a little _busy_ looking so we're going to simplify
 
 A big chunky arrow like this is easy to draw and easy to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up "under the hood." This is just like in an algebra equation where, when we see the variable 'x', we know it stands for some specific number. Chunky arrows are like variables for maps.
 
-Figures built from these chunky arrows are known as schemas. In moving from an explicit map to its schema, we are moving from rung 2 ("data") to rung 3 ("blueprints") on our ladder of abstractions.
 
 ### Directed graphs
 
-What is the schema that represents a directed graph? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices. 
+Can we represent a directed graph using these chunky arrows? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices. 
 
 ```{image} assets/Ch4/Graph1ST.gif
 :alt: Whoopsy!
@@ -90,7 +89,7 @@ What is the schema that represents a directed graph? Recall that a directed grap
 
 <br>
 
-Instead of representing these maps side by side like this, let's combine them so that they run in parallel. Our chunky arrows will then be in this configuration:
+Instead of representing these maps side by side like this, let's combine them so that they run in parallel. When wrapped in chunky arrows these connections will be in the following configuration:
 
 ```{image} assets/Ch4/DGInstance1.gif
 :alt: Whoopsy!
@@ -98,7 +97,7 @@ Instead of representing these maps side by side like this, let's combine them s
 :align: center
 ```
 
-Such a pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential "blueprint". We generally draw this as two arrows marked `src` and `tgt`.
+Such a pair of parallel maps is the underlying blueprint common to all directed graphs. The technical name for a figure built up from chunky arrows is a schema. We generally draw the schema for directed graphs as two arrows marked `src` and `tgt`.
 
 ```{image} assets/Ch4/DirectedGraphSchema.jpg
 :alt: Whoopsy!
@@ -116,7 +115,23 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 ```
 <br>
 
-Having given this general characterization of directed graphs as a schema, we will next see how we can _modify_ this schema to define other kinds of graphs.
+You may have noticed that our directed graph schema is _itself_ a directed graph! This means we can define this schema in AlgebraicJulia using source and target maps, as we learned about in Chapter 1.
+We use `A` for arrows, `V` for vertices. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y.
+
++++
+```{code-cell}
+@present SchGraph(FreeSchema) begin
+  V::Ob
+  A::Ob
+  src::Hom(A,V)
+  tgt::Hom(A,V)
+end
+```
++++
+
+And that's how AlgebraicJulia understands what we mean by a directed graph! Having given this general characterization of a directed graph schema we will next see how we can _modify_ this schema to define other kinds of graphs.
+
+
 
 ## 3.3 Other kinds of graphs
 
@@ -148,11 +163,11 @@ Now let's imagine doing the same thing for the ancient board game Go. An importa
 This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special "self-looping" arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they're called "reflexive graphs." They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.
 
 :::{admonition} Pause and Ponder! 
-How is the data of an reflexive graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
+How is the data of a reflexive graph different from the data of a directed graph? How might you communicate the details of a reflexive graph to a computer?
 :::
 
 
-We can define a reflexive graph as a _directed graph_ with the added condition that "every vertex has a special self-pointing arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
+We can define a reflexive graph as a _directed graph_ with the added condition that "every vertex has a special self-looping arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
 ```{image} assets/Ch3/ReflexiveMap.gif
 :alt: Whoopsy!
@@ -161,7 +176,7 @@ We can define a reflexive graph as a _directed graph_ with the added condition t
 ```
 <br>
 
-Every reflexive graph has such a map, called its reflexive map or `ref`. We can combine this reflexive map with the graph's source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
+Every reflexive graph has such a map, called its reflexive map or `refl`. We can combine this reflexive map with the graph's source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
 
 
 ```{image} assets/Ch4/ReflexiveGraphInstance.gif
@@ -219,57 +234,57 @@ Can you think through why this is?
 :::
 
 
-In first defining reflexive graphs we had to establish what we meant using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of a maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
+In first defining reflexive graphs we had to establish what we meant by using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
 
 
 ### Reflexive graphs (in a computer)
 
-Let's encode a reflexive graph schema in AlgebraicJulia!
-
-First off, you may have noticed that schemase _are_ a kind of directed graph. So we can use our familiar source and target map formalism to input the general schema shape.
-
-GRAPHIC OF CODE SHOWING src: tgt: definitions...
-
-In order to specify our closed loop condition in a way that a computer can understand, we have to convert it into a text expression. Here's the system we'll use for writing.
-
-//WRITING SYSTEM:
-
-* `•` this is the character we will use to sequence paths. It means "following". So `A•B` means "A following B."
-
-//DISClAIMER: You many find this a way of writing a path very confusing at first, because the order of the letters is the *opposite* of the order in which you actually traverse those maps when you travel the path.
-
-Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don't like it any more than you do!)
-
-* `=` we'll use equals to equate the endpoints of two paths
-* `id` we will use this name to mean "end up back where you started." It refers to the "identity map", the happing equivalent of doing nothing.
+Let's encode a reflexive graph schema in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here's the system we'll use for writing:
 
 
-IN the chapter on dynamical systems we saw how to start with a directed graph and then add addtiional data - states and update rules - to turn it into a a psecific dunamical system. In AlgebraicJulia we do something similar. We define the underlingying grpah and then add the commutativity conditions we want the underlying maps to statisfy.
+:::{admonition} Writing system:
+:class: attention
 
+* `∘` This is the character we will use to sequence paths. It means "following." So `A∘B` means "A following B."
 
+>DISClAIMER: You may find this a way of writing a path confusing at first, because the order of the letters is the *opposite* of the order in which you actually traverse those maps when you travel the path. Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don't like it any more than you do!)
 
+* `=` We'll use an equals sign to equate the endpoints of two paths
+* `id` We'll use this name to mean ending up "back where you started." It refers to the "identity map", the map equivalent of doing nothing.
 
+:::
 
+So we can write "source map following reflexive map takes you back where you started" as:
 
+`src ∘ refl = id`
 
+And "target map following reflexive map takes you back where you started" becomes:
+
+`tgt ∘ refl = id`
+
+A closed loop condition written out as an equation like this is called a "commutativity condition". Most schemas are defined with an assembly of chunky arrows _along with_ some commutativity conditions that the underlying maps must satisfy. Here is the schema for reflexive graphs:
 
 ```{image} assets/Ch4/ReflexiveGraph.jpg
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
-That is, a directed graph can be considered a reflexive graph if and only if there exists a map "ref" such that it forms a 
-set of loops with the existing maps in the directed graph schema. Thus, to work with reflexive graphs in Algebraic Julia we think of them as special cases of direct graphs and specify to the program that we want it to restrict itself to directed graphs for which such a reflexive map exists.
+<br>
 
-//code snippet showing reflexive graph definition.
+To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the `refl` arrow and our commutativity conditions. (We use `compose(X,Y)` to mean `X ∘ Y`.)
 
- But for our purposes, reflexive graphs are important because it's interesting to try and count the morphisms between two of them!
++++
+```{code-cell}
+@present SchReflexiveGraph <: SchGraph begin
+  refl::Hom(V,E)
 
-...where the way we define our graph is by starting with all directed graphs and then specialize to only those which can satisfy the commutativity condition.
-If we were programming in terms of "things" we'd have to add to our codebase to 
-We think of reflexive graphs as special cases of directed graphs. Therefore any operations that are defined for directed graphs specialize to reflexive graphs as a subset.
+  compose(src, refl) == id(V)
+  compose(tgt, refl) == id(V)
+end
+```
++++
 
-This is how we define reflexive graphs in AlebraicJulia. In the next chapter we'll see how to put this defintion to use.
+And that's how reflexive graphs can be defined in AlebraicJulia! In the next chapter we'll see how to put this defintion to use.
 
 
 ### Undirected Graphs

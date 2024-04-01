@@ -442,7 +442,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blueprints">3.2 Blueprints</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-schemas">3.2 Introducing Schemas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chunky-arrows">Chunky arrows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directed-graphs">Directed graphs</a></li>
 </ul>
@@ -485,7 +485,7 @@ document.write(`
 <br>
 <p>In this case, directed graphs are the perfect choice for modeling the social network because TikTok follows are <em>directional</em>. Someone you follow may not follow you back.</p>
 <p>Now let’s imagine doing the same thing for connections on LinkedIn. In this social network, both parties must mutually agree to the connection. So a LinkedIn connection is symmetric, not directional.</p>
-<p>To model this kind of social network we need a different kind of graph. We call these “undirected graphs” and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices instead of arrows.</p>
+<p>To model this kind of social network we need a different kind of graph. We call these “undirected graphs” and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices.</p>
 <a class="reference internal image-reference" href="_images/LinkedIn.png"><img alt="Whoopsy!" class="align-center" src="_images/LinkedIn.png" style="width: 500px;" /></a>
 <br>
 <div class="admonition-pause-and-ponder admonition">
@@ -494,8 +494,8 @@ document.write(`
 </div>
 <p>Undirected graphs are just one example from a whole zoo of different <em>kinds</em> of graphs we might want to model with. In this chapter we’ll look at a few specimens from this zoo. In the process, we’ll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.</p>
 </section>
-<section id="blueprints">
-<h2>3.2 Blueprints<a class="headerlink" href="#blueprints" title="Permalink to this heading">#</a></h2>
+<section id="introducing-schemas">
+<h2>3.2 Introducing Schemas<a class="headerlink" href="#introducing-schemas" title="Permalink to this heading">#</a></h2>
 <section id="chunky-arrows">
 <h3>Chunky arrows<a class="headerlink" href="#chunky-arrows" title="Permalink to this heading">#</a></h3>
 <p>We’ll begin this chapter with a little tidying up. The basic building block we’ve been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:</p>
@@ -511,21 +511,34 @@ document.write(`
 <a class="reference internal image-reference" href="_images/SchemaDef.gif"><img alt="Whoopsy!" class="align-center" src="_images/SchemaDef.gif" style="width: 500px;" /></a>
 <br>
 <p>A big chunky arrow like this is easy to draw and easy to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up “under the hood.” This is just like in an algebra equation where, when we see the variable ‘x’, we know it stands for some specific number. Chunky arrows are like variables for maps.</p>
-<p>Figures built from these chunky arrows are known as schemas. In moving from an explicit map to its schema, we are moving from rung 2 (“data”) to rung 3 (“blueprints”) on our ladder of abstractions.</p>
 </section>
 <section id="directed-graphs">
 <h3>Directed graphs<a class="headerlink" href="#directed-graphs" title="Permalink to this heading">#</a></h3>
-<p>What is the schema that represents a directed graph? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices.</p>
+<p>Can we represent a directed graph using these chunky arrows? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices.</p>
 <a class="reference internal image-reference" href="_images/Graph1ST.gif"><img alt="Whoopsy!" class="align-center" src="_images/Graph1ST.gif" style="width: 500px;" /></a>
 <br>
-<p>Instead of representing these maps side by side like this, let’s combine them so that they run in parallel. Our chunky arrows will then be in this configuration:</p>
+<p>Instead of representing these maps side by side like this, let’s combine them so that they run in parallel. When wrapped in chunky arrows these connections will be in the following configuration:</p>
 <a class="reference internal image-reference" href="_images/DGInstance1.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGInstance1.gif" style="width: 500px;" /></a>
-<p>Such a pair of parallel source and target maps is the underlying pattern that is common to all directed graphs, their essential “blueprint”. We generally draw this as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
+<p>Such a pair of parallel maps is the underlying blueprint common to all directed graphs. The technical name for a figure built up from chunky arrows is a schema. We generally draw the schema for directed graphs as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
 <a class="reference internal image-reference" href="_images/DirectedGraphSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DirectedGraphSchema.jpg" style="width: 500px;" /></a>
 <p>Any <em>particular</em> pair of maps between the same arrows and vertices is said to be an “instance” of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.</p>
 <a class="reference internal image-reference" href="_images/DGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGraphInstance.gif" style="width: 800px;" /></a>
 <br>
-<p>Having given this general characterization of directed graphs as a schema, we will next see how we can <em>modify</em> this schema to define other kinds of graphs.</p>
+<p>You may have noticed that our directed graph schema is <em>itself</em> a directed graph! This means we can define this schema in AlgebraicJulia using source and target maps, as we learned about in Chapter 1.
+We use <code class="docutils literal notranslate"><span class="pre">A</span></code> for arrows, <code class="docutils literal notranslate"><span class="pre">V</span></code> for vertices. <code class="docutils literal notranslate"><span class="pre">Hom(X,Y)</span></code> is AlgebraicJulia syntax meaning a “chunky arrow from X to Y.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">SchGraph</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">V</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">A</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">src</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+<span class="w">  </span><span class="n">tgt</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And that’s how AlgebraicJulia understands what we mean by a directed graph! Having given this general characterization of a directed graph schema we will next see how we can <em>modify</em> this schema to define other kinds of graphs.</p>
 </section>
 </section>
 <section id="other-kinds-of-graphs">
@@ -546,12 +559,12 @@ document.write(`
 <p>This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special “self-looping” arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they’re called “reflexive graphs.” They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder! </p>
-<p>How is the data of an reflexive graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?</p>
+<p>How is the data of a reflexive graph different from the data of a directed graph? How might you communicate the details of a reflexive graph to a computer?</p>
 </div>
-<p>We can define a reflexive graph as a <em>directed graph</em> with the added condition that “every vertex has a special self-pointing arrow.” This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.</p>
+<p>We can define a reflexive graph as a <em>directed graph</em> with the added condition that “every vertex has a special self-looping arrow.” This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.</p>
 <a class="reference internal image-reference" href="_images/ReflexiveMap.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveMap.gif" style="width: 500px;" /></a>
 <br>
-<p>Every reflexive graph has such a map, called its reflexive map or <code class="docutils literal notranslate"><span class="pre">ref</span></code>. We can combine this reflexive map with the graph’s source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)</p>
+<p>Every reflexive graph has such a map, called its reflexive map or <code class="docutils literal notranslate"><span class="pre">refl</span></code>. We can combine this reflexive map with the graph’s source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)</p>
 <a class="reference internal image-reference" href="_images/ReflexiveGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphInstance.gif" style="width: 800px;" /></a>
 <br>
 <div class="admonition-pause-and-ponder admonition">
@@ -578,34 +591,45 @@ document.write(`
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Can you think through why this is?</p>
 </div>
-<p>In first defining reflexive graphs we had to establish what we meant using semantic ideas like “self-loops” and phrases like “for every vertex…”. We have now found an equivalent way of saying the same thing in terms of a maps and whether or not certain paths form closed loops. And “maps and closed loops” are exactly the kind of thing AlgebraicJulia can understand!</p>
+<p>In first defining reflexive graphs we had to establish what we meant by using semantic ideas like “self-loops” and phrases like “for every vertex…”. We have now found an equivalent way of saying the same thing in terms of maps and whether or not certain paths form closed loops. And “maps and closed loops” are exactly the kind of thing AlgebraicJulia can understand!</p>
 </section>
 <section id="reflexive-graphs-in-a-computer">
 <h3>Reflexive graphs (in a computer)<a class="headerlink" href="#reflexive-graphs-in-a-computer" title="Permalink to this heading">#</a></h3>
-<p>Let’s encode a reflexive graph schema in AlgebraicJulia!</p>
-<p>First off, you may have noticed that schemase <em>are</em> a kind of directed graph. So we can use our familiar source and target map formalism to input the general schema shape.</p>
-<p>GRAPHIC OF CODE SHOWING src: tgt: definitions…</p>
-<p>In order to specify our closed loop condition in a way that a computer can understand, we have to convert it into a text expression. Here’s the system we’ll use for writing.</p>
-<p>//WRITING SYSTEM:</p>
+<p>Let’s encode a reflexive graph schema in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here’s the system we’ll use for writing:</p>
+<div class="attention admonition">
+<p class="admonition-title">Writing system:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">•</span></code> this is the character we will use to sequence paths. It means “following”. So <code class="docutils literal notranslate"><span class="pre">A•B</span></code> means “A following B.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">∘</span></code> This is the character we will use to sequence paths. It means “following.” So <code class="docutils literal notranslate"><span class="pre">A∘B</span></code> means “A following B.”</p></li>
 </ul>
-<p>//DISClAIMER: You many find this a way of writing a path very confusing at first, because the order of the letters is the <em>opposite</em> of the order in which you actually traverse those maps when you travel the path.</p>
-<p>Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don’t like it any more than you do!)</p>
+<blockquote>
+<div><p>DISClAIMER: You may find this a way of writing a path confusing at first, because the order of the letters is the <em>opposite</em> of the order in which you actually traverse those maps when you travel the path. Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don’t like it any more than you do!)</p>
+</div></blockquote>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> we’ll use equals to equate the endpoints of two paths</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> we will use this name to mean “end up back where you started.” It refers to the “identity map”, the happing equivalent of doing nothing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> We’ll use an equals sign to equate the endpoints of two paths</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> We’ll use this name to mean ending up “back where you started.” It refers to the “identity map”, the map equivalent of doing nothing.</p></li>
 </ul>
-<p>IN the chapter on dynamical systems we saw how to start with a directed graph and then add addtiional data - states and update rules - to turn it into a a psecific dunamical system. In AlgebraicJulia we do something similar. We define the underlingying grpah and then add the commutativity conditions we want the underlying maps to statisfy.</p>
+</div>
+<p>So we can write “source map following reflexive map takes you back where you started” as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">∘</span> <span class="pre">refl</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>And “target map following reflexive map takes you back where you started” becomes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">tgt</span> <span class="pre">∘</span> <span class="pre">refl</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>A closed loop condition written out as an equation like this is called a “commutativity condition”. Most schemas are defined with an assembly of chunky arrows <em>along with</em> some commutativity conditions that the underlying maps must satisfy. Here is the schema for reflexive graphs:</p>
 <a class="reference internal image-reference" href="_images/ReflexiveGraph.jpg"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraph.jpg" style="width: 800px;" /></a>
-<p>That is, a directed graph can be considered a reflexive graph if and only if there exists a map “ref” such that it forms a
-set of loops with the existing maps in the directed graph schema. Thus, to work with reflexive graphs in Algebraic Julia we think of them as special cases of direct graphs and specify to the program that we want it to restrict itself to directed graphs for which such a reflexive map exists.</p>
-<p>//code snippet showing reflexive graph definition.</p>
-<p>But for our purposes, reflexive graphs are important because it’s interesting to try and count the morphisms between two of them!</p>
-<p>…where the way we define our graph is by starting with all directed graphs and then specialize to only those which can satisfy the commutativity condition.
-If we were programming in terms of “things” we’d have to add to our codebase to 
-We think of reflexive graphs as special cases of directed graphs. Therefore any operations that are defined for directed graphs specialize to reflexive graphs as a subset.</p>
-<p>This is how we define reflexive graphs in AlebraicJulia. In the next chapter we’ll see how to put this defintion to use.</p>
+<br>
+<p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">∘</span> <span class="pre">Y</span></code>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="kt">SchReflexiveGraph</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">SchGraph</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">refl</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">E</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">refl</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span><span class="w"> </span><span class="n">refl</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And that’s how reflexive graphs can be defined in AlebraicJulia! In the next chapter we’ll see how to put this defintion to use.</p>
 </section>
 <section id="undirected-graphs">
 <h3>Undirected Graphs<a class="headerlink" href="#undirected-graphs" title="Permalink to this heading">#</a></h3>
@@ -740,7 +764,7 @@ We think of reflexive graphs as special cases of directed graphs. Therefore any
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blueprints">3.2 Blueprints</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-schemas">3.2 Introducing Schemas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chunky-arrows">Chunky arrows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directed-graphs">Directed graphs</a></li>
 </ul>
