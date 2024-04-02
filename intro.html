@@ -448,8 +448,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-ideas">Key ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climbing-the-ladder-of-relational-abstractions">Climbing the ladder of relational abstractions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appreciating-the-relational-view">Appreciating the relational view</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-climbing-the-ladder-of-relational-abstractions">Part I: Climbing the ladder of relational abstractions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-appreciating-the-relational-view">Part II: Appreciating the relational view</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-ve-designed-this-book">How we’ve designed this book</a><ul class="nav section-nav flex-column">
@@ -480,14 +480,14 @@ document.write(`
 <section id="systems-thinking-relational-thinking-and-software">
 <h2>Systems thinking, relational thinking, and software<a class="headerlink" href="#systems-thinking-relational-thinking-and-software" title="Permalink to this heading">#</a></h2>
 <p>Biological systems, computer systems, healthcare systems, the solar system, and on and on…</p>
-<p>Systems come in different flavors and forms. Even though the word “system” is quite familiar, it is quite hard to say precisely what it means! Loosely stated, a system is a bunch of things interacting together, somehow. The idea of a system seems quite abstract, and more often, hard to think about.  What should you or I do when we are part of a system? How does we act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn’t?</p>
-<p>Yet the notion of system persists. Despite its own lack of clarity, it clearly points to a real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It’s a way of thinking that emphasises relationships and context, and deemphasises analysis by reduction and deconstruction.</p>
-<p>In this book, we will focus on a specific aspect of systems thinking we term ‘relational thinking’. Relational thinking seeks to understand an object by looking at it outwards, asking how the object interacts, rather than inwardly, asking what the object is made of. It’s an excitingly and refreshingly different viewpoint from the ways we often are taught to think. And it’s a powerful one.</p>
+<p>Systems come in different flavors and forms. Even though the word “system” is quite familiar, it is quite hard to say precisely what it means! Loosely stated, a system is a bunch of things interacting together, somehow. The idea of a system seems quite abstract, and more often, hard to think about.  What should you or I do when we are part of a system? How can we act in order to change things? What causes what, when everything is interlinked? How do we know what is part of a system, and what isn’t?</p>
+<p>Yet the notion of system persists. Despite its own lack of clarity, it clearly points to a real phenomenon, a phenomenon that is important for us to reference as we try to navigate the world. Thinking in systems promises a new way of looking at the world holistically.<a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> It’s a way of thinking that emphasises relationships and context, and deemphasises analysis by reduction and deconstruction.</p>
+<p>In this book, we will focus on a specific aspect of systems thinking we term ‘relational thinking’. Relational thinking seeks to understand an object by taking it as a point from which to look outwards, asking how the object interacts, rather than inwards, asking what the object is made of. It’s an excitingly and refreshingly different viewpoint from the ways we often are taught to think. And it’s a powerful one.</p>
 <section id="mathematics-for-relational-thinking">
 <h3>Mathematics for relational thinking<a class="headerlink" href="#mathematics-for-relational-thinking" title="Permalink to this heading">#</a></h3>
-<p>The power of a way of thinking can be amplified by mathematics. Mathematical tools for thinking, including thinking relationally, are useful and powerful, because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether systems thinking is providing a productive framing, or just new ways to be puzzled and to disagree.</p>
+<p>The power of a way of thinking can be amplified by mathematics. Mathematical tools for thinking, including thinking relationally, are useful and powerful because they provide assistance in thinking carefully, keeping you on the right path to getting conclusions you can trust and explain to others. Without such tools, it can be hard to know whether a method like relational thinking is providing a productive framing, or just new ways to be puzzled and to disagree.</p>
 <p>One challenge with relational thinking is that formal tools for thinking relationally are a relatively new topic of research. We are actively discovering the logic behind various systems, and discovering effective ways to rigorously reason about them.</p>
-<p>Nonetheless, even though mathematics hasn’t historically emphasised a systems perspective, there are some promising avenues in mathematics for relational thinking. A key mathematical tool for relational thinking, known as category theory, emerged in the 1940s. While this is almost a century ago, developing mathematics is a slow, patient, and inter-generational effort, and it’s only in recent decades it is developing as a tool for systems thinking in the real world.</p>
+<p>Nonetheless, even though mathematics hasn’t historically emphasised a systems perspective, there are some promising avenues in mathematics for relational thinking. A key mathematical tool for relational thinking, known as category theory, emerged in the 1940s.<a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> While this is almost a century ago, developing mathematics is a slow, patient, and inter-generational effort, and it’s only in recent decades it is developing as a tool for systems thinking in the real world.</p>
 <p>A second challenge presents itself, however: mathematics itself can be difficult to learn, especially when it is still an active topic of research and even the world-leading mathematicians do not always explain themselves well. In this regard, the purpose of this book is to give the reader the experience of mathematical relational thinking without requiring the mastery of any of the abstract tools of category theory. This is made available to us by leaning on the encoding of these category theoretic ideas into software, via the AlgebraicJulia project.</p>
 </section>
 <section id="algebraicjulia">
@@ -498,20 +498,20 @@ document.write(`
 </section>
 <section id="key-ideas">
 <h2>Key ideas<a class="headerlink" href="#key-ideas" title="Permalink to this heading">#</a></h2>
-<p>The goal of this book is to give you, the reader, an experience of relational thinking. This differs from many mathematical texts, in that we do not seek to give abstract definitions, construct general theory, and prove mathematical theorems. Instead, we focus on a particular example that, while simple in nature, allows for deep dive through relational thought. Although we focus on a particular, simple example, the relational patterns of thought we will experience are general in nature, and apply much more broadly.</p>
+<p>The goal of this book is to give you, the reader, an experience of relational thinking. This differs from many mathematical texts, in that we do not seek to give abstract definitions, construct general theory, and prove mathematical theorems. Instead, we focus on a particular example that, while simple in nature, allows for a deep dive through relational thought. Although we focus on a particular, simple example, the relational patterns of thought we will experience are general in nature, and apply much more broadly.</p>
 <p>The example we have chosen is that of directed graphs: a simple language of dots and arrows between them. This is possibly the barest example we could have chosen. Yet we will see that even in this simple case, there are thorny questions, particularly around what we shall call ‘dangling edges’. And we will also see that by thinking relationally, these questions can be easily and naturally resolved.</p>
-<section id="climbing-the-ladder-of-relational-abstractions">
-<h3>Climbing the ladder of relational abstractions<a class="headerlink" href="#climbing-the-ladder-of-relational-abstractions" title="Permalink to this heading">#</a></h3>
-<p>Our first task, then, is to learn to think about directed graphs from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking. This cover the first part of the book.</p>
+<section id="part-i-climbing-the-ladder-of-relational-abstractions">
+<h3>Part I: Climbing the ladder of relational abstractions<a class="headerlink" href="#part-i-climbing-the-ladder-of-relational-abstractions" title="Permalink to this heading">#</a></h3>
+<p>Our first task, then, is to learn to think about directed graphs from a relational perspective. To do so, we slowly step up a four rung ladder of relational thinking. This forms the first part of the book.</p>
 <a class="reference internal image-reference" href="_images/Ladder.png"><img alt="Whoopsy!" class="align-center" src="_images/Ladder.png" style="width: 500px;" /></a>
 </br>
 <p>Beginning in the concrete world of directed graphs as pictures made up of dots and arrows, each rung takes us through a conceptual shift that is required to move us into a world of relational models.</p>
-<p>In Chapter 0, we meet a few examples of directed graphs, as well as the problem of dangling edges. Chapter 1 moves us into the world of data, showing how we can provide an abstract representation of directed graphs that captures their core essence, no more or less. We reflect on what makes a good abstraction. This allows us to represent graphs as data, and hence make them amendable to computer reasoning, through tools like AlgebraicJulia. After the more mathematical nature of Chapter 1, Chapter 2 then shows the immediate payoff: we learn a bit about AlgebraicJulia, and how to use directed graphs as data to program dynamical systems.</p>
-<p>In Chapter 3 we move from the world of data to the world of blueprints. Also called schema, blueprints provide a framework for describing different sorts of data. For example, while we focus on the blueprint for directed graphs, we see directed graphs as part of a family of different sorts of data, including undirected graphs, three and higher dimensional shapes, interacting processes, and more. The payoff of understanding the blueprint for graphs is that it immediately helps us understand the appropriate notion of relationship between graphs, and hence the universe of possible graphs. This is the focus of Chapter 4, which moves us from the world of blueprints to the world of universes, also known as categories. This takes us to the top of our ladder of relational thinking.</p>
+<p>In Chapter 0, we meet a few examples of <em>directed graphs</em>, as well as the problem of dangling edges. Chapter 1 moves us into the world of <em>data</em>, showing how we can provide an abstract representation of directed graphs that captures their core essence, no more or less. We reflect on what makes a good abstraction. This allows us to represent graphs as data, and hence make them amendable to computer reasoning, through tools like AlgebraicJulia. After the more mathematical nature of Chapter 1, Chapter 2 then shows the immediate payoff: we learn a bit about AlgebraicJulia, and how to use directed graphs as data to program dynamical systems.</p>
+<p>In Chapter 3 we move from the world of data to the world of <em>blueprints</em>. Also called schema, blueprints provide a framework for describing different sorts of data. For example, while we focus on the blueprint for directed graphs, we see directed graphs as part of a family of different sorts of data, including undirected graphs, three-dimensional and higher-dimensional shapes, interacting processes, and more. The payoff of understanding the blueprint for graphs is that it immediately helps us understand the appropriate notion of relationship between graphs, and hence the universe of possible graphs. This is the focus of Chapter 4, which moves us from the world of blueprints to the world of universes, also known as <em>categories</em>. This takes us to the top of our ladder of relational thinking.</p>
 </section>
-<section id="appreciating-the-relational-view">
-<h3>Appreciating the relational view<a class="headerlink" href="#appreciating-the-relational-view" title="Permalink to this heading">#</a></h3>
-<p>Once at the top of our ladder, we can begin to appreciate the view. Now in the world of relational models, our second goal, is to use these models to <em>think</em> relationally. Chapter 5 uses relationships between graphs to help us think about when two graphs are the same, when a graph is a part of another graph, how to describing a collection of interrelated graphs, and ultimately how to construct new graphs by gluing graphs together. Chapter 6 then builds on this to describe how graphs evolve, or change over time. Finally, Chapter 7 shows the payoff, extending this to more complicated blueprints, so that we may model changes in our physical world, or reason about processes like making a sandwich in your kitchen.</p>
+<section id="part-ii-appreciating-the-relational-view">
+<h3>Part II: Appreciating the relational view<a class="headerlink" href="#part-ii-appreciating-the-relational-view" title="Permalink to this heading">#</a></h3>
+<p>Once at the top of our ladder, we can begin to appreciate the view. Now in the world of relational models, our second goal, is to use these models to <em>think</em> relationally. Chapter 5 uses relationships between graphs to help us think about when two graphs are the same, when a graph is a part of another graph, how to describe a collection of interrelated graphs, and ultimately how to construct new graphs by <em>gluing graphs</em> together. Chapter 6 then builds on this to describe how graphs <em>evolve</em>, or change over time. Finally, Chapter 7 shows the payoff, extending this to more complicated blueprints, so that we may model changes in our physical world, or reason about processes like making a sandwich in your kitchen.</p>
 <p>Ultimately, through this experience, we hope that you’ll come away with a sense of the importance of finding good abstractions, identifying the ways objects relate to each other, situating them in the context of other objects they relate to, and contextualing them models in the space of possibilities. We also hope that you’ll see the concrete payoffs, especially by doing this formally via a programming language, so that we can automatically extract and benefit from the insights that come from a relational perspective. Indeed, while it may seem in the beginning like we’re just finding different, more abstruse ways of describing directed graphs, we hope that in the problem of dangling edges you’ll see how the payoff naturally emerges, with seemingly little effort.</p>
 </section>
 </section>
@@ -519,12 +519,13 @@ document.write(`
 <h2>How we’ve designed this book<a class="headerlink" href="#how-we-ve-designed-this-book" title="Permalink to this heading">#</a></h2>
 <section id="reader-background">
 <h3>Reader background<a class="headerlink" href="#reader-background" title="Permalink to this heading">#</a></h3>
-<p>We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. But we hope that some readers will also use this book as a way to get acquianted with mathematical thought.</p>
-<p>In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter Five. Again, however, once we’re at the top, we can begin to appreciate the view, and we focus more on unpacking the beautiful implications of our ideas, rather than introducing new complexity.</p>
+<p>We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. We hope, however, that even if you do not have experience with mathematics or programming, that you might find it interesting to use this book as a way to get acquianted with the beauty and power of mathematical thought.</p>
+<p>In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter 5. Again, however, once we’re at the top of the ladder, we can begin to appreciate the view, and we focus more on unpacking the exciting implications of our ideas, rather than introducing new complexity.</p>
 <a class="reference internal image-reference" href="_images/chapters-difficulty.png"><img alt="Whoopsy!" class="align-center" src="_images/chapters-difficulty.png" style="width: 400px;" /></a>
 </br>
-<p>The book is intended to be read somewhat linearly, with each chapter depending on the last. The exception is Chapter Two, which provides a bit of relief in our climb to introduce more of AlgebraicJulia, and provide some fun ways to program and explore dynamical systems using directed graphs.</p>
-<p>// Add dependency graph of chapters</p>
+<p>The book is intended to be read somewhat linearly, with each chapter depending on the last. The exception is Chapter 2, which provides a bit of relief in our climb to introduce more of AlgebraicJulia by taking a detour into some fun ways to program and explore dynamical systems using directed graphs.</p>
+<p>Note that it is standard, however, to read mathematical texts in a circular pattern, often revisiting earlier sections, or even the book as a whole, to glean new insights and deeper understanding over time. In particular, don’t be discouraged if things don’t make sense on a first reading! This is completely normal, and happens to us too as we read books on mathematics. It takes a little while to get acquianted with new ways of thinking.</p>
+<p>We hope that even if difficult at times, you will find this book fun.</p>
 </section>
 <section id="live-in-line-code">
 <h3>Live, in-line code<a class="headerlink" href="#live-in-line-code" title="Permalink to this heading">#</a></h3>
@@ -540,7 +541,7 @@ document.write(`
 <p>To run the code, click the “rocket icon” at the top right corner of this page, and select “Live code”. Enabling live code will cause a button labelled “run” to appear in each executable code block. Clicking “run” will run the code in the block.</p>
 <a class="reference internal image-reference" href="_images/Binder_Instructions.png"><img alt="Whoopsy!" class="align-center" src="_images/Binder_Instructions.png" style="width: 400px;" /></a>
 </br>
-<p>The live code environment may take a little time<a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a “Waiting for kernel…” message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.</p>
+<p>The live code environment may take a little time<a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> to start up, similar to the way a computer may take a while to boot up when first turned on. While it is starting up, a “Waiting for kernel…” message will be displayed. Once the environment is running, responses should be faster. Because of this delay, it may be worth enabling live code as soon as you open a new chapter, so it can start up in the background while you read.</p>
 </section>
 <section id="puzzles">
 <h3>Puzzles<a class="headerlink" href="#puzzles" title="Permalink to this heading">#</a></h3>
@@ -553,7 +554,7 @@ document.write(`
 </section>
 <section id="a-new-medium-for-systems-thinking">
 <h2>A new medium for systems thinking<a class="headerlink" href="#a-new-medium-for-systems-thinking" title="Permalink to this heading">#</a></h2>
-<p>As Andy Matuschak and Michael Nielsen write in their essay “How can we develop transformative tools for thought?”<a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<p>As Andy Matuschak and Michael Nielsen write in their essay “How can we develop transformative tools for thought?”:<a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
 <blockquote>
 <div><p>Such a medium creates a powerful immersive context, a context in which the user can have new kinds of thought, thoughts that were formerly impossible for them. Speaking loosely, the range of expressive thoughts possible in such a medium is an emergent property of the elementary objects and actions in that medium. If those are well chosen, the medium expands the possible range of human thought.</p>
 </div></blockquote>
@@ -563,17 +564,21 @@ document.write(`
 <section id="footnotes-and-references">
 <h2>Footnotes and references<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id4" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>For an excellent introduction to thinking in systems, see: Meadows, D. H. (2015). <a class="reference external" href="https://donellameadows.org/systems-thinking-book-sale/">Thinking in Systems</a>. Chelsea Green Publishing.</p>
-</aside>
 <aside class="footnote brackets" id="id5" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>We gratefully use the free service provided by <a class="reference external" href="https://mybinder.org">Binder</a>, which runs our (Algebraic)Julia code on a server they host. Availability depends on a number of factors, and in our experience the kernel can take anywhere from a few minutes to half an hour to start up. If it’s taking too long, consider running a version of the code on your own computer. You can find instructions in Chapter 2.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>For an excellent introduction to thinking in systems, see: Meadows, Donella. H. (2015). <a class="reference external" href="https://donellameadows.org/systems-thinking-book-sale/">Thinking in Systems</a>. Chelsea Green Publishing.</p>
 </aside>
 <aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Eilenberg, Samuel, and Saunders MacLane. “General Theory of Natural Equivalences.” Transactions of the American Mathematical Society 58, no. 2 (1945): 231–94. <a class="reference external" href="https://doi.org/10.2307/1990284">https://doi.org/10.2307/1990284</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p>Andy Matuschak and Michael Nielsen, “How can we develop transformative tools for thought?”, <a class="reference external" href="https://numinous.productions/ttft">https://numinous.productions/ttft</a>, San Francisco (2019).</p>
+<p>We gratefully use the free service provided by <a class="reference external" href="https://mybinder.org">Binder</a>, which runs our (Algebraic)Julia code on a server they host. Availability depends on a number of factors, and in our experience the kernel can take anywhere from a few minutes to half an hour to start up. If it’s taking too long, consider running a version of the code on your own computer. You can find instructions in Chapter 2.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Andy Matuschak and Michael Nielsen. “How can we develop transformative tools for thought?” <a class="reference external" href="https://numinous.productions/ttft">https://numinous.productions/ttft</a>, San Francisco (2019).</p>
 </aside>
 </section>
 <div class="toctree-wrapper compound">
@@ -641,8 +646,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-ideas">Key ideas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climbing-the-ladder-of-relational-abstractions">Climbing the ladder of relational abstractions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appreciating-the-relational-view">Appreciating the relational view</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-climbing-the-ladder-of-relational-abstractions">Part I: Climbing the ladder of relational abstractions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-appreciating-the-relational-view">Part II: Appreciating the relational view</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-we-ve-designed-this-book">How we’ve designed this book</a><ul class="nav section-nav flex-column">
