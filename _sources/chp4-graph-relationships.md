@@ -13,7 +13,7 @@ kernelspec:
 # Chapter 4: Categories
 ## 4.1 Introduction
 
-For any given a schema there will be many possible instances. Below we show a few of the instance for each of our three graph schemas.
+For any given a schema there will be many possible instances. Below we show a few of the instances for each of our three graph schemas.
 
 ```{image} assets/Ch3/ThreeSchemas.png
 :alt: Whoopsy!
@@ -22,7 +22,7 @@ For any given a schema there will be many possible instances. Below we show a fe
 ```
 <br>
 
-Of course, each of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show them all, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to. 
+Of course, each of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show _every_ instance, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to. 
 
 ```{image} assets/Ch4/InstanceDrift.gif
 :alt: Whoopsy!
@@ -36,7 +36,7 @@ In our ongoing quest to think about things in terms of relationships we should l
 
 In this chapter we will develop a powerful answer to this question. 
 
-Let's set this swarm aside for now and return to it at the end, armed with a new understanding of the instance relationships. At that point we will be ready to move up the fourth rung or in our ladder of abstactions (our last, mercifully!), from schemas to categories. 
+Let's set this swarm of thought bubbles aside for now and return to it at the end, armed with a new understanding of how its instances are related. At that point we will be ready to move up the fourth rung or in our ladder of abstactions (our last, mercifully!), from schemas to categories. 
 
 :::{attention}
 Hang in there! You're almost at the top of the ladder.
@@ -61,9 +61,9 @@ Let's compare the summer and winter maps for the ski resort.
 
 One way to think about the relationship between these two graphs is that we can turn one into the other. Given the Summer map I can _turn it into_ the winter map by adding the additional vertices and arrows associated with travelling to the village. On the other hand, given the Winter map, I can create the Summer map by _deleting_ the arrows and vertices associated with the village.
 
-This is a procedural way of looking at the Summer and Winter maps, a procedure that could be applied to transform one into the other.
+This is what we might call a "procedural" way of thinking about the Summer and Winter maps; you imagine step-by-step procedures that could be applied to transform one map into the other. As we make our way towards "relational" thinking, we are going to recommend another way of looking at these two graphs.
 
-In our ongoing quest to think about things in terms of their relationships instead of in terms of the things themselves, we are going to recommedn another way of looking at these two graphs. Note how the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship? For the Summer graph to be a "part" of the Winter graph means, in effect, that we can map the Summer graph *into* the Winter graph, taking vertices to vertices and arrows to arrows.
+Note how the Summer graph is basically contained inside of the Winter graph. For the Summer graph to be a "part" of the Winter graph means, in effect, that we can map the Summer graph *into* the Winter graph, taking vertices to vertices and arrows to arrows.
 
 ```{image} assets/Ch3/InjectSki.gif
 :alt: Whoopsy!
@@ -243,15 +243,9 @@ Of course, these same arrow and vertex maps must also have closed loops for the 
 ### Graph injection schema
 
 
-```{image} assets/Ch4/MorphismInstance.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
 
-Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 _if and only if_ these maps satisfy the closed loop condition.
 
-The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.
+
 
 For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, `src 2`•`arr` for the lower route and `vert`•`src 1` for the upper route. And similarly for the targets.
 
@@ -496,25 +490,34 @@ Note how Algebraic Julia is able to specialize to the case of Reflexive graphs..
 
 ## 4.4 The category of instances
 
-We can now return to our question from the beginning of the chapter: What are teh relationships between the instances of a given schema?
+We're now ready to move up the last rung in our ladder of abstractions, from "blueprints" to "categories!"
+
+Look closely at this instance of our graph morphism schema:
+
+```{image} assets/Ch4/MorphismInstance.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The _overall_ blueprint represents a morphism of graph 1 into graph 2. As long as they satisfy all the closed loop conditions, any collection of maps in this pattern describe _some_ graph morphism.
+
+Our final abstraction will be a directed graph in which the vertices are instances and the arrows are morphisms between the corresponding graphs.
+
+// IMAGE OF THOUGHT BUBBLE WITH ARROW SAYING "MORPHISM OF GRAPHS"
+
+
+:::{attention}
+We know what you're thinking! "_Another_ directed graph?! At _another_ level of abstraction?!" 
+
+This is the last one. 
+
+Promise.
+:::
 
 
 
 
-
-
-The productive answer turns out to be graph morphisms. W
-
-
-//IMPORANT GIF
-
-
-//QUESTION MARK BETWEEN GRAPH 1 AND GRAPH 2
-//THREE ARROWS FROM THOUGHT BUBBLE TO THOUGH BUBBLE
-
-
-
-//KEY POINTS, in the coming chapters we'll see a couple of "special cases" for these morphism arrows. We'll define them here so you'll know them when you see them.
 
 * Injections are hooked arrows
 * Isomorphisms are paired unidirectional bars

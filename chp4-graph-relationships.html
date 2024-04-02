@@ -471,15 +471,15 @@ document.write(`
 <h1>Chapter 4: Categories<a class="headerlink" href="#chapter-4-categories" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>4.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>For any given a schema there will be many possible instances. Below we show a few of the instance for each of our three graph schemas.</p>
+<p>For any given a schema there will be many possible instances. Below we show a few of the instances for each of our three graph schemas.</p>
 <a class="reference internal image-reference" href="_images/ThreeSchemas.png"><img alt="Whoopsy!" class="align-center" src="_images/ThreeSchemas.png" style="width: 800px;" /></a>
 <br>
-<p>Of course, each of these schemas actually have an <em>infinite</em> number of possible instances (graphs can be arbitrarily big!). It isn’t practical to show them all, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to.</p>
+<p>Of course, each of these schemas actually have an <em>infinite</em> number of possible instances (graphs can be arbitrarily big!). It isn’t practical to show <em>every</em> instance, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to.</p>
 <a class="reference internal image-reference" href="_images/InstanceDrift.gif"><img alt="Whoopsy!" class="align-center" src="_images/InstanceDrift.gif" style="width: 800px;" /></a>
 <br>
 <p>In our ongoing quest to think about things in terms of relationships we should look at these instances, each floating in isolation from the others, and ask ourselves, “How are these instance related to one another?”</p>
 <p>In this chapter we will develop a powerful answer to this question.</p>
-<p>Let’s set this swarm aside for now and return to it at the end, armed with a new understanding of the instance relationships. At that point we will be ready to move up the fourth rung or in our ladder of abstactions (our last, mercifully!), from schemas to categories.</p>
+<p>Let’s set this swarm of thought bubbles aside for now and return to it at the end, armed with a new understanding of how its instances are related. At that point we will be ready to move up the fourth rung or in our ladder of abstactions (our last, mercifully!), from schemas to categories.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Hang in there! You’re almost at the top of the ladder.</p>
@@ -494,8 +494,8 @@ document.write(`
 <p>Let’s compare the summer and winter maps for the ski resort.</p>
 <a class="reference internal image-reference" href="_images/SummerWinter.png"><img alt="Whoopsy!" class="align-center" src="_images/SummerWinter.png" style="width: 800px;" /></a>
 <p>One way to think about the relationship between these two graphs is that we can turn one into the other. Given the Summer map I can <em>turn it into</em> the winter map by adding the additional vertices and arrows associated with travelling to the village. On the other hand, given the Winter map, I can create the Summer map by <em>deleting</em> the arrows and vertices associated with the village.</p>
-<p>This is a procedural way of looking at the Summer and Winter maps, a procedure that could be applied to transform one into the other.</p>
-<p>In our ongoing quest to think about things in terms of their relationships instead of in terms of the things themselves, we are going to recommedn another way of looking at these two graphs. Note how the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship? For the Summer graph to be a “part” of the Winter graph means, in effect, that we can map the Summer graph <em>into</em> the Winter graph, taking vertices to vertices and arrows to arrows.</p>
+<p>This is what we might call a “procedural” way of thinking about the Summer and Winter maps; you imagine step-by-step procedures that could be applied to transform one map into the other. As we make our way towards “relational” thinking, we are going to recommend another way of looking at these two graphs.</p>
+<p>Note how the Summer graph is basically contained inside of the Winter graph. For the Summer graph to be a “part” of the Winter graph means, in effect, that we can map the Summer graph <em>into</em> the Winter graph, taking vertices to vertices and arrows to arrows.</p>
 <a class="reference internal image-reference" href="_images/InjectSki.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectSki.gif" style="width: 800px;" /></a>
 <br>
 <p>We call this a “graph injection”. In order to visualize injections clearly let’s introduce some new visuals.</p>
@@ -569,9 +569,6 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </section>
 <section id="graph-injection-schema">
 <h3>Graph injection schema<a class="headerlink" href="#graph-injection-schema" title="Permalink to this heading">#</a></h3>
-<a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
-<p>Note how the top of this square contains the schema for Graph 1, the bottom is the schema for graph 2, and the overall square schema represents a morphism of graph 1 into graph 2 <em>if and only if</em> these maps satisfy the closed loop condition.</p>
-<p>The upper part of the diagram describes a graph. The lower part of the diagram describes another. And any pair of vertical arrows that satisfy the commutativity constraint describe a way of morphing the first graph into the second.</p>
 <p>For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, <code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">2</span></code>•<code class="docutils literal notranslate"><span class="pre">arr</span></code> for the lower route and <code class="docutils literal notranslate"><span class="pre">vert</span></code>•<code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">1</span></code> for the upper route. And similarly for the targets.</p>
 <a class="reference internal image-reference" href="_images/GraphMorphismSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/GraphMorphismSchema.jpg" style="width: 800px;" /></a>
 <p>In this chapter and the last we have seen that lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
@@ -714,12 +711,18 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 </section>
 <section id="the-category-of-instances">
 <h2>4.4 The category of instances<a class="headerlink" href="#the-category-of-instances" title="Permalink to this heading">#</a></h2>
-<p>We can now return to our question from the beginning of the chapter: What are teh relationships between the instances of a given schema?</p>
-<p>The productive answer turns out to be graph morphisms. W</p>
-<p>//IMPORANT GIF</p>
-<p>//QUESTION MARK BETWEEN GRAPH 1 AND GRAPH 2
-//THREE ARROWS FROM THOUGHT BUBBLE TO THOUGH BUBBLE</p>
-<p>//KEY POINTS, in the coming chapters we’ll see a couple of “special cases” for these morphism arrows. We’ll define them here so you’ll know them when you see them.</p>
+<p>We’re now ready to move up the last rung in our ladder of abstractions, from “blueprints” to “categories!”</p>
+<p>Look closely at this instance of our graph morphism schema:</p>
+<a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
+<p>Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The <em>overall</em> blueprint represents a morphism of graph 1 into graph 2. As long as they satisfy all the closed loop conditions, any collection of maps in this pattern describe <em>some</em> graph morphism.</p>
+<p>Our final abstraction will be a directed graph in which the vertices are instances and the arrows are morphisms between the corresponding graphs.</p>
+<p>// IMAGE OF THOUGHT BUBBLE WITH ARROW SAYING “MORPHISM OF GRAPHS”</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>We know what you’re thinking! “<em>Another</em> directed graph?! At <em>another</em> level of abstraction?!”</p>
+<p>This is the last one.</p>
+<p>Promise.</p>
+</div>
 <ul class="simple">
 <li><p>Injections are hooked arrows</p></li>
 <li><p>Isomorphisms are paired unidirectional bars</p></li>
