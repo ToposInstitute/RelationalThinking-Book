@@ -441,23 +441,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2. Combining graphs using memes</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shape-of-the-overlap">The shape of the overlap</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-1-commuting-square">Pass 1: Commuting square</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-2-universal-property">Pass 2: Universal Property</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-3-uniqueness">Pass 3: Uniqueness</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.4. What is a pushout?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.5. Puzzle time!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.3 What is a pushout?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.4 Puzzle time!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraicjulia">5.5 Computing pushouts in AlgebraicJulia</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-1">Puzzle 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-2">Puzzle 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-3">Puzzle 3</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
             </nav>
         </div>
@@ -476,7 +477,7 @@ document.write(`
 <p>This chapter will engage you in deep relational thinking!</p>
 </div>
 <section id="introduction">
-<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>5.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always <strong>preserves the connectivity</strong> of the domain. Finally, excitingly, with graph morphisms, we enter the “universe” where we can find every possible “graph-world” and every possible relationships between these worlds. In this chapter, we “live” inside this universe where the only entities are graphs and morphisms between them.</p>
 <p>Inside this universe, we are interested to know how to combine two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.</p>
 <p>As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.</p>
@@ -490,17 +491,15 @@ document.write(`
 <p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
 <p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex.</p>
 <a class="reference internal image-reference" href="_images/complex-graph.png"><img alt="Whoopsy!" class="align-center" src="_images/complex-graph.png" style="width: 450px;" /></a>
-<center> A graph generated by real-world data </center>
-<center><sub>Image source: https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg</sub> </center>
+<center> A graph generated by real-world data [^1]</center>
 </br>
 <p>In practice, combining such graphs using pen and paper is out question! However, it is the same common sense that is in play combining even the most complex graphs.</p>
 <p>The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)!</p>
 <p>The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A <em>combined</em> graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!</p>
 </section>
 <section id="combining-graphs-using-memes">
-<h2>5.2. Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
-<p>The two memes we will use to play this game are, 1. Commuting diagrams, and 2. Graph isomorphisms.</p>
-<p>Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play!</p>
+<h2>5.2 Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
+<p>The two memes we will use to play this game are: (1) commuting diagrams, and (2) graph isomorphisms. Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play!</p>
 <p>Let us first introduce some <strong>terminology</strong>: we call a combined graph of two overlapping graphs as their <code class="docutils literal notranslate"><span class="pre">pushout</span></code>.</p>
 <div class="attention admonition">
 <p class="admonition-title">Game description </p>
@@ -727,7 +726,7 @@ document.write(`
 </section>
 </section>
 <section id="what-is-a-pushout">
-<h2>5.4. What is a pushout?<a class="headerlink" href="#what-is-a-pushout" title="Permalink to this heading">#</a></h2>
+<h2>5.3 What is a pushout?<a class="headerlink" href="#what-is-a-pushout" title="Permalink to this heading">#</a></h2>
 <p>The goal game was to say describe the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of an overlap diagram is without talking about its connectivity (vertices and edges). We used the relationships between various graphs and the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> to describe what the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> must be! Let us summarize our description of <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of an overlap diagram.</p>
 <p>We start with <code class="docutils literal notranslate"><span class="pre">overlap</span></code> with two radiating morphisms specifying the common vertices and edges of <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. We call this an <em>overlap diagram</em>.</p>
 <a class="reference internal image-reference" href="_images/19a.png"><img alt="Whoopsy!" class="align-center" src="_images/19a.png" style="width: 350px;" /></a>
@@ -747,7 +746,7 @@ document.write(`
 </div>
 </section>
 <section id="puzzle-time">
-<h2>5.5. Puzzle time!<a class="headerlink" href="#puzzle-time" title="Permalink to this heading">#</a></h2>
+<h2>5.4 Puzzle time!<a class="headerlink" href="#puzzle-time" title="Permalink to this heading">#</a></h2>
 <p>Let us compute the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of the following diagrams.</p>
 <p><strong>Puzzle 1. Pushout using a single vertex</strong></p>
 <a class="reference internal image-reference" href="_images/20a.png"><img alt="Whoopsy!" class="align-center" src="_images/20a.png" style="width: 500px;" /></a>
@@ -793,9 +792,9 @@ document.write(`
 <p>What are the requirements for a graph to be <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of the above diagram?</p>
 <p>Clue: Extend the requirements in Section 5.4 from 2 to n graphs!</p>
 </section>
-<section id="computing-pushouts-in-algebraic-julia">
-<h2>5.6. Computing pushouts in Algebraic Julia<a class="headerlink" href="#computing-pushouts-in-algebraic-julia" title="Permalink to this heading">#</a></h2>
-<p>In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using Algebraic Julia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!</p>
+<section id="computing-pushouts-in-algebraicjulia">
+<h2>5.5 Computing pushouts in AlgebraicJulia<a class="headerlink" href="#computing-pushouts-in-algebraicjulia" title="Permalink to this heading">#</a></h2>
+<p>In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using AlgebraicJulia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!</p>
 <section id="puzzle-1">
 <h3>Puzzle 1<a class="headerlink" href="#puzzle-1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -930,6 +929,9 @@ document.write(`
 <p>Congratulations!! You have crossed Chapter 5 successfully!</p>
 <p>Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts.</p>
 <p>It only gets easier from here!!</p>
+</section>
+<section id="footnotes-and-references">
+<h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -1002,23 +1004,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2. Combining graphs using memes</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">5.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shape-of-the-overlap">The shape of the overlap</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-1-commuting-square">Pass 1: Commuting square</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-2-universal-property">Pass 2: Universal Property</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pass-3-uniqueness">Pass 3: Uniqueness</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.4. What is a pushout?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.5. Puzzle time!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraic-julia">5.6. Computing pushouts in Algebraic Julia</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-pushout">5.3 What is a pushout?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-time">5.4 Puzzle time!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushouts-in-algebraicjulia">5.5 Computing pushouts in AlgebraicJulia</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-1">Puzzle 1</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-2">Puzzle 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle-3">Puzzle 3</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.6 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
   </nav></div>
 
