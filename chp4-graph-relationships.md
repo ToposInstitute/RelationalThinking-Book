@@ -525,6 +525,21 @@ Promise.
 
 
 
+
+
+
+
+
+```{image} assets/Ch4/MorphismArrow.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+
+
+
 ```{image} assets/Ch4/CategoryDrift.gif
 :alt: Whoopsy!
 :width: 800px
