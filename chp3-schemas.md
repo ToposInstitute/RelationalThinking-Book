@@ -296,7 +296,7 @@ end
 ```
 +++
 
-And that's how reflexive graphs can be defined in AlebraicJulia! In the next chapter we'll see how to put this defintion to use.
+And that's how reflexive graphs can be defined in AlgebraicJulia! In the next chapter we'll see how to put this definition to use.
 
 
 ### Undirected Graphs
@@ -436,7 +436,7 @@ It's important to note that Petri nets were developed by practitioners, not math
 <br>
 
 
-Algebraic Julia's implementation of Petri nets is called AlgebraicPetri.js. Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
+AlgebraicJulia's implementation of Petri nets is called AlgebraicPetri.js.[^1] Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
 
 ### Databases
 
@@ -450,5 +450,12 @@ The whole concept of a schema originally comes from database theory. We can thin
 ```
 <br>
 
-Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our `DANGLING EDGE CONDITION` on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See [here](https://arxiv.org/abs/1009.1166) for details.
+Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our `DANGLING EDGE CONDITION` on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See the paper Functorial Data Migration[^2] for details.
 
+## Footnotes and References
+
+[^1]: AlgebraicPetri.jl Documentation. [https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/).
+
+[^2]: David I. Spivak. "Functorial data migration".
+Information and Computation, Volume 217, 2012, Pages 31-51, ISSN 0890-5401,
+[https://doi.org/10.1016/j.ic.2012.05.001](https://doi.org/10.1016/j.ic.2012.05.001). [https://arxiv.org/abs/1009.1166](https://arxiv.org/abs/1009.1166).
