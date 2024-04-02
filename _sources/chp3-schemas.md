@@ -48,7 +48,7 @@ How is the data of an undirected graph different from the data of a directed gra
 
 Undirected graphs are just one example from a whole zoo of different _kinds_ of graphs we might want to model with. In this chapter we'll look at a few specimens from this zoo. In the process, we'll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.
 
-## 3.2 Introducing Schemas
+## 3.2 Introducing Blueprints
 
 ### Chunky arrows
 
@@ -97,7 +97,7 @@ Instead of representing these maps side by side like this, let's combine them s
 :align: center
 ```
 
-Such a pair of parallel maps is the underlying blueprint common to all directed graphs. The technical name for a figure built up from chunky arrows is a schema. We generally draw the schema for directed graphs as two arrows marked `src` and `tgt`.
+Such a pair of parallel maps is the underlying blueprint common to all directed graphs. We generally draw the blueprint for directed graphs as two arrows marked `src` and `tgt`.
 
 ```{image} assets/Ch4/DirectedGraphSchema.jpg
 :alt: Whoopsy!
@@ -105,7 +105,7 @@ Such a pair of parallel maps is the underlying blueprint common to all directed
 :align: center
 ```
 
-Any _particular_ pair of maps between the same arrows and vertices is said to be an "instance" of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.
+Any _particular_ pair of maps between the same arrows and vertices is said to be an "instance" of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.
 
 
 ```{image} assets/Ch4/DGraphInstance.gif
@@ -115,7 +115,7 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 ```
 <br>
 
-You may have noticed that our directed graph schema is _itself_ a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
+You may have noticed that our blueprint is _itself_ a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
 
 In the code below we use `A` for arrows, `V` for vertices, and define them as `Ob`jects. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y." We use it to define the source and target of the chunky arrows `src` and `tgt`.
 
@@ -133,7 +133,7 @@ end
 ```
 +++
 
-And that's how AlgebraicJulia understands what we mean by a directed graph! Having given this general characterization of a directed graph schema we will next see how we can _modify_ this schema to define other kinds of graphs.
+And that's how AlgebraicJulia understands what we mean by a directed graph! Having given this general characterization of a directed graph blueprint we will next see how we can _modify_ this blueprint to define other kinds of graphs.
 
 
 
@@ -230,7 +230,7 @@ If we look closely at the maps we indeed see that all such loops are closed:
 :align: center
 ```
 
-This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop would fail to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph. 
+This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop would fail to be closed in the blueprint instance if and only if an arrow is not self-pointing in the associated graph. 
 
 :::{admonition} Pause and Ponder! 
 Can you think through why this is?
@@ -243,7 +243,7 @@ When we first defined reflexive graphs we had to establish what we meant using s
 
 ### Reflexive graphs (in a computer)
 
-Let's encode a reflexive graph schema in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here's the system we'll use for writing:
+Let's encode a reflexive graph blueprint in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here's the system we'll use for writing:
 
 
 :::{admonition} Writing system:
@@ -272,7 +272,7 @@ And "target map following reflexive map takes you back where you started" become
 
 `tgt ∘ refl = id`
 
-Equations like this are known as "commutativity conditions." Most schemas are defined with an assembly of chunky arrows _along with_ some commutativity conditions that the underlying maps must satisfy. Here is the schema for reflexive graphs:
+Equations like this are known as "commutativity conditions." When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what's called a Schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
 
 ```{image} assets/Ch4/ReflexiveGraph.jpg
 :alt: Whoopsy!

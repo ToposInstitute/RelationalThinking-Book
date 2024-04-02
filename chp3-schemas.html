@@ -442,7 +442,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-schemas">3.2 Introducing Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-blueprints">3.2 Introducing Blueprints</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chunky-arrows">Chunky arrows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directed-graphs-using-chunky-arrows">Directed graphs using chunky arrows</a></li>
 </ul>
@@ -495,8 +495,8 @@ document.write(`
 </div>
 <p>Undirected graphs are just one example from a whole zoo of different <em>kinds</em> of graphs we might want to model with. In this chapter we’ll look at a few specimens from this zoo. In the process, we’ll develop a general and flexible approach for working with many different flavors of graphs in AlgebraicJulia.</p>
 </section>
-<section id="introducing-schemas">
-<h2>3.2 Introducing Schemas<a class="headerlink" href="#introducing-schemas" title="Permalink to this heading">#</a></h2>
+<section id="introducing-blueprints">
+<h2>3.2 Introducing Blueprints<a class="headerlink" href="#introducing-blueprints" title="Permalink to this heading">#</a></h2>
 <section id="chunky-arrows">
 <h3>Chunky arrows<a class="headerlink" href="#chunky-arrows" title="Permalink to this heading">#</a></h3>
 <p>We’ll begin this chapter with a little tidying up. The basic building block we’ve been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:</p>
@@ -520,12 +520,12 @@ document.write(`
 <br>
 <p>Instead of representing these maps side by side like this, let’s combine them so that they run in parallel. When wrapped in chunky arrows these connections will be in the following configuration:</p>
 <a class="reference internal image-reference" href="_images/DGInstance1.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGInstance1.gif" style="width: 500px;" /></a>
-<p>Such a pair of parallel maps is the underlying blueprint common to all directed graphs. The technical name for a figure built up from chunky arrows is a schema. We generally draw the schema for directed graphs as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
+<p>Such a pair of parallel maps is the underlying blueprint common to all directed graphs. We generally draw the blueprint for directed graphs as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
 <a class="reference internal image-reference" href="_images/DirectedGraphSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DirectedGraphSchema.jpg" style="width: 500px;" /></a>
-<p>Any <em>particular</em> pair of maps between the same arrows and vertices is said to be an “instance” of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.</p>
+<p>Any <em>particular</em> pair of maps between the same arrows and vertices is said to be an “instance” of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.</p>
 <a class="reference internal image-reference" href="_images/DGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGraphInstance.gif" style="width: 800px;" /></a>
 <br>
-<p>You may have noticed that our directed graph schema is <em>itself</em> a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.</p>
+<p>You may have noticed that our blueprint is <em>itself</em> a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.</p>
 <p>In the code below we use <code class="docutils literal notranslate"><span class="pre">A</span></code> for arrows, <code class="docutils literal notranslate"><span class="pre">V</span></code> for vertices, and define them as <code class="docutils literal notranslate"><span class="pre">Ob</span></code>jects. <code class="docutils literal notranslate"><span class="pre">Hom(X,Y)</span></code> is AlgebraicJulia syntax meaning a “chunky arrow from X to Y.” We use it to define the source and target of the chunky arrows <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,7 +542,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>And that’s how AlgebraicJulia understands what we mean by a directed graph! Having given this general characterization of a directed graph schema we will next see how we can <em>modify</em> this schema to define other kinds of graphs.</p>
+<p>And that’s how AlgebraicJulia understands what we mean by a directed graph! Having given this general characterization of a directed graph blueprint we will next see how we can <em>modify</em> this blueprint to define other kinds of graphs.</p>
 </section>
 </section>
 <section id="other-kinds-of-graphs">
@@ -590,7 +590,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/TargetLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/TargetLoop.gif" style="width: 500px;" /></a>
 <p>If we look closely at the maps we indeed see that all such loops are closed:</p>
 <a class="reference internal image-reference" href="_images/ReflexiveFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveFadethrough.gif" style="width: 500px;" /></a>
-<p>This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop would fail to be closed in the schema instance if and only if an arrow is not self-pointing in the associated graph.</p>
+<p>This closed loop condition turns out to be equivalent to the defition of a reflexive graph: A loop would fail to be closed in the blueprint instance if and only if an arrow is not self-pointing in the associated graph.</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Can you think through why this is?</p>
@@ -599,7 +599,7 @@ document.write(`
 </section>
 <section id="reflexive-graphs-in-a-computer">
 <h3>Reflexive graphs (in a computer)<a class="headerlink" href="#reflexive-graphs-in-a-computer" title="Permalink to this heading">#</a></h3>
-<p>Let’s encode a reflexive graph schema in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here’s the system we’ll use for writing:</p>
+<p>Let’s encode a reflexive graph blueprint in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here’s the system we’ll use for writing:</p>
 <div class="attention admonition">
 <p class="admonition-title">Writing system:</p>
 <ul class="simple">
@@ -618,7 +618,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">∘</span> <span class="pre">refl</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
 <p>And “target map following reflexive map takes you back where you started” becomes:</p>
 <p><code class="docutils literal notranslate"><span class="pre">tgt</span> <span class="pre">∘</span> <span class="pre">refl</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
-<p>Equations like this are known as “commutativity conditions.” Most schemas are defined with an assembly of chunky arrows <em>along with</em> some commutativity conditions that the underlying maps must satisfy. Here is the schema for reflexive graphs:</p>
+<p>Equations like this are known as “commutativity conditions.” When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what’s called a Schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
 <a class="reference internal image-reference" href="_images/ReflexiveGraph.jpg"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraph.jpg" style="width: 800px;" /></a>
 <br>
 <p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">∘</span> <span class="pre">Y</span></code>.)</p>
@@ -811,7 +811,7 @@ Information and Computation, Volume 217, 2012, Pages 31-51, ISSN 0890-5401,
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-schemas">3.2 Introducing Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-blueprints">3.2 Introducing Blueprints</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chunky-arrows">Chunky arrows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directed-graphs-using-chunky-arrows">Directed graphs using chunky arrows</a></li>
 </ul>

@@ -474,7 +474,7 @@ document.write(`
 <p>For any given a schema there will be many possible instances. Below we show a few of the instances for each of our three graph schemas.</p>
 <a class="reference internal image-reference" href="_images/ThreeSchemas.png"><img alt="Whoopsy!" class="align-center" src="_images/ThreeSchemas.png" style="width: 800px;" /></a>
 <br>
-<p>Of course, each of these schemas actually have an <em>infinite</em> number of possible instances (graphs can be arbitrarily big!). It isn’t practical to show <em>every</em> instance, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to.</p>
+<p>Of course, each of these schemas actually have an <em>infinite</em> number of possible instances (graphs can be arbitrarily big!). It isn’t practical to show <em>every</em> instance, but it is possible to just visualize them in your imagination, all floating in space, one endless swarm of things the schema might refer to.</p>
 <a class="reference internal image-reference" href="_images/InstanceDrift.gif"><img alt="Whoopsy!" class="align-center" src="_images/InstanceDrift.gif" style="width: 800px;" /></a>
 <br>
 <p>In our ongoing quest to think about things in terms of relationships we should look at these instances, each floating in isolation from the others, and ask ourselves, “How are these instance related to one another?”</p>
@@ -712,23 +712,24 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <section id="the-category-of-instances">
 <h2>4.4 The category of instances<a class="headerlink" href="#the-category-of-instances" title="Permalink to this heading">#</a></h2>
 <p>We’re now ready to move up the last rung in our ladder of abstractions, from “blueprints” to “categories!”</p>
-<p>Look closely at this instance of our graph morphism schema:</p>
-<a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
-<p>Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The <em>overall</em> blueprint represents a morphism of graph 1 into graph 2. As long as they satisfy all the closed loop conditions, any collection of maps in this pattern describe <em>some</em> graph morphism.</p>
-<p>Our final abstraction will be a directed graph in which the vertices are instances and the arrows are morphisms between the corresponding graphs.</p>
-<p>// IMAGE OF THOUGHT BUBBLE WITH ARROW SAYING “MORPHISM OF GRAPHS”</p>
+<p>In chapter 3 we introduced ‘chunky arrows’ as a way to hide the messy details of our maps. We’re doing something similar here, defining a new kind of arrow that encompasses all the details of a graph morphism.</p>
+<a class="reference internal image-reference" href="_images/MorphismArrow.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismArrow.gif" style="width: 800px;" /></a>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>We know what you’re thinking! “<em>Another</em> directed graph?! At <em>another</em> level of abstraction?!”</p>
+<p>We know what you’re thinking! “<em>Another</em> kind of arrow?! At <em>another</em> level of abstraction?!”</p>
 <p>This is the last one.</p>
 <p>Promise.</p>
 </div>
-<ul class="simple">
-<li><p>Injections are hooked arrows</p></li>
-<li><p>Isomorphisms are paired unidirectional bars</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/MorphismArrow.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismArrow.gif" style="width: 800px;" /></a>
+<p>Let’s revisit the graph morphism schema and look closely at an instance:</p>
+<a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
+<p>Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The overall blueprint represents a morphism of graph 1 into graph 2. It almost <em>feels</em> like an arrow pointing from the top to the bottom.</p>
+<p>So we define th</p>
+<a class="reference internal image-reference" href="_images/MorphismThoughtBubble.png"><img alt="Whoopsy!" class="align-center" src="_images/MorphismThoughtBubble.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/MorphismDefinition.png"><img alt="Whoopsy!" class="align-center" src="_images/MorphismDefinition.png" style="width: 800px;" /></a>
+<p>The universe of relationships.</p>
 <a class="reference internal image-reference" href="_images/CategoryDrift.gif"><img alt="Whoopsy!" class="align-center" src="_images/CategoryDrift.gif" style="width: 800px;" /></a>
+<p>Called the category. There are patterns that exist here. AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data. The only trick is figuring out something to say in terms of morphisms.</p>
+<p>And that’s exactly what we’re going to do in the next chapter!</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
