@@ -443,26 +443,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">6.2. Specs for “find and replace”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">6.3. Finding a match</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">6.4. Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match-to-remove-vertices-edges">6.4.1. Finding a match to remove vertices/edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-deletion">6.4.2. Performing deletion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-the-requirements-of-a-match">6.4.3. Managing the requirements of a match</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">6.2 Specs for “find and replace”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">6.3 Finding a match</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">6.4 Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match-to-remove-vertices-edges">Finding a match to remove vertices/edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-deletion">Performing deletion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-the-requirements-of-a-match">Managing the requirements of a match</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5. Adding vertices and edges to a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples-of-find-and-replace">6.6 Further examples of find-and-replace</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">6.6.1 Chemistry</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">6.6.2 Game design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">6.7. Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-matches-of-a-search-pattern">6.7.1. Finding matches of a search pattern</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-pushout-complement">6.7.2. Is this a pushout complement?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushout-complements">6.7.3. Computing Pushout complements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">6.7.4. Computing double-pushouts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">6.7 Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-matches-of-a-search-pattern">Finding matches of a search pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-pushout-complement">Is this a pushout complement?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushout-complements">Computing Pushout complements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.8 Summary</a><ul class="nav section-nav flex-column">
@@ -485,7 +485,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-evolving-graphs">
 <h1>Chapter 6: Evolving Graphs<a class="headerlink" href="#chapter-6-evolving-graphs" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>6.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>6.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>“Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacting global climate.</p>
 <blockquote>
 <div><p>We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! So, what was missed in the decision making process?</p>
@@ -502,11 +502,10 @@ document.write(`
 <p>Making changes to a graph means adding new vertices/edges or removing existing vertices/edges or both. And these changes happen over particular region(s) of the graph (like a textual find and replace).</p>
 <p>A lot of concepts in the world around us are modelled as graphs. Hence, building a way to changing an existing graph that is guaranteed to be good is much more than just a theoretical exercise.</p>
 <p>Let us begin!</p>
-<p>Given a pattern (a graph), and its replacement, our mission is to “find” the pattern in any host graph and “replace” it in a good way –
-first by hand and then in computers! <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Given a pattern (a graph), and its replacement, our mission is to “find” the pattern in any host graph and “replace” it in a good way – first by hand and then in computers!<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="specs-for-find-and-replace">
-<h2>6.2. Specs for “find and replace”<a class="headerlink" href="#specs-for-find-and-replace" title="Permalink to this heading">#</a></h2>
+<h2>6.2 Specs for “find and replace”<a class="headerlink" href="#specs-for-find-and-replace" title="Permalink to this heading">#</a></h2>
 <p>Suppose we want to find a text and replace it by some other text in a document. Microsoft Word provides an interface as in the picture belowfor this purpose.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace.png" style="width: 450px;" /></a>
 <div class="admonition-pause-and-ponder admonition">
@@ -584,7 +583,7 @@ first by hand and then in computers! <a class="footnote-reference brackets" href
 </div>
 </section>
 <section id="finding-a-match">
-<h2>6.3. Finding a match<a class="headerlink" href="#finding-a-match" title="Permalink to this heading">#</a></h2>
+<h2>6.3 Finding a match<a class="headerlink" href="#finding-a-match" title="Permalink to this heading">#</a></h2>
 <p>The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters “Happy Priyaa”.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-text.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-text.png" style="width: 250px;" /></a>
 <p>However, in graph, connectivity matters than finding exact match of the shape of the search pattern. So when searching for pattern in a host graph, we do not look for 1-to-1 correspondence between vertices / edges of the <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code>. Rather, we need to look for matches which have similar connectivity as the search pattern. Do the words “similar connectivity” a ring bell? Similar connectivity implies  graph morphism.</p>
@@ -642,12 +641,12 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="removing-vertices-and-edges-from-a-graph">
-<h2>6.4. Removing vertices and edges from a graph<a class="headerlink" href="#removing-vertices-and-edges-from-a-graph" title="Permalink to this heading">#</a></h2>
+<h2>6.4 Removing vertices and edges from a graph<a class="headerlink" href="#removing-vertices-and-edges-from-a-graph" title="Permalink to this heading">#</a></h2>
 <p>We now have the specification for “find-and-replace” and the specification for a match. What remains is to perform the find-and-replace! We will begin with the deletion specification!</p>
 <div class="math notranslate nohighlight">
 \[ {\sf overlap} \hookrightarrow {\sf Find~what} \]</div>
 <section id="finding-a-match-to-remove-vertices-edges">
-<h3>6.4.1. Finding a match to remove vertices/edges<a class="headerlink" href="#finding-a-match-to-remove-vertices-edges" title="Permalink to this heading">#</a></h3>
+<h3>Finding a match to remove vertices/edges<a class="headerlink" href="#finding-a-match-to-remove-vertices-edges" title="Permalink to this heading">#</a></h3>
 <p>[Message: Tell what a good match is!]</p>
 <p>Erasing edges and vertices require care. Suppose a vertex in a match is specifed to be removed. There may be other vertices in the host graph which are connected to the vertex to be deleted. In that case, deleting the vertex will lead to zombie graphs which has edges not connected to any vertex.</p>
 <p>The following example illustrates this situation.</p>
@@ -677,7 +676,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 <p>We will talk more about “finding a good match” once the algorithm to perform the deletion specification is set up.</p>
 </section>
 <section id="performing-deletion">
-<h3>6.4.2. Performing deletion<a class="headerlink" href="#performing-deletion" title="Permalink to this heading">#</a></h3>
+<h3>Performing deletion<a class="headerlink" href="#performing-deletion" title="Permalink to this heading">#</a></h3>
 <p>[Message: Tell deletion is computing pushout compelements]</p>
 <p>We are given a deletion specification, a host graph and a match for the search pattern in the host graph. As before, let us begin by making a diagram of the information we have.</p>
 <a class="reference internal image-reference" href="_images/remove-1.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-1.png" style="width: 650px;" /></a>
@@ -738,7 +737,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="managing-the-requirements-of-a-match">
-<h3>6.4.3. Managing the requirements of a match<a class="headerlink" href="#managing-the-requirements-of-a-match" title="Permalink to this heading">#</a></h3>
+<h3>Managing the requirements of a match<a class="headerlink" href="#managing-the-requirements-of-a-match" title="Permalink to this heading">#</a></h3>
 <p>In programming, there is a concept called “edge case”. These are special situations where a code will fail to produce appropriate results. For example, a bug that occurs in only iPhone. They are called “edge cases” because these situations lie outside the normal flow of a code / algorithm and custom extra code is added for their special handling. There is an anecdote, “Edge cases are impossible to avoid, so keep them simple”.</p>
 <div class="admonition-million-dollar-questions admonition">
 <p class="admonition-title">Million dollar questions:</p>
@@ -776,7 +775,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </section>
 </section>
 <section id="adding-vertices-and-edges-to-a-graph">
-<h2>6.5. Adding vertices and edges to a graph<a class="headerlink" href="#adding-vertices-and-edges-to-a-graph" title="Permalink to this heading">#</a></h2>
+<h2>6.5 Adding vertices and edges to a graph<a class="headerlink" href="#adding-vertices-and-edges-to-a-graph" title="Permalink to this heading">#</a></h2>
 <p>We applied the deletion rule to remove the vertices and edges in the host graph as specified by the rule. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges  specified by the addition rule to the pushout complement. That will complete our replacement procedure! Hurray!</p>
 <p>As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
 <a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 550px;" /></a>
@@ -843,7 +842,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 <section id="further-examples-of-find-and-replace">
 <h2>6.6 Further examples of find-and-replace<a class="headerlink" href="#further-examples-of-find-and-replace" title="Permalink to this heading">#</a></h2>
 <section id="chemistry">
-<h3>6.6.1 Chemistry<a class="headerlink" href="#chemistry" title="Permalink to this heading">#</a></h3>
+<h3>Chemistry<a class="headerlink" href="#chemistry" title="Permalink to this heading">#</a></h3>
 <p>In chemistry, <strong>click reactions</strong> give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder’s reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery.</p>
 </br>
 <a class="reference internal image-reference" href="_images/reaction.png"><img alt="Whoopsy!" class="align-center" src="_images/reaction.png" style="width: 250px;" /></a>
@@ -860,7 +859,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 <a class="reference internal image-reference" href="_images/Adler.png"><img alt="Whoopsy!" class="align-center" src="_images/Adler.png" style="width: 650px;" /></a>
 </section>
 <section id="game-design">
-<h3>6.6.2 Game design<a class="headerlink" href="#game-design" title="Permalink to this heading">#</a></h3>
+<h3>Game design<a class="headerlink" href="#game-design" title="Permalink to this heading">#</a></h3>
 <p>Bob is an expert in designing game layout. He designs environment for games. He uses a layout editor for designing cool layouts. The layout keeps track of Bob’s design as an directed graph components of the environment are vertices. Two vertices are connected by an arrow if the player can navigate between these two components in the game in the direction of the arrow.</p>
 <p>Bob is currently designing a game of Dungeons and Dragons, and have added two rooms to his dungeon – Room 1 and Room 2, and made Room2 directly accessible from Room 1.</p>
 <p>However, Bob thought for a moment, and told to himself, “Hey, how about a corridor in-between?”.</p>
@@ -873,9 +872,9 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </section>
 </section>
 <section id="algebraic-julia-for-find-and-replace-in-graphs">
-<h2>6.7. Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
+<h2>6.7 Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
 <section id="finding-matches-of-a-search-pattern">
-<h3>6.7.1. Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
+<h3>Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 3</span>
@@ -899,7 +898,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="is-this-a-pushout-complement">
-<h3>6.7.2. Is this a pushout complement?<a class="headerlink" href="#is-this-a-pushout-complement" title="Permalink to this heading">#</a></h3>
+<h3>Is this a pushout complement?<a class="headerlink" href="#is-this-a-pushout-complement" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Example 2</span>
@@ -949,7 +948,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="computing-pushout-complements">
-<h3>6.7.3. Computing Pushout complements<a class="headerlink" href="#computing-pushout-complements" title="Permalink to this heading">#</a></h3>
+<h3>Computing Pushout complements<a class="headerlink" href="#computing-pushout-complements" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 5</span>
@@ -992,7 +991,7 @@ Puzzle 4</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="computing-double-pushouts">
-<h3>6.7.4. Computing double-pushouts<a class="headerlink" href="#computing-double-pushouts" title="Permalink to this heading">#</a></h3>
+<h3>Computing double-pushouts<a class="headerlink" href="#computing-double-pushouts" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 7</span>
@@ -1128,26 +1127,26 @@ Puzzle 4</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">6.2. Specs for “find and replace”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">6.3. Finding a match</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">6.4. Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match-to-remove-vertices-edges">6.4.1. Finding a match to remove vertices/edges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-deletion">6.4.2. Performing deletion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-the-requirements-of-a-match">6.4.3. Managing the requirements of a match</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">6.2 Specs for “find and replace”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">6.3 Finding a match</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">6.4 Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match-to-remove-vertices-edges">Finding a match to remove vertices/edges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-deletion">Performing deletion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-the-requirements-of-a-match">Managing the requirements of a match</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5. Adding vertices and edges to a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples-of-find-and-replace">6.6 Further examples of find-and-replace</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">6.6.1 Chemistry</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">6.6.2 Game design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">6.7. Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-matches-of-a-search-pattern">6.7.1. Finding matches of a search pattern</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-pushout-complement">6.7.2. Is this a pushout complement?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushout-complements">6.7.3. Computing Pushout complements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">6.7.4. Computing double-pushouts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">6.7 Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-matches-of-a-search-pattern">Finding matches of a search pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-pushout-complement">Is this a pushout complement?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-pushout-complements">Computing Pushout complements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.8 Summary</a><ul class="nav section-nav flex-column">
