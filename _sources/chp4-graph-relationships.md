@@ -282,8 +282,11 @@ Consider the following source map. First of all, we can see that it satisfies ou
 But notice that the vertical maps _merge_ vertices and arrows in the image. If we show the result of this map we see that arrows and vertices get doubled up in the image:
 
 
-
-IMAGES DEALING WTIH MORPHISM WITH DOUBLED ARROWS
+```{image} assets//Ch4/DoublingUp.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
 
 
@@ -358,13 +361,31 @@ countTheMorphisms = length(homomorphisms(Graph1, Graph2))
 
 +++
 
+
+
+
+
+
+
+
+
 :::{admonition} Answer
 :class: dropdown
 There are three distinct morphisms from Graph 1 to Graph 2; two injections and one way of collapsing the whole graph down to one vertex.
 
+
+
+![whoops!](./assets/Ch4/Problem1Solution.png)
+
 As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema. They are very different approaches but they arrive at the same answer.
 
 :::
+
+
+
+
+
+
 
 
 :::: {admonition} Puzzle 2

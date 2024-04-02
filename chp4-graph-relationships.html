@@ -583,7 +583,7 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <p>Consider the following source map. First of all, we can see that it satisfies out commutativity condition, in that all squares from the upper left are closed.</p>
 <a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
 <p>But notice that the vertical maps <em>merge</em> vertices and arrows in the image. If we show the result of this map we see that arrows and vertices get doubled up in the image:</p>
-<p>IMAGES DEALING WTIH MORPHISM WITH DOUBLED ARROWS</p>
+<a class="reference internal image-reference" href="_images/DoublingUp.png"><img alt="Whoopsy!" class="align-center" src="_images/DoublingUp.png" style="width: 800px;" /></a>
 <p>It may seem like “crushing” a directed graph this way would be an undesirable outcome. But this actually turns out to be a common thing to do when working with graphs. Crushing is different from breaking. The dangling edge condition is a problem for modeling because it renders any underlying model meaningless. But collapsing or merging the parts of a graph doesn’t actually pose any danger to the integrity underlying model, as the following example will illustrate.</p>
 <p>In Chapter 1 we saw an example of a directed graph which described who’s turn it was to do the dishes. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty.</p>
 <p>As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.</p>
@@ -622,6 +622,7 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <div class="dropdown admonition">
 <p class="admonition-title">Answer</p>
 <p>There are three distinct morphisms from Graph 1 to Graph 2; two injections and one way of collapsing the whole graph down to one vertex.</p>
+<p><img alt="whoops!" src="_images/Problem1Solution1.png" /></p>
 <p>As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema. They are very different approaches but they arrive at the same answer.</p>
 </div>
 <div class="admonition-puzzle-2 admonition">
