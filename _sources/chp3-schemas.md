@@ -77,7 +77,7 @@ Source and target maps can be a little _busy_ looking so we're going to simplify
 A big chunky arrow like this is easy to draw and easy to think about. Whenever we see one we can take for granted that there is some specific set of connections bundled up "under the hood." This is just like in an algebra equation where, when we see the variable 'x', we know it stands for some specific number. Chunky arrows are like variables for maps.
 
 
-### Directed graphs
+### Directed graphs using chunky arrows
 
 Can we represent a directed graph using these chunky arrows? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices. 
 
@@ -115,16 +115,20 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 ```
 <br>
 
-You may have noticed that our directed graph schema is _itself_ a directed graph! This means we can define this schema in AlgebraicJulia using source and target maps, as we learned about in Chapter 1.
-We use `A` for arrows, `V` for vertices. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y.
+You may have noticed that our directed graph schema is _itself_ a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
+
+In the code below we use `A` for arrows, `V` for vertices, and define them as `Ob`jects. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y." We use it to define the source and target of the chunky arrows `src` and `tgt`.
 
 +++
 ```{code-cell}
-@present SchGraph(FreeSchema) begin
+@present Graph(FreeSchema) begin
+
   V::Ob
   A::Ob
+
   src::Hom(A,V)
   tgt::Hom(A,V)
+
 end
 ```
 +++
@@ -196,7 +200,7 @@ What can we notice about the above instance? Well, for one thing, in order for a
 :::{admonition} The following path always takes you back to where you started:
 :class: attention
 
-1. Pick any vertiex
+1. Start from any vertex
 2. Follow the reflexive map from this vertex to its self-looping arrow.
 3. Continue along the source map from that arrow to it its source vertex.
 
@@ -218,7 +222,7 @@ By the same reasoning, the target map following the reflexive map should always 
 :align: center
 ```
 
-If we look closely at the instance data for the source maps we indeed see that all such loops are closed:
+If we look closely at the maps we indeed see that all such loops are closed:
 
 ```{image} assets/Ch3/ReflexiveFadethrough.gif
 :alt: Whoopsy!
@@ -234,7 +238,7 @@ Can you think through why this is?
 :::
 
 
-In first defining reflexive graphs we had to establish what we meant by using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
+When we first defined reflexive graphs we had to establish what we meant using semantic ideas like "self-loops" and phrases like "for every vertex...". We have now found an equivalent way of saying the same thing in terms of maps and whether or not certain paths form closed loops. And "maps and closed loops" are exactly the kind of thing AlgebraicJulia can understand!
 
 
 ### Reflexive graphs (in a computer)
@@ -247,10 +251,16 @@ Let's encode a reflexive graph schema in AlgebraicJulia! In order to specify our
 
 * `∘` This is the character we will use to sequence paths. It means "following." So `A∘B` means "A following B."
 
+```{image} assets/Ch3/Compose.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
 >DISClAIMER: You may find this a way of writing a path confusing at first, because the order of the letters is the *opposite* of the order in which you actually traverse those maps when you travel the path. Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don't like it any more than you do!)
 
 * `=` We'll use an equals sign to equate the endpoints of two paths
-* `id` We'll use this name to mean ending up "back where you started." It refers to the "identity map", the map equivalent of doing nothing.
+* `id` We'll use this to mean ending up "back where you started." It refers to the "identity map", the map equivalent of doing nothing.
 
 :::
 
@@ -262,7 +272,7 @@ And "target map following reflexive map takes you back where you started" become
 
 `tgt ∘ refl = id`
 
-A closed loop condition written out as an equation like this is called a "commutativity condition". Most schemas are defined with an assembly of chunky arrows _along with_ some commutativity conditions that the underlying maps must satisfy. Here is the schema for reflexive graphs:
+Equations like this are known as "commutativity conditions." Most schemas are defined with an assembly of chunky arrows _along with_ some commutativity conditions that the underlying maps must satisfy. Here is the schema for reflexive graphs:
 
 ```{image} assets/Ch4/ReflexiveGraph.jpg
 :alt: Whoopsy!
@@ -275,11 +285,13 @@ To enter this into AlgebraicJulia we start with the directed graph schema we mad
 
 +++
 ```{code-cell}
-@present SchReflexiveGraph <: SchGraph begin
-  refl::Hom(V,E)
+@present ReflexiveGraph <: DirectedGraph begin
+
+  refl::Hom(V,A)
 
   compose(src, refl) == id(V)
   compose(tgt, refl) == id(V)
+
 end
 ```
 +++
@@ -292,29 +304,26 @@ And that's how reflexive graphs can be defined in AlebraicJulia! In the next cha
 
 Now let's return to the question of undirected graphs. Can we design a schema for these? Surprisingly, it turns out that we can think of undirected graphs as _special cases_ of directed graphs. 
 
-An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a *two-way street* in which the connection goes mutually in both directions. If we take this “two-way street” analogy literally we can see that every undirected graph is *equivalent* to a directed graph in which we've substituted a pair of opposing arrows in place of each undirected edge.
+An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a *two-way street* in which the connection is felt mutually in both directions. If we take this “two-way street” analogy literally we can see that every undirected graph is *equivalent* to a directed graph in which we've substituted a pair of opposing arrows in place of each undirected edge.
 
 ```{image} assets/Ch4/TwoWayStreet.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
-Consider this simple undirected graph and its associated 'directed-graph-with-paired-arrows':
 
-//IMAGE OF UNIDRECTED/DIRECTED VERSIONS OF THE SAME GRAPH
-
-What must be true about a directed graph in order for it to correspond to an undirected graph? The condition on the directed graph is that "every arrow is associated with a unique partner arrow." We can express this idea as a map, in which each arrow gets connected to its unique partner:
+The directed graph _represents_ the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work the directed graph must satisfy the condition that "every arrow is associated with a unique partner arrow."  We can express this idea as a map, in which each arrow gets connected to its unique partner:
 
 ```{image} assets/Ch3/InversionMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+<br>
 
-We call this the inversion map or `inv`. We can combine this inversion map with the graph's source and target maps, attaching it as a self-point loop on the arrows.
+We call this the inversion map or `inv`. We can combine this inversion map with the graph's source and target maps, attaching it as a self-loop.
 
 
-IMAGE: CHANGE THIS TO HAVE THOUGHT BUBBLES OF THOUGHT BUBBLES. ADD "arrows" and "vertices" labels to the spheres
 ```{image} assets/Ch4/UndirectedGraphInstance.gif
 :alt: Whoopsy!
 :width: 500px
@@ -327,47 +336,70 @@ Notice how the instance data represents a directed graph which in turn represent
 Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
 :::
 
-What can we notice about the above instance? The paired arrows of the directed graph must point in opposite directions, meaning the source of one arrow must be the target of its partner and vice versa. We can express this as a closed loop condition. In words, if we 
+What can we notice about the above instance? In the directed graph, the paired arrows must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow's target must be its partner's source. We can express this as a closed loop condition. 
 
-:::{admonition} Comparing two routes 
+:::{admonition} Comparing two paths 
 :class: attention
 
 
+**Path 1**
+1. Start from any arrow in the grey circle
+2. Follow the source map from this arrow to its source vertex.
 
-* pick any arrow and...
-* ...follow the source map from left to right, from an arrow to it's source vertex
+**Path 2**
+1. Start from the same arrow
+2. Follow the inversion map to that arrow's partner
+3. Follow the target map from that arrow to its target vertex
 
-...we end up in the same place as if we had..
-
-* followed the inverse map from that arrow to its partner arrow.
-* and then followed the target map from _that_ arrow to it's target vertex
-
-
+Both routes should end up at the same vertex!
 
 :::
 
+So the commutativity conditions that ensure that partner arrows point in opposite directions are:
+
+`src = tgt ∘ inv`
+<br>
+
+`tgt = src ∘ inv`
 
 
+We also want these partnerships to be unique, meaning we don't want "cliques" of three, four, five, arrows, each one partnered with the next. To avoid this, each arrow must be its _partner's_ partner.
 
+`inv ∘ inv = id`
 
+Putting it all together, here is the schema for undirected graphs
 
-
-And similarly going the other way around for S/T maps.
-
-Expressed in equations:
-
-
-```{image} assets/Ch4/UndirectedGraph.jpg
+```{image} assets/Ch3/UndirectedGraphSchema.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+<br>
+
+And here's how we write this defintion in AlgebraicJulia:
+
++++
+```{code-cell}
+@present UndirectedGraph <: DirectedGraph begin
+  
+  inv::Hom(A,A)
+
+  compose(src,inv) == tgt
+  compose(tgt,inv) == src
+  
+  compose(inv,inv) == id(A)
+
+end
+```
++++
+
+
 
 
 :::{admonition} Pause and Ponder! 
-Consider the difference between your understanding of graphs and Algebraic Julia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Every idea is phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
+Consider the difference between your understanding of graphs and AlgebraicJulia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Ideas are phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
 
-We chose to use thought bubbles to indicate these interepretations, signalling that they are ideas that exist only the in mind of the progammer.
+We use thought bubbles to indicate these interepretations, signalling that the meaning of any instance is an idea that exists only the in mind of the progammer.
 :::
 
 
@@ -376,7 +408,7 @@ We chose to use thought bubbles to indicate these interepretations, signalling t
 
 In this chapter we have used schemas and commutativity conditions to look at a few different flavors of graphs. But the framework we have developed here can actually be extended beyond just graphs, to an extraordinary variety of elaborate and useful concepts. Indeed, one of the profound offerings of AlgebraicJulia is the sheer number of mathematical abstractions it can handle in terms of schemas. In this final section we offer a brief glimpse at some more powerful models and ideas that are also captured by this framework.
 
-DISCLAIMER: It is out of scope to go into any detail on the following schemas. We mention them here, in passing, only to give some sense of the possibilities available with AlgebraicJulia. 
+>DISCLAIMER: It is out of scope to go into any detail on the following schemas. We mention them here, in passing, only to give some sense of the possibilities with AlgebraicJulia. 
 
 ### Simplicial sets
 
@@ -392,9 +424,9 @@ For the mathematician, simplicial sets are useful because they turn geometry int
 
 ### Petri nets
 
-On the more "applied" side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960's, whose goal was to provide a system that could model parallel processes, synchronization, resource sharing, and which had an intuitive graphical notation. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.
+On the more "applied" side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960's, whose goal was to provide a system that could model parallel processes, synchronization and resource sharing. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.
 
-It's important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics, we are able to represent Petri nets in terms of schemas and work with them in AlgebraicJulia.
+It's important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics we are able to represent Petri nets in terms of schemas and work with them in AlgebraicJulia.
 
 ```{image} assets/Ch4/Petri_Net.jpg
 :alt: Whoopsy!
@@ -418,5 +450,5 @@ The whole concept of a schema originally comes from database theory. We can thin
 ```
 <br>
 
-Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our dangling edge condition on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See [here](https://arxiv.org/abs/1009.1166) for details.
+Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our `DANGLING EDGE CONDITION` on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See [here](https://arxiv.org/abs/1009.1166) for details.
 
