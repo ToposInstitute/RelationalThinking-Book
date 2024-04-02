@@ -12,7 +12,7 @@ kernelspec:
 
 # Chapter 6: Evolving Graphs
 
-## 6.1. Introduction
+## 6.1 Introduction
 
 "Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacting global climate.
 
@@ -53,10 +53,9 @@ A lot of concepts in the world around us are modelled as graphs. Hence, building
 
 Let us begin! 
 
-Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- 
-first by hand and then in computers! [^1]. 
+Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- first by hand and then in computers![^1] 
 
-## 6.2. Specs for "find and replace"
+## 6.2 Specs for "find and replace"
 
 Suppose we want to find a text and replace it by some other text in a document. Microsoft Word provides an interface as in the picture belowfor this purpose.  
 
@@ -229,7 +228,7 @@ The interface to find-and-replace needs to have:
 
 :::
 
-## 6.3. Finding a match
+## 6.3 Finding a match
 
 The next step is to answer how to find a match of a search pattern inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
@@ -351,14 +350,14 @@ A *match* in a host graph is given by a morphism from ```Find what``` to a host 
 
 :::
 
-## 6.4. Removing vertices and edges from a graph
+## 6.4 Removing vertices and edges from a graph
 
 We now have the specification for "find-and-replace" and the specification for a match. What remains is to perform the find-and-replace! We will begin with the deletion specification!
 
 $$ {\sf overlap} \hookrightarrow {\sf Find~what} $$
 
 
-### 6.4.1. Finding a match to remove vertices/edges
+### Finding a match to remove vertices/edges
 
 [Message: Tell what a good match is!]
 
@@ -424,7 +423,7 @@ So what should be done now -- keep "1,2" or delete "1,2" from the host graph? A 
 We will talk more about "finding a good match" once the algorithm to perform the deletion specification is set up.
 
 
-### 6.4.2. Performing deletion
+### Performing deletion
 
 [Message: Tell deletion is computing pushout compelements]
 
@@ -539,7 +538,7 @@ The pushout complement includes all the edges and vertices in the host graph tha
 
 :::
 
-### 6.4.3. Managing the requirements of a match
+### Managing the requirements of a match
 
 In programming, there is a concept called "edge case". These are special situations where a code will fail to produce appropriate results. For example, a bug that occurs in only iPhone. They are called "edge cases" because these situations lie outside the normal flow of a code / algorithm and custom extra code is added for their special handling. There is an anecdote, "Edge cases are impossible to avoid, so keep them simple". 
 
@@ -605,7 +604,7 @@ Vertices and edges of a graph is removed by computing pushout complement.
 
 ::: 
 
-## 6.5. Adding vertices and edges to a graph
+## 6.5 Adding vertices and edges to a graph
 
 We applied the deletion rule to remove the vertices and edges in the host graph as specified by the rule. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges  specified by the addition rule to the pushout complement. That will complete our replacement procedure! Hurray! 
 
@@ -761,7 +760,7 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 Common literature calls our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO). 
 
 ## 6.6 Further examples of find-and-replace
-### 6.6.1 Chemistry
+### Chemistry
 
 In chemistry, **click reactions** give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder's reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery. 
 
@@ -811,7 +810,7 @@ Applying the double-pushout find-and-replace, we precisely get the final product
 :align: center
 ```
 
-### 6.6.2 Game design
+### Game design
 
 Bob is an expert in designing game layout. He designs environment for games. He uses a layout editor for designing cool layouts. The layout keeps track of Bob's design as an directed graph components of the environment are vertices. Two vertices are connected by an arrow if the player can navigate between these two components in the game in the direction of the arrow. 
 
@@ -839,9 +838,9 @@ Now a corridor needs to be added between Room 1 and Room 2, and arrows need to b
 
 Reshaping directed graph follows the same idea as undirected graphs. The find-and-replace rule shall be applied to reshape Bob's game layoout!
 
-## 6.7. Algebraic Julia for find-and-replace in graphs
+## 6.7 Algebraic Julia for find-and-replace in graphs
 
-### 6.7.1. Finding matches of a search pattern
+### Finding matches of a search pattern
 
 +++
 
@@ -866,7 +865,7 @@ matches = homomorphisms(pattern, host)
 
 +++
 
-### 6.7.2. Is this a pushout complement?
+### Is this a pushout complement?
 
 ```{code-cell}
 # Example 2
@@ -912,7 +911,7 @@ gluing_conditions(ComposablePair(p, m))
 
 ```
 
-### 6.7.3. Computing Pushout complements
+### Computing Pushout complements
 
 ```{code-cell}
 # Puzzle 5
@@ -951,7 +950,7 @@ to_graphviz(dom(PC_H₆))
 
 ```
 
-### 6.7.4. Computing double-pushouts
+### Computing double-pushouts
 
 
 ```{code-cell}
