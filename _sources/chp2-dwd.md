@@ -68,13 +68,15 @@ Let's start with a light bulb (what could be simpler?!).
 
 ### Single light bulb
 
-We can *model* a light bulb using a directed graph with a single vertex and no edge. The light bulb is the vertex.
+We can *model* a light bulb using a directed graph with a single vertex and no edge. The light bulb is the vertex. 
 
 ```{image} assets/Ch2/bulb-vertex.png
 :alt: Whoopsy!
 :width: 100px
 :align: center
 ```
+
+This may seem simple -- almost trivially simple. What is the point of a graph if it doesn't even have any edges? Remember, however, that we are only modelling a single light bulb. Bear with us to see how we add states and an update rule to the case of a graph with one vertex. We'll then move on and see how it extends to situations like a traffic light, where there are multiple lights and hence many vertices and edges in our graph.
 
 A light bulb is always in one of two "states" -- either `OFF` or `ON`:
 
@@ -103,7 +105,7 @@ We would like the state of the light bulb to change over time!
 
 ### Flashing light bulb
 
-Let us update our model (graph) to have the lighbulb flash on and off, like this:
+Let us update our model (i.e. our directed graph) to have the light bulb flash on and off, like this:
 
 ```{image} assets/Ch2/FlashingLight.gif
 :alt: Whoopsy!
@@ -116,7 +118,7 @@ In order to accomplish this, the light bulb has to toggle its states continously
 
 > Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
 
-Here is the directed graph that models a flashing bulb:
+Here is how we picture the directed graph and update rule that models a flashing bulb:
 
 ```{image} assets/Ch2/FlashingLight.png
 :alt: Whoopsy!
@@ -129,9 +131,7 @@ Here is the directed graph that models a flashing bulb:
 
 At each time step, the light bulb move to `OFF` state if the current state is `ON`, move to `ON` if the current state is `OFF`! 
 
-Given a directed graph [^1] , state information of its vertices, and update rules for each state, we can bring this graph to life -- simulate an event represented by this directed graph using Algebraic Julia.
-
-[^1]: These are special sorts of directed graphs called Directed Wiring Diagrams. They are slightly different than directed graphs and have richer capabilities nested modelling.
+Given a directed graph, and state set and update rule for each of its vertices, we can bring this graph to life: we can simulate it using Algebraic Julia.[^1]
 
 Here's how we encode this **update rule in Algebraic Julia**:
 
@@ -485,21 +485,21 @@ And here's our simulation with the first system starting :
 
 ## 2.4 Kiki and Bouba
 
-Now for the grand finale, we are ready to build a model of Kiki's and Bouba's interaction and visualize their mood levels! 
+Now for the grand finale, we are ready to build a model of Kiki and Bouba's interaction and visualize their mood levels! 
 
 Let us recollect what we have seen so far: 
 
-- In the model of flashing light bulb, (at each time step) each vertex updated it state only based on its current state.
+- In the model of the flashing light bulb, (at each time step) each vertex updated it state only based on its current state.
 
-- In the model of stringed light bulb, (at each time step) each vertex updated its state only based on the state received from its neighbour.
+- In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbour.
 
-- In the model of smart traffic light, (at each time step) the controller updated its state only based on its current state. The light bulbs updated their states only based on the input received from the controller.
+- In the model of the traffic light, (at each time step) the controller updated its state only based on its current state. The light bulbs updated their states only based on the input received from the controller.
 
 The talking friends model will have slighty different features:
 
 - In this model, we will see that each vertex will update its state based on both its current state as well as the incoming state. 
 
-**The story of two friends (recollected from introduction)**: Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! 
+Here's the story of Kiki and Bouba again (recollected from introduction): "Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?!"
 
 ```{image} assets/Ch2/Kiki-Bouba-friends-2.png
 :alt: Whoopsy!
@@ -509,7 +509,7 @@ The talking friends model will have slighty different features:
 
 </br>
 
-Let us get creative and sketch out some details of their interaction -- **what are the states and the update rules**? -- in steps!
+Let us get creative and sketch out some details of their interaction -- **what are the states and the update rules**?
 
 ### Kiki and Bouba by themselves
 
@@ -550,7 +550,7 @@ As with the bulb, we model Kiki and Bouba by themselves as a graph with two just
 
 </br>
 
-As mentioned earlier, the mood level can be anywhere between -5 to +5 (on a real line).
+As mentioned earlier, the mood level can be anywhere between -5 to +5.
 
 The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a **parameter** called **calm down rate**.
 
@@ -633,7 +633,7 @@ Let us update this rule to include the other person mood too when producing a ne
 
 - At each instant in time, Kiki imbibes a certain fraction of other Bouba's mood based on Kiki's susceptibility factor. Similarly, Bouba imbibes a fraction of of Kiki's mood based on Bouba's susceptibility factor. So we got a **parameter** called **suspectability factor** in the new update rule.
 
-- Suppose either Kiki or Bouba reach their maximum tolerance of excitment or grumpiness, then they refuse to listen to the other person so that they can calm down! This will add two more paramters to the update rule to consider namely **maximum excitment tolerance:** and **maximum grumpiness tolerance**.
+- Suppose either Kiki or Bouba reach their maximum tolerance of excitment or grumpiness, then they refuse to listen to the other person so that they can calm down! This will add two more parameters to the update rule to consider namely **maximum excitment tolerance:** and **maximum grumpiness tolerance**.
 ```{image} assets/Ch2/Talk-later.png
 :alt: Whoopsy!
 :width: 200px
@@ -675,7 +675,7 @@ end
 
 +++
 
-Its time for visualization of change in mood :) Let us set the initial mood of Kiki and Bouba, Kiki's and Bouba's susceptability factors and their tolerance levels.
+It's time for visualization of change in mood! :) Let us set the initial mood of Kiki and Bouba, their susceptability factors, and their tolerance levels.
 
 +++
 
@@ -803,7 +803,7 @@ The change in mood level of Kiki, Bouba, and Bouba's crew over 100 minutes!
 
 ## 2.5 Summary
 
-The purpose of this chapter is having fun with graphs by bringing them to life! Using "directed graphs" [^1] we modeled systems which evolve over time! These systems are known as dynamical systems. We exported our models of dynamical systems to a computer as programs in Algebraic Julia. Using these programs, we visualized the evolution of these systems using plots and animations!
+The purpose of this chapter is having fun with graphs by bringing them to life! Using directed graphs, we modeled systems which evolve over time! These systems are known as dynamical systems. We exported our models of dynamical systems to a computer as programs in Algebraic Julia. Using these programs, we visualized the evolution of these systems using plots and animations!
 
 We modeled two broad class of systems:
 
@@ -824,3 +824,4 @@ Dynamical systems and directed graphs are a useful framework for modeling the wo
 
 But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints. In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
 
+[^1]: In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram' which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling.
