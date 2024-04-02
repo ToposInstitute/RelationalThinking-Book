@@ -376,7 +376,7 @@ Putting it all together, here is the schema for undirected graphs
 ```
 <br>
 
-And here's how we write this defintion in AlgebraicJulia:
+And here's how we write this definition in AlgebraicJulia:
 
 +++
 ```{code-cell}
