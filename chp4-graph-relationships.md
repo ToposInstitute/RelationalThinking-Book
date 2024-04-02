@@ -22,7 +22,7 @@ For any given a schema there will be many possible instances. Below we show a fe
 ```
 <br>
 
-Of course, each of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show _every_ instance, but it is possible to just imagine them all floating in space, one endless swarm of things the schema might refer to. 
+Of course, each of these schemas actually have an *infinite* number of possible instances (graphs can be arbitrarily big!). It isn't practical to show _every_ instance, but it is possible to just visualize them in your imagination, all floating in space, one endless swarm of things the schema might refer to. 
 
 ```{image} assets/Ch4/InstanceDrift.gif
 :alt: Whoopsy!
@@ -492,43 +492,7 @@ Note how Algebraic Julia is able to specialize to the case of Reflexive graphs..
 
 We're now ready to move up the last rung in our ladder of abstractions, from "blueprints" to "categories!"
 
-Look closely at this instance of our graph morphism schema:
-
-```{image} assets/Ch4/MorphismInstance.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The _overall_ blueprint represents a morphism of graph 1 into graph 2. As long as they satisfy all the closed loop conditions, any collection of maps in this pattern describe _some_ graph morphism.
-
-Our final abstraction will be a directed graph in which the vertices are instances and the arrows are morphisms between the corresponding graphs.
-
-// IMAGE OF THOUGHT BUBBLE WITH ARROW SAYING "MORPHISM OF GRAPHS"
-
-
-:::{attention}
-We know what you're thinking! "_Another_ directed graph?! At _another_ level of abstraction?!" 
-
-This is the last one. 
-
-Promise.
-:::
-
-
-
-
-
-* Injections are hooked arrows
-* Isomorphisms are paired unidirectional bars
-
-
-
-
-
-
-
-
+In chapter 3 we introduced 'chunky arrows' as a way to hide the messy details of our maps. We're doing something similar here, defining a new kind of arrow that encompasses all the details of a graph morphism.
 
 ```{image} assets/Ch4/MorphismArrow.gif
 :alt: Whoopsy!
@@ -536,11 +500,27 @@ Promise.
 :align: center
 ```
 
+:::{attention}
+We know what you're thinking! "_Another_ kind of arrow?! At _another_ level of abstraction?!" 
+
+This is the last one. 
+
+Promise.
+:::
+
+Let's revisit the graph morphism schema and look closely at an instance:
 
 
+```{image} assets/Ch4/MorphismInstance.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
 
+Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The overall blueprint represents a morphism of graph 1 into graph 2. It almost _feels_ like an arrow pointing from the top to the bottom.
 
-```{image} assets/Ch4/CategoryDrift.gif
+So we define th
+```{image} assets/Ch4/MorphismThoughtBubble.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -550,6 +530,36 @@ Promise.
 
 
 
+
+```{image} assets/Ch4/MorphismDefinition.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+The universe of relationships.
+
+```{image} assets/Ch4/CategoryDrift.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+Called the category. There are patterns that exist here. AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data. The only trick is figuring out something to say in terms of morphisms. 
+
+
+And that's exactly what we're going to do in the next chapter!
 
 
 
