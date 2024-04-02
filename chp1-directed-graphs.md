@@ -50,7 +50,7 @@ When we look at a directed graph we can instantly see many relationships: *this*
 
 ## 1.2 Source and Target Maps
 
-<center> <iframe width="560" height="315" src="https://www.youtube.com/embed/QfvtWgopGiY?si=JoJJP7jhe3-QoxEN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </center>
+<center style="width: 100%; aspect-ratio: 16/9;"> <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/QfvtWgopGiY?si=JoJJP7jhe3-QoxEN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </center>
 
 The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.
 
