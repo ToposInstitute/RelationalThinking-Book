@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 2: A Dynamical Systems Detour with Kiki and Bouba
+# Chapter 2: Dynamical Systems with Kiki and Bouba
 
 ## 2.1 Introduction
 
