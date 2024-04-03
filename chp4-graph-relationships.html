@@ -450,7 +450,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">4.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-morphisms">General morphisms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Puzzles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-puzzles">More Puzzles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">4.4 The category of instances</a></li>
@@ -517,17 +517,17 @@ The final result gives us an complete picture of "what went where" in our inject
 <p><img alt="whoops!" src="_images/Problem1.png" /></p>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Solution:</p>
+<p class="admonition-title">Puzzle 1 Solution:</p>
 <p>The triangle can be injected in three different orientations.</p>
 <p><img alt="whoops!" src="_images/Problem1Solution.png" /></p>
 </div>
-<div class="admonition-puzzle-1 admonition">
-<p class="admonition-title">Puzzle 1</p>
+<div class="admonition-puzzle-2 admonition">
+<p class="admonition-title">Puzzle 2</p>
 <p>How many ways can you inject the graph on the left into the graph on the right?</p>
 <p><img alt="whoops!" src="_images/Problem2.png" /></p>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Solution</p>
+<p class="admonition-title">Puzzle 2 Solution:</p>
 <p>Twelve?</p>
 </div>
 <div class="admonition-pause-and-ponder admonition">
@@ -566,15 +566,15 @@ These two maps capture all the relevant information about the injection.
 <a class="reference internal image-reference" href="_images/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/OpenSquare.gif" style="width: 500px;" /></a>
 <br>
 <p>That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A’s source” is <em>different</em> from “the vertex that is the source of A’s image.”</p>
-<p>So we can actually DEFINE a graph injection with a closed loop condition: starting from any arrown in the upper left, the paths going either way around the square will always form a closed loop.</p>
+<p>So we can actually DEFINE a graph injection with a closed loop condition: starting from any arrow in the upper left, the paths going either way around the square will always form a closed loop.</p>
 <a class="reference internal image-reference" href="_images/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectionFadethrough.gif" style="width: 500px;" /></a>
 <br>
-<p>Of course, these same arrow and vertex maps must also have closed loops for the <em>target maps</em>. All together, this is the complete set of “data” describing the injection:</p>
+<p>Of course, these same arrow and vertex maps must also form closed loops with the <em>target maps</em>. All together, this is the complete set of “data” describing the injection:</p>
 <a class="reference internal image-reference" href="_images/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphInjection.gif" style="width: 800px;" /></a>
 <br>
-<p>Going up a level of abstraction, a <em>schema</em> that describes this pattern in general looks like this:</p>
+<p>Going up a level of abstraction, a <em>schema</em> that describes this general in general looks like this:</p>
 <a class="reference internal image-reference" href="_images/GraphMorphismSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/GraphMorphismSchema.png" style="width: 800px;" /></a>
-<p>We have once again captured an idea–graph injections–in terms of a schema and some commutativity conditions. But we’re not quite done! In the next section we’ll see that graph injections aren’t the only thing captured by this schema!</p>
+<p>We have once again captured an idea–graph injections–in terms of a schema and some commutativity conditions. But we’re not quite done! In the next section we’ll see that graph injections aren’t the only thing captured by this schema…</p>
 </section>
 </section>
 <section id="graph-morphisms">
@@ -583,30 +583,28 @@ These two maps capture all the relevant information about the injection.
 <h3>General morphisms<a class="headerlink" href="#general-morphisms" title="Permalink to this heading">#</a></h3>
 <p>In Chapter 1 we saw an example of a directed graph which described who’s turn it was to do the dishes. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty. As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.</p>
 <a class="reference internal image-reference" href="_images/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="_images/ChoreHanded.png" style="width: 500px;" /></a>
-<p>The second model is a “coarse grained” version of the first. It is consistent with the first model but contains fewer details (<em>ie</em> it does not tell us which right handed person is doing the dishes). This coarse-graining can be captured by the following way of mapping the first graph into the second:</p>
+<p>The second model is a “coarse grained” version of the first. It is consistent with the first model but contains fewer details (<em>ie</em> it does not tell us which right handed person is doing the dishes at any given moment). This coarse-graining can be captured by the following way of mapping the first graph into the second:</p>
 <div class="admonition-coarse-graining admonition">
 <p class="admonition-title">Coarse graining</p>
 <ul class="simple">
-<li><p>Send the <code class="docutils literal notranslate"><span class="pre">Paul</span></code> and <code class="docutils literal notranslate"><span class="pre">Toni</span></code> vertices get merged into a single vertex, <code class="docutils literal notranslate"><span class="pre">Righties</span></code>.</p></li>
-<li><p>Send the arrow representing the chore passing from <code class="docutils literal notranslate"><span class="pre">Paul</span></code> to <code class="docutils literal notranslate"><span class="pre">Toni</span></code> and the arrow representing the chore passing from <code class="docutils literal notranslate"><span class="pre">Toni</span></code> to <code class="docutils literal notranslate"><span class="pre">Paul</span></code> get collapsed to a single self-looping arrow on <code class="docutils literal notranslate"><span class="pre">Righties</span></code>.</p></li>
+<li><p>Send the <code class="docutils literal notranslate"><span class="pre">Paul</span></code> and <code class="docutils literal notranslate"><span class="pre">Toni</span></code> vertices to get merged into a single vertex, <code class="docutils literal notranslate"><span class="pre">Righties</span></code>.</p></li>
+<li><p>Send the arrow representing the chore passing from <code class="docutils literal notranslate"><span class="pre">Paul</span></code> to <code class="docutils literal notranslate"><span class="pre">Toni</span></code> and the arrow representing the chore passing from <code class="docutils literal notranslate"><span class="pre">Toni</span></code> to <code class="docutils literal notranslate"><span class="pre">Paul</span></code> to get collapsed to a single self-looping arrow on <code class="docutils literal notranslate"><span class="pre">Righties</span></code>.</p></li>
 </ul>
 </div>
 <a class="reference internal image-reference" href="_images/RightiesVSLefties.gif"><img alt="Whoopsy!" class="align-center" src="_images/RightiesVSLefties.gif" style="width: 800px;" /></a>
-<p>It may seem like collapsing parts of the directed graph this way would be an undesriable thing to do. After all, we have to be so careful about <em>breaking</em> a graph, which would violate our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and ruin any underlying model. Doesn’t crushing our graph pose a similar risk?</p>
+<p>We call this a “graph morphism”, a way of stuffing one graph inside of another that allows for the merging together of vertices/arrows. (Injections are just a special case of graph morphisms that don’t collapse any of the graph components).</p>
+<p>It may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about <em>breaking</em> a graph, which would violate our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and ruin any underlying model. Doesn’t crushing our graph pose a similar risk?</p>
 <p>It turns out that merging graph components is different from breaking them apart. Under the right circumstances, merging parts of a graph won’t actually pose any danger to the integrity underlying model.</p>
-<p>In the graph injection example from the last section, each vertext in graph 1 was sent to a unique vertex in graph 2, and similarly each arrow was sent to a unique destination. We say the vertex and arrow maps for our graph injections were all “one-to-one.”</p>
-<p>Consider the following collection of maps. First of all, we can see that it satisfies our commutativity condition, in that all squares from the upper left are closed. It is an <em>instance</em> of the schema from the last section.</p>
 <a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
-<p>Called a “graph morphism”</p>
 <a class="reference internal image-reference" href="_images/DoublingUp.png"><img alt="Whoopsy!" class="align-center" src="_images/DoublingUp.png" style="width: 800px;" /></a>
 <p>Although the arrows in the above graph are doubled up, they’re still pointing from the correct sources and pointing to the correct target vertices. The connectivity of the graph is preserved.</p>
 <p>////GRAPHIC SHOWING RULES ABOUT WHAT CAN AND CANNOT BE MAPPED</p>
 </section>
-<section id="id1">
-<h3>Puzzles<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="admonition-puzzle-1 admonition">
-<p class="admonition-title">Puzzle 1</p>
-<p>We have seen that Graph 1 can me mapped into Graph 2 with the following injection:</p>
+<section id="more-puzzles">
+<h3>More Puzzles<a class="headerlink" href="#more-puzzles" title="Permalink to this heading">#</a></h3>
+<div class="admonition-puzzle-3 admonition">
+<p class="admonition-title">Puzzle 3</p>
+<p>We have seen that Graph 1 can be mapped into Graph 2 with the following injection:</p>
 <a class="reference internal image-reference" href="_images/DefineInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/DefineInjection.gif" style="width: 800px;" /></a>
 <p>How many other morphisms are there from Graph 1 to Graph 2?</p>
 <p>We’ve programmed this problem into the executable code below. When you think you know the answer, execute code and see if you and AlgebraicJulia agree.</p>
@@ -630,34 +628,18 @@ These two maps capture all the relevant information about the injection.
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Answer</p>
+<p class="admonition-title">Puzzle 3 Solution:</p>
 <p>There are three distinct morphisms from Graph 1 to Graph 2; two injections and one way of collapsing the whole graph down to one vertex.</p>
 <p><img alt="whoops!" src="_images/Problem1Solution1.png" /></p>
-<p>As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema. They are very different approaches but they arrive at the same answer.</p>
+<p>As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema.</p>
+<p><img alt="whoops!" src="_images/AJSolutions.gif" /></p>
+<p>These are very different approaches but they both arrive at the same answer.</p>
 </div>
-<div class="admonition-puzzle-2 admonition">
-<p class="admonition-title">Puzzle 2</p>
-<p>How many ways can this map into that?</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Graph3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
-<span class="n">add_vertices!</span><span class="p">(</span><span class="n">Graph3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<span class="n">add_parts!</span><span class="p">(</span><span class="n">Graph3</span><span class="p">,</span><span class="w"> </span><span class="ss">:E</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">tgt</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-
-<span class="n">Graph4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
-<span class="n">add_vertices!</span><span class="p">(</span><span class="n">Graph4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
-<span class="n">add_parts!</span><span class="p">(</span><span class="n">Graph4</span><span class="p">,</span><span class="w"> </span><span class="ss">:E</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-
-
-<span class="n">countTheMorphisms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">Graph</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition-puzzle-3 admonition">
-<p class="admonition-title">Puzzle 3</p>
+<div class="admonition-puzzle-4 admonition">
+<p class="admonition-title">Puzzle 4</p>
 <p>How many ways can this triangle be mapped into this hexagon?</p>
+<p><img alt="whoops!" src="_images/Problem4.png" /></p>
+<p>Does AlgebraicJulia agree?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -675,12 +657,14 @@ These two maps capture all the relevant information about the injection.
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Answer</p>
-<p>Trick question! There are now ways of mapping the triangle into the hexagon.</p>
+<p class="admonition-title">Puzzle 4 Solution:</p>
+<p>Trick question! There are no ways of mapping the triangle into the hexagon without breaking the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
+<p>Note how AlgebraicJulia knows when you’ve asked it to find something that doesn’t exist!</p>
 </div>
-<div class="admonition-puzzle-4 admonition">
-<p class="admonition-title">Puzzle 4</p>
-<p>What about the other way around? How many ways can this hexagon be mapped into this triangle?</p>
+<div class="admonition-puzzle-5 admonition">
+<p class="admonition-title">Puzzle 5</p>
+<p>What about the other way around? How many ways can this hexagon be mapped into this triangle?
+<img alt="whoops!" src="_images/Problem5.png" /></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,12 +674,40 @@ These two maps capture all the relevant information about the injection.
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Answer</p>
+<p class="admonition-title">Puzzle 5 Solution:</p>
 <p>Three!</p>
+<p><img alt="whoops!" src="_images/Problem5Solution.png" /></p>
+<p>The hexagon can get “doubled up” into the shape of a triangle, and placed into the triangular graph in any of three orientations.</p>
 </div>
-<div class="admonition-puzzle-4 admonition">
-<p class="admonition-title">Puzzle 4</p>
-<p>This puzzle is the same as puzzle 2, except we now think of these as reflexive graphs. This changes the answer!</p>
+<div class="admonition-puzzle-6 admonition">
+<p class="admonition-title">Puzzle 6</p>
+<p>How many ways can the graph on the left into the graph on the right?</p>
+<p><img alt="whoops!" src="_images/Problem6.png" /></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Graph3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">add_vertices!</span><span class="p">(</span><span class="n">Graph3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">add_parts!</span><span class="p">(</span><span class="n">Graph3</span><span class="p">,</span><span class="w"> </span><span class="ss">:E</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">tgt</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">Graph4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">add_vertices!</span><span class="p">(</span><span class="n">Graph4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="n">add_parts!</span><span class="p">(</span><span class="n">Graph4</span><span class="p">,</span><span class="w"> </span><span class="ss">:E</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+
+<span class="n">countTheMorphisms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">Graph</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">Graph</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Puzzle 6 Solution:</p>
+<p>There are five morphisms - three injections and two ways of collapsing to a self-loop</p>
+</div>
+<div class="admonition-puzzle-7 admonition">
+<p class="admonition-title">Puzzle 7</p>
+<p>This puzzle is the same as puzzle 6, except in the AlgebraicJulia code below we’ve stipulated that graphs are <code class="docutils literal notranslate"><span class="pre">ReflexiveGraph</span></code>s instead of <code class="docutils literal notranslate"><span class="pre">DirectedGraph</span></code>s. This implies the presence of additional self loops (shown in light grey), which changes the number of possible morphisms.
+<img alt="whoops!" src="_images/Problem7.png" /></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -714,15 +726,15 @@ These two maps capture all the relevant information about the injection.
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Answer</p>
-<p>Five.</p>
-<p>Note how Algebraic Julia is able to specialize to the case of Reflexive graphs….something something.</p>
+<p class="admonition-title">Puzzle 7 Solution:</p>
+<p>Seven; Three injections and four maps to self-loops.</p>
+<p>Note how AlgebraicJulia succeeds at counting these morphisms correctly. Moreover, it uses the same mechanism as for directed graphs, no need to write specialized code for reflexive graphs something something.</p>
 </div>
 </section>
 </section>
 <section id="the-category-of-instances">
 <h2>4.4 The category of instances<a class="headerlink" href="#the-category-of-instances" title="Permalink to this heading">#</a></h2>
-<p>We’re now ready to move up the last rung in our ladder of abstractions, from “blueprints” to “categories!”</p>
+<p>Now that we know what graph morphisms are, we’re now ready to move up the last rung in our ladder of abstractions, from “blueprints” to “categories!”</p>
 <p>Let’s revisit the graph morphism schema and look closely at an instance:</p>
 <a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
 <p>Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The overall blueprint represents a morphism of graph 1 into graph 2. It almost <em>feels</em> like an arrow pointing from the top to the bottom.</p>
@@ -734,20 +746,28 @@ These two maps capture all the relevant information about the injection.
 <p>This is the last one.</p>
 <p>Promise.</p>
 </div>
-<p>So we define th</p>
+<p>When we see an arrow like this between two graph instances, we understand that it represents some <em>specific</em> morphism taking the first into the second. But notice that we now have two different ways of interpreting that idea. For us, graph morphisms are about the geometric process of bundling one graph up inside of another. For AlgebraicJulia, graph morphisms are about certain patterns of maps and closed loops.</p>
 <a class="reference internal image-reference" href="_images/TwoBubbles.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoBubbles.png" style="width: 800px;" /></a>
+<p>We each have our own “language” for what a graph morphism is,</p>
+<p>The geometric view is spatial and visual, intuitive for humans to think about. Whereas AlgebraicJulia’s view is more abstract but can be readily worked with in computational terms. The exact correspondance between these views means that if we <em>only</em> think about graphs in terms of graph morphisms then everything we think can be encoded in AlgebraicJulia.</p>
+<p>The crucial thing is that although our ways of looking at this abstract structure are different, we are nonetheless accessing precisely the <em>same</em> abstract structure.</p>
+<p>For instance, in Puzzle 3 above, we asked AlgebraicJulia a question about morphisms. We gave it the data of two graphs and asked it to count up all the morphisms between them. AlegbraicJulia correctely found three.</p>
+<a class="reference internal image-reference" href="_images/ThreeArrows.png"><img alt="Whoopsy!" class="align-center" src="_images/ThreeArrows.png" style="width: 800px;" /></a>
+<p>It’s as if it were able to go look through the universe of relationships and retrieve all the arrows that fit our description.
+AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data.</p>
 <p>The universe of relationships.</p>
 <a class="reference internal image-reference" href="_images/CategoryDrift.gif"><img alt="Whoopsy!" class="align-center" src="_images/CategoryDrift.gif" style="width: 800px;" /></a>
-<p>Called the category. There are patterns that exist here. AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data.</p>
-<a class="reference internal image-reference" href="_images/ThreeArrows.png"><img alt="Whoopsy!" class="align-center" src="_images/ThreeArrows.png" style="width: 800px;" /></a>
+<p>When we interpret these thought bubbles</p>
+<p>This universe of thought bubbles and arrows is called the category, in this case the “category of directed graphs.”</p>
+<p>It’s the really the universe of all graphs and all the morphisms between them. There are patterns that exist here.</p>
 <p>Now the only trick is figuring out something interesting that can be said entirely in terms of morphisms. And that’s exactly what we’re going to do in the next chapter!</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
-<p>In this chapter and the last we have seen that lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>In this chapter and the last we have seen that lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Lawvere, F. W.; Schanuel, S. H. (2009). Conceptual Mathematics: A First Introduction to Categories (2nd ed.). Cambridge: Cambridge University Press. <a class="reference external" href="https://doi.org/10.1017/CBO9780511804199">https://doi.org/10.1017/CBO9780511804199</a></p>
 </aside>
 </section>
@@ -826,7 +846,7 @@ These two maps capture all the relevant information about the injection.
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">4.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-morphisms">General morphisms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Puzzles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-puzzles">More Puzzles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">4.4 The category of instances</a></li>
