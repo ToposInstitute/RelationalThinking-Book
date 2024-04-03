@@ -32,7 +32,7 @@ Of course, each of these schemas actually have an *infinite* number of possible 
 
 <br>
 
-In our ongoing quest to think about things in terms of relationships we should look at these instances, each floating in isolation from the others, and ask ourselves, "How are these instance related to one another?"
+In our ongoing quest to think about things in terms of relationships we should look at these thought bubbles, each floating in isolation from the others, and ask ourselves, "How are these instances related to one another?"
 
 In this chapter we will develop a powerful answer to this question. 
 
@@ -247,9 +247,9 @@ Of course, these same arrow and vertex maps must also have closed loops for the 
 
 
 
-For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, `src 2`•`arr` for the lower route and `vert`•`src 1` for the upper route. And similarly for the targets.
+For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, `src 1 ; vert` for the upper route and `arr ; src 2` for the lower route. And similarly for the targets.
 
-```{image} assets/Ch4/GraphMorphismSchema.jpg
+```{image} assets/Ch4/GraphMorphismSchema.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -513,7 +513,18 @@ Note how Algebraic Julia is able to specialize to the case of Reflexive graphs..
 
 We're now ready to move up the last rung in our ladder of abstractions, from "blueprints" to "categories!"
 
-In chapter 3 we introduced 'chunky arrows' as a way to hide the messy details of our maps. We're doing something similar here, defining a new kind of arrow that encompasses all the details of a graph morphism.
+Let's revisit the graph morphism schema and look closely at an instance:
+
+
+```{image} assets/Ch4/MorphismInstance.gif
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The overall blueprint represents a morphism of graph 1 into graph 2. It almost _feels_ like an arrow pointing from the top to the bottom.
+
+In chapter 3 we introduced 'chunky arrows' as a way to hide the messy details of our maps. We'll do something similar here, defining a new kind of arrow that encompasses all the details of a graph morphism.
 
 ```{image} assets/Ch4/MorphismArrow.gif
 :alt: Whoopsy!
@@ -529,42 +540,20 @@ This is the last one.
 Promise.
 :::
 
-Let's revisit the graph morphism schema and look closely at an instance:
-
-
-```{image} assets/Ch4/MorphismInstance.gif
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The overall blueprint represents a morphism of graph 1 into graph 2. It almost _feels_ like an arrow pointing from the top to the bottom.
-
 So we define th
-```{image} assets/Ch4/MorphismThoughtBubble.png
+
+
+
+
+
+
+
+
+```{image} assets/Ch4/TwoBubbles.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
-
-
-
-
-
-
-```{image} assets/Ch4/MorphismDefinition.png
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
-
-
-
-
-
-
-
-
 
 
 
@@ -577,7 +566,17 @@ The universe of relationships.
 :width: 800px
 :align: center
 ```
-Called the category. There are patterns that exist here. AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data. The only trick is figuring out something to say in terms of morphisms. 
+Called the category. There are patterns that exist here. AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data. 
+
+
+```{image} assets/Ch4/ThreeArrows.png
+:alt: Whoopsy!
+:width: 800px
+:align: center
+```
+
+
+The only trick is figuring out something to say in terms of morphisms. 
 
 
 And that's exactly what we're going to do in the next chapter!

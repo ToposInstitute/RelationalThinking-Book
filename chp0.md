@@ -88,7 +88,7 @@ When used casually like this, directed graphs are little more than convenient pi
 
 Why are we choosing to focus on directed graphs? 
 
-In one sense, directed graphs give us a nice combination of simplicity and versatility. They are easy to understand and rich in terms of applications. They are conveniently pictographic, allowing us to make pretty illustrations, but are also a powerful _formal_ tool, something that can be communicated to a computer for modeling complex systems. As we try to get a sense of what AlgebraicJulia is all about, it is helpful to be working with something that is both accessible and deep.
+In one sense, directed graphs give us a nice combination of simplicity and versatility. They are easy to understand and rich in terms of applications. They are conveniently pictographic, allowing us to make pretty illustrations, but are also a powerful _formal_ tool, something that can be communicated to a computer in order to model complex systems. As we try to get a sense of what AlgebraicJulia is all about, it is helpful to be working with something that is both accessible and deep.
 
 But the real reason we want to look at directed graphs because they are _fragile_.
 

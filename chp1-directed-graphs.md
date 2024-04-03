@@ -22,10 +22,10 @@ kernelspec:
 
 ## 1.1 Introduction
 
-Reread the description from the Ski Trip Brochure in the last chapter:
+Reread the description from the mythological romance in the last chapter:
 
-:::{admonition} Ski Trip Brochure:
-**From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don't know how to ski. If that sounds like you, don't worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.**
+:::{admonition} Mythological Romance:
+**Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.**
 :::
 
 Now, expand the panel below to see the directed graph that goes with this description.
@@ -33,11 +33,8 @@ Now, expand the panel below to see the directed graph that goes with this descri
 :::{admonition} Directed Graph
 :class: dropdown
 
-```{image} assets/Ch1/DGSki.jpg
-:alt: Whoopsy!
-:width: 800px
-:align: center
-```
+![whoops!](./assets/Ch1/DGLove.jpg)
+
 
 :::
 
@@ -142,7 +139,7 @@ First of all, there are many directed graphs that can't be expressed this way at
 ```
 
 
-In the above graph, some vertices need to map to *many* arrows while others don't map to any. So instead of the simplicity we had in the arrows-first approach–with each arrow having *one-and-only-one source vertex* and *one-and-only one target vertex*–we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? List won't do it anymore. It turns our you'll now have to enter *lists of lists!*  
+In the above graph, some vertices need to map to *many* arrows while others don't map to any. So instead of the simplicity we had in the arrows-first approach (where each arrow had *one-and-only-one source vertex* and *one-and-only one target vertex*) we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? Lists won't do it anymore. It turns our you'll now have to enter *lists of lists!*  
 
 
 But more importantly, the vertex-first approach makes us vulnerable to the `DANGLING EDGE CONDITION`.
