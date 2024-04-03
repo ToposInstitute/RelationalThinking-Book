@@ -446,12 +446,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-concretely">Graph injections, concretely</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-as-data">Graph injections as data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injection-schema">Graph injection schema</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">4.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-morphisms">General morphisms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Puzzles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Puzzles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">4.4 The category of instances</a></li>
@@ -494,38 +493,43 @@ document.write(`
 <p>Let’s compare the summer and winter maps for the ski resort.</p>
 <a class="reference internal image-reference" href="_images/SummerWinter.png"><img alt="Whoopsy!" class="align-center" src="_images/SummerWinter.png" style="width: 800px;" /></a>
 <p>One way to think about the relationship between these two graphs is that we can turn one into the other. Given the Summer map I can <em>turn it into</em> the winter map by adding the additional vertices and arrows associated with travelling to the village. On the other hand, given the Winter map, I can create the Summer map by <em>deleting</em> the arrows and vertices associated with the village.</p>
-<p>This is what we might call a “procedural” way of thinking about the Summer and Winter maps; you imagine step-by-step procedures that could be applied to transform one map into the other. As we make our way towards “relational” thinking, we are going to recommend another way of looking at these two graphs.</p>
+<p>This is what we might call a “procedural” way of thinking about the Summer and Winter maps; you imagine step-by-step procedures that could be applied to transform one map into the other. In order to make our way towards “relational” thinking we are going to recommend different way of looking at these two graphs.</p>
 <p>Note how the Summer graph is basically contained inside of the Winter graph. For the Summer graph to be a “part” of the Winter graph means, in effect, that we can map the Summer graph <em>into</em> the Winter graph, taking vertices to vertices and arrows to arrows.</p>
 <a class="reference internal image-reference" href="_images/InjectSki.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectSki.gif" style="width: 800px;" /></a>
 <br>
 <p>We call this a “graph injection”. In order to visualize injections clearly let’s introduce some new visuals.</p>
-<p>Let’s step away from the ski lodge and look at graph injections more generally. We want to represent the injection of graph 1 into graph 2:</p>
-<p>First, let’s redesign graph 2 to be a “recipient” of the graph 1, moving the colors and shapes out of the way.</p>
-<p>IMAGE DETAILING THIS FOR VERTICES AND ARROWS</p>
+<p>First let’s redesign the vertices and arrows of graph 2 to be white outlines, moving the colors and shapes out of the way. These outlines will “recieve” the components of graph 1.</p>
+<a class="reference internal image-reference" href="_images/Codomain.png"><img alt="Whoopsy!" class="align-center" src="_images/Codomain.png" style="width: 500px;" /></a>
 <p>The process of placing the first graph inside of the second graph now looks like this:</p>
 <a class="reference internal image-reference" href="_images/DefineInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/DefineInjection.gif" style="width: 800px;" /></a>
 <br>
 The final result gives us an complete picture of "what went where" in our injection. We sometimes call this the "image" of the first graph in the second.
 <br>
 <br>
-<p>An important detail about graph injections is that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process in order to avoid the dangling edge condition and preserve the integrity of any underlying model.</p>
+<p>An important detail about graph injections is that a graph is not allowed to come apart when getting injected. All arrows must stay attached to their source and target vertices through this process in order to avoid the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and preserve the integrity of any underlying model.</p>
 <a class="reference internal image-reference" href="_images/DanglingEdge.png"><img alt="Whoopsy!" class="align-center" src="_images/DanglingEdge.png" style="width: 800px;" /></a>
 </section>
 <section id="puzzles">
 <h3>Puzzles<a class="headerlink" href="#puzzles" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>How many ways can you inject this upper graph into the lower graph?</p></li>
-</ol>
-<a class="reference internal image-reference" href="_images/Problem1.png"><img alt="Whoopsy!" class="align-center" src="_images/Problem1.png" style="width: 500px;" /></a>
-<p>Answer:</p>
-<p>Three! The upper triangle can be injected in any orientation.</p>
-<a class="reference internal image-reference" href="_images/Problem1Solution.png"><img alt="Whoopsy!" class="align-center" src="_images/Problem1Solution.png" style="width: 500px;" /></a>
-<ol class="arabic simple" start="2">
-<li><p>How many ways can you inject this upper graph into the lower graph?</p></li>
-</ol>
-<a class="reference internal image-reference" href="_images/Problem2.png"><img alt="Whoopsy!" class="align-center" src="_images/Problem2.png" style="width: 500px;" /></a>
-<p>Answer:</p>
+<div class="admonition-puzzle-1 admonition">
+<p class="admonition-title">Puzzle 1</p>
+<p>How many ways can you inject the graph on the left into the graph on the right?</p>
+<p><img alt="whoops!" src="_images/Problem1.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution:</p>
+<p>The triangle can be injected in three different orientations.</p>
+<p><img alt="whoops!" src="_images/Problem1Solution.png" /></p>
+</div>
+<div class="admonition-puzzle-1 admonition">
+<p class="admonition-title">Puzzle 1</p>
+<p>How many ways can you inject the graph on the left into the graph on the right?</p>
+<p><img alt="whoops!" src="_images/Problem2.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
 <p>Twelve?</p>
+</div>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder! </p>
 <p>What strategies did you use to count the injections? Were you systematic or did you do it through trial and error? Could you design an algorithm that a computer could use to solve these problems for you?</p>
@@ -539,12 +543,15 @@ The final result gives us an complete picture of "what went where" in our inject
 These two maps capture all the relevant information about the injection.
 <br>
 <br>
-<p>///SAY SOMETHING ABOUT THE 1-1 NATURE OF THE MAPS!!!</p>
-<p>Recall our dangling edge condition: For these maps to represent a proper injection the arrows of the injected graph have to stay attached to their source and target vertices. Clearly these maps must be coordinated in some way to prevent breakage. What conditions must be true in order to ensure that a graph doesn’t come apart on entry?</p>
+<p>Recall our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>: For these maps to represent a proper injection the arrows of the injected graph have to stay attached to their source and target vertices. What conditions must be true in order to ensure that a graph doesn’t come apart on entry?</p>
 <p>To answer this, let’s arrange our maps into a square, with the source maps for graph 1 and graph 2 running horizontally and the “arrow map” and “vertex map” running vertically:</p>
 <a class="reference internal image-reference" href="_images/CommSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/CommSquare.gif" style="width: 800px;" /></a>
 <br>
-Note how the dashed lines seem to flow “out” from the arrows in the upper left and flow “in” to the vertices at the lower right. Starting from any arrow in the upper right, there are two paths you can take around this square: an upper route and a lower route. Let's focus on a specific arrow and consider what these routes “mean”. (We'll label the endpoints as "A" and "V")
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder! </p>
+<p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
+</div>
+<p>Note how the dashed lines seem to flow “out” from the arrows in the upper left and flow “in” to the vertices at the lower right. Starting from any arrow in the upper left, there are two paths you can take around this square: an upper route and a lower route. Let’s focus on a specific arrow and consider what these routes “mean”. (We’ll label the endpoints as “A” and “V”)</p>
 <div class="admonition-upper-route admonition">
 <p class="admonition-title">Upper route</p>
 <a class="reference internal image-reference" href="_images/UpperRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/UpperRoute.gif" style="width: 500px;" /></a>
@@ -555,7 +562,7 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <a class="reference internal image-reference" href="_images/LowerRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/LowerRoute.gif" style="width: 500px;" /></a>
 <p>Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its “image”). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square is “the source of the image of A.”</p>
 </div>
-<p>To complete the picture, let’s now revisit to our dangling edge condition. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square will look something like this:</p>
+<p>To complete the picture, let’s now revisit to our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square will look something like this:</p>
 <a class="reference internal image-reference" href="_images/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/OpenSquare.gif" style="width: 500px;" /></a>
 <br>
 <p>That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A’s source” is <em>different</em> from “the vertex that is the source of A’s image.”</p>
@@ -565,35 +572,38 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <p>Of course, these same arrow and vertex maps must also have closed loops for the <em>target maps</em>. All together, this is the complete set of “data” describing the injection:</p>
 <a class="reference internal image-reference" href="_images/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphInjection.gif" style="width: 800px;" /></a>
 <br>
-<br>
-</section>
-<section id="graph-injection-schema">
-<h3>Graph injection schema<a class="headerlink" href="#graph-injection-schema" title="Permalink to this heading">#</a></h3>
-<p>For our schema, we will impose this closed loop condition by writing it as an equation. We can describe the two paths around the schema in writing by listing the sequence of chunky arrows along each path, <code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">vert</span></code> for the upper route and <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">2</span></code> for the lower route. And similarly for the targets.</p>
+<p>Going up a level of abstraction, a <em>schema</em> that describes this pattern in general looks like this:</p>
 <a class="reference internal image-reference" href="_images/GraphMorphismSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/GraphMorphismSchema.png" style="width: 800px;" /></a>
-<p>In this chapter and the last we have seen that lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
-<p>In this section we have looked at one kind of relationship between graphs - the ways one graph can be injected into another - and we have characterized that relationship in terms of schemas and commutivity conditions. However, there is more to see. It turns out the this schema doesn’t just capture injections!</p>
+<p>We have once again captured an idea–graph injections–in terms of a schema and some commutativity conditions. But we’re not quite done! In the next section we’ll see that graph injections aren’t the only thing captured by this schema!</p>
 </section>
 </section>
 <section id="graph-morphisms">
 <h2>4.3 Graph Morphisms<a class="headerlink" href="#graph-morphisms" title="Permalink to this heading">#</a></h2>
 <section id="general-morphisms">
 <h3>General morphisms<a class="headerlink" href="#general-morphisms" title="Permalink to this heading">#</a></h3>
-<p>The vertex and arrow maps for our graph injections were all one-to-one. Each vertext in graph 1 was sent to a unique vertex in graph 2, and similarly each arrow was sent to a unique destination.</p>
-<p>Consider the following source map. First of all, we can see that it satisfies out commutativity condition, in that all squares from the upper left are closed.</p>
-<a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
-<p>But notice that the vertical maps <em>merge</em> vertices and arrows in the image. If we show the result of this map we see that arrows and vertices get doubled up in the image:</p>
-<a class="reference internal image-reference" href="_images/DoublingUp.png"><img alt="Whoopsy!" class="align-center" src="_images/DoublingUp.png" style="width: 800px;" /></a>
-<p>It may seem like “crushing” a directed graph this way would be an undesirable outcome. But this actually turns out to be a common thing to do when working with graphs. Crushing is different from breaking. The dangling edge condition is a problem for modeling because it renders any underlying model meaningless. But collapsing or merging the parts of a graph doesn’t actually pose any danger to the integrity underlying model, as the following example will illustrate.</p>
-<p>In Chapter 1 we saw an example of a directed graph which described who’s turn it was to do the dishes. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty.</p>
-<p>As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.</p>
+<p>In Chapter 1 we saw an example of a directed graph which described who’s turn it was to do the dishes. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty. As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.</p>
 <a class="reference internal image-reference" href="_images/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="_images/ChoreHanded.png" style="width: 500px;" /></a>
-<p>The second model is a “coarse grained” version of the first. It is consistent with the first model but contains fewer details (<em>ie</em> it does not tell us which right handed person is doing the dishes). This course-graining is exactly what is captured in a graph morphism.</p>
+<p>The second model is a “coarse grained” version of the first. It is consistent with the first model but contains fewer details (<em>ie</em> it does not tell us which right handed person is doing the dishes). This coarse-graining can be captured by the following way of mapping the first graph into the second:</p>
+<div class="admonition-coarse-graining admonition">
+<p class="admonition-title">Coarse graining</p>
+<ul class="simple">
+<li><p>Send the <code class="docutils literal notranslate"><span class="pre">Paul</span></code> and <code class="docutils literal notranslate"><span class="pre">Toni</span></code> vertices get merged into a single vertex, <code class="docutils literal notranslate"><span class="pre">Righties</span></code>.</p></li>
+<li><p>Send the arrow representing the chore passing from <code class="docutils literal notranslate"><span class="pre">Paul</span></code> to <code class="docutils literal notranslate"><span class="pre">Toni</span></code> and the arrow representing the chore passing from <code class="docutils literal notranslate"><span class="pre">Toni</span></code> to <code class="docutils literal notranslate"><span class="pre">Paul</span></code> get collapsed to a single self-looping arrow on <code class="docutils literal notranslate"><span class="pre">Righties</span></code>.</p></li>
+</ul>
+</div>
 <a class="reference internal image-reference" href="_images/RightiesVSLefties.gif"><img alt="Whoopsy!" class="align-center" src="_images/RightiesVSLefties.gif" style="width: 800px;" /></a>
+<p>It may seem like collapsing parts of the directed graph this way would be an undesriable thing to do. After all, we have to be so careful about <em>breaking</em> a graph, which would violate our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and ruin any underlying model. Doesn’t crushing our graph pose a similar risk?</p>
+<p>It turns out that merging graph components is different from breaking them apart. Under the right circumstances, merging parts of a graph won’t actually pose any danger to the integrity underlying model.</p>
+<p>In the graph injection example from the last section, each vertext in graph 1 was sent to a unique vertex in graph 2, and similarly each arrow was sent to a unique destination. We say the vertex and arrow maps for our graph injections were all “one-to-one.”</p>
+<p>Consider the following collection of maps. First of all, we can see that it satisfies our commutativity condition, in that all squares from the upper left are closed. It is an <em>instance</em> of the schema from the last section.</p>
+<a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
+<p>Called a “graph morphism”</p>
+<a class="reference internal image-reference" href="_images/DoublingUp.png"><img alt="Whoopsy!" class="align-center" src="_images/DoublingUp.png" style="width: 800px;" /></a>
+<p>Although the arrows in the above graph are doubled up, they’re still pointing from the correct sources and pointing to the correct target vertices. The connectivity of the graph is preserved.</p>
 <p>////GRAPHIC SHOWING RULES ABOUT WHAT CAN AND CANNOT BE MAPPED</p>
 </section>
-<section id="id2">
-<h3>Puzzles<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h3>Puzzles<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="admonition-puzzle-1 admonition">
 <p class="admonition-title">Puzzle 1</p>
 <p>We have seen that Graph 1 can me mapped into Graph 2 with the following injection:</p>
@@ -730,14 +740,14 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <a class="reference internal image-reference" href="_images/CategoryDrift.gif"><img alt="Whoopsy!" class="align-center" src="_images/CategoryDrift.gif" style="width: 800px;" /></a>
 <p>Called the category. There are patterns that exist here. AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data.</p>
 <a class="reference internal image-reference" href="_images/ThreeArrows.png"><img alt="Whoopsy!" class="align-center" src="_images/ThreeArrows.png" style="width: 800px;" /></a>
-<p>The only trick is figuring out something to say in terms of morphisms.</p>
-<p>And that’s exactly what we’re going to do in the next chapter!</p>
+<p>Now the only trick is figuring out something interesting that can be said entirely in terms of morphisms. And that’s exactly what we’re going to do in the next chapter!</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
+<p>In this chapter and the last we have seen that lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id3" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>Lawvere, F. W.; Schanuel, S. H. (2009). Conceptual Mathematics: A First Introduction to Categories (2nd ed.). Cambridge: Cambridge University Press. <a class="reference external" href="https://doi.org/10.1017/CBO9780511804199">https://doi.org/10.1017/CBO9780511804199</a></p>
 </aside>
 </section>
@@ -812,12 +822,11 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-concretely">Graph injections, concretely</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-as-data">Graph injections as data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injection-schema">Graph injection schema</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">4.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-morphisms">General morphisms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Puzzles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Puzzles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">4.4 The category of instances</a></li>
