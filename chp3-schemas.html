@@ -476,7 +476,7 @@ document.write(`
 <section id="introduction">
 <h2>3.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>We have now seen how directed graphs can be useful for modeling the world. However, in some situations they’re not actually the best choice.</p>
-<p>Suppose we were making a directed graph to represent the social network on Tiktok:</p>
+<p>Suppose we were making a directed graph to represent the social network on TikTok:</p>
 <ul class="simple">
 <li><p>Vertices are people</p></li>
 <li><p>Arrows are “follows”, going from a person to someone they follow.</p></li>
@@ -522,10 +522,10 @@ document.write(`
 <a class="reference internal image-reference" href="_images/DGInstance1.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGInstance1.gif" style="width: 500px;" /></a>
 <p>Such a pair of parallel maps is the underlying blueprint common to all directed graphs. We generally draw the blueprint for directed graphs as two arrows marked <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
 <a class="reference internal image-reference" href="_images/DirectedGraphSchema.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DirectedGraphSchema.jpg" style="width: 500px;" /></a>
-<p>Any <em>particular</em> pair of maps between the same arrows and vertices is said to be an “instance” of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.</p>
+<p>Any <em>particular</em> pair of maps in this configuration is said to be an “instance” of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.</p>
 <a class="reference internal image-reference" href="_images/DGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/DGraphInstance.gif" style="width: 800px;" /></a>
 <br>
-<p>You may have noticed that our blueprint is <em>itself</em> a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.</p>
+<p>You may have noticed that our blueprint is <em>itself</em> a directed graph! This means we can define this blueprint in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.</p>
 <p>In the code below we use <code class="docutils literal notranslate"><span class="pre">A</span></code> for arrows, <code class="docutils literal notranslate"><span class="pre">V</span></code> for vertices, and define them as <code class="docutils literal notranslate"><span class="pre">Ob</span></code>jects. <code class="docutils literal notranslate"><span class="pre">Hom(X,Y)</span></code> is AlgebraicJulia syntax meaning a “chunky arrow from X to Y.” We use it to define the source and target of the chunky arrows <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -603,33 +603,30 @@ document.write(`
 <div class="attention admonition">
 <p class="admonition-title">Writing system:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">∘</span></code> This is the character we will use to sequence paths. It means “following.” So <code class="docutils literal notranslate"><span class="pre">A∘B</span></code> means “A following B.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">;</span></code> We’ll use a semicolon to sequence paths. So <code class="docutils literal notranslate"><span class="pre">A;B</span></code> means “path A followed by path B.”</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/Compose.gif"><img alt="Whoopsy!" class="align-center" src="_images/Compose.gif" style="width: 500px;" /></a>
-<blockquote>
-<div><p>DISClAIMER: You may find this a way of writing a path confusing at first, because the order of the letters is the <em>opposite</em> of the order in which you actually traverse those maps when you travel the path. Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don’t like it any more than you do!)</p>
-</div></blockquote>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> We’ll use an equals sign to equate the endpoints of two paths</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> We’ll use this to mean ending up “back where you started.” It refers to the “identity map”, the map equivalent of doing nothing.</p></li>
 </ul>
 </div>
-<p>So we can write “source map following reflexive map takes you back where you started” as:</p>
-<p><code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">∘</span> <span class="pre">refl</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
-<p>And “target map following reflexive map takes you back where you started” becomes:</p>
-<p><code class="docutils literal notranslate"><span class="pre">tgt</span> <span class="pre">∘</span> <span class="pre">refl</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>So we can write “the reflexive map followed by the source map takes you back where you started” as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>And “the reflexive map followed by the target map takes you back where you started” becomes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
 <p>Equations like this are known as “commutativity conditions.” When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what’s called a Schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
-<a class="reference internal image-reference" href="_images/ReflexiveGraph.jpg"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraph.jpg" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="_images/ReflexiveGraphSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphSchema.png" style="width: 800px;" /></a>
 <br>
-<p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">∘</span> <span class="pre">Y</span></code>.)</p>
+<p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">;</span> <span class="pre">Y</span></code>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="kt">ReflexiveGraph</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">DirectedGraph</span><span class="w"> </span><span class="k">begin</span>
 
 <span class="w">  </span><span class="n">refl</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">refl</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span><span class="w"> </span><span class="n">refl</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">refl</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">refl</span><span class="p">,</span><span class="w"> </span><span class="n">tgt</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
 
 <span class="k">end</span>
 </pre></div>
@@ -670,11 +667,11 @@ document.write(`
 <p>Both routes should end up at the same vertex!</p>
 </div>
 <p>So the commutativity conditions that ensure that partner arrows point in opposite directions are:</p>
-<p><code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">=</span> <span class="pre">tgt</span> <span class="pre">∘</span> <span class="pre">inv</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">;</span> <span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">src</span></code>
 <br></p>
-<p><code class="docutils literal notranslate"><span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">src</span> <span class="pre">∘</span> <span class="pre">inv</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">=</span> <span class="pre">tgt</span></code></p>
 <p>We also want these partnerships to be unique, meaning we don’t want “cliques” of three, four, five, arrows, each one partnered with the next. To avoid this, each arrow must be its <em>partner’s</em> partner.</p>
-<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">∘</span> <span class="pre">inv</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">;</span> <span class="pre">inv</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
 <p>Putting it all together, here is the schema for undirected graphs</p>
 <a class="reference internal image-reference" href="_images/UndirectedGraphSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/UndirectedGraphSchema.png" style="width: 500px;" /></a>
 <br>
@@ -685,8 +682,8 @@ document.write(`
 <span class="w">  </span>
 <span class="w">  </span><span class="n">inv</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tgt</span>
-<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">src</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span><span class="n">tgt</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">src</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tgt</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 

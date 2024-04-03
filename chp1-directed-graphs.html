@@ -468,15 +468,15 @@ document.write(`
 </div></blockquote>
 <section id="introduction">
 <h2>1.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Reread the description from the Ski Trip Brochure in the last chapter:</p>
-<div class="admonition-ski-trip-brochure admonition">
-<p class="admonition-title">Ski Trip Brochure:</p>
-<p><strong>From our ski lodge, you can take the lift to the top of the mountain. Skiing down the slope will take you to an isolated Alpine village in a valley where you can cross-country ski around the surrounding landscape. Of course, some people don’t know how to ski. If that sounds like you, don’t worry! You can still visit the mountain top to see the beautiful view and then just jump back on the lift and return to the lodge.</strong></p>
+<p>Reread the description from the mythological romance in the last chapter:</p>
+<div class="admonition-mythological-romance admonition">
+<p class="admonition-title">Mythological Romance:</p>
+<p><strong>Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.</strong></p>
 </div>
 <p>Now, expand the panel below to see the directed graph that goes with this description.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Directed Graph</p>
-<a class="reference internal image-reference" href="_images/DGSki.jpg"><img alt="Whoopsy!" class="align-center" src="_images/DGSki.jpg" style="width: 800px;" /></a>
+<p><img alt="whoops!" src="assets/Ch1/DGLove.jpg" /></p>
 </div>
 <p>Note how the written description required concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
 <p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.</p>
@@ -555,7 +555,7 @@ document.write(`
 <p>At first glance, these might seem like the exact same thing. But in fact, a whole bunch of <em>problems</em> arise if we try to think about directed graphs in the second way!</p>
 <p>First of all, there are many directed graphs that can’t be expressed this way at all - at least not without relaxing some of our rules for making source and target maps.</p>
 <a class="reference internal image-reference" href="_images/Branchy.gif"><img alt="Whoopsy!" class="align-center" src="_images/Branchy.gif" style="width: 500px;" /></a>
-<p>In the above graph, some vertices need to map to <em>many</em> arrows while others don’t map to any. So instead of the simplicity we had in the arrows-first approach–with each arrow having <em>one-and-only-one source vertex</em> and <em>one-and-only one target vertex</em>–we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? List won’t do it anymore. It turns our you’ll now have to enter <em>lists of lists!</em></p>
+<p>In the above graph, some vertices need to map to <em>many</em> arrows while others don’t map to any. So instead of the simplicity we had in the arrows-first approach (where each arrow had <em>one-and-only-one source vertex</em> and <em>one-and-only one target vertex</em>) we now must allow for arbitrary of branching in our maps. This looser specification gives rise to a number of bookkeeping headaches. For example, how you would express the above map to a computer? Lists won’t do it anymore. It turns our you’ll now have to enter <em>lists of lists!</em></p>
 <p>But more importantly, the vertex-first approach makes us vulnerable to the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
 <p>Suppose we created a random graph using the vertices-first approach, just throwing together source and target maps, arbitrarily connecting things without giving any thought to what the resulting graph will be like.
 <img alt="whoops!" src="_images/Random.gif" />

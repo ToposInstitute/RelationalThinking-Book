@@ -15,7 +15,7 @@ kernelspec:
 ## 3.1 Introduction
 We have now seen how directed graphs can be useful for modeling the world. However, in some situations they're not actually the best choice.
 
-Suppose we were making a directed graph to represent the social network on Tiktok:
+Suppose we were making a directed graph to represent the social network on TikTok:
 * Vertices are people
 * Arrows are "follows", going from a person to someone they follow.
 
@@ -105,7 +105,7 @@ Such a pair of parallel maps is the underlying blueprint common to all directed
 :align: center
 ```
 
-Any _particular_ pair of maps between the same arrows and vertices is said to be an "instance" of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.
+Any _particular_ pair of maps in this configuration is said to be an "instance" of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.
 
 
 ```{image} assets/Ch4/DGraphInstance.gif
@@ -115,7 +115,7 @@ Any _particular_ pair of maps between the same arrows and vertices is said to 
 ```
 <br>
 
-You may have noticed that our blueprint is _itself_ a directed graph! This means we can define this schema in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
+You may have noticed that our blueprint is _itself_ a directed graph! This means we can define this blueprint in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
 
 In the code below we use `A` for arrows, `V` for vertices, and define them as `Ob`jects. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y." We use it to define the source and target of the chunky arrows `src` and `tgt`.
 
@@ -249,7 +249,7 @@ Let's encode a reflexive graph blueprint in AlgebraicJulia! In order to specify 
 :::{admonition} Writing system:
 :class: attention
 
-* `∘` This is the character we will use to sequence paths. It means "following." So `A∘B` means "A following B."
+* `;` We'll use a semicolon to sequence paths. So `A;B` means "path A followed by path B."
 
 ```{image} assets/Ch3/Compose.gif
 :alt: Whoopsy!
@@ -257,31 +257,29 @@ Let's encode a reflexive graph blueprint in AlgebraicJulia! In order to specify 
 :align: center
 ```
 
->DISClAIMER: You may find this a way of writing a path confusing at first, because the order of the letters is the *opposite* of the order in which you actually traverse those maps when you travel the path. Unfortunately, this is the universally accepted convention for writing composed maps, so you might as well start getting used to it. (We don't like it any more than you do!)
-
 * `=` We'll use an equals sign to equate the endpoints of two paths
 * `id` We'll use this to mean ending up "back where you started." It refers to the "identity map", the map equivalent of doing nothing.
 
 :::
 
-So we can write "source map following reflexive map takes you back where you started" as:
+So we can write "the reflexive map followed by the source map takes you back where you started" as:
 
-`src ∘ refl = id`
+`refl ; src = id`
 
-And "target map following reflexive map takes you back where you started" becomes:
+And "the reflexive map followed by the target map takes you back where you started" becomes:
 
-`tgt ∘ refl = id`
+`refl ; tgt = id`
 
 Equations like this are known as "commutativity conditions." When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what's called a Schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
 
-```{image} assets/Ch4/ReflexiveGraph.jpg
+```{image} assets/Ch3/ReflexiveGraphSchema.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
 <br>
 
-To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the `refl` arrow and our commutativity conditions. (We use `compose(X,Y)` to mean `X ∘ Y`.)
+To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the `refl` arrow and our commutativity conditions. (We use `compose(X,Y)` to mean `X ; Y`.)
 
 +++
 ```{code-cell}
@@ -289,8 +287,8 @@ To enter this into AlgebraicJulia we start with the directed graph schema we mad
 
   refl::Hom(V,A)
 
-  compose(src, refl) == id(V)
-  compose(tgt, refl) == id(V)
+  compose(refl, src) == id(V)
+  compose(refl, tgt) == id(V)
 
 end
 ```
@@ -357,15 +355,15 @@ Both routes should end up at the same vertex!
 
 So the commutativity conditions that ensure that partner arrows point in opposite directions are:
 
-`src = tgt ∘ inv`
+`inv ; tgt = src`
 <br>
 
-`tgt = src ∘ inv`
+`inv ; src = tgt`
 
 
 We also want these partnerships to be unique, meaning we don't want "cliques" of three, four, five, arrows, each one partnered with the next. To avoid this, each arrow must be its _partner's_ partner.
 
-`inv ∘ inv = id`
+`inv ; inv = id`
 
 Putting it all together, here is the schema for undirected graphs
 
@@ -384,8 +382,8 @@ And here's how we write this definition in AlgebraicJulia:
   
   inv::Hom(A,A)
 
-  compose(src,inv) == tgt
-  compose(tgt,inv) == src
+  compose(inv,tgt) == src
+  compose(inv,src) == tgt
   
   compose(inv,inv) == id(A)
 
