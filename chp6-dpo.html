@@ -466,11 +466,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.8 Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-relational-thinking">6.8 Goodness of relational thinking</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabulary">Relational thinking shifts vocabulary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">The order of processes</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.9 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
             </nav>
@@ -884,12 +885,12 @@ document.write(`
 <h3>Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 3</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Puzzle 4</span>
 <span class="c">#-----------</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 
-<span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">find</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 <span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cycle_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c"># There are 12 matches because the path can start </span>
@@ -898,7 +899,18 @@ document.write(`
 <span class="c"># for both edges whether they go clockwise or not, </span>
 <span class="c"># so that is 3 x 2 x 2 independent choices.</span>
 
-<span class="n">matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">)</span>
+<span class="n">matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphisms</span><span class="p">(</span><span class="n">find</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># uncomment the following line to visualize the Find pattern</span>
+<span class="c"># to_graphviz(pattern)</span>
+
+<span class="c"># uncomment the following line to visualize the host</span>
+<span class="c"># to_graphviz(host)</span>
 </pre></div>
 </div>
 </div>
@@ -913,20 +925,20 @@ document.write(`
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 <span class="k">using</span><span class="w"> </span><span class="n">AlgebraicRewriting</span><span class="o">.</span><span class="n">CSets</span>
-<span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">find</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c"># There is only one homomorphism (up to symmetry)</span>
 <span class="c"># So we can pick an arbitrary one</span>
-<span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">)</span>
+<span class="n">del</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">overlap</span><span class="p">,</span><span class="w"> </span><span class="n">find</span><span class="p">)</span>
+<span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">find</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">)</span>
 
 <span class="c"># We can check whether or not the pushout complement exists</span>
-<span class="n">can_pushout_complement</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="n">can_pushout_complement</span><span class="p">(</span><span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="n">match</span><span class="p">)</span>
 
 <span class="c"># We can get a list of the specific violations</span>
-<span class="n">gluing_conditions</span><span class="p">(</span><span class="n">ComposablePair</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">))</span>
+<span class="n">gluing_conditions</span><span class="p">(</span><span class="n">ComposablePair</span><span class="p">(</span><span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="n">match</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -934,21 +946,22 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Example 3</span>
-<span class="c">#----------------------------------------</span>
-<span class="c"># (K, L, p: K-&gt;L are all the same)</span>
-<span class="c">#----------------------------------------</span>
+<span class="c">#----------</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 <span class="k">using</span><span class="w"> </span><span class="n">AlgebraicRewriting</span><span class="o">.</span><span class="n">CSets</span>
+<span class="n">overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">find</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 
-<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">inv</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">end</span>
-<span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">)</span>
+<span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@acset</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">E</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">tgt</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">inv</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">end</span>
+<span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">find</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">)</span>
 
 <span class="c"># We can check whether or not the pushout complement exists</span>
-<span class="n">can_pushout_complement</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="n">can_pushout_complement</span><span class="p">(</span><span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="n">match</span><span class="p">)</span>
 
 <span class="c"># We can get a list of the specific violations</span>
-<span class="n">gluing_conditions</span><span class="p">(</span><span class="n">ComposablePair</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">))</span>
+<span class="n">gluing_conditions</span><span class="p">(</span><span class="n">ComposablePair</span><span class="p">(</span><span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="n">match</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -964,10 +977,10 @@ document.write(`
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 <span class="k">using</span><span class="w"> </span><span class="n">AlgebraicRewriting</span><span class="o">.</span><span class="n">CSets</span>
 
-<span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Pattern₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="o">.</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">])</span>
-<span class="n">O_P₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Pattern₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">P_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Pattern₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">O_PC₅</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">O_P₅</span><span class="p">,</span><span class="w"> </span><span class="n">P_H₅</span><span class="p">)</span>
+<span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Find₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="o">.</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">])</span>
+<span class="n">del</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Find₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Find₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">O_PC₅</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">match</span><span class="p">,</span><span class="w"> </span><span class="n">del</span><span class="p">)</span>
 
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">dom</span><span class="p">(</span><span class="n">PC_H₅</span><span class="p">))</span>
 </pre></div>
@@ -981,15 +994,15 @@ document.write(`
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 
-<span class="n">Pattern₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">add_edge!</span><span class="p">(</span><span class="n">Pattern₆</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Find₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">add_edge!</span><span class="p">(</span><span class="n">Find₆</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">Host₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
 
-<span class="n">O_P₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Pattern₆</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">P_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Pattern₆</span><span class="p">,</span><span class="w"> </span><span class="n">Host₆</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],))</span>
+<span class="n">del</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Find₆</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Find₆</span><span class="p">,</span><span class="w"> </span><span class="n">Host₆</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],))</span>
 
-<span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">O_P₆</span><span class="p">,</span><span class="w"> </span><span class="n">P_H₆</span><span class="p">)</span>
+<span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">match</span><span class="p">,</span><span class="w"> </span><span class="n">del</span><span class="p">)</span>
 
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">dom</span><span class="p">(</span><span class="n">PC_H₆</span><span class="p">))</span>
 </pre></div>
@@ -1023,6 +1036,10 @@ document.write(`
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
 
+<span class="c"># Monic=true enforces that the two vertices in Overlap are not mapped to a</span>
+<span class="c"># single vertex in the single-edge graph.</span>
+<span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">path_graph</span><span class="p">(</span><span class="n">SymmetricGraph</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">monic</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+
 <span class="n">fromR</span><span class="p">,</span><span class="w"> </span><span class="n">fromPC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout</span><span class="p">(</span><span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">)</span>
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">codom</span><span class="p">(</span><span class="n">fromR</span><span class="p">))</span>
 </pre></div>
@@ -1031,8 +1048,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="summary">
-<h2>6.8 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<section id="goodness-of-relational-thinking">
+<h2>6.8 Goodness of relational thinking<a class="headerlink" href="#goodness-of-relational-thinking" title="Permalink to this heading">#</a></h2>
 <section id="relational-thinking-shifts-vocabulary">
 <h3>Relational thinking shifts vocabulary<a class="headerlink" href="#relational-thinking-shifts-vocabulary" title="Permalink to this heading">#</a></h3>
 <p>We would like to bring reader’s attention to the some vocabulary common in practice since language influences thinking and vice versa.</p>
@@ -1059,6 +1076,10 @@ document.write(`
 <p>Think relationally to get it right rightaway!!</p>
 </div>
 </section>
+</section>
+<section id="summary">
+<h2>6.9 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>….</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
@@ -1154,11 +1175,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.8 Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-relational-thinking">6.8 Goodness of relational thinking</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabulary">Relational thinking shifts vocabulary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">The order of processes</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.9 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
   </nav></div>
