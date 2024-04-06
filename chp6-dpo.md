@@ -14,9 +14,9 @@ kernelspec:
 
 ## 6.1 Introduction
 
-"Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or Large-scale replacement of forests by industries and settlements has adversely impacting global climate.
+The "Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of the unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or the large-scale replacement of forests by industries and settlements has adversely impacting global climate. We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! 
 
-> We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! So, what was missed in the decision making process? 
+> So, what was missed in the decision making process? 
 
 Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar is so hard! A usual thought-process behind attempting to quit sugar is: 
 
@@ -33,7 +33,7 @@ But the reality is:
 :width: 350px
 :align: center
 ```
-<sub>(Image source: https://www.youtube.com/watch?v=86uC5fgraiI)</sub>
+<sub> Image source: https://www.youtube.com/watch?v=86uC5fgraiI </sub>
 
 because, the connections are broken causing the system to experience instability: 
 
@@ -43,7 +43,7 @@ because, the connections are broken causing the system to experience instability
 :align: center
 ```
 
-While being healthy makes a person happy, eating sugar makes a person happy in a different way. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is oversimplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change. 
+(Naively) Being healthy and eating sugar makes a person happy in a different ways. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is oversimplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change. 
 
 If we want to make a change, it is recommended to start with something simple. The simple thing we shall do in this chapter is to build a way to make changes to an existing graph in a "good" way. By good, we mean that we do not end up with broken connections, and make precisely the changes that are intended. 
 
@@ -53,11 +53,11 @@ A lot of concepts in the world around us are modelled as graphs. Hence, building
 
 Let us begin! 
 
-Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way -- first by hand and then in computers![^1] 
+Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way! 
 
 ## 6.2 Specs for "find and replace"
 
-Suppose we want to find a text and replace it by some other text in a document. Microsoft Word provides an interface as in the picture belowfor this purpose.  
+Let us say, we have a document in which we would like to replace some text by some other text. The Microsoft Word software provides an interface such as the one shown in the picture below for performing such "find-and-replace".  
 
 ```{image} assets/Ch6/find-and-replace.png
 :alt: Whoopsy!
@@ -67,28 +67,43 @@ Suppose we want to find a text and replace it by some other text in a document. 
 
 :::{admonition} Pause and ponder
 
-How would the interface for find-and-replace in graphs look like? 
+Let us say, we have a graph. How would the interface for find-and-replace in graphs look like? 
 
 :::
 
 To begin with, let us think what would be filled in the "Find what:" and "Replace with:" boxes. 
 
-```Find what``` box must take in a graph. This is the search pattern that will be matched in a host graph. ```Replace with``` box should also take in a graph. This is the replace pattern that will replace the match. 
+The ```Find what``` box will take in a graph. This is the search pattern that will be matched in a host graph. The ```Replace with``` box will also take in a graph. This is the pattern that will replace the match found. 
 
-Great, we are already half-way through! Next, we must how ```Find what``` and ```Replace with``` relate! In text documents, there is only one way of replacing a text by another. But in graphs, there are multiple ways of replacing one graph by another unless specified. Our goal is to find a match of `Find what` in the host graph and to replace it with `Replace with`. 
+For example,
 
-Consider the following example:
-
-
-```{image} assets/Ch6/find-and-replace-example.png
+```{image} assets/Ch6/FR-step1.png
 :alt: Whoopsy!
-:width: 375px
+:width: 450px
 :align: center
 ```
 
 </br>
 
-There is a match in the host graph which is the vertex with the self-loop. However, there are at least two ways to replace the match with `Replace with`, as shown below.  
+Let us try applying the above "find-and-replace" to the host graph below. 
+
+```{image} assets/Ch6/host-graph.png
+:alt: Whoopsy!
+:width: 300px
+:align: center
+```
+</br>
+
+We must first find a match of the `Find` in the host graph. Can you find one?
+
+```{image} assets/Ch6/host-graph-match.png
+:alt: Whoopsy!
+:width: 300px
+:align: center
+```
+</br>
+
+Now let us, try replacing the match with the `Replace`. But, there seems to be two different ways in which the match can be replaced, as shown below!
 
 ```{image} assets/Ch6/replacements.png
 :alt: Whoopsy!
@@ -96,29 +111,36 @@ There is a match in the host graph which is the vertex with the self-loop. Howev
 :align: center
 ```
 
-Replacement-1 replaces the search pattern (`Find what`) by matching it with the middle vertices of the replace pattern (`Replace with`). 
+So what are we missing? In text documents, there is only one way of replacing a text by another once a match has been found. But in graphs, there are multiple ways of replacing one graph by another unless we say how the `Find` and the `Replace` relate.  
+
+For example, in Replacement-1, the middle vertex and the self-loop of the `Replace` is placed at the match. 
 
 ```{image} assets/Ch6/replacement-1.png
 :alt: Whoopsy!
-:width: 475px
+:width: 575px
 :align: center
 ```
 </br>
 
-
-Replacement-2 replaces the search pattern by deleting the self loop and by matching the remaining vertex with one of the end nodes of the replace pattern.
+In Replacement-2, the left-most node of the replacement at the match is placed at the match.
 
 ```{image} assets/Ch6/replacement-2.png
 :alt: Whoopsy!
-:width: 475px
+:width: 575px
 :align: center
 ```
-
 </br>
 
-To pick one of these replacements, the find-and-replace must specify where the search pattern (`Find what`) and the replace patterns (`Replace with`) meet or overlap. 
+For the find-and-replace operation to choose precisely one of these replacements, in addition to providing the graphs for `Find` and `Replace`, we must also specify *where the search pattern and its replacement meet or overlap.*
 
-We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with three graphs and two radiating arrows?
+:::{admonition} Pause and ponder!
+
+How would you specify overlap `Find` and `Replace`?
+
+:::
+
+
+We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with two radiating graph morphisms?
 
 ```{image} assets/Ch6/overlap.png
 :alt: Whoopsy!
@@ -126,15 +148,29 @@ We know from Chapter 5, how to specify overlap between two graphs :) Do you reme
 :align: center
 ```
 
-The only requirement in this case will be that the arrows needs to be **injective morphisms** (each vertex of the search pattern must overlap with a unique vertex of the replacement pattern. Similary for the edges). 
+We will use the same idea to specify the overlap between `Find` and `Replace`. An extra requirement will be that the morphisms need to be **injective**. This ensures that, no two vertices of `Find` overlap with the same vertex of `Replace`, and vice versa. Similarly, no two edges of `Find` overlap with the same edge of `Replace`, and vice versa.
 
-:::{admonition} Pause and ponder
+:::{admonition} Puzzle 1
 
-How does the search and the replace patterns overlap in the two different cases of replacement shown above?
+How do the graphs `Find` and `Replace` overlap in case of Replacement-1 and Replacement-2?
+```{image} assets/Ch6/puzzle-1-data.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
 
+```{image} assets/Ch6/puzzle-1.png
+:alt: Whoopsy!
+:width: 300px
+:align: center
+```
 :::
 
-The solutions are as follows!
+:::{admonition} Solution
+:class: dropdown 
+
+````{div} wrapper
+The specification for the overlaps are as follows!
 
 For replacement-1, 
 
@@ -151,12 +187,10 @@ For replacement-1,
 :width: 625px
 :align: center
 ```
+````
+:::
 
-</br>
-
-
-Note that, the vertices and the edges of the search pattern outside the overlap region are removed from the host. For example, in case 2, the self-loop of the search pattern is outside the overlap. So it has been removed during the replacement procedure. What overlaps in the search pattern is alone retained. So, the embedding from `overlap` to `Find what` is the **specification for deletion**. 
-
+### Replace = Delete and Add
 
 ```{image} assets/Ch6/interfaceExample.png
 :alt: Whoopsy!
@@ -164,9 +198,15 @@ Note that, the vertices and the edges of the search pattern outside the overlap 
 :align: center
 ```
 
-The vertices and the edges of the replacement pattern outside the overlap region are added to the host grpah. In case 2, these are unlabelled yellow color nodes in `Replace with` are outside the overlap region. They have been added to the host graph during the replacement. So, the embedding from `overlap` to `Replace with` is the **specification for addition**.
+Let us now have a closer look at the replacement procedure.
 
-The overlap will be unchanged. It is precisely what remains after removing specified edges/vertices from the search pattern.
+During the replacement procedure, the vertices and edges of `Find` which do not overlap with `Replace` are removed from the match. For example, in the picture above, the self-loop of the search pattern is outside the overlap region. So, it is removed from the host graph at the match during the replacement procedure. Only those vertices and edges in the search pattern which overlap with the replacement are alone retained. From this view point, the morphism from `overlap` to `Find` is a **specification for deletion** (of vertices and edges at a match). 
+
+During the replacement procedure, the vertices and the edges of (`Replace`) outside the overlap region are added to the host graph at the match. For example, in the picture above, the unlabelled vertices and edges of `Replace` are outside the overlap region. We could see that they are added to the host graph during the replacement. From this view point, the morphism from `overlap` to `Replace` is a **specification for addition** (of vertices and edges at a match).
+
+Note that the `overlap` shape remains unchanged during the replacement. The overlap is precisely what remains after removing the edges/vertices of `Find` as per the specification. 
+
+Thus, a specification for "find-and-replace" in graphs is as follows:
 
 ```{image} assets/Ch6/specification.png
 :alt: Whoopsy!
@@ -176,37 +216,50 @@ The overlap will be unchanged. It is precisely what remains after removing speci
 
 Neat, huh?!
 
-:::{admonition} Puzzle 1
-
-````{div} wrapper 
-
-Find the overlap between search and replace for the following replacement:
-
-
-... 
-
-:::{admonition} Solution 
-:class: dropdown
-````{div} wrapper 
-IMAGE
-````
-
-:::
-
 :::{admonition} Puzzle 2
 
 ````{div} wrapper 
 
-Apply the following find and replace to the given host graph at the highlighted match:
+Find the overlap between `Find` and `Replace` for the following replacement:
 
-...
-
-
+```{image} assets/Ch6/puzzle-2.png
+:alt: Whoopsy!
+:width: 625px
+:align: center
+```
 
 :::{admonition} Solution 
 :class: dropdown
 ````{div} wrapper 
-IMAGE
+```{image} assets/Ch6/puzzle-2-sol.png
+:alt: Whoopsy!
+:width: 425px
+:align: center
+```
+````
+
+:::
+
+:::{admonition} Puzzle 3
+
+````{div} wrapper 
+
+Apply the following replacement in the host graph. The match between `Find` and the host graph is indicated by the matching numbers on their vertices. 
+
+```{image} assets/Ch6/puzzle-3.png
+:alt: Whoopsy!
+:width: 525px
+:align: center
+```
+
+:::{admonition} Solution 
+:class: dropdown
+````{div} wrapper 
+```{image} assets/Ch6/puzzle-3-sol.png
+:alt: Whoopsy!
+:width: 325px
+:align: center
+```
 ````
 
 :::
@@ -222,9 +275,9 @@ The interface to find-and-replace needs to have:
 :align: center
 ```
 
-- The injective morphism into `Find what` is the **specification for deletion**. 
+- The injective morphism into `Find` is a **specification for deletion**. 
 
-- The injective morphism into `Replace With` is the **specification for addition**.
+- The injective morphism into `Replace` is a **specification for addition**.
 
 :::
 
