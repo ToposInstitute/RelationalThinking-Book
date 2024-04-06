@@ -454,7 +454,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples-of-find-and-replace">6.6 Further examples of find-and-replace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-usecases-of-find-and-replace">6.6 A few usecases of find-and-replace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>
@@ -648,7 +648,7 @@ document.write(`
 </section>
 <section id="removing-vertices-and-edges-from-a-graph">
 <h2>6.4 Removing vertices and edges from a graph<a class="headerlink" href="#removing-vertices-and-edges-from-a-graph" title="Permalink to this heading">#</a></h2>
-<p>We now know how to specify “find-and-replace” and how to specify a match. What remains is to apply these specifications to perform the find-and-replace!</p>
+<p>We now know how to specify “find-and-replace” in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace!</p>
 <a class="reference internal image-reference" href="_images/deletion.png"><img alt="Whoopsy!" class="align-center" src="_images/deletion.png" style="width: 350px;" /></a>
 <p>We will begin with the deletion, that is removing vertices and edges at the match!</p>
 <section id="finding-a-match-to-remove-vertices-edges">
@@ -782,14 +782,14 @@ document.write(`
 </section>
 <section id="adding-vertices-and-edges-to-a-graph">
 <h2>6.5 Adding vertices and edges to a graph<a class="headerlink" href="#adding-vertices-and-edges-to-a-graph" title="Permalink to this heading">#</a></h2>
-<p>We applied the deletion rule to remove vertices and edges from a host graph at the match. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges specified by the addition rule. However, we will now work with the pushout complement we computed in the previous step. We first remove vertices and edges. We then add vertices and edges. That will complete our replacement procedure! Hurray!</p>
+<p>We applied the deletion rule to remove vertices and edges from a host graph at the match. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges specified by the addition rule. However, we will now work with the pushout complement we computed in the previous step. The idea is that we first deleted, we are now ready to add. That will complete our replacement procedure! Hurray!</p>
 <p>As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
 <a class="reference internal image-reference" href="_images/add-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-1.png" style="width: 550px;" /></a>
 </br>
 <p>We shall focus on the lower half of the diagram now where addition of vertices and edges shall proceed!</p>
 <a class="reference internal image-reference" href="_images/add-2.png"><img alt="Whoopsy!" class="align-center" src="_images/add-2.png" style="width: 550px;" /></a>
 </br>
-<p>We now want to compute a new graph by adding the vertices and edges exclusive to <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> to the host graph at the match! Do you see how?! Does the shape of the diagram ringbells?</p>
+<p>We now want to compute a new graph by adding the vertices and edges exclusive to <code class="docutils literal notranslate"><span class="pre">Replace</span></code> to the host graph at the match! Do you see how?! Does the shape of the diagram ringbells?</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Yes, the answer is</p>
 <p>Pushouts!!</p>
@@ -797,40 +797,41 @@ document.write(`
 <p>By computing the pushout of the above diagram, we glue vertices / edges to be added to the pushout complement along the overlap. Our completed diagram looks as follows now:</p>
 <a class="reference internal image-reference" href="_images/pushout.png"><img alt="Whoopsy!" class="align-center" src="_images/pushout.png" style="width: 550px;" /></a>
 <p>Let us try out some examples to make sure we are right! We start from the example we saw in the previous section!</p>
-<p><strong>Example:</strong> Adding a single edge</p>
-<p>Suppose, we have an addition rule like this, and the match given by the pushout complement step:</p>
+<div class="admonition-example-1-continued admonition">
+<p class="admonition-title">Example 1 continued …</p>
+<p>Suppose, we have an addition rule like this, and the match obtained at the pushout complement step:</p>
 <a class="reference internal image-reference" href="_images/add-example-rule.png"><img alt="Whoopsy!" class="align-center" src="_images/add-example-rule.png" style="width: 550px;" /></a>
 </br>
-<p>The <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> has an edge between vertices 1 and 2. Since this edge is exclusive to <code class="docutils literal notranslate"><span class="pre">Replace</span> <span class="pre">with</span></code> (<code class="docutils literal notranslate"><span class="pre">overlap</span></code> does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Replace</span></code> has an edge between vertices 1 and 2. Since this edge is exclusive to <code class="docutils literal notranslate"><span class="pre">Replace</span></code> (<code class="docutils literal notranslate"><span class="pre">overlap</span></code> does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!</p>
 <a class="reference internal image-reference" href="_images/add-example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/add-example-1.png" style="width: 550px;" /></a>
-<p>The complete picture of the replacement procedure (deletion and addition) for this example is as follows:</p>
+</div>
+<p>The complete picture of the replacement procedure (deletion and addition) for Example 1 is as follows:</p>
 <p>We have the following replacement rule and a match in the host graph.</p>
 <a class="reference internal image-reference" href="_images/complete-example-rules.png"><img alt="Whoopsy!" class="align-center" src="_images/complete-example-rules.png" style="width: 550px;" /></a>
 </br>
 <p>Computing the pushout complement followed by the pushout completes the replacement procedure!</p>
 <a class="reference internal image-reference" href="_images/complete-example.png"><img alt="Whoopsy!" class="align-center" src="_images/complete-example.png" style="width: 550px;" /></a>
 <!----------------------------->
-<div class="admonition-puzzle-7-continued-from-puzzle-5-in-section admonition">
-<p class="admonition-title">Puzzle 7 (continued from Puzzle 5 in Section — )</p>
+<div class="admonition-puzzle-7-continued-from-puzzle-5 admonition">
+<p class="admonition-title">Puzzle 7 (continued from Puzzle 5 )</p>
 <p>Compute the pushout:</p>
 <a class="reference internal image-reference" href="_images/DPO-ex-1.png"><img alt="Whoopsy!" class="align-center" src="_images/DPO-ex-1.png" style="width: 550px;" /></a>
+</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Solution</p>
-<p>[Explanation]</p>
+<p class="admonition-title">Solution for Puzzle 7</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Replace</span></code> has an edge between vertices 1 and 2. Since this edge is exclusive to <code class="docutils literal notranslate"><span class="pre">Replace</span></code> (<code class="docutils literal notranslate"><span class="pre">overlap</span></code> does not have this edge between 1 and 2), this edge manifests as self-loop in the pushout.</p>
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/DPO-ex1-sol.png"><img alt="Whoopsy!" class="align-center" src="_images/DPO-ex1-sol.png" style="width: 650px;" /></a>
 </div>
 </div>
-</div>
-<div class="admonition-puzzle-8-continued-from-puzzle-6-in-section admonition">
-<p class="admonition-title">Puzzle 8 (continued from Puzzle 6 in Section — )</p>
+<div class="admonition-puzzle-8-continued-from-puzzle-6 admonition">
+<p class="admonition-title">Puzzle 8 (continued from Puzzle 6 )</p>
 <a class="reference internal image-reference" href="_images/DPO-ex-2.png"><img alt="Whoopsy!" class="align-center" src="_images/DPO-ex-2.png" style="width: 550px;" /></a>
+</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Solution</p>
-<p>[Explanation]</p>
+<p class="admonition-title">Solution for Puzzle 8</p>
 <div class="wrapper docutils">
 <a class="reference internal image-reference" href="_images/DPO-ex2-sol.png"><img alt="Whoopsy!" class="align-center" src="_images/DPO-ex2-sol.png" style="width: 650px;" /></a>
-</div>
 </div>
 </div>
 <div class="tip admonition">
@@ -845,8 +846,8 @@ document.write(`
 </div>
 <p>Common literature calls our “Find-and-replace machinery” for graphs as Double Pushout Rewriting (DPO).</p>
 </section>
-<section id="further-examples-of-find-and-replace">
-<h2>6.6 Further examples of find-and-replace<a class="headerlink" href="#further-examples-of-find-and-replace" title="Permalink to this heading">#</a></h2>
+<section id="a-few-usecases-of-find-and-replace">
+<h2>6.6 A few usecases of find-and-replace<a class="headerlink" href="#a-few-usecases-of-find-and-replace" title="Permalink to this heading">#</a></h2>
 <section id="chemistry">
 <h3>Chemistry<a class="headerlink" href="#chemistry" title="Permalink to this heading">#</a></h3>
 <p>In chemistry, <strong>click reactions</strong> give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder’s reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery.</p>
@@ -1141,7 +1142,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-examples-of-find-and-replace">6.6 Further examples of find-and-replace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-usecases-of-find-and-replace">6.6 A few usecases of find-and-replace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>

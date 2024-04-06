@@ -383,7 +383,7 @@ A *match* in a host graph is given by a morphism from ```Find``` to a host graph
 
 ## 6.4 Removing vertices and edges from a graph
 
-We now know how to specify "find-and-replace" and how to specify a match. What remains is to apply these specifications to perform the find-and-replace! 
+We now know how to specify "find-and-replace" in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace! 
 
 ```{image} assets/Ch6/deletion.png
 :alt: Whoopsy!
@@ -640,7 +640,7 @@ Vertices and edges of a graph is removed by computing pushout complement.
 
 ## 6.5 Adding vertices and edges to a graph
 
-We applied the deletion rule to remove vertices and edges from a host graph at the match. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges specified by the addition rule. However, we will now work with the pushout complement we computed in the previous step. We first remove vertices and edges. We then add vertices and edges. That will complete our replacement procedure! Hurray! 
+We applied the deletion rule to remove vertices and edges from a host graph at the match. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges specified by the addition rule. However, we will now work with the pushout complement we computed in the previous step. The idea is that we first deleted, we are now ready to add. That will complete our replacement procedure! Hurray! 
 
 As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
 
@@ -661,7 +661,7 @@ We shall focus on the lower half of the diagram now where addition of vertices a
 
 </br>
 
-We now want to compute a new graph by adding the vertices and edges exclusive to `Replace with` to the host graph at the match! Do you see how?! Does the shape of the diagram ringbells?
+We now want to compute a new graph by adding the vertices and edges exclusive to `Replace` to the host graph at the match! Do you see how?! Does the shape of the diagram ringbells?
 
 ::: {admonition} Yes, the answer is
 :class: dropdown
@@ -680,9 +680,9 @@ By computing the pushout of the above diagram, we glue vertices / edges to be ad
 
 Let us try out some examples to make sure we are right! We start from the example we saw in the previous section! 
 
-**Example:** Adding a single edge
+:::{admonition} Example 1 continued ...
 
-Suppose, we have an addition rule like this, and the match given by the pushout complement step:
+Suppose, we have an addition rule like this, and the match obtained at the pushout complement step:
 
 ```{image} assets/Ch6/add-example-rule.png
 :alt: Whoopsy!
@@ -692,7 +692,7 @@ Suppose, we have an addition rule like this, and the match given by the pushout 
 
 </br>
 
-The `Replace with` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace with` (`overlap` does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!
+The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace` (`overlap` does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!
 
 ```{image} assets/Ch6/add-example-1.png
 :alt: Whoopsy!
@@ -700,7 +700,9 @@ The `Replace with` has an edge between vertices 1 and 2. Since this edge is excl
 :align: center
 ```
 
-The complete picture of the replacement procedure (deletion and addition) for this example is as follows: 
+:::
+
+The complete picture of the replacement procedure (deletion and addition) for Example 1 is as follows: 
 
 We have the following replacement rule and a match in the host graph. 
 
@@ -721,7 +723,7 @@ Computing the pushout complement followed by the pushout completes the replaceme
 
 <!----------------------------->
 
-:::{admonition} Puzzle 7 (continued from Puzzle 5 in Section --- )
+:::{admonition} Puzzle 7 (continued from Puzzle 5 )
 
 Compute the pushout:
 
@@ -730,11 +732,12 @@ Compute the pushout:
 :width: 550px
 :align: center
 ```
+:::
 
-:::{admonition} Solution
+:::{admonition} Solution for Puzzle 7
 :class: dropdown
 
-[Explanation]
+The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace` (`overlap` does not have this edge between 1 and 2), this edge manifests as self-loop in the pushout.
 
 ````{div} wrapper 
 ```{image} assets/Ch6/DPO-ex1-sol.png
@@ -746,18 +749,17 @@ Compute the pushout:
 
 :::
 
-:::{admonition} Puzzle 8 (continued from Puzzle 6 in Section --- )
+:::{admonition} Puzzle 8 (continued from Puzzle 6 )
 
 ```{image} assets/Ch6/DPO-ex-2.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
 ```
+::: 
 
-:::{admonition} Solution
+:::{admonition} Solution for Puzzle 8
 :class: dropdown
-
-[Explanation]
 
 ````{div} wrapper 
 ```{image} assets/Ch6/DPO-ex2-sol.png
@@ -793,7 +795,7 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 
 Common literature calls our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO). 
 
-## 6.6 Further examples of find-and-replace
+## 6.6 A few usecases of find-and-replace
 ### Chemistry
 
 In chemistry, **click reactions** give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder's reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery. 
