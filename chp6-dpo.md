@@ -881,12 +881,12 @@ Reshaping directed graph follows the same idea as undirected graphs. The find-an
 +++
 
 ```{code-cell}
-# Puzzle 3
+# Puzzle 4
 #-----------
 
 using Catlab
 
-pattern = path_graph(SymmetricGraph, 3)
+find = path_graph(SymmetricGraph, 3)
 host = cycle_graph(SymmetricGraph, 3)
 
 # There are 12 matches because the path can start 
@@ -895,11 +895,25 @@ host = cycle_graph(SymmetricGraph, 3)
 # for both edges whether they go clockwise or not, 
 # so that is 3 x 2 x 2 independent choices.
 
-matches = homomorphisms(pattern, host)
+matches = homomorphisms(find, host)
 
 ```
 
 +++
+
++++
+
+```{code-cell}
+
+# uncomment the following line to visualize the Find pattern
+# to_graphviz(pattern)
+
+# uncomment the following line to visualize the host
+# to_graphviz(host)
+
+```
++++
+
 
 ### Is this a pushout complement?
 
@@ -909,41 +923,42 @@ matches = homomorphisms(pattern, host)
 
 using Catlab
 using AlgebraicRewriting.CSets
-K = SymmetricGraph(1)
-L = path_graph(SymmetricGraph, 2)
-G = path_graph(SymmetricGraph, 3)
+overlap = SymmetricGraph(1)
+find = path_graph(SymmetricGraph, 2)
+host = path_graph(SymmetricGraph, 3)
 
 # There is only one homomorphism (up to symmetry)
 # So we can pick an arbitrary one
-p = homomorphism(K, L)
-m = homomorphism(L, G)
+del = homomorphism(overlap, find)
+match = homomorphism(find, host)
 
 # We can check whether or not the pushout complement exists
-can_pushout_complement(p, m)
+can_pushout_complement(del, match)
 
 # We can get a list of the specific violations
-gluing_conditions(ComposablePair(p, m))
+gluing_conditions(ComposablePair(del, match))
 
 ```
 
 ```{code-cell}
 
 # Example 3
-#----------------------------------------
-# (K, L, p: K->L are all the same)
-#----------------------------------------
+#----------
 
 using Catlab
 using AlgebraicRewriting.CSets
+overlap = SymmetricGraph(1)
+find = path_graph(SymmetricGraph, 2)
+host = path_graph(SymmetricGraph, 3)
 
-G = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
-m = homomorphism(L, G)
+host = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
+match = homomorphism(find, host)
 
 # We can check whether or not the pushout complement exists
-can_pushout_complement(p, m)
+can_pushout_complement(del, match)
 
 # We can get a list of the specific violations
-gluing_conditions(ComposablePair(p, m))
+gluing_conditions(ComposablePair(del, match))
 
 ```
 
@@ -956,10 +971,10 @@ gluing_conditions(ComposablePair(p, m))
 using Catlab
 using AlgebraicRewriting.CSets
 
-Overlap, Pattern₅, Host₅ = SymmetricGraph.([2, 4, 6])
-O_P₅ = ACSetTransformation(Overlap, Pattern₅; V=[1,2])
-P_H₅ = ACSetTransformation(Pattern₅, Host₅; V=[1,1,2,2])
-O_PC₅, PC_H₅ = pushout_complement(O_P₅, P_H₅)
+Overlap, Find₅, Host₅ = SymmetricGraph.([2, 4, 6])
+del = ACSetTransformation(Overlap, Find₅; V=[1,2])
+match = ACSetTransformation(Find₅, Host₅; V=[1,1,2,2])
+O_PC₅, PC_H₅ = pushout_complement(match, del)
 
 to_graphviz(dom(PC_H₅))
 
@@ -972,15 +987,15 @@ to_graphviz(dom(PC_H₅))
 
 using Catlab
 
-Pattern₆ = SymmetricGraph(3)
-add_edge!(Pattern₆, 2, 3)
+Find₆ = SymmetricGraph(3)
+add_edge!(Find₆, 2, 3)
 
 Host₆ = path_graph(SymmetricGraph, 6)
 
-O_P₆ = ACSetTransformation(Overlap, Pattern₆; V=[1,3])
-P_H₆ = homomorphism(Pattern₆, Host₆; initial=(V=[5,1,2],))
+del = ACSetTransformation(Overlap, Find₆; V=[1,3])
+match = homomorphism(Find₆, Host₆; initial=(V=[5,1,2],))
 
-O_PC₆, PC_H₆ = pushout_complement(O_P₆, P_H₆)
+O_PC₆, PC_H₆ = pushout_complement(match, del)
 
 to_graphviz(dom(PC_H₆))
 
@@ -1012,13 +1027,17 @@ to_graphviz(codom(fromR))
 
 using Catlab
 
+# Monic=true enforces that the two vertices in Overlap are not mapped to a
+# single vertex in the single-edge graph.
+add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
+
 fromR, fromPC = pushout(O_PC₆, add)
 to_graphviz(codom(fromR))
 
 
 ```
 
-## 6.8 Summary 
+## 6.8 Goodness of relational thinking 
 
 #### Relational thinking shifts vocabulary
 
@@ -1056,6 +1075,10 @@ As we saw in double pushouts, relational thinking precisely follows this order! 
  Think relationally to get it right rightaway!!
 
 ::: 
+
+## 6.9 Summary 
+
+....
 
 ## Footnotes and References
 
