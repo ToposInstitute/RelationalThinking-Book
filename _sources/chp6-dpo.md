@@ -332,6 +332,7 @@ The first match is an injective morphism whereas the second one isn't
 
 Let us strengthen our understanding!
 
+(puzzle-4)=
 :::{admonition} Puzzle 4
 
 Find at least two matches of the search pattern in the host graph. 
@@ -597,7 +598,7 @@ The good news is that the *universal nature* of pushouts guarantee us that pusho
 Is there a pushout complement? If not, why?
 
 ````{div} wrapper 
-```{image} assets/Ch6/dangling.png
+```{image} assets/Ch6/dangling-puzzle.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -615,7 +616,7 @@ Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
-```{image} assets/Ch6/right-identity.png
+```{image} assets/Ch6/right-identity-puzzle.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -880,11 +881,25 @@ This section will demonstrate how graph "find-and-replace" can be performed in a
 
 ### Finding matches of a search pattern
 
+:::{admonition} Puzzle 4
+
+Find at least two matches of the search pattern in the host graph. 
+
+````{div} wrapper 
+```{image} assets/Ch6/match-ex1.png
+:alt: Whoopsy!
+:width: 350px
+:align: center
+```
+````
+
+:::
+
 +++
 
 ```{code-cell}
-# Puzzle 4
-#-----------
+# Puzzle 4 solution
+#------------------
 
 using Catlab
 
@@ -919,9 +934,24 @@ matches = homomorphisms(find, host)
 
 ### Is this a pushout complement?
 
+:::{admonition} Example 2
+
+(Need to be illustrated in the style matching above puzzles)
+
+Is there a pushout complement? If not, why?
+
+````{div} wrapper 
+```{image} assets/Ch6/dangling-puzzle.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+````
+:::
+
 ```{code-cell}
-# Example 2
-#-----------
+# Example 2 solution
+#--------------------
 
 using Catlab
 using AlgebraicRewriting.CSets
@@ -937,21 +967,41 @@ match = homomorphism(find, host)
 # We can check whether or not the pushout complement exists
 can_pushout_complement(del, match)
 
-# We can get a list of the specific violations
-gluing_conditions(ComposablePair(del, match))
-
 ```
 
 ```{code-cell}
+# We can get a list of the specific violations
+gluing_conditions(ComposablePair(del, match))
+```
 
-# Example 3
-#----------
+:::{admonition} Example 3
+
+Is there a pushout complement? If not, why?
+
+
+````{div} wrapper 
+```{image} assets/Ch6/right-identity-puzzle.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+````
+
+:::
+
+```{code-cell}
+
+# Example 3 solution
+#-------------------
 
 using Catlab
 using AlgebraicRewriting.CSets
 overlap = SymmetricGraph(1)
 find = path_graph(SymmetricGraph, 2)
-host = path_graph(SymmetricGraph, 3)
+
+# There is only one homomorphism (up to symmetry)
+# So we can pick an arbitrary one
+del = homomorphism(overlap, find)
 
 host = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
 match = homomorphism(find, host)
@@ -959,16 +1009,30 @@ match = homomorphism(find, host)
 # We can check whether or not the pushout complement exists
 can_pushout_complement(del, match)
 
-# We can get a list of the specific violations
-gluing_conditions(ComposablePair(del, match))
-
 ```
 
-### Computing Pushout complements
+```{code-cell}
+# We can get a list of the specific violations
+gluing_conditions(ComposablePair(del, match))
+```
+
+### Computing double-pushouts
+
+:::{admonition} Puzzle 5
+
+What is the pushout complement?
+
+```{image} assets/Ch6/Ex-1.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+
+:::
 
 ```{code-cell}
-# Puzzle 5
-# --------
+# Puzzle 5 solution
+# -----------------
 
 using Catlab
 using AlgebraicRewriting.CSets
@@ -980,12 +1044,47 @@ O_PC₅, PC_H₅ = pushout_complement(del, match)
 
 to_graphviz(dom(PC_H₅))
 
+```
+
+
+:::{admonition} Puzzle 7 (continued from Puzzle 5 )
+
+Compute the pushout:
+```{image} assets/Ch6/DPO-ex-1.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
+:::
+
+```{code-cell}
+
+# Puzzle 7 solution (continuation from puzzle 5 solution)
+#--------------------------------------------------------
+
+# Monic=true enforces that the two vertices in Overlap are not mapped to a
+# single vertex in the single-edge graph.
+add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
+
+fromR, fromPC = pushout(O_PC₅, add)
+to_graphviz(codom(fromR))
 
 ```
 
+
+:::{admonition} Puzzle 6
+
+What is the pushout complement?
+```{image} assets/Ch6/Ex-2.png
+:alt: Whoopsy!
+:width: 450px
+:align: center
+```
+:::
+
 ```{code-cell}
-# Puzzle 6
-# --------
+# Puzzle 6 solution
+# -----------------
 
 using Catlab
 using AlgebraicRewriting.CSets
@@ -1000,37 +1099,29 @@ Host₆ = path_graph(SymmetricGraph, 6)
 del = ACSetTransformation(Overlap, Find₆; V=[1,3])
 match = homomorphism(Find₆, Host₆; initial=(V=[5,1,2],))
 
+# PC stands for Pushout Complement; O stands for overlap; H stands for host
+# O_PC₆ is the map from the overlap to the PC
+# PC_H₆ is the map from the PC to the host
 O_PC₆, PC_H₆ = pushout_complement(del, match)
 
 to_graphviz(dom(PC_H₆))
 
 ```
 
-### Computing double-pushouts
+:::{admonition} Puzzle 8 (continued from Puzzle 6 )
 
+Complete the pushout
 
-```{code-cell}
-
-# Puzzle 7
-#---------
-
-using Catlab
-
-# Monic=true enforces that the two vertices in Overlap are not mapped to a
-# single vertex in the single-edge graph.
-add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
-
-fromR, fromPC = pushout(O_PC₅, add)
-to_graphviz(codom(fromR))
-
+```{image} assets/Ch6/DPO-ex-2.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
 ```
-
+:::
 ```{code-cell}
 
-# Puzzle 8
-#---------
-
-using Catlab
+# Puzzle 8 solution (continuation from puzzle 6 solution)
+#--------------------------------------------------------
 
 # Monic=true enforces that the two vertices in Overlap are not mapped to a
 # single vertex in the single-edge graph.
@@ -1041,10 +1132,11 @@ to_graphviz(codom(fromR))
 
 
 ```
+ 
 
-## 6.8 Relational thinking  is good!
+## 6.8 Relational thinking is hard but good!
 
-Congratulations for readers for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!
+Congratulations for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!
 
 #### Relational thinking shifts vocabulary
 
@@ -1085,9 +1177,14 @@ As we saw in double pushouts, relational thinking precisely follows this order w
 
 ## 6.9 Summary 
 
-For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of pushout! 
+For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of pushout! And finally, 
 
-Finally, relational thinking is good :) 
+```{image} assets/Ch6/good-thinking.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+
 
 
 ## Footnotes and References
