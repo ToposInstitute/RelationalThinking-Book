@@ -876,6 +876,8 @@ Reshaping directed graph follows the same idea as undirected graphs. The find-an
 
 ## 6.7 Algebraic Julia for find-and-replace in graphs
 
+This section will demonstrate how graph "find-and-replace" can be performed in a computer using the Algebraic Julia library! We provide the Algebraic Julia code for the puzzles in this chapter. The reader is invited to run these code examples and have fun! 
+
 ### Finding matches of a search pattern
 
 +++
@@ -1037,15 +1039,17 @@ to_graphviz(codom(fromR))
 
 ```
 
-## 6.8 Goodness of relational thinking 
+## 6.8 Relational thinking  is good!
+
+Congratulations for readers for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!
 
 #### Relational thinking shifts vocabulary
 
-We would like to bring reader's attention to the some vocabulary common in practice since language influences thinking and vice versa.
+We would first like to bring reader's attention to the some vocabulary common in practice since language influences thinking and vice versa.
 
-The idea of "Find and replace" is a crude one in the sense it is unaware of the context of replacement. A text editor will allow me to replace "truth" by "lie" anywhere in the document. Context-unaware find and replace leads to chaos.
+The idea of "Find and replace" is a crude one in the sense that it is unaware of the context of replacement. A text editor will allow me to replace "truth" by "lie" anywhere in a document. Context-unaware find and replace leads to chaos.
 
-The mathematics we used to "find-and-replace" in graphs tells us that it is not a replacement, rather it is integration of a new pattern in the place of an exisiting pattern. To integrate is organic and harmonoius by nature! While to replace has an air of superiority about it! Replace is useful -- replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from "Find-and-replace" to "Find-and-integrate". 
+The mathematics we used to "find-and-replace" in graphs tells us that it is not a replacement, rather it is a careful integration of a new pattern in the place of an exisiting pattern. *To integrate* is organic and harmonoius by nature! While *to replace* has an air of superiority about it! Replace is useful -- replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from "Find-and-replace" to "Find-and-integrate" ot become a whole! 
 
 :::{admonition} Slogan
 :class: tip
@@ -1054,19 +1058,19 @@ The mathematics we used to "find-and-replace" in graphs tells us that it is not 
 
 ::: 
 
-This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter. 
+This slogan probably is the answer to all the political issues which have been brought up at the beginning of this chapter. 
 
 #### The order of processes
 
 Let us take a moment reflect on the process of modifying a graph guided by relational thinking! 
 
-As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations -- first add new vertices and edges and then remove, even though remove-first and add-next is more economic. A add-first and remove-next procedure must handle accidental errors like which are otherwise absent in the other order: 
+As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we first remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations -- first add new vertices and edges and then remove, even though remove-first and add-next is more economic. An add-first and remove-next procedure must handle accidental errors which are otherwise absent in the other order: 
 - Removing what has been added
 - Adding over the removal region. 
 
 Hence, to remove first and to add next is elegant and as well as cleaner!  
 
-As we saw in double pushouts, relational thinking precisely follows this order! Somehow, the mathematics 'knew' that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed. 
+As we saw in double pushouts, relational thinking precisely follows this order without any manual intervention! Somehow, the mathematics 'knew' that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed. 
 
 
 :::{admonition} Slogan
@@ -1078,10 +1082,13 @@ As we saw in double pushouts, relational thinking precisely follows this order! 
 
 ## 6.9 Summary 
 
-....
+For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of pushout! 
+
+Finally, relational thinking is good :) 
+
 
 ## Footnotes and References
 
-[^1]: A few examples in this chapter have been inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
+[1]: A few examples in this chapter have been inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
 
 

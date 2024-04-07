@@ -466,7 +466,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-relational-thinking">6.8 Goodness of relational thinking</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-is-good">6.8 Relational thinking  is good!</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabulary">Relational thinking shifts vocabulary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">The order of processes</a></li>
 </ul>
@@ -881,6 +881,7 @@ document.write(`
 </section>
 <section id="algebraic-julia-for-find-and-replace-in-graphs">
 <h2>6.7 Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
+<p>This section will demonstrate how graph “find-and-replace” can be performed in a computer using the Algebraic Julia library! We provide the Algebraic Julia code for the puzzles in this chapter. The reader is invited to run these code examples and have fun!</p>
 <section id="finding-matches-of-a-search-pattern">
 <h3>Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -1048,29 +1049,30 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="goodness-of-relational-thinking">
-<h2>6.8 Goodness of relational thinking<a class="headerlink" href="#goodness-of-relational-thinking" title="Permalink to this heading">#</a></h2>
+<section id="relational-thinking-is-good">
+<h2>6.8 Relational thinking  is good!<a class="headerlink" href="#relational-thinking-is-good" title="Permalink to this heading">#</a></h2>
+<p>Congratulations for readers for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!</p>
 <section id="relational-thinking-shifts-vocabulary">
 <h3>Relational thinking shifts vocabulary<a class="headerlink" href="#relational-thinking-shifts-vocabulary" title="Permalink to this heading">#</a></h3>
-<p>We would like to bring reader’s attention to the some vocabulary common in practice since language influences thinking and vice versa.</p>
-<p>The idea of “Find and replace” is a crude one in the sense it is unaware of the context of replacement. A text editor will allow me to replace “truth” by “lie” anywhere in the document. Context-unaware find and replace leads to chaos.</p>
-<p>The mathematics we used to “find-and-replace” in graphs tells us that it is not a replacement, rather it is integration of a new pattern in the place of an exisiting pattern. To integrate is organic and harmonoius by nature! While to replace has an air of superiority about it! Replace is useful – replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from “Find-and-replace” to “Find-and-integrate”.</p>
+<p>We would first like to bring reader’s attention to the some vocabulary common in practice since language influences thinking and vice versa.</p>
+<p>The idea of “Find and replace” is a crude one in the sense that it is unaware of the context of replacement. A text editor will allow me to replace “truth” by “lie” anywhere in a document. Context-unaware find and replace leads to chaos.</p>
+<p>The mathematics we used to “find-and-replace” in graphs tells us that it is not a replacement, rather it is a careful integration of a new pattern in the place of an exisiting pattern. <em>To integrate</em> is organic and harmonoius by nature! While <em>to replace</em> has an air of superiority about it! Replace is useful – replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary from “Find-and-replace” to “Find-and-integrate” ot become a whole!</p>
 <div class="tip admonition">
 <p class="admonition-title">Slogan</p>
 <p>Replace “replace” by “integrate”</p>
 </div>
-<p>This slogan probably is the answer to all the political issues mentioned in the beginning of the chapter.</p>
+<p>This slogan probably is the answer to all the political issues which have been brought up at the beginning of this chapter.</p>
 </section>
 <section id="the-order-of-processes">
 <h3>The order of processes<a class="headerlink" href="#the-order-of-processes" title="Permalink to this heading">#</a></h3>
 <p>Let us take a moment reflect on the process of modifying a graph guided by relational thinking!</p>
-<p>As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations – first add new vertices and edges and then remove, even though remove-first and add-next is more economic. A add-first and remove-next procedure must handle accidental errors like which are otherwise absent in the other order:</p>
+<p>As we saw in this chapter, we modify by searching for a pattern in a graph. Once a match is found, we first remove and then add vertices and edges as indicated by the pattern to be integrated. Loosely speaking, in a free world, nothing prevents one from switching the order of these operations – first add new vertices and edges and then remove, even though remove-first and add-next is more economic. An add-first and remove-next procedure must handle accidental errors which are otherwise absent in the other order:</p>
 <ul class="simple">
 <li><p>Removing what has been added</p></li>
 <li><p>Adding over the removal region.</p></li>
 </ul>
 <p>Hence, to remove first and to add next is elegant and as well as cleaner!</p>
-<p>As we saw in double pushouts, relational thinking precisely follows this order! Somehow, the mathematics ‘knew’ that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed.</p>
+<p>As we saw in double pushouts, relational thinking precisely follows this order without any manual intervention! Somehow, the mathematics ‘knew’ that it must first remove by computing pushout complement and then add by computing pushout over that complement! Switching the order is not possible. It is a wonder how did the math get the ordering right?! Even though it is a mystery, there is a message that is being conveyed.</p>
 <div class="tip admonition">
 <p class="admonition-title">Slogan</p>
 <p>Think relationally to get it right rightaway!!</p>
@@ -1079,10 +1081,12 @@ document.write(`
 </section>
 <section id="summary">
 <h2>6.9 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>….</p>
+<p>For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of pushout!</p>
+<p>Finally, relational thinking is good :)</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
+<p>[1]: A few examples in this chapter have been inspired by <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the handout</a> titled “Double Pushout Rewriting in Chemistry” authored by Georg Fischer, and Hannah Gschwentner, and <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the blog post</a> “Double pushouts on Graphs” by Mark Gritter!</p>
 </section>
 </section>
 
@@ -1175,7 +1179,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-relational-thinking">6.8 Goodness of relational thinking</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-is-good">6.8 Relational thinking  is good!</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabulary">Relational thinking shifts vocabulary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">The order of processes</a></li>
 </ul>
