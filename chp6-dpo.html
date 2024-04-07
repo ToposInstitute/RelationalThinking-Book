@@ -454,7 +454,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-usecases-of-find-and-replace">6.6 A few usecases of find-and-replace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-use-cases-of-find-and-replace">6.6 A few use cases of find-and-replace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>
@@ -847,8 +847,8 @@ document.write(`
 </div>
 <p>Common literature calls our “Find-and-replace machinery” for graphs as Double Pushout Rewriting (DPO).</p>
 </section>
-<section id="a-few-usecases-of-find-and-replace">
-<h2>6.6 A few usecases of find-and-replace<a class="headerlink" href="#a-few-usecases-of-find-and-replace" title="Permalink to this heading">#</a></h2>
+<section id="a-few-use-cases-of-find-and-replace">
+<h2>6.6 A few use cases of find-and-replace<a class="headerlink" href="#a-few-use-cases-of-find-and-replace" title="Permalink to this heading">#</a></h2>
 <section id="chemistry">
 <h3>Chemistry<a class="headerlink" href="#chemistry" title="Permalink to this heading">#</a></h3>
 <p>In chemistry, <strong>click reactions</strong> give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder’s reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery.</p>
@@ -907,8 +907,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># uncomment the following line to visualize the Find pattern</span>
-<span class="c"># to_graphviz(pattern)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># uncomment the following line to visualize the `find` graph</span>
+<span class="c"># to_graphviz(find)</span>
 
 <span class="c"># uncomment the following line to visualize the host</span>
 <span class="c"># to_graphviz(host)</span>
@@ -981,7 +981,7 @@ document.write(`
 <span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Find₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="o">.</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">])</span>
 <span class="n">del</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Find₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Find₅</span><span class="p">,</span><span class="w"> </span><span class="n">Host₅</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">O_PC₅</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">match</span><span class="p">,</span><span class="w"> </span><span class="n">del</span><span class="p">)</span>
+<span class="n">O_PC₅</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₅</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="n">match</span><span class="p">)</span>
 
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">dom</span><span class="p">(</span><span class="n">PC_H₅</span><span class="p">))</span>
 </pre></div>
@@ -994,6 +994,9 @@ document.write(`
 <span class="c"># --------</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">Catlab</span>
+<span class="k">using</span><span class="w"> </span><span class="n">AlgebraicRewriting</span><span class="o">.</span><span class="n">CSets</span>
+
+<span class="n">Overlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">Find₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SymmetricGraph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">add_edge!</span><span class="p">(</span><span class="n">Find₆</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
@@ -1003,7 +1006,7 @@ document.write(`
 <span class="n">del</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ACSetTransformation</span><span class="p">(</span><span class="n">Overlap</span><span class="p">,</span><span class="w"> </span><span class="n">Find₆</span><span class="p">;</span><span class="w"> </span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homomorphism</span><span class="p">(</span><span class="n">Find₆</span><span class="p">,</span><span class="w"> </span><span class="n">Host₆</span><span class="p">;</span><span class="w"> </span><span class="n">initial</span><span class="o">=</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],))</span>
 
-<span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">match</span><span class="p">,</span><span class="w"> </span><span class="n">del</span><span class="p">)</span>
+<span class="n">O_PC₆</span><span class="p">,</span><span class="w"> </span><span class="n">PC_H₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pushout_complement</span><span class="p">(</span><span class="n">del</span><span class="p">,</span><span class="w"> </span><span class="n">match</span><span class="p">)</span>
 
 <span class="n">to_graphviz</span><span class="p">(</span><span class="n">dom</span><span class="p">(</span><span class="n">PC_H₆</span><span class="p">))</span>
 </pre></div>
@@ -1086,7 +1089,7 @@ document.write(`
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
-<p>[1]: A few examples in this chapter have been inspired by <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the handout</a> titled “Double Pushout Rewriting in Chemistry” authored by Georg Fischer, and Hannah Gschwentner, and <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the blog post</a> “Double pushouts on Graphs” by Mark Gritter!</p>
+<p>[1]. Few of the examples and puzzles in this chapter were inspired by <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the handout</a> titled “Double Pushout Rewriting in Chemistry” authored by Georg Fischer, and Hannah Gschwentner, and <a class="reference external" href="https://steemit.com/mathematics/&#64;markgritter/double-pushouts-on-graphs">the blog post</a> “Double pushouts on Graphs” by Mark Gritter!</p>
 </section>
 </section>
 
@@ -1167,7 +1170,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-usecases-of-find-and-replace">6.6 A few usecases of find-and-replace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-use-cases-of-find-and-replace">6.6 A few use cases of find-and-replace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>

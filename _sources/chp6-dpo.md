@@ -795,7 +795,7 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 
 Common literature calls our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO). 
 
-## 6.6 A few usecases of find-and-replace
+## 6.6 A few use cases of find-and-replace
 ### Chemistry
 
 In chemistry, **click reactions** give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder's reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery. 
@@ -907,8 +907,8 @@ matches = homomorphisms(find, host)
 
 ```{code-cell}
 
-# uncomment the following line to visualize the Find pattern
-# to_graphviz(pattern)
+# uncomment the following line to visualize the `find` graph
+# to_graphviz(find)
 
 # uncomment the following line to visualize the host
 # to_graphviz(host)
@@ -976,7 +976,7 @@ using AlgebraicRewriting.CSets
 Overlap, Find₅, Host₅ = SymmetricGraph.([2, 4, 6])
 del = ACSetTransformation(Overlap, Find₅; V=[1,2])
 match = ACSetTransformation(Find₅, Host₅; V=[1,1,2,2])
-O_PC₅, PC_H₅ = pushout_complement(match, del)
+O_PC₅, PC_H₅ = pushout_complement(del, match)
 
 to_graphviz(dom(PC_H₅))
 
@@ -988,6 +988,9 @@ to_graphviz(dom(PC_H₅))
 # --------
 
 using Catlab
+using AlgebraicRewriting.CSets
+
+Overlap = SymmetricGraph(2)
 
 Find₆ = SymmetricGraph(3)
 add_edge!(Find₆, 2, 3)
@@ -997,7 +1000,7 @@ Host₆ = path_graph(SymmetricGraph, 6)
 del = ACSetTransformation(Overlap, Find₆; V=[1,3])
 match = homomorphism(Find₆, Host₆; initial=(V=[5,1,2],))
 
-O_PC₆, PC_H₆ = pushout_complement(match, del)
+O_PC₆, PC_H₆ = pushout_complement(del, match)
 
 to_graphviz(dom(PC_H₆))
 
@@ -1089,6 +1092,6 @@ Finally, relational thinking is good :)
 
 ## Footnotes and References
 
-[1]: A few examples in this chapter have been inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
+[1]. Few of the examples and puzzles in this chapter were inspired by [the handout](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) titled "Double Pushout Rewriting in Chemistry" authored by Georg Fischer, and Hannah Gschwentner, and [the blog post](https://steemit.com/mathematics/@markgritter/double-pushouts-on-graphs) "Double pushouts on Graphs" by Mark Gritter! 
 
 
