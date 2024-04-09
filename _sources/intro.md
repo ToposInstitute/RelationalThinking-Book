@@ -72,6 +72,21 @@ Once at the top of our ladder, we can begin to appreciate the view. Now in the w
 Ultimately, through this experience, we hope that you'll come away with a sense of the importance of finding good abstractions, identifying the ways objects relate to each other, situating them in the context of other objects they relate to, and contextualing them models in the space of possibilities. We also hope that you'll see the concrete payoffs, especially by doing this formally via a programming language, so that we can automatically extract and benefit from the insights that come from a relational perspective. Indeed, while it may seem in the beginning like we're just finding different, more abstruse ways of describing directed graphs, we hope that in the problem of dangling edges you'll see how the payoff naturally emerges, with seemingly little effort. 
 
 ## How we've designed this book
+
+### Style 
+
+This book is an experimental project. This book attempts to reveal the thought-process behind creating mathematics (category theory) using story-telling, lots of illustrations, and visualization of computations. As such, this book is close to a creative non-fiction.
+
+```{image} assets/Intro/machinery.png
+:alt: Whoopsy!
+:width: 400px
+:align: center
+```
+</br>
+
+
+The process of learning something new is like building a machine by collecting its many little parts, and by screwing all those parts tegether. When we got all the parts and all the parts in their right place screwed together, then the machine can take us forward in our further explorations! Most of the textbooks focus on providing the big screws and the parts of its machine to the reader. However, its the tiny nuts and bolts which decide if someone's understanding is tight and intact, or not. What this book does is to provide as much importance to the tiny nuts and bolts as much as to the big screws. This has been made possible by the story-telling style of writing. Consequently, this book strikes a balance between the depth and breath of content that has been covered.  
+
 ### Reader background
 
 We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. We hope, however, that even if you do not have experience with mathematics or programming, that you might find it interesting to use this book as a way to get acquianted with the beauty and power of mathematical thought.  
