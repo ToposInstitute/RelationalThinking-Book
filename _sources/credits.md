@@ -24,7 +24,7 @@ This work has been made possible by a grant from the [Mozilla Internet Ecosystem
 
 Thank you to **Avik Tripura** for creating the Logo and **Namista Tabassum** for creating the cover of this book!  
 
-Thanks to **Pawel Sobocinski** for the inspiration behind the Kiki and Bouba example in Chapter 2. We loved Kiki and Bouba so much that they made it to the logo of this book! 
+Thanks to **Pawel Sobocinski** for inspiring Kiki and Bouba in Chapter 2. We love these characters so much that they now appear in the logo of this book! 
 
 ```{image} assets/Credits/collage.png
 :alt: Whoopsy!
