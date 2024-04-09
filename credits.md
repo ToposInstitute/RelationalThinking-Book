@@ -16,35 +16,35 @@ This work has been made possible by a grant from the [Mozilla Internet Ecosystem
 
 ```{image} assets/Credits/Mozilla-Topos.png
 :alt: Whoopsy!
-:width: 550px
+:width: 350px
 :align: center
 ```
 
 **Logo**
 
-Thank you to Avik Tripura for creating the Logo and Namista Tabassum for the consultation!  
+Thank you to **Avik Tripura** for creating the Logo and **Namista Tabassum** for creating the cover of this book!  
 
-Thanks to Pawel Sobocinski for the inspiration behind the Kiki and Bouba example in Chapter 2. We loved Kiki and Bouba so much that they made it to the logo of this book! 
+Thanks to **Pawel Sobocinski** for the inspiration behind the Kiki and Bouba example in Chapter 2. We loved Kiki and Bouba so much that they made it to the logo of this book! 
+
+```{image} assets/Credits/collage.png
+:alt: Whoopsy!
+:width: 550px
+:align: center
+```
 
 **People**
 
-This work would not have been possible without the support of the Algebraic Julia team at the Topos Institute! A million thanks to each one of them!
+This work would not have been possible without the support of the *Algebraic Julia team* at the Topos Institute! A million thanks to each one of them!
 
-The authors thank Evan for guiding setting up live code execution, Kris coded up solutions for chapters 5 and 6, Owen for discussions on stand-alone code execution! 
+The authors thank **Evan** for guiding setting up live code execution! 
 
-Priyaa personally thanks David for drafting an initial schedule for the project and helping setting up the initial theme of the book! 
+Thank you **Sophie** for your enthusiasm and patience in helping Priyaa learn the Algebraic Dynamics package. You made possible the fun examples of Chapter 2!
 
-The authors thank Beth for all the conversations about project management and for inspiring the introduction of Chapter 6.
+Thank you **Kris** for coding the solutions in Algebaric Julia for chapters 5 and 6, and for writing detailed helpful comments to follow the code!
 
-**About the authors**
+Thank you **Owen** for discussions on stand-alone code execution! 
 
-- **Angeline Aguinaldo** - ... 
-
-- **Paul Dancstep** - ... 
-
-- **Brendan Fong** - ... 
-
-- **Priyaa Varshinee Srinivasan** - ... 
+Priyaa personally thanks **David** for drafting an initial schedule for the project and helping setting up the initial theme of the book! Priyaa also thanks **Beth** for sharing her wisdom on project management and scheduling!
 
 **Behind the scenes**
 
