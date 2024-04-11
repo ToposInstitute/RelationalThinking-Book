@@ -474,20 +474,29 @@ document.write(`
 </div>
 <section id="introduction">
 <h2>7.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using <strong>schemas</strong>, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using <strong>double-pushout (DPO) rewriting</strong>, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design.</p>
-<p>Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household? What parts go inside the other? What is wet and what is dry? And what items shouldn’t be combined at all costs? We would have to do quite a bit of mental book-keeping to talk in the language of graphs–</p>
+<p>So far, we have uncovered many powerful concepts for modeling graphs and making changes to them. Using <strong>schema</strong>, We neatly packaged up data of a graph in a way that we can recover all its fundamental concepts – vertices and edges, and how they relate to one another. Using <strong>double-pushouts (DPO)</strong>, we can edit an exisiting graph. With the capability to edit graphs, we can now model a number of graph-based scenarios such as, chemical reactions, and game design.</p>
+<p>Schemas provide us with a language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. Being remarkably general, schemas encourage us to be more ambitious and ask how can they model something non-graph based and more complex? For example, what if we were interested in talking about parts of a car or items in your kitchen? What parts go inside the other? What is wet and what is dry? And what items go with what and what items don’t go together? We would have to do quite a bit of mental book-keeping to talk in the language of graphs–</p>
 <blockquote>
-<div><p>“Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator… and the edge between them means that the Coca-Cola soda <em>is in</em> the refridgerator,… but this other edge between the soda and a node representing a box of Mentos means that the Mentos should <em>never be put in</em> the soda…”</p>
+<div><p>“For example, a bottle of Coca-Cola soda is a vertex and my refridgerator is another vertex… an edge between them means that the Coca-Cola soda <em>is in</em> the refridgerator,… but an edge between the soda and the vertex for a box of Mentos may mean that that the Mentos should <em>never be put in</em> the soda… edges take different meaning for each connection”</p>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you put Mentos in a soda, it will explode.</p>
 </div>
-<p>Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples of this.</p>
+<p>So, graphs might not be a great idea to model my kitchen. Lucky for us, what we have learned so far have applications beyond graphs. The rest of this chapter is a simple demonstration of the use of schemas to modelling some complex scenarios.</p>
 </section>
 <section id="cube-configuration">
 <h2>7.2 Cube Configuration<a class="headerlink" href="#cube-configuration" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by simply extending the graph schema with another concept, like faces. Let us we want to model a cube. A face in a cube has four edges. The schema for a cube would then consist of three parts: <code class="docutils literal notranslate"><span class="pre">Face</span></code>, <code class="docutils literal notranslate"><span class="pre">Edge</span></code>, <code class="docutils literal notranslate"><span class="pre">Vertex</span></code>. This schema also models the relationships between faces and edges, and edges and vertices– <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">tgt</span></code>. DPO rewriting in this context can model various transformations of a cube as if it were a packaging box.</p>
+<p>Let’s start by simply extending the graph schema with another concept, like <strong>faces</strong>. Let us we want to model a cube. A face in a cube has four edges. So, along with <code class="docutils literal notranslate"><span class="pre">Edge</span></code> and <code class="docutils literal notranslate"><span class="pre">Vertex</span></code> and their relationship, the schema for a cube also consists of <code class="docutils literal notranslate"><span class="pre">Face</span></code>, and its relationship to <code class="docutils literal notranslate"><span class="pre">edge</span></code>(s). This schema has six relationships:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code> from edges to vertices, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>,from faces to edges.</p></li>
+</ol>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and ponder!</p>
+<p>What can double pushouts (DPO) in this context model?</p>
+</div>
+<p>DPO rewriting in this context can model various transformations of a cube as if it were a packaging box.</p>
 <p>In AlgebraicJulia, this schema can be expressed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -511,9 +520,9 @@ document.write(`
 </div>
 </div>
 <a class="reference internal image-reference" href="_images/Sch3DShape.svg"><img alt="_images/Sch3DShape.svg" class="align-center" src="_images/Sch3DShape.svg" width="350px" /></a>
-<p>We can see that the schema, <code class="docutils literal notranslate"><span class="pre">SchCube</span></code>, closely resembles the schema for a graph, <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>. More pointedly, <code class="docutils literal notranslate"><span class="pre">SchCube</span></code> extends <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code> with the idea of a <code class="docutils literal notranslate"><span class="pre">Face</span></code> its edges.</p>
-<div class="admonition-extending-schemas admonition">
-<p class="admonition-title">Extending schemas</p>
+<p>We can see that the schema, <code class="docutils literal notranslate"><span class="pre">SchCube</span></code>, closely resembles the schema for a graph, <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>. More pointedly, <code class="docutils literal notranslate"><span class="pre">SchCube</span></code> extends <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code> with the concept of a <code class="docutils literal notranslate"><span class="pre">Face</span></code>.</p>
+<div class="admonition-extending-schemas-from-graphs-to-cubes admonition">
+<p class="admonition-title">Extending schemas: From graphs to cubes</p>
 <p>In AlgebraicJulia, inheritence of schemas can be programmed using <code class="docutils literal notranslate"><span class="pre">&lt;:</span></code>. In the case of <code class="docutils literal notranslate"><span class="pre">SchCube</span></code> and <code class="docutils literal notranslate"><span class="pre">SchGraph</span></code>, this can be written as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span> <span class="n">Sch3DShape</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span> <span class="o">&lt;</span><span class="p">:</span> <span class="n">SchGraph</span> <span class="n">begin</span>
   <span class="n">Face</span><span class="p">::</span><span class="n">Ob</span>
@@ -531,11 +540,11 @@ document.write(`
 <a class="reference internal image-reference" href="_images/TopOpening.gif"><img alt="_images/TopOpening.gif" class="align-center" src="_images/TopOpening.gif" style="width: 350px;" /></a>
 </br>
 </div>
-<p>Let us say we want to have a cube represent a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it’s closed by explaining how the faces, edges, and vertices are defined relative to one another. In a cube, there are exactly six faces, which we can call <code class="docutils literal notranslate"><span class="pre">f1,</span> <span class="pre">f2,</span> <span class="pre">f3,</span> <span class="pre">f4,</span> <span class="pre">f5,</span> <span class="pre">f6</span></code>. Faces have exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as <code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">e3,</span> <span class="pre">e4,</span> <span class="pre">...</span></code>. If we want to say the top of edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e1</span></code>, then we can refer to the schema and express the the following piece of data:</p>
+<p>Let us say we want to have a cube representing a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it’s closed by explaining how the faces, edges, and vertices are related to one another. In a cube, there are exactly six faces, which we can call <code class="docutils literal notranslate"><span class="pre">f1,</span> <span class="pre">f2,</span> <span class="pre">f3,</span> <span class="pre">f4,</span> <span class="pre">f5,</span> <span class="pre">f6</span></code>. Each face has exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as <code class="docutils literal notranslate"><span class="pre">e1,</span> <span class="pre">e2,</span> <span class="pre">e3,</span> <span class="pre">e4,</span> <span class="pre">...</span></code>. If we want to say the top of edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e1</span></code>, then we can refer to the schema and express the the following piece of data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">top</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span> <span class="o">==</span> <span class="n">e1</span>
 </pre></div>
 </div>
-<p>Similarly, we can say the left edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e2</span></code> by saying:</p>
+<p>Similarly, we can say the bottom edge of <code class="docutils literal notranslate"><span class="pre">f1</span></code> is <code class="docutils literal notranslate"><span class="pre">e2</span></code> by saying:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bottom</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span> <span class="o">==</span> <span class="n">e2</span>
 </pre></div>
 </div>
@@ -610,7 +619,7 @@ document.write(`
 </section>
 <section id="opening-a-closed-box">
 <h3>Opening a closed box<a class="headerlink" href="#opening-a-closed-box" title="Permalink to this heading">#</a></h3>
-<p>Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box.</p>
+<p>Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box. The rule looks for the top face of the cube, <em>deletes</em> it, and <em>adds</em> another face that is connected by only one edge to the rest of the cube.</p>
 <figure class="align-center" id="id13">
 <img alt="_images/BoxDPO0.png" src="_images/BoxDPO0.png" />
 <figcaption>
@@ -618,10 +627,10 @@ document.write(`
 </figcaption>
 </figure>
 <div class="dropdown admonition">
-<p class="admonition-title">Opening a box rule</p>
-<p>The open box rule has the following <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">K</span></code>, and <code class="docutils literal notranslate"><span class="pre">R</span></code> parts:</p>
+<p class="admonition-title">Opening a box: Coding the find and replace rule</p>
+<p>The open box rule has the following <code class="docutils literal notranslate"><span class="pre">Find</span></code>, <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, and <code class="docutils literal notranslate"><span class="pre">Replace</span></code> parts:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">open_box</span> <span class="o">=</span> <span class="nd">@migration</span><span class="p">(</span><span class="n">SchRule</span><span class="p">,</span> <span class="n">Sch3DShape</span><span class="p">,</span> <span class="n">begin</span>
-  <span class="n">L</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
+  <span class="n">find</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
     <span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">)::</span><span class="n">Face</span>
 
     <span class="c1"># top edges</span>
@@ -656,10 +665,10 @@ document.write(`
     <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
     <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
   <span class="n">end</span>
-  <span class="n">K</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
+  <span class="n">overlap</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
     <span class="p">(</span><span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">)::</span><span class="n">Face</span>
   <span class="n">end</span>
-  <span class="n">R</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
+  <span class="n">replace</span> <span class="o">=&gt;</span> <span class="nd">@join</span> <span class="n">begin</span>
     <span class="p">(</span><span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">,</span> <span class="n">faceNew</span><span class="p">)::</span><span class="n">Face</span>
     <span class="p">(</span><span class="n">edge1</span><span class="p">,</span> <span class="n">edge2</span><span class="p">,</span> <span class="n">edge3</span><span class="p">)::</span><span class="n">Edge</span>
 
@@ -701,13 +710,13 @@ document.write(`
     <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">src</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span>
     <span class="n">tgt</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">face4</span><span class="p">))</span> <span class="o">==</span> <span class="n">tgt</span><span class="p">(</span><span class="n">bottom</span><span class="p">(</span><span class="n">face3</span><span class="p">))</span>
   <span class="n">end</span>
-  <span class="n">l</span> <span class="o">=&gt;</span> <span class="n">begin</span>
+  <span class="k">del</span> <span class="o">=&gt;</span> <span class="n">begin</span>
     <span class="n">face1</span> <span class="o">=&gt;</span> <span class="n">face1</span>
     <span class="n">face2</span> <span class="o">=&gt;</span> <span class="n">face2</span>
     <span class="n">face3</span> <span class="o">=&gt;</span> <span class="n">face3</span>
     <span class="n">face4</span> <span class="o">=&gt;</span> <span class="n">face4</span>
   <span class="n">end</span>
-  <span class="n">r</span> <span class="o">=&gt;</span> <span class="n">begin</span>
+  <span class="n">add</span> <span class="o">=&gt;</span> <span class="n">begin</span>
     <span class="n">face1</span> <span class="o">=&gt;</span> <span class="n">face1</span>
     <span class="n">face2</span> <span class="o">=&gt;</span> <span class="n">face2</span>
     <span class="n">face3</span> <span class="o">=&gt;</span> <span class="n">face3</span>
@@ -717,16 +726,16 @@ document.write(`
 <span class="n">open_box_rule</span> <span class="o">=</span> <span class="n">make_rule</span><span class="p">(</span><span class="n">openBox</span><span class="p">,</span> <span class="n">ySchCube</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note: <code class="docutils literal notranslate"><span class="pre">&#64;migration</span></code> is formatting the parts of the rule so that <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">K</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, and <code class="docutils literal notranslate"><span class="pre">r</span></code> are clearly identified.</p>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">&#64;migration</span></code> is formatting the parts of the rule so that <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">overlap</span></code>, <code class="docutils literal notranslate"><span class="pre">replace</span></code>, <code class="docutils literal notranslate"><span class="pre">del</span></code>, and <code class="docutils literal notranslate"><span class="pre">add</span></code> are clearly identified.</p>
 </div>
 <aside class="sidebar">
 <p class="sidebar-title">The box never opens from underneath!</p>
 <a class="reference internal image-reference" href="_images/BottomOpening.gif"><img alt="Whoopsy!" class="align-left" src="_images/BottomOpening.gif" style="width: 400px;" /></a>
 </aside>
 <p>The rule looks for the top face of the cube, deletes it, and adds another face that is connected by only one edge to the rest of the cube.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">L</span></code> part of the rule represents the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has all but the bottom face. The bottom face is excluded because it is not relevant to the rule.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">K</span></code> part tells us that all the wall faces are the same between <code class="docutils literal notranslate"><span class="pre">L</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">R</span></code> part of the rule represents the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">find</span></code> part of the rule represents the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has all but the bottom face. The bottom face is excluded because it is not relevant to the rule.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">overlap</span></code> part tells us that all the wall faces are the same between <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">replace</span></code> part of the rule represents the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.</p>
 <p>This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges. That means the box will never open from underneath!</p>
 <!-- ![](assets/Ch7/BottomOpening.gif)
 
@@ -745,8 +754,8 @@ match = homomorphisms(L, closedCube)[1]
 <a class="reference internal image-reference" href="_images/KitchenBefore.png"><img alt="_images/KitchenBefore.png" class="align-center" src="_images/KitchenBefore.png" style="width: 500px;" /></a>
 </br>
 </div>
-<p>Concider a schema for a kitchen world. This schema contains ideas about {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity} and their subtyping relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food is on an Entity).</p>
-<p>If you recall from <span class="xref myst">Chapter 3</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from <code class="docutils literal notranslate"><span class="pre">Bread</span></code> to <code class="docutils literal notranslate"><span class="pre">Food</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Bread</span></code> are a <code class="docutils literal notranslate"><span class="pre">Food</span></code>, and likewise, a morphism <code class="docutils literal notranslate"><span class="pre">Food</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Food</span></code> are on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.</p>
+<p>Consider a schema for a kitchen world. This schema contains ideas about {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity} and their subtyping relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food is on an Entity).</p>
+<p><mark> If you recall from <span class="xref myst">Chapter 3</span>, objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from <code class="docutils literal notranslate"><span class="pre">Bread</span></code> to <code class="docutils literal notranslate"><span class="pre">Food</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Bread</span></code> are a <code class="docutils literal notranslate"><span class="pre">Food</span></code>, and likewise, a morphism <code class="docutils literal notranslate"><span class="pre">Food</span></code> is on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code> says that all elements of <code class="docutils literal notranslate"><span class="pre">Food</span></code> are on an <code class="docutils literal notranslate"><span class="pre">Entity</span></code>. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is. </mark></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
@@ -786,22 +795,22 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<img alt="_images/SchKitchen.svg" class="align-center" src="_images/SchKitchen.svg" /><p>DPO rewriting here can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering their relationships to reflect this new arrangement.</p>
+<img alt="_images/SchKitchen.svg" class="align-center" src="_images/SchKitchen.svg" /><p>DPO rewriting on kitchen arrangement can model transformations in the kitchen’s state, such as changing the arrangement of items. For example, using a DPO rewrite rule, we can simulate the action of combining cheese on a bread slice, thereby altering their relationships to reflect this new arrangement.</p>
 <section id="put-cheese-on-bread">
 <h3>Put Cheese On Bread<a class="headerlink" href="#put-cheese-on-bread" title="Permalink to this heading">#</a></h3>
-<p>Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, and <code class="docutils literal notranslate"><span class="pre">K</span></code> components of this rewrite rule.</p>
+<p>Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">replace</span></code>, and <code class="docutils literal notranslate"><span class="pre">overlap</span></code> components of this rewrite rule.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">put_cheese_on_bread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@migration</span><span class="p">(</span><span class="n">SchKitchen</span><span class="p">,</span><span class="w"> </span><span class="k">begin</span>
-<span class="w">  </span><span class="n">L</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">find</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="n">cheese</span><span class="o">::</span><span class="kt">Cheese</span>
 <span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
 <span class="w">  </span><span class="k">end</span>
-<span class="w">  </span><span class="n">K</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">overlap</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="n">cheese</span><span class="o">::</span><span class="kt">Cheese</span>
 <span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
 <span class="w">  </span><span class="k">end</span>
-<span class="w">  </span><span class="n">R</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">replace</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="n">cheese</span><span class="o">::</span><span class="kt">Cheese</span>
 <span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
 <span class="w">    </span><span class="n">cheese_is_food</span><span class="p">(</span><span class="n">cheese</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bread_slice_is_food</span><span class="p">(</span><span class="n">slice</span><span class="p">)</span><span class="w">  </span><span class="c"># become one</span>
@@ -814,7 +823,7 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. Instead, we can compute the colimit of representables <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and infer the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
+<p>Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code>. <mark> Instead, we can compute the colimit of representables <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and infer the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. <em>(Reader does not know what a colimit or a representable is. Can we explain this is in simpler terms or just indicate whats going on?)</em></mark>  This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
 </div>
 <figure class="align-center" id="id14">
 <img alt="_images/KitchenDPO.png" src="_images/KitchenDPO.png" />
@@ -822,7 +831,7 @@ match = homomorphisms(L, closedCube)[1]
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">The DPO rewrite rules for putting cheese on bread.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules.</p>
+<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. <mark> This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules. (what is a knowledge engineering choice?) </mark></p>
 </section>
 <section id="plate-slice">
 <h3>Plate Slice<a class="headerlink" href="#plate-slice" title="Permalink to this heading">#</a></h3>
@@ -830,15 +839,15 @@ match = homomorphisms(L, closedCube)[1]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plate_slice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@migration</span><span class="p">(</span><span class="n">SchRule</span><span class="p">,</span><span class="w"> </span><span class="n">SchKitchen</span><span class="p">,</span><span class="w"> </span><span class="k">begin</span>
-<span class="w">  </span><span class="n">L</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">find</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
 <span class="w">    </span><span class="n">plate</span><span class="o">::</span><span class="kt">Plate</span>
 <span class="w">  </span><span class="k">end</span>
-<span class="w">  </span><span class="n">K</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">overlap</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
 <span class="w">    </span><span class="n">plate</span><span class="o">::</span><span class="kt">Plate</span>
 <span class="w">  </span><span class="k">end</span>
-<span class="w">  </span><span class="n">R</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="n">replace</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nd">@join</span><span class="w"> </span><span class="k">begin</span>
 <span class="w">    </span><span class="n">slice</span><span class="o">::</span><span class="kt">BreadSlice</span>
 <span class="w">    </span><span class="n">plate</span><span class="o">::</span><span class="kt">Plate</span>
 <span class="w">    </span><span class="n">food_in_on</span><span class="p">(</span><span class="n">bread_slice_is_food</span><span class="p">(</span><span class="n">slice</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ware_is_entity</span><span class="p">(</span><span class="n">plate_is_ware</span><span class="p">(</span><span class="n">plate</span><span class="p">))</span>
@@ -849,11 +858,12 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<p>In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the <code class="docutils literal notranslate"><span class="pre">food_in_on</span></code> morphism and, in the case of plate, the function that maps it to entity is tied to the <code class="docutils literal notranslate"><span class="pre">ware_is_entity</span></code> morphism. This is effectively saying that the entity that the food is on is the same entity as the plate.</p>
-<div class="admonition-exercise admonition">
-<p class="admonition-title">Exercise</p>
-<p>Visualize in your head what the parts of the double-pushout (DPO) square would look like based on this rule.</p>
+<p>In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the <code class="docutils literal notranslate"><span class="pre">food_is_on</span></code> morphism and, in the case of plate, the function that maps it to entity is tied to the <code class="docutils literal notranslate"><span class="pre">ware_is_entity</span></code> morphism. This is effectively saying that the entity that the food is on is the same entity as the plate.</p>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and ponder</p>
+<p>How will the double-pushout (DPO) square look like for this rule.</p>
 </div>
+<p><mark> Angeline, can you write a motivating paragraph for a general audience how this example is related ot Robotics? </mark></p>
 </section>
 </section>
 <section id="summary">

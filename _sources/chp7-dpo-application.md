@@ -22,20 +22,30 @@ This chapter will extend the previously learned concepts from graphs to the worl
 
 ## 7.1 Introduction
 
-So far, we have uncovered many powerful concepts for modeling graphs and changes to them. Using **schemas**, we can cleverly package up data of a graph in a way that refers to its fundamental concepts, nodes and edges, and how they relate to one another. Using **double-pushout (DPO) rewriting**, we can make a whole host of edits to the data of the graph that can be used to model a number of graph-based scenarios, such as the Greek mythological romance, chemical reactions, and game design. 
+So far, we have uncovered many powerful concepts for modeling graphs and making changes to them. Using **schema**, We neatly packaged up data of a graph in a way that we can recover all its fundamental concepts -- vertices and edges, and how they relate to one another. Using **double-pushouts (DPO)**, we can edit an exisiting graph. With the capability to edit graphs, we can now model a number of graph-based scenarios such as, chemical reactions, and game design. 
 
-Schemas provide us with the language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. As remarkabley applicable these models are, they beg the question, how do they work with something more complex? For example, what if we were interested in talking about parts of a car or items in your household? What parts go inside the other? What is wet and what is dry? And what items shouldn't be combined at all costs? We would have to do quite a bit of mental book-keeping to talk in the language of graphs--
+Schemas provide us with a language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. Being remarkably general, schemas encourage us to be more ambitious and ask how can they model something non-graph based and more complex? For example, what if we were interested in talking about parts of a car or items in your kitchen? What parts go inside the other? What is wet and what is dry? And what items go with what and what items don't go together? We would have to do quite a bit of mental book-keeping to talk in the language of graphs--
 
-> "Remember, this node is about a bottle of Coca-Cola soda and this node is about my refridgerator... and the edge between them means that the Coca-Cola soda _is in_ the refridgerator,... but this other edge between the soda and a node representing a box of Mentos means that the Mentos should _never be put in_ the soda..."
+> "For example, a bottle of Coca-Cola soda is a vertex and my refridgerator is another vertex... an edge between them means that the Coca-Cola soda _is in_ the refridgerator,... but an edge between the soda and the vertex for a box of Mentos may mean that that the Mentos should _never be put in_ the soda... edges take different meaning for each connection"
 
 :::{note}
 If you put Mentos in a soda, it will explode.
 :::
 
-Lucky for us, what we have learned so far can have more general applications than graphs. The rest of this chapter will show some examples of this.
+So, graphs might not be a great idea to model my kitchen. Lucky for us, what we have learned so far have applications beyond graphs. The rest of this chapter is a simple demonstration of the use of schemas to modelling some complex scenarios.
 
 ## 7.2 Cube Configuration
-Let's start by simply extending the graph schema with another concept, like faces. Let us we want to model a cube. A face in a cube has four edges. The schema for a cube would then consist of three parts: `Face`, `Edge`, `Vertex`. This schema also models the relationships between faces and edges, and edges and vertices-- `top`, `bottom`, `left`, `right`, `src`, `tgt`. DPO rewriting in this context can model various transformations of a cube as if it were a packaging box. 
+Let's start by simply extending the graph schema with another concept, like **faces**. Let us we want to model a cube. A face in a cube has four edges. So, along with `Edge` and `Vertex` and their relationship, the schema for a cube also consists of `Face`, and its relationship to `edge`(s). This schema has six relationships: 
+1. `src` and `tgt` from edges to vertices, and 
+2. `top`, `bottom`, `left`, `right`,from faces to edges. 
+
+:::{admonition} Pause and ponder!
+
+What can double pushouts (DPO) in this context model?
+
+:::
+
+DPO rewriting in this context can model various transformations of a cube as if it were a packaging box. 
 
 In AlgebraicJulia, this schema can be expressed as follows:
 
@@ -62,9 +72,9 @@ to_graphviz(Sch3DShape)
 :align: center
 ```
 
-We can see that the schema, `SchCube`, closely resembles the schema for a graph, `SchGraph`. More pointedly, `SchCube` extends `SchGraph` with the idea of a `Face` its edges. 
+We can see that the schema, `SchCube`, closely resembles the schema for a graph, `SchGraph`. More pointedly, `SchCube` extends `SchGraph` with the concept of a `Face`. 
 
-:::{admonition} Extending schemas
+:::{admonition} Extending schemas: From graphs to cubes
 In AlgebraicJulia, inheritence of schemas can be programmed using `<:`. In the case of `SchCube` and `SchGraph`, this can be written as:
 
 ```
@@ -89,13 +99,13 @@ We can model various configurations of a cube, akin to unfolding a cardboard box
 </br>
 ````
 
-Let us say we want to have a cube represent a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it's closed by explaining how the faces, edges, and vertices are defined relative to one another. In a cube, there are exactly six faces, which we can call `f1, f2, f3, f4, f5, f6`. Faces have exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as `e1, e2, e3, e4, ...`. If we want to say the top of edge of `f1` is `e1`, then we can refer to the schema and express the the following piece of data:
+Let us say we want to have a cube representing a box with a birthday cake in it. When we deliver the cake to a friend, it starts off as closed. We can say that it's closed by explaining how the faces, edges, and vertices are related to one another. In a cube, there are exactly six faces, which we can call `f1, f2, f3, f4, f5, f6`. Each face has exactly four edges, which we call the top, bottom, left, and right edges. Edges can also have names, such as `e1, e2, e3, e4, ...`. If we want to say the top of edge of `f1` is `e1`, then we can refer to the schema and express the the following piece of data:
 
 ```
 top(f1) == e1
 ```
 
-Similarly, we can say the left edge of `f1` is `e2` by saying:
+Similarly, we can say the bottom edge of `f1` is `e2` by saying:
 
 ```
 bottom(f1) == e2
@@ -174,7 +184,7 @@ This instance defines a box that looks like _Fig. 1_.
 
 ### Opening a closed box
 
-Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box.
+Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box. The rule looks for the top face of the cube, *deletes* it, and *adds* another face that is connected by only one edge to the rest of the cube.
 
 ```{figure} assets/Ch7/BoxDPO0.png
 :align: center
@@ -182,14 +192,14 @@ Now, once we deliver the birthday cake, we want be able to open the box so the b
 The DPO rewrite rules for opening a closed box.
 ```
 
-:::{admonition} Opening a box rule
+:::{admonition} Opening a box: Coding the find and replace rule
 :class: dropdown
 
-The open box rule has the following `L`, `K`, and `R` parts:
+The open box rule has the following `Find`, `overlap`, and `Replace` parts:
 
 ```
 open_box = @migration(SchRule, Sch3DShape, begin
-  L => @join begin
+  find => @join begin
     (face, face1, face2, face3, face4)::Face
 
     # top edges
@@ -224,10 +234,10 @@ open_box = @migration(SchRule, Sch3DShape, begin
     tgt(right(face4)) == src(bottom(face4))
     tgt(right(face4)) == tgt(bottom(face3))
   end
-  K => @join begin
+  overlap => @join begin
     (face1, face2, face3, face4)::Face
   end
-  R => @join begin
+  replace => @join begin
     (face1, face2, face3, face4, faceNew)::Face
     (edge1, edge2, edge3)::Edge
 
@@ -269,13 +279,13 @@ open_box = @migration(SchRule, Sch3DShape, begin
     tgt(right(face4)) == src(bottom(face4))
     tgt(right(face4)) == tgt(bottom(face3))
   end
-  l => begin
+  del => begin
     face1 => face1
     face2 => face2
     face3 => face3
     face4 => face4
   end
-  r => begin
+  add => begin
     face1 => face1
     face2 => face2
     face3 => face3
@@ -285,7 +295,7 @@ end)
 open_box_rule = make_rule(openBox, ySchCube)
 ```
 
-Note: `@migration` is formatting the parts of the rule so that `L`, `K`, `R`, `l`, and `r` are clearly identified. 
+Note: `@migration` is formatting the parts of the rule so that `find`, `overlap`, `replace`, `del`, and `add` are clearly identified. 
 :::
 
 ````{sidebar} The box never opens from underneath!
@@ -298,11 +308,11 @@ Note: `@migration` is formatting the parts of the rule so that `L`, `K`, `R`, `l
 
 The rule looks for the top face of the cube, deletes it, and adds another face that is connected by only one edge to the rest of the cube.
 
-The `L` part of the rule represents the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has all but the bottom face. The bottom face is excluded because it is not relevant to the rule. 
+The `find` part of the rule represents the condition that must be satisfied in order for the rule to be applied. In this case, we want to be able to open a face that is currently shut. A face is considered shut if it is connected to four other faces by four common edges. We can model this by defining a cube that has all but the bottom face. The bottom face is excluded because it is not relevant to the rule. 
 
-The `K` part tells us that all the wall faces are the same between `L` and `R`. 
+The `overlap` part tells us that all the wall faces are the same between `find` and `replace`. 
 
-The `R` part of the rule represents the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.
+The `replace` part of the rule represents the state in which the open face is connected to only one other face by a common edge that acts as the hinge to the open box. New edges and vertices are added to represent the disconnected edges.
 
 This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges. That means the box will never open from underneath!
 
@@ -328,9 +338,9 @@ This machinery can be used to not only represent geometric objects, but it can a
 </br>
 ````
 
-Concider a schema for a kitchen world. This schema contains ideas about {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity} and their subtyping relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food is on an Entity).
+Consider a schema for a kitchen world. This schema contains ideas about {Food, Egg, Bread, Cheese, BreadSlice, Counter, Kitchenware, Entity} and their subtyping relationships (e.g., Egg, Bread, Cheese, BreadSlice are Food) and spatial relationships (e.g., Counter is on an Entity, Kitchenware is on an Entity, and Food is on an Entity).
 
-If you recall from [Chapter 3](chp3-schemas.html), objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from `Bread` to `Food` says that all elements of `Bread` are a `Food`, and likewise, a morphism `Food` is on an `Entity` says that all elements of `Food` are on an `Entity`. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is.
+<mark> If you recall from [Chapter 3](chp3-schemas.html), objects and morphisms in a schema are eventually mapped to sets and functions, respectively. This means that a relationship from `Bread` to `Food` says that all elements of `Bread` are a `Food`, and likewise, a morphism `Food` is on an `Entity` says that all elements of `Food` are on an `Entity`. This schema enforces a universal expectation about the types of objects and their arrangements while keeping track of what type of thing or relationship it is. </mark>
 
 ```{code-cell}
 @present SchKitchen(FreeSchema) begin
@@ -372,22 +382,22 @@ yKitchen = yoneda(Kitchen, SchKitchen; cache=make_cache(Kitchen, SchKitchen, "Ki
 :align: center
 ```
 
-DPO rewriting here can model transformations in the kitchen's state, such as changing the arrangement of items. For example, applying a DPO rewrite rule could simulate the action of combining cheese on a bread slice, altering their relationships to reflect this new arrangement. 
+DPO rewriting on kitchen arrangement can model transformations in the kitchen's state, such as changing the arrangement of items. For example, using a DPO rewrite rule, we can simulate the action of combining cheese on a bread slice, thereby altering their relationships to reflect this new arrangement. 
 
 ### Put Cheese On Bread
-Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define `L`, `R`, and `K` components of this rewrite rule.
+Let us take as an example the action of putting cheese on bread. Following the same approach as the previous example, we can define `find`, `replace`, and `overlap` components of this rewrite rule.
 
 ```{code-cell}
 put_cheese_on_bread = @migration(SchKitchen, begin
-  L => @join begin
+  find => @join begin
     cheese::Cheese
     slice::BreadSlice
   end
-  K => @join begin
+  overlap => @join begin
     cheese::Cheese
     slice::BreadSlice
   end
-  R => @join begin
+  replace => @join begin
     cheese::Cheese
     slice::BreadSlice
     cheese_is_food(cheese) == bread_slice_is_food(slice)  # become one
@@ -397,7 +407,7 @@ put_cheese_on_bread_rule = make_rule(put_cheese_on_bread, yKitchen)
 ```
 
 :::{note}
-Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define an `ACSetTransformation` for `l` and `r`. Instead, we can compute the colimit of representables [^1] and infer the homomorphism maps, `l` and `r`. This functionality is subsumed in `make_rule()`.
+Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, `ACSetTransformation` for `find` and `replace`. <mark> Instead, we can compute the colimit of representables [^1] and infer the homomorphism maps, `l` and `r`. *(Reader does not know what a colimit or a representable is. Can we explain this is in simpler terms or just indicate whats going on?)*</mark>  This functionality is subsumed in `make_rule()`.
 :::
 
 ```{figure} assets/Ch7/KitchenDPO.png
@@ -406,7 +416,7 @@ Relative to our other examples, this schema has substantially more object and mo
 The DPO rewrite rules for putting cheese on bread.
 ```
 
-As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending `cheese` to the same food element as `bread_slice`. This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules.
+As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending `cheese` to the same food element as `bread_slice`. <mark> This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules. (what is a knowledge engineering choice?) </mark>
 
 ### Plate Slice
 
@@ -414,15 +424,15 @@ We can use the same idea to model a slice of bread being on a plate.
 
 ```{code-cell}
 plate_slice = @migration(SchRule, SchKitchen, begin
-  L => @join begin
+  find => @join begin
     slice::BreadSlice
     plate::Plate
   end
-  K => @join begin
+  overlap => @join begin
     slice::BreadSlice
     plate::Plate
   end
-  R => @join begin
+  replace => @join begin
     slice::BreadSlice
     plate::Plate
     food_in_on(bread_slice_is_food(slice)) == ware_is_entity(plate_is_ware(plate))
@@ -431,11 +441,13 @@ end)
 plate_slice_rule = make_rule(plate_slice, yKitchen)
 ```
 
-In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the `food_in_on` morphism and, in the case of plate, the function that maps it to entity is tied to the `ware_is_entity` morphism. This is effectively saying that the entity that the food is on is the same entity as the plate. 
+In this case, the bread slice and plate are mapped to the same entity. In the case of the bread slice, the function that does this mapping is tied to the `food_is_on` morphism and, in the case of plate, the function that maps it to entity is tied to the `ware_is_entity` morphism. This is effectively saying that the entity that the food is on is the same entity as the plate. 
 
-:::{admonition} Exercise
-Visualize in your head what the parts of the double-pushout (DPO) square would look like based on this rule.
+:::{admonition} Pause and ponder
+How will the double-pushout (DPO) square look like for this rule.
 :::
+
+<mark> Angeline, can you write a motivating paragraph for a general audience how this example is related ot Robotics? </mark>
 
 ## 7.4 Summary
 Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics.[^2] For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^3][^4][^5]
