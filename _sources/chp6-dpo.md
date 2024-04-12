@@ -593,14 +593,12 @@ The good news is that the *universal nature* of pushouts guarantee us that pusho
 
 :::{admonition} Example 2
 
-(Need to be illustrated in the style matching above puzzles)
-
 Is there a pushout complement? If not, why?
 
 ````{div} wrapper 
-```{image} assets/Ch6/dangling-puzzle.png
+```{image} assets/Ch6/27.png
 :alt: Whoopsy!
-:width: 350px
+:width: 600px
 :align: center
 ```
 ````
@@ -616,9 +614,9 @@ Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
-```{image} assets/Ch6/right-identity-puzzle.png
+```{image} assets/Ch6/28.png
 :alt: Whoopsy!
-:width: 350px
+:width: 600px
 :align: center
 ```
 ````
@@ -645,7 +643,7 @@ We applied the deletion rule to remove vertices and edges from a host graph at t
 
 As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to "see" the solution! 
 
-```{image} assets/Ch6/add-1.png
+```{image} assets/Ch6/29.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -654,7 +652,7 @@ As always, let us begin by drawing a diagram of the gre relationships we got! Th
 
 We shall focus on the lower half of the diagram now where addition of vertices and edges shall proceed!
 
-```{image} assets/Ch6/add-2.png
+```{image} assets/Ch6/30.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -673,7 +671,7 @@ Pushouts!!
 
 By computing the pushout of the above diagram, we glue vertices / edges to be added to the pushout complement along the overlap. Our completed diagram looks as follows now:
 
-```{image} assets/Ch6/pushout.png
+```{image} assets/Ch6/31.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -786,7 +784,7 @@ A thing of beauty!!
 
 A search pattern (`Find what`) found in a graph is carved into another pattern (`Replace with`) by computing pushout complement and followed by pushout.
 
-```{image} assets/Ch6/final-picture.png
+```{image} assets/Ch6/31b.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
