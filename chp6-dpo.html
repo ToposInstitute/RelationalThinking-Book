@@ -615,13 +615,13 @@ document.write(`
 <p>A match is a graph morphism from <code class="docutils literal notranslate"><span class="pre">Find</span></code> to a host host graph.</p>
 </div>
 <p>Let us suppose we want to find a match <code class="docutils literal notranslate"><span class="pre">Find</span></code> in this host graph:</p>
-<a class="reference internal image-reference" href="_images/match.png"><img alt="Whoopsy!" class="align-center" src="_images/match.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/9.png"><img alt="Whoopsy!" class="align-center" src="_images/9.png" style="width: 350px;" /></a>
 </br>
 <p>There are two possible matches. The mapping (match) is shown using matching labels for the vertices and the edges.</p>
-<a class="reference internal image-reference" href="_images/match-example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-example-1.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/10.png"><img alt="Whoopsy!" class="align-center" src="_images/10.png" style="width: 350px;" /></a>
 </br>
 <p>The below match, has vertices “1” and “2” in the search pattern, mapped to the same vertex in the host graph.</p>
-<a class="reference internal image-reference" href="_images/match-example-2.png"><img alt="Whoopsy!" class="align-center" src="_images/match-example-2.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/111.png"><img alt="Whoopsy!" class="align-center" src="_images/111.png" style="width: 350px;" /></a>
 </br>
 <p>The first match is an injective morphism whereas the second one isn’t</p>
 <p>Let us strengthen our understanding!</p>
@@ -629,16 +629,16 @@ document.write(`
 <p class="admonition-title">Puzzle 4</p>
 <p>Find at least two matches of the search pattern in the host graph.</p>
 <div class="wrapper docutils">
-<a class="reference internal image-reference" href="_images/match-ex1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex1.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/12.png"><img alt="Whoopsy!" class="align-center" src="_images/12.png" style="width: 350px;" /></a>
 </div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution for Puzzle 4</p>
 <div class="wrapper docutils">
 <p>An exact match:</p>
-<a class="reference internal image-reference" href="_images/match-ex1-sol1.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex1-sol1.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/13.png"><img alt="Whoopsy!" class="align-center" src="_images/13.png" style="width: 350px;" /></a>
 <p>Non-injective match:</p>
-<a class="reference internal image-reference" href="_images/match-ex1-sol2.png"><img alt="Whoopsy!" class="align-center" src="_images/match-ex1-sol2.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/14.png"><img alt="Whoopsy!" class="align-center" src="_images/14.png" style="width: 350px;" /></a>
 <p>As you notice, there can be many possible (or no) matches of <code class="docutils literal notranslate"><span class="pre">Find</span></code> in the host graph.</p>
 </div>
 </div>
@@ -650,26 +650,26 @@ document.write(`
 <section id="removing-vertices-and-edges-from-a-graph">
 <h2>6.4 Removing vertices and edges from a graph<a class="headerlink" href="#removing-vertices-and-edges-from-a-graph" title="Permalink to this heading">#</a></h2>
 <p>We now know how to specify “find-and-replace” in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace!</p>
-<a class="reference internal image-reference" href="_images/deletion.png"><img alt="Whoopsy!" class="align-center" src="_images/deletion.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="_images/15.png"><img alt="Whoopsy!" class="align-center" src="_images/15.png" style="width: 350px;" /></a>
 <p>We will begin with the deletion, that is removing vertices and edges at the match!</p>
 <section id="finding-a-match-to-remove-vertices-edges">
 <h3>Finding a match to remove vertices/edges<a class="headerlink" href="#finding-a-match-to-remove-vertices-edges" title="Permalink to this heading">#</a></h3>
 <p>Removing edges and vertices require care. Suppose, a vertex in a match is specifed to be removed. There may be edges which are connected to to this vertex in the host graph. In that case, deleting the vertex will lead to zombie graphs which has dangling edges (edges whose end(s) is not connected to any vertex).</p>
 <p>The following example illustrates this situation.</p>
 <p>Suppose, we have the following rule for deletion: vertex 2 and edge ‘2-3’ will be deleted (from the host at a match) since they do not overlap!</p>
-<a class="reference internal image-reference" href="_images/remove-7.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-7.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/16.png"><img alt="Whoopsy!" class="align-center" src="_images/16.png" style="width: 650px;" /></a>
 </br>
 <p>Suppose we are given the following match of <code class="docutils literal notranslate"><span class="pre">Find</span></code> in a host graph. Can you see why this match is bad?</p>
-<a class="reference internal image-reference" href="_images/bad-match-1.png"><img alt="Whoopsy!" class="align-center" src="_images/bad-match-1.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/17.png"><img alt="Whoopsy!" class="align-center" src="_images/17.png" style="width: 650px;" /></a>
 </br>
 <p>Removing vertex 2 from the host graph will result in a dangling edge, see the diagram picture below!</p>
 <a class="reference internal image-reference" href="_images/dangling-3.png"><img alt="Whoopsy!" class="align-center" src="_images/dangling-3.png" style="width: 250px;" /></a>
 <p>An appropriate match that produces no dangling edge will be:</p>
-<a class="reference internal image-reference" href="_images/remove-8.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-8.png" style="width: 550px;" /></a>
+<a class="reference internal image-reference" href="_images/18.png"><img alt="Whoopsy!" class="align-center" src="_images/18.png" style="width: 550px;" /></a>
 </br>
 <p>For the above match, removing vertex ‘2’ and edge ‘2-3’ leaves the graph intact!</p>
 <p>Another situation that needs care is that a match must not identify a vertex to be deleted and a vertex that needs to be retained (a vertex which overlaps) of <code class="docutils literal notranslate"><span class="pre">Find</span></code> to the same vertex in the host graph. In the deletion rule, vertex 1 must be retained and vertex 2 needs to be deleted. However, the following match identifies vertices 1 and 2 of the search pattern to the same vertex (“1,2”) in the host graph, which is bad!</p>
-<a class="reference internal image-reference" href="_images/identification-1.png"><img alt="Whoopsy!" class="align-center" src="_images/identification-1.png" style="width: 550px;" /></a>
+<a class="reference internal image-reference" href="_images/19.png"><img alt="Whoopsy!" class="align-center" src="_images/19.png" style="width: 550px;" /></a>
 </br>
 <p>So what should be done now – keep the vertex “1,2” or delete the vertex “1,2” from the host graph? Either choices are incorrect. A good match, in the first place, MUST avoid identifying vertices 1 and 2 of <code class="docutils literal notranslate"><span class="pre">Find</span></code> into the same vertex in the host graph. This is called the right identification condition.</p>
 <div class="tip admonition">
