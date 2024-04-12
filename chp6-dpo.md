@@ -299,7 +299,7 @@ A match is a graph morphism from `Find` to a host host graph.
 
 Let us suppose we want to find a match `Find` in this host graph:
 
-```{image} assets/Ch6/match.png
+```{image} assets/Ch6/9.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -310,7 +310,7 @@ Let us suppose we want to find a match `Find` in this host graph:
 
 There are two possible matches. The mapping (match) is shown using matching labels for the vertices and the edges. 
 
-```{image} assets/Ch6/match-example-1.png
+```{image} assets/Ch6/10.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -320,7 +320,7 @@ There are two possible matches. The mapping (match) is shown using matching labe
 
 The below match, has vertices "1" and "2" in the search pattern, mapped to the same vertex in the host graph.
 
-```{image} assets/Ch6/match-example-2.png
+```{image} assets/Ch6/11.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -338,7 +338,7 @@ Let us strengthen our understanding!
 Find at least two matches of the search pattern in the host graph. 
 
 ````{div} wrapper 
-```{image} assets/Ch6/match-ex1.png
+```{image} assets/Ch6/12.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -354,7 +354,7 @@ Find at least two matches of the search pattern in the host graph.
 
 An exact match: 
 
-```{image} assets/Ch6/match-ex1-sol1.png
+```{image} assets/Ch6/13.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -362,7 +362,7 @@ An exact match:
 
 Non-injective match:
 
-```{image} assets/Ch6/match-ex1-sol2.png
+```{image} assets/Ch6/14.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -386,7 +386,7 @@ A *match* in a host graph is given by a morphism from ```Find``` to a host graph
 
 We now know how to specify "find-and-replace" in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace! 
 
-```{image} assets/Ch6/deletion.png
+```{image} assets/Ch6/15.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -401,7 +401,7 @@ Removing edges and vertices require care. Suppose, a vertex in a match is specif
 The following example illustrates this situation. 
 
 Suppose, we have the following rule for deletion: vertex 2 and edge '2-3' will be deleted (from the host at a match) since they do not overlap! 
-```{image} assets/Ch6/remove-7.png
+```{image} assets/Ch6/16.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -410,7 +410,7 @@ Suppose, we have the following rule for deletion: vertex 2 and edge '2-3' will b
 
 Suppose we are given the following match of `Find` in a host graph. Can you see why this match is bad? 
 
-```{image} assets/Ch6/bad-match-1.png
+```{image} assets/Ch6/17.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -427,7 +427,7 @@ Removing vertex 2 from the host graph will result in a dangling edge, see the di
 
 An appropriate match that produces no dangling edge will be:
 
-```{image} assets/Ch6/remove-8.png
+```{image} assets/Ch6/18.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -438,7 +438,7 @@ For the above match, removing vertex '2' and edge '2-3' leaves the graph intact!
 
 Another situation that needs care is that a match must not identify a vertex to be deleted and a vertex that needs to be retained (a vertex which overlaps) of `Find` to the same vertex in the host graph. In the deletion rule, vertex 1 must be retained and vertex 2 needs to be deleted. However, the following match identifies vertices 1 and 2 of the search pattern to the same vertex ("1,2") in the host graph, which is bad!
 
-```{image} assets/Ch6/identification-1.png
+```{image} assets/Ch6/19.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
