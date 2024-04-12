@@ -270,7 +270,7 @@ And "the reflexive map followed by the target map takes you back where you start
 
 `refl ; tgt = id`
 
-Equations like this are known as "commutativity conditions." When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what's called a Schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
+Equations like this are known as "commutativity conditions." When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what's called a schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
 
 ```{image} assets/Ch3/ReflexiveGraphSchema.png
 :alt: Whoopsy!
@@ -310,7 +310,7 @@ An arrow in a directed graph is like a one-way street, a unidirectional connecti
 :align: center
 ```
 
-The directed graph _represents_ the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work the directed graph must satisfy the condition that "every arrow is associated with a unique partner arrow."  We can express this idea as a map, in which each arrow gets connected to its unique partner:
+The directed graph _represents_ the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work, the directed graph must satisfy the condition that "every arrow is associated with a unique partner arrow."  We can express this idea as a map, in which each arrow gets connected to its unique partner:
 
 ```{image} assets/Ch3/InversionMap.gif
 :alt: Whoopsy!
@@ -334,7 +334,7 @@ Notice how the instance data represents a directed graph which in turn represent
 Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
 :::
 
-What can we notice about the above instance? In the directed graph, the paired arrows must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow's target must be its partner's source. We can express this as a closed loop condition. 
+What can we notice about the above instance? Well, for one thing, the paired in the directed graph must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow's target must be its partner's source. We can express this as a closed loop condition. 
 
 :::{admonition} Comparing two paths 
 :class: attention
@@ -438,7 +438,7 @@ AlgebraicJulia's implementation of Petri nets is called AlgebraicPetri.js.[^1] D
 
 ### Databases
 
-The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Building a schema is then just "structuring a query" on that database by defining new relationships in terms of existing ones.
+The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schmea to define new relationships in terms of existing ones.
 
 
 ```{image} assets/Ch3/DatabaseLabeled.png
@@ -449,6 +449,10 @@ The whole concept of a schema originally comes from database theory. We can thin
 <br>
 
 Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our `DANGLING EDGE CONDITION` on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See the paper Functorial Data Migration[^2] for details.
+
+## 3.5 Summary
+
+In this chapter we have developed the concept of a schema, a verstaile data structure and the principle way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the `DANGLING EDGE CONDITION`.
 
 ## Footnotes and References
 

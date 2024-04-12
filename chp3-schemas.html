@@ -460,6 +460,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.5 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
             </nav>
@@ -616,7 +617,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
 <p>And “the reflexive map followed by the target map takes you back where you started” becomes:</p>
 <p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
-<p>Equations like this are known as “commutativity conditions.” When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what’s called a Schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
+<p>Equations like this are known as “commutativity conditions.” When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what’s called a schema. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
 <a class="reference internal image-reference" href="_images/ReflexiveGraphSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphSchema.png" style="width: 800px;" /></a>
 <br>
 <p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">;</span> <span class="pre">Y</span></code>.)</p>
@@ -641,7 +642,7 @@ document.write(`
 <p>Now let’s return to the question of undirected graphs. Can we design a schema for these? Surprisingly, it turns out that we can think of undirected graphs as <em>special cases</em> of directed graphs.</p>
 <p>An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a <em>two-way street</em> in which the connection is felt mutually in both directions. If we take this “two-way street” analogy literally we can see that every undirected graph is <em>equivalent</em> to a directed graph in which we’ve substituted a pair of opposing arrows in place of each undirected edge.</p>
 <a class="reference internal image-reference" href="_images/TwoWayStreet.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoWayStreet.png" style="width: 500px;" /></a>
-<p>The directed graph <em>represents</em> the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work the directed graph must satisfy the condition that “every arrow is associated with a unique partner arrow.”  We can express this idea as a map, in which each arrow gets connected to its unique partner:</p>
+<p>The directed graph <em>represents</em> the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work, the directed graph must satisfy the condition that “every arrow is associated with a unique partner arrow.”  We can express this idea as a map, in which each arrow gets connected to its unique partner:</p>
 <a class="reference internal image-reference" href="_images/InversionMap.gif"><img alt="Whoopsy!" class="align-center" src="_images/InversionMap.gif" style="width: 500px;" /></a>
 <br>
 <p>We call this the inversion map or <code class="docutils literal notranslate"><span class="pre">inv</span></code>. We can combine this inversion map with the graph’s source and target maps, attaching it as a self-loop.</p>
@@ -651,7 +652,7 @@ document.write(`
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
 </div>
-<p>What can we notice about the above instance? In the directed graph, the paired arrows must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow’s target must be its partner’s source. We can express this as a closed loop condition.</p>
+<p>What can we notice about the above instance? Well, for one thing, the paired in the directed graph must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow’s target must be its partner’s source. We can express this as a closed loop condition.</p>
 <div class="attention admonition">
 <p class="admonition-title">Comparing two paths </p>
 <p><strong>Path 1</strong></p>
@@ -722,11 +723,15 @@ document.write(`
 </section>
 <section id="databases">
 <h3>Databases<a class="headerlink" href="#databases" title="Permalink to this heading">#</a></h3>
-<p>The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of ‘people’ and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Building a schema is then just “structuring a query” on that database by defining new relationships in terms of existing ones.</p>
+<p>The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of ‘people’ and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schmea to define new relationships in terms of existing ones.</p>
 <a class="reference internal image-reference" href="_images/DatabaseLabeled.png"><img alt="Whoopsy!" class="align-center" src="_images/DatabaseLabeled.png" style="width: 800px;" /></a>
 <br>
 <p>Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See the paper Functorial Data Migration<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for details.</p>
 </section>
+</section>
+<section id="summary">
+<h2>3.5 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this chapter we have developed the concept of a schema, a verstaile data structure and the principle way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
@@ -826,6 +831,7 @@ Information and Computation, Volume 217, 2012, Pages 31-51, ISSN 0890-5401,
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.5 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
   </nav></div>

@@ -37,7 +37,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 :width: 150px
 :align: left
 ```
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Paul Dancstep is a right handed person who likes to do the dishes every other day. He has an initial mood of around 3 and a calmdown rate of probably 5% or so. He enjoys trying to come up with visualizations and explanations for abstract concepts and is optimistic that tools from applied category theory will have a role to play in human flourishing in the 21st century.
 
 :::
 

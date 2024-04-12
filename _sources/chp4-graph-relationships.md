@@ -109,7 +109,7 @@ An important detail about graph injections is that a graph is not allowed to com
 
 ### Puzzles
 
-::::{admonition} Puzzle 1
+**Puzzle 1.**
 
 How many ways can you inject the graph on the left into the graph on the right?
 
@@ -118,20 +118,19 @@ How many ways can you inject the graph on the left into the graph on the right?
 
 
 
-::::
 
 
 :::{admonition} Puzzle 1 Solution:
 :class: dropdown
 
-The triangle can be injected in three different orientations.
+The first graph can be injected in three different orientations.
 
 ![whoops!](./assets/Ch3/Problem1Solution.png)
 
 
 :::
 
-::::{admonition} Puzzle 2
+**Puzzle 2.**
 
 How many ways can you inject the graph on the left into the graph on the right?
 
@@ -140,7 +139,7 @@ How many ways can you inject the graph on the left into the graph on the right?
 
 
 
-::::
+
 
 
 :::{admonition} Puzzle 2 Solution:
@@ -205,7 +204,7 @@ Note how the dashed lines seem to flow “out” from the arrows in the upper le
 :align: center
 ```
 
-Reading across the top we have that the red arrow has the heart as its source. Reading down the right side we see that the heart gets sent to the square vertex in graph 2. So the square is "the vertex that receives A's source."
+Reading across the top we have that the red arrow has the heart as its source. Reading down the right side we see that the heart gets sent to the square vertex in graph 2. So the square vertex is "the vertex that receives A's source."
 
 :::
 
@@ -218,7 +217,7 @@ Reading across the top we have that the red arrow has the heart as its source. R
 :align: center
 ```
 
-Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its "image"). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square is "the source of the image of A."
+Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its "image"). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square vertex is "the source of the image of A."
 
 :::
 
@@ -247,7 +246,7 @@ So we can actually DEFINE a graph injection with a closed loop condition: starti
 ```
 <br>
 
-Of course, these same arrow and vertex maps must also form closed loops with the *target maps*. All together, this is the complete set of “data” describing the injection:
+So far we've only looked at the source maps of our graphs. But of course these same arrow and vertex maps must also form closed loops in combination with the *target maps*. All together, this is the complete set of “data” describing the injection:
 
 
 ```{image} assets//Ch3/GraphInjection.gif

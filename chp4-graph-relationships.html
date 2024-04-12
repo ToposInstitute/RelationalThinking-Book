@@ -512,21 +512,17 @@ The final result gives us an complete picture of "what went where" in our inject
 </section>
 <section id="puzzles">
 <h3>Puzzles<a class="headerlink" href="#puzzles" title="Permalink to this heading">#</a></h3>
-<div class="admonition-puzzle-1 admonition">
-<p class="admonition-title">Puzzle 1</p>
+<p><strong>Puzzle 1.</strong></p>
 <p>How many ways can you inject the graph on the left into the graph on the right?</p>
 <p><img alt="whoops!" src="_images/Problem1.png" /></p>
-</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Puzzle 1 Solution:</p>
-<p>The triangle can be injected in three different orientations.</p>
+<p>The first graph can be injected in three different orientations.</p>
 <p><img alt="whoops!" src="_images/Problem1Solution.png" /></p>
 </div>
-<div class="admonition-puzzle-2 admonition">
-<p class="admonition-title">Puzzle 2</p>
+<p><strong>Puzzle 2.</strong></p>
 <p>How many ways can you inject the graph on the left into the graph on the right?</p>
 <p><img alt="whoops!" src="_images/Problem2.png" /></p>
-</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Puzzle 2 Solution:</p>
 <p>Twelve?</p>
@@ -556,12 +552,12 @@ These two maps capture all the relevant information about the injection.
 <div class="admonition-upper-route admonition">
 <p class="admonition-title">Upper route</p>
 <a class="reference internal image-reference" href="_images/UpperRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/UpperRoute.gif" style="width: 500px;" /></a>
-<p>Reading across the top we have that the red arrow has the heart as its source. Reading down the right side we see that the heart gets sent to the square vertex in graph 2. So the square is “the vertex that receives A’s source.”</p>
+<p>Reading across the top we have that the red arrow has the heart as its source. Reading down the right side we see that the heart gets sent to the square vertex in graph 2. So the square vertex is “the vertex that receives A’s source.”</p>
 </div>
 <div class="admonition-lower-route admonition">
 <p class="admonition-title">Lower route</p>
 <a class="reference internal image-reference" href="_images/LowerRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/LowerRoute.gif" style="width: 500px;" /></a>
-<p>Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its “image”). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square is “the source of the image of A.”</p>
+<p>Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its “image”). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square vertex is “the source of the image of A.”</p>
 </div>
 <p>To complete the picture, let’s now revisit to our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square will look something like this:</p>
 <a class="reference internal image-reference" href="_images/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/OpenSquare.gif" style="width: 500px;" /></a>
@@ -570,7 +566,7 @@ These two maps capture all the relevant information about the injection.
 <p>So we can actually DEFINE a graph injection with a closed loop condition: starting from any arrow in the upper left, the paths going either way around the square will always form a closed loop.</p>
 <a class="reference internal image-reference" href="_images/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectionFadethrough.gif" style="width: 500px;" /></a>
 <br>
-<p>Of course, these same arrow and vertex maps must also form closed loops with the <em>target maps</em>. All together, this is the complete set of “data” describing the injection:</p>
+<p>So far we’ve only looked at the source maps of our graphs. But of course these same arrow and vertex maps must also form closed loops in combination with the <em>target maps</em>. All together, this is the complete set of “data” describing the injection:</p>
 <a class="reference internal image-reference" href="_images/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphInjection.gif" style="width: 800px;" /></a>
 <br>
 <p>Going up a level of abstraction, a <em>schema</em> that describes this general in general looks like this:</p>
