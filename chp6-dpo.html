@@ -540,22 +540,22 @@ document.write(`
 <p>How would you specify overlap <code class="docutils literal notranslate"><span class="pre">Find</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span></code>?</p>
 </div>
 <p>We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with two radiating graph morphisms?</p>
-<a class="reference internal image-reference" href="_images/overlap.png"><img alt="Whoopsy!" class="align-center" src="_images/overlap.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/11.png"><img alt="Whoopsy!" class="align-center" src="_images/11.png" style="width: 300px;" /></a>
 <p>We will use the same idea to specify the overlap between <code class="docutils literal notranslate"><span class="pre">Find</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span></code>. An extra requirement will be that the morphisms need to be <strong>injective</strong>. This ensures that, no two vertices of <code class="docutils literal notranslate"><span class="pre">Find</span></code> overlap with the same vertex of <code class="docutils literal notranslate"><span class="pre">Replace</span></code>, and vice versa. Similarly, no two edges of <code class="docutils literal notranslate"><span class="pre">Find</span></code> overlap with the same edge of <code class="docutils literal notranslate"><span class="pre">Replace</span></code>, and vice versa.</p>
 <div class="admonition-puzzle-1 admonition">
 <p class="admonition-title">Puzzle 1</p>
 <p>How do the graphs <code class="docutils literal notranslate"><span class="pre">Find</span></code> and <code class="docutils literal notranslate"><span class="pre">Replace</span></code> overlap in case of Replacement-1 and Replacement-2?</p>
 <a class="reference internal image-reference" href="_images/puzzle-1-data.png"><img alt="Whoopsy!" class="align-center" src="_images/puzzle-1-data.png" style="width: 450px;" /></a>
-<a class="reference internal image-reference" href="_images/puzzle-1.png"><img alt="Whoopsy!" class="align-center" src="_images/puzzle-1.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/21.png"><img alt="Whoopsy!" class="align-center" src="_images/21.png" style="width: 600px;" /></a>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
 <p>The specification for the overlaps are as follows!</p>
 <p>For replacement-1,</p>
-<a class="reference internal image-reference" href="_images/interface-1.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-1.png" style="width: 575px;" /></a>
+<a class="reference internal image-reference" href="_images/31.png"><img alt="Whoopsy!" class="align-center" src="_images/31.png" style="width: 575px;" /></a>
 <p>and replacement-2:</p>
-<a class="reference internal image-reference" href="_images/interface-2.png"><img alt="Whoopsy!" class="align-center" src="_images/interface-2.png" style="width: 625px;" /></a>
+<a class="reference internal image-reference" href="_images/41.png"><img alt="Whoopsy!" class="align-center" src="_images/41.png" style="width: 625px;" /></a>
 </div>
 </div>
 <section id="replace-delete-and-add">
@@ -566,7 +566,7 @@ document.write(`
 <p>During the replacement procedure, the vertices and the edges of (<code class="docutils literal notranslate"><span class="pre">Replace</span></code>) outside the overlap region are added to the host graph at the match. For example, in the picture above, the unlabelled vertices and edges of <code class="docutils literal notranslate"><span class="pre">Replace</span></code> are outside the overlap region. We could see that they are added to the host graph during the replacement. From this view point, the morphism from <code class="docutils literal notranslate"><span class="pre">overlap</span></code> to <code class="docutils literal notranslate"><span class="pre">Replace</span></code> is a <strong>rule for addition</strong> (of vertices and edges at a match).</p>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">overlap</span></code> shape remains unchanged during the replacement. The overlap is precisely what remains after removing the edges/vertices of <code class="docutils literal notranslate"><span class="pre">Find</span></code> as per the deletion rule.</p>
 <p>Thus, a specification for “find-and-replace” in graphs consists of a deletion rule and an addition rule:</p>
-<a class="reference internal image-reference" href="_images/specification.png"><img alt="Whoopsy!" class="align-center" src="_images/specification.png" style="width: 625px;" /></a>
+<a class="reference internal image-reference" href="_images/5.png"><img alt="Whoopsy!" class="align-center" src="_images/5.png" style="width: 625px;" /></a>
 <p>Neat, huh?!</p>
 <div class="admonition-puzzle-2 admonition">
 <p class="admonition-title">Puzzle 2</p>
@@ -576,7 +576,7 @@ document.write(`
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="wrapper docutils">
-<a class="reference internal image-reference" href="_images/puzzle-2-sol.png"><img alt="Whoopsy!" class="align-center" src="_images/puzzle-2-sol.png" style="width: 425px;" /></a>
+<a class="reference internal image-reference" href="_images/61.png"><img alt="Whoopsy!" class="align-center" src="_images/61.png" style="width: 425px;" /></a>
 </div>
 </div>
 </div>
@@ -597,7 +597,7 @@ document.write(`
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
 <p>The interface to find-and-replace needs to have:</p>
-<a class="reference internal image-reference" href="_images/interface.png"><img alt="Whoopsy!" class="align-center" src="_images/interface.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="_images/8.png"><img alt="Whoopsy!" class="align-center" src="_images/8.png" style="width: 450px;" /></a>
 <ul class="simple">
 <li><p>The injective morphism into <code class="docutils literal notranslate"><span class="pre">Find</span></code> is a <strong>specification for deletion</strong>.</p></li>
 <li><p>The injective morphism into <code class="docutils literal notranslate"><span class="pre">Replace</span></code> is a <strong>specification for addition</strong>.</p></li>

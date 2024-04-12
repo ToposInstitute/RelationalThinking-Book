@@ -142,7 +142,7 @@ How would you specify overlap `Find` and `Replace`?
 
 We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with two radiating graph morphisms?
 
-```{image} assets/Ch6/overlap.png
+```{image} assets/Ch6/1.png
 :alt: Whoopsy!
 :width: 300px
 :align: center
@@ -159,9 +159,9 @@ How do the graphs `Find` and `Replace` overlap in case of Replacement-1 and Repl
 :align: center
 ```
 
-```{image} assets/Ch6/puzzle-1.png
+```{image} assets/Ch6/2.png
 :alt: Whoopsy!
-:width: 300px
+:width: 600px
 :align: center
 ```
 :::
@@ -174,7 +174,7 @@ The specification for the overlaps are as follows!
 
 For replacement-1, 
 
-```{image} assets/Ch6/interface-1.png
+```{image} assets/Ch6/3.png
 :alt: Whoopsy!
 :width: 575px
 :align: center
@@ -182,7 +182,7 @@ For replacement-1,
 
  and replacement-2:
 
-```{image} assets/Ch6/interface-2.png
+```{image} assets/Ch6/4.png
 :alt: Whoopsy!
 :width: 625px
 :align: center
@@ -208,7 +208,7 @@ Note that the `overlap` shape remains unchanged during the replacement. The over
 
 Thus, a specification for "find-and-replace" in graphs consists of a deletion rule and an addition rule:
 
-```{image} assets/Ch6/specification.png
+```{image} assets/Ch6/5.png
 :alt: Whoopsy!
 :width: 625px
 :align: center
@@ -231,7 +231,7 @@ Find the overlap between `Find` and `Replace` for the following replacement:
 :::{admonition} Solution 
 :class: dropdown
 ````{div} wrapper 
-```{image} assets/Ch6/puzzle-2-sol.png
+```{image} assets/Ch6/6.png
 :alt: Whoopsy!
 :width: 425px
 :align: center
@@ -269,7 +269,7 @@ Apply the following replacement in the host graph. The match between `Find` and 
 
 The interface to find-and-replace needs to have:
 
-```{image} assets/Ch6/interface.png
+```{image} assets/Ch6/8.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
