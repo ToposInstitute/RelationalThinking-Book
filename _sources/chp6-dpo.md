@@ -400,7 +400,7 @@ Removing edges and vertices require care. Suppose, a vertex in a match is specif
 
 The following example illustrates this situation. 
 
-Suppose, we have the following rule for deletion: vertex 2 and edge '2-3' will be deleted (from the host at a match) since they do not overlap! 
+Suppose, we have the following rule for deletion: vertex 2 and edge 'a' will be deleted (from the host at a match) since they do not overlap! 
 ```{image} assets/Ch6/16.png
 :alt: Whoopsy!
 :width: 650px
@@ -434,7 +434,7 @@ An appropriate match that produces no dangling edge will be:
 ```
 </br>
 
-For the above match, removing vertex '2' and edge '2-3' leaves the graph intact!
+For the above match, removing vertex '2' and edge 'a' leaves the graph intact!
 
 Another situation that needs care is that a match must not identify a vertex to be deleted and a vertex that needs to be retained (a vertex which overlaps) of `Find` to the same vertex in the host graph. In the deletion rule, vertex 1 must be retained and vertex 2 needs to be deleted. However, the following match identifies vertices 1 and 2 of the search pattern to the same vertex ("1,2") in the host graph, which is bad!
 
@@ -463,7 +463,7 @@ We will talk more about "finding a good match" once the algorithm to perform the
 
 We now have a deletion rule, a host graph and a match for `Find` in the host graph. As before, let us draw a diagram of all the information we have:
 
-```{image} assets/Ch6/remove-1.png
+```{image} assets/Ch6/20.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -479,7 +479,7 @@ This means that the `overlap` will have a match in the new graph **determined by
 
 </br>
 
-```{image} assets/Ch6/remove-2.png
+```{image} assets/Ch6/21.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -504,7 +504,7 @@ Let us look at an example of computing "pushout **complement**"
 
 :::{admonition} Example 1
 
-```{image} assets/Ch6/example-1.png
+```{image} assets/Ch6/22.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -525,7 +525,7 @@ What is the pushout complement?
 
 This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are sent to the same vertex in the host graph. Simiarly vertices "3" and "4" are sent to the same vertex in the host graph.
 
-```{image} assets/Ch6/Ex-1.png
+```{image} assets/Ch6/23.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -537,7 +537,7 @@ This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are s
 :class: dropdown
 
 ````{div} wrapper 
-```{image} assets/Ch6/Ex1-sol.png
+```{image} assets/Ch6/24.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -551,7 +551,7 @@ This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are s
 What is the pushout complement?
 
 
-```{image} assets/Ch6/Ex-2.png
+```{image} assets/Ch6/25.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -564,7 +564,7 @@ What is the pushout complement?
 The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.
 
 ````{div} wrapper 
-```{image} assets/Ch6/Ex2-sol.png
+```{image} assets/Ch6/26.png
 :alt: Whoopsy!
 :width: 650px
 :align: center

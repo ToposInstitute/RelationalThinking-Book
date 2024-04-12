@@ -656,7 +656,7 @@ document.write(`
 <h3>Finding a match to remove vertices/edges<a class="headerlink" href="#finding-a-match-to-remove-vertices-edges" title="Permalink to this heading">#</a></h3>
 <p>Removing edges and vertices require care. Suppose, a vertex in a match is specifed to be removed. There may be edges which are connected to to this vertex in the host graph. In that case, deleting the vertex will lead to zombie graphs which has dangling edges (edges whose end(s) is not connected to any vertex).</p>
 <p>The following example illustrates this situation.</p>
-<p>Suppose, we have the following rule for deletion: vertex 2 and edge ‘2-3’ will be deleted (from the host at a match) since they do not overlap!</p>
+<p>Suppose, we have the following rule for deletion: vertex 2 and edge ‘a’ will be deleted (from the host at a match) since they do not overlap!</p>
 <a class="reference internal image-reference" href="_images/16.png"><img alt="Whoopsy!" class="align-center" src="_images/16.png" style="width: 650px;" /></a>
 </br>
 <p>Suppose we are given the following match of <code class="docutils literal notranslate"><span class="pre">Find</span></code> in a host graph. Can you see why this match is bad?</p>
@@ -667,7 +667,7 @@ document.write(`
 <p>An appropriate match that produces no dangling edge will be:</p>
 <a class="reference internal image-reference" href="_images/18.png"><img alt="Whoopsy!" class="align-center" src="_images/18.png" style="width: 550px;" /></a>
 </br>
-<p>For the above match, removing vertex ‘2’ and edge ‘2-3’ leaves the graph intact!</p>
+<p>For the above match, removing vertex ‘2’ and edge ‘a’ leaves the graph intact!</p>
 <p>Another situation that needs care is that a match must not identify a vertex to be deleted and a vertex that needs to be retained (a vertex which overlaps) of <code class="docutils literal notranslate"><span class="pre">Find</span></code> to the same vertex in the host graph. In the deletion rule, vertex 1 must be retained and vertex 2 needs to be deleted. However, the following match identifies vertices 1 and 2 of the search pattern to the same vertex (“1,2”) in the host graph, which is bad!</p>
 <a class="reference internal image-reference" href="_images/19.png"><img alt="Whoopsy!" class="align-center" src="_images/19.png" style="width: 550px;" /></a>
 </br>
@@ -685,7 +685,7 @@ document.write(`
 <section id="performing-deletion">
 <h3>Performing deletion<a class="headerlink" href="#performing-deletion" title="Permalink to this heading">#</a></h3>
 <p>We now have a deletion rule, a host graph and a match for <code class="docutils literal notranslate"><span class="pre">Find</span></code> in the host graph. As before, let us draw a diagram of all the information we have:</p>
-<a class="reference internal image-reference" href="_images/remove-1.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-1.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/20.png"><img alt="Whoopsy!" class="align-center" src="_images/20.png" style="width: 650px;" /></a>
 </br>
 <p>The new graph which results after performing the replacement (deletion) will have:</p>
 <ol class="arabic simple">
@@ -694,7 +694,7 @@ document.write(`
 </ol>
 <p>This means that the <code class="docutils literal notranslate"><span class="pre">overlap</span></code> will have a match in the new graph <strong>determined by the original match in the host graph</strong>. The new graph will have an injective morphism into the host graph.</p>
 </br>
-<a class="reference internal image-reference" href="_images/remove-2.png"><img alt="Whoopsy!" class="align-center" src="_images/remove-2.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/211.png"><img alt="Whoopsy!" class="align-center" src="_images/211.png" style="width: 750px;" /></a>
 </br>
 <p>The above square commutes! Does this shape remind you of pushouts from chapter 5? It turns out that, the host graph is the pushout of <code class="docutils literal notranslate"><span class="pre">Find</span></code> and the new graph!!</p>
 <p>This indeed makes sense, because, <code class="docutils literal notranslate"><span class="pre">Find</span></code> includes vertices and edges which has been removed. Glueing together <code class="docutils literal notranslate"><span class="pre">Find</span></code> and the new graph along the overlap must give the original host graph!</p>
@@ -709,7 +709,7 @@ document.write(`
 <p>Let us look at an example of computing “pushout <strong>complement</strong>”</p>
 <div class="admonition-example-1 admonition">
 <p class="admonition-title">Example 1</p>
-<a class="reference internal image-reference" href="_images/example-1.png"><img alt="Whoopsy!" class="align-center" src="_images/example-1.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/22.png"><img alt="Whoopsy!" class="align-center" src="_images/22.png" style="width: 750px;" /></a>
 <p>The nodes exclusive to <code class="docutils literal notranslate"><span class="pre">Find</span></code> must be removed from the host graph. Thus, the pushout out complement must include:</p>
 <ol class="arabic simple">
 <li><p>all the parts of the host graph not under the match, and</p></li>
@@ -721,24 +721,24 @@ document.write(`
 <p class="admonition-title">Puzzle 5</p>
 <p>What is the pushout complement?</p>
 <p>This problem has a coarse-grain match. Vertices “1” and “2” of <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">what</span></code> are sent to the same vertex in the host graph. Simiarly vertices “3” and “4” are sent to the same vertex in the host graph.</p>
-<a class="reference internal image-reference" href="_images/Ex-1.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-1.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/231.png"><img alt="Whoopsy!" class="align-center" src="_images/231.png" style="width: 750px;" /></a>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution for Puzzle 5</p>
 <div class="wrapper docutils">
-<a class="reference internal image-reference" href="_images/Ex1-sol.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex1-sol.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/24.png"><img alt="Whoopsy!" class="align-center" src="_images/24.png" style="width: 650px;" /></a>
 </div>
 </div>
 <div class="admonition-puzzle-6 admonition">
 <p class="admonition-title">Puzzle 6</p>
 <p>What is the pushout complement?</p>
-<a class="reference internal image-reference" href="_images/Ex-2.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex-2.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/25.png"><img alt="Whoopsy!" class="align-center" src="_images/25.png" style="width: 750px;" /></a>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution for Puzzle 6</p>
 <p>The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.</p>
 <div class="wrapper docutils">
-<a class="reference internal image-reference" href="_images/Ex2-sol.png"><img alt="Whoopsy!" class="align-center" src="_images/Ex2-sol.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/26.png"><img alt="Whoopsy!" class="align-center" src="_images/26.png" style="width: 650px;" /></a>
 </div>
 </div>
 </section>
