@@ -884,7 +884,7 @@ This section will demonstrate how graph "find-and-replace" can be performed in a
 Find at least two matches of the search pattern in the host graph. 
 
 ````{div} wrapper 
-```{image} assets/Ch6/match-ex1.png
+```{image} assets/Ch6/40.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -939,7 +939,7 @@ matches = homomorphisms(find, host)
 Is there a pushout complement? If not, why?
 
 ````{div} wrapper 
-```{image} assets/Ch6/dangling-puzzle.png
+```{image} assets/Ch6/27.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -978,7 +978,7 @@ Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
-```{image} assets/Ch6/right-identity-puzzle.png
+```{image} assets/Ch6/28.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -1020,7 +1020,7 @@ gluing_conditions(ComposablePair(del, match))
 
 What is the pushout complement?
 
-```{image} assets/Ch6/Ex-1.png
+```{image} assets/Ch6/43.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -1048,7 +1048,7 @@ to_graphviz(dom(PC_H₅))
 :::{admonition} Puzzle 7 (continued from Puzzle 5 )
 
 Compute the pushout:
-```{image} assets/Ch6/DPO-ex-1.png
+```{image} assets/Ch6/36.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -1073,7 +1073,7 @@ to_graphviz(codom(fromR))
 :::{admonition} Puzzle 6
 
 What is the pushout complement?
-```{image} assets/Ch6/Ex-2.png
+```{image} assets/Ch6/45.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -1110,7 +1110,7 @@ to_graphviz(dom(PC_H₆))
 
 Complete the pushout
 
-```{image} assets/Ch6/DPO-ex-2.png
+```{image} assets/Ch6/38.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
