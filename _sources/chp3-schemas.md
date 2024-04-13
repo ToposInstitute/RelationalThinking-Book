@@ -334,7 +334,7 @@ Notice how the instance data represents a directed graph which in turn represent
 Let your eyes follow the dashed lines around the figure. Do you see any "patterns" in this system of connections?
 :::
 
-What can we notice about the above instance? Well, for one thing, the paired in the directed graph must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow's target must be its partner's source. We can express this as a closed loop condition. 
+What can we notice about the above instance? Well, for one thing, the paired arrows in the directed graph must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow's target must be its partner's source. We can express this as a closed loop condition. 
 
 :::{admonition} Comparing two paths 
 :class: attention
@@ -434,11 +434,11 @@ It's important to note that Petri nets were developed by practitioners, not math
 <br>
 
 
-AlgebraicJulia's implementation of Petri nets is called AlgebraicPetri.js.[^1] Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
+AlgebraicJulia's implementation of Petri nets is called AlgebraicPetri.jl.[^1] Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
 
 ### Databases
 
-The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schmea to define new relationships in terms of existing ones.
+The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schema to define new relationships in terms of existing ones.
 
 
 ```{image} assets/Ch3/DatabaseLabeled.png
@@ -452,7 +452,7 @@ Data often gets corrupted when transferred between contexts, a major issue in da
 
 ## 3.5 Summary
 
-In this chapter we have developed the concept of a schema, a verstaile data structure and the principle way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the `DANGLING EDGE CONDITION`.
+In this chapter we have developed the concept of a schema, a verstaile data structure and the principal way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the `DANGLING EDGE CONDITION`.
 
 ## Footnotes and References
 

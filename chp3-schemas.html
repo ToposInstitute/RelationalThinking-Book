@@ -652,7 +652,7 @@ document.write(`
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
 </div>
-<p>What can we notice about the above instance? Well, for one thing, the paired in the directed graph must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow’s target must be its partner’s source. We can express this as a closed loop condition.</p>
+<p>What can we notice about the above instance? Well, for one thing, the paired arrows in the directed graph must point in opposite directions. This means that the source of one arrow must be the target of its partner and also that arrow’s target must be its partner’s source. We can express this as a closed loop condition.</p>
 <div class="attention admonition">
 <p class="admonition-title">Comparing two paths </p>
 <p><strong>Path 1</strong></p>
@@ -719,11 +719,11 @@ document.write(`
 <p>It’s important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics we are able to represent Petri nets in terms of schemas and work with them in AlgebraicJulia.</p>
 <a class="reference internal image-reference" href="_images/Petri_Net.jpg"><img alt="Whoopsy!" class="align-center" src="_images/Petri_Net.jpg" style="width: 800px;" /></a>
 <br>
-<p>AlgebraicJulia’s implementation of Petri nets is called AlgebraicPetri.js.<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Documentation can be found <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/">here</a> along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.</p>
+<p>AlgebraicJulia’s implementation of Petri nets is called AlgebraicPetri.jl.<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Documentation can be found <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/">here</a> along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.</p>
 </section>
 <section id="databases">
 <h3>Databases<a class="headerlink" href="#databases" title="Permalink to this heading">#</a></h3>
-<p>The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of ‘people’ and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schmea to define new relationships in terms of existing ones.</p>
+<p>The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of ‘people’ and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schema to define new relationships in terms of existing ones.</p>
 <a class="reference internal image-reference" href="_images/DatabaseLabeled.png"><img alt="Whoopsy!" class="align-center" src="_images/DatabaseLabeled.png" style="width: 800px;" /></a>
 <br>
 <p>Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See the paper Functorial Data Migration<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for details.</p>
@@ -731,7 +731,7 @@ document.write(`
 </section>
 <section id="summary">
 <h2>3.5 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>In this chapter we have developed the concept of a schema, a verstaile data structure and the principle way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
+<p>In this chapter we have developed the concept of a schema, a verstaile data structure and the principal way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>

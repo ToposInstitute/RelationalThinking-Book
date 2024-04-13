@@ -683,7 +683,7 @@ Let us try out some examples to make sure we are right! We start from the exampl
 
 Suppose, we have an addition rule like this, and the match obtained at the pushout complement step:
 
-```{image} assets/Ch6/add-example-rule.png
+```{image} assets/Ch6/33a.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -693,7 +693,7 @@ Suppose, we have an addition rule like this, and the match obtained at the pusho
 
 The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace` (`overlap` does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!
 
-```{image} assets/Ch6/add-example-1.png
+```{image} assets/Ch6/33b.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -705,18 +705,18 @@ The complete picture of the replacement procedure (deletion and addition) for Ex
 
 We have the following replacement rule and a match in the host graph. 
 
-```{image} assets/Ch6/complete-example-rules.png
+```{image} assets/Ch6/34.png
 :alt: Whoopsy!
-:width: 550px
+:width: 700px
 :align: center
 ```
 </br>
 
 Computing the pushout complement followed by the pushout completes the replacement procedure!
 
-```{image} assets/Ch6/complete-example.png
+```{image} assets/Ch6/35.png
 :alt: Whoopsy!
-:width: 550px
+:width: 700px
 :align: center
 ```
 
@@ -726,9 +726,9 @@ Computing the pushout complement followed by the pushout completes the replaceme
 
 Compute the pushout:
 
-```{image} assets/Ch6/DPO-ex-1.png
+```{image} assets/Ch6/36.png
 :alt: Whoopsy!
-:width: 550px
+:width: 650px
 :align: center
 ```
 :::
@@ -739,7 +739,7 @@ Compute the pushout:
 The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace` (`overlap` does not have this edge between 1 and 2), this edge manifests as self-loop in the pushout.
 
 ````{div} wrapper 
-```{image} assets/Ch6/DPO-ex1-sol.png
+```{image} assets/Ch6/37.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -750,9 +750,9 @@ The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive
 
 :::{admonition} Puzzle 8 (continued from Puzzle 6 )
 
-```{image} assets/Ch6/DPO-ex-2.png
+```{image} assets/Ch6/38.png
 :alt: Whoopsy!
-:width: 550px
+:width: 650px
 :align: center
 ```
 ::: 
@@ -761,7 +761,7 @@ The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive
 :class: dropdown
 
 ````{div} wrapper 
-```{image} assets/Ch6/DPO-ex2-sol.png
+```{image} assets/Ch6/39.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
