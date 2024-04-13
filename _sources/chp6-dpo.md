@@ -811,9 +811,9 @@ In chemistry, **click reactions** give high yield with low requirements and form
 
 In this section, we will see that Diel-Alder's reaction is a double pushout rewrite - the  "Find and replace" machinery which uses pushouts. In this example,  we will view molecules as undirected graphs where atoms are vertices and the chemical bonds are edges. Diel-Alder's reaction is the following, "Find-and-replace" rule for a specific molecule (we do not worry about the names of these molecules because that is not the point).
 
-```{image} assets/Ch6/Adler-1.png
+```{image} assets/Ch6/C1.png
 :alt: Whoopsy!
-:width: 350px
+:width: 700px
 :align: center
 ```
 
@@ -829,9 +829,9 @@ Standard chemistry books write this reaction as follows:
 
 Let us now use this rule on a substrate molecule which will act as the host graph.
 
-```{image} assets/Ch6/Adler-substrate.png
+```{image} assets/Ch6/C2.png
 :alt: Whoopsy!
-:width: 650px
+:width: 700px
 :align: center
 ```
 
@@ -839,9 +839,9 @@ Let us now use this rule on a substrate molecule which will act as the host grap
 
 Applying the double-pushout find-and-replace, we precisely get the final product of this chemical reaction!!
 
-```{image} assets/Ch6/Adler.png
+```{image} assets/Ch6/C3.png
 :alt: Whoopsy!
-:width: 650px
+:width: 700px
 :align: center
 ```
 
@@ -863,9 +863,9 @@ However, Bob thought for a moment, and told to himself, "Hey, how about a corrid
 
 Now a corridor needs to be added between Room 1 and Room 2, and arrows need to be redrawn as follows!
 
-```{image} assets/Ch6/game-design-2.png
+```{image} assets/Ch6/Door.png
 :alt: Whoopsy!
-:width: 650px
+:width: 800px
 :align: center
 ```
 
