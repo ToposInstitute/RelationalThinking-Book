@@ -407,7 +407,7 @@ put_cheese_on_bread_rule = make_rule(put_cheese_on_bread, yKitchen)
 ```
 
 :::{note}
-Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, `ACSetTransformation` for `find` and `replace`. <mark> Instead, we can compute the colimit of representables [^1] and infer the homomorphism maps, `l` and `r`. *(Reader does not know what a colimit or a representable is. Can we explain this is in simpler terms or just indicate whats going on?)*</mark>  This functionality is subsumed in `make_rule()`.
+Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, `ACSetTransformation` for `find` and `replace`. Instead, we can compute its _colimit of representables_ [^1]. Computing the _colimit of representables_ allows us to fill in the rest of the schema's instances when only part of it has been specified. With this, the homomorphism maps, `l` and `r`, between rule parts can be inferred based on the rest of the schemas' instances. This functionality is subsumed in `make_rule()`.
 :::
 
 ```{figure} assets/Ch7/KitchenDPO.png
@@ -416,7 +416,7 @@ Relative to our other examples, this schema has substantially more object and mo
 The DPO rewrite rules for putting cheese on bread.
 ```
 
-As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending `cheese` to the same food element as `bread_slice`. <mark> This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules. (what is a knowledge engineering choice?) </mark>
+As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending `cheese` to the same food element as `bread_slice`. Choosing to model the cheese being on bread as the fusion of cheese and bread is a knowledge engineering choice. This can easily have been represented using a relation about the cheese being on top of the bread. This further demonstrates the flexibility of DPO-rewriting rules.
 
 ### Plate Slice
 
@@ -447,7 +447,7 @@ In this case, the bread slice and plate are mapped to the same entity. In the ca
 How will the double-pushout (DPO) square look like for this rule.
 :::
 
-<mark> Angeline, can you write a motivating paragraph for a general audience how this example is related ot Robotics? </mark>
+As we have seen, double-pushout rewriting can be used to update information that we know about the world both explicitly and implicitly. Explicitly, this is done by defining the rewrite rules and what we would like to change. Implicit information is captured by filling out the rest of the schema's instances based on the explicit information. In robotics and AI planning, this accounting of both implicit and explicit effects on the world is called the _frame problem_ and is a feature that must be carefully considered when designing planning languages for such purposes. This provides an elegant mathematical solution to this age-old problem. 
 
 ## 7.4 Summary
 Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics.[^2] For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^3][^4][^5]
