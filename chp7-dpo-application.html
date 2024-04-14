@@ -823,7 +823,7 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code>. <mark> Instead, we can compute the colimit of representables <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and infer the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>. <em>(Reader does not know what a colimit or a representable is. Can we explain this is in simpler terms or just indicate whats going on?)</em></mark>  This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
+<p>Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code>. Instead, we can compute its <em>colimit of representables</em> <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Computing the <em>colimit of representables</em> allows us to fill in the rest of the schema’s instances when only part of it has been specified. With this, the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, between rule parts can be inferred based on the rest of the schemas’ instances. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
 </div>
 <figure class="align-center" id="id14">
 <img alt="_images/KitchenDPO.png" src="_images/KitchenDPO.png" />
@@ -831,7 +831,7 @@ match = homomorphisms(L, closedCube)[1]
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">The DPO rewrite rules for putting cheese on bread.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. <mark> This is a knowledge engineering choice that demonstrates the flexibility of DPO-rewriting rules. (what is a knowledge engineering choice?) </mark></p>
+<p>As we can see from this rule, we can model the concept of the bread slice and cheese becoming one by sending <code class="docutils literal notranslate"><span class="pre">cheese</span></code> to the same food element as <code class="docutils literal notranslate"><span class="pre">bread_slice</span></code>. Choosing to model the cheese being on bread as the fusion of cheese and bread is a knowledge engineering choice. This can easily have been represented using a relation about the cheese being on top of the bread. This further demonstrates the flexibility of DPO-rewriting rules.</p>
 </section>
 <section id="plate-slice">
 <h3>Plate Slice<a class="headerlink" href="#plate-slice" title="Permalink to this heading">#</a></h3>
@@ -863,7 +863,7 @@ match = homomorphisms(L, closedCube)[1]
 <p class="admonition-title">Pause and ponder</p>
 <p>How will the double-pushout (DPO) square look like for this rule.</p>
 </div>
-<p><mark> Angeline, can you write a motivating paragraph for a general audience how this example is related ot Robotics? </mark></p>
+<p>As we have seen, double-pushout rewriting can be used to update information that we know about the world both explicitly and implicitly. Explicitly, this is done by defining the rewrite rules and what we would like to change. Implicit information is captured by filling out the rest of the schema’s instances based on the explicit information. In robotics and AI planning, this accounting of both implicit and explicit effects on the world is called the <em>frame problem</em> and is a feature that must be carefully considered when designing planning languages for such purposes. This provides an elegant mathematical solution to this age-old problem.</p>
 </section>
 </section>
 <section id="summary">
