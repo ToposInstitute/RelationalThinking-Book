@@ -621,7 +621,7 @@ document.write(`
 <h3>Opening a closed box<a class="headerlink" href="#opening-a-closed-box" title="Permalink to this heading">#</a></h3>
 <p>Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box. The rule looks for the top face of the cube, <em>deletes</em> it, and <em>adds</em> another face that is connected by only one edge to the rest of the cube.</p>
 <figure class="align-center" id="id13">
-<img alt="_images/BoxDPO0.png" src="_images/BoxDPO0.png" />
+<img alt="_images/Box-DPO.png" src="_images/Box-DPO.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">The DPO rewrite rules for opening a closed box.</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -826,7 +826,7 @@ match = homomorphisms(L, closedCube)[1]
 <p>Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code>. Instead, we can compute its <em>colimit of representables</em> <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Computing the <em>colimit of representables</em> allows us to fill in the rest of the schema’s instances when only part of it has been specified. With this, the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, between rule parts can be inferred based on the rest of the schemas’ instances. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
 </div>
 <figure class="align-center" id="id14">
-<img alt="_images/KitchenDPO.png" src="_images/KitchenDPO.png" />
+<img alt="_images/Kitchen-DPO.png" src="_images/Kitchen-DPO.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">The DPO rewrite rules for putting cheese on bread.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>

@@ -186,7 +186,7 @@ This instance defines a box that looks like _Fig. 1_.
 
 Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box. The rule looks for the top face of the cube, *deletes* it, and *adds* another face that is connected by only one edge to the rest of the cube.
 
-```{figure} assets/Ch7/BoxDPO0.png
+```{figure} assets/Ch7/Box-DPO.png
 :align: center
 
 The DPO rewrite rules for opening a closed box.
@@ -410,7 +410,7 @@ put_cheese_on_bread_rule = make_rule(put_cheese_on_bread, yKitchen)
 Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, `ACSetTransformation` for `find` and `replace`. Instead, we can compute its _colimit of representables_ [^1]. Computing the _colimit of representables_ allows us to fill in the rest of the schema's instances when only part of it has been specified. With this, the homomorphism maps, `l` and `r`, between rule parts can be inferred based on the rest of the schemas' instances. This functionality is subsumed in `make_rule()`.
 :::
 
-```{figure} assets/Ch7/KitchenDPO.png
+```{figure} assets/Ch7/Kitchen-DPO.png
 :align: center
 
 The DPO rewrite rules for putting cheese on bread.
