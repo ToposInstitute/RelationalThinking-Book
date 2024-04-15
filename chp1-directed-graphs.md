@@ -159,7 +159,11 @@ In this case, when we try reconstruct the graph from this random data, we get a 
 
 Dangling arrows, arrows that have to come out of multiple vertices somehow, arrows floating off by themselves unattached to anything. It's carnage! By designing our maps in the vertices-first approach we open up the possibility of creating *nonsense*: maps which may appear valid at first, but which produce broken directed graphs when we try to interpret them. By contrast, any maps in the arrows-first approach can't help but be proper directed graphs.
 
+:::{admonition} Pause and Ponder! 
+Why is this? 
 
+Can you think through why arrows-first is always "safe", while vertices-first can produce the `DANGLING EDGE CONDITION`?
+:::
 
 
 
