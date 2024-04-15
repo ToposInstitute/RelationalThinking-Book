@@ -257,7 +257,7 @@ So far we've only looked at the source maps of our graphs. But of course these s
 <br>
 
 
-Going up a level of abstraction, a _schema_ that describes this general in general looks like this:
+Going up a level of abstraction, a _schema_ that describes this in general looks like this:
 
 ```{image} assets/Ch4/GraphMorphismSchema.png
 :alt: Whoopsy!
@@ -302,26 +302,15 @@ We call this a "graph morphism", a way of stuffing one graph inside of another t
 
 It may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about _breaking_ a graph, which would violate our `DANGLING EDGE CONDITION` and ruin any underlying model. Doesn't crushing our graph pose a similar risk? 
 
-It turns out that merging graph components is different from breaking them apart. Under the right circumstances, merging parts of a graph won't actually pose any danger to the integrity underlying model.
+It turns out that under the right circumstances, merging parts of a graph won't actually pose any danger to the integrity of the underlying model. Let's consider the same morphism we just looked at, but now using generic shapes. We have a morphism from the upper graph to the lower graph.
 
-
-
-
-
-
-
-
-
-
-
-```{image} assets//Ch3/EMBED.gif
+```{image} assets//Ch4/CoarseGrain.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
-
-
+The result of that morphism looks like this:
 
 ```{image} assets//Ch4/DoublingUp.png
 :alt: Whoopsy!
@@ -329,21 +318,42 @@ It turns out that merging graph components is different from breaking them apart
 :align: center
 ```
 
+Although some of the arrows in the above graph are doubled up, each of them is still pointing to the correct targets and pointing away from the correct sources. The connectivity of the graph is preserved. It turns out that our commutativity condition exactly keeps track of the joint merging of vertices and their arrows in order to keep the graph intact. For example, observe the closed loops for the sources in this morphism:
 
 
-Although the arrows in the above graph are doubled up, they're still pointing from the correct sources and pointing to the correct target vertices. The connectivity of the graph is preserved.
+```{image} assets//Ch3/EMBED.gif
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
+<br>
 
+Overall, the following schema characterizes all possible graph morphisms:
 
+```{image} assets/Ch4/GraphMorphismSchema.png
+:alt: Whoopsy!
+:width: 500px
+:align: center
+```
 
-////GRAPHIC SHOWING RULES ABOUT WHAT CAN AND CANNOT BE MAPPED
+<br>
 
+Of course, this is a very abstract way of thinking about something that is actually relatively simple. Here's the main idea to keep in mind:
 
+:::{admonition} Key idea
+:class: tip
+
+A graph morphism is just a way of stuffing one graph inside of another.
+
+:::
+
+The value of the abstract view is that it gives AlgebraicJulia a way to work with this idea too. In the following puzzles you will use AlgebraicJulia to help you "count" the number of possible morphisms between pairs of graphs.
 
 
 ### More Puzzles
 
 
-:::: {admonition} Puzzle 3
+**Puzzle 3.**
 
 We have seen that Graph 1 can be mapped into Graph 2 with the following injection:
 
@@ -357,7 +367,6 @@ How many other morphisms are there from Graph 1 to Graph 2?
 
 We've programmed this problem into the executable code below. When you think you know the answer, execute code and see if you and AlgebraicJulia agree.
 
-::::
 
 +++
 
@@ -396,8 +405,7 @@ These are very different approaches but they both arrive at the same answer.
 :::
 
 
-
-:::: {admonition} Puzzle 4
+**Puzzle 4.**
 
 How many ways can this triangle be mapped into this hexagon?
 
@@ -405,7 +413,7 @@ How many ways can this triangle be mapped into this hexagon?
 
 Does AlgebraicJulia agree?
 
-::::
+
 
 +++
 
@@ -435,13 +443,13 @@ Note how AlgebraicJulia knows when you've asked it to find something that doesn'
 
 
 
+**Puzzle 5.**
 
-:::: {admonition} Puzzle 5
 
 What about the other way around? How many ways can this hexagon be mapped into this triangle?
 ![whoops!](./assets/Ch4/Problem5.png)
 
-::::
+
 
 +++
 
@@ -473,16 +481,15 @@ The hexagon can get "doubled up" into the shape of a triangle, and placed into t
 
 
 
+**Puzzle 6.**
 
-
-:::: {admonition} Puzzle 6
 
 How many ways can the graph on the left into the graph on the right?
 
 ![whoops!](./assets/Ch4/Problem6.png)
 
 
-::::
+
 
 +++
 
@@ -508,11 +515,11 @@ countTheMorphisms = length(homomorphisms(Graph 3, Graph 4))
 There are five morphisms - three injections and two ways of collapsing to a self-loop
 :::
 
-:::: {admonition} Puzzle 7
+**Puzzle 7.**
 
 This puzzle is the same as puzzle 6, except in the AlgebraicJulia code below we've stipulated that graphs are `ReflexiveGraph`s instead of `DirectedGraph`s. This implies the presence of additional self loops (shown in light grey), which changes the number of possible morphisms.
 ![whoops!](./assets/Ch4/Problem7.png)
-::::
+
 
 
 +++
@@ -538,7 +545,7 @@ countTheMorphisms = length(homomorphisms(Graph 5, Graph 6))
 :class: dropdown
 Seven; Three injections and four maps to self-loops.
 
-Note how AlgebraicJulia succeeds at counting these morphisms correctly. Moreover, it uses the same mechanism as for directed graphs, no need to write specialized code for reflexive graphs something something.
+Note how AlgebraicJulia succeeds at counting these morphisms correctly. Moreover, it uses the same mechanism as for directed graphs, no need to write specialized code for reflexive graphs.
 
 :::
 
@@ -548,7 +555,7 @@ Note how AlgebraicJulia succeeds at counting these morphisms correctly. Moreover
 
 ## 4.4 The category of instances
 
-Now that we know what graph morphisms are, we're now ready to move up the last rung in our ladder of abstractions, from "blueprints" to "categories!"
+Now that we know what graph morphisms are, we're ready to move up the last rung in our ladder of abstractions, from "blueprints" to "categories!"
 
 Let's revisit the graph morphism schema and look closely at an instance:
 
@@ -561,7 +568,7 @@ Let's revisit the graph morphism schema and look closely at an instance:
 
 Note how the top of this square contains the data for graph 1 and the bottom is the data for graph 2. The overall blueprint represents a morphism of graph 1 into graph 2. It almost _feels_ like an arrow pointing from the top to the bottom.
 
-In chapter 3 we introduced 'chunky arrows' as a way to hide the messy details of our maps. We'll do something similar here, defining a new kind of arrow that encompasses all the details of a graph morphism.
+In chapter 3 we introduced 'chunky arrows' as a way to hide the messy details of our maps. We'll do something similar here, defining a new kind of arrow (shaded, light colored on a white background) that encompasses all the details of a graph morphism.
 
 ```{image} assets/Ch4/MorphismArrow.gif
 :alt: Whoopsy!
@@ -577,7 +584,9 @@ This is the last one.
 Promise.
 :::
 
-When we see an arrow like this between two graph instances, we understand that it represents some _specific_ morphism taking the first into the second. But notice that we now have two different ways of interpreting that idea. For us, graph morphisms are about the geometric process of bundling one graph up inside of another. For AlgebraicJulia, graph morphisms are about certain patterns of maps and closed loops.
+When we see an arrow like this between two graph instances, we understand that it represents some _specific_ morphism taking the first into the second. But notice that we now have two different ways of interpreting that idea. 
+
+For us humans, graph morphisms are about the geometric process of bundling one graph up inside of another. But our geometric understanding is strictly correlated with AlgebraicJulia's more formal representation, where graph morphisms are about certain patterns of maps and closed loops. Thus, we each have our own "language" for describing graph morphisms.
 
 
 
@@ -587,15 +596,11 @@ When we see an arrow like this between two graph instances, we understand that i
 :align: center
 ```
 
-We each have our own "language" for what a graph morphism is,  
-
-The geometric view is spatial and visual, intuitive for humans to think about. Whereas AlgebraicJulia's view is more abstract but can be readily worked with in computational terms. The exact correspondance between these views means that if we _only_ think about graphs in terms of graph morphisms then everything we think can be encoded in AlgebraicJulia.
 
 
+The geometric view is spatial and visual, intuitive for humans to think about. As we observed back in Chapter 0, thinking visually and geometrically about graphs is an _excellent_ way for humans to conceptualize structure. In fact, for the remainder of this book we will _only_ be thinking about graphs and graph morphisms in these natural geometric terms.
 
-The crucial thing is that although our ways of looking at this abstract structure are different, we are nonetheless accessing precisely the _same_ abstract structure.
-
-For instance, in Puzzle 3 above, we asked AlgebraicJulia a question about morphisms. We gave it the data of two graphs and asked it to count up all the morphisms between them. AlegbraicJulia correctely found three.
+AlgebraicJulia's view is more abstract but is useful to us because it can be readily worked with in computational terms. Recall puzzle 3 above, where we gave AlgebraicJulia the data of two graphs and asked it to count up all the morphisms between them. AlgebraicJulia correctely found three. Diagrammatically, we depict these morphisms as three distinct **arrows** going from one graph instance to the other.
 
 
 ```{image} assets/Ch4/ThreeArrows.png
@@ -604,31 +609,23 @@ For instance, in Puzzle 3 above, we asked AlgebraicJulia a question about morphi
 :align: center
 ```
 
-It's as if it were able to go look through the universe of relationships and retrieve all the arrows that fit our description.
-AlgebraicJulia is like a magic genie that has access to this space. If you can phrase what you want in terms of closed loops, AlgebraicJulia can retrieve the data. 
-
-
-The universe of relationships.
+At the beginning of the chapter we considered the idea of an infinite universe of thought bubbles, each an instance for the given graph schema. We now can say that _between_ those instances are **arrows** representing morphisms. Just as it was impractical to try to depict all of the instances, it is also impractical to try to depict all of the morphisms between them. But in our imagination we can fill in enough of these arrows to appreciate the vast interconnected universe of relationships between graphs. This universe of thought bubbles and arrows is called a category, in this case the "category of instaces" for a given schema.
 
 ```{image} assets/Ch4/CategoryDrift.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
 ```
-When we interpret these thought bubbles 
+<br>
 
-This universe of thought bubbles and arrows is called the category, in this case the "category of directed graphs." 
+In puzzle 3, when AlgebraicJulia counts three morphisms between a pair of instances, it's as if it were looking into this category and had the ability to "see" its structure and to retrieve all the arrows that fit our description, like a magic genie that with omniscient access to this universe. 
+<br>
 
-It's the really the universe of all graphs and all the morphisms between them. There are patterns that exist here. 
+Granted such access, we will next explore this universe and discover a variety of useful patterns that exist here.
 
+## 4.5 Summary
 
-
-Now the only trick is figuring out something interesting that can be said entirely in terms of morphisms. And that's exactly what we're going to do in the next chapter!
-
-
-
-
-
+In this chapter we have developed the crucial idea of **graph morphisms**. We have understood this concept from two points of view, the geometric human view and the more formal computational vantage of AlgebraicJulia. The exact correspondance between these views means that if we _only_ think about graphs in terms of graph morphisms then everything we think can be encoded in AlgebraicJulia. In the next two chapters we will discover patterns of morphisms that correspond to useful operations like adding, deleting, merging, etc. And we shall see that when we operationalize these patterns with AlgebraicJulia, we end up in a very different position with regards to the `DANGLING EDGE CONDITION`.
 
 
 
