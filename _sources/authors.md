@@ -46,7 +46,7 @@ Paul Dancstep is a right handed person who likes to do the dishes every other da
 
 </br>
 
-```{image} assets/authors/Brendan.png
+```{image} assets/authors/Brendan.jpg
 :alt: Whoopsy!
 :width: 150px
 :align: right
@@ -64,5 +64,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 :width: 150px
 :align: left
 ```
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Priyaa is a compassionate mathematician working as a post-doctoral researcher at the Topos. She is interested in creating pathways to make math communication user-friendly and approachable – from math in school to graduate research.  She derives inspiration from the works of Tai Danae Bradley, Eugenia Cheng, John Baez, Pawel Sobocinski, Bob Coecke, David Spivak and many others in this area. Her research experience spans quantum computing and category theory.  
 :::
