@@ -12,6 +12,7 @@ kernelspec:
 
 # Authors
 
+## Content development and writing
 :::{admonition} Angeline Aguinaldo
 :class: tip
 
@@ -66,3 +67,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```
 Priyaa is a compassionate mathematician working as a post-doctoral researcher at the Topos. She is interested in creating pathways to make math communication user-friendly and approachable – from math in school to graduate research.  She derives inspiration from the works of Tai Danae Bradley, Eugenia Cheng, John Baez, Pawel Sobocinski, Bob Coecke, David Spivak and many others in this area. Her research experience spans quantum computing and category theory.  
 :::
+
+## Project management 
+
+Priyaa Varshinee Srinivasan 
+
+## Multimedia and illustrations 
+
+Paul Dancstep
+
+## Technology 
+
+Priyaa Varshinee Srinivasan
