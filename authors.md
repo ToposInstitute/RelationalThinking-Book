@@ -79,3 +79,7 @@ Paul Dancstep
 ## Technology 
 
 Priyaa Varshinee Srinivasan
+
+## Technology advisor
+
+Evan Patterson
