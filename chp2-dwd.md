@@ -12,6 +12,10 @@ kernelspec:
 
 # Chapter 2: Dynamical Systems with Kiki and Bouba
 
+:::{note}
+This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
+:::
+
 ## 2.1 Introduction
 
 Kiki and Bouba are great friends, but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about -- visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!

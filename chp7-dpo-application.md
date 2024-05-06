@@ -16,8 +16,13 @@ header-includes:
 
 # Chapter 7: A Look Beyond-- Evolving World Models
 
+:::{note}
+This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
+:::
+
+
 :::{attention}
-This chapter will extend the previously learned concepts from graphs to the world.
+This chapter will extend the previously learned concepts from graphs to real world concepts.
 :::
 
 ## 7.1 Introduction

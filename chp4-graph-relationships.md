@@ -11,6 +11,11 @@ kernelspec:
 ---
 
 # Chapter 4: Categories
+
+:::{note}
+This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
+:::
+
 ## 4.1 Introduction
 
 For any given a schema there will be many possible instances. Below we show a few of the instances for each of our three graph schemas.
