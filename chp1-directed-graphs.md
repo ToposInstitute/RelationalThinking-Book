@@ -16,23 +16,30 @@ kernelspec:
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
 :::
 
-> The logjam you don’t even know you’re stuck in will be broken by a shift in representation.
+```{image} assets/Ch1/logjam.jpeg
+:alt: Whoopsy!
+:width: 560px
+:align: center
+```
+<center> <sub> A river jammed with logs. Image: <a href="https://commons.wikimedia.org/wiki/File%3APhotograph_of_Log_Jam_-_NARA_-_2129372.jpg"> Wikimedia </a> </sub> </center>
+
+</br>
+
+> The log jam you don’t even know you’re stuck in will be broken by a shift in representation.
 >
->Michael Sorkin
->
->*Two Hundred Fifty Things an Architect Should Know*
+> -- Michael Sorkin, *Two Hundred Fifty Things an Architect Should Know*
 
 
 
 ## 1.1 Introduction
 
-Reread the description from the mythological romance in the last chapter:
+Let us read again the description of the mythological romance in the last chapter:
 
 :::{admonition} Mythological Romance:
 **Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.**
 :::
 
-Now, expand the panel below to see the directed graph that goes with this description.
+Now, let us have a relook at the directed graph that goes with this description by expanding the panel.
 
 :::{admonition} Directed Graph
 :class: dropdown
