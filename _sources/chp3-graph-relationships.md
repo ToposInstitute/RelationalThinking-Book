@@ -12,6 +12,10 @@ kernelspec:
 
 # Chapter 3: Graph Morphisms
 
+:::{note}
+This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
+:::
+
 ## Introduction
 
 In the previous section we took a look at directed graphs; what they are, what they can represent, and how we can describe them to a computer. In that chapter we investigated the relationships within a graph. In this chapter, we're going to investigate relationships *between* entire graphs.
