@@ -122,7 +122,7 @@ In order to accomplish this, the light bulb has to toggle its states continously
 
 > Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
 
-Here is how we picture the directed graph and update rule that models a flashing bulb:
+Here is how we picture the directed graph and the update rule that models a flashing bulb:
 
 ```{image} assets/Ch2/FlashingLight.png
 :alt: Whoopsy!
@@ -135,7 +135,7 @@ Here is how we picture the directed graph and update rule that models a flashing
 
 At each time step, the light bulb move to `OFF` state if the current state is `ON`, move to `ON` if the current state is `OFF`! 
 
-Given a directed graph, and state set and update rule for each of its vertices, we can bring this graph to life: we can simulate it using Algebraic Julia.[^1]
+Given a directed graph, and a state set and an update rule for each of its vertices, we can bring this graph to life. This means that we can simulate it using Algebraic Julia.[^1]
 
 Here's how we encode this **update rule in Algebraic Julia**:
 
@@ -168,7 +168,7 @@ To simulate the code, we need to provide an **initial state (starting state)** f
 
 ```{code-cell}
 
-initial_state = [on] # needs to be an array
+initial_state = [BULB_ON] # needs to be an array
 
 ```
 
@@ -193,7 +193,7 @@ At each time step, an update rule allows states of the vertices to be updated! A
 
 A flashing bulb is more exciting than a bulb than never flashes! However, what's more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved.
 
-Suppose, we have a string of three light bulbs in a loop that perform a dance like this:
+Suppose, we have a string of two light bulbs in a loop that perform a dance like this:
 
 ```{image} assets/Ch2/AlternatingLights.gif
 :alt: Whoopsy!
@@ -208,7 +208,7 @@ The arrow between any two light bulbs serves as uni-directional conduit for stat
 :::{admonition} Key points
 :class: tip
 
-* The **arrow between two vertices serve as a coduit** through which state information is transmitted from the source to the target vertex. 
+* The **arrow between two vertices serve as a coduit** through which state information is transmitted from its source to its target vertex. 
   
 * The source transmits its state in one time step. The target receives this state information in the next time step. 
   
@@ -270,7 +270,7 @@ Animating the simulation results produces a result like that:
 
 ::::{admonition} Puzzle: a different initial state
 
-What if we set the initial state of the both the bulbs to `ON`?
+What if we set the initial state of the both the bulbs to `ON`? What will be the behaviour of the bulbs over time?
 
 +++ 
 
@@ -337,7 +337,8 @@ How would this system behave if we set initial states for the three bulbs as the
 :align: center
 ```
 
-```{code-cell}
++++
+```{code}
 
 #full code available in Ch2/looped-light.jl
 
@@ -345,6 +346,8 @@ How would this system behave if we set initial states for the three bulbs as the
 initial_state = [Bool(BULB_ON), Bool(BULB_OFF), Bool(BULB_OFF)] 
 
 ```
++++
+
 
 ::: {admonition} See answer!
 :class: dropdown
@@ -365,7 +368,7 @@ The system will be a 'looped light bulb' where exactly one light bulb is `ON` at
 ::::
 
 
- With this idea, we can model a familiar object -- a traffic light !! If we relabel our lights RED, YELLOW, and GREEN, then this model simulates the traffic light's behavior of cycling through green, yellow, red and back to green.
+ With the idea of 3 stringed lights, we can model a familiar object -- a traffic light !! If we relabel our lights RED, YELLOW, and GREEN, then this model simulates the traffic light's behavior of cycling through green, yellow, red and back to green.
 
 
 ```{image} assets/Ch2/TrafficLight.gif
@@ -406,7 +409,7 @@ The update rule for the control vertex is as follows:
 
 </br>
 
-Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia:
+Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia as follows:
 
 +++ 
 
@@ -503,7 +506,7 @@ The talking friends model will have slighty different features:
 
 - In this model, we will see that each vertex will update its state based on both its current state as well as the incoming state. 
 
-Here's the story of Kiki and Bouba again (recollected from introduction): "Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?!"
+Here's the story of Kiki and Bouba (recollected from introduction): "Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?!"
 
 ```{image} assets/Ch2/Kiki-Bouba-friends-2.png
 :alt: Whoopsy!
@@ -614,7 +617,6 @@ Kiki and Bouba met at a restaurant for dinner! It looks like they both had a lon
 
 To answer this question, we will modify our model of Kiki and Bouba by themselves (a graph with just two vertices) to allow for their interaction. The updated model is as follows:
 
-Kiki & Bouba interactive
 ```{image} assets/Ch2/Kiki&Bouba.png
 :alt: Whoopsy!
 :width: 400px
@@ -700,7 +702,7 @@ params =
 
 +++
 
-Here is the plot showing how Kiki and Bouba's moods oscillate during their 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!
+Here is the plot showing how Kiki and Bouba's moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!
 
 ```{image} assets/Ch2/Kiki-Bouba-talking-plot.svg
 :alt: Whoopsy!
@@ -820,12 +822,12 @@ When modelling dynamical systems, we treated underlying graphs are blue prints. 
 1. One or more states for each vertex
 2. An update rule for each state
 
-The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.
+The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system. 
 
 For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for [AlgebraicDynamics](https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/) package of AlgebraicJulia! 
 
-Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things -- in terms of cause and effect, in terms of events which play out over time, and in terms of systems influencing one another! 
+Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things -- in terms of **cause and effect**, in terms of events which play out over time, and in terms of systems influencing one another! 
 
-But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints. In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
+Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain a kind of equilibrium by satsifying simultaneous constraints. In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
 
-[^1]: In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram' which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling.
+[^1]: In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram' which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  "Rupel, Dylan, and David I. Spivak. "The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes." arXiv preprint arXiv:1307.6894 (2013)."
