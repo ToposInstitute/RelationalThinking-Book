@@ -33,44 +33,37 @@ This book is a work-in-progress! We'd love to learn how we can make it better, e
 
 ## 1.1 Introduction
 
-Let us read again the description of the mythological romance in the last chapter:
+Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking, by laying out all of the pertinent details in a single view. For example compare the textual description of the mythological romance in the last chapter aginst its description as a directed graph:
 
 :::{admonition} Mythological Romance:
 **Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.**
 :::
 
-Now, let us have a relook at the directed graph that goes with this description by expanding the panel.
+Note how the written description requires concentration and parsing to understand. But the associated graph makes all the essential information instantly available. 
 
 :::{admonition} Directed Graph
-:class: dropdown
 
 ![whoops!](./assets/Ch1/DGLove.jpg)
 
-
 :::
 
-
-
-
-Note how the written description required concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.
-
-When we look at a directed graph we can instantly see many relationships: *this* arrow is connected to *these* vertices, *this* vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are *not* visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.
+When we look at a directed graph we can instantly see many relationships: *this* arrow is connected to *these* vertices, *this* vertex has no arrows, etc. Such implicit relationships are made apparent by the visual proximity of the graph elements. But unlike humans, computers are *not* visual creatures. If we want to involve a computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.
 
 ## 1.2 Source and Target Maps
 
 <center style="width: 100%; aspect-ratio: 16/9;"> <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/QfvtWgopGiY?si=JoJJP7jhe3-QoxEN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </center>
 
-The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.
+The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer (using Algebraic Julia).
 
 ![whoops!](./assets/Ch1/DataEntry.png)
 
-> DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!
+> DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software of Algebraic Julia, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!
 
 ### Puzzles
 
 ::::{admonition} Puzzle 1
 
-1. Get out a pencil and paper and see if you can draw the directed graphs described by these source and target maps
+1. Can you draw the directed graphs described by these source and target maps on a paper?
 
 a.
 ![whoops!](./assets/Ch1/Problem1a.gif)
@@ -82,20 +75,22 @@ b.
 
 ::::{admonition} Puzzle 2
 
-2. Examine the following directed graphs and see if you can draw their source and target maps.
+2. Examine the following directed graphs. Can you draw their source and target maps?
 ![whoops!](./assets/Ch1/Problem2.jpg)
 
 ::::
 
 ::::{admonition} Puzzle 3
 
-3. Take your source and target maps from the last problem and convert them into lists of numbers.
+3. Convert the source and target maps from the last problem into lists of numbers.
 
 ::::
 
 :::: {admonition} Puzzle 4
 
-4. Take your lists of numbers from the last problem and enter them into the code below, replacing the '?'s under "src" and "tgt". Hit "run". Do the graphs look the way you expected?
+4. Coding time!! The Introduction chapter explains [How to edit and run the code](https://toposinstitute.github.io/AlgJulia-Book/intro.html#live-in-line-code)
+   
+Take your lists of numbers from the last problem and enter them into the code below -- replace the '?'s under "src" and "tgt". Run the code . Do the graphs look the way you expected?
 
 ::::
 

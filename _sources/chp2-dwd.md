@@ -141,7 +141,7 @@ Here's how we encode this **update rule in Algebraic Julia**:
 
 +++
 
-```{code}
+```{code-cell}
 
 # Complete code available in the Github - Ch2/flashing-light.jl
 
@@ -166,7 +166,7 @@ To simulate the code, we need to provide an **initial state (starting state)** f
 
 +++
 
-```{code}
+```{code-cell}
 
 initial_state = [on] # needs to be an array
 
@@ -227,7 +227,7 @@ The graph model looks as follows:
 We now have a new update rule:
 +++ 
 
-```{code}
+```{code-cell}
 
 # Complete code available in Ch2/two-lights.jl
 
@@ -247,7 +247,7 @@ We now have to set the initial states of the bulbs before we can ask the compute
 
 +++ 
 
-```{code}
+```{code-cell}
 
 # One bulb is ON and the other bulb is OFF
 
@@ -274,7 +274,7 @@ What if we set the initial state of the both the bulbs to `ON`?
 
 +++ 
 
-```{code}
+```{code-cell}
 
 # Both the bulbs are in ON state
 
@@ -337,7 +337,7 @@ How would this system behave if we set initial states for the three bulbs as the
 :align: center
 ```
 
-```{code}
+```{code-cell}
 
 #full code available in Ch2/looped-light.jl
 
@@ -410,7 +410,7 @@ Informally, an update is any decision procedure that can be carried out by a com
 
 +++ 
 
-```{code}
+```{code-cell}
 
 # Complete code available in Ch2/traffic-light.jl
 
@@ -440,7 +440,7 @@ We need to set the inital states carefully (in a meaningful way)! We set the con
 
 +++ 
 
-```{code}
+```{code-cell}
 
 #first three states represent controller, last three states represent initial states of the light
 initial_states = [true, false, false, false, true, false]
@@ -562,7 +562,7 @@ The update rule is coded as follows:
 
 +++
 
-```{code}
+```{code-cell}
 
 # complete code available in Ch2/Kiki-bouba-standalone.jl 
 
@@ -581,7 +581,7 @@ We set the initial mood of Kiki to 4.5 and Bouba to be -4.5. We set their calmdo
 
 +++
 
-```{code}
+```{code-cell}
 
 initial_moods = [4.5, -4.5]
 params = LVector(calmdown_rate=[.05, .03])
@@ -660,7 +660,7 @@ Here is the code for the new update rule that Kiki by the above diagram. The log
 
 +++ 
 
-```{code}
+```{code-cell}
 
 # Complete code available in Ch2/Kiki-Bouba-talking.jl
 
@@ -683,7 +683,7 @@ It's time for visualization of change in mood! :) Let us set the initial mood of
 
 +++
 
-```{code}
+```{code-cell}
 # Kiki is super-excited with mood level of 4.5.
 # Bouba is a bit grumpy with mood level of -2.8. 
 initial_moods = [4.5, -2.8]
@@ -714,7 +714,7 @@ Let us make Kiki slightly less excited!
 
 +++
 
-```{code}
+```{code-cell}
 # Kiki is kinda-excited with mood level of 3.5.
 # Bouba is a bit grumpy with mood level of -2.8. 
 initial_moods = [3.5, -2.8]
@@ -738,7 +738,7 @@ Let us reduce Kiki's susceptability factor from 0.2 (20%) to 0.02 (2%).
 
 +++
 
-```{code}
+```{code-cell}
 initial_moods = [3.5, -2.8]
 
 
@@ -781,7 +781,7 @@ The mood level of Bouba's crew is updated using the same logic as above! The cre
 
 +++
 
-```{code}
+```{code-cell}
 # Complete code available in Ch2/Kiki-Bouba-Crew.jl
 
 initial_moods = [4.5, -2.8, 0.5] # Kiki, Bouba, Group

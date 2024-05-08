@@ -475,33 +475,32 @@ document.write(`
 </div></blockquote>
 <section id="introduction">
 <h2>1.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Let us read again the description of the mythological romance in the last chapter:</p>
+<p>Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking, by laying out all of the pertinent details in a single view. For example compare the textual description of the mythological romance in the last chapter aginst its description as a directed graph:</p>
 <div class="admonition-mythological-romance admonition">
 <p class="admonition-title">Mythological Romance:</p>
 <p><strong>Aphrodite loves Adonis and Adonis loves Aphrodite. But Adonis is polyamorous and is also in love with Narcissus. And Narcissus, of course, loves only himself.</strong></p>
 </div>
-<p>Now, let us have a relook at the directed graph that goes with this description by expanding the panel.</p>
-<div class="dropdown admonition">
+<p>Note how the written description requires concentration and parsing to understand. But the associated graph makes all the essential information instantly available.</p>
+<div class="admonition-directed-graph admonition">
 <p class="admonition-title">Directed Graph</p>
 <p><img alt="whoops!" src="assets/Ch1/DGLove.jpg" /></p>
 </div>
-<p>Note how the written description required concentration and parsing to understand. But the associated graph made all the essential information instantly available. Humans are visual creatures, and directed graphs leverage our visual perception and spatial thinking to lay out all of the pertinent details in a single view.</p>
-<p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such relationships are implicit, made apparent to us by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve the computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.</p>
+<p>When we look at a directed graph we can instantly see many relationships: <em>this</em> arrow is connected to <em>these</em> vertices, <em>this</em> vertex has no arrows, etc. Such implicit relationships are made apparent by the visual proximity of the graph elements. But unlike humans, computers are <em>not</em> visual creatures. If we want to involve a computer in our thinking we need to find another (non-visual!) way of communicating these relationships. The following video outlines one possible approach to redescribing our graph in a way that a computer can understand.</p>
 </section>
 <section id="source-and-target-maps">
 <h2>1.2 Source and Target Maps<a class="headerlink" href="#source-and-target-maps" title="Permalink to this heading">#</a></h2>
 <center style="width: 100%; aspect-ratio: 16/9;"> <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/QfvtWgopGiY?si=JoJJP7jhe3-QoxEN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </center>
-<p>The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer.</p>
+<p>The virtue of making these relationships explicit is that the information can now be written in list form, and lists are a data structure that can be easily typed into a computer (using Algebraic Julia).</p>
 <p><img alt="whoops!" src="_images/DataEntry.png" /></p>
 <blockquote>
-<div><p>DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!</p>
+<div><p>DISCLAIMER: In our code samples we will be working with a graphics visualization tool called Graphviz. This is a convenient visualization package for our “under development” software of Algebraic Julia, but it can sometimes behave like an inept reconstructor. Don’t be surprised if, along the way, Graphviz gives you some puzzling representational choices!</p>
 </div></blockquote>
 <section id="puzzles">
 <h3>Puzzles<a class="headerlink" href="#puzzles" title="Permalink to this heading">#</a></h3>
 <div class="admonition-puzzle-1 admonition">
 <p class="admonition-title">Puzzle 1</p>
 <ol class="arabic simple">
-<li><p>Get out a pencil and paper and see if you can draw the directed graphs described by these source and target maps</p></li>
+<li><p>Can you draw the directed graphs described by these source and target maps on a paper?</p></li>
 </ol>
 <p>a.
 <img alt="whoops!" src="_images/Problem1a.gif" /></p>
@@ -511,21 +510,22 @@ document.write(`
 <div class="admonition-puzzle-2 admonition">
 <p class="admonition-title">Puzzle 2</p>
 <ol class="arabic simple" start="2">
-<li><p>Examine the following directed graphs and see if you can draw their source and target maps.
+<li><p>Examine the following directed graphs. Can you draw their source and target maps?
 <img alt="whoops!" src="_images/Problem2.jpg" /></p></li>
 </ol>
 </div>
 <div class="admonition-puzzle-3 admonition">
 <p class="admonition-title">Puzzle 3</p>
 <ol class="arabic simple" start="3">
-<li><p>Take your source and target maps from the last problem and convert them into lists of numbers.</p></li>
+<li><p>Convert the source and target maps from the last problem into lists of numbers.</p></li>
 </ol>
 </div>
 <div class="admonition-puzzle-4 admonition">
 <p class="admonition-title">Puzzle 4</p>
 <ol class="arabic simple" start="4">
-<li><p>Take your lists of numbers from the last problem and enter them into the code below, replacing the ‘?’s under “src” and “tgt”. Hit “run”. Do the graphs look the way you expected?</p></li>
+<li><p>Coding time!! The Introduction chapter explains <a class="reference external" href="https://toposinstitute.github.io/AlgJulia-Book/intro.html#live-in-line-code">How to edit and run the code</a></p></li>
 </ol>
+<p>Take your lists of numbers from the last problem and enter them into the code below – replace the ‘?’s under “src” and “tgt”. Run the code . Do the graphs look the way you expected?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
