@@ -534,11 +534,11 @@ document.write(`
 <blockquote>
 <div><p>Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!</p>
 </div></blockquote>
-<p>Here is how we picture the directed graph and update rule that models a flashing bulb:</p>
+<p>Here is how we picture the directed graph and the update rule that models a flashing bulb:</p>
 <a class="reference internal image-reference" href="_images/FlashingLight.png"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.png" style="width: 400px;" /></a>
 <br/>
 <p>At each time step, the light bulb move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
-<p>Given a directed graph, and state set and update rule for each of its vertices, we can bring this graph to life: we can simulate it using Algebraic Julia.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>Given a directed graph, and a state set and an update rule for each of its vertices, we can bring this graph to life. This means that we can simulate it using Algebraic Julia.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Here’s how we encode this <strong>update rule in Algebraic Julia</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -562,7 +562,7 @@ document.write(`
 <p>To simulate the code, we need to provide an <strong>initial state (starting state)</strong> for the bulb which will then get updated at every time instant as per the above update rule!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">initial_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">on</span><span class="p">]</span><span class="w"> </span><span class="c"># needs to be an array</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">initial_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">BULB_ON</span><span class="p">]</span><span class="w"> </span><span class="c"># needs to be an array</span>
 </pre></div>
 </div>
 </div>
@@ -577,14 +577,14 @@ document.write(`
 <section id="string-of-lights">
 <h3>String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
 <p>A flashing bulb is more exciting than a bulb than never flashes! However, what’s more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved.</p>
-<p>Suppose, we have a string of three light bulbs in a loop that perform a dance like this:</p>
+<p>Suppose, we have a string of two light bulbs in a loop that perform a dance like this:</p>
 <a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 375px;" /></a>
 <p>At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor.</p>
 <p>The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark></p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
 <ul class="simple">
-<li><p>The <strong>arrow between two vertices serve as a coduit</strong> through which state information is transmitted from the source to the target vertex.</p></li>
+<li><p>The <strong>arrow between two vertices serve as a coduit</strong> through which state information is transmitted from its source to its target vertex.</p></li>
 <li><p>The source transmits its state in one time step. The target receives this state information in the next time step.</p></li>
 <li><p>The target may update its state based on this incoming information.</p></li>
 </ul>
@@ -625,7 +625,7 @@ document.write(`
 </br>
 <div class="admonition-puzzle-a-different-initial-state admonition">
 <p class="admonition-title">Puzzle: a different initial state</p>
-<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>?</p>
+<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>? What will be the behaviour of the bulbs over time?</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>In such case, we get the following result because, each bulb continuously copies the state of the other bulb!</p>
@@ -648,6 +648,12 @@ document.write(`
 <p class="admonition-title">Puzzle: initial state</p>
 <p>How would this system behave if we set initial states for the three bulbs as the following?</p>
 <a class="reference internal image-reference" href="_images/3loop-initial-state.png"><img alt="Whoopsy!" class="align-center" src="_images/3loop-initial-state.png" style="width: 400px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#full code available in Ch2/looped-light.jl</span>
+
+<span class="c1"># Bulb 1 is ON, bulb 2 is OFF, bulb 3 is OFF</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">)]</span> 
+</pre></div>
+</div>
 <div class="dropdown admonition">
 <p class="admonition-title">See answer!</p>
 <div class="wrapper docutils">
@@ -656,7 +662,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>With this idea, we can model a familiar object – a traffic light !! If we relabel our lights RED, YELLOW, and GREEN, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
+<p>With the idea of 3 stringed lights, we can model a familiar object – a traffic light !! If we relabel our lights RED, YELLOW, and GREEN, then this model simulates the traffic light’s behavior of cycling through green, yellow, red and back to green.</p>
 <a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 400px;" /></a>
 </br>
 </br>
@@ -673,7 +679,7 @@ document.write(`
 <p>The update rule for the control vertex is as follows:</p>
 <a class="reference internal image-reference" href="_images/traffic-controller-update.png"><img alt="Whoopsy!" class="align-center" src="_images/traffic-controller-update.png" style="width: 400px;" /></a>
 </br>
-<p>Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia:</p>
+<p>Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Complete code available in Ch2/traffic-light.jl</span>
@@ -753,7 +759,7 @@ And here's our simulation with the first system starting :
 <ul class="simple">
 <li><p>In this model, we will see that each vertex will update its state based on both its current state as well as the incoming state.</p></li>
 </ul>
-<p>Here’s the story of Kiki and Bouba again (recollected from introduction): “Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?!”</p>
+<p>Here’s the story of Kiki and Bouba (recollected from introduction): “Kiki and Bouba are great friends but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?!”</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-friends-2.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-friends-2.png" style="width: 350px;" /></a>
 </br>
 <p>Let us get creative and sketch out some details of their interaction – <strong>what are the states and the update rules</strong>?</p>
@@ -809,7 +815,6 @@ And here's our simulation with the first system starting :
 <h3>Kiki and Bouba talking to each other<a class="headerlink" href="#kiki-and-bouba-talking-to-each-other" title="Permalink to this heading">#</a></h3>
 <p>Kiki and Bouba met at a restaurant for dinner! It looks like they both had a long day! Let us see how these two friends affect each other’s mood! Are they going to go back home happier or grumpier?</p>
 <p>To answer this question, we will modify our model of Kiki and Bouba by themselves (a graph with just two vertices) to allow for their interaction. The updated model is as follows:</p>
-<p>Kiki &amp; Bouba interactive</p>
 <a class="reference internal image-reference" href="_images/Kiki&amp;Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki&amp;Bouba.png" style="width: 400px;" /></a>
 <p>The arrow from Kiki to Bouba allows Kiki’s mood to be fed into Bouba system. The arrow from Bouba to Kiki allows Bouba’s mood to be fed into Kiki’s system. Recall, <mark> arrow = conduit for state information</mark>.</p>
 <p>Now that we have extra state information flowing into the vertices, we would need to modify our exisiting update rule too!</p>
@@ -866,7 +871,7 @@ And here's our simulation with the first system starting :
 </div>
 </div>
 </div>
-<p>Here is the plot showing how Kiki and Bouba’s moods oscillate during their 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!</p>
+<p>Here is the plot showing how Kiki and Bouba’s moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-talking-plot.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-talking-plot.svg" width="600px" /></a>
 <div class="admonition-what-happens-if-kiki-and-bouba-start-at-different-initial-moods admonition">
 <p class="admonition-title">What happens if Kiki and Bouba start at different initial moods?</p>
@@ -920,12 +925,12 @@ And here's our simulation with the first system starting :
 </ol>
 <p>The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.</p>
 <p>For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/">AlgebraicDynamics</a> package of AlgebraicJulia!</p>
-<p>Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things – in terms of cause and effect, in terms of events which play out over time, and in terms of systems influencing one another!</p>
-<p>But this is just one way of looking at the world. And not all systems are best understood in this sense. These are systems that maintain a kind of equilibrium or balancing act between simultaneous constraints. In the coming chapters we will develop to a more <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
+<p>Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things – in terms of <strong>cause and effect</strong>, in terms of events which play out over time, and in terms of systems influencing one another!</p>
+<p>Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain a kind of equilibrium by satsifying simultaneous constraints. In the coming chapters we will develop to a more <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram’ which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling.</p>
+<p>In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram’ which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  “Rupel, Dylan, and David I. Spivak. “The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes.” arXiv preprint arXiv:1307.6894 (2013).”</p>
 </aside>
 </section>
 </section>
