@@ -43,7 +43,7 @@ Note how the written description requires concentration and parsing to understan
 
 :::{admonition} Directed Graph
 
-![whoops!](./assets/Ch1/DGLove.jpg)
+![whoops!](./assets/Ch1/DGlove.jpg)
 
 :::
 
