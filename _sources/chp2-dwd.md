@@ -221,7 +221,7 @@ The graph model looks as follows:
 
 ```{image} assets/Ch2/Pair_Of_lights.png
 :alt: Whoopsy!
-:width: 375px
+:width: 372px
 :align: center
 ```
 We now have a new update rule:
