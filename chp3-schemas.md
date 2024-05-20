@@ -46,7 +46,7 @@ To model this kind of social network we need a different kind of graph. We cal
 <br>
 
 :::{admonition} Pause and Ponder! 
-How is the data of an undirected graph different from the data of a directed graph? How might you communicate the details of an undirected graph to a computer?
+How would you represent an undirected graph in terms of source and target maps?
 :::
 
 
