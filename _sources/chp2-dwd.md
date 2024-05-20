@@ -16,6 +16,10 @@ kernelspec:
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
 :::
 
+:::{note}
+The Algebraic Julia code of this chapter is available in the repo [ToposInstitute/RelationalThinking-code](https://github.com/ToposInstitute/RelationalThinking-code) under Ch2.
+:::
+
 ## 2.1 Introduction
 
 Kiki and Bouba are great friends, but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about -- visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!
@@ -141,7 +145,7 @@ Here's how we encode this **update rule in Algebraic Julia**:
 
 +++
 
-```{code-cell}
+```{code}
 
 # Complete code available in the Github - Ch2/flashing-light.jl
 
@@ -166,7 +170,7 @@ To simulate the code, we need to provide an **initial state (starting state)** f
 
 +++
 
-```{code-cell}
+```{code}
 
 initial_state = [BULB_ON] # needs to be an array
 
@@ -227,7 +231,7 @@ The graph model looks as follows:
 We now have a new update rule:
 +++ 
 
-```{code-cell}
+```{code}
 
 # Complete code available in Ch2/two-lights.jl
 
@@ -247,7 +251,7 @@ We now have to set the initial states of the bulbs before we can ask the compute
 
 +++ 
 
-```{code-cell}
+```{code}
 
 # One bulb is ON and the other bulb is OFF
 
@@ -274,7 +278,7 @@ What if we set the initial state of the both the bulbs to `ON`? What will be the
 
 +++ 
 
-```{code-cell}
+```{code}
 
 # Both the bulbs are in ON state
 
@@ -413,7 +417,7 @@ Informally, an update is any decision procedure that can be carried out by a com
 
 +++ 
 
-```{code-cell}
+```{code}
 
 # Complete code available in Ch2/traffic-light.jl
 
@@ -443,7 +447,7 @@ We need to set the inital states carefully (in a meaningful way)! We set the con
 
 +++ 
 
-```{code-cell}
+```{code}
 
 #first three states represent controller, last three states represent initial states of the light
 initial_states = [true, false, false, false, true, false]
@@ -565,7 +569,7 @@ The update rule is coded as follows:
 
 +++
 
-```{code-cell}
+```{code}
 
 # complete code available in Ch2/Kiki-bouba-standalone.jl 
 
@@ -584,7 +588,7 @@ We set the initial mood of Kiki to 4.5 and Bouba to be -4.5. We set their calmdo
 
 +++
 
-```{code-cell}
+```{code}
 
 initial_moods = [4.5, -4.5]
 params = LVector(calmdown_rate=[.05, .03])
@@ -662,7 +666,7 @@ Here is the code for the new update rule that Kiki by the above diagram. The log
 
 +++ 
 
-```{code-cell}
+```{code}
 
 # Complete code available in Ch2/Kiki-Bouba-talking.jl
 
@@ -685,7 +689,7 @@ It's time for visualization of change in mood! :) Let us set the initial mood of
 
 +++
 
-```{code-cell}
+```{code}
 # Kiki is super-excited with mood level of 4.5.
 # Bouba is a bit grumpy with mood level of -2.8. 
 initial_moods = [4.5, -2.8]
@@ -716,7 +720,7 @@ Let us make Kiki slightly less excited!
 
 +++
 
-```{code-cell}
+```{code}
 # Kiki is kinda-excited with mood level of 3.5.
 # Bouba is a bit grumpy with mood level of -2.8. 
 initial_moods = [3.5, -2.8]
@@ -740,7 +744,7 @@ Let us reduce Kiki's susceptability factor from 0.2 (20%) to 0.02 (2%).
 
 +++
 
-```{code-cell}
+```{code}
 initial_moods = [3.5, -2.8]
 
 
@@ -783,7 +787,7 @@ The mood level of Bouba's crew is updated using the same logic as above! The cre
 
 +++
 
-```{code-cell}
+```{code}
 # Complete code available in Ch2/Kiki-Bouba-Crew.jl
 
 initial_moods = [4.5, -2.8, 0.5] # Kiki, Bouba, Group

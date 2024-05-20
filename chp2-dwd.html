@@ -475,6 +475,10 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>This book is a work-in-progress! We’d love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in <a class="reference external" href="https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit">this google doc</a>.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Algebraic Julia code of this chapter is available in the repo <a class="reference external" href="https://github.com/ToposInstitute/RelationalThinking-code">ToposInstitute/RelationalThinking-code</a> under Ch2.</p>
+</div>
 <section id="introduction">
 <h2>2.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Kiki and Bouba are great friends, but are quite different characters! It is fun when they meet because Kiki is highly excitable and Bouba prefers to be on the grumpy side! However, they get along with each other quite well! Would it not be interesting to visualize how their mood levels change as they interact?! That is what this chapter is about – visualizing Kiki and Bouba mood levels when they interact using the tools we built in the last chapter!</p>
@@ -540,32 +544,24 @@ document.write(`
 <p>At each time step, the light bulb move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
 <p>Given a directed graph, and a state set and an update rule for each of its vertices, we can bring this graph to life. This means that we can simulate it using Algebraic Julia.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Here’s how we encode this <strong>update rule in Algebraic Julia</strong>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Complete code available in the Github - Ch2/flashing-light.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in the Github - Ch2/flashing-light.jl</span>
 
-<span class="c"># Bulb states</span>
-<span class="nd">@enum</span><span class="w"> </span><span class="n">BulbState</span><span class="w"> </span><span class="k">begin</span>
-<span class="w">    </span><span class="n">BULB_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="w">    </span><span class="n">BULB_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="k">end</span>
+<span class="c1"># Bulb states</span>
+<span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
+    <span class="n">BULB_ON</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="n">BULB_OFF</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">end</span>
 
-<span class="c"># Update rule</span>
-<span class="n">Transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">xor</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="kt">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">))]</span><span class="w"> </span><span class="c"># toggle bulb state</span>
+<span class="c1"># Update rule</span>
+<span class="n">Transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">xor</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">))]</span> <span class="c1"># toggle bulb state</span>
 
-<span class="c"># Transmission of state information using the arrow</span>
-<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span>
+<span class="c1"># Transmission of state information using the arrow</span>
+<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>To simulate the code, we need to provide an <strong>initial state (starting state)</strong> for the bulb which will then get updated at every time instant as per the above update rule!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">initial_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">BULB_ON</span><span class="p">]</span><span class="w"> </span><span class="c"># needs to be an array</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">BULB_ON</span><span class="p">]</span> <span class="c1"># needs to be an array</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>The simulation reuslts are exported as an animation showing that our simulation works (using Javis library) as shown below!</p>
 <a class="reference internal image-reference" href="_images/flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/flashing-light-JAVIS.gif" style="width: 75px;" /></a>
@@ -592,33 +588,26 @@ document.write(`
 <p>The graph model looks as follows:</p>
 <a class="reference internal image-reference" href="_images/Pair_Of_Lights.png"><img alt="Whoopsy!" class="align-center" src="_images/Pair_Of_Lights.png" style="width: 372px;" /></a>
 <p>We now have a new update rule:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Complete code available in Ch2/two-lights.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/two-lights.jl</span>
 
-<span class="nd">@enum</span><span class="w"> </span><span class="n">BulbState</span><span class="w"> </span><span class="k">begin</span>
-<span class="w">    </span><span class="n">BULB_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="w">    </span><span class="n">BULB_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
-<span class="k">end</span>
+<span class="nd">@enum</span> <span class="n">BulbState</span> <span class="n">begin</span>
+    <span class="n">BULB_ON</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="n">BULB_OFF</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">end</span>
 
-<span class="c"># Update state to incoming state </span>
-<span class="n">Transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="w">  </span>
+<span class="c1"># Update state to incoming state </span>
+<span class="n">Transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>  
 
-<span class="c"># transmit current state </span>
-<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span>
+<span class="c1"># transmit current state </span>
+<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>We now have to set the initial states of the bulbs before we can ask the computer to simulate the two light bulbs system for us!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># One bulb is ON and the other bulb is OFF</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># One bulb is ON and the other bulb is OFF</span>
 
-<span class="n">initial_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="kt">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span><span class="w"> </span><span class="kt">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">)]</span><span class="w"> </span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_OFF</span><span class="p">)]</span> 
+
 </pre></div>
-</div>
-</div>
 </div>
 <p>Animating the simulation results produces a result like that:</p>
 <a class="reference internal image-reference" href="_images/two-lights-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/two-lights-JAVIS.gif" style="width: 150px;" /></a>
@@ -626,6 +615,12 @@ document.write(`
 <div class="admonition-puzzle-a-different-initial-state admonition">
 <p class="admonition-title">Puzzle: a different initial state</p>
 <p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>? What will be the behaviour of the bulbs over time?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Both the bulbs are in ON state</span>
+
+<span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">)]</span> 
+
+</pre></div>
+</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>In such case, we get the following result because, each bulb continuously copies the state of the other bulb!</p>
@@ -680,40 +675,32 @@ document.write(`
 <a class="reference internal image-reference" href="_images/traffic-controller-update.png"><img alt="Whoopsy!" class="align-center" src="_images/traffic-controller-update.png" style="width: 400px;" /></a>
 </br>
 <p>Informally, an update is any decision procedure that can be carried out by a computer. We can program the above update rule in Algebraic Julia as follows:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Complete code available in Ch2/traffic-light.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/traffic-light.jl</span>
 
-<span class="c"># update rule for indvidual bulbs</span>
-<span class="n">BulbTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="w"> </span>
+<span class="c1"># update rule for indvidual bulbs</span>
+<span class="n">BulbTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> 
 
-<span class="c"># update rule for the controller box</span>
-<span class="n">ControllerTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">begin</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w">  </span><span class="c">#Red is ON, the rest of OFF</span>
-<span class="w">        </span><span class="p">[</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">]</span><span class="w"> </span>
-<span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w">  </span><span class="c"># Green is ON</span>
-<span class="w">        </span><span class="p">[</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">]</span>
-<span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w">  </span><span class="c"># Yellow is ON, the rest is OFF</span>
-<span class="w">        </span><span class="p">[</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">]</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="c">#non-sense </span>
-<span class="w">        </span><span class="p">[</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">]</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span>
+<span class="c1"># update rule for the controller box</span>
+<span class="n">ControllerTransition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">begin</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span><span class="p">)</span>  <span class="c1">#Red is ON, the rest of OFF</span>
+        <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span> 
+    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span><span class="p">)</span>  <span class="c1"># Green is ON</span>
+        <span class="p">[</span><span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">]</span>
+    <span class="n">elseif</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">false</span> <span class="o">&amp;&amp;</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">true</span><span class="p">)</span>  <span class="c1"># Yellow is ON, the rest is OFF</span>
+        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span>
+    <span class="k">else</span> <span class="c1">#non-sense </span>
+        <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span>
+    <span class="n">end</span>
+<span class="n">end</span>
 
-<span class="c"># transmission of state</span>
-<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span>
+<span class="c1"># transmission of state</span>
+<span class="n">Readout</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>We need to set the inital states carefully (in a meaningful way)! We set the controller to begin in <code class="docutils literal notranslate"><span class="pre">ON</span></code> for the RED light state and <code class="docutils literal notranslate"><span class="pre">OFF</span></code> for the other two lights (3 states for the controller). For the three light bulbs, we set RED to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, GREEN to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, and YELLOW to be <code class="docutils literal notranslate"><span class="pre">ON</span></code>. So in the next instant in time, controller will send it current state (RED) to the respective light bulbs and move to the next state of GREEN.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c">#first three states represent controller, last three states represent initial states of the light</span>
-<span class="n">initial_states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#first three states represent controller, last three states represent initial states of the light</span>
+<span class="n">initial_states</span> <span class="o">=</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Simulation of the results creates the following animation of traffic light! We got our initial states right!!</p>
 <a class="reference internal image-reference" href="_images/traffic-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic-light-JAVIS.gif" style="width: 75px;" /></a>
@@ -779,28 +766,20 @@ And here's our simulation with the first system starting :
 <p>As mentioned earlier, the mood level can be anywhere between -5 to +5.</p>
 <p>The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a <strong>parameter</strong> called <strong>calm down rate</strong>.</p>
 <p>The update rule is coded as follows:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># complete code available in Ch2/Kiki-bouba-standalone.jl </span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># complete code available in Ch2/Kiki-bouba-standalone.jl </span>
 
-<span class="c"># change in mood level = -(current mood level x calmdown rate)</span>
-<span class="c"># pay attention to the negative sign in the front; </span>
-<span class="c"># negative sign because it is calm &quot;down&quot; rate and not calm &quot;up&quot;</span>
+<span class="c1"># change in mood level = -(current mood level x calmdown rate)</span>
+<span class="c1"># pay attention to the negative sign in the front; </span>
+<span class="c1"># negative sign because it is calm &quot;down&quot; rate and not calm &quot;up&quot;</span>
 
-<span class="c"># here, change in mood is the amount by which the mood moves towards zero</span>
-<span class="n">dotmood</span><span class="p">(</span><span class="n">mood</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="o">.</span><span class="n">calmdown_rate</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">]</span><span class="w"> </span>
+<span class="c1"># here, change in mood is the amount by which the mood moves towards zero</span>
+<span class="n">dotmood</span><span class="p">(</span><span class="n">mood</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span> <span class="o">-</span> <span class="p">(</span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">calmdown_rate</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">]</span> 
 </pre></div>
-</div>
-</div>
 </div>
 <p>We set the initial mood of Kiki to 4.5 and Bouba to be -4.5. We set their calmdown rates to be 5% (0.05) for Kiki and 3% (0.03) for Bouba.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">initial_moods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">4.5</span><span class="p">]</span>
-<span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LVector</span><span class="p">(</span><span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mf">.03</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_moods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">LVector</span><span class="p">(</span><span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">.03</span><span class="p">])</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Are you ready to visualize their mood change when they are by themselves?</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-standalone-plot.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-standalone-plot.svg" width="500px" /></a>
@@ -835,53 +814,62 @@ And here's our simulation with the first system starting :
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-dynamics.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-dynamics.png" style="width: 500px;" /></a>
 </br>
 <p>Here is the code for the new update rule that Kiki by the above diagram. The logic of updating Bouba’s mood is the same.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Complete code available in Ch2/Kiki-Bouba-talking.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/Kiki-Bouba-talking.jl</span>
 
-<span class="c"># Update rule for Kiki&#39;s mood level </span>
+<span class="c1"># Update rule for Kiki&#39;s mood level </span>
 
-<span class="n">dotmood_Kiki</span><span class="p">(</span><span class="n">mood</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c"># [ - mood[1] * param.calmdown_rate[1] ]</span>
-<span class="w"> </span><span class="k">begin</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">param</span><span class="o">.</span><span class="n">grumpiness_tolerance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">param</span><span class="o">.</span><span class="n">excitement_tolerance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
-<span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="o">.</span><span class="n">calmdown_rate</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="c"># pay attention to the negative sign in the front; here, change in mood is the amount by which the mood moves towards zero</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">     </span><span class="p">[</span><span class="w"> </span><span class="n">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="o">.</span><span class="n">susceptability</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="o">.</span><span class="n">calmdown_rate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">]</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span><span class="w"> </span>
+<span class="n">dotmood_Kiki</span><span class="p">(</span><span class="n">mood</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="c1"># [ - mood[1] * param.calmdown_rate[1] ]</span>
+ <span class="n">begin</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">param</span><span class="o">.</span><span class="n">grumpiness_tolerance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">||</span> <span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">param</span><span class="o">.</span><span class="n">excitement_tolerance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+     <span class="p">[</span> <span class="o">-</span> <span class="p">(</span><span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">calmdown_rate</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">]</span> <span class="c1"># pay attention to the negative sign in the front; here, change in mood is the amount by which the mood moves towards zero</span>
+    <span class="k">else</span>
+     <span class="p">[</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">susceptability</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">mood</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">calmdown_rate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
+    <span class="n">end</span>
+<span class="n">end</span> 
 </pre></div>
-</div>
-</div>
 </div>
 <p>It’s time for visualization of change in mood! :) Let us set the initial mood of Kiki and Bouba, their susceptability factors, and their tolerance levels.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Kiki is super-excited with mood level of 4.5.</span>
-<span class="c"># Bouba is a bit grumpy with mood level of -2.8. </span>
-<span class="n">initial_moods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.8</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kiki is super-excited with mood level of 4.5.</span>
+<span class="c1"># Bouba is a bit grumpy with mood level of -2.8. </span>
+<span class="n">initial_moods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">]</span>
 
-<span class="c"># Each parameter has two values - first one for Kiki and the second one for Bouba!</span>
-<span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">    </span><span class="n">LVector</span><span class="p">(</span>
-<span class="w">        </span><span class="n">susceptability</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">],</span><span class="w"> </span>
-<span class="w">        </span><span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mf">.03</span><span class="p">],</span><span class="w"> </span>
-<span class="w">        </span><span class="n">grumpiness_tolerance</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mf">4.8</span><span class="p">],</span><span class="w"> </span>
-<span class="w">        </span><span class="n">excitement_tolerance</span><span class="o">=</span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="c1"># Each parameter has two values - first one for Kiki and the second one for Bouba!</span>
+<span class="n">params</span> <span class="o">=</span> 
+    <span class="n">LVector</span><span class="p">(</span>
+        <span class="n">susceptability</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> 
+        <span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">.03</span><span class="p">],</span> 
+        <span class="n">grumpiness_tolerance</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mf">4.8</span><span class="p">],</span> 
+        <span class="n">excitement_tolerance</span><span class="o">=</span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Here is the plot showing how Kiki and Bouba’s moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-talking-plot.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-talking-plot.svg" width="600px" /></a>
 <div class="admonition-what-happens-if-kiki-and-bouba-start-at-different-initial-moods admonition">
 <p class="admonition-title">What happens if Kiki and Bouba start at different initial moods?</p>
 <p>Let us make Kiki slightly less excited!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kiki is kinda-excited with mood level of 3.5.</span>
+<span class="c1"># Bouba is a bit grumpy with mood level of -2.8. </span>
+<span class="n">initial_moods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <p>This seems to be a little of bad news!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-talking-plot-2.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-talking-plot-2.svg" width="600px" /></a>
 <div class="admonition-can-we-make-this-situation-better-for-the-friends-by-reducing-kiki-s-susceptability-factor admonition">
 <p class="admonition-title">Can we make this situation better for the friends by reducing Kiki’s susceptability factor?</p>
 <p>Let us reduce Kiki’s susceptability factor from 0.2 (20%) to 0.02 (2%).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>initial_moods = [3.5, -2.8]
+
+
+# Kiki&#39;s susceptability reduced to 2% from 20%
+params = 
+    LVector(
+        susceptability=[0.2, 0.1], 
+        calmdown_rate=[.05, .03], 
+        grumpiness_tolerance=[-4,-4.8], 
+        excitement_tolerance=[4.5,4])```
+</pre></div>
+</div>
 </div>
 <p>Our solution seems to be working!!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-talking-plot-3.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-talking-plot-3.svg" width="600px" /></a>
@@ -892,19 +880,16 @@ And here's our simulation with the first system starting :
 <a class="reference internal image-reference" href="_images/KikiAndBoubaAndStaff.png"><img alt="Whoopsy!" class="align-center" src="_images/KikiAndBoubaAndStaff.png" style="width: 600px;" /></a>
 </br>
 <p>The mood level of Bouba’s crew is updated using the same logic as above! The crew as a single entity has a susceptablity factor, a calm down rate, and tolerance levels.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Complete code available in Ch2/Kiki-Bouba-Crew.jl</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in Ch2/Kiki-Bouba-Crew.jl</span>
 
-<span class="n">initial_moods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]</span><span class="w"> </span><span class="c"># Kiki, Bouba, Group</span>
-<span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LVector</span><span class="p">(</span>
-<span class="w">    </span><span class="n">susceptability</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">],</span><span class="w"> </span>
-<span class="w">    </span><span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span><span class="w"> </span><span class="mf">.03</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">],</span><span class="w"> </span>
-<span class="w">    </span><span class="n">grumpiness_tolerance</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mf">4.8</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">3.5</span><span class="p">],</span><span class="w"> </span>
-<span class="w">    </span><span class="n">excitement_tolerance</span><span class="o">=</span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">initial_moods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span> <span class="c1"># Kiki, Bouba, Group</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">LVector</span><span class="p">(</span>
+    <span class="n">susceptability</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> 
+    <span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">.03</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> 
+    <span class="n">grumpiness_tolerance</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mf">4.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">],</span> 
+    <span class="n">excitement_tolerance</span><span class="o">=</span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
 </pre></div>
-</div>
-</div>
 </div>
 <p>The change in mood level of Kiki, Bouba, and Bouba’s crew over 100 minutes!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-crew-plot.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-crew-plot.svg" width="600px" /></a>
