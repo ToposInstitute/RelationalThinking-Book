@@ -219,7 +219,7 @@ The arrow between any two light bulbs serves as uni-directional conduit for stat
 
 The graph model looks as follows:
 
-```{image} assets/Ch2/Pair_Of_lights.png
+```{image} assets/Ch2/Pair_Of_Lights.png
 :alt: Whoopsy!
 :width: 372px
 :align: center
