@@ -54,7 +54,7 @@ For example, here are few situations based on the "Ski trip brochure":
 
 Situation 1: A person was at the lodge. They took the lift up the mountain and skied downhill to the village. 
 
-Situation 2: A person was the village. The cross-country skied in the village. 
+Situation 2: A person was at the village. The cross-country skied in the village. 
 
 We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some *additional information*, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occuring over discrete time steps.
 
@@ -105,9 +105,9 @@ We then add extra data to this vertex called *state* which gives on `ON`/`OFF` c
 
 </br>
  
-The above graph can interpreted a snapshot of the bulb at an instant in time! The graph has some dynamic nature to it in the sense that the state can be either `ON` or `OFF`. However, once set to `ON` or `OFF`, the vertex (light bulb) just stays at whatever state we set it to.
+The above graph can be interpreted as a snapshot of the bulb at an instant in time! The graph has some dynamic nature to it in the sense that the state can be either `ON` or `OFF`. However, once set to `ON` or `OFF`, the vertex (light bulb) just stays at whatever state we set it to.
 
-> Adding state information to the vertices makes a graph slightly dynamic. A directed graph with a state for each vertex is a snapshot of an event in time.
+> Adding state information to the vertices makes a graph slightly dynamic. A directed graph where each vertex has a state is a snapshot of an event in time.
 
 We would like the state of the light bulb to change over time!
 
@@ -124,7 +124,7 @@ Let us update our model (i.e. our directed graph) to have the light bulb flash o
 
 In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is `ON`, it must switch `OFF`. If the present state is `OFF`, it must switch `ON`. It must perform this operation at every time step. What we described just now is called an  **update rule** -- a rule saying how a state is to be updated! 
 
-> Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
+> Update rules along along with the states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
 
 Here is how we picture the directed graph and the update rule that models a flashing bulb:
 
@@ -137,7 +137,7 @@ Here is how we picture the directed graph and the update rule that models a flas
 <br/>
 
 
-At each time step, the light bulb move to `OFF` state if the current state is `ON`, move to `ON` if the current state is `OFF`! 
+At each time step, the light bulb moves to `OFF` state if the current state is `ON`, moves to `ON` if the current state is `OFF`! 
 
 Given a directed graph, and a state set and an update rule for each of its vertices, we can bring this graph to life. This means that we can simulate it using Algebraic Julia.[^1]
 
@@ -195,9 +195,9 @@ At each time step, an update rule allows states of the vertices to be updated! A
 
 ### String of lights
 
-A flashing bulb is more exciting than a bulb than never flashes! However, what's more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved.
+A flashing bulb is more exciting than a bulb than never flashes! However, what is more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved in the time step the information was received.
 
-Suppose, we have a string of two light bulbs in a loop that perform a dance like this:
+Suppose, we have a string of two light bulbs in a loop that perform a dance like below:
 
 ```{image} assets/Ch2/AlternatingLights.gif
 :alt: Whoopsy!
@@ -262,7 +262,7 @@ initial_state = [Bool(BULB_ON), Bool(BULB_OFF)]
 
 +++
 
-Animating the simulation results produces a result like that:
+Animating the simulation results produces a result as below:
 
 ```{image} assets/Ch2/two-lights-JAVIS.gif
 :alt: Whoopsy!
@@ -274,7 +274,7 @@ Animating the simulation results produces a result like that:
 
 ::::{admonition} Puzzle: a different initial state
 
-What if we set the initial state of the both the bulbs to `ON`? What will be the behaviour of the bulbs over time?
+What if we set the initial state of the both the bulbs to `ON`? What will be the behaviour of the bulbs over time? (Use the update rule.)
 
 +++ 
 
@@ -327,7 +327,7 @@ Now, imagine adding one more bulb to the above model with the same update rule:
 
 ```{image} assets/Ch2/3Loop.png
 :alt: Whoopsy!
-:width: 400px
+:width: 500px
 :align: center
 ```
 
@@ -466,7 +466,7 @@ Simulation of the results creates the following animation of traffic light! We g
 :::{admonition} Key point
 :class: tip
 
-Different vertices may have different update rules for its states. Setting initial states carefully is important to simulate meaningful behavior!
+Different vertices may have different update rules for its states. Setting initial states carefully is important to simulate a meaningful behavior!
 
 :::
 
@@ -500,7 +500,7 @@ Now for the grand finale, we are ready to build a model of Kiki and Bouba's inte
 
 Let us recollect what we have seen so far: 
 
-- In the model of the flashing light bulb, (at each time step) each vertex updated it state only based on its current state.
+- In the model of the flashing light bulb, (at each time step) each vertex updated its state based only on its current state.
 
 - In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbour.
 
@@ -563,7 +563,7 @@ As with the bulb, we model Kiki and Bouba by themselves as a graph with two just
 
 As mentioned earlier, the mood level can be anywhere between -5 to +5.
 
-The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a **parameter** called **calm down rate**.
+The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. The **calm down rate** is called a **parameter**. We can think of a parameter as a weight assigned to a particular value used in the computation. In this case, calm down rate acts as a weight for the person's mood level.
 
 The update rule is coded as follows:
 
@@ -619,7 +619,7 @@ The moods will never become zero! Can you see why?
 
 Kiki and Bouba met at a restaurant for dinner! It looks like they both had a long day! Let us see how these two friends affect each other's mood! Are they going to go back home happier or grumpier?
 
-To answer this question, we will modify our model of Kiki and Bouba by themselves (a graph with just two vertices) to allow for their interaction. The updated model is as follows:
+To answer this question, we will modify our model of *Kiki and Bouba by themselves* (a graph with just two vertices) to allow for their interaction. The updated model is as follows:
 
 ```{image} assets/Ch2/Kiki&Bouba.png
 :alt: Whoopsy!
@@ -754,7 +754,7 @@ params =
         susceptability=[0.2, 0.1], 
         calmdown_rate=[.05, .03], 
         grumpiness_tolerance=[-4,-4.8], 
-        excitement_tolerance=[4.5,4])```
+        excitement_tolerance=[4.5,4])
 
 ```
 
@@ -832,6 +832,6 @@ For readers who are interested to explore further about using AlgebraicJulia to 
 
 Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things -- in terms of **cause and effect**, in terms of events which play out over time, and in terms of systems influencing one another! 
 
-Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain a kind of equilibrium by satsifying simultaneous constraints. In the coming chapters we will develop to a more *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
+Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain **a kind of equilibrium** by satsifying simultaneous constraints. In the coming chapters we will develop this *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
 
 [^1]: In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram' which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  "Rupel, Dylan, and David I. Spivak. "The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes." arXiv preprint arXiv:1307.6894 (2013)."

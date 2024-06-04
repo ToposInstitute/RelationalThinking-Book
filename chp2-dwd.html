@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -76,27 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,8 +114,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -196,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -205,7 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -497,7 +498,7 @@ document.write(`
 <p>We start with directed graphs. Each one of the directed graphs we met in the last chapter, “Whose turn is it to do dishes”, or the “Ski trip brochure”, or “Mythological romance”, is a depiction of situations happening over time.</p>
 <p>For example, here are few situations based on the “Ski trip brochure”:</p>
 <p>Situation 1: A person was at the lodge. They took the lift up the mountain and skied downhill to the village.</p>
-<p>Situation 2: A person was the village. The cross-country skied in the village.</p>
+<p>Situation 2: A person was at the village. The cross-country skied in the village.</p>
 <p>We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some <em>additional information</em>, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occuring over discrete time steps.</p>
 <div class="admonition-key-point admonition">
 <p class="admonition-title">Key point </p>
@@ -523,9 +524,9 @@ document.write(`
 <p>We then add extra data to this vertex called <em>state</em> which gives on <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code> condition of the light bulb. At any instant of time, the state value is either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p>
 <a class="reference internal image-reference" href="_images/bulb-state-vertex.png"><img alt="Whoopsy!" class="align-center" src="_images/bulb-state-vertex.png" style="width: 100px;" /></a>
 </br>
-<p>The above graph can interpreted a snapshot of the bulb at an instant in time! The graph has some dynamic nature to it in the sense that the state can be either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. However, once set to <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, the vertex (light bulb) just stays at whatever state we set it to.</p>
+<p>The above graph can be interpreted as a snapshot of the bulb at an instant in time! The graph has some dynamic nature to it in the sense that the state can be either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. However, once set to <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, the vertex (light bulb) just stays at whatever state we set it to.</p>
 <blockquote>
-<div><p>Adding state information to the vertices makes a graph slightly dynamic. A directed graph with a state for each vertex is a snapshot of an event in time.</p>
+<div><p>Adding state information to the vertices makes a graph slightly dynamic. A directed graph where each vertex has a state is a snapshot of an event in time.</p>
 </div></blockquote>
 <p>We would like the state of the light bulb to change over time!</p>
 </section>
@@ -536,12 +537,12 @@ document.write(`
 <br/>
 <p>In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If the present state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">ON</span></code>. It must perform this operation at every time step. What we described just now is called an  <strong>update rule</strong> – a rule saying how a state is to be updated!</p>
 <blockquote>
-<div><p>Update rules along with states enables a graph to model systems which evolve over time, a.k.a dynamical systems!</p>
+<div><p>Update rules along along with the states enables a graph to model systems which evolve over time, a.k.a dynamical systems!</p>
 </div></blockquote>
 <p>Here is how we picture the directed graph and the update rule that models a flashing bulb:</p>
 <a class="reference internal image-reference" href="_images/FlashingLight.png"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.png" style="width: 400px;" /></a>
 <br/>
-<p>At each time step, the light bulb move to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, move to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
+<p>At each time step, the light bulb moves to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> state if the current state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, moves to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if the current state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>!</p>
 <p>Given a directed graph, and a state set and an update rule for each of its vertices, we can bring this graph to life. This means that we can simulate it using Algebraic Julia.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Here’s how we encode this <strong>update rule in Algebraic Julia</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete code available in the Github - Ch2/flashing-light.jl</span>
@@ -572,8 +573,8 @@ document.write(`
 </section>
 <section id="string-of-lights">
 <h3>String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
-<p>A flashing bulb is more exciting than a bulb than never flashes! However, what’s more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved.</p>
-<p>Suppose, we have a string of two light bulbs in a loop that perform a dance like this:</p>
+<p>A flashing bulb is more exciting than a bulb than never flashes! However, what is more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved in the time step the information was received.</p>
+<p>Suppose, we have a string of two light bulbs in a loop that perform a dance like below:</p>
 <a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 375px;" /></a>
 <p>At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor.</p>
 <p>The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark></p>
@@ -609,12 +610,12 @@ document.write(`
 
 </pre></div>
 </div>
-<p>Animating the simulation results produces a result like that:</p>
+<p>Animating the simulation results produces a result as below:</p>
 <a class="reference internal image-reference" href="_images/two-lights-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/two-lights-JAVIS.gif" style="width: 150px;" /></a>
 </br>
 <div class="admonition-puzzle-a-different-initial-state admonition">
 <p class="admonition-title">Puzzle: a different initial state</p>
-<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>? What will be the behaviour of the bulbs over time?</p>
+<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>? What will be the behaviour of the bulbs over time? (Use the update rule.)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Both the bulbs are in ON state</span>
 
 <span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">)]</span> 
@@ -638,7 +639,7 @@ document.write(`
 <section id="a-traffic-light">
 <h3>A traffic light<a class="headerlink" href="#a-traffic-light" title="Permalink to this heading">#</a></h3>
 <p>Now, imagine adding one more bulb to the above model with the same update rule:</p>
-<a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/3Loop.png"><img alt="Whoopsy!" class="align-center" src="_images/3Loop.png" style="width: 500px;" /></a>
 <div class="admonition-puzzle-initial-state admonition">
 <p class="admonition-title">Puzzle: initial state</p>
 <p>How would this system behave if we set initial states for the three bulbs as the following?</p>
@@ -706,7 +707,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/traffic-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/traffic-light-JAVIS.gif" style="width: 75px;" /></a>
 <div class="tip admonition">
 <p class="admonition-title">Key point</p>
-<p>Different vertices may have different update rules for its states. Setting initial states carefully is important to simulate meaningful behavior!</p>
+<p>Different vertices may have different update rules for its states. Setting initial states carefully is important to simulate a meaningful behavior!</p>
 </div>
 <!--
 ### 2.3.4. A traffic intersection
@@ -738,7 +739,7 @@ And here's our simulation with the first system starting :
 <p>Now for the grand finale, we are ready to build a model of Kiki and Bouba’s interaction and visualize their mood levels!</p>
 <p>Let us recollect what we have seen so far:</p>
 <ul class="simple">
-<li><p>In the model of the flashing light bulb, (at each time step) each vertex updated it state only based on its current state.</p></li>
+<li><p>In the model of the flashing light bulb, (at each time step) each vertex updated its state based only on its current state.</p></li>
 <li><p>In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbour.</p></li>
 <li><p>In the model of the traffic light, (at each time step) the controller updated its state only based on its current state. The light bulbs updated their states only based on the input received from the controller.</p></li>
 </ul>
@@ -764,7 +765,7 @@ And here's our simulation with the first system starting :
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-by-themselves.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-by-themselves.png" style="width: 400px;" /></a>
 </br>
 <p>As mentioned earlier, the mood level can be anywhere between -5 to +5.</p>
-<p>The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. So this update rule uses a <strong>parameter</strong> called <strong>calm down rate</strong>.</p>
+<p>The update rule is that whatever mood Kiki and Bouba start with, they calm towards the neutral mood at their own rates. The <strong>calm down rate</strong> is called a <strong>parameter</strong>. We can think of a parameter as a weight assigned to a particular value used in the computation. In this case, calm down rate acts as a weight for the person’s mood level.</p>
 <p>The update rule is coded as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># complete code available in Ch2/Kiki-bouba-standalone.jl </span>
 
@@ -793,7 +794,7 @@ And here's our simulation with the first system starting :
 <section id="kiki-and-bouba-talking-to-each-other">
 <h3>Kiki and Bouba talking to each other<a class="headerlink" href="#kiki-and-bouba-talking-to-each-other" title="Permalink to this heading">#</a></h3>
 <p>Kiki and Bouba met at a restaurant for dinner! It looks like they both had a long day! Let us see how these two friends affect each other’s mood! Are they going to go back home happier or grumpier?</p>
-<p>To answer this question, we will modify our model of Kiki and Bouba by themselves (a graph with just two vertices) to allow for their interaction. The updated model is as follows:</p>
+<p>To answer this question, we will modify our model of <em>Kiki and Bouba by themselves</em> (a graph with just two vertices) to allow for their interaction. The updated model is as follows:</p>
 <a class="reference internal image-reference" href="_images/Kiki&amp;Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki&amp;Bouba.png" style="width: 400px;" /></a>
 <p>The arrow from Kiki to Bouba allows Kiki’s mood to be fed into Bouba system. The arrow from Bouba to Kiki allows Bouba’s mood to be fed into Kiki’s system. Recall, <mark> arrow = conduit for state information</mark>.</p>
 <p>Now that we have extra state information flowing into the vertices, we would need to modify our exisiting update rule too!</p>
@@ -858,16 +859,16 @@ And here's our simulation with the first system starting :
 <div class="admonition-can-we-make-this-situation-better-for-the-friends-by-reducing-kiki-s-susceptability-factor admonition">
 <p class="admonition-title">Can we make this situation better for the friends by reducing Kiki’s susceptability factor?</p>
 <p>Let us reduce Kiki’s susceptability factor from 0.2 (20%) to 0.02 (2%).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>initial_moods = [3.5, -2.8]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_moods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.8</span><span class="p">]</span>
 
 
-# Kiki&#39;s susceptability reduced to 2% from 20%
-params = 
-    LVector(
-        susceptability=[0.2, 0.1], 
-        calmdown_rate=[.05, .03], 
-        grumpiness_tolerance=[-4,-4.8], 
-        excitement_tolerance=[4.5,4])```
+<span class="c1"># Kiki&#39;s susceptability reduced to 2% from 20%</span>
+<span class="n">params</span> <span class="o">=</span> 
+    <span class="n">LVector</span><span class="p">(</span>
+        <span class="n">susceptability</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> 
+        <span class="n">calmdown_rate</span><span class="o">=</span><span class="p">[</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">.03</span><span class="p">],</span> 
+        <span class="n">grumpiness_tolerance</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mf">4.8</span><span class="p">],</span> 
+        <span class="n">excitement_tolerance</span><span class="o">=</span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -911,7 +912,7 @@ params =
 <p>The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.</p>
 <p>For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/">AlgebraicDynamics</a> package of AlgebraicJulia!</p>
 <p>Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things – in terms of <strong>cause and effect</strong>, in terms of events which play out over time, and in terms of systems influencing one another!</p>
-<p>Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain a kind of equilibrium by satsifying simultaneous constraints. In the coming chapters we will develop to a more <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
+<p>Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain <strong>a kind of equilibrium</strong> by satsifying simultaneous constraints. In the coming chapters we will develop this <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -947,7 +948,7 @@ params =
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1048,8 +1049,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
