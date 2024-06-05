@@ -10,13 +10,13 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 6: Evolving Graphs
+# Chapter 7: Evolving Graphs
 
 :::{note}
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
 :::
 
-## 6.1 Introduction
+## 7.1 Introduction
 
 The "Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of the unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or the large-scale replacement of forests by industries and settlements has adversely impacting global climate. We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! 
 
@@ -59,7 +59,7 @@ Let us begin!
 
 Given a pattern (a graph), and its replacement, our mission is to "find" the pattern in any host graph and "replace" it in a good way! 
 
-## 6.2 Specs for "find and replace"
+## 7.2 Specs for "find and replace"
 
 Let us say, we have a document in which we would like to replace some text by some other text. The Microsoft Word software provides an interface such as the one shown in the picture below for performing such "find-and-replace".  
 
@@ -285,7 +285,7 @@ The interface to find-and-replace needs to have:
 
 :::
 
-## 6.3 Finding a match
+## 7.3 Finding a match
 
 The next step is to answer how to find a match of `Find` inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
@@ -386,7 +386,7 @@ A *match* in a host graph is given by a morphism from ```Find``` to a host graph
 
 :::
 
-## 6.4 Removing vertices and edges from a graph
+## 7.4 Removing vertices and edges from a graph
 
 We now know how to specify "find-and-replace" in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace! 
 
@@ -641,7 +641,7 @@ Vertices and edges of a graph is removed by computing pushout complement.
 
 ::: 
 
-## 6.5 Adding vertices and edges to a graph
+## 7.5 Adding vertices and edges to a graph
 
 We applied the deletion rule to remove vertices and edges from a host graph at the match. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges specified by the addition rule. However, we will now work with the pushout complement we computed in the previous step. The idea is that we first deleted, we are now ready to add. That will complete our replacement procedure! Hurray! 
 
@@ -798,7 +798,7 @@ A search pattern (`Find what`) found in a graph is carved into another pattern (
 
 Common literature calls our "Find-and-replace machinery" for graphs as Double Pushout Rewriting (DPO). 
 
-## 6.6 A few use cases of find-and-replace
+## 7.6 A few use cases of find-and-replace
 ### Chemistry
 
 In chemistry, **click reactions** give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder's reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery. 
@@ -877,7 +877,7 @@ Now a corridor needs to be added between Room 1 and Room 2, and arrows need to b
 
 Reshaping directed graph follows the same idea as undirected graphs. The find-and-replace rule shall be applied to reshape Bob's game layoout!
 
-## 6.7 Algebraic Julia for find-and-replace in graphs
+## 7.7 Algebraic Julia for find-and-replace in graphs
 
 This section will demonstrate how graph "find-and-replace" can be performed in a computer using the Algebraic Julia library! We provide the Algebraic Julia code for the puzzles in this chapter. The reader is invited to run these code examples and have fun! 
 
@@ -1136,7 +1136,7 @@ to_graphviz(codom(fromR))
 ```
  
 
-## 6.8 Relational thinking is hard but good!
+## 7.8 Relational thinking is hard but good!
 
 Congratulations for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!
 
@@ -1177,7 +1177,7 @@ As we saw in double pushouts, relational thinking precisely follows this order w
 
 ::: 
 
-## 6.9 Summary 
+## 7.9 Summary 
 
 For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of pushout! And finally, 
 

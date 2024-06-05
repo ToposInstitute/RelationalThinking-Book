@@ -10,7 +10,7 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 5: Combining Graphs
+# Chapter 6: Combining Graphs
 
 :::{note}
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
@@ -20,7 +20,7 @@ This book is a work-in-progress! We'd love to learn how we can make it better, e
 This chapter will engage you in deep relational thinking! 
 :::
 
-## 5.1 Introduction
+## 6.1 Introduction
 
 So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
 
@@ -70,7 +70,7 @@ The goal of this chapter is to make our inherent sense of combining graphs more 
 
 The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A *combined* graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!
 
-## 5.2 Combining graphs using memes
+## 6.2 Combining graphs using memes
 
 The two memes we will use to play this game are: (1) commuting diagrams, and (2) graph isomorphisms. Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play! 
 
@@ -550,7 +550,7 @@ A pushout is any graph which makes it through Pass 2 (and Pass 1).
 
 
 
-## 5.3 What is a pushout?
+## 6.3 What is a pushout?
 
 The goal game was to say describe the `pushout` of an overlap diagram is without talking about its connectivity (vertices and edges). We used the relationships between various graphs and the `pushout` to describe what the `pushout` must be! Let us summarize our description of `pushout` of an overlap diagram. 
 
@@ -601,7 +601,7 @@ In this sense, relational thinking is non-invasive!
 
 :::
 
-## 5.4 Puzzle time! 
+## 6.4 Puzzle time! 
 
 Let us compute the `pushout` of the following diagrams.
 
@@ -689,9 +689,9 @@ Let us suppose, we want to glue more than two graphs together! That seems to be 
 
 What are the requirements for a graph to be `pushout` of the above diagram?
 
-Clue: Extend the requirements in Section 5.4 from 2 to n graphs! 
+Clue: Extend the requirements in Section 6.4 from 2 to n graphs! 
 
-## 5.5 Computing pushouts in AlgebraicJulia
+## 6.5 Computing pushouts in AlgebraicJulia
 
 In the previous section, we hand-computed the pushout of the diagrams. This section shows how we can program a computer to compute pushout using AlgebraicJulia. The reader is welcomed to run each of these code snippets and verify the output with their pushout graphs!
 
@@ -829,7 +829,7 @@ Use the code cell below to visualize `graph A` and `graph B`.
 +++
 
 
-## 5.6 Summary 
+## 6.6 Summary 
 Congratulations!! You have crossed Chapter 5 successfully!
 
 Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts. 

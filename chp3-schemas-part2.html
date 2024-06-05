@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 4: Blueprints - Part II &#8212; Relational thinking: from Abstractions to Applications</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chp3-schemas-part2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 5: Categories" href="chp4-graph-relationships.html" />
+    <link rel="prev" title="Chapter 3: Blueprints - Part I" href="chp3-schemas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo-white.jpg" class="logo__image only-light" alt="Relational thinking: from Abstractions to Applications - Home"/>
+    <script>document.write(`<img src="_static/logo-white.jpg" class="logo__image only-dark" alt="Relational thinking: from Abstractions to Applications - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0: Directed Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems with Kiki and Bouba</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints - Part I</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 4: Blueprints - Part II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 5: Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 7: Evolving Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 8: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp3-schemas-part2.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book/issues/new?title=Issue%20on%20page%20%2Fchp3-schemas-part2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chp3-schemas-part2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/chp3-schemas-part2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4: Blueprints - Part II</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-theory">4.2 Reflexive Graphs (in theory)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-a-computer">Reflexive graphs (in a computer)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undirected-graphs">4.3. Undirected Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-kinds-of-schemas">4.4 Other kinds of schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplicial-sets">Simplicial sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#petri-nets">Petri nets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-blueprints-part-ii">
+<h1>Chapter 4: Blueprints - Part II<a class="headerlink" href="#chapter-4-blueprints-part-ii" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This book is a work-in-progress! We’d love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in <a class="reference external" href="https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit">this google doc</a>.</p>
+</div>
+<section id="introduction">
+<h2>4.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Let us continue our journey of developing blueprints. In this chapter, we shall move beyond directed graphs, look into other flavors of graphs and how their blueprints are built upon the blueprint of directed graphs.</p>
+</section>
+<section id="reflexive-graphs-in-theory">
+<h2>4.2 Reflexive Graphs (in theory)<a class="headerlink" href="#reflexive-graphs-in-theory" title="Permalink to this heading">#</a></h2>
+<p>Suppose we were making a directed graph to represent the game of tic-tac-toe, where:</p>
+<ul class="simple">
+<li><p>Vertices are the states of the game</p></li>
+<li><p>Arrows are “moves” of the game, going from one state to another.</p></li>
+</ul>
+<p>A piece of our graph would look like this:</p>
+<a class="reference internal image-reference" href="_images/TicTacToe.jpg"><img alt="Whoopsy!" class="align-center" src="_images/TicTacToe.jpg" style="width: 500px;" /></a>
+<br>
+<p>Now let’s imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to “pass.” That is, one of the available moves on any given turn is to stay in the current state. Thus, every vertex in our graph is going to have one special arrow that loops back on itself.</p>
+<a class="reference internal image-reference" href="_images/GO.jpg"><img alt="Whoopsy!" class="align-center" src="_images/GO.jpg" style="width: 500px;" /></a>
+<br>
+<p>This actually happens a lot when modeling with directed graphs: we find ourselves wanting every vertex to have a special “self-looping” arrow attached to it. In fact, this happens so frequently that we give these graphs a special name - they’re called “reflexive graphs.” They are widespread and useful. In applied settings they are excellent for geometric applications. Reflexive relationships are prevalent in mathematics (divisibility among the integers, subsets among sets, etc.). And in category theory all structures of interest (preorders, categories, etc.) are reflexive graphs.</p>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder! </p>
+<p>How is the data of a reflexive graph different from the data of a directed graph? How might you communicate the details of a reflexive graph to a computer?</p>
+</div>
+<p>A reflexive graph is simply a <em>directed graph</em> with an added condition that “every vertex has a special self-looping arrow.” This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.</p>
+<a class="reference internal image-reference" href="_images/ReflexiveMap.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveMap.gif" style="width: 500px;" /></a>
+<br>
+<p>Every reflexive graph has such a map, called its reflexive map or <code class="docutils literal notranslate"><span class="pre">refl</span></code>. We can combine this reflexive map with the graph’s source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)</p>
+<a class="reference internal image-reference" href="_images/ReflexiveGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphInstance.gif" style="width: 800px;" /></a>
+<br>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder! </p>
+<p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
+</div>
+<p>What can we notice about the above instance? Well, for one thing, in order for an arrow to be the self-loop of a given vertex, it must have <em>that vertex</em> as its source. Another way to look at this is:</p>
+<div class="attention admonition">
+<p class="admonition-title">The following path always takes you back to where you started:</p>
+<ol class="arabic simple">
+<li><p>Start from any vertex</p></li>
+<li><p>Follow the reflexive map from this vertex to its self-looping arrow.</p></li>
+<li><p>Continue along the source map from that arrow to it its source vertex.</p></li>
+</ol>
+</div>
+<p>For example if we start at the heart, the reflexive map takes us to the reddish arrow, and the source map takes us back to the heart:</p>
+<a class="reference internal image-reference" href="_images/SourceLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/SourceLoop.gif" style="width: 500px;" /></a>
+<p>By the same reasoning, the target map following the reflexive map should always form a closed loop as well.</p>
+<a class="reference internal image-reference" href="_images/TargetLoop.gif"><img alt="Whoopsy!" class="align-center" src="_images/TargetLoop.gif" style="width: 500px;" /></a>
+<p>If we look closely at the maps we indeed see that all such loops are closed:</p>
+<a class="reference internal image-reference" href="_images/ReflexiveFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveFadethrough.gif" style="width: 500px;" /></a>
+<p>This closed loop condition turns out to be what it means for a graph to be reflexive graph:</p>
+<ul class="simple">
+<li><p>If every vertex of a graph has a self-loop, then the closed loop condition will be satisfied.</p></li>
+<li><p>If the closed loop condition is satisfied, then each vertex of the graph has at least one self-loop.</p></li>
+</ul>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder! </p>
+<p>Can you convince yourself that the above two bullet points are true?</p>
+</div>
+<p>When we first defined reflexive graphs we had to establish what we meant using semantic ideas like “self-loops” and phrases like “for every vertex…”. We have now found an equivalent way of saying the same thing in terms of maps and whether or not certain paths form closed loops. And “maps and closed loops” are exactly the kind of thing AlgebraicJulia can understand!</p>
+<section id="reflexive-graphs-in-a-computer">
+<h3>Reflexive graphs (in a computer)<a class="headerlink" href="#reflexive-graphs-in-a-computer" title="Permalink to this heading">#</a></h3>
+<p>Let’s encode a reflexive graph blueprint in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here’s the system we’ll use for writing:</p>
+<div class="attention admonition">
+<p class="admonition-title">Writing system:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">;</span></code> We’ll use a semicolon to sequence paths. So <code class="docutils literal notranslate"><span class="pre">A;B</span></code> means “path A followed by path B.”</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/Compose.gif"><img alt="Whoopsy!" class="align-center" src="_images/Compose.gif" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> We’ll use an equals sign to equate the endpoints of two paths</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> We’ll use this to mean ending up “back where you started.” It refers to the “identity map”, the map equivalent of staying put.</p></li>
+</ul>
+</div>
+<p>So we can write “the reflexive map followed by the source map takes you back where you started” as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>And “the reflexive map followed by the target map takes you back where you started” becomes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>Equations like this are known as <strong>commutativity conditions</strong>. When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what’s called a <strong>schema</strong>. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
+<a class="reference internal image-reference" href="_images/ReflexiveGraphSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphSchema.png" style="width: 800px;" /></a>
+<br>
+<p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">;</span> <span class="pre">Y</span></code>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="kt">ReflexiveGraph</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">DirectedGraph</span><span class="w"> </span><span class="k">begin</span>
+
+<span class="w">  </span><span class="n">refl</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">refl</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">refl</span><span class="p">,</span><span class="w"> </span><span class="n">tgt</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And that’s how reflexive graphs can be defined in AlgebraicJulia! In the next chapter we’ll see how to put this definition to use.</p>
+</section>
+</section>
+<section id="undirected-graphs">
+<h2>4.3. Undirected Graphs<a class="headerlink" href="#undirected-graphs" title="Permalink to this heading">#</a></h2>
+<p>Now let’s return to the question of undirected graphs. Can we design a schema for these? Surprisingly, it turns out that we can think of undirected graphs as <em>special cases</em> of directed graphs.</p>
+<p>An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a <em>two-way street</em> in which the connection is felt mutually in both directions. If we take this “two-way street” analogy literally we can see that every undirected graph is <em>equivalent</em> to a directed graph in which we’ve substituted a pair of opposing arrows in place of each undirected edge.</p>
+<a class="reference internal image-reference" href="_images/TwoWayStreet.png"><img alt="Whoopsy!" class="align-center" src="_images/TwoWayStreet.png" style="width: 500px;" /></a>
+<p>The directed graph <em>represents</em> the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work, the directed graph must satisfy the condition that “every arrow is associated with a unique partner arrow.”  We can express this idea as a map, in which each arrow gets connected to its unique partner:</p>
+<a class="reference internal image-reference" href="_images/InversionMap.gif"><img alt="Whoopsy!" class="align-center" src="_images/InversionMap.gif" style="width: 500px;" /></a>
+<br>
+<p>We call this the inversion map or <code class="docutils literal notranslate"><span class="pre">inv</span></code>. We can combine this inversion map with the graph’s source and target maps, attaching it as a self-loop.</p>
+<a class="reference internal image-reference" href="_images/UndirectedGraphInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/UndirectedGraphInstance.gif" style="width: 500px;" /></a>
+<p>Notice how the instance data represents a directed graph which in turn represents an undirected graph!</p>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder! </p>
+<p>Let your eyes follow the dashed lines around the figure. Do you see any “patterns” in this system of connections?</p>
+</div>
+<p>What can we notice about the above instance? Well, for one thing, the paired arrows in the directed graph must point in opposite directions. This means that the vertex at which one arrow starts (its source) must be equal to the vertex where its partner arrow lands (its target) and vice versa. We can express this as a closed loop condition.</p>
+<div class="attention admonition">
+<p class="admonition-title">Comparing two paths </p>
+<p><strong>Path 1</strong></p>
+<ol class="arabic simple">
+<li><p>Start from any arrow in the grey circle</p></li>
+<li><p>Follow the source map from this arrow to its source vertex.</p></li>
+</ol>
+<p><strong>Path 2</strong></p>
+<ol class="arabic simple">
+<li><p>Start from the same arrow</p></li>
+<li><p>Follow the inversion map to that arrow’s partner</p></li>
+<li><p>Follow the target map from that arrow to its target vertex</p></li>
+</ol>
+<p>Both routes should end up at the same vertex!</p>
+</div>
+<p>So the commutativity conditions that ensure that partner arrows point in opposite directions are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">;</span> <span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">src</span></code>
+<br></p>
+<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">=</span> <span class="pre">tgt</span></code></p>
+<p>We also want these partnerships to be unique, meaning we don’t want “cliques” of three, four, five, arrows, each one partnered with the next. To avoid this, each arrow must be its <em>partner’s</em> partner.</p>
+<p><code class="docutils literal notranslate"><span class="pre">inv</span> <span class="pre">;</span> <span class="pre">inv</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
+<p>Putting it all together, here is the schema for undirected graphs</p>
+<a class="reference internal image-reference" href="_images/UndirectedGraphSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/UndirectedGraphSchema.png" style="width: 500px;" /></a>
+<br>
+<p>And here’s how we write this definition in AlgebraicJulia:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="kt">UndirectedGraph</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">DirectedGraph</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">inv</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span><span class="n">tgt</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">src</span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tgt</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">compose</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span><span class="n">inv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder! </p>
+<p>Consider the difference between your understanding of graphs and AlgebraicJulia’s. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Ideas are phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this “means” to you.</p>
+<p>We use thought bubbles to indicate these interepretations, signalling that the meaning of any instance is an idea that exists only the in mind of the progammer.</p>
+</div>
+</section>
+<section id="other-kinds-of-schemas">
+<h2>4.4 Other kinds of schemas<a class="headerlink" href="#other-kinds-of-schemas" title="Permalink to this heading">#</a></h2>
+<p>In this chapter we have used schemas and commutativity conditions to look at a few different flavors of graphs. But the framework we have developed here can actually be extended beyond just graphs, to an extraordinary variety of elaborate and useful concepts.</p>
+<blockquote>
+<div><p>Indeed, one of the profound offerings of AlgebraicJulia is the sheer number of mathematical abstractions it can handle in terms of schemas.</p>
+</div></blockquote>
+<p>In this final section we offer a brief glimpse at some more powerful models and ideas that are also captured by this framework.</p>
+<blockquote>
+<div><p>DISCLAIMER: It is out of scope to go into any detail on the following schemas. We mention them here, in passing, only to give some sense of the possibilities with AlgebraicJulia.</p>
+</div></blockquote>
+<section id="simplicial-sets">
+<h3>Simplicial sets<a class="headerlink" href="#simplicial-sets" title="Permalink to this heading">#</a></h3>
+<p>We can generalize reflexive graphs to higher dimensions using schemas. The result is one of the algebraic topologist’s favorite tools: simplicial sets. Ordinary graphs connect 0-dimensional vertices using 1-dimensional lines. With simplicial sets we can also attach 2-dimensional triangles, building up triangulated surfaces. Going up another dimension we can attach 3-dimensional tetrahedra to make solid figures. And so on.</p>
+<p>For the mathematician, simplicial sets are useful because they turn geometry into algebra: a simplicial triangulation of a topological space is a combinatorial object that can be reasoned about. For the applied scientist, simplicial sets may be useful as a way of 3D modeling, as we’ll see in Chapter 7. Finally, in AlgebraicJulia, simplicial sets are practical because all of the rules for how different parts must attach can be fully captured with a few commutativity conditions.</p>
+<a class="reference internal image-reference" href="_images/SimplicialSets.png"><img alt="Whoopsy!" class="align-center" src="_images/SimplicialSets.png" style="width: 800px;" /></a>
+</section>
+<section id="petri-nets">
+<h3>Petri nets<a class="headerlink" href="#petri-nets" title="Permalink to this heading">#</a></h3>
+<p>On the more “applied” side, we have the example of Petri nets, a sophisticated modeling system for the analysis of concurrent systems. It was developed by German computer scientist Carl Adam Petri in the 1960’s, whose goal was to provide a system that could model parallel processes, synchronization and resource sharing. Petri nets provide a modeling tool that is suitable for a wide variety of systems, from chemical reactions to business management logistics.</p>
+<p>It’s important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics we are able to represent Petri nets in terms of schemas and work with them in AlgebraicJulia.</p>
+<a class="reference internal image-reference" href="_images/Petri_Net.jpg"><img alt="Whoopsy!" class="align-center" src="_images/Petri_Net.jpg" style="width: 800px;" /></a>
+<br>
+<p>AlgebraicJulia’s implementation of Petri nets is called AlgebraicPetri.jl.<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Documentation can be found <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/">here</a> along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.</p>
+</section>
+<section id="databases">
+<h3>Databases<a class="headerlink" href="#databases" title="Permalink to this heading">#</a></h3>
+<p>The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of ‘people’ and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schema to define new relationships in terms of existing ones.</p>
+<a class="reference internal image-reference" href="_images/DatabaseLabeled.png"><img alt="Whoopsy!" class="align-center" src="_images/DatabaseLabeled.png" style="width: 800px;" /></a>
+<br>
+<p>Data often gets corrupted when transferred between contexts, a major issue in database management. Data corruption is a kind of analog for our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> on graphs. And in the same way that AlgebraicJulia will allow us to use high level abstractions to resolve our dangling edge problems, there are other category theoretic techniques for data migration that offer a canonical way of migrating data that automatically takes care of various annoying edge conditions. See the paper Functorial Data Migration<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for details.</p>
+</section>
+</section>
+<section id="summary">
+<h2>4.5 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this chapter we have developed the concept of a schema, a verstaile data structure and the principal way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
+</section>
+<section id="footnotes-and-references">
+<h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>AlgebraicPetri.jl Documentation. <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/">https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>David I. Spivak. “Functorial data migration”.
+Information and Computation, Volume 217, 2012, Pages 31-51, ISSN 0890-5401,
+<a class="reference external" href="https://doi.org/10.1016/j.ic.2012.05.001">https://doi.org/10.1016/j.ic.2012.05.001</a>. <a class="reference external" href="https://arxiv.org/abs/1009.1166">https://arxiv.org/abs/1009.1166</a>.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ToposInstitute/AlgJulia-Book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.10"
+        },
+        kernelOptions: {
+            name: "julia-1.10",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.10'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chp3-schemas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 3: Blueprints - Part I</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chp4-graph-relationships.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 5: Categories</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-theory">4.2 Reflexive Graphs (in theory)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexive-graphs-in-a-computer">Reflexive graphs (in a computer)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undirected-graphs">4.3. Undirected Graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-kinds-of-schemas">4.4 Other kinds of schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplicial-sets">Simplicial sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#petri-nets">Petri nets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#databases">Databases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

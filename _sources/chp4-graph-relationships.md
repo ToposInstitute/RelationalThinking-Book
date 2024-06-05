@@ -10,13 +10,13 @@ kernelspec:
   name: julia-1.10
 ---
 
-# Chapter 4: Categories
+# Chapter 5: Categories
 
 :::{note}
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
 :::
 
-## 4.1 Introduction
+## 5.1 Introduction
 
 For any given a schema there will be many possible instances. Below we show a few of the instances for each of our three graph schemas.
 
@@ -48,7 +48,7 @@ Hang in there! You're almost at the top of the ladder.
 :::
 
 
-## 4.2 Graph Injections
+## 5.2 Graph Injections
 
 ### Graph injections, concretely
 
@@ -272,7 +272,7 @@ Going up a level of abstraction, a _schema_ that describes this in general looks
 
 We have once again captured an idea–graph injections–in terms of a schema and some commutativity conditions. But we're not quite done! In the next section we'll see that graph injections aren't the only thing captured by this schema...
 
-## 4.3 Graph Morphisms
+## 5.3 Graph Morphisms
 
 ### General morphisms
 
@@ -558,7 +558,7 @@ Note how AlgebraicJulia succeeds at counting these morphisms correctly. Moreover
 
 
 
-## 4.4 The category of instances
+## 5.4 The category of instances
 
 Now that we know what graph morphisms are, we're ready to move up the last rung in our ladder of abstractions, from "blueprints" to "categories!"
 
@@ -628,7 +628,7 @@ In puzzle 3, when AlgebraicJulia counts three morphisms between a pair of instan
 
 Granted such access, we will next explore this universe and discover a variety of useful patterns that exist here.
 
-## 4.5 Summary
+## 5.5 Summary
 
 In this chapter we have developed the crucial idea of **graph morphisms**. We have understood this concept from two points of view, the geometric human view and the more formal computational vantage of AlgebraicJulia. The exact correspondance between these views means that if we _only_ think about graphs in terms of graph morphisms then everything we think can be encoded in AlgebraicJulia. In the next two chapters we will discover patterns of morphisms that correspond to useful operations like adding, deleting, merging, etc. And we shall see that when we operationalize these patterns with AlgebraicJulia, we end up in a very different position with regards to the `DANGLING EDGE CONDITION`.
 

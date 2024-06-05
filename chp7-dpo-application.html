@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 7: A Look Beyond– Evolving World Models &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 8: A Look Beyond– Evolving World Models &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Authors" href="authors.html" />
-    <link rel="prev" title="Chapter 6: Evolving Graphs" href="chp6-dpo.html" />
+    <link rel="prev" title="Chapter 7: Evolving Graphs" href="chp6-dpo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,11 +175,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0: Directed Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems with Kiki and Bouba</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Categories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Combining Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Evolving Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints - Part I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 5: Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 7: Evolving Graphs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 8: A Look Beyond– Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
@@ -433,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 7: A Look Beyond– Evolving World Models</h1>
+    <h1>Chapter 8: A Look Beyond– Evolving World Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,18 +444,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-configuration">7.2 Cube Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-configuration">8.2 Cube Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-closed-box">Opening a closed box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-a-kitchen">7.3 Working in a Kitchen</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-a-kitchen">8.3 Working in a Kitchen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.4 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.4 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -467,8 +468,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-a-look-beyond-evolving-world-models">
-<h1>Chapter 7: A Look Beyond– Evolving World Models<a class="headerlink" href="#chapter-7-a-look-beyond-evolving-world-models" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-8-a-look-beyond-evolving-world-models">
+<h1>Chapter 8: A Look Beyond– Evolving World Models<a class="headerlink" href="#chapter-8-a-look-beyond-evolving-world-models" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This book is a work-in-progress! We’d love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in <a class="reference external" href="https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit">this google doc</a>.</p>
@@ -478,7 +479,7 @@ document.write(`
 <p>This chapter will extend the previously learned concepts from graphs to real world concepts.</p>
 </div>
 <section id="introduction">
-<h2>7.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>8.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>So far, we have uncovered many powerful concepts for modeling graphs and making changes to them. Using <strong>schema</strong>, We neatly packaged up data of a graph in a way that we can recover all its fundamental concepts – vertices and edges, and how they relate to one another. Using <strong>double-pushouts (DPO)</strong>, we can edit an exisiting graph. With the capability to edit graphs, we can now model a number of graph-based scenarios such as, chemical reactions, and game design.</p>
 <p>Schemas provide us with a language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. Being remarkably general, schemas encourage us to be more ambitious and ask how can they model something non-graph based and more complex? For example, what if we were interested in talking about parts of a car or items in your kitchen? What parts go inside the other? What is wet and what is dry? And what items go with what and what items don’t go together? We would have to do quite a bit of mental book-keeping to talk in the language of graphs–</p>
 <blockquote>
@@ -491,7 +492,7 @@ document.write(`
 <p>So, graphs might not be a great idea to model my kitchen. Lucky for us, what we have learned so far have applications beyond graphs. The rest of this chapter is a simple demonstration of the use of schemas to modelling some complex scenarios.</p>
 </section>
 <section id="cube-configuration">
-<h2>7.2 Cube Configuration<a class="headerlink" href="#cube-configuration" title="Permalink to this heading">#</a></h2>
+<h2>8.2 Cube Configuration<a class="headerlink" href="#cube-configuration" title="Permalink to this heading">#</a></h2>
 <p>Let’s start by simply extending the graph schema with another concept, like <strong>faces</strong>. Let us we want to model a cube. A face in a cube has four edges. So, along with <code class="docutils literal notranslate"><span class="pre">Edge</span></code> and <code class="docutils literal notranslate"><span class="pre">Vertex</span></code> and their relationship, the schema for a cube also consists of <code class="docutils literal notranslate"><span class="pre">Face</span></code>, and its relationship to <code class="docutils literal notranslate"><span class="pre">edge</span></code>(s). This schema has six relationships:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code> from edges to vertices, and</p></li>
@@ -753,7 +754,7 @@ match = homomorphisms(L, closedCube)[1]
 </section>
 </section>
 <section id="working-in-a-kitchen">
-<h2>7.3 Working in a Kitchen<a class="headerlink" href="#working-in-a-kitchen" title="Permalink to this heading">#</a></h2>
+<h2>8.3 Working in a Kitchen<a class="headerlink" href="#working-in-a-kitchen" title="Permalink to this heading">#</a></h2>
 <p>This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.</p>
 <div class="docutils">
 <a class="reference internal image-reference" href="_images/KitchenBefore.png"><img alt="_images/KitchenBefore.png" class="align-center" src="_images/KitchenBefore.png" style="width: 500px;" /></a>
@@ -872,7 +873,7 @@ match = homomorphisms(L, closedCube)[1]
 </section>
 </section>
 <section id="summary">
-<h2>7.4 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>8.4 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics.<a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="references">
@@ -937,7 +938,7 @@ match = homomorphisms(L, closedCube)[1]
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Chapter 6: Evolving Graphs</p>
+        <p class="prev-next-title">Chapter 7: Evolving Graphs</p>
       </div>
     </a>
     <a class="right-next"
@@ -965,18 +966,18 @@ match = homomorphisms(L, closedCube)[1]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-configuration">7.2 Cube Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-configuration">8.2 Cube Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-closed-box">A closed box</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-closed-box">Opening a closed box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-a-kitchen">7.3 Working in a Kitchen</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-a-kitchen">8.3 Working in a Kitchen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-cheese-on-bread">Put Cheese On Bread</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plate-slice">Plate Slice</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.4 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.4 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

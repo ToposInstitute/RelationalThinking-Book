@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 4: Categories &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 5: Categories &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp4-graph-relationships';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 5: Combining Graphs" href="chp5-graph-gluing.html" />
-    <link rel="prev" title="Chapter 3: Blueprints" href="chp3-schemas.html" />
+    <link rel="next" title="Chapter 6: Combining Graphs" href="chp5-graph-gluing.html" />
+    <link rel="prev" title="Chapter 4: Blueprints - Part II" href="chp3-schemas-part2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,11 +175,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0: Directed Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems with Kiki and Bouba</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 4: Categories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Combining Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 6: Evolving Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints - Part I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 5: Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 7: Evolving Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 8: A Look Beyond– Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
@@ -433,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 4: Categories</h1>
+    <h1>Chapter 5: Categories</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,20 +444,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections">4.2 Graph Injections</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections">5.2 Graph Injections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-concretely">Graph injections, concretely</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-as-data">Graph injections as data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">4.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">5.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-morphisms">General morphisms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-puzzles">More Puzzles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">4.4 The category of instances</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">5.4 The category of instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.5 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
             </nav>
@@ -469,14 +470,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-categories">
-<h1>Chapter 4: Categories<a class="headerlink" href="#chapter-4-categories" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-categories">
+<h1>Chapter 5: Categories<a class="headerlink" href="#chapter-5-categories" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This book is a work-in-progress! We’d love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in <a class="reference external" href="https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit">this google doc</a>.</p>
 </div>
 <section id="introduction">
-<h2>4.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>5.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>For any given a schema there will be many possible instances. Below we show a few of the instances for each of our three graph schemas.</p>
 <a class="reference internal image-reference" href="_images/ThreeSchemas.png"><img alt="Whoopsy!" class="align-center" src="_images/ThreeSchemas.png" style="width: 800px;" /></a>
 <br>
@@ -492,7 +493,7 @@ document.write(`
 </div>
 </section>
 <section id="graph-injections">
-<h2>4.2 Graph Injections<a class="headerlink" href="#graph-injections" title="Permalink to this heading">#</a></h2>
+<h2>5.2 Graph Injections<a class="headerlink" href="#graph-injections" title="Permalink to this heading">#</a></h2>
 <section id="graph-injections-concretely">
 <h3>Graph injections, concretely<a class="headerlink" href="#graph-injections-concretely" title="Permalink to this heading">#</a></h3>
 <p>In Chapter 1 we saw an example of a directed graph which described the layout of a ski resort. In this account, you could ride the ski lift up and down the mountain or ski from the top of the mountain into a nearby village.</p>
@@ -581,7 +582,7 @@ These two maps capture all the relevant information about the injection.
 </section>
 </section>
 <section id="graph-morphisms">
-<h2>4.3 Graph Morphisms<a class="headerlink" href="#graph-morphisms" title="Permalink to this heading">#</a></h2>
+<h2>5.3 Graph Morphisms<a class="headerlink" href="#graph-morphisms" title="Permalink to this heading">#</a></h2>
 <section id="general-morphisms">
 <h3>General morphisms<a class="headerlink" href="#general-morphisms" title="Permalink to this heading">#</a></h3>
 <p>In Chapter 1 we saw an example of a directed graph which described who’s turn it was to do the dishes. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty. As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.</p>
@@ -737,7 +738,7 @@ These two maps capture all the relevant information about the injection.
 </section>
 </section>
 <section id="the-category-of-instances">
-<h2>4.4 The category of instances<a class="headerlink" href="#the-category-of-instances" title="Permalink to this heading">#</a></h2>
+<h2>5.4 The category of instances<a class="headerlink" href="#the-category-of-instances" title="Permalink to this heading">#</a></h2>
 <p>Now that we know what graph morphisms are, we’re ready to move up the last rung in our ladder of abstractions, from “blueprints” to “categories!”</p>
 <p>Let’s revisit the graph morphism schema and look closely at an instance:</p>
 <a class="reference internal image-reference" href="_images/MorphismInstance.gif"><img alt="Whoopsy!" class="align-center" src="_images/MorphismInstance.gif" style="width: 800px;" /></a>
@@ -764,7 +765,7 @@ These two maps capture all the relevant information about the injection.
 <p>Granted such access, we will next explore this universe and discover a variety of useful patterns that exist here.</p>
 </section>
 <section id="summary">
-<h2>4.5 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>5.5 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In this chapter we have developed the crucial idea of <strong>graph morphisms</strong>. We have understood this concept from two points of view, the geometric human view and the more formal computational vantage of AlgebraicJulia. The exact correspondance between these views means that if we <em>only</em> think about graphs in terms of graph morphisms then everything we think can be encoded in AlgebraicJulia. In the next two chapters we will discover patterns of morphisms that correspond to useful operations like adding, deleting, merging, etc. And we shall see that when we operationalize these patterns with AlgebraicJulia, we end up in a very different position with regards to the <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code>.</p>
 </section>
 <section id="footnotes-and-references">
@@ -809,12 +810,12 @@ These two maps capture all the relevant information about the injection.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="chp3-schemas.html"
+       href="chp3-schemas-part2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Chapter 3: Blueprints</p>
+        <p class="prev-next-title">Chapter 4: Blueprints - Part II</p>
       </div>
     </a>
     <a class="right-next"
@@ -822,7 +823,7 @@ These two maps capture all the relevant information about the injection.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 5: Combining Graphs</p>
+        <p class="prev-next-title">Chapter 6: Combining Graphs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -842,20 +843,20 @@ These two maps capture all the relevant information about the injection.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections">4.2 Graph Injections</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections">5.2 Graph Injections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-concretely">Graph injections, concretely</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzles">Puzzles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-injections-as-data">Graph injections as data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">4.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">5.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-morphisms">General morphisms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-puzzles">More Puzzles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">4.4 The category of instances</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.5 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-category-of-instances">5.4 The category of instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.5 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
   </nav></div>

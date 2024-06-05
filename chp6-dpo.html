@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chapter 6: Evolving Graphs &#8212; Relational thinking: from Abstractions to Applications</title>
+    <title>Chapter 7: Evolving Graphs &#8212; Relational thinking: from Abstractions to Applications</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp6-dpo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 7: A Look Beyond– Evolving World Models" href="chp7-dpo-application.html" />
-    <link rel="prev" title="Chapter 5: Combining Graphs" href="chp5-graph-gluing.html" />
+    <link rel="next" title="Chapter 8: A Look Beyond– Evolving World Models" href="chp7-dpo-application.html" />
+    <link rel="prev" title="Chapter 6: Combining Graphs" href="chp5-graph-gluing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,11 +175,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp0.html">Chapter 0: Directed Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems with Kiki and Bouba</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 4: Categories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 5: Combining Graphs</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: Evolving Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 7: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints - Part I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp3-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 5: Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 7: Evolving Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 8: A Look Beyond– Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
@@ -433,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 6: Evolving Graphs</h1>
+    <h1>Chapter 7: Evolving Graphs</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,36 +444,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">6.2 Specs for “find and replace”</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">7.2 Specs for “find and replace”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-delete-and-add">Replace = Delete and Add</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">6.3 Finding a match</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">6.4 Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">7.3 Finding a match</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">7.4 Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match-to-remove-vertices-edges">Finding a match to remove vertices/edges</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-deletion">Performing deletion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-the-requirements-of-a-match">Managing the requirements of a match</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-use-cases-of-find-and-replace">6.6 A few use cases of find-and-replace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">7.5 Adding vertices and edges to a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-use-cases-of-find-and-replace">7.6 A few use cases of find-and-replace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">6.7 Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">7.7 Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-matches-of-a-search-pattern">Finding matches of a search pattern</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-pushout-complement">Is this a pushout complement?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-is-hard-but-good">6.8 Relational thinking is hard but good!</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-is-hard-but-good">7.8 Relational thinking is hard but good!</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabulary">Relational thinking shifts vocabulary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">The order of processes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.9 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.9 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
             </nav>
@@ -485,14 +486,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-evolving-graphs">
-<h1>Chapter 6: Evolving Graphs<a class="headerlink" href="#chapter-6-evolving-graphs" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-evolving-graphs">
+<h1>Chapter 7: Evolving Graphs<a class="headerlink" href="#chapter-7-evolving-graphs" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This book is a work-in-progress! We’d love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in <a class="reference external" href="https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit">this google doc</a>.</p>
 </div>
 <section id="introduction">
-<h2>6.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>7.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>The “Find-and-replace” feature of text editors is one of the most powerful innovations of the 20th century. Inspite of the unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of “find and replace” has also caused much chaos in the world! When the European conquerors “found” native Americans settlements in Canada, they decided to “replace” the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or the large-scale replacement of forests by industries and settlements has adversely impacting global climate. We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve!</p>
 <blockquote>
 <div><p>So, what was missed in the decision making process?</p>
@@ -512,7 +513,7 @@ document.write(`
 <p>Given a pattern (a graph), and its replacement, our mission is to “find” the pattern in any host graph and “replace” it in a good way!</p>
 </section>
 <section id="specs-for-find-and-replace">
-<h2>6.2 Specs for “find and replace”<a class="headerlink" href="#specs-for-find-and-replace" title="Permalink to this heading">#</a></h2>
+<h2>7.2 Specs for “find and replace”<a class="headerlink" href="#specs-for-find-and-replace" title="Permalink to this heading">#</a></h2>
 <p>Let us say, we have a document in which we would like to replace some text by some other text. The Microsoft Word software provides an interface such as the one shown in the picture below for performing such “find-and-replace”.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace.png" style="width: 450px;" /></a>
 <div class="admonition-pause-and-ponder admonition">
@@ -611,7 +612,7 @@ document.write(`
 </section>
 </section>
 <section id="finding-a-match">
-<h2>6.3 Finding a match<a class="headerlink" href="#finding-a-match" title="Permalink to this heading">#</a></h2>
+<h2>7.3 Finding a match<a class="headerlink" href="#finding-a-match" title="Permalink to this heading">#</a></h2>
 <p>The next step is to answer how to find a match of <code class="docutils literal notranslate"><span class="pre">Find</span></code> inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters “Happy Priyaa”.</p>
 <a class="reference internal image-reference" href="_images/find-and-replace-text.png"><img alt="Whoopsy!" class="align-center" src="_images/find-and-replace-text.png" style="width: 250px;" /></a>
 <p>However, in graph, <strong>connectivity matters</strong>. So when matching <code class="docutils literal notranslate"><span class="pre">Find</span></code> in a host graph, rather than an exact match, we look for matches which have similar connectivity as <code class="docutils literal notranslate"><span class="pre">Find</span></code>. Do the words “similar connectivity” a ring bell? Similar connectivity implies  graph morphism.</p>
@@ -653,7 +654,7 @@ document.write(`
 </div>
 </section>
 <section id="removing-vertices-and-edges-from-a-graph">
-<h2>6.4 Removing vertices and edges from a graph<a class="headerlink" href="#removing-vertices-and-edges-from-a-graph" title="Permalink to this heading">#</a></h2>
+<h2>7.4 Removing vertices and edges from a graph<a class="headerlink" href="#removing-vertices-and-edges-from-a-graph" title="Permalink to this heading">#</a></h2>
 <p>We now know how to specify “find-and-replace” in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace!</p>
 <a class="reference internal image-reference" href="_images/15.png"><img alt="Whoopsy!" class="align-center" src="_images/15.png" style="width: 350px;" /></a>
 <p>We will begin with the deletion, that is removing vertices and edges at the match!</p>
@@ -786,7 +787,7 @@ document.write(`
 </section>
 </section>
 <section id="adding-vertices-and-edges-to-a-graph">
-<h2>6.5 Adding vertices and edges to a graph<a class="headerlink" href="#adding-vertices-and-edges-to-a-graph" title="Permalink to this heading">#</a></h2>
+<h2>7.5 Adding vertices and edges to a graph<a class="headerlink" href="#adding-vertices-and-edges-to-a-graph" title="Permalink to this heading">#</a></h2>
 <p>We applied the deletion rule to remove vertices and edges from a host graph at the match. We called the resulting graph a pushout complement.  We are now ready to add vertices and edges specified by the addition rule. However, we will now work with the pushout complement we computed in the previous step. The idea is that we first deleted, we are now ready to add. That will complete our replacement procedure! Hurray!</p>
 <p>As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing digrams is that it arranges information in an intuitive way that it makes it easier to “see” the solution!</p>
 <a class="reference internal image-reference" href="_images/29.png"><img alt="Whoopsy!" class="align-center" src="_images/29.png" style="width: 550px;" /></a>
@@ -852,7 +853,7 @@ document.write(`
 <p>Common literature calls our “Find-and-replace machinery” for graphs as Double Pushout Rewriting (DPO).</p>
 </section>
 <section id="a-few-use-cases-of-find-and-replace">
-<h2>6.6 A few use cases of find-and-replace<a class="headerlink" href="#a-few-use-cases-of-find-and-replace" title="Permalink to this heading">#</a></h2>
+<h2>7.6 A few use cases of find-and-replace<a class="headerlink" href="#a-few-use-cases-of-find-and-replace" title="Permalink to this heading">#</a></h2>
 <section id="chemistry">
 <h3>Chemistry<a class="headerlink" href="#chemistry" title="Permalink to this heading">#</a></h3>
 <p>In chemistry, <strong>click reactions</strong> give high yield with low requirements and form only harmless by-products. A specific click reaction called the Diels-Alder’s reaction is one of the most useful ones in material design. Discovered in 1928, Otto Diels and Kurt Alder were awareded Nobel prize for their fascinating discovery.</p>
@@ -884,7 +885,7 @@ document.write(`
 </section>
 </section>
 <section id="algebraic-julia-for-find-and-replace-in-graphs">
-<h2>6.7 Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
+<h2>7.7 Algebraic Julia for find-and-replace in graphs<a class="headerlink" href="#algebraic-julia-for-find-and-replace-in-graphs" title="Permalink to this heading">#</a></h2>
 <p>This section will demonstrate how graph “find-and-replace” can be performed in a computer using the Algebraic Julia library! We provide the Algebraic Julia code for the puzzles in this chapter. The reader is invited to run these code examples and have fun!</p>
 <section id="finding-matches-of-a-search-pattern">
 <h3>Finding matches of a search pattern<a class="headerlink" href="#finding-matches-of-a-search-pattern" title="Permalink to this heading">#</a></h3>
@@ -1108,7 +1109,7 @@ document.write(`
 </section>
 </section>
 <section id="relational-thinking-is-hard-but-good">
-<h2>6.8 Relational thinking is hard but good!<a class="headerlink" href="#relational-thinking-is-hard-but-good" title="Permalink to this heading">#</a></h2>
+<h2>7.8 Relational thinking is hard but good!<a class="headerlink" href="#relational-thinking-is-hard-but-good" title="Permalink to this heading">#</a></h2>
 <p>Congratulations for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!</p>
 <section id="relational-thinking-shifts-vocabulary">
 <h3>Relational thinking shifts vocabulary<a class="headerlink" href="#relational-thinking-shifts-vocabulary" title="Permalink to this heading">#</a></h3>
@@ -1138,7 +1139,7 @@ document.write(`
 </section>
 </section>
 <section id="summary">
-<h2>6.9 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>7.9 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of pushout! And finally,</p>
 <a class="reference internal image-reference" href="_images/good-thinking.png"><img alt="Whoopsy!" class="align-center" src="_images/good-thinking.png" style="width: 500px;" /></a>
 </section>
@@ -1184,7 +1185,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Chapter 5: Combining Graphs</p>
+        <p class="prev-next-title">Chapter 6: Combining Graphs</p>
       </div>
     </a>
     <a class="right-next"
@@ -1192,7 +1193,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 7: A Look Beyond– Evolving World Models</p>
+        <p class="prev-next-title">Chapter 8: A Look Beyond– Evolving World Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1212,36 +1213,36 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1 Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">6.2 Specs for “find and replace”</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1 Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specs-for-find-and-replace">7.2 Specs for “find and replace”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-delete-and-add">Replace = Delete and Add</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">6.3 Finding a match</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">6.4 Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match">7.3 Finding a match</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-vertices-and-edges-from-a-graph">7.4 Removing vertices and edges from a graph</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-a-match-to-remove-vertices-edges">Finding a match to remove vertices/edges</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-deletion">Performing deletion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-the-requirements-of-a-match">Managing the requirements of a match</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">6.5 Adding vertices and edges to a graph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-use-cases-of-find-and-replace">6.6 A few use cases of find-and-replace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-vertices-and-edges-to-a-graph">7.5 Adding vertices and edges to a graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-use-cases-of-find-and-replace">7.6 A few use cases of find-and-replace</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-design">Game design</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">6.7 Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algebraic-julia-for-find-and-replace-in-graphs">7.7 Algebraic Julia for find-and-replace in graphs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-matches-of-a-search-pattern">Finding matches of a search pattern</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-pushout-complement">Is this a pushout complement?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-double-pushouts">Computing double-pushouts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-is-hard-but-good">6.8 Relational thinking is hard but good!</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-is-hard-but-good">7.8 Relational thinking is hard but good!</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-thinking-shifts-vocabulary">Relational thinking shifts vocabulary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-order-of-processes">The order of processes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.9 Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.9 Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes-and-references">Footnotes and References</a></li>
 </ul>
   </nav></div>

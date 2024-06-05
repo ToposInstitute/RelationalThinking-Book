@@ -12,9 +12,7 @@ header-includes:
   - \usepackage{amsmath}
 ---
 
-
-
-# Chapter 7: A Look Beyond-- Evolving World Models
+# Chapter 8: A Look Beyond-- Evolving World Models
 
 :::{note}
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
@@ -25,7 +23,7 @@ This book is a work-in-progress! We'd love to learn how we can make it better, e
 This chapter will extend the previously learned concepts from graphs to real world concepts.
 :::
 
-## 7.1 Introduction
+## 8.1 Introduction
 
 So far, we have uncovered many powerful concepts for modeling graphs and making changes to them. Using **schema**, We neatly packaged up data of a graph in a way that we can recover all its fundamental concepts -- vertices and edges, and how they relate to one another. Using **double-pushouts (DPO)**, we can edit an exisiting graph. With the capability to edit graphs, we can now model a number of graph-based scenarios such as, chemical reactions, and game design. 
 
@@ -39,7 +37,7 @@ If you put Mentos in a soda, it will explode.
 
 So, graphs might not be a great idea to model my kitchen. Lucky for us, what we have learned so far have applications beyond graphs. The rest of this chapter is a simple demonstration of the use of schemas to modelling some complex scenarios.
 
-## 7.2 Cube Configuration
+## 8.2 Cube Configuration
 Let's start by simply extending the graph schema with another concept, like **faces**. Let us we want to model a cube. A face in a cube has four edges. So, along with `Edge` and `Vertex` and their relationship, the schema for a cube also consists of `Face`, and its relationship to `edge`(s). This schema has six relationships: 
 1. `src` and `tgt` from edges to vertices, and 
 2. `top`, `bottom`, `left`, `right`,from faces to edges. 
@@ -332,7 +330,7 @@ match = homomorphisms(L, closedCube)[1]
 
 In summary, DPO rewriting can help us model various configurations of a box by manipulating the data associated with the `SchCube` schema.
 
-## 7.3 Working in a Kitchen
+## 8.3 Working in a Kitchen
 This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.
 
 ````{div}
@@ -454,7 +452,7 @@ How will the double-pushout (DPO) square look like for this rule.
 
 As we have seen, double-pushout rewriting can be used to update information that we know about the world both explicitly and implicitly. Explicitly, this is done by defining the rewrite rules and what we would like to change. Implicit information is captured by filling out the rest of the schema's instances based on the explicit information. In robotics and AI planning, this accounting of both implicit and explicit effects on the world is called the _frame problem_ and is a feature that must be carefully considered when designing planning languages for such purposes. This provides an elegant mathematical solution to this age-old problem. 
 
-## 7.4 Summary
+## 8.4 Summary
 Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics.[^2] For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^3][^4][^5]
 
 ## References
