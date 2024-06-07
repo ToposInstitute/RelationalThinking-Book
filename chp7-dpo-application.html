@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chp7-dpo-application';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Authors" href="authors.html" />
+    <link rel="next" title="Compassionte Math" href="CompMath.html" />
     <link rel="prev" title="Chapter 7: Evolving Graphs" href="chp6-dpo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,6 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 7: Evolving Graphs</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 8: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CompMath.html">Compassionte Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
@@ -827,10 +828,11 @@ match = homomorphisms(L, closedCube)[1]
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, <code class="docutils literal notranslate"><span class="pre">ACSetTransformation</span></code> for <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">replace</span></code>. Instead, we can compute its <em>colimit of representables</em> <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Computing the <em>colimit of representables</em> allows us to fill in the rest of the schema’s instances when only part of it has been specified. With this, the homomorphism maps, <code class="docutils literal notranslate"><span class="pre">l</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>, between rule parts can be inferred based on the rest of the schemas’ instances. This functionality is subsumed in <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code>.</p>
-</div>
+<!--
+:::{note}
+Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, `ACSetTransformation` for `find` and `replace`. Instead, we can compute its _colimit of representables_ [^1]. Computing the _colimit of representables_ allows us to fill in the rest of the schema's instances when only part of it has been specified. With this, the homomorphism maps, `l` and `r`, between rule parts can be inferred based on the rest of the schemas' instances. This functionality is subsumed in `make_rule()`.
+:::
+-->
 <figure class="align-center" id="id14">
 <img alt="_images/Kitchen-DPO.png" src="_images/Kitchen-DPO.png" />
 <figcaption>
@@ -874,30 +876,31 @@ match = homomorphisms(L, closedCube)[1]
 </section>
 <section id="summary">
 <h2>8.4 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics.<a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
+<p>Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics<a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.<a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
+<p>If our book has convinced you on the usefulness of relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id6" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>MacLane, S. 1971. Categories for the Working Mathematician. New York: Springer-Verlag. Graduate Texts in Mathematics, Vol. 5.</p>
-</aside>
-<aside class="footnote brackets" id="id7" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
 <p>Aguinaldo, A., Patterson, E., Fairbanks, J., Regli, W., &amp; Ruiz, J. A Categorical Representation Language and Computational System for Knowledge-Based Planning. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.</p>
 </aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">3</a><span class="fn-bracket">]</span></span>
+<p>Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.</p>
+</aside>
 <aside class="footnote brackets" id="id8" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">4</a><span class="fn-bracket">]</span></span>
 <p>Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.</p>
 </aside>
 <aside class="footnote brackets" id="id9" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
-<p>Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">5</a><span class="fn-bracket">]</span></span>
+<p>Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.</p>
 </aside>
 <aside class="footnote brackets" id="id10" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
-<p>Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>Cheng, Eugenia. The joy of abstraction: An exploration of math, category theory, and life. Cambridge University Press, 2022.</p>
 </aside>
 </section>
 </section>
@@ -942,11 +945,11 @@ match = homomorphisms(L, closedCube)[1]
       </div>
     </a>
     <a class="right-next"
-       href="authors.html"
+       href="CompMath.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Authors</p>
+        <p class="prev-next-title">Compassionte Math</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
