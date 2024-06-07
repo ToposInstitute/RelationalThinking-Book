@@ -409,9 +409,11 @@ end)
 put_cheese_on_bread_rule = make_rule(put_cheese_on_bread, yKitchen)
 ```
 
+<!--
 :::{note}
 Relative to our other examples, this schema has substantially more object and morphisms which would require a burdensome amount of syntax to define a find-and-replace rule, also called as, `ACSetTransformation` for `find` and `replace`. Instead, we can compute its _colimit of representables_ [^1]. Computing the _colimit of representables_ allows us to fill in the rest of the schema's instances when only part of it has been specified. With this, the homomorphism maps, `l` and `r`, between rule parts can be inferred based on the rest of the schemas' instances. This functionality is subsumed in `make_rule()`.
 :::
+-->
 
 ```{figure} assets/Ch7/Kitchen-DPO.png
 :align: center
@@ -453,11 +455,13 @@ How will the double-pushout (DPO) square look like for this rule.
 As we have seen, double-pushout rewriting can be used to update information that we know about the world both explicitly and implicitly. Explicitly, this is done by defining the rewrite rules and what we would like to change. Implicit information is captured by filling out the rest of the schema's instances based on the explicit information. In robotics and AI planning, this accounting of both implicit and explicit effects on the world is called the _frame problem_ and is a feature that must be carefully considered when designing planning languages for such purposes. This provides an elegant mathematical solution to this age-old problem. 
 
 ## 8.4 Summary
-Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics.[^2] For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^3][^4][^5]
+Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics[^2]. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^3][^4][^5]
+
+If our book has convinced you on the usefulness of relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to [^1]. 
 
 ## References
 
-[^1]: MacLane, S. 1971. Categories for the Working Mathematician. New York: Springer-Verlag. Graduate Texts in Mathematics, Vol. 5.
+[^1]: Cheng, Eugenia. The joy of abstraction: An exploration of math, category theory, and life. Cambridge University Press, 2022.
 
 [^2]: Aguinaldo, A., Patterson, E., Fairbanks, J., Regli, W., & Ruiz, J. A Categorical Representation Language and Computational System for Knowledge-Based Planning. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.
 
