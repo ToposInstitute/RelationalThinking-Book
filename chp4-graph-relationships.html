@@ -454,6 +454,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">5.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-graph-morphisms">General graph morphisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avoiding-dangling-edges">Avoiding dangling edges</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms-in-algebraic-julia">Graph morphisms in Algebraic Julia</a></li>
 </ul>
 </li>
@@ -480,6 +481,10 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This book is a work-in-progress! We’d love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in <a class="reference external" href="https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit">this google doc</a>.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>We have reached the shores of relational thinking!</p>
 </div>
 <section id="introduction">
 <h2>5.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -632,6 +637,19 @@ But we’re not quite done! In the next section we’ll see that graph injection
 </div>
 <a class="reference internal image-reference" href="_images/RightiesVSLefties.gif"><img alt="Whoopsy!" class="align-center" src="_images/RightiesVSLefties.gif" style="width: 800px;" /></a>
 <p><mark> We call this a “graph morphism”, a way of indentifying one graph inside of another that allows for coarse-graining of vertices/arrows. </mark> Injections are just a special case of graph morphisms in which there is one-to-one mapping between vertices of graph 1 and graph 2, and between arrows of graph 1 and graph 2.</p>
+<p>There is another special case of graph morphisms called graph <strong>isomorphisms</strong>. Here is something for you to ponder over!</p>
+<div class="admonition-pause-and-ponder admonition">
+<p class="admonition-title">Pause and Ponder</p>
+<p>Suppose we have graph 1 injects into graph 2, and graph 2 also injects into graph 1, what can we say about graph 1 and graph 2?</p>
+</div>
+<p>Do you <em>see</em> that graph 1 and graph 2 must have exactly same number of vertices, same number of arrows and have same connectivity? In other words, graph 1 and graph 2 are ONE and SAME for all practical purposes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When graph 1 and graph 2 has injections in either directions, the each injection is called an <strong>isomorphisms</strong>.</p>
+</div>
+</section>
+<section id="avoiding-dangling-edges">
+<h3>Avoiding dangling edges<a class="headerlink" href="#avoiding-dangling-edges" title="Permalink to this heading">#</a></h3>
 <p>It may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about <em>breaking</em> a graph, which would violate our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and ruin any underlying model. Doesn’t coarse-graining our graph pose a similar risk?</p>
 <p>It turns out that under the right circumstances, merging parts of a graph won’t actually pose any danger to the integrity of the underlying model.</p>
 <p>Let’s consider the dishwashing chores graph morphism we just looked at, but now using generic shapes. We have a morphism from the upper graph to the lower graph.</p>
@@ -894,6 +912,7 @@ But we’re not quite done! In the next section we’ll see that graph injection
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">5.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-graph-morphisms">General graph morphisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avoiding-dangling-edges">Avoiding dangling edges</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms-in-algebraic-julia">Graph morphisms in Algebraic Julia</a></li>
 </ul>
 </li>
