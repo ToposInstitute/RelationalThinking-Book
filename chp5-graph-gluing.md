@@ -72,7 +72,7 @@ The challenge of this game is to communicate “the connectivity of any combined
 
 ## 6.2 Combining graphs using memes
 
-The two memes we will use to play this game are: (1) commuting diagrams, and (2) graph isomorphisms. Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play! 
+The two memes we will use to play this game are: (1) commuting diagrams (closed loop conditions), and (2) graph morphisms. Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play! 
 
 Let us first introduce some **terminology**: we call a combined graph of two overlapping graphs as their `pushout`.
 
@@ -488,7 +488,7 @@ However, the `pushout` is also universal. So it must have a unique map into `gra
 :align: center
 ```
 
-However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the `pushout` and `graph X` are inverse of each other -- isormorphisms (If are interested in the reasoning, check the box below. )! In other words, THE `pushout` AND `graph X` ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!
+However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the `pushout` and `graph X` are inverse of each other -- isomorphisms (If are interested in the reasoning, check the box below. )! In other words, THE `pushout` AND `graph X` ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!
 
 :::{admonition} Why the two unique maps are isomorphisms?
 :class: dropdown

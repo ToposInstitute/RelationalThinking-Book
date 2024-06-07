@@ -16,6 +16,10 @@ kernelspec:
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
 :::
 
+:::{attention}
+We have reached the shores of relational thinking! 
+:::
+
 ## 5.1 Introduction
 
 In the last chapter we encountered different schemas for different kinds of graphs.
@@ -318,6 +322,24 @@ The coarse-graining we discussed above can be captured by the following way of m
 :align: center
 ```
 <mark> We call this a "graph morphism", a way of indentifying one graph inside of another that allows for coarse-graining of vertices/arrows. </mark> Injections are just a special case of graph morphisms in which there is one-to-one mapping between vertices of graph 1 and graph 2, and between arrows of graph 1 and graph 2.
+
+There is another special case of graph morphisms called graph **isomorphisms**. Here is something for you to ponder over!
+
+:::{admonition} Pause and Ponder
+
+Suppose we have graph 1 injects into graph 2, and graph 2 also injects into graph 1, what can we say about graph 1 and graph 2?
+
+:::
+
+Do you *see* that graph 1 and graph 2 must have exactly same number of vertices, same number of arrows and have same connectivity? In other words, graph 1 and graph 2 are ONE and SAME for all practical purposes. 
+
+:::{note}
+
+When graph 1 and graph 2 has injections in either directions, the each injection is called an **isomorphisms**.
+
+:::
+
+### Avoiding dangling edges
 
 It may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about _breaking_ a graph, which would violate our `DANGLING EDGE CONDITION` and ruin any underlying model. Doesn't coarse-graining our graph pose a similar risk? 
 
