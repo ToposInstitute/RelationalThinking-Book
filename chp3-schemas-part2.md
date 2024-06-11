@@ -18,7 +18,7 @@ This book is a work-in-progress! We'd love to learn how we can make it better, e
 
 ## 4.1 Introduction
 
-Let us continue our journey of developing blueprints. In this chapter, we shall move beyond directed graphs, look into other flavors of graphs and how their blueprints are built upon the blueprint of directed graphs. 
+Let us continue our journey of developing blueprints. In this chapter, we shall move beyond directed graphs, look into other flavors of graphs and how their blueprints are built upon the blueprints of directed graphs. 
 
 ## 4.2 Reflexive Graphs (in theory)
 
@@ -125,7 +125,7 @@ When we first defined reflexive graphs we had to establish what we meant using s
 
 ### Reflexive graphs (in a computer)
 
-Let's encode a reflexive graph blueprint in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here's the system we'll use for writing:
+Let's encode a reflexive graph schema in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here's the system we'll use for writing:
 
 
 :::{admonition} Writing system:
@@ -152,7 +152,7 @@ And "the reflexive map followed by the target map takes you back where you start
 
 `refl ; tgt = id`
 
-Equations like this are known as **commutativity conditions**. When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what's called a **schema**. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
+Equations like this are known as **commutativity conditions**. These commutativity conditions that the underlying maps must satisfy are also part of the schema. So, schemas are more than directed graphs. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
 
 ```{image} assets/Ch3/ReflexiveGraphSchema.png
 :alt: Whoopsy!
