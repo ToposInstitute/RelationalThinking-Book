@@ -91,9 +91,11 @@ Instead of representing these maps side by side like this, let's combine them s
 :align: center
 ```
 
-Such a pair of parallel maps is the **blueprint of all directed graphs**. Any easy way to think about a blueprint is like a form to be filled. The form has placeholders for the data that is required -- for example, Firstname, Lastname, and so on. Simiarly, a blueprint of a directed graph is a form for a directed graph. Mathematicians and computer scientists use the term **schema** for blueprints of mathematical objects like graphs.
+Such a pair of parallel maps is the **blueprint of all directed graphs**. Any easy way to think about a blueprint is like a form to be filled. The form has placeholders for the data that is required -- for example, Firstname, Lastname, and so on. Simiarly, a blueprint of a directed graph is a *fillable form* for a directed graph. The word **schema** is the mathematical term for blueprints. These are not just any blueprints, but blueprints for building mathematical objects, for example, directed graphs.
 
-We generally draw the blueprint for directed graphs as two arrows marked `src` and `tgt`.
+> Schema is a mathematical term for blueprints.
+
+We generally draw the schema for directed graphs as two arrows marked `src` and `tgt`.
 
 ```{image} assets/Ch4/DirectedGraphSchema.jpg
 :alt: Whoopsy!
@@ -101,7 +103,7 @@ We generally draw the blueprint for directed graphs as two arrows marked `src` a
 :align: center
 ```
 
-Any _particular_ pair of maps in this configuration is said to be an "instance" of this blueprint. By filling in the blueprint in different ways we create different instances, and every instance corresponds to some directed graph.
+Any _particular_ pair of maps in this configuration is said to be an "instance" of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.
 
 
 ```{image} assets/Ch4/DGraphInstance.gif
@@ -111,7 +113,7 @@ Any _particular_ pair of maps in this configuration is said to be an "instance
 ```
 <br>
 
-You may have noticed that our blueprint is _itself_ a directed graph! This is where things get intersting! This means we can define this blueprint in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
+You may have noticed that our blueprint is _itself_ a directed graph! This is where things get intersting! This means we can input the schema to a computer in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
 
 In the code below we use `A` for arrows, `V` for vertices, and define them as `Ob`jects. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y." We use it to define the source and target of the chunky arrows `src` and `tgt`.
 
@@ -133,7 +135,7 @@ And that's how AlgebraicJulia sees a directed graph to be!
 
 ## 3.3. Summary
 
-In this chapter, we abstracted the information of a single directed graph and created blueprint of all directed graphs.
+In this chapter, we abstracted the information of a single directed graph and created schema of all directed graphs.
 
-This general characterization of all directed graph using blueprints is quite a powerful and versatile idea as we will see. This notion of blueprints will provide the foundation for relational thinking (using a mathematical object).  Let us continue our journey of blueprints in the next chapter where we we will next see how we can _add_ to this blueprint to describe other kinds of graphs, and also other cool mathematical objects beyond graphs.
+This general characterization of all directed graph using blueprints is quite a powerful and versatile idea as we will see. This notion of schema will provide the foundation for relational thinking (using a mathematical object).  Let us continue our journey of schema in the next chapter where we we will next see how we can _add_ to the schema of directed graphs to describe other kinds of graphs, and also other cool mathematical objects beyond graphs.
 

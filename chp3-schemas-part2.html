@@ -478,7 +478,7 @@ document.write(`
 </div>
 <section id="introduction">
 <h2>4.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Let us continue our journey of developing blueprints. In this chapter, we shall move beyond directed graphs, look into other flavors of graphs and how their blueprints are built upon the blueprint of directed graphs.</p>
+<p>Let us continue our journey of developing blueprints. In this chapter, we shall move beyond directed graphs, look into other flavors of graphs and how their blueprints are built upon the blueprints of directed graphs.</p>
 </section>
 <section id="reflexive-graphs-in-theory">
 <h2>4.2 Reflexive Graphs (in theory)<a class="headerlink" href="#reflexive-graphs-in-theory" title="Permalink to this heading">#</a></h2>
@@ -535,7 +535,7 @@ document.write(`
 <p>When we first defined reflexive graphs we had to establish what we meant using semantic ideas like “self-loops” and phrases like “for every vertex…”. We have now found an equivalent way of saying the same thing in terms of maps and whether or not certain paths form closed loops. And “maps and closed loops” are exactly the kind of thing AlgebraicJulia can understand!</p>
 <section id="reflexive-graphs-in-a-computer">
 <h3>Reflexive graphs (in a computer)<a class="headerlink" href="#reflexive-graphs-in-a-computer" title="Permalink to this heading">#</a></h3>
-<p>Let’s encode a reflexive graph blueprint in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here’s the system we’ll use for writing:</p>
+<p>Let’s encode a reflexive graph schema in AlgebraicJulia! In order to specify our closed loop condition in a way that a computer can understand we have to convert it into a text expression. Here’s the system we’ll use for writing:</p>
 <div class="attention admonition">
 <p class="admonition-title">Writing system:</p>
 <ul class="simple">
@@ -551,7 +551,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">src</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
 <p>And “the reflexive map followed by the target map takes you back where you started” becomes:</p>
 <p><code class="docutils literal notranslate"><span class="pre">refl</span> <span class="pre">;</span> <span class="pre">tgt</span> <span class="pre">=</span> <span class="pre">id</span></code></p>
-<p>Equations like this are known as <strong>commutativity conditions</strong>. When we combine a blueprint with some commutativity conditions that the underlying maps must satisfy, we get what’s called a <strong>schema</strong>. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
+<p>Equations like this are known as <strong>commutativity conditions</strong>. These commutativity conditions that the underlying maps must satisfy are also part of the schema. So, schemas are more than directed graphs. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:</p>
 <a class="reference internal image-reference" href="_images/ReflexiveGraphSchema.png"><img alt="Whoopsy!" class="align-center" src="_images/ReflexiveGraphSchema.png" style="width: 800px;" /></a>
 <br>
 <p>To enter this into AlgebraicJulia we start with the directed graph schema we made earlier and add the <code class="docutils literal notranslate"><span class="pre">refl</span></code> arrow and our commutativity conditions. (We use <code class="docutils literal notranslate"><span class="pre">compose(X,Y)</span></code> to mean <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">;</span> <span class="pre">Y</span></code>.)</p>
