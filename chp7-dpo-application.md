@@ -455,18 +455,16 @@ How will the double-pushout (DPO) square look like for this rule.
 As we have seen, double-pushout rewriting can be used to update information that we know about the world both explicitly and implicitly. Explicitly, this is done by defining the rewrite rules and what we would like to change. Implicit information is captured by filling out the rest of the schema's instances based on the explicit information. In robotics and AI planning, this accounting of both implicit and explicit effects on the world is called the _frame problem_ and is a feature that must be carefully considered when designing planning languages for such purposes. This provides an elegant mathematical solution to this age-old problem. 
 
 ## 8.4 Summary
-Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics[^1]. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^2][^3][^4]
+Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics[^1]. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics[^2][^3].
 
-If our book has convinced you on the usefulness of relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to [^5]. 
+If you feel inspired and convinced about relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to [^4] for a gentle yet technical introduction to category theory. 
 
 ## References
 
-[^1]: Aguinaldo, A., Patterson, E., Fairbanks, J., Regli, W., & Ruiz, J. A Categorical Representation Language and Computational System for Knowledge-Based Planning. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.
+[^1]: A Categorical Representation Language and Computational System for Knowledge-Based Planning.  Angeline Aguinaldo, Evan Patterson, James Fairbanks, William Regli, & Jamie Ruiz. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.
 
 [^2]: Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.
 
-[^3]: Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.
+[^3]: Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.
 
-[^4]: Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.
-
-[^5]: Cheng, Eugenia. The joy of abstraction: An exploration of math, category theory, and life. Cambridge University Press, 2022.
+[^4]: Cheng, Eugenia. The joy of abstraction: An exploration of math, category theory, and life. Cambridge University Press, 2022.
