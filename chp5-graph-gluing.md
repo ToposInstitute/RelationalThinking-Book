@@ -843,7 +843,7 @@ Use the code cell below to visualize `graph A` and `graph B`.
 ## 6.6 Summary 
 Congratulations!! You have crossed Chapter 5 successfully!
 
-Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, once set up right, the tools make life better because all the complex thinking is handled early on eliminating the necessity to think cleverly about the edge cases when the tools is used.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts. 
+Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, setting things up right and relational makes life better because all the nuances are handled early-on in the thinking process. This eliminates the need to think cleverly about the edge cases later on when the complexity of the system increases.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts. 
 
 It only gets easier from here!!
 
