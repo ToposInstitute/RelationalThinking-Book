@@ -91,9 +91,9 @@ Instead of representing these maps side by side like this, let's combine them s
 :align: center
 ```
 
-Such a pair of parallel maps is the **blueprint of all directed graphs**. Any easy way to think about a blueprint is like a form to be filled. The form has placeholders for the data that is required -- for example, Firstname, Lastname, and so on. Simiarly, a blueprint of a directed graph is a *fillable form* for a directed graph. The word **schema** is the mathematical term for blueprints. These are not just any blueprints, but blueprints for building mathematical objects, for example, directed graphs.
+Such a pair of parallel maps is the **blueprint of all directed graphs**. Any easy way to think about a blueprint is like a form to be filled. The form has placeholders for the data that is required -- for example, Firstname, Lastname, and so on. Simiarly, a blueprint of a directed graph is a *fillable form* for a directed graph. The word **schema** is the relational thinking term for blueprints. These are not just any blueprints, but blueprints for building mathematical objects, for example, directed graphs.
 
-> Schema is a mathematical term for blueprints.
+> Schema is the relational thinking term for blueprints.
 
 We generally draw the schema for directed graphs as two arrows marked `src` and `tgt`.
 
