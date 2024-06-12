@@ -28,7 +28,7 @@ The "Find-and-replace" feature of text editors is one of the most powerful innov
 
 Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar might be so hard! A usual thought-process behind attempting to quit sugar is: 
 
-```{image} assets/Ch6/sugar-1.png
+```{image} assets/Ch7/sugar-1.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -36,7 +36,7 @@ Let us consider a fun and non-political example -- the struggle of qutting sugar
 
 But the reality is: 
 
-```{image} assets/Ch6/quit-sugar-2.png
+```{image} assets/Ch7/quit-sugar-2.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -45,7 +45,7 @@ But the reality is:
 
 because, the connections are broken causing the system to experience instability: 
 
-```{image} assets/Ch6/sugar-2.png
+```{image} assets/Ch7/sugar-2.png
 :alt: Whoopsy!
 :width: 300px
 :align: center
@@ -67,7 +67,7 @@ Given a pattern (a graph), and its replacement, our mission is to "find" the pat
 
 Let us say, we have a document in which we would like to replace some text by some other text. The Microsoft Word software provides an interface such as the one shown in the picture below for performing such "find and replace".  
 
-```{image} assets/Ch6/find-and-replace.png
+```{image} assets/Ch7/find-and-replace.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -85,7 +85,7 @@ The ```Find what``` box will take in a graph. This is the search pattern that wi
 
 For example,
 
-```{image} assets/Ch6/FR-step1.png
+```{image} assets/Ch7/FR-step1.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -95,7 +95,7 @@ For example,
 
 Let us try applying the above "find-and-replace" to the host graph below. 
 
-```{image} assets/Ch6/host-graph.png
+```{image} assets/Ch7/host-graph.png
 :alt: Whoopsy!
 :width: 300px
 :align: center
@@ -104,7 +104,7 @@ Let us try applying the above "find-and-replace" to the host graph below.
 
 We must first find a match of the `Find` in the host graph. Can you find one?
 
-```{image} assets/Ch6/host-graph-match.png
+```{image} assets/Ch7/host-graph-match.png
 :alt: Whoopsy!
 :width: 300px
 :align: center
@@ -113,7 +113,7 @@ We must first find a match of the `Find` in the host graph. Can you find one?
 
 Now let us, try replacing the match with the `Replace`. But, there seems to be two different ways in which the match can be replaced, as shown below!
 
-```{image} assets/Ch6/replacements.png
+```{image} assets/Ch7/replacements.png
 :alt: Whoopsy!
 :width: 475px
 :align: center
@@ -123,7 +123,7 @@ So what are we missing? In text documents, there is only one way of replacing a 
 
 For example, in Replacement-1, the middle vertex and the self-loop of the `Replace` is placed at the match. 
 
-```{image} assets/Ch6/replacement-1.png
+```{image} assets/Ch7/replacement-1.png
 :alt: Whoopsy!
 :width: 575px
 :align: center
@@ -132,7 +132,7 @@ For example, in Replacement-1, the middle vertex and the self-loop of the `Repla
 
 In Replacement-2, the left-most node of the replacement at the match is placed at the match.
 
-```{image} assets/Ch6/replacement-2.png
+```{image} assets/Ch7/replacement-2.png
 :alt: Whoopsy!
 :width: 575px
 :align: center
@@ -150,7 +150,7 @@ How would you specify overlap `Find` and `Replace`?
 
 We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with two radiating graph morphisms?
 
-```{image} assets/Ch6/1.png
+```{image} assets/Ch7/1.png
 :alt: Whoopsy!
 :width: 300px
 :align: center
@@ -161,13 +161,13 @@ We will use the same idea to specify the overlap between `Find` and `Replace`. A
 :::{admonition} Puzzle 1
 
 What is the `overlap` between `Find` and `Replace` in case of Replacement-1 and Replacement-2?
-```{image} assets/Ch6/puzzle-1-data.png
+```{image} assets/Ch7/puzzle-1-data.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
 ```
 
-```{image} assets/Ch6/2.png
+```{image} assets/Ch7/2.png
 :alt: Whoopsy!
 :width: 600px
 :align: center
@@ -182,7 +182,7 @@ The specification for the overlaps are as follows!
 
 For replacement-1, 
 
-```{image} assets/Ch6/3.png
+```{image} assets/Ch7/3.png
 :alt: Whoopsy!
 :width: 575px
 :align: center
@@ -190,7 +190,7 @@ For replacement-1,
 
  and replacement-2:
 
-```{image} assets/Ch6/4.png
+```{image} assets/Ch7/4.png
 :alt: Whoopsy!
 :width: 625px
 :align: center
@@ -200,7 +200,7 @@ For replacement-1,
 
 ### Replace = Delete and Add
 
-```{image} assets/Ch6/interfaceExample.png
+```{image} assets/Ch7/interfaceExample.png
 :alt: Whoopsy!
 :width: 625px
 :align: center
@@ -216,7 +216,7 @@ Note that the `overlap` shape remains unchanged during the replacement. The over
 
 Thus, a specification for "find-and-replace" in graphs consists of a deletion rule and an addition rule:
 
-```{image} assets/Ch6/5.png
+```{image} assets/Ch7/5.png
 :alt: Whoopsy!
 :width: 625px
 :align: center
@@ -230,7 +230,7 @@ Neat, huh?!
 
 Find the overlap between `Find` and `Replace` for the following replacement:
 
-```{image} assets/Ch6/puzzle-2.png
+```{image} assets/Ch7/puzzle-2.png
 :alt: Whoopsy!
 :width: 625px
 :align: center
@@ -239,7 +239,7 @@ Find the overlap between `Find` and `Replace` for the following replacement:
 :::{admonition} Solution 
 :class: dropdown
 ````{div} wrapper 
-```{image} assets/Ch6/6.png
+```{image} assets/Ch7/6.png
 :alt: Whoopsy!
 :width: 425px
 :align: center
@@ -254,7 +254,7 @@ Find the overlap between `Find` and `Replace` for the following replacement:
 
 Apply the following replacement in the host graph. The match between `Find` and the host graph is indicated by the matching numbers on their vertices. 
 
-```{image} assets/Ch6/puzzle-3.png
+```{image} assets/Ch7/puzzle-3.png
 :alt: Whoopsy!
 :width: 525px
 :align: center
@@ -263,7 +263,7 @@ Apply the following replacement in the host graph. The match between `Find` and 
 :::{admonition} Solution 
 :class: dropdown
 ````{div} wrapper 
-```{image} assets/Ch6/puzzle-3-sol.png
+```{image} assets/Ch7/puzzle-3-sol.png
 :alt: Whoopsy!
 :width: 325px
 :align: center
@@ -277,7 +277,7 @@ Apply the following replacement in the host graph. The match between `Find` and 
 
 The interface to find-and-replace needs to have:
 
-```{image} assets/Ch6/8.png
+```{image} assets/Ch7/8.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -293,7 +293,7 @@ The interface to find-and-replace needs to have:
 
 The next step is to answer how to find a match of `Find` inside a host graph, similar to finding some text in a document. When a text editor receives an input like this, it find (exact) matches of the string of characters "Happy Priyaa". 
 
-```{image} assets/Ch6/find-and-replace-text.png
+```{image} assets/Ch7/find-and-replace-text.png
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -307,7 +307,7 @@ A match is a graph morphism from `Find` to a host host graph.
 
 Let us suppose we want to find a match `Find` in this host graph:
 
-```{image} assets/Ch6/9.png
+```{image} assets/Ch7/9.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -318,7 +318,7 @@ Let us suppose we want to find a match `Find` in this host graph:
 
 There are two possible matches. The mapping (match) is shown using matching labels for the vertices and the edges. 
 
-```{image} assets/Ch6/10.png
+```{image} assets/Ch7/10.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -328,7 +328,7 @@ There are two possible matches. The mapping (match) is shown using matching labe
 
 The below match, has vertices "1" and "2" in the search pattern, mapped to the same vertex in the host graph.
 
-```{image} assets/Ch6/11.png
+```{image} assets/Ch7/11.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -346,7 +346,7 @@ Let us strengthen our understanding!
 Find at least two matches of the search pattern in the host graph. 
 
 ````{div} wrapper 
-```{image} assets/Ch6/12.png
+```{image} assets/Ch7/12.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -362,7 +362,7 @@ Find at least two matches of the search pattern in the host graph.
 
 An exact match: 
 
-```{image} assets/Ch6/13.png
+```{image} assets/Ch7/13.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -370,7 +370,7 @@ An exact match:
 
 Non-injective match:
 
-```{image} assets/Ch6/14.png
+```{image} assets/Ch7/14.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -394,7 +394,7 @@ A *match* in a host graph is given by a morphism from ```Find``` to a host graph
 
 We now know how to specify "find-and-replace" in terms of deletion and addition rules, and how to specify a match. What remains is to apply these specifications to perform the find-and-replace! 
 
-```{image} assets/Ch6/15.png
+```{image} assets/Ch7/15.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -410,7 +410,7 @@ We will begin with the deletion, that is removing vertices and edges at the matc
 The following example illustrates this situation. 
 
 Suppose, we have the following rule for deletion: vertex 2 and edge 'a' will be deleted (from the host at a match) since they do not overlap! 
-```{image} assets/Ch6/16.png
+```{image} assets/Ch7/16.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -419,7 +419,7 @@ Suppose, we have the following rule for deletion: vertex 2 and edge 'a' will be 
 
 Suppose we are given the following match of `Find` in a host graph. Can you see why this match is bad? 
 
-```{image} assets/Ch6/17.png
+```{image} assets/Ch7/17.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -428,7 +428,7 @@ Suppose we are given the following match of `Find` in a host graph. Can you see 
 
 Removing vertex 2 from the host graph will result in a dangling edge, see the diagram picture below!
 
-```{image} assets/Ch6/dangling-3.png
+```{image} assets/Ch7/dangling-3.png
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -436,7 +436,7 @@ Removing vertex 2 from the host graph will result in a dangling edge, see the di
 
 An appropriate match that produces no dangling edge will be:
 
-```{image} assets/Ch6/18.png
+```{image} assets/Ch7/18.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -447,7 +447,7 @@ For the above match, removing vertex '2' and edge 'a' leaves the graph intact!
 
 Another situation that needs care is that a match must not identify a vertex to be deleted and a vertex that needs to be retained (a vertex which overlaps) of `Find` to the same vertex in the host graph. In the deletion rule, vertex 1 must be retained and vertex 2 needs to be deleted. However, the following match identifies vertices 1 and 2 of the search pattern to the same vertex ("1,2") in the host graph, which is bad!
 
-```{image} assets/Ch6/19.png
+```{image} assets/Ch7/19.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -472,7 +472,7 @@ We will talk more about "finding a good match" once the algorithm to perform the
 
 We now have a deletion rule, a host graph and a match for `Find` in the host graph. As before, let us draw a diagram of all the information we have:
 
-```{image} assets/Ch6/20.png
+```{image} assets/Ch7/20.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -488,7 +488,7 @@ This means that the `overlap` will have a match in the new graph **determined by
 
 </br>
 
-```{image} assets/Ch6/21.png
+```{image} assets/Ch7/21.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -513,7 +513,7 @@ Let us look at an example of computing "pushout **complement**"
 
 :::{admonition} Example 1
 
-```{image} assets/Ch6/22.png
+```{image} assets/Ch7/22.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -531,7 +531,7 @@ In this example, the pushout complement includes all the edges and vertices in t
 
 What is the pushout complement in the below diagram?
 
-```{image} assets/Ch6/23.png
+```{image} assets/Ch7/23.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -543,7 +543,7 @@ What is the pushout complement in the below diagram?
 :class: dropdown
 
 ````{div} wrapper 
-```{image} assets/Ch6/24.png
+```{image} assets/Ch7/24.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -558,7 +558,7 @@ This problem has a coarse-grain match. Vertices "1" and "2" of `Find what` are s
 
 What is the pushout complement in the below diagram?
 
-```{image} assets/Ch6/25.png
+```{image} assets/Ch7/25.png
 :alt: Whoopsy!
 :width: 750px
 :align: center
@@ -571,7 +571,7 @@ What is the pushout complement in the below diagram?
 The pushout complement includes all the edges and vertices in the host graph that is not under the match (all unlabelled vertices and edges),and includes those vertices and edges in the match which are in Graph-2.
 
 ````{div} wrapper 
-```{image} assets/Ch6/26.png
+```{image} assets/Ch7/26.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -605,7 +605,7 @@ To drive home home the above message, here are two examples. We leave it to the 
 Is there a pushout complement? If not, why?
 
 ````{div} wrapper 
-```{image} assets/Ch6/27.png
+```{image} assets/Ch7/27.png
 :alt: Whoopsy!
 :width: 600px
 :align: center
@@ -623,7 +623,7 @@ Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
-```{image} assets/Ch6/28.png
+```{image} assets/Ch7/28.png
 :alt: Whoopsy!
 :width: 600px
 :align: center
@@ -652,7 +652,7 @@ We applied the deletion rule to remove vertices and edges from a host graph at t
 
 As always, let us begin by drawing a diagram of the gre relationships we got! The advantage of drawing diagrams is that it arranges information in an intuitive way making it easier to "see" the solution! 
 
-```{image} assets/Ch6/29.png
+```{image} assets/Ch7/29.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -661,7 +661,7 @@ As always, let us begin by drawing a diagram of the gre relationships we got! Th
 
 We shall focus on the lower half of the diagram now where addition of vertices and edges shall proceed!
 
-```{image} assets/Ch6/30.png
+```{image} assets/Ch7/30.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -680,7 +680,7 @@ Pushouts!!
 
 By computing the pushout of the above diagram, we glue vertices / edges to be added to the pushout complement along the overlap. Our completed diagram looks as follows now:
 
-```{image} assets/Ch6/31.png
+```{image} assets/Ch7/31.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -692,7 +692,7 @@ Let us try out some examples to make sure we are right! We start from the exampl
 
 Suppose, we have an addition rule like this, and the match obtained at the pushout complement step:
 
-```{image} assets/Ch6/33a.png
+```{image} assets/Ch7/33a.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -702,7 +702,7 @@ Suppose, we have an addition rule like this, and the match obtained at the pusho
 
 The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace` (`overlap` does not have this edge between 1 and 2), this edge will be added to the host graph. Computing the pushout, precisely does this to the pushout complement!
 
-```{image} assets/Ch6/33b.png
+```{image} assets/Ch7/33b.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -714,7 +714,7 @@ The complete picture of the replacement procedure (deletion and addition) for Ex
 
 We have the following replacement rule and a match in the host graph. 
 
-```{image} assets/Ch6/34.png
+```{image} assets/Ch7/34.png
 :alt: Whoopsy!
 :width: 700px
 :align: center
@@ -723,7 +723,7 @@ We have the following replacement rule and a match in the host graph.
 
 Computing the pushout complement followed by the pushout completes the replacement procedure!
 
-```{image} assets/Ch6/35.png
+```{image} assets/Ch7/35.png
 :alt: Whoopsy!
 :width: 700px
 :align: center
@@ -735,7 +735,7 @@ Computing the pushout complement followed by the pushout completes the replaceme
 
 Compute the pushout:
 
-```{image} assets/Ch6/36.png
+```{image} assets/Ch7/36.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -748,7 +748,7 @@ Compute the pushout:
 The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive to `Replace` (`overlap` does not have this edge between 1 and 2), this edge manifests as self-loop in the pushout.
 
 ````{div} wrapper 
-```{image} assets/Ch6/37.png
+```{image} assets/Ch7/37.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -759,7 +759,7 @@ The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive
 
 :::{admonition} Puzzle 8 (continued from Puzzle 6 )
 
-```{image} assets/Ch6/38.png
+```{image} assets/Ch7/38.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -770,7 +770,7 @@ The `Replace` has an edge between vertices 1 and 2. Since this edge is exclusive
 :class: dropdown
 
 ````{div} wrapper 
-```{image} assets/Ch6/39.png
+```{image} assets/Ch7/39.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -793,7 +793,7 @@ A thing of beauty!!
 
 A search pattern (`Find what`) found in a graph is carved into another pattern (`Replace with`) by computing pushout complement and followed by pushout.
 
-```{image} assets/Ch6/31b.png
+```{image} assets/Ch7/31b.png
 :alt: Whoopsy!
 :width: 650px
 :align: center
@@ -810,7 +810,7 @@ In chemistry, **click reactions** give high yield with low requirements and form
 
 </br>
 
-```{image} assets/Ch6/reaction.png
+```{image} assets/Ch7/reaction.png
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -820,7 +820,7 @@ In chemistry, **click reactions** give high yield with low requirements and form
 
 In this section, we will see that Diel-Alder's reaction is a double pushout rewrite - the  "Find and replace" machinery which uses pushouts. In this example,  we will view molecules as undirected graphs where atoms are vertices and the chemical bonds are edges. Diel-Alder's reaction is the following, "Find-and-replace" rule for a specific molecule (we do not worry about the names of these molecules because that is not the point).
 
-```{image} assets/Ch6/C1.png
+```{image} assets/Ch7/C1.png
 :alt: Whoopsy!
 :width: 700px
 :align: center
@@ -830,7 +830,7 @@ In this section, we will see that Diel-Alder's reaction is a double pushout rewr
 
 Standard chemistry books write this reaction as follows with only the `Find` and the `Replace`. To the left of the arrow is `Find` and to the right of the arrow is the `Replace`.
 
-```{image} assets/Ch6/Diel-Alder.png
+```{image} assets/Ch7/Diel-Alder.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -838,7 +838,7 @@ Standard chemistry books write this reaction as follows with only the `Find` and
 
 Let us now use this rule on a substrate molecule which will act as the host graph.
 
-```{image} assets/Ch6/C2.png
+```{image} assets/Ch7/C2.png
 :alt: Whoopsy!
 :width: 700px
 :align: center
@@ -848,7 +848,7 @@ Let us now use this rule on a substrate molecule which will act as the host grap
 
 Applying the double-pushout find-and-replace, we precisely get the final product of this chemical reaction!!
 
-```{image} assets/Ch6/C3.png
+```{image} assets/Ch7/C3.png
 :alt: Whoopsy!
 :width: 700px
 :align: center
@@ -862,7 +862,7 @@ Bob is currently designing a game of Dungeons and Dragons, and have added two ro
 
 However, Bob thought for a moment, and told to himself, "Hey, how about a corridor in-between the rooms?". 
 
-```{image} assets/Ch6/corridor.png
+```{image} assets/Ch7/corridor.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -872,7 +872,7 @@ However, Bob thought for a moment, and told to himself, "Hey, how about a corrid
 
 Now a corridor needs to be added between Room 1 and Room 2, and arrows need to be redrawn as follows!
 
-```{image} assets/Ch6/Door.png
+```{image} assets/Ch7/Door.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -893,7 +893,7 @@ This section will demonstrate how graph "find-and-replace" can be performed in a
 Find at least two matches of the search pattern in the host graph. 
 
 ````{div} wrapper 
-```{image} assets/Ch6/40.png
+```{image} assets/Ch7/40.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -948,7 +948,7 @@ matches = homomorphisms(find, host)
 Is there a pushout complement? If not, why?
 
 ````{div} wrapper 
-```{image} assets/Ch6/27.png
+```{image} assets/Ch7/27.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -987,7 +987,7 @@ Is there a pushout complement? If not, why?
 
 
 ````{div} wrapper 
-```{image} assets/Ch6/28.png
+```{image} assets/Ch7/28.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -1029,7 +1029,7 @@ gluing_conditions(ComposablePair(del, match))
 
 What is the pushout complement?
 
-```{image} assets/Ch6/43.png
+```{image} assets/Ch7/43.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -1057,7 +1057,7 @@ to_graphviz(dom(PC_H₅))
 :::{admonition} Puzzle 7 (continued from Puzzle 5 )
 
 Compute the pushout:
-```{image} assets/Ch6/36.png
+```{image} assets/Ch7/36.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -1082,7 +1082,7 @@ to_graphviz(codom(fromR))
 :::{admonition} Puzzle 6
 
 What is the pushout complement?
-```{image} assets/Ch6/45.png
+```{image} assets/Ch7/45.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -1119,7 +1119,7 @@ to_graphviz(dom(PC_H₆))
 
 Complete the pushout
 
-```{image} assets/Ch6/38.png
+```{image} assets/Ch7/38.png
 :alt: Whoopsy!
 :width: 550px
 :align: center
@@ -1184,7 +1184,7 @@ As we saw in double pushouts, relational thinking precisely follows this order w
 
 For modifying graphs, we first compute pushout complement followed by a pushout! All the edge cases that may otherwise occur when removing edges and vertices are automatically handled due to the universal nature of the pushouts! And finally, 
 
-```{image} assets/Ch6/good-thinking.png
+```{image} assets/Ch7/good-thinking.png
 :alt: Whoopsy!
 :width: 500px
 :align: center

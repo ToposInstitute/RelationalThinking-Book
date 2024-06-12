@@ -13,7 +13,7 @@ Suppose we were making a directed graph to represent the social network on TikT
 
 A piece of our graph would look like this:
 
-```{image} assets/Ch4/TikTok.png
+```{image} assets/Ch5/TikTok.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -26,7 +26,7 @@ Now let's imagine doing the same thing for connections on LinkedIn. In this soc
 
 To model this kind of social network we need a different kind of graph. We call these "undirected graphs" and, as the name surely suggests, these are like directed graphs but with non-directional edges connecting the vertices.
 
-```{image} assets/Ch4/LinkedIn.png
+```{image} assets/Ch5/LinkedIn.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -47,7 +47,7 @@ In the process, we'll develop *a versatile and flexible approach* for representi
 
 We'll begin this chapter with a little tidying up. The basic building block we've been working with so far is a map, a bundle of connections in which every item on one side gets connected to some item on the other. For example:
 
-```{image} assets/Ch4/SourceMap.gif
+```{image} assets/Ch5/SourceMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -60,7 +60,7 @@ Source and target maps can be a little _busy_ looking so we're going to simplify
 * wrap the items at either end in labelled spheres
 * and forget all about those underlying details!
 
-```{image} assets/Ch4/SchemaDef.gif
+```{image} assets/Ch5/SchemaDef.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -75,7 +75,7 @@ This is just like in an algebra equation where, when we see the variable 'x', we
 
 Can we represent a directed graph using these chunky arrows? Recall that a directed graph is defined by two maps, both of which connect the same collections of arrows and vertices. 
 
-```{image} assets/Ch4/Graph1ST.gif
+```{image} assets/Ch5/Graph1ST.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -85,7 +85,7 @@ Can we represent a directed graph using these chunky arrows? Recall that a direc
 
 Instead of representing these maps side by side like this, let's combine them so that they run in parallel. When wrapped in chunky arrows these connections will be in the following configuration:
 
-```{image} assets/Ch4/DGInstance1.gif
+```{image} assets/Ch5/DGInstance1.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -97,7 +97,7 @@ Such a pair of parallel maps is the **blueprint of all directed graphs**. Any e
 
 We generally draw the schema for directed graphs as two arrows marked `src` and `tgt`.
 
-```{image} assets/Ch4/DirectedGraphSchema.jpg
+```{image} assets/Ch5/DirectedGraphSchema.jpg
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -106,7 +106,7 @@ We generally draw the schema for directed graphs as two arrows marked `src` and 
 Any _particular_ pair of maps in this configuration is said to be an "instance" of this schema. By filling in the schema in different ways we create different instances, and every instance corresponds to some directed graph.
 
 
-```{image} assets/Ch4/DGraphInstance.gif
+```{image} assets/Ch5/DGraphInstance.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center

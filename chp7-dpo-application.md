@@ -70,7 +70,7 @@ to_graphviz(Sch3DShape)
 @acset_type Typ3DShape(Sch3DShape)
 ```
 
-```{image} assets/Ch7/Sch3DShape.svg
+```{image} assets/Ch8/Sch3DShape.svg
 :width: 350px
 :align: center
 ```
@@ -95,7 +95,7 @@ end
 We can model various configurations of a cube, akin to unfolding a cardboard box. For instance, using DPO rewriting, we could model the action of opening or closing the top of the box. This operation would involve redefining the relationships between the Faces and Edges objects to "remove" the connections that form the top face. Similarly, unfolding the cube into a flat layout would radically alter the connections between Faces, Edges, and Vertices to represent the cube in an unfolded state. Such transformations are powerful for visualizing and reasoning about the structural possibilities of boxes in three-dimensional space.
 
 ````{div}
-```{image} assets/Ch7/TopOpening.gif
+```{image} assets/Ch8/TopOpening.gif
 :width: 350px
 :align: center
 ```
@@ -125,14 +125,14 @@ tgt(e1) == v2
 
 We can create an instance of a cube, by associating data with the schema `SchCube`.
 
-```{figure} assets/Ch7/PartsLayout.png
+```{figure} assets/Ch8/PartsLayout.png
 :width: 550px
 :align: center
 
 A layout of the faces, edges, and vertices for our box.
 ```
 
-```{figure} assets/Ch7/BoxAssembly.gif
+```{figure} assets/Ch8/BoxAssembly.gif
 :width: 400px
 :align: center
 
@@ -189,7 +189,7 @@ This instance defines a box that looks like _Fig. 1_.
 
 Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box. The rule looks for the top face of the cube, *deletes* it, and *adds* another face that is connected by only one edge to the rest of the cube.
 
-```{figure} assets/Ch7/Box-DPO.png
+```{figure} assets/Ch8/Box-DPO.png
 :align: center
 
 The DPO rewrite rules for opening a closed box.
@@ -302,7 +302,7 @@ Note: `@migration` is formatting the parts of the rule so that `find`, `overlap`
 :::
 
 ````{sidebar} The box never opens from underneath!
-```{image} assets/Ch7/BottomOpening.gif
+```{image} assets/Ch8/BottomOpening.gif
 :alt: Whoopsy!
 :width: 400px
 :align: left
@@ -319,7 +319,7 @@ The `replace` part of the rule represents the state in which the open face is co
 
 This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges. That means the box will never open from underneath!
 
-<!-- ![](assets/Ch7/BottomOpening.gif)
+<!-- ![](assets/Ch8/BottomOpening.gif)
 
 <!-- We can constrain this by defining a specific match for our DPO rule. In AlgebraicJulia, this can be expressed by saying the specific face we would like to match. -->
 
@@ -334,7 +334,7 @@ In summary, DPO rewriting can help us model various configurations of a box by m
 This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.
 
 ````{div}
-```{image} assets/Ch7/KitchenBefore.png
+```{image} assets/Ch8/KitchenBefore.png
 :width: 500px
 :align: center
 ```
@@ -381,7 +381,7 @@ to_graphviz(SchKitchen)
 yKitchen = yoneda(Kitchen, SchKitchen; cache=make_cache(Kitchen, SchKitchen, "Kitchen"))
 ```
 
-```{image} assets/Ch7/SchKitchen.svg
+```{image} assets/Ch8/SchKitchen.svg
 :align: center
 ```
 
@@ -415,7 +415,7 @@ Relative to our other examples, this schema has substantially more object and mo
 :::
 -->
 
-```{figure} assets/Ch7/Kitchen-DPO.png
+```{figure} assets/Ch8/Kitchen-DPO.png
 :align: center
 
 The DPO rewrite rules for putting cheese on bread.

@@ -38,7 +38,7 @@ Thinking of a graph as an island of connections, the utilitiy of combining graph
 
 As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.
 
-```{image} assets/Ch5/DGdishes.png
+```{image} assets/Ch6/DGdishes.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -47,7 +47,7 @@ As a step towards making sense of the idea of combining graphs, let us a revisit
 
 In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and Priyaa (co-authors of this book). Encoding these friendships as graphs, we get:
 
-```{image} assets/Ch5/3c.jpeg
+```{image} assets/Ch6/3c.jpeg
 :alt: Whoopsy!
 :width: 560px
 :align: center
@@ -55,7 +55,7 @@ In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuc
 
 Read each one of the edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:
 
-```{image} assets/Ch5/3b.jpeg
+```{image} assets/Ch6/3b.jpeg
 :alt: Whoopsy!
 :width: 460px
 :align: center
@@ -65,7 +65,7 @@ Read each one of the edge in the above graphs as “is a friend of”. Combining
 We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. After all, who does not want to be friends with Tuco?! The connections in the combined graph supports such assumptions and inferences.
 
 The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world[^1] are quite complex. 
-```{image} assets/Ch5/complex-graph.png
+```{image} assets/Ch6/complex-graph.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -109,7 +109,7 @@ To combine two graphs, we first need to know what are the vertices and edges com
 
 We saw in previous chapters that a graph morphism identifies one graph inside the other. Suppose we are given two graphs -- `graph A` and `graph B`. An overlap of these two graphs is specified as the diagram below:
 
-```{image} assets/Ch5/1.png
+```{image} assets/Ch6/1.png
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -128,7 +128,7 @@ The relationships between the graphs in the above diagram are:
 
 The `overlap` acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine `graph A` and `graph B` into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.
 
-```{image} assets/Ch5/sheets.jpeg
+```{image} assets/Ch6/sheets.jpeg
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -136,7 +136,7 @@ The `overlap` acts as a bridge between two graphs. Theoretically, presence of an
 
 Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue. 
 
-```{image} assets/Ch5/4.png
+```{image} assets/Ch6/4.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -148,7 +148,7 @@ With this analogy in mind, let us think of the `pushout` of a (overlap) diagram 
 :class: tip
 
 A diagram with two radiating morphisms into two graphs is a specification of an overlap of those graphs. 
-```{image} assets/Ch5/1b.png
+```{image} assets/Ch6/1b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -179,7 +179,7 @@ If you are `graph A`, how do you expect yourself to be related to the `pushout`?
 
 We invite the reader to take a moment to ponder over this question using the picture below.
 
-```{image} assets/Ch5/2.png
+```{image} assets/Ch6/2.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -192,7 +192,7 @@ Since the `pushout` is given by glueing `graph A` and `graph B` along the shape 
 
 Let us add these morphisms to the overlap diagram:
 
-```{image} assets/Ch5/3.png
+```{image} assets/Ch6/3.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -216,7 +216,7 @@ Which one of these is the correct way to identify `overlap` inside the `pushout`
 
 Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'? Hence, the overlap must map into the same region of the `pushout` irrespective of the path.
 
-```{image} assets/Ch5/GluedObject.png
+```{image} assets/Ch6/GluedObject.png
 :alt: Whoopsy!
 :width: 250px
 :align: center
@@ -235,7 +235,7 @@ Thus, our enquiry to `graph A` and `graph B` have resulted in a condition that a
 2. `graph B` must map into the `pushout` (yellow arrow from `graph B`). 
 3. The diagram MUST COMMUTE!
 
-```{image} assets/Ch5/13a.png
+```{image} assets/Ch6/13a.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -252,7 +252,7 @@ While not all graphs can make up such a commuting square of `pushout`, there can
 
 Can you come up with two candidate graphs for `pushout` that will make the diagram commute. 
 
-```{image} assets/Ch5/1.png
+```{image} assets/Ch6/1.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -269,7 +269,7 @@ So, to which graphs should we ask the above question? We have already covered `g
 
 To do so, we are going to do step outside the game for a moment and sharpen our instinct about `pushout`s. For this, we will say concretely what `overlap`, `graph A` and `graph B`!
 
-```{image} assets/Ch5/6.png
+```{image} assets/Ch6/6.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -277,7 +277,7 @@ To do so, we are going to do step outside the game for a moment and sharpen our 
 
 The `overlap` maps into `graph A` and `graph B` as follows:
 
-```{image} assets/Ch5/1.png
+```{image} assets/Ch6/1.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -287,7 +287,7 @@ A few possible choices of `pushout` graphs of the above diagram are:
 
 (1) Is the following a commuting diagram?
 
-```{image} assets/Ch5/7a.png
+```{image} assets/Ch6/7a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -295,7 +295,7 @@ A few possible choices of `pushout` graphs of the above diagram are:
 
 (2) Is the following a commuting diagram?
 
-```{image} assets/Ch5/7b.png
+```{image} assets/Ch6/7b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -303,7 +303,7 @@ A few possible choices of `pushout` graphs of the above diagram are:
 
 (3) Is the following a commuting diagram?
 
-```{image} assets/Ch5/7c.png
+```{image} assets/Ch6/7c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -311,7 +311,7 @@ A few possible choices of `pushout` graphs of the above diagram are:
 
 (4) Is the following a commuting diagram?
 
-```{image} assets/Ch5/7d.png
+```{image} assets/Ch6/7d.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -347,7 +347,7 @@ Let's begin our quest for these relationships!
 ---
 || `choice 1` **vs** `choice 2` ||
 
-```{image} assets/Ch5/8a.png
+```{image} assets/Ch6/8a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -356,7 +356,7 @@ Let's begin our quest for these relationships!
 
 We have two commuting diagrams - one with `choice 1` and another one with `choice 2`. Next we see how they are related with each other.
 
-```{image} assets/Ch5/8b.png
+```{image} assets/Ch6/8b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -368,7 +368,7 @@ There are many graph morphisms from graph `choice 1` to graph `choice 2`. But th
 
 > The above diagram has 4 commuting diagrams pasted together (including the 2 squares [^2] starting at `overlap`). Commuting diagrams are like ecosystems in balance. When ecosystems are pasted together along their edges, any change in one ecosystem will create a change in the other. When the “most natural” information flows along the morphisms, all the ecosystems are in balance.
 
-```{image} assets/Ch5/8c.png
+```{image} assets/Ch6/8c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -382,7 +382,7 @@ Now for the other direction, are there maps from `choice 2` to `choice 1` all po
 ---
 || `choice 1` **vs** `choice 3` ||
 
-```{image} assets/Ch5/9b.png
+```{image} assets/Ch6/9b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -391,7 +391,7 @@ Now for the other direction, are there maps from `choice 2` to `choice 1` all po
 
 As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 3` that will make the triangles commute. 
 
-```{image} assets/Ch5/9c.png
+```{image} assets/Ch6/9c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -408,7 +408,7 @@ However, there are at least two ways in `choice 3` maps into `choice 1` to make 
 || `choice 1` **vs** `choice 4` ||
 
 
-```{image} assets/Ch5/10b.png
+```{image} assets/Ch6/10b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -416,7 +416,7 @@ However, there are at least two ways in `choice 3` maps into `choice 1` to make 
 
 As before, there is exactly one (obvious) choice of morphism from `choice 1` to `choice 4` that will make the triangles commute. 
 
-```{image} assets/Ch5/10c.png
+```{image} assets/Ch6/10c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -440,7 +440,7 @@ Whewww!! That is some hard core relational thinking!
 
 The `pushout` satisfies a universal property: the `pushout` has a unique arrow into any other graph which satisfies Pass 1, such that two triangles commute!
 
-```{image} assets/Ch5/13b.png
+```{image} assets/Ch6/13b.png
 :alt: Whoopsy!
 :width: 600px
 :align: center
@@ -453,7 +453,7 @@ The `pushout` satisfies a universal property: the `pushout` has a unique arrow i
 We have progressed quite a bit! Let us review our progress so far! In this game, to begin with, a `pushout` could be any graph in the space of all possible graphs. 
 
 **Pass 1: Commuting square**:- 
-```{image} assets/Ch5/13a.png
+```{image} assets/Ch6/13a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -463,7 +463,7 @@ By asking `overlap`, `graph A`, and `graph B`, "What is your relationship with t
 
 
 **Pass 2: Universal property**:-
-```{image} assets/Ch5/13b.png
+```{image} assets/Ch6/13b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -475,7 +475,7 @@ Now,
 
 > We repeat the same procedure of asking "What is your relationship with the `pushout`?" on the candidates that made through Pass 2! 
 
-```{image} assets/Ch5/slogan.png
+```{image} assets/Ch6/slogan.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -487,7 +487,7 @@ Suppose some `graph X` made it through Pass 2 along with the `pushout`. What is 
 
 Both `graph X` and the `pushout` satisfy the commuting square requirement of Pass 1. However, `graph X` is universal (satisfies the universal property). So, `graph X` must have a unique map into the `pushout` that makes the triangles commute. 
 
-```{image} assets/Ch5/16b.png
+```{image} assets/Ch6/16b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -495,7 +495,7 @@ Both `graph X` and the `pushout` satisfy the commuting square requirement of Pas
 
 However, the `pushout` is also universal. So it must have a unique map into `graph X` that makes the triangles commute. 
 
-```{image} assets/Ch5/16a.png
+```{image} assets/Ch6/16a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -509,7 +509,7 @@ However, all the commuting shapes of pass 1 and pass 2 tell us that these two ma
 ````{div} wrapper 
 In the above diagrams, the `pushout` has a unique mapping into `graph X`, and `graph X` has a unique mapping into X2. These two maps make all the four triangles commute in unison! 
 
-```{image} assets/Ch5/17a.png
+```{image} assets/Ch6/17a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -517,21 +517,21 @@ In the above diagrams, the `pushout` has a unique mapping into `graph X`, and `g
 
 Since the upper two triangles commute in the above diagram, the upper triangle in the below diagram commutes. Similarly for the lower triangle. 
 
-```{image} assets/Ch5/17b.png
+```{image} assets/Ch6/17b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
 There is one other arrow from the `pushout` to `pushout` which can make the above diagram commute: The “be-as-you-are” arrow (that which maps each vertex to itself and each edge to itself):
-```{image} assets/Ch5/17c.png
+```{image} assets/Ch6/17c.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
 
 Because the map `pushout` —> `graph X` —> `pushout`  is unique, there is ONLY ONE arrow which makes the two (big) triangles commute. However, we have two mappings. So, both of them should be the same!   Hence, 
-```{image} assets/Ch5/18a.png
+```{image} assets/Ch6/18a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -540,7 +540,7 @@ Because the map `pushout` —> `graph X` —> `pushout`  is unique, there is ONL
 “Graph X1 —> Graph X2 —> Graph X1” and “be-as-you-are” arrows are the same.
 
 Similarly, we can prove that “Graph X2 —> Graph X1 —> Graph X2” and “be-as-you-are” arrows are the same: 
-```{image} assets/Ch5/18b.png
+```{image} assets/Ch6/18b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -569,7 +569,7 @@ The goal game was to say describe the `pushout` of an overlap diagram is without
 
 We start with `overlap` with two radiating morphisms specifying the common vertices and edges of `graph A` and `graph B`. We call this an *overlap diagram*.
 
-```{image} assets/Ch5/19a.png
+```{image} assets/Ch6/19a.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
@@ -579,7 +579,7 @@ We compute the `pushout` of an overlap diagram. The `pushout` is a graph which s
 
 **Pass 1: Commuting square** :-  The following square must commute.
 
-```{image} assets/Ch5/13a.png
+```{image} assets/Ch6/13a.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -588,7 +588,7 @@ We compute the `pushout` of an overlap diagram. The `pushout` is a graph which s
 
 **Pass 2: Universal property**: For any other choice of graph which satisfies Pass 1's requirement, there is exactly one (a unique) map from the `pushout` into that choice such that the triangles commute. 
 
-```{image} assets/Ch5/19c.png
+```{image} assets/Ch6/19c.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -598,7 +598,7 @@ We compute the `pushout` of an overlap diagram. The `pushout` is a graph which s
 As a consequence of these requirements, all graphs which satisfy both these requirements **are “practically the same”**.  
 
 
-```{image} assets/Ch5/certificate.png
+```{image} assets/Ch6/certificate.png
 :alt: Whoopsy!
 :width: 450px
 :align: center
@@ -619,7 +619,7 @@ In this sense, relational thinking is non-invasive!
 Let us compute the `pushout` of the following diagrams.
 
 **Puzzle 1. Pushout using a single vertex**
-```{image} assets/Ch5/20a.png
+```{image} assets/Ch6/20a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -629,7 +629,7 @@ Let us compute the `pushout` of the following diagrams.
 :class: dropdown
 
 ```{div} wrapper 
-```{image} assets/Ch5/20b.png
+```{image} assets/Ch6/20b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -642,7 +642,7 @@ Let us compute the `pushout` of the following diagrams.
 
 This one is a little tricky, because the two vertices (”A” and “B”) in `overlap` embeds into the same vertex of `graph B` (”A,B”), thereby coarse-graining the information in `overlap`. However, vertices “A” and “B” in `overlap` embeds in separate vertices in `graph A`. So, how would the overlap region look in the `pushout` graph? 
 
-```{image} assets/Ch5/21a.png
+```{image} assets/Ch6/21a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -654,7 +654,7 @@ This one is a little tricky, because the two vertices (”A” and “B”) in `
 ```{div} wrapper 
 Since `graph A` and `graph B` has to agree in the overlap region, and `graph B` has only coarse-grained embedding of `overlap`, the embedding of `graph A` in the `pushout`, coarse-grains the overlap region of `graph A` to match the overlap region of `graph B`. 
 
-```{image} assets/Ch5/21b.png
+```{image} assets/Ch6/21b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -667,7 +667,7 @@ Since `graph A` and `graph B` has to agree in the overlap region, and `graph B` 
 
 In the beginning of this chapter, we said that combining graphs is analogous to adding numbers. Can you see how this problem demonstrates this analogy?
 
-```{image} assets/Ch5/22a.png
+```{image} assets/Ch6/22a.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -679,7 +679,7 @@ In the beginning of this chapter, we said that combining graphs is analogous to 
 
 ```{div} wrapper 
 
-```{image} assets/Ch5/22b.png
+```{image} assets/Ch6/22b.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -694,7 +694,7 @@ When there is no glue (graph O is empty), the `pushout` just has `graph A` and `
 
 Let us suppose, we want to glue more than two graphs together! That seems to be a reasonable ask! So we got a diagram like the one below. 
 
-```{image} assets/Ch5/23.png
+```{image} assets/Ch6/23.png
 :alt: Whoopsy!
 :width: 350px
 :align: center
