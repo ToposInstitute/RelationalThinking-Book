@@ -12,7 +12,7 @@ header-includes:
   - \usepackage{amsmath}
 ---
 
-# Chapter 8: A Look Beyond-- Evolving World Models
+# Chapter 8: A Look Beyond -- Evolving World Models
 
 :::{note}
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
@@ -70,7 +70,7 @@ to_graphviz(Sch3DShape)
 @acset_type Typ3DShape(Sch3DShape)
 ```
 
-```{image} assets/Ch7/Sch3DShape.svg
+```{image} assets/Ch8/Sch3DShape.svg
 :width: 350px
 :align: center
 ```
@@ -95,7 +95,7 @@ end
 We can model various configurations of a cube, akin to unfolding a cardboard box. For instance, using DPO rewriting, we could model the action of opening or closing the top of the box. This operation would involve redefining the relationships between the Faces and Edges objects to "remove" the connections that form the top face. Similarly, unfolding the cube into a flat layout would radically alter the connections between Faces, Edges, and Vertices to represent the cube in an unfolded state. Such transformations are powerful for visualizing and reasoning about the structural possibilities of boxes in three-dimensional space.
 
 ````{div}
-```{image} assets/Ch7/TopOpening.gif
+```{image} assets/Ch8/TopOpening.gif
 :width: 350px
 :align: center
 ```
@@ -125,14 +125,14 @@ tgt(e1) == v2
 
 We can create an instance of a cube, by associating data with the schema `SchCube`.
 
-```{figure} assets/Ch7/PartsLayout.png
+```{figure} assets/Ch8/PartsLayout.png
 :width: 550px
 :align: center
 
 A layout of the faces, edges, and vertices for our box.
 ```
 
-```{figure} assets/Ch7/BoxAssembly.gif
+```{figure} assets/Ch8/BoxAssembly.gif
 :width: 400px
 :align: center
 
@@ -189,7 +189,7 @@ This instance defines a box that looks like _Fig. 1_.
 
 Now, once we deliver the birthday cake, we want be able to open the box so the birthday celebrant can enjoy their sweet treat. We can model this by designing a DPO rule that opens a face of the box. The rule looks for the top face of the cube, *deletes* it, and *adds* another face that is connected by only one edge to the rest of the cube.
 
-```{figure} assets/Ch7/Box-DPO.png
+```{figure} assets/Ch8/Box-DPO.png
 :align: center
 
 The DPO rewrite rules for opening a closed box.
@@ -302,7 +302,7 @@ Note: `@migration` is formatting the parts of the rule so that `find`, `overlap`
 :::
 
 ````{sidebar} The box never opens from underneath!
-```{image} assets/Ch7/BottomOpening.gif
+```{image} assets/Ch8/BottomOpening.gif
 :alt: Whoopsy!
 :width: 400px
 :align: left
@@ -319,7 +319,7 @@ The `replace` part of the rule represents the state in which the open face is co
 
 This rule is also well-specified because it will only match on the top face of the box because it considers the orientation of the edges. That means the box will never open from underneath!
 
-<!-- ![](assets/Ch7/BottomOpening.gif)
+<!-- ![](assets/Ch8/BottomOpening.gif)
 
 <!-- We can constrain this by defining a specific match for our DPO rule. In AlgebraicJulia, this can be expressed by saying the specific face we would like to match. -->
 
@@ -334,7 +334,7 @@ In summary, DPO rewriting can help us model various configurations of a box by m
 This machinery can be used to not only represent geometric objects, but it can also the relationship of items in a kitchen.
 
 ````{div}
-```{image} assets/Ch7/KitchenBefore.png
+```{image} assets/Ch8/KitchenBefore.png
 :width: 500px
 :align: center
 ```
@@ -381,7 +381,7 @@ to_graphviz(SchKitchen)
 yKitchen = yoneda(Kitchen, SchKitchen; cache=make_cache(Kitchen, SchKitchen, "Kitchen"))
 ```
 
-```{image} assets/Ch7/SchKitchen.svg
+```{image} assets/Ch8/SchKitchen.svg
 :align: center
 ```
 
@@ -415,7 +415,7 @@ Relative to our other examples, this schema has substantially more object and mo
 :::
 -->
 
-```{figure} assets/Ch7/Kitchen-DPO.png
+```{figure} assets/Ch8/Kitchen-DPO.png
 :align: center
 
 The DPO rewrite rules for putting cheese on bread.
@@ -455,18 +455,16 @@ How will the double-pushout (DPO) square look like for this rule.
 As we have seen, double-pushout rewriting can be used to update information that we know about the world both explicitly and implicitly. Explicitly, this is done by defining the rewrite rules and what we would like to change. Implicit information is captured by filling out the rest of the schema's instances based on the explicit information. In robotics and AI planning, this accounting of both implicit and explicit effects on the world is called the _frame problem_ and is a feature that must be carefully considered when designing planning languages for such purposes. This provides an elegant mathematical solution to this age-old problem. 
 
 ## 8.4 Summary
-Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics[^2]. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics.[^3][^4][^5]
+Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics[^1]. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics[^2][^3].
 
-If our book has convinced you on the usefulness of relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to [^1]. 
+If you feel inspired and convinced about relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to [^4] for a gentle yet technical introduction to category theory. 
 
 ## References
 
-[^1]: Cheng, Eugenia. The joy of abstraction: An exploration of math, category theory, and life. Cambridge University Press, 2022.
+[^1]: A Categorical Representation Language and Computational System for Knowledge-Based Planning.  Angeline Aguinaldo, Evan Patterson, James Fairbanks, William Regli, & Jamie Ruiz. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.
 
-[^2]: Aguinaldo, A., Patterson, E., Fairbanks, J., Regli, W., & Ruiz, J. A Categorical Representation Language and Computational System for Knowledge-Based Planning. 2023 AAAI Fall Symposium on Unifying Representations for Robot Application Development. 2023.
+[^2]: Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.
 
-[^3]: Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.
+[^3]: Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.
 
-[^4]: Computational category-theoretic rewriting, 2023. Kristopher Brown, Evan Patterson, Tyler Hanks, James Fairbanks. Journal of Logical and Algebraic Methods in Programming.
-
-[^5]: Categorical data structures for technical computing, 2022. Evan Patterson, Owen Lynch, James Fairbanks. Compositionality.
+[^4]: Cheng, Eugenia. The joy of abstraction: An exploration of math, category theory, and life. Cambridge University Press, 2022.

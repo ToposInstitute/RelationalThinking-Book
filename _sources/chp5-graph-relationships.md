@@ -24,7 +24,7 @@ We have reached the shores of relational thinking!
 
 In the last chapter we encountered different schemas for different kinds of graphs.
 
-```{image} assets/Ch3/ThreeSchemas.png
+```{image} assets/Ch3-4/ThreeSchemas.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -33,7 +33,7 @@ In the last chapter we encountered different schemas for different kinds of grap
 
 Given a schema such as the ones above, there are *infinite* number of graphs that each schema can generate. Each generated graph is called an _instance_ of the schema. The above picture shows three instances for each schema.  While it isn't practical to specify _every_ possible instance of a graph schema, it is practical to imagine a _universe_ that has all possible instances floating in space, one endless swarm of things the schema refers to. (No, we do not ask what those instances are.)
 
-```{image} assets/Ch4/InstanceDrift.gif
+```{image} assets/Ch5/InstanceDrift.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -59,7 +59,7 @@ But suppose we visit this ski resort in the Summer when there's no snow. At this
 
 Let's compare the summer and winter maps for the ski resort.
 
-```{image} assets/Ch3/SummerWinter.png
+```{image} assets/Ch3-4/SummerWinter.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -79,7 +79,7 @@ This is what we might call a "procedural" way of thinking about the Summer and W
 
 Note how the Summer graph is basically contained inside of the Winter graph. For the Summer graph to be a "part" of the Winter graph means, in effect, that we can map the vertices of the Summer graph *into* the vertices of the Winter graph, and the arrows of the summer graph *into* the the arrows of the winter arrows, as in the picture below.
 
-```{image} assets/Ch3/InjectSki.gif
+```{image} assets/Ch3-4/InjectSki.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -91,7 +91,7 @@ We call this a "graph injection". "Summer graph" is the graph which was injected
 
 In order to visualize injections clearly let's introduce some new visuals. Let's redraw the vertices and arrows of the receiving graph to be white outlines, and move the colors and shapes out of the way. 
 
-```{image} assets/Ch4/Codomain.png
+```{image} assets/Ch5/Codomain.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -99,7 +99,7 @@ In order to visualize injections clearly let's introduce some new visuals. Let's
 
 These outlines will "recieve" the components of the injected graph. The process of placing the injected graph inside of the receiving graph can now be visualized like this:
 
-```{image} assets/Ch3/DefineInjection.gif
+```{image} assets/Ch3-4/DefineInjection.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -113,7 +113,7 @@ The final result gives us an complete picture of "what went where" in our inject
 **CAUTION**: An important detail about graph injections is that a graph is not allowed to come apart when getting injected. All arrows must stay attached to their source and target vertices through this process in order to avoid the `DANGLING EDGE CONDITION` and preserve the integrity of any underlying model.
 
 
-```{image} assets/Ch3/DanglingEdge.png
+```{image} assets/Ch3-4/DanglingEdge.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -129,7 +129,7 @@ The final result gives us an complete picture of "what went where" in our inject
 How many ways can you inject the graph on the left into the graph on the right?
 
 
-![whoops!](./assets/Ch3/Problem1.png)
+![whoops!](./assets/Ch3-4/Problem1.png)
 
 
 
@@ -140,7 +140,7 @@ How many ways can you inject the graph on the left into the graph on the right?
 
 The first graph can be injected in three different orientations.
 
-![whoops!](./assets/Ch3/Problem1Solution.png)
+![whoops!](./assets/Ch3-4/Problem1Solution.png)
 
 
 :::
@@ -149,7 +149,7 @@ The first graph can be injected in three different orientations.
 
 How many ways can you inject the graph on the left into the graph on the right?
 
-![whoops!](./assets/Ch3/Problem2.png)
+![whoops!](./assets/Ch3-4/Problem2.png)
 
 :::{admonition} Puzzle 2 Solution:
 :class: dropdown
@@ -168,7 +168,7 @@ Now that we have visualized graph injections in rung 1, we would like to how to 
 
 We can actually capture all of the important details with a pair of maps. The first is a "vertex map", connecting each vertex in Graph 1 to the vertex in Graph 2 where it lands. The second is an "arrow map" which connects each arrow in Graph 1 to the arrow it lands in Graph 2.
 
-```{image} assets//Ch3/A,V,Maps.gif
+```{image} assets/Ch3-4/A,V,Maps.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -188,7 +188,7 @@ Under what condition(s) will the pair of maps keep Graph 1 intact when injecting
 We welcome the reader to ponder over this question using an arrangement as one shown below. The arrangement shows the source maps for Graph 1 and Graph 2 running horizontally and the “arrow map” and “vertex map” running vertically:
 
 
-```{image} assets//Ch3/CommSquare.gif
+```{image} assets/Ch3-4/CommSquare.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -207,7 +207,7 @@ Note how the dashed lines seem to flow “out” from the the top left and flow 
 
 (The arrow must be brown in color. Our animator has been missing lately, so we have not corrected the color below.)
 
-```{image} assets//Ch3/UpperRoute.gif
+```{image} assets/Ch3-4/UpperRoute.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -220,7 +220,7 @@ Reading across the top we have that the brown arrow has the heart vertex as its 
 
 :::{admonition} Lower route
 
-```{image} assets//Ch3/LowerRoute.gif
+```{image} assets/Ch3-4/LowerRoute.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -234,7 +234,7 @@ Reading down the left side, we see that the brown arrow from Graph 1 gets sent t
 To complete the picture, let's now revisit to our `DANGLING EDGE CONDITION`. “Coming apart” means, literally, that a vertex and an arrow that were connected in Graph 1 are not connected when they land in Graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square will look something like this:
 
 
-```{image} assets//Ch3/OpenSquare.gif
+```{image} assets/Ch3-4/OpenSquare.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -245,7 +245,7 @@ That is, what it “means” for a graph to get broken is precisely that “the 
 
 So we can actually DEFINE a graph injection with a <mark>**closed loop condition**</mark>: starting from any arrow in the top left, the paths going either way around the square will always form a closed loop. In relational thinking terms, closed loop conditions are also called as <mark>**commutativity conditions**</mark>.
 
-```{image} assets//Ch3/InjectionFadethrough.gif
+```{image} assets/Ch3-4/InjectionFadethrough.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -255,7 +255,7 @@ So we can actually DEFINE a graph injection with a <mark>**closed loop condition
 The closed loop condition applies to the *target maps* too. All together, this is the complete set of “data” describing the injection:
 
 
-```{image} assets//Ch3/GraphInjection.gif
+```{image} assets/Ch3-4/GraphInjection.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -265,7 +265,7 @@ The closed loop condition applies to the *target maps* too. All together, this i
 
 Going up a level of abstraction to Rung 3, a _schema_ that describes a graph injection in general looks as shown below:
 
-```{image} assets/Ch4/GraphMorphismSchema.png
+```{image} assets/Ch5/GraphMorphismSchema.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -279,7 +279,7 @@ But we're not quite done! In the next section we'll see that graph injections ar
 
 In Chapter 1 we saw an example of a directed graph which described *who's turn it was to do the dishes*. In this account, Paul and Toni originally took turns. Then, eventually, their new roommate Tuco moved in and took over dishes duty. As it turns out, Paul and Toni are both right handed while Tuco is left handed. Thus, there is another directed graph which also accurately describes the chore progression, but now in terms of the handedness of dish-washer.
 
-```{image} assets//Ch3/ChoreHanded.png
+```{image} assets/Ch3-4/ChoreHanded.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -302,7 +302,7 @@ The coarse-graining we discussed above can be captured by the following way of m
 * Send the arrow from `Toni` to `Paul` to the self-loop on `Righties`
 :::
 
-```{image} assets//Ch4/RightiesVSLefties.gif
+```{image} assets/Ch5/RightiesVSLefties.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -324,7 +324,7 @@ Here is something for you to ponder over!
 
 Suppose we have Graph 1 injecting into Graph 2, and Graph 2 also injecting into Graph 1, what can we say about Graph 1 and Graph 2? Here is an aid for your visualization: 
 
-```{image} assets/Ch3/InjectSki.gif
+```{image} assets/Ch3-4/InjectSki.gif
 :alt: Whoopsy!
 :width: 400px
 :align: center
@@ -353,7 +353,7 @@ It turns out that under the right circumstances, merging parts of a graph won't 
 
 Let's consider the dishwashing chores graph morphism we just looked at, but now using generic shapes. We have a morphism from the upper graph to the lower graph.
 
-```{image} assets//Ch4/CoarseGrain.png
+```{image} assets/Ch5/CoarseGrain.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -361,7 +361,7 @@ Let's consider the dishwashing chores graph morphism we just looked at, but now 
 
 The result of that morphism looks like this:
 
-```{image} assets//Ch4/DoublingUp.png
+```{image} assets/Ch5/DoublingUp.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -370,7 +370,7 @@ The result of that morphism looks like this:
 Although some of the arrows in the above graph are doubled up, each of them is still pointing to the correct targets and pointing away from the correct sources. <mark>**The connectivity of the graph is preserved.**</mark> It turns out that our commutativity condition is the exact condition needed in order to keep the graph intact. For example, observe the closed loops for the sources in this morphism:
 
 
-```{image} assets//Ch3/EMBED.gif
+```{image} assets/Ch3-4/EMBED.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -379,7 +379,7 @@ Although some of the arrows in the above graph are doubled up, each of them is s
 
 Overall, the following schema characterizes all possible graph morphisms:
 
-```{image} assets/Ch4/GraphMorphismSchema.png
+```{image} assets/Ch5/GraphMorphismSchema.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -406,7 +406,7 @@ The value of the abstract view is that it gives AlgebraicJulia a way to work wit
 
 We have seen that Graph 1 can be mapped into Graph 2 with the following injection:
 
-```{image} assets/Ch3/DefineInjection.gif
+```{image} assets/Ch3-4/DefineInjection.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -443,11 +443,11 @@ There are three distinct morphisms from Graph 1 to Graph 2; two injections and o
 
 
 
-![whoops!](./assets/Ch4/Problem1Solution.png)
+![whoops!](./assets/Ch5/Problem1Solution.png)
 
 As a human, you look for the answer to this puzzle by reasoning about the shape of the directed graph. AlgebraicJulia looks for its answer by trying to count all of the pairs of vertex maps and arrow maps which complete the commutative squares in the graph morphism schema.
 
- ![whoops!](./assets/Ch4/AJSolutions.gif)
+ ![whoops!](./assets/Ch5/AJSolutions.gif)
 
 These are very different approaches but they both arrive at the same answer.
 
@@ -458,7 +458,7 @@ These are very different approaches but they both arrive at the same answer.
 
 How many ways can this triangle be mapped into this hexagon?
 
-![whoops!](./assets/Ch4/Problem4.png)
+![whoops!](./assets/Ch5/Problem4.png)
 
 Does AlgebraicJulia agree?
 
@@ -494,7 +494,7 @@ Note how AlgebraicJulia knows when you've asked it to find something that doesn'
 
 
 What about the other way around? How many ways can this hexagon be mapped into this triangle?
-![whoops!](./assets/Ch4/Problem5.png)
+![whoops!](./assets/Ch5/Problem5.png)
 
 
 
@@ -513,7 +513,7 @@ countTheMorphisms = length(homomorphisms(hexagon, triangle))
 
 Three!
 
-![whoops!](./assets/Ch4/Problem5Solution.png)
+![whoops!](./assets/Ch5/Problem5Solution.png)
 
 The hexagon can get "doubled up" into the shape of a triangle, and placed into the triangular graph in any of three orientations.
 
@@ -533,7 +533,7 @@ The hexagon can get "doubled up" into the shape of a triangle, and placed into t
 
 How many ways can the graph on the left into the graph on the right?
 
-![whoops!](./assets/Ch4/Problem6.png)
+![whoops!](./assets/Ch5/Problem6.png)
 
 
 
@@ -565,7 +565,7 @@ There are five morphisms - three injections and two ways of collapsing to a self
 **Puzzle 7.**
 
 This puzzle is the same as puzzle 6, except in the AlgebraicJulia code below we've stipulated that graphs are `ReflexiveGraph`s instead of `DirectedGraph`s. This implies the presence of additional self loops (shown in light grey), which changes the number of possible morphisms.
-![whoops!](./assets/Ch4/Problem7.png)
+![whoops!](./assets/Ch5/Problem7.png)
 
 
 
@@ -603,7 +603,7 @@ Now that we know what graph morphisms are, we're ready to move up the last rung 
 Let's revisit the graph morphism schema and look closely at an instance:
 
 
-```{image} assets/Ch4/MorphismInstance.gif
+```{image} assets/Ch5/MorphismInstance.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -613,7 +613,7 @@ Note how the top of this square contains the data for Graph 1 and the bottom is 
 
 In chapter 3 we introduced 'chunky arrows' as a way to hide the messy details of our maps. We will apply the same idea here, defining a new kind of arrow (shaded, light colored on a white background) that encompasses all the details of a graph morphism.
 
-```{image} assets/Ch4/MorphismArrow.gif
+```{image} assets/Ch5/MorphismArrow.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -631,7 +631,7 @@ Promise. However, note that, we are using the same idea of packing up smaller ar
 
 For us humans, graph morphisms are about the <mark> geometric process </mark> (Rung 1) of identifying one graph up inside of another. But, our geometric understanding has precise correlation with AlgebraicJulia's formal representation of graph morphisms using <mark> pairs of maps and closed loops </mark> (Rung 2 and 3). Thus, we each have our own "language" for describing graph morphisms.
 
-```{image} assets/Ch4/TwoBubbles.png
+```{image} assets/Ch5/TwoBubbles.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -642,7 +642,7 @@ The geometric view is spatial and visual, intuitive for humans to think about. A
 AlgebraicJulia's view is more abstract but is useful to us because it can be readily worked with in computational terms. Recall puzzle 3 above, where we gave AlgebraicJulia the data of two graphs and asked it to count up all the morphisms between them. AlgebraicJulia correctely found three. Diagrammatically, we depict these morphisms as three distinct **arrows** going from one graph instance to the other.
 
 
-```{image} assets/Ch4/ThreeArrows.png
+```{image} assets/Ch5/ThreeArrows.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -652,7 +652,7 @@ AlgebraicJulia's view is more abstract but is useful to us because it can be rea
 
 At the beginning of the chapter we considered the idea of an infinite universe of thought bubbles, each an instance for the given graph schema. We now can say that _between_ those instances are **arrows** representing morphisms. Just as it was impractical to try to depict all of the instances of a graph schema, it is also impractical to try to depict all the instances of morphisms between two graphs. But in our imagination we can fill in enough of these arrows to appreciate the vast interconnected universe of relationships between graphs. This universe of thought bubbles and arrows is called a category, in this case the "category of instances" for a given schema.
 
-```{image} assets/Ch4/CategoryDrift.gif
+```{image} assets/Ch5/CategoryDrift.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center

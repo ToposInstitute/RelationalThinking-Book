@@ -33,7 +33,7 @@ In Chapter 1 we saw an example of a directed graph which described the layout of
 
 But suppose we visit this ski resort in the Summer when there's no snow. At this time of year the resort lets guests ride up and down the mountain in the lift (which provides a *lovely* view!), but there is no way to get down the mountain into the village without a snow pack to ski on.
 
-```{image} assets/Ch3/SummerWinter.png
+```{image} assets/Ch3-4/SummerWinter.png
 :alt: Whoopsy!
 :width: 800px
 :align: cinter
@@ -43,7 +43,7 @@ Note that the Summer graph is basically contained inside of the Winter graph. Ho
 
 In the previous chapter we thought about relationships in terms of maps. We can do something similar here. For the Summer graph to be a "part" of the Winter graph means, in effect, that we can map the Summer graph *into* the Winter graph, taking vertices to vertices and arrows to arrows.
 
-```{image} assets/Ch3/InjectSki.gif
+```{image} assets/Ch3-4/InjectSki.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -59,7 +59,7 @@ First, let's redesign graph 2 to be a "recipient" of the graph 1, moving the col
 
 We now place the first graph inside of the second graph.
 
-```{image} assets/Ch3/DefineInjection.gif
+```{image} assets/Ch3-4/DefineInjection.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -71,7 +71,7 @@ This gives us an image of "what went where" in our injection. We sometimes call 
 
 It's important to understand that a graph is not allowed to come apart when getting injected. An arrow must stay attached to its source and target vertices through this process.
 
-```{image} assets/Ch3/DanglingEdge.png
+```{image} assets/Ch3-4/DanglingEdge.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -84,7 +84,7 @@ For modeling purposes, it is the connectivity of the graph that matters. If an i
 
 1. How many ways can you inject this upper graph into the lower graph?
 
-```{image} assets/Ch3/Problem1.png
+```{image} assets/Ch3-4/Problem1.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -92,7 +92,7 @@ For modeling purposes, it is the connectivity of the graph that matters. If an i
 Answer:
 
 Three! The upper triangle can be injected in any orientation.
-```{image} assets/Ch3/Problem1Solution.png
+```{image} assets/Ch3-4/Problem1Solution.png
 :alt: Whoopsy!
 :width: 500px
 :align: center

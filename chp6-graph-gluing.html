@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chp5-graph-gluing';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chp6-graph-gluing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Chapter 7: Evolving Graphs" href="chp6-dpo.html" />
-    <link rel="prev" title="Chapter 5: Categories" href="chp4-graph-relationships.html" />
+    <link rel="next" title="Chapter 7: Evolving Graphs" href="chp7-dpo.html" />
+    <link rel="prev" title="Chapter 5: Categories" href="chp5-graph-relationships.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,11 +176,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems with Kiki and Bouba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints - Part I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp3-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 5: Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp4-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-relationships.html">Chapter 5: Categories</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 6: Combining Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 7: Evolving Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 8: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp7-dpo.html">Chapter 7: Evolving Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp8-dpo-application.html">Chapter 8: A Look Beyond – Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CompMath.html">Compassionte Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp5-graph-gluing.md" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp6-graph-gluing.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +304,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book/issues/new?title=Issue%20on%20page%20%2Fchp5-graph-gluing.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ToposInstitute/AlgJulia-Book/issues/new?title=Issue%20on%20page%20%2Fchp6-graph-gluing.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/chp5-graph-gluing.ipynb" target="_blank"
+      <li><a href="_sources/chp6-graph-gluing.ipynb" target="_blank"
    class="btn btn-sm btn-download-notebook-button dropdown-item"
    title="Download notebook file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +351,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/chp5-graph-gluing.md" target="_blank"
+      <li><a href="_sources/chp6-graph-gluing.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -445,6 +445,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">Recap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1 Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">6.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-description">Game description</a></li>
@@ -483,53 +484,57 @@ document.write(`
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Algebraic Julia code of this chapter is available in the repo <a class="reference external" href="https://github.com/ToposInstitute/RelationalThinking-code">ToposInstitute/RelationalThinking-code</a> under Ch2.</p>
+<p>The Algebraic Julia code of this chapter is available in the repo <a class="reference external" href="https://github.com/ToposInstitute/RelationalThinking-code">ToposInstitute/RelationalThinking-code</a> under Ch6.</p>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This chapter will engage you in deep relational thinking!</p>
 </div>
+<section id="recap">
+<h2>Recap<a class="headerlink" href="#recap" title="Permalink to this heading">#</a></h2>
+<p>So far, we have seen that graphs are a simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edges of the domain (the graph from which the morphism proceeds) to the same vertex/edge in the codomain (the graph in which the morphism lands) but it always <strong>preserves the connectivity</strong> of the domain. Finally, excitingly, with graph morphisms, we enter the “universe” where we can find every possible “graph-world” and every possible relationships between these worlds. We introduced the relational thinking term “category” to refer to a universe.</p>
+</section>
 <section id="introduction">
 <h2>6.1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edges of the domain (the graph from which the morphism proceeds) to the same vertex/edge in the codomain (the graph in which the morphism lands) but it always <strong>preserves the connectivity</strong> of the domain. Finally, excitingly, with graph morphisms, we enter the “universe” where we can find every possible “graph-world” and every possible relationships between these worlds. In this chapter, we “live” inside this universe where the only entities are graphs and morphisms between them.</p>
-<p>Inside this universe, we are interested to know how to combine two graphs, like adding two numbers in the universe of numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two <em>discrete</em> graphs).</p>
-<p>Thinking of a graph as an island of connections, the utilitiy of combining graphs is to bridge these islands allowing for information to flow between the graphs (via common channels) and for expression of new meanings.</p>
+<p>In this chapter, we “live” inside the category where the only entities are undirected graphs and morphisms between them.</p>
+<p>Inside this category, we are interested to know how to <strong>combine two graphs into one</strong> which is analogous to adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two <em>discrete</em> graphs).</p>
+<p>Thinking of a graph as an island of connections, the utilitiy of combining graphs is to bridge these islands allowing for information to flow between the graphs (via common channels) and for the expression of new meanings.</p>
 <p>As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.</p>
 <a class="reference internal image-reference" href="_images/DGdishes.png"><img alt="Whoopsy!" class="align-center" src="_images/DGdishes.png" style="width: 800px;" /></a>
 </br>
 <p>In this graph, Paul claimed to be friends with Tuco (to our unaware readers, Tuco is Paul’s neighbor’s cat). Paul is also a friend of Brendan, Angeline and Priyaa (co-authors of this book). Encoding these friendships as graphs, we get:</p>
 <a class="reference internal image-reference" href="_images/3c.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3c.jpeg" style="width: 560px;" /></a>
-<p>Read each edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
+<p>Read each one of the edge in the above graphs as “is a friend of”. Combining the above two friendship graphs along the common vertex Paul into a single friendship graph, we get:</p>
 <a class="reference internal image-reference" href="_images/3b.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/3b.jpeg" style="width: 460px;" /></a>
 </br>
-<p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. The connections in the combined graph supports such assumptions and inferences.</p>
-<p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world are quite complex.</p>
+<p>We see new information emerging in the combined graph. Tuco “is a friend of a friend” for Brendan, Priyaa, and Angeline. If we assume that a friend of a friend is a friend, then one can infer that Tuco “is a friend of” Brendan, Angeline and Priyaa. After all, who does not want to be friends with Tuco?! The connections in the combined graph supports such assumptions and inferences.</p>
+<p>The above example is deceivingly simple. By eyeballing the two friendship graphs, it is easy to see by common experience how the graphs can be combined. But, graphs generated in the real world<a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> are quite complex.</p>
 <a class="reference internal image-reference" href="_images/complex-graph.png"><img alt="Whoopsy!" class="align-center" src="_images/complex-graph.png" style="width: 450px;" /></a>
-<center> A graph generated by real-world data [^1]</center>
+<center> A graph generated by real-world data </center>
 </br>
 <p>In practice, combining such graphs using pen and paper is out question! However, it is the same common sense that is in play combining even the most complex graphs.</p>
-<p>The goal of this chapter is to get our inherent commonsense of combining graphs in a computation form while having fun! Once in a computational form, we all can agree unambiguously what does it <em>mean</em> to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)!</p>
-<p>The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world and be unaware of any other (graph) worlds. A <em>combined</em> graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!</p>
+<p>The goal of this chapter is to get our inherent common sense of combining graphs in a computation form while having fun! Once in a computational form, we all can agree unambiguously what does it <em>mean</em> to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)!</p>
+<p>The challenge of this game is to communicate what a combined graph is without explicitly saying talking about its vertices and edges! This is because, while in the category we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the category but we would be inside a graph-world and be unaware of any other (graph) worlds. A <em>combined</em> graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of category (Rung 4) to talk about combining graphs!</p>
 </section>
 <section id="combining-graphs-using-memes">
 <h2>6.2 Combining graphs using memes<a class="headerlink" href="#combining-graphs-using-memes" title="Permalink to this heading">#</a></h2>
-<p>The two memes we will use to play this game are: (1) commuting diagrams (closed loop conditions), and (2) graph morphisms. We explored in the previous chapter, the idea of commuting diagrams and graph morphisms (identifying one graph inside the other). We need a little more information and we will be ready to play!</p>
+<p>The two memes we will use to play this game are: (1) commuting diagrams (closed loop conditions), and (2) graph morphisms. We explored in the previous chapter, the idea of commuting diagrams and graph morphisms (identifying one graph inside the other).</p>
 <section id="game-description">
 <h3>Game description<a class="headerlink" href="#game-description" title="Permalink to this heading">#</a></h3>
-<p>Let us first introduce some <strong>terminology</strong>: we call a combined graph of two graphs as their <code class="docutils literal notranslate"><span class="pre">pushout</span></code>.</p>
+<p>Let us first introduce some <strong>terminology</strong>: we call the graph we get by combining two graphs as the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of the two graphs.</p>
 <div class="attention admonition">
 <p class="admonition-title">Game description </p>
 <p><strong>Goal:</strong> To describe the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> of any two (overlapping) graphs!</p>
 <p><strong>Rule:</strong> Description of a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> MUST NOT include its vertices, edges, source and target maps.</p>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (of two overlapping graphs) is a graph in the space of all possible graphs. We need to spot that graph in this space! We will narrow down our search step-by-step using the memes we have learnt. We will continue this process until we end up with the graph we are looking for.</p>
-<p>We will draw lots and lots of diagrams for this narrowing down process! Diagrams are basic to relational thinking!</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">pushout</span></code> (of two overlapping graphs) of two graphs is a graph in the category (universe) of all possible graphs. We need to spot that graph in this category! We will narrow down our search step-by-step using the memes we have learnt. We will continue this process until we end up with the graph we are looking for.</p>
+<p>We will draw lots and lots of diagrams for this narrowing down process! Drawing diagrams are bread and butter of relational thinking!</p>
 <p>Let us begin!</p>
 </section>
 <section id="the-shape-of-the-overlap">
 <h3>The shape of the overlap<a class="headerlink" href="#the-shape-of-the-overlap" title="Permalink to this heading">#</a></h3>
-<p>To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. We call such common vertices and edges between two graphs to be their <em>overlap</em>.</p>
-<p>We saw in previous chapters that a graph morphism identifies one graph inside another. Suppose we are given two graphs – <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. An overlap of these two graphs is specified as the diagram below:</p>
+<p>To combine two graphs, we first need to know what are the vertices and edges common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. We call such common vertices and edges between two graphs to be their <em>overlap</em>.</p>
+<p>We saw in previous chapters that a graph morphism identifies one graph inside the other. Suppose we are given two graphs – <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. An overlap of these two graphs is specified as the diagram below:</p>
 <a class="reference internal image-reference" href="_images/1.png"><img alt="Whoopsy!" class="align-center" src="_images/1.png" style="width: 400px;" /></a>
 </br>
 <p>The above diagram has two radiating arrows, one into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and another one into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>. Each arrow is a graph morphism. Graph <code class="docutils literal notranslate"><span class="pre">overlap</span></code> specifies the vertices and edges common to <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>! Note that a relational specification of common vertices and edges as shown below ensures that the overlapping region will be a graph by itself (no dangling edges)!</p>
@@ -539,7 +544,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code>.</p></li>
 <li><p>Thus, the regions in which <code class="docutils literal notranslate"><span class="pre">overlap</span></code> maps into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are common to the two graphs.</p></li>
 </ul>
-<p>(The morphisms in the above diagram are injective, but in general they need not be so! Connecitivity matters!)</p>
+<p>(The graph morphisms in the above diagram are injective, but in general they need not be so! Connecitivity matters!)</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">overlap</span></code> acts as a bridge between two graphs. Theoretically, presence of an overlap means that we can navigate from one graph to the other via common vertices and edges. That is, we can combine <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> into a single graph. This idea of a combining graphs can be loosely illustrated as sticking together two sheets of paper using glue.</p>
 <a class="reference internal image-reference" href="_images/sheets.jpeg"><img alt="Whoopsy!" class="align-center" src="_images/sheets.jpeg" style="width: 250px;" /></a>
 <p>Another (closer) analogy that comes to mind for combining graphs is glueing a broken handle to a tea cup using two pieces of glue.</p>
@@ -555,8 +560,8 @@ document.write(`
 </section>
 <section id="pass-1-commuting-square">
 <h3>Pass 1: Commuting square<a class="headerlink" href="#pass-1-commuting-square" title="Permalink to this heading">#</a></h3>
-<p>Now that, we know the overlap, the next step in this game is to narrow down some potential candidates for the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>. Right now, it could be any graph in the universe!</p>
-<p>We cannot talk about the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph individually in terms of its source and target maps since we are in Rung 4. (If we do, we will go inside the graph in Rung 2 and all the other graphs will vanish from our view. The idea of <code class="docutils literal notranslate"><span class="pre">pushout</span></code> makes sense only at the level of Rung 4.) Hence, we will look at the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,</p>
+<p>Now that, we know the overlap, the next step in this game is to narrow down some potential candidates for the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>. Right now, it could be any graph in the category!</p>
+<p>We cannot talk about the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph individually in terms of its source and target maps since we are in Rung 4. (If we do, we will go inside the graph in Rung 2 and all the other graphs will vanish from our view. Thus, the idea of <code class="docutils literal notranslate"><span class="pre">pushout</span></code> makes sense only at the level of Rung 4.) Hence, we will look at the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,</p>
 <blockquote>
 <div><p><em>How is the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> related to you?</em></p>
 </div></blockquote>
@@ -639,7 +644,7 @@ document.write(`
 <p class="admonition-title">Pause and Ponder! </p>
 <p>Which one the graphs inside the yellow boxes will be your choice for <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?</p>
 </div>
-<p>We want the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> to be “the most natural choice” among all possible choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort (to integrate)” or the “path of least resistance” (as nature does).</p>
+<p>We want the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> to be “the most natural choice” among all possible choices of graphs. By most natural, we mean a choice which will follow “the principle of least effort” or the “path of least resistance” (as nature does).</p>
 <p><strong>In the above graphs, which one is your most natural choice for a <code class="docutils literal notranslate"><span class="pre">pushout</span></code> and why?</strong></p>
 <p>While we will reveal our choice in a moment, let us have a look at each one of the choices.</p>
 <ul class="simple">
@@ -648,7 +653,7 @@ document.write(`
 <li><p>In <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code>, there is an extra vertex and an edge.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code> represents maximal collapse of information - all the vertices and edges from <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are squeezed into a single vertex and edge in the possible graph.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> has the feeling of <em>the most lazy choice</em> since <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code>, or to add extra information like <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code>. Indeed <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> is our choice!</p>
+<p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> has the feeling of <em>the most lazy choice</em> / <em>least effort</em> since <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">B</span></code> are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">4</span></code>, or to add extra information like <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">3</span></code>. Indeed <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> is our choice!</p>
 <p>We shall now make our intuition of <em>least effort</em> precise by asking,</p>
 <blockquote>
 <div><p>What is the relationship of <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> with all the other choices, and vice versa?</p>
@@ -661,9 +666,9 @@ document.write(`
 <p>We have two commuting diagrams - one with <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> and another one with <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. Next we see how they are related with each other.</p>
 <a class="reference internal image-reference" href="_images/8b.png"><img alt="Whoopsy!" class="align-center" src="_images/8b.png" style="width: 500px;" /></a>
 </br>
-<p>There are many graph morphisms from graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. But there is exactly one arrow (dotted) that will make the 2 three-sided diagrams (2 triangles) formed by two yellow arrows and the dotted arrow commute. This dotted arrow is again the most intuitive one, mapping blue vertices/edges to blue, green vertices/edges to green, orange to orange. This arrow from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> is dotted to signify that there is only one such morphism.</p>
+<p>There are many graph morphisms from graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to graph <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code>. But there is exactly one morphism (dotted) that will make the 2 three-sided diagrams (marked by two yellow triangles) commute. This dotted arrow is again the most intuitive one, mapping blue vertices/edges to blue, green vertices/edges to green, orange to orange. This arrow from <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">2</span></code> is dotted to signify that there is only one such morphism.</p>
 <blockquote>
-<div><p>The above diagram has 4 commuting diagrams pasted together (including the 2 squares <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> starting at <code class="docutils literal notranslate"><span class="pre">overlap</span></code>). Commuting diagrams are like ecosystems in balance. When ecosystems are pasted together along their edges, any change in one ecosystem will create a change in the other. When the “most natural” information flows along the morphisms, all the ecosystems are in balance.</p>
+<div><p>The above diagram has 4 commuting diagrams pasted together (including the 2 squares <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> starting at <code class="docutils literal notranslate"><span class="pre">overlap</span></code>). Commuting diagrams are like ecosystems in balance. When ecosystems are pasted together along their edges, any change in one ecosystem will create a change in the other. When the “most natural” information flows along the morphisms, all the ecosystems are in balance.</p>
 </div></blockquote>
 <a class="reference internal image-reference" href="_images/8c.png"><img alt="Whoopsy!" class="align-center" src="_images/8c.png" style="width: 500px;" /></a>
 </br>
@@ -694,7 +699,7 @@ document.write(`
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pushout</span></code> satisfies a universal property: the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> has a unique arrow into any other graph which satisfies Pass 1, such that two triangles commute!</p>
-<a class="reference internal image-reference" href="_images/13b.png"><img alt="Whoopsy!" class="align-center" src="_images/13b.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/13b.png"><img alt="Whoopsy!" class="align-center" src="_images/13b.png" style="width: 600px;" /></a>
 </div>
 </section>
 <section id="pass-3-uniqueness">
@@ -708,7 +713,7 @@ document.write(`
 <p>By asking the same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two triangles (in the above diagram) commute simultaneously.</p>
 <p>Now,</p>
 <blockquote>
-<div><p>We repeat the same procedure of asking “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?” on the remaining candidates (candidates which satisfy both the requirements)!</p>
+<div><p>We repeat the same procedure of asking “What is your relationship with the <code class="docutils literal notranslate"><span class="pre">pushout</span></code>?” on the candidates that made through Pass 2!</p>
 </div></blockquote>
 <a class="reference internal image-reference" href="_images/slogan.png"><img alt="Whoopsy!" class="align-center" src="_images/slogan.png" style="width: 500px;" /></a>
 <p>Our goal is to finally end up with one <code class="docutils literal notranslate"><span class="pre">pushout</span></code> graph!! Recall that the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> we are looking for is one among the remaining candidates.</p>
@@ -717,7 +722,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/16b.png"><img alt="Whoopsy!" class="align-center" src="_images/16b.png" style="width: 500px;" /></a>
 <p>However, the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> is also universal. So it must have a unique map into <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> that makes the triangles commute.</p>
 <a class="reference internal image-reference" href="_images/16a.png"><img alt="Whoopsy!" class="align-center" src="_images/16a.png" style="width: 500px;" /></a>
-<p>However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> are inverse of each other – isomorphisms (If are interested in the reasoning, check the box below. )! In other words, THE <code class="docutils literal notranslate"><span class="pre">pushout</span></code> AND <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!</p>
+<p>However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> are inverse of each other – isomorphisms (If are interested in knowing why, check the box below. )! In other words, THE <code class="docutils literal notranslate"><span class="pre">pushout</span></code> AND <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">X</span></code> ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Why are <code class="docutils literal notranslate"><span class="pre">Graph</span> <span class="pre">X</span></code> and the <code class="docutils literal notranslate"><span class="pre">pushout</span></code> the same?</p>
 <div class="wrapper docutils">
@@ -736,7 +741,7 @@ document.write(`
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Note that Pass 3 did NOT impose any requirement like Pass 1 and Pass 2 to narrow down candidates. The result of Pass 3 that all candidates which made through Pass 1 and Pass 2 are isomorphic is a consequence of the existing requirements.</p>
+<p>Note that Pass 3 did NOT impose any requirement like Pass 1 and Pass 2 to narrow down candidates. The result of Pass 3 that all the candidates which made through Pass 1 and Pass 2 are isomorphic is a consequence of the existing requirements.</p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
@@ -760,7 +765,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/certificate.png"><img alt="Whoopsy!" class="align-center" src="_images/certificate.png" style="width: 450px;" /></a>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
-<p>Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather focusing on “HOW” to construct a solution and verify that the construction will always produce a sensible structure.</p>
+<p>Relational thinking narrows down a solution from the space of all sensible structures by methodically reflecting on “WHAT” is that we are looking for rather than focusing on “HOW” to construct a solution and verifying that the construction will always produce a sensible solution for all scenarios.</p>
 <p>In this sense, relational thinking is non-invasive!</p>
 </div>
 </section>
@@ -791,7 +796,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p><strong>Puzzle 3. Pushout using a empty graph</strong></p>
+<p><strong>Puzzle 3. Pushout using an empty graph</strong></p>
 <p>In the beginning of this chapter, we said that combining graphs is analogous to adding numbers. Can you see how this problem demonstrates this analogy?</p>
 <a class="reference internal image-reference" href="_images/22a.png"><img alt="Whoopsy!" class="align-center" src="_images/22a.png" style="width: 500px;" /></a>
 <p>(An empty graph is the graph with its set of vertices and the set of edges to be empty set. The sources and the target maps sends “no vertex” to “no edge”.)</p>
@@ -945,16 +950,20 @@ document.write(`
 </section>
 <section id="summary">
 <h2>6.6 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>Congratulations!! You have crossed Chapter 5 successfully!</p>
+<p>Congratulations!! You have crossed Chapter 6 successfully!</p>
 <p>Things get quite complex and rich quickly as we add relationships and ask the relationships to satisfy more and more constraints. However, setting things up right and relational makes life better because all the nuances are handled early-on in the thinking process. This eliminates the need to think cleverly about the edge cases later on when the complexity of the system increases.  We will demonstrate this idea in the next chapter when we look into the concept of “find and replace” inside graphs! You would be accustomed to using the “find-and-replace” operation in text editors. In the next chapter, we shall apply the idea of “find-and-replace” to graphs by computing pushouts.</p>
 <p>It only gets easier from here!!</p>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id2" role="note">
+<aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>A four-sided commuting diagram</p>
+<p>Image source: <a class="reference external" href="https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg">https://www.frontiersin.org/files/Articles/815153/fbuil-07-815153-HTML/image_m/fbuil-07-815153-g002.jpg</a></p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Four-sided commuting diagram</p>
 </aside>
 </section>
 </section>
@@ -990,7 +999,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="chp4-graph-relationships.html"
+       href="chp5-graph-relationships.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -999,7 +1008,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="chp6-dpo.html"
+       href="chp7-dpo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -1023,6 +1032,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">Recap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1 Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-graphs-using-memes">6.2 Combining graphs using memes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-description">Game description</a></li>

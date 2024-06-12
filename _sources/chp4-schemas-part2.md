@@ -29,7 +29,7 @@ Suppose we were making a directed graph to represent the game of tic-tac-toe, w
 
 A piece of our graph would look like this:
 
-```{image} assets/Ch4/TicTacToe.jpg
+```{image} assets/Ch5/TicTacToe.jpg
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -38,7 +38,7 @@ A piece of our graph would look like this:
 
 Now let's imagine doing the same thing for the ancient board game Go. An important thing to know about this game is that the player always has the option to "pass." That is, one of the available moves on any given turn is to stay in the current state. Thus, every vertex in our graph is going to have one special arrow that loops back on itself.
 
-```{image} assets/Ch4/GO.jpg
+```{image} assets/Ch5/GO.jpg
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -53,7 +53,7 @@ How is the data of a reflexive graph different from the data of a directed graph
 
 A reflexive graph is simply a _directed graph_ with an added condition that "every vertex has a special self-looping arrow." This idea can be expressed with a map going from vertices to arrows, where each vertex is connected to its self-looping arrow.
 
-```{image} assets/Ch3/ReflexiveMap.gif
+```{image} assets/Ch3-4/ReflexiveMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -63,7 +63,7 @@ A reflexive graph is simply a _directed graph_ with an added condition that "eve
 Every reflexive graph has such a map, called its reflexive map or `refl`. We can combine this reflexive map with the graph's source and target maps. (Notice that the reflexive map points in the opposite direction, from vertices to arrows.)
 
 
-```{image} assets/Ch4/ReflexiveGraphInstance.gif
+```{image} assets/Ch5/ReflexiveGraphInstance.gif
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -88,7 +88,7 @@ What can we notice about the above instance? Well, for one thing, in order for a
 
 For example if we start at the heart, the reflexive map takes us to the reddish arrow, and the source map takes us back to the heart:
 
-```{image} assets/Ch3/SourceLoop.gif
+```{image} assets/Ch3-4/SourceLoop.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -96,7 +96,7 @@ For example if we start at the heart, the reflexive map takes us to the reddish 
 
 By the same reasoning, the target map following the reflexive map should always form a closed loop as well.
 
-```{image} assets/Ch3/TargetLoop.gif
+```{image} assets/Ch3-4/TargetLoop.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -104,7 +104,7 @@ By the same reasoning, the target map following the reflexive map should always 
 
 If we look closely at the maps we indeed see that all such loops are closed:
 
-```{image} assets/Ch3/ReflexiveFadethrough.gif
+```{image} assets/Ch3-4/ReflexiveFadethrough.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -133,7 +133,7 @@ Let's encode a reflexive graph schema in AlgebraicJulia! In order to specify our
 
 * `;` We'll use a semicolon to sequence paths. So `A;B` means "path A followed by path B."
 
-```{image} assets/Ch3/Compose.gif
+```{image} assets/Ch3-4/Compose.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -154,7 +154,7 @@ And "the reflexive map followed by the target map takes you back where you start
 
 Equations like this are known as **commutativity conditions**. These commutativity conditions that the underlying maps must satisfy are also part of the schema. So, schemas are more than directed graphs. Schemas are our fundamental mechanism for encoding things in AlgebraicJulia. Here is the schema for reflexive graphs:
 
-```{image} assets/Ch3/ReflexiveGraphSchema.png
+```{image} assets/Ch3-4/ReflexiveGraphSchema.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -186,7 +186,7 @@ Now let's return to the question of undirected graphs. Can we design a schema fo
 
 An arrow in a directed graph is like a one-way street, a unidirectional connection pointing from its source to its target. In an undirected graph, an edge is more like like a *two-way street* in which the connection is felt mutually in both directions. If we take this “two-way street” analogy literally we can see that every undirected graph is *equivalent* to a directed graph in which we've substituted a pair of opposing arrows in place of each undirected edge.
 
-```{image} assets/Ch4/TwoWayStreet.png
+```{image} assets/Ch5/TwoWayStreet.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -194,7 +194,7 @@ An arrow in a directed graph is like a one-way street, a unidirectional connecti
 
 The directed graph _represents_ the undirected graph if we imagine the opposed arrows just canceling each other out. For this to work, the directed graph must satisfy the condition that "every arrow is associated with a unique partner arrow."  We can express this idea as a map, in which each arrow gets connected to its unique partner:
 
-```{image} assets/Ch3/InversionMap.gif
+```{image} assets/Ch3-4/InversionMap.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -204,7 +204,7 @@ The directed graph _represents_ the undirected graph if we imagine the opposed a
 We call this the inversion map or `inv`. We can combine this inversion map with the graph's source and target maps, attaching it as a self-loop.
 
 
-```{image} assets/Ch4/UndirectedGraphInstance.gif
+```{image} assets/Ch5/UndirectedGraphInstance.gif
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -249,7 +249,7 @@ We also want these partnerships to be unique, meaning we don't want "cliques" of
 
 Putting it all together, here is the schema for undirected graphs
 
-```{image} assets/Ch3/UndirectedGraphSchema.png
+```{image} assets/Ch3-4/UndirectedGraphSchema.png
 :alt: Whoopsy!
 :width: 500px
 :align: center
@@ -300,7 +300,7 @@ We can generalize reflexive graphs to higher dimensions using schemas. The resul
 
 For the mathematician, simplicial sets are useful because they turn geometry into algebra: a simplicial triangulation of a topological space is a combinatorial object that can be reasoned about. For the applied scientist, simplicial sets may be useful as a way of 3D modeling, as we'll see in Chapter 7. Finally, in AlgebraicJulia, simplicial sets are practical because all of the rules for how different parts must attach can be fully captured with a few commutativity conditions.
 
-```{image} assets/Ch4/SimplicialSets.png
+```{image} assets/Ch5/SimplicialSets.png
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -312,7 +312,7 @@ On the more "applied" side, we have the example of Petri nets, a sophisticated m
 
 It's important to note that Petri nets were developed by practitioners, not mathematicians. The system was born from necessity, designed to fill a utility gap in other approaches to modeling. But because Carl Petri gave the system an exact mathematical definition for its execution semantics we are able to represent Petri nets in terms of schemas and work with them in AlgebraicJulia.
 
-```{image} assets/Ch4/Petri_Net.jpg
+```{image} assets/Ch5/Petri_Net.jpg
 :alt: Whoopsy!
 :width: 800px
 :align: center
@@ -327,7 +327,7 @@ AlgebraicJulia's implementation of Petri nets is called AlgebraicPetri.jl.[^1] D
 The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schema to define new relationships in terms of existing ones.
 
 
-```{image} assets/Ch3/DatabaseLabeled.png
+```{image} assets/Ch3-4/DatabaseLabeled.png
 :alt: Whoopsy!
 :width: 800px
 :align: center

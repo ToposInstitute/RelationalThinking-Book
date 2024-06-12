@@ -176,11 +176,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chp1-directed-graphs.html">Chapter 1: Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp2-dwd.html">Chapter 2: Dynamical Systems with Kiki and Bouba</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chp3-schemas.html">Chapter 3: Blueprints - Part I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp3-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp4-graph-relationships.html">Chapter 5: Categories</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp5-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp6-dpo.html">Chapter 7: Evolving Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chp7-dpo-application.html">Chapter 8: A Look Beyond– Evolving World Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp4-schemas-part2.html">Chapter 4: Blueprints - Part II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp5-graph-relationships.html">Chapter 5: Categories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp6-graph-gluing.html">Chapter 6: Combining Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp7-dpo.html">Chapter 7: Evolving Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chp8-dpo-application.html">Chapter 8: A Look Beyond – Evolving World Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CompMath.html">Compassionte Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
@@ -507,34 +507,34 @@ document.write(`
 <ol class="arabic simple" start="2">
 <li><p>How many ways can you inject this upper graph into the lower graph?</p></li>
 </ol>
-<a class="reference internal image-reference" href="_images/Problem2.png"><img alt="Whoopsy!" class="align-center" src="_images/Problem2.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/Problem2.png"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/Problem2.png" style="width: 500px;" /></a>
 <p>Answer:</p>
 <p>Twelve?</p>
 <p><em>Formally:</em></p>
 <p>In chapter 1 we used source and target maps to describe a directed graph. Maps can also be used to describe an injection. In this case the a “vertex map” and an “arrow map” run vertically, telling where each vertex and arrow ends up in the injection.</p>
-<a class="reference internal image-reference" href="_images/A,V,Maps.gif"><img alt="Whoopsy!" class="align-center" src="_images/A,V,Maps.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/A,V,Maps.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/A,V,Maps.gif" style="width: 800px;" /></a>
 <p>These two maps capture all the relevant information about the injection.</p>
 <p>Recall our dangling edge condition: For these maps to represent a proper injection the arrows must stay attached to their source and target vertices. Clearly the above maps must work together in some way to prevent breakage. What conditions must be true in order to ensure that a graph doesn’t come apart on entry?</p>
 <p>To answer this, let’s arrange our maps into a square, with the source maps for graph 1 and graph 2 running horizontally and the “arrow map” and “vertex map” running vertically :</p>
-<a class="reference internal image-reference" href="_images/CommSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/CommSquare.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/CommSquare.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/CommSquare.gif" style="width: 800px;" /></a>
 <p>Note how the dashed lines seem to flow “out” from the arrows in the upper left and flow “in” to the vertices at the lower right. Starting from any given arrow there are two paths you can take around this square, an upper route and a lower route. Let’s focus on a specific arrow and consider what these routes “mean”. (We’ll label the endpoints as “A” and “V”)</p>
 </section>
 <section id="upper-route">
 <h3>Upper Route<a class="headerlink" href="#upper-route" title="Permalink to this heading">#</a></h3>
-<a class="reference internal image-reference" href="_images/UpperRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/UpperRoute.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/UpperRoute.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/UpperRoute.gif" style="width: 500px;" /></a>
 <p>Reading across the top we have that the red arrow has the heart as its source. Reading down the right side we see that the heart gets sent to the square vertex in graph 2. So the square is “the vertex that receives A’s source.”</p>
 </section>
 <section id="lower-route">
 <h3>Lower Route<a class="headerlink" href="#lower-route" title="Permalink to this heading">#</a></h3>
-<a class="reference internal image-reference" href="_images/LowerRoute.gif"><img alt="Whoopsy!" class="align-center" src="_images/LowerRoute.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/LowerRoute.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/LowerRoute.gif" style="width: 500px;" /></a>
 <p>Reading down the left we have that the red arrow from graph 1 gets sent to the blue arrow from graph 2 (In other words, the blue arrow is its “image”). Reading across the bottom we see that the blue arrow has the square vertex as its source. So the square is “the source of the image of A.”</p>
 <p>Let’s now revisit to our dangling edge condition. “Coming apart” means, literally, that a vertex and an arrow that were connected in graph 1 are not connected when they land in graph 2. Suppose an arrow gets separated from its source by an attempted injection. For that arrow, the two routes around the square look like this:</p>
-<a class="reference internal image-reference" href="_images/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="_images/OpenSquare.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/OpenSquare.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/OpenSquare.gif" style="width: 500px;" /></a>
 <p>That is, what it “means” for a graph to get broken is precisely that “the vertex that receives A’s source” is <em>different</em> from “The vertex that is the source of A’s image.”</p>
 <p>Thus we can actually DEFINE what we mean by a graph injection as a square in which all arrows have closed loops going either way around.</p>
-<a class="reference internal image-reference" href="_images/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectionFadethrough.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/InjectionFadethrough.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/InjectionFadethrough.gif" style="width: 500px;" /></a>
 <p>Of course, the same maps must also have closed loops for the arrows and their targets. Together, all of the “data” describing this embedding is caputred in the following diagrams:</p>
-<a class="reference internal image-reference" href="_images/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="_images/GraphInjection.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/GraphInjection.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/GraphInjection.gif" style="width: 800px;" /></a>
 <p>We have defined one thing – graph connectivity in injections – in terms of another thing – closed loops. Imposing the rule that the certain loops must close is called a “commutativity condition”.</p>
 <p>It turns out there are a lot of ideas that can be captured by connecting maps together and then declaring some commutativity conditions. Commutative diagrams are the bread and butter of category theory. We will not explore the general notion of commutativity in much depth here. For a thorough yet elementary introduction to this topic we recommend Lawvere and Schanuel’s <em>Conceptual Mathematics</em>.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>As we’ll see, one of the benefits of describing injections and dangling edge conditions in terms of maps is that maps and commutativity conditions are easy for the computer to understand maps and inspect. This allows the computer a way to be of use to us without that computer needing to have any actual understanding ideas like vertices, arrows, attachments..the semantics of graphs.</p>
@@ -542,9 +542,9 @@ document.write(`
 </section>
 <section id="graph-morphisms">
 <h2>2. Graph Morphisms<a class="headerlink" href="#graph-morphisms" title="Permalink to this heading">#</a></h2>
-<a class="reference internal image-reference" href="_images/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="_images/ChoreHanded.png" style="width: 500px;" /></a>
-<a class="reference internal image-reference" href="_images/EmbeddingHanded.gif"><img alt="Whoopsy!" class="align-center" src="_images/EmbeddingHanded.gif" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="_images/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="_images/EMBED.gif" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/ChoreHanded.png"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/ChoreHanded.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/EmbeddingHanded.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/EmbeddingHanded.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="assets/Ch3/EMBED.gif"><img alt="Whoopsy!" class="align-center" src="assets/Ch3/EMBED.gif" style="width: 500px;" /></a>
 </section>
 <section id="footnotes-and-references">
 <h2>Footnotes and References<a class="headerlink" href="#footnotes-and-references" title="Permalink to this heading">#</a></h2>
