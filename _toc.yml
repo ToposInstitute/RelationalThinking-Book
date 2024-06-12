@@ -8,11 +8,11 @@ chapters:
 - file: chp1-directed-graphs
 - file: chp2-dwd
 - file: chp3-schemas
-- file: chp3-schemas-part2
-- file: chp4-graph-relationships
-- file: chp5-graph-gluing
-- file: chp6-dpo
-- file: chp7-dpo-application
+- file: chp4-schemas-part2
+- file: chp5-graph-relationships
+- file: chp6-graph-gluing
+- file: chp7-dpo
+- file: chp8-dpo-application
 - file: CompMath
 - file: authors
 - file: credits
