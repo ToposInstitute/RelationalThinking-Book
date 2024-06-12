@@ -16,15 +16,21 @@ kernelspec:
 This book is a work-in-progress! We'd love to learn how we can make it better, especially regarding fixing typos or sentences that are unclear to you. Please consider leaving any feedback, comments, or observations about typos in [this google doc](https://docs.google.com/document/d/1MvhNuap0QLMAfrMQLIAxbclBx0vjt6vyK8BhVhLwFoQ/edit).
 :::
 
+:::{note}
+The Algebraic Julia code of this chapter is available in the repo [ToposInstitute/RelationalThinking-code](https://github.com/ToposInstitute/RelationalThinking-code) under Ch2.
+:::
+
 :::{attention}
 This chapter will engage you in deep relational thinking! 
 :::
 
 ## 6.1 Introduction
 
-So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edge of the domain to the same vertex/edge in the codomain but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
+So far, we have seen that graphs are a quite simple and powerful tool to model relationships between various entities. We also learnt the idea of identifying one graph inside another via a graph morphism. A graph morphism may coarse-grain the information in the domain graph by sending two different vertices/edges of the domain (the graph from which the morphism proceeds) to the same vertex/edge in the codomain (the graph in which the morphism lands) but it always **preserves the connectivity** of the domain. Finally, excitingly, with graph morphisms, we enter the "universe" where we can find every possible "graph-world" and every possible relationships between these worlds. In this chapter, we "live" inside this universe where the only entities are graphs and morphisms between them.
 
-Inside this universe, we are interested to know how to combine two graphs, like adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two discrete graphs). The utilitiy of combining graphs is to bridge islands of connections allowing for information to flow between the graphs (via common channels) and for expression of new meanings.
+Inside this universe, we are interested to know how to combine two graphs, like adding two numbers in the universe of numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two *discrete* graphs). 
+
+Thinking of a graph as an island of connections, the utilitiy of combining graphs is to bridge these islands allowing for information to flow between the graphs (via common channels) and for expression of new meanings.
 
 As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.
 
@@ -66,15 +72,17 @@ The above example is deceivingly simple. By eyeballing the two friendship graphs
 
 In practice, combining such graphs using pen and paper is out question! However, it is the same common sense that is in play combining even the most complex graphs.
 
-The goal of this chapter is to make our inherent sense of combining graphs more explicit and fun! Once explicit, we all can agree unambiguously what does it mean to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)! 
+The goal of this chapter is to get our inherent commonsense of combining graphs in a computation form while having fun! Once in a computational form, we all can agree unambiguously what does it *mean* to combine two graphs together. We will achieve this goal by playing a game of dumb charades of graphs using memes from relational thinking (popularly known as category theory)! 
 
-The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world which is unaware of any other (graph) worlds. A *combined* graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!
+The challenge of this game is to communicate “the connectivity of any combined graph” without explicitly saying what the graph is! This is because, while in the universe we can talk (only) about relationships between graphs. Once we look inside a graph, we will no longer be in the universe but we would be inside a graph-world and be unaware of any other (graph) worlds. A *combined* graph needs to be aware of the graphs which it combined (otherwise it just any old graph). So, we need to stay in the level of universe to talk about combining graphs!
 
 ## 6.2 Combining graphs using memes
 
-The two memes we will use to play this game are: (1) commuting diagrams (closed loop conditions), and (2) graph morphisms. Having explored the idea of commuting diagrams and sameness in the previous chapter, we are now ready to play! 
+The two memes we will use to play this game are: (1) commuting diagrams (closed loop conditions), and (2) graph morphisms. We explored in the previous chapter, the idea of commuting diagrams and graph morphisms (identifying one graph inside the other). We need a little more information and we will be ready to play! 
 
-Let us first introduce some **terminology**: we call a combined graph of two overlapping graphs as their `pushout`.
+### Game description
+
+Let us first introduce some **terminology**: we call a combined graph of two graphs as their `pushout`.
 
 :::{admonition} Game description 
 :class: attention
@@ -93,9 +101,9 @@ Let us begin!
 
 ### The shape of the overlap
 
-To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. 
+To combine two graphs, we first need to know which vertices and edges are common to both the graphs. Recollect that the “Paul” vertex was common to both the friendship graphs we met early in the chapter. We call such common vertices and edges between two graphs to be their *overlap*.
 
-We saw in previous chapters that a graph morphism identifies one graph inside another. Suppose we are given two graphs -- `graph A` and `graph B`. An overlap of these two graphs is specified as the diagram below: a diagram with two radiating arrows, one into `graph A` and another one into `graph B`. Graph `overlap` specifies the vertices and edges common to `graph A` and `graph B`! Note that a relational specification of common vertices and edges as shown below ensures that the overlapping region will be a graph by itself (no dangling edges)!
+We saw in previous chapters that a graph morphism identifies one graph inside another. Suppose we are given two graphs -- `graph A` and `graph B`. An overlap of these two graphs is specified as the diagram below:
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
@@ -103,6 +111,8 @@ We saw in previous chapters that a graph morphism identifies one graph inside an
 :align: center
 ```
 </br>
+
+The above diagram has two radiating arrows, one into `graph A` and another one into `graph B`. Each arrow is a graph morphism. Graph `overlap` specifies the vertices and edges common to `graph A` and `graph B`! Note that a relational specification of common vertices and edges as shown below ensures that the overlapping region will be a graph by itself (no dangling edges)!
 
 The relationships between the graphs in the above diagram are: 
 
@@ -133,7 +143,7 @@ With this analogy in mind, let us think of the `pushout` of a (overlap) diagram 
 :::{admonition} Key points
 :class: tip
 
-A diagram with two radiating maps into two graphs is a specification of an overlap of those graphs. 
+A diagram with two radiating morphisms into two graphs is a specification of an overlap of those graphs. 
 ```{image} assets/Ch5/1b.png
 :alt: Whoopsy!
 :width: 500px
@@ -151,7 +161,7 @@ Overlapping graphs can be glued together.
 
 Now that, we know the overlap, the next step in this game is to narrow down some potential candidates for the `pushout`. Right now, it could be any graph in the universe!
 
-We cannot talk about `pushout` (graph) individually in terms of its source and target maps since we are in Rung 4. Hence, we will look at the `pushout` from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,
+We cannot talk about the `pushout` graph individually in terms of its source and target maps since we are in Rung 4. (If we do, we will go inside the graph in Rung 2 and all the other graphs will vanish from our view. The idea of `pushout` makes sense only at the level of Rung 4.) Hence, we will look at the `pushout` from the perspective of some other graphs. That is, we are going to ask a few other graphs we are familiar with (in this setting) that,
 
 > *How is the `pushout` related to you?*
 
@@ -187,7 +197,7 @@ Let us add these morphisms to the overlap diagram:
 
 </br>
 
-Does this shape look vaguely familiar? If this reminds of you of commuting diagrams, Hurray!! Let us first just look at the diagram. There are two paths from `overlap` to the `pushout`.
+Does this shape look vaguely familiar? If this reminds of you of commuting diagrams (closed loop conditions), Hurray!! Let us first just look at the diagram. There are two paths from `overlap` to the `pushout`.
 
 So, `overlap` can be indentified inside the `pushout` in two ways: 
 
@@ -200,7 +210,7 @@ Which one of these is the correct way to identify `overlap` inside the `pushout`
 
 :::
 
-Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'? Hence, the overlap must map into the same region of the pushout irrespective of the path.
+Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'? Hence, the overlap must map into the same region of the `pushout` irrespective of the path.
 
 ```{image} assets/Ch5/GluedObject.png
 :alt: Whoopsy!
@@ -210,7 +220,7 @@ Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentifi
 
 In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object (blue points).  The rest of the points can be distinguished as belonging to the cup (green points) or to the handle (orange points). 
 
-> 'Irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`' = The  diagram with four arrows MUST COMMUTE!
+> 'Irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'. In other words, the  diagram with four arrows MUST COMMUTE!
 
 Thus, our enquiry to `graph A` and `graph B` have resulted in a condition that a candidate for `pushout` MUST satisfy! That is, "Diagram: Four arrows" must commute.
 
@@ -236,7 +246,7 @@ While not all graphs can make up such a commuting square of `pushout`, there can
 
 :::{admonition} Puzzle
 
-Find at least two graphs which will make the diagram commute. 
+Can you come up with two candidate graphs for `pushout` that will make the diagram commute. 
 
 ```{image} assets/Ch5/1.png
 :alt: Whoopsy!
@@ -244,6 +254,7 @@ Find at least two graphs which will make the diagram commute.
 :align: center
 ```
 
+(If you need help, scroll down further for a few examples.)
 :::
 
 As the previous exercise demonstrates, there can be many different graphs that makes the diagram commute. So, we must narrow down further. We will follow the same technique of asking other graphs, 
@@ -316,12 +327,12 @@ We want the `pushout` to be “the most natural choice” among all possible cho
 
 While we will reveal our choice in a moment, let us have a look at each one of the choices. 
 
-- In `choice 1`, except for the overlaps, the vertices and edges from `graph A`, and the vertices and the edges from `graph B` are clearly distinguishable. The information of `graph A` and `graph B` remain intact (except at the overlap).
+- In `choice 1`, except for the overlap, the vertices and edges from `graph A`, and the vertices and the edges from `graph B` are clearly distinguishable. The information of `graph A` and `graph B` remain intact (except at the overlap).
 - In `choice 2`, the boundaries of `graph A` and `graph B` fade beyond the overlap region.
 - In `choice 3`, there is an extra vertex and an edge.
 - `choice 4` represents maximal collapse of information - all the vertices and edges from `graph A` and `graph B` are squeezed into a single vertex and edge in the possible graph.
 
-`choice 1` has the feeling of *the most lazy choice* since `graph A` and `graph B` are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like `choice 2` and "choice D", or to add extra information like `choice 3`. Indeed `choice 1` is our choice! 
+`choice 1` has the feeling of *the most lazy choice* since `graph A` and `graph B` are kept seperate except for the overlap region. It does nothing extra like coarse-graining information like `choice 2` and `choice 4`, or to add extra information like `choice 3`. Indeed `choice 1` is our choice! 
 
 We shall now make our intuition of *least effort* precise by asking, 
 
@@ -413,7 +424,7 @@ However, `choice 4` does not embed in `choice 1` because of its self-loop.
 
 **Score** `choice 1`: 1,  `choice 4`: 0
 
-Our choice of a `pushout` graph having such <mark>universal nature</mark> is an indication that we got our plumbing right and things will flow smoothly! In category theory, this is called a universal property of an object. 
+Our choice of a `pushout` graph having such <mark>universal nature</mark> is an indication that we got our plumbing right and things will flow smoothly! In relational thinking terms (category theory), this is called a **universal property of an object**. 
 
 :::{tip}
 Universal property is the mathematical name for "harmony" of relationships.
@@ -456,7 +467,7 @@ By asking `overlap`, `graph A`, and `graph B`, "What is your relationship with t
 :align: center
 ```
 
- By asking same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two triangles (in the above diagram) commute simultaneously. 
+ By asking the same question to all the candidates that made through Pass 1, we narrowed down the candidates to those which satisfy the universal property: which have exactly one morphism into any other candidate such that the two triangles (in the above diagram) commute simultaneously. 
 
 Now, 
 
@@ -490,7 +501,7 @@ However, the `pushout` is also universal. So it must have a unique map into `gra
 
 However, all the commuting shapes of pass 1 and pass 2 tell us that these two maps between the `pushout` and `graph X` are inverse of each other -- isomorphisms (If are interested in the reasoning, check the box below. )! In other words, THE `pushout` AND `graph X` ARE ONE AND THE SAME!! All the candidates which made through Pass 2 are isomorphic! We have found our pushout!!
 
-:::{admonition} Why the two unique maps are isomorphisms?
+:::{admonition} Why are `Graph X` and the `pushout` the same?
 :class: dropdown
 
 ````{div} wrapper 

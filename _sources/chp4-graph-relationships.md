@@ -307,9 +307,18 @@ The coarse-graining we discussed above can be captured by the following way of m
 :width: 800px
 :align: center
 ```
-<mark> We call this a "graph morphism", a way of indentifying one graph inside of another that allows for coarse-graining of vertices/arrows. </mark> Injections are just a special case of graph morphisms in which there is one-to-one mapping between vertices of Graph 1 and Graph 2, and between arrows of Graph 1 and Graph 2.
+<mark> We call this a "graph morphism", a way of indentifying one graph inside of another that allows for coarse-graining of vertices/arrows. 
+</mark> Injections are just a special case of graph morphisms in which there is one-to-one mapping between vertices of Graph 1 and Graph 2, and between arrows of Graph 1 and Graph 2. 
 
-There is another special case of graph morphisms called graph **isomorphisms**. Here is something for you to ponder over!
+### Be-as-you-are morphisms
+
+Every graph instance has a special morphism called "Be-as-you-are" morphism from the graph to itself. True to its name, the be-as-you-are morphism leaves the graph as it is, by sending each vertex to itself and each arrow to itself. 
+
+While this morphism may sound quite boring, it is special and is used for saying computationally when two graphs are the *same*. This special morphism will help us formulate another special graph morpshim called **isomorphisms** for this purpose. 
+
+### Graph isomorphisms
+
+Here is something for you to ponder over!
 
 :::{admonition} Pause and Ponder
 
@@ -323,17 +332,22 @@ Suppose we have Graph 1 injecting into Graph 2, and Graph 2 also injecting into 
 
 :::
 
-Do you *see* that Graph 1 and Graph 2 must have exactly the same number of vertices, te=he same number of arrows and have the same connectivity? In other words, Graph 1 and Graph 2 are ONE and SAME for all practical purposes.  
+Are you convinced that Graph 1 and Graph 2 must have exactly the same number of vertices, the same number of arrows and have the same connectivity? In other words, Graph 1 and Graph 2 are ONE and the SAME for all practical purposes.  
 
 :::{note}
+In computational terms, we say that Graph 1 and Graph 2 are the same when,
 
-When Graph 1 and Graph 2 has injections in either directions, the each injection is called an **isomorphism**. "Iso" means *Same*. 
-
+* There is a graph morphism from Graph 1 to Graph 2
+* There is a graph morphism from Graph 2 to Graph 1
+* For any vertex or arrow in Graph 1, following the morphism from Graph 1 followed by the morphism from Graph 2 results in the same effect as the "be-as-you-are" arrow for Graph 1.
+* For any vertex or arrow in Graph 2, following the morphism from Graph 2 followed by the morphism from Graph 1 results in the same effect as the "be-as-you-are" arrow for Graph 2.
 :::
+
+In the next chapter, we will see that the ability of comparing two graphs and saying if they are the same is quite ubiquitious.
 
 ### Avoiding dangling edges
 
-It may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about _breaking_ a graph, which would violate our `DANGLING EDGE CONDITION` and ruin any underlying model. Doesn't coarse-graining our graph pose a similar risk? 
+Getting back to general graph morphisms, tt may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about _breaking_ a graph, which would violate our `DANGLING EDGE CONDITION` and ruin any underlying model. Doesn't coarse-graining our graph pose a similar risk? 
 
 It turns out that under the right circumstances, merging parts of a graph won't actually pose any danger to the integrity of the underlying model. 
 

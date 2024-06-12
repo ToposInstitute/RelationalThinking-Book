@@ -455,6 +455,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">5.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-graph-morphisms">General graph morphisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#be-as-you-are-morphisms">Be-as-you-are morphisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-isomorphisms">Graph isomorphisms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avoiding-dangling-edges">Avoiding dangling edges</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms-in-algebraic-julia">Graph morphisms in Algebraic Julia</a></li>
 </ul>
@@ -627,22 +629,38 @@ But we’re not quite done! In the next section we’ll see that graph injection
 </ul>
 </div>
 <a class="reference internal image-reference" href="_images/RightiesVSLefties.gif"><img alt="Whoopsy!" class="align-center" src="_images/RightiesVSLefties.gif" style="width: 800px;" /></a>
-<p><mark> We call this a “graph morphism”, a way of indentifying one graph inside of another that allows for coarse-graining of vertices/arrows. </mark> Injections are just a special case of graph morphisms in which there is one-to-one mapping between vertices of Graph 1 and Graph 2, and between arrows of Graph 1 and Graph 2.</p>
-<p>There is another special case of graph morphisms called graph <strong>isomorphisms</strong>. Here is something for you to ponder over!</p>
+<p><mark> We call this a “graph morphism”, a way of indentifying one graph inside of another that allows for coarse-graining of vertices/arrows.
+</mark> Injections are just a special case of graph morphisms in which there is one-to-one mapping between vertices of Graph 1 and Graph 2, and between arrows of Graph 1 and Graph 2.</p>
+</section>
+<section id="be-as-you-are-morphisms">
+<h3>Be-as-you-are morphisms<a class="headerlink" href="#be-as-you-are-morphisms" title="Permalink to this heading">#</a></h3>
+<p>Every graph instance has a special morphism called “Be-as-you-are” morphism from the graph to itself. True to its name, the be-as-you-are morphism leaves the graph as it is, by sending each vertex to itself and each arrow to itself.</p>
+<p>While this morphism may sound quite boring, it is special and is used for saying computationally when two graphs are the <em>same</em>. This special morphism will help us formulate another special graph morpshim called <strong>isomorphisms</strong> for this purpose.</p>
+</section>
+<section id="graph-isomorphisms">
+<h3>Graph isomorphisms<a class="headerlink" href="#graph-isomorphisms" title="Permalink to this heading">#</a></h3>
+<p>Here is something for you to ponder over!</p>
 <div class="admonition-pause-and-ponder admonition">
 <p class="admonition-title">Pause and Ponder</p>
 <p>Suppose we have Graph 1 injecting into Graph 2, and Graph 2 also injecting into Graph 1, what can we say about Graph 1 and Graph 2? Here is an aid for your visualization:</p>
 <a class="reference internal image-reference" href="_images/InjectSki.gif"><img alt="Whoopsy!" class="align-center" src="_images/InjectSki.gif" style="width: 400px;" /></a>
 </div>
-<p>Do you <em>see</em> that Graph 1 and Graph 2 must have exactly the same number of vertices, te=he same number of arrows and have the same connectivity? In other words, Graph 1 and Graph 2 are ONE and SAME for all practical purposes.</p>
+<p>Are you convinced that Graph 1 and Graph 2 must have exactly the same number of vertices, the same number of arrows and have the same connectivity? In other words, Graph 1 and Graph 2 are ONE and the SAME for all practical purposes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When Graph 1 and Graph 2 has injections in either directions, the each injection is called an <strong>isomorphism</strong>. “Iso” means <em>Same</em>.</p>
+<p>In computational terms, we say that Graph 1 and Graph 2 are the same when,</p>
+<ul class="simple">
+<li><p>There is a graph morphism from Graph 1 to Graph 2</p></li>
+<li><p>There is a graph morphism from Graph 2 to Graph 1</p></li>
+<li><p>For any vertex or arrow in Graph 1, following the morphism from Graph 1 followed by the morphism from Graph 2 results in the same effect as the “be-as-you-are” arrow for Graph 1.</p></li>
+<li><p>For any vertex or arrow in Graph 2, following the morphism from Graph 2 followed by the morphism from Graph 1 results in the same effect as the “be-as-you-are” arrow for Graph 2.</p></li>
+</ul>
 </div>
+<p>In the next chapter, we will see that the ability of comparing two graphs and saying if they are the same is quite ubiquitious.</p>
 </section>
 <section id="avoiding-dangling-edges">
 <h3>Avoiding dangling edges<a class="headerlink" href="#avoiding-dangling-edges" title="Permalink to this heading">#</a></h3>
-<p>It may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about <em>breaking</em> a graph, which would violate our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and ruin any underlying model. Doesn’t coarse-graining our graph pose a similar risk?</p>
+<p>Getting back to general graph morphisms, tt may seem like collapsing parts of the directed graph this way would be an undesirable thing to do. After all, we have to be so careful about <em>breaking</em> a graph, which would violate our <code class="docutils literal notranslate"><span class="pre">DANGLING</span> <span class="pre">EDGE</span> <span class="pre">CONDITION</span></code> and ruin any underlying model. Doesn’t coarse-graining our graph pose a similar risk?</p>
 <p>It turns out that under the right circumstances, merging parts of a graph won’t actually pose any danger to the integrity of the underlying model.</p>
 <p>Let’s consider the dishwashing chores graph morphism we just looked at, but now using generic shapes. We have a morphism from the upper graph to the lower graph.</p>
 <a class="reference internal image-reference" href="_images/CoarseGrain.png"><img alt="Whoopsy!" class="align-center" src="_images/CoarseGrain.png" style="width: 500px;" /></a>
@@ -904,6 +922,8 @@ But we’re not quite done! In the next section we’ll see that graph injection
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms">5.3 Graph Morphisms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-graph-morphisms">General graph morphisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#be-as-you-are-morphisms">Be-as-you-are morphisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-isomorphisms">Graph isomorphisms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avoiding-dangling-edges">Avoiding dangling edges</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-morphisms-in-algebraic-julia">Graph morphisms in Algebraic Julia</a></li>
 </ul>
