@@ -68,10 +68,6 @@ Brendan Fong oversees coordination and strategic planning at Topos. He holds a P
 Priyaa is a compassionate mathematician working as a post-doctoral researcher at the Topos. She holds a PhD in Computer Science from University of Calgary. She is interested in creating pathways to make math communication user-friendly and approachable – from math in school to graduate research. She derives inspiration from the works of Tai Danae Bradley, Eugenia Cheng, John Baez, Pawel Sobocinski, Bob Coecke, David Spivak and many others in this area. Her research experience spans quantum computing and category theory.  
 :::
 
-## Project management 
-
-Priyaa Varshinee Srinivasan 
-
 ## Multimedia and illustrations 
 
 Paul Dancstep
@@ -83,3 +79,7 @@ Priyaa Varshinee Srinivasan
 ## Technology advisor
 
 Evan Patterson
+
+## Project management 
+
+Priyaa Varshinee Srinivasan 

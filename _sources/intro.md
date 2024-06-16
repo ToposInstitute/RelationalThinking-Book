@@ -63,13 +63,13 @@ Beginning in the concrete world of directed graphs as pictures made up of dots a
 
 In Chapter 0, we meet a few examples of **directed graphs**, as well as the problem of dangling edges. Chapter 1 moves us into the world of **data**, showing how we can provide a relational representation of directed graphs that captures their core essence, no more or no less. We reflect on what makes a good abstraction. This allows us to represent graphs as data, and hence make them suitable to computer reasoning, through tools like AlgebraicJulia. After the more mathematical nature of Chapter 1, Chapter 2 then shows the immediate payoff: we learn a bit about AlgebraicJulia, and how to use directed graphs as data to program dynamical systems.
 
-In Chapter 3 we move from the world of data to the world of **blueprints**. Also called schema, blueprints provide a framework for describing different sorts of data. For example, while we focus on the blueprint for directed graphs, we see directed graphs belongs to a family of different sorts of data, including undirected graphs, three-dimensional and higher-dimensional shapes, interacting processes, and more. The payoff of understanding the blueprint for graphs is that it immediately helps us understand the appropriate notion of relationship between graphs, and hence the universe of possible graphs. This is the focus of Chapter 4, which moves us from the world of blueprints to the world of universes, also known as **categories**. This takes us to the top of our ladder of relational thinking.
+In Chapter 3 and 4, we move from the world of data to the world of **blueprints**. Also called schema, blueprints provide a framework for describing different sorts of data. For example, while we focus on the blueprint for directed graphs, we see directed graphs belongs to a family of different sorts of data, including undirected graphs, three-dimensional and higher-dimensional shapes, interacting processes, and more. The payoff of understanding the blueprint for graphs is that it immediately helps us understand the appropriate notion of relationship between graphs, and hence the universe of possible graphs. This is the focus of Chapter 5, which moves us from the world of blueprints to the world of universes, also known as **categories**. This takes us to the top of our ladder of relational thinking.
 
 ### Part II: Appreciating the relational view
 
-Once at the top of our ladder, we can begin to appreciate the view. Now in the world of relational models, our second goal, is to showcase how to *think* relationally within this world. Chapter 5 uses relationships between graphs to help us think about when two graphs are the same, when a graph is a part of another graph, how to describe a collection of interrelated graphs, and ultimately how to construct new graphs by *gluing graphs* together. While these questions may sound abstract, imagine two graphs modeling two systems. Then, the value of answering the questions on graph relationships start shining forth. 
+Once at the top of our ladder, we can begin to appreciate the view. Now in the world of relational models, our second goal, is to showcase how to *think* relationally within this world. Chapter 6 uses relationships between graphs to help us think about when two graphs are the same, when a graph is a part of another graph, how to describe a collection of interrelated graphs, and ultimately how to construct new graphs by *gluing graphs* together. While these questions may sound abstract, imagine two graphs modeling two systems. Then, the value of answering the questions on graph relationships start shining forth. 
 
-Chapter 6 builds on Chapter 5 to describe how graphs *evolve*, or change over time. Finally, Chapter 7 shows the payoff, extending this to more sophisticated blueprints, so that we may model changes in our physical world, or reason about processes like making a sandwich in your kitchen which has applications in robotics.
+Chapter 7 builds on Chapter 6 to describe how graphs *evolve*, or change over time. Finally, Chapter 8 shows the payoff, extending this to more sophisticated blueprints, so that we may model changes in our physical world, or reason about processes like making a sandwich in your kitchen which has applications in robotics.
 
 Ultimately, through this experience, we hope that you'll come away with a sense of the importance of finding good abstractions, identifying the ways objects relate to each other, situating them in the context of other objects they relate to, and contextualizing them models in the space of possibilities. We also hope that you'll see the concrete payoffs, especially by doing this formally via a programming language, so that we can automatically extract and benefit from the insights that come from a relational perspective. Indeed, while it may seem in the beginning like we're just finding different, more abstruse ways of describing directed graphs, we hope that in the problem of dangling edges you'll see how the payoff naturally emerges, with seemingly little effort. 
 
@@ -93,7 +93,7 @@ The process of learning something new is like building a machine by collecting i
 
 We have chosen not to assume any particular prior mathematical or programming knowledge in the design of this book. That said, it is written from a mathematical viewpoint, and a reader with some familiarity with the style of thinking will find it easier going. We hope, however, that even if you do not have experience with mathematics or programming, that you might find it interesting to use this book as a way to get acquianted with the beauty and power of mathematical thought.  
 
-In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter 5. Again, however, once we're at the top of the ladder, we can begin to appreciate the view, and we focus more on unpacking the exciting implications of our ideas, rather than introducing new complexity.
+In terms of difficulty, the book starts very concretely, but ramps up in difficulty as we get to the top of the ladder, peaking in Chapter 6. Again, however, once we're at the top of the ladder, we can begin to appreciate the view, and we focus more on unpacking the exciting implications of our ideas, rather than introducing new complexity.
 
 ```{image} assets/Intro/chapters-difficulty.png
 :alt: Whoopsy!
@@ -108,6 +108,8 @@ Note that it is standard, however, to read mathematical texts in a circular patt
 
 We hope that even if difficult at times, you will find this book fun. 
 
+We recommend you to the public forums [Category Theory Zulip](https://ncatlab.org/nlab/show/Category+Theory+Zulip) and [localcharts](https://www.localcharts.org/) for any help or for further discussions on the content!
+
 ### Live, in-line code
 
 Similarly, a reader with an introductory experience to programming will find such experience helpful. For example, to deeply engage with AlgebraicJulia, it is useful to have a local installation of the Julia language and AlgebraicJulia libraries. Nonetheless, we have endeavoured to ensure this is not necessary to understand the main messages of this book. We have done this by embedding editable, executable in-line code blocks in most chapters. 
@@ -119,7 +121,7 @@ print( "My in-line code is working, yay!" )
 
 To run the code, click the "rocket icon" at the top right corner of this page, and select "Live code". Enabling live code will cause a button labelled "run" to appear in each executable code block. Clicking "run" will run the code in the block.
 
-```{image} assets/Ch4/Binder_Instructions.png
+```{image} assets/Ch5/Binder_Instructions.png
 :alt: Whoopsy!
 :width: 400px
 :align: center

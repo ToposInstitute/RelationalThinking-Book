@@ -1,4 +1,4 @@
-# Compassionte Math
+# Compassionate Math
 
 This book has been inspired by the principles of "Compassionate mathematics"[^1].
 

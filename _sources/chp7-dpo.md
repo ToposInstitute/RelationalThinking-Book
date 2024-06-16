@@ -148,7 +148,7 @@ How would you specify overlap `Find` and `Replace`?
 :::
 
 
-We know from Chapter 5, how to specify overlap between two graphs :) Do you remember the diagram with two radiating graph morphisms?
+We know from the previous chapter, how to specify overlap between two graphs :) Do you remember the diagram with two radiating graph morphisms?
 
 ```{image} assets/Ch7/1.png
 :alt: Whoopsy!
@@ -495,7 +495,7 @@ This means that the `overlap` will have a match in the new graph **determined by
 ```
 </br>
 
-The above square commutes! Does this shape remind you of pushout graph from chapter 6? It turns out that, the host graph is the pushout of the overlap diagram including `overlap`, `Find` and the new graph (in red thought bubble)!!
+The above square commutes! Does this shape remind you of pushout graph from the previous chapter? It turns out that, the host graph is the pushout of the overlap diagram including `overlap`, `Find` and the new graph (in red thought bubble)!!
 
 This indeed makes sense, because, `Find` includes vertices and edges which has been removed. Glueing together `Find` and the new graph along the overlap must give the original host graph!
 
