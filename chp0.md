@@ -69,7 +69,7 @@ If you squint, you can look at this like a simplified map. We've left out the tr
 
 In this directed graph, the vertices are once again people and each arrow connects two people who may do dishes on consecutive days.
 
-```{image} assets/Ch5/DGdishes.png
+```{image} assets/Ch6/DGdishes.png
 :alt: Whoopsy!
 :width: 800px
 :align: center

@@ -457,7 +457,9 @@ As we have seen, double-pushout rewriting can be used to update information that
 ## 8.4 Summary
 Both examples illustrate the versatility of schemas and double-pushout rewriting in modeling transformations across different contexts. From the reconfiguration of physical structures like cubes to the dynamic arrangement of items in a kitchen, DPO rewriting provides a powerful tool for modeling and simulating changes in languages other than graphs. In particular, these concepts have shown promise in managing world states when doing task planning in robotics[^1]. For the ambitious reader, we encourage you to not end your study here, but refer to advanced expositions of these topics[^2][^3].
 
-If you feel inspired and convinced about relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to [^4] for a gentle yet technical introduction to category theory. 
+## Concluding words
+
+Hope you had fun reading this book! If you feel inspired and convinced about relational thinking, and should you wish to delve deeper into the mathematics, we recommend you to the book [^4] for a gentle yet technical introduction to category theory. We recommend you to the public forums [Category Theory Zulip](https://ncatlab.org/nlab/show/Category+Theory+Zulip) and [localcharts](https://www.localcharts.org/) for any help or further discussions on the content!
 
 ## References
 
