@@ -40,7 +40,7 @@ The authors thank **Evan** for guiding setting up live code execution!
 
 Thank you **Sophie** for your enthusiasm and patience in helping Priyaa learn the Algebraic Dynamics package. You made possible the fun examples of Chapter 2!
 
-Thank you **Kris** for coding the solutions in Algebaric Julia for chapters 5 and 6, and for writing detailed helpful comments to follow the code!
+Thank you **Kris** for coding the solutions in Algebraic Julia for chapters 5 and 6, and for writing detailed helpful comments to follow the code!
 
 Thank you **Owen** for discussions on stand-alone code execution! 
 

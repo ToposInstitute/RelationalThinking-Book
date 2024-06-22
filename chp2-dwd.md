@@ -56,7 +56,7 @@ Situation 1: A person was at the lodge. They took the lift up the mountain and s
 
 Situation 2: A person was at the village. The cross-country skied in the village. 
 
-We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some *additional information*, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occuring over discrete time steps.
+We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some *additional information*, the computer can simulate events indicated by these graphs. These events can be simulated as occurring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occurring over discrete time steps.
 
 :::{admonition} Key point 
 
@@ -122,7 +122,7 @@ Let us update our model (i.e. our directed graph) to have the light bulb flash o
 ```
 <br/>
 
-In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is `ON`, it must switch `OFF`. If the present state is `OFF`, it must switch `ON`. It must perform this operation at every time step. What we described just now is called an  **update rule** -- a rule saying how a state is to be updated! 
+In order to accomplish this, the light bulb has to toggle its states continuously. That is, if the present state is `ON`, it must switch `OFF`. If the present state is `OFF`, it must switch `ON`. It must perform this operation at every time step. What we described just now is called an  **update rule** -- a rule saying how a state is to be updated! 
 
 > Update rules along along with the states enables a graph to model systems which evolve over time, a.k.a dynamical systems!
 
@@ -178,7 +178,7 @@ initial_state = [BULB_ON] # needs to be an array
 
 +++
 
-The simulation reuslts are exported as an animation showing that our simulation works (using Javis library) as shown below!
+The simulation results are exported as an animation showing that our simulation works (using Javis library) as shown below!
 
 ```{image} assets/Ch2/flashing-light-JAVIS.gif
 :alt: Whoopsy!
@@ -195,7 +195,7 @@ At each time step, an update rule allows states of the vertices to be updated! A
 
 ### String of lights
 
-A flashing bulb is more exciting than a bulb than never flashes! However, what is more exciting is multiple bulbs "talking" to each and changing their states depending on the information recieved in the time step the information was received.
+A flashing bulb is more exciting than a bulb than never flashes! However, what is more exciting is multiple bulbs "talking" to each and changing their states depending on the information received in the time step the information was received.
 
 Suppose, we have a string of two light bulbs in a loop that perform a dance like below:
 
@@ -205,14 +205,14 @@ Suppose, we have a string of two light bulbs in a loop that perform a dance like
 :align: center
 ```
 
-At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor. 
+At each time step, each bulb copies (switches to) the state it receives from its neighbor and transmits its state to the other neighbor. 
 
 The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark> 
 
 :::{admonition} Key points
 :class: tip
 
-* The **arrow between two vertices serve as a coduit** through which state information is transmitted from its source to its target vertex. 
+* The **arrow between two vertices serve as a conduit** through which state information is transmitted from its source to its target vertex. 
   
 * The source transmits its state in one time step. The target receives this state information in the next time step. 
   
@@ -274,7 +274,7 @@ Animating the simulation results produces a result as below:
 
 ::::{admonition} Puzzle: a different initial state
 
-What if we set the initial state of the both the bulbs to `ON`? What will be the behaviour of the bulbs over time? (Use the update rule.)
+What if we set the initial state of the both the bulbs to `ON`? What will be the behavior of the bulbs over time? (Use the update rule.)
 
 +++ 
 
@@ -310,13 +310,13 @@ In such case, we get the following result because, each bulb continuously copies
 
 
 
-Thus, the behaviour of the system is also determined not just by the update rules but also by initial states. 
+Thus, the behavior of the system is also determined not just by the update rules but also by initial states. 
 
 
 :::{admonition} Key points
 :class: tip
 
- Initial states too determine the behaviour of a system!
+ Initial states too determine the behavior of a system!
 
 :::
 
@@ -386,7 +386,7 @@ The system will be a 'looped light bulb' where exactly one light bulb is `ON` at
 </br>
 
 
-In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbour to be `ON` or `OFF`. This works in most cases! Let us say some accident happens, we want the RED to be `ON` and the rest of the lights to be `OFF`! We can handle these cases by introducing a CONTROL vertex, a mastermind which will *decide* which light bulb must be `ON` and which light must be `OFF` at any instant in time.
+In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbor to be `ON` or `OFF`. This works in most cases! Let us say some accident happens, we want the RED to be `ON` and the rest of the lights to be `OFF`! We can handle these cases by introducing a CONTROL vertex, a mastermind which will *decide* which light bulb must be `ON` and which light must be `OFF` at any instant in time.
 
 Let us model a traffic light with a control vertex.
 
@@ -483,7 +483,7 @@ We model a traffic intersection by taking two copies of traffic light, redesign 
 :align: center
 ```
 
-Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!) 
+Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state received from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!) 
 
 And here's our simulation with the first system starting :
 
@@ -502,11 +502,11 @@ Let us recollect what we have seen so far:
 
 - In the model of the flashing light bulb, (at each time step) each vertex updated its state based only on its current state.
 
-- In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbour.
+- In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbor.
 
 - In the model of the traffic light, (at each time step) the controller updated its state only based on its current state. The light bulbs updated their states only based on the input received from the controller.
 
-The talking friends model will have slighty different features:
+The talking friends model will have slightly different features:
 
 - In this model, we will see that each vertex will update its state based on both its current state as well as the incoming state. 
 
@@ -629,7 +629,7 @@ To answer this question, we will modify our model of *Kiki and Bouba by themselv
 
 The arrow from Kiki to Bouba allows Kiki's mood to be fed into Bouba system. The arrow from Bouba to Kiki allows Bouba's mood to be fed into Kiki's system. Recall, <mark> arrow = conduit for state information</mark>.
 
-Now that we have extra state information flowing into the vertices, we would need to modify our exisiting update rule too!
+Now that we have extra state information flowing into the vertices, we would need to modify our existing update rule too!
 
 By our current update rule, Kiki and Bouba's mood changes only as per the calm down rate:
 
@@ -649,7 +649,7 @@ Let us update this rule to include the other person mood too when producing a ne
 :width: 200px
 :align: center
 ```
-<center> Kiki at maximum excitment or grumpiness tolerance </center>
+<center> Kiki at maximum excitement or grumpiness tolerance </center>
 
 </br>
 
@@ -706,7 +706,7 @@ params =
 
 +++
 
-Here is the plot showing how Kiki and Bouba's moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!
+Here is the plot showing how Kiki and Bouba's moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitement steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!
 
 ```{image} assets/Ch2/Kiki-Bouba-talking-plot.svg
 :alt: Whoopsy!
@@ -819,7 +819,7 @@ We modeled two broad class of systems:
 
 1. **Discrete systems:** All the systems in Section 2.3 (Light bulbs) fall under this category! Every light bulb and traffic controller has binary states - the value is either `ON` or `OFF`. 
 
-2. **Continous systems:** All the systems in Section 2.4 (Kiki and Bouba) fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.
+2. **Continuous systems:** All the systems in Section 2.4 (Kiki and Bouba) fall under this category! The state can vary continuously between -5 and +5. There are infinite number of values between -5 and +5.
 
 When modelling dynamical systems, we treated underlying graphs are blue prints. These graphs are special in the sense, they come with two pieces of information:
 
@@ -828,10 +828,10 @@ When modelling dynamical systems, we treated underlying graphs are blue prints. 
 
 The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system. 
 
-For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for [AlgebraicDynamics](https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/) package of AlgebraicJulia! 
+For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sophisticated examples, we recommend the documentation for [AlgebraicDynamics](https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/) package of AlgebraicJulia! 
 
 Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things -- in terms of **cause and effect**, in terms of events which play out over time, and in terms of systems influencing one another! 
 
-Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain **a kind of equilibrium** by satsifying simultaneous constraints. In the coming chapters we will develop this *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
+Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain **a kind of equilibrium** by satisfying simultaneous constraints. In the coming chapters we will develop this *relational* view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.  
 
-[^1]: In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram' which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  "Rupel, Dylan, and David I. Spivak. "The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes." arXiv preprint arXiv:1307.6894 (2013)."
+[^1]: In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram' which generalizes directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  "Rupel, Dylan, and David I. Spivak. "The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes." arXiv preprint arXiv:1307.6894 (2013)."

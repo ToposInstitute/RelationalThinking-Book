@@ -277,9 +277,9 @@ end
 
 
 :::{admonition} Pause and Ponder! 
-Consider the difference between your understanding of graphs and AlgebraicJulia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interepretaion. Ideas are phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
+Consider the difference between your understanding of graphs and AlgebraicJulia's. For you, this schema might represent a directed or undirected graph. You can interpret it any way you like. Moreover, whatever graph you have in mind may represent still other ideas like chores and mood swings. But for AlgebraicJulia there is no interpretation. Ideas are phrased exclusively in terms of schemas, maps and commutativity conditions. It has no idea what any of this "means" to you.
 
-We use thought bubbles to indicate these interepretations, signalling that the meaning of any instance is an idea that exists only the in mind of the progammer.
+We use thought bubbles to indicate these interpretations, signalling that the meaning of any instance is an idea that exists only the in mind of the programmer.
 :::
 
 
@@ -338,7 +338,7 @@ Data often gets corrupted when transferred between contexts, a major issue in da
 
 ## 4.5 Summary
 
-In this chapter we have developed the concept of a schema, a verstaile data structure and the principal way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the `DANGLING EDGE CONDITION`.
+In this chapter we have developed the concept of a schema, a versatile data structure and the principal way to define things in AlgebraicJulia. In the next chapter we will put this idea to a specific use, characterizing a certain kind of graph relationship as a schema. In subsequent chapters that relationship will give us a way to manipulate graphs without having to worry about the `DANGLING EDGE CONDITION`.
 
 ## Footnotes and References
 

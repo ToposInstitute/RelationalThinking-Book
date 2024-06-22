@@ -22,11 +22,11 @@ The Algebraic Julia code of this chapter is available in the repo [ToposInstitut
 
 ## 7.1 Introduction
 
-The "Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. Inspite of the unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the exisiting government for political reasons! Or the large-scale replacement of forests by industries and settlements has adversely impacting global climate. We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! 
+The "Find-and-replace" feature of text editors is one of the most powerful innovations of the 20th century. In spite of the unavailability of statistics, the advantage of this feature is tangible and undeniable! Beyond text editors, the concept of "find and replace" has also caused much chaos in the world! When the European conquerors "found" native Americans settlements in Canada, they decided to "replace" the native culture by sending an entire generation of native American children to special missionary schools. This has resulted in trauma and chaos that continues well into the current times. Or a country waging war over another country to replace the existing government for political reasons! Or the large-scale replacement of forests by industries and settlements has adversely impacting global climate. We know in hindsight this approach has lead humanity to face issues bigger than they the ones it intended to solve! 
 
 > So, what was missed in the decision-making process? 
 
-Let us consider a fun and non-political example -- the struggle of qutting sugar. Here is a simple explanation of a why quitting sugar might be so hard! A usual thought-process behind attempting to quit sugar is: 
+Let us consider a fun and non-political example -- the struggle of quitting sugar. Here is a simple explanation of a why quitting sugar might be so hard! A usual thought-process behind attempting to quit sugar is: 
 
 ```{image} assets/Ch7/sugar-1.png
 :alt: Whoopsy!
@@ -51,7 +51,7 @@ because, the connections are broken causing the system to experience instability
 :align: center
 ```
 
-(Naively) Being healthy and eating sugar makes a person happy in a different ways. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is oversimplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change. 
+(Naively) Being healthy and eating sugar makes a person happy in a different ways. Hence, removing sugar results in a broken connection and an unstable structure! The result is usually to restore stability by brining (more) sugar back! Even though this example is over-simplistic, it drives home the message connections playing an important role in driving our lives and why careful considerations of connections is necessary to make a positive change. 
 
 If we want to make a change, it is recommended to start with something simple. The simple thing we shall do in this chapter is to build a way to make changes to an existing graph in a "good" way. By good, we mean that we do not end up with broken connections (dangling edges), and make precisely the changes that are intended. 
 
@@ -461,7 +461,7 @@ So what should be done now -- keep the vertex "1,2" or delete the vertex "1,2" f
 
  A **good match** of a search pattern (for deletion of vertices and edges) will: 
 -  satisfy the *no-dangling edge condition*.
--  identify vertices / edges to be deleted and vertices / edges to remain seperately, called the *right identification condition*.
+-  identify vertices / edges to be deleted and vertices / edges to remain separately, called the *right identification condition*.
 
 :::
 
@@ -1151,7 +1151,7 @@ We would first like to bring reader's attention to the some vocabulary commonly 
 
 The idea of "Find and replace" is a crude one in the sense that it is unaware of the context of replacement. A text editor will allow me to replace "truth" by "lie" anywhere in a document. Context-unaware find and replace leads to chaos.
 
-The mathematics we used to "find-and-replace" in graphs tells us that it is not a replacement, rather it is a careful integration of a new pattern in the place of an exisiting pattern. *To integrate* is organic and harmonoius by nature! While *to replace* has an air of superiority about it! Replace is useful -- replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary, hence thinking too, from "Find-and-replace" to "Find-and-integrate"! 
+The mathematics we used to "find-and-replace" in graphs tells us that it is not a replacement, rather it is a careful integration of a new pattern in the place of an existing pattern. *To integrate* is organic and harmonious by nature! While *to replace* has an air of superiority about it! Replace is useful -- replacing inflated tyres, replacing broken chain, etc.! However, in situations involving multiple interconnected entities, relational thinking recommends a shift in vocabulary, hence thinking too, from "Find-and-replace" to "Find-and-integrate"! 
 
 :::{admonition} Slogan
 :class: tip

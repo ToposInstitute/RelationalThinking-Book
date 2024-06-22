@@ -36,7 +36,7 @@ But suppose we visit this ski resort in the Summer when there's no snow. At this
 ```{image} assets/Ch3-4/SummerWinter.png
 :alt: Whoopsy!
 :width: 800px
-:align: cinter
+:align: center
 ```
 
 Note that the Summer graph is basically contained inside of the Winter graph. How should we characterize this relationship?
