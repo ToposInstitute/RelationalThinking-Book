@@ -25,11 +25,11 @@ This chapter will extend the previously learned concepts from graphs to real wor
 
 ## 8.1 Introduction
 
-So far, we have uncovered many powerful concepts for modeling graphs and making changes to them. Using **schema**, We neatly packaged up data of a graph in a way that we can recover all its fundamental concepts -- vertices and edges, and how they relate to one another. Using **double-pushouts (DPO)**, we can edit an exisiting graph. With the capability to edit graphs, we can now model a number of graph-based scenarios such as, chemical reactions, and game design. 
+So far, we have uncovered many powerful concepts for modeling graphs and making changes to them. Using **schema**, We neatly packaged up data of a graph in a way that we can recover all its fundamental concepts -- vertices and edges, and how they relate to one another. Using **double-pushouts (DPO)**, we can edit an existing graph. With the capability to edit graphs, we can now model a number of graph-based scenarios such as, chemical reactions, and game design. 
 
 Schemas provide us with a language to talk about the concepts we wish to shed light on. The graph schema highlights edges and how they relate to nodes. Being remarkably general, schemas encourage us to be more ambitious and ask how can they model something non-graph based and more complex? For example, what if we were interested in talking about parts of a car or items in your kitchen? What parts go inside the other? What is wet and what is dry? And what items go with what and what items don't go together? We would have to do quite a bit of mental book-keeping to talk in the language of graphs--
 
-> "For example, a bottle of Coca-Cola soda is a vertex and my refridgerator is another vertex... an edge between them means that the Coca-Cola soda _is in_ the refridgerator,... but an edge between the soda and the vertex for a box of Mentos may mean that that the Mentos should _never be put in_ the soda... edges take different meaning for each connection"
+> "For example, a bottle of Coca-Cola soda is a vertex and my refrigerator is another vertex... an edge between them means that the Coca-Cola soda _is in_ the refridgerator,... but an edge between the soda and the vertex for a box of Mentos may mean that that the Mentos should _never be put in_ the soda... edges take different meaning for each connection"
 
 :::{note}
 If you put Mentos in a soda, it will explode.

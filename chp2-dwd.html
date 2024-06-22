@@ -501,7 +501,7 @@ document.write(`
 <p>For example, here are few situations based on the “Ski trip brochure”:</p>
 <p>Situation 1: A person was at the lodge. They took the lift up the mountain and skied downhill to the village.</p>
 <p>Situation 2: A person was at the village. The cross-country skied in the village.</p>
-<p>We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some <em>additional information</em>, the computer can simulate events indicated by these graphs. These events can be simulated as occuring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occuring over discrete time steps.</p>
+<p>We can manifest these situations by bringing these graphs to life! This means that we can feed the graphs to a computer, and with some <em>additional information</em>, the computer can simulate events indicated by these graphs. These events can be simulated as occurring over a continuous period of time (Kiki and Bouba talking for 60 minutes), or can be simulated as occurring over discrete time steps.</p>
 <div class="admonition-key-point admonition">
 <p class="admonition-title">Key point </p>
 <p>The <em>additional information</em> has two pieces – for every vertex:</p>
@@ -537,7 +537,7 @@ document.write(`
 <p>Let us update our model (i.e. our directed graph) to have the light bulb flash on and off, like this:</p>
 <a class="reference internal image-reference" href="_images/FlashingLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/FlashingLight.gif" style="width: 300px;" /></a>
 <br/>
-<p>In order to accomplish this, the light bulb has to toggle its states continously. That is, if the present state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If the present state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">ON</span></code>. It must perform this operation at every time step. What we described just now is called an  <strong>update rule</strong> – a rule saying how a state is to be updated!</p>
+<p>In order to accomplish this, the light bulb has to toggle its states continuously. That is, if the present state is <code class="docutils literal notranslate"><span class="pre">ON</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If the present state is <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, it must switch <code class="docutils literal notranslate"><span class="pre">ON</span></code>. It must perform this operation at every time step. What we described just now is called an  <strong>update rule</strong> – a rule saying how a state is to be updated!</p>
 <blockquote>
 <div><p>Update rules along along with the states enables a graph to model systems which evolve over time, a.k.a dynamical systems!</p>
 </div></blockquote>
@@ -566,7 +566,7 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">BULB_ON</span><span class="p">]</span> <span class="c1"># needs to be an array</span>
 </pre></div>
 </div>
-<p>The simulation reuslts are exported as an animation showing that our simulation works (using Javis library) as shown below!</p>
+<p>The simulation results are exported as an animation showing that our simulation works (using Javis library) as shown below!</p>
 <a class="reference internal image-reference" href="_images/flashing-light-JAVIS.gif"><img alt="Whoopsy!" class="align-center" src="_images/flashing-light-JAVIS.gif" style="width: 75px;" /></a>
 <div class="tip admonition">
 <p class="admonition-title">Key point</p>
@@ -575,15 +575,15 @@ document.write(`
 </section>
 <section id="string-of-lights">
 <h3>String of lights<a class="headerlink" href="#string-of-lights" title="Permalink to this heading">#</a></h3>
-<p>A flashing bulb is more exciting than a bulb than never flashes! However, what is more exciting is multiple bulbs “talking” to each and changing their states depending on the information recieved in the time step the information was received.</p>
+<p>A flashing bulb is more exciting than a bulb than never flashes! However, what is more exciting is multiple bulbs “talking” to each and changing their states depending on the information received in the time step the information was received.</p>
 <p>Suppose, we have a string of two light bulbs in a loop that perform a dance like below:</p>
 <a class="reference internal image-reference" href="_images/AlternatingLights.gif"><img alt="Whoopsy!" class="align-center" src="_images/AlternatingLights.gif" style="width: 375px;" /></a>
-<p>At each time step, each bulb copies (switches to) the state it recevies from its neighbor and transmits its state to the other neighbor.</p>
+<p>At each time step, each bulb copies (switches to) the state it receives from its neighbor and transmits its state to the other neighbor.</p>
 <p>The arrow between any two light bulbs serves as uni-directional conduit for state information from its source to its target. At each time step, the current state (of the source) is fed in the arrow (by the source). In the next time step, the state information carried by the arrow is read by the target. <mark> The target vertex changes it state based on the incoming state and its update rule. </mark></p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
 <ul class="simple">
-<li><p>The <strong>arrow between two vertices serve as a coduit</strong> through which state information is transmitted from its source to its target vertex.</p></li>
+<li><p>The <strong>arrow between two vertices serve as a conduit</strong> through which state information is transmitted from its source to its target vertex.</p></li>
 <li><p>The source transmits its state in one time step. The target receives this state information in the next time step.</p></li>
 <li><p>The target may update its state based on this incoming information.</p></li>
 </ul>
@@ -617,7 +617,7 @@ document.write(`
 </br>
 <div class="admonition-puzzle-a-different-initial-state admonition">
 <p class="admonition-title">Puzzle: a different initial state</p>
-<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>? What will be the behaviour of the bulbs over time? (Use the update rule.)</p>
+<p>What if we set the initial state of the both the bulbs to <code class="docutils literal notranslate"><span class="pre">ON</span></code>? What will be the behavior of the bulbs over time? (Use the update rule.)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Both the bulbs are in ON state</span>
 
 <span class="n">initial_state</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">),</span> <span class="n">Bool</span><span class="p">(</span><span class="n">BULB_ON</span><span class="p">)]</span> 
@@ -632,10 +632,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Thus, the behaviour of the system is also determined not just by the update rules but also by initial states.</p>
+<p>Thus, the behavior of the system is also determined not just by the update rules but also by initial states.</p>
 <div class="tip admonition">
 <p class="admonition-title">Key points</p>
-<p>Initial states too determine the behaviour of a system!</p>
+<p>Initial states too determine the behavior of a system!</p>
 </div>
 </section>
 <section id="a-traffic-light">
@@ -664,7 +664,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/TrafficLight.gif"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.gif" style="width: 400px;" /></a>
 </br>
 </br>
-<p>In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbour to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. This works in most cases! Let us say some accident happens, we want the RED to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and the rest of the lights to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>! We can handle these cases by introducing a CONTROL vertex, a mastermind which will <em>decide</em> which light bulb must be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and which light must be <code class="docutils literal notranslate"><span class="pre">OFF</span></code> at any instant in time.</p>
+<p>In the last example, each traffic light bulb (red, yellow, green) simply mimics its neighbor to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. This works in most cases! Let us say some accident happens, we want the RED to be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and the rest of the lights to be <code class="docutils literal notranslate"><span class="pre">OFF</span></code>! We can handle these cases by introducing a CONTROL vertex, a mastermind which will <em>decide</em> which light bulb must be <code class="docutils literal notranslate"><span class="pre">ON</span></code> and which light must be <code class="docutils literal notranslate"><span class="pre">OFF</span></code> at any instant in time.</p>
 <p>Let us model a traffic light with a control vertex.</p>
 <a class="reference internal image-reference" href="_images/TrafficLight.png"><img alt="Whoopsy!" class="align-center" src="_images/TrafficLight.png" style="width: 400px;" /></a>
 </br>
@@ -724,7 +724,7 @@ We model a traffic intersection by taking two copies of traffic light, redesign 
 :align: center
 ```
 
-Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state recevied from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!) 
+Now each controller will have six states, 3 states corresponding to three of its bulbs, 3 states corresponding to the state received from the bulbs of the other traffic light. Each controller, before switching from RED TO GREEN, will now make sure that the other controller is in RED state, and the other controller just switched to RED (thus it is the controller's turn to GO GREEN!) 
 
 And here's our simulation with the first system starting :
 
@@ -742,10 +742,10 @@ And here's our simulation with the first system starting :
 <p>Let us recollect what we have seen so far:</p>
 <ul class="simple">
 <li><p>In the model of the flashing light bulb, (at each time step) each vertex updated its state based only on its current state.</p></li>
-<li><p>In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbour.</p></li>
+<li><p>In the model of the string of lights, (at each time step) each vertex updated its state only based on the state received from its neighbor.</p></li>
 <li><p>In the model of the traffic light, (at each time step) the controller updated its state only based on its current state. The light bulbs updated their states only based on the input received from the controller.</p></li>
 </ul>
-<p>The talking friends model will have slighty different features:</p>
+<p>The talking friends model will have slightly different features:</p>
 <ul class="simple">
 <li><p>In this model, we will see that each vertex will update its state based on both its current state as well as the incoming state.</p></li>
 </ul>
@@ -799,7 +799,7 @@ And here's our simulation with the first system starting :
 <p>To answer this question, we will modify our model of <em>Kiki and Bouba by themselves</em> (a graph with just two vertices) to allow for their interaction. The updated model is as follows:</p>
 <a class="reference internal image-reference" href="_images/Kiki&amp;Bouba.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki&amp;Bouba.png" style="width: 400px;" /></a>
 <p>The arrow from Kiki to Bouba allows Kiki’s mood to be fed into Bouba system. The arrow from Bouba to Kiki allows Bouba’s mood to be fed into Kiki’s system. Recall, <mark> arrow = conduit for state information</mark>.</p>
-<p>Now that we have extra state information flowing into the vertices, we would need to modify our exisiting update rule too!</p>
+<p>Now that we have extra state information flowing into the vertices, we would need to modify our existing update rule too!</p>
 <p>By our current update rule, Kiki and Bouba’s mood changes only as per the calm down rate:</p>
 <div class="admonition-stand-alone-kiki-and-bouba-update-rule admonition">
 <p class="admonition-title">Stand-alone Kiki and Bouba update rule</p>
@@ -811,7 +811,7 @@ And here's our simulation with the first system starting :
 <li><p>Suppose either Kiki or Bouba reach their maximum tolerance of excitment or grumpiness, then they refuse to listen to the other person so that they can calm down! This will add two more parameters to the update rule to consider namely <strong>maximum excitment tolerance:</strong> and <strong>maximum grumpiness tolerance</strong>.</p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/Talk-later.png"><img alt="Whoopsy!" class="align-center" src="_images/Talk-later.png" style="width: 200px;" /></a>
-<center> Kiki at maximum excitment or grumpiness tolerance </center>
+<center> Kiki at maximum excitement or grumpiness tolerance </center>
 </br>
 <p>Here is a mathematical representation of the above dynamics:</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-dynamics.png"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-dynamics.png" style="width: 500px;" /></a>
@@ -845,7 +845,7 @@ And here's our simulation with the first system starting :
         <span class="n">excitement_tolerance</span><span class="o">=</span><span class="p">[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Here is the plot showing how Kiki and Bouba’s moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitment steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!</p>
+<p>Here is the plot showing how Kiki and Bouba’s moods oscillate over a 100 minutes conversation! They seem to struggle for the first 30 minutes with Kiki losing her excitement steadily. However, their moods meet somewhere above zero and they happily seem to resonate at their maximum excitement levels from there on!</p>
 <a class="reference internal image-reference" href="_images/Kiki-Bouba-talking-plot.svg"><img alt="Whoopsy!" class="align-center" src="_images/Kiki-Bouba-talking-plot.svg" width="600px" /></a>
 <div class="admonition-what-happens-if-kiki-and-bouba-start-at-different-initial-moods admonition">
 <p class="admonition-title">What happens if Kiki and Bouba start at different initial moods?</p>
@@ -904,7 +904,7 @@ And here's our simulation with the first system starting :
 <p>We modeled two broad class of systems:</p>
 <ol class="arabic simple">
 <li><p><strong>Discrete systems:</strong> All the systems in Section 2.3 (Light bulbs) fall under this category! Every light bulb and traffic controller has binary states - the value is either <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p></li>
-<li><p><strong>Continous systems:</strong> All the systems in Section 2.4 (Kiki and Bouba) fall under this category! The state can vary continously between -5 and +5. There are infinite number of values between -5 and +5.</p></li>
+<li><p><strong>Continuous systems:</strong> All the systems in Section 2.4 (Kiki and Bouba) fall under this category! The state can vary continuously between -5 and +5. There are infinite number of values between -5 and +5.</p></li>
 </ol>
 <p>When modelling dynamical systems, we treated underlying graphs are blue prints. These graphs are special in the sense, they come with two pieces of information:</p>
 <ol class="arabic simple">
@@ -912,13 +912,13 @@ And here's our simulation with the first system starting :
 <li><p>An update rule for each state</p></li>
 </ol>
 <p>The arrows in the graph acts as a conduit carrying state information from one vertex to another. Each vertex is a (little) system within the larger system.</p>
-<p>For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sohpisticated examples, we recommend the documentation for <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/">AlgebraicDynamics</a> package of AlgebraicJulia!</p>
+<p>For readers who are interested to explore further about using AlgebraicJulia to model dynamical systems and viewing more sophisticated examples, we recommend the documentation for <a class="reference external" href="https://algebraicjulia.github.io/AlgebraicDynamics.jl/dev/">AlgebraicDynamics</a> package of AlgebraicJulia!</p>
 <p>Dynamical systems and directed graphs are a useful framework for modeling the world around us. Indeed, they are a close match for how humans tend to conceptualize things – in terms of <strong>cause and effect</strong>, in terms of events which play out over time, and in terms of systems influencing one another!</p>
-<p>Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain <strong>a kind of equilibrium</strong> by satsifying simultaneous constraints. In the coming chapters we will develop this <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
+<p>Cause and effect is just one way of looking at the world. And not all systems are best understood in this sense. There are systems that maintain <strong>a kind of equilibrium</strong> by satisfying simultaneous constraints. In the coming chapters we will develop this <em>relational</em> view, a subtle and versatile way of working with graphs having an emphasis on constraints and filters instead of step-by-step procedures.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram’ which generalises directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  “Rupel, Dylan, and David I. Spivak. “The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes.” arXiv preprint arXiv:1307.6894 (2013).”</p>
+<p>In fact, in AlgebraicJulia we use an extended, richer abstraction called a `directed wiring diagram’ which generalizes directed graphs. Directed wiring diagrams have richer capabilities, including nested modelling. Interested readers are referred to  “Rupel, Dylan, and David I. Spivak. “The operad of temporal wiring diagrams: formalizing a graphical language for discrete-time processes.” arXiv preprint arXiv:1307.6894 (2013).”</p>
 </aside>
 </section>
 </section>

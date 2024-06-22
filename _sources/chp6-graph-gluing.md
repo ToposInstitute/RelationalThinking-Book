@@ -34,7 +34,7 @@ In this chapter, we "live" inside the category where the only entities are undir
 
 Inside this category, we are interested to know how to **combine two graphs into one** which is analogous to adding two numbers (if this analogy sounds odd to you, towards the end of this chapter we will see that adding numbers is same as combining two *discrete* graphs). 
 
-Thinking of a graph as an island of connections, the utilitiy of combining graphs is to bridge these islands allowing for information to flow between the graphs (via common channels) and for the expression of new meanings.
+Thinking of a graph as an island of connections, the utility of combining graphs is to bridge these islands allowing for information to flow between the graphs (via common channels) and for the expression of new meanings.
 
 As a step towards making sense of the idea of combining graphs, let us a revisit a graph that we met in the first chapter — “Whose turn is it to do dishes?”.
 
@@ -203,7 +203,7 @@ Let us add these morphisms to the overlap diagram:
 
 Does this shape look vaguely familiar? If this reminds of you of commuting diagrams (closed loop conditions), Hurray!! Let us first just look at the diagram. There are two paths from `overlap` to the `pushout`.
 
-So, `overlap` can be indentified inside the `pushout` in two ways: 
+So, `overlap` can be identified inside the `pushout` in two ways: 
 
 - either through `graph A`,
 - or through `graph B`.
@@ -214,7 +214,7 @@ Which one of these is the correct way to identify `overlap` inside the `pushout`
 
 :::
 
-Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'? Hence, the overlap must map into the same region of the `pushout` irrespective of the path.
+Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be identified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'? Hence, the overlap must map into the same region of the `pushout` irrespective of the path.
 
 ```{image} assets/Ch6/GluedObject.png
 :alt: Whoopsy!
@@ -224,7 +224,7 @@ Do you see that 'irrespective of the path, `overlap` IS EXPECTED TO be indentifi
 
 In the cup-handle analogy, this is analogous to saying that the points in the cup and the points in the handle which are glued together are indistinguishable in the glued object (blue points).  The rest of the points can be distinguished as belonging to the cup (green points) or to the handle (orange points). 
 
-> 'Irrespective of the path, `overlap` IS EXPECTED TO be indentified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'. In other words, the  diagram with four arrows MUST COMMUTE!
+> 'Irrespective of the path, `overlap` IS EXPECTED TO be identified precisely in the same region in the `pushout` because it is common to both `graph A` and `graph B`'. In other words, the  diagram with four arrows MUST COMMUTE!
 
 Thus, our enquiry to `graph A` and `graph B` have resulted in a condition that a candidate for `pushout` MUST satisfy! That is, "Diagram: Four arrows" must commute.
 

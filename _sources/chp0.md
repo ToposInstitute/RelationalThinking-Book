@@ -55,7 +55,7 @@ In this directed graph, the vertices are locations and the arrows are "modes of 
 
 ![whoops!](./assets/Ch1/DGSki.jpg)
 
-If you squint, you can look at this like a simplified map. We've left out the trees and the geography and the distances from one place to another. We've distilled our wayfinding to only the most essential details needed for getting around.
+If you squint, you can look at this like a simplified map. We've left out the trees and the geography and the distances from one place to another. We've distilled our way-finding to only the most essential details needed for getting around.
 
 
 :::
@@ -101,7 +101,7 @@ Suppose we've modeled some situation in a computer using a directed graph. If ou
 :align: center
 ```
 
- By defintion, the arrows in a directed graph must point from one vertex to another. But if we're not careful we may update our graph in a way that leaves arrows "dangling." When we're trying to model the world with a directed graph, a broken graph like this is a big problem because it invalidates the underlying model. It's not that the model becomes incorrect. It becomes _meaningless_. To say, "Aphrodite loves ..." is not right or wrong, it's just ungrammatical!
+ By definition, the arrows in a directed graph must point from one vertex to another. But if we're not careful we may update our graph in a way that leaves arrows "dangling." When we're trying to model the world with a directed graph, a broken graph like this is a big problem because it invalidates the underlying model. It's not that the model becomes incorrect. It becomes _meaningless_. To say, "Aphrodite loves ..." is not right or wrong, it's just ungrammatical!
  
  And an unfortunate fact of life is that directed graphs in a computer are prone to getting broken in this way. We can try to exercise care when performing simple updates, but more sophisticated computational manipulations–merging graphs, separating subgraphs, performing replacement on sections of graphs–all of these introduce complicated edge cases in which arrows and vertices may end up becoming detached. 
  

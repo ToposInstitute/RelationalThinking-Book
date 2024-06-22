@@ -113,7 +113,7 @@ Any _particular_ pair of maps in this configuration is said to be an "instance
 ```
 <br>
 
-You may have noticed that our blueprint is _itself_ a directed graph! This is where things get intersting! This means we can input the schema to a computer in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
+You may have noticed that our blueprint is _itself_ a directed graph! This is where things get interesting! This means we can input the schema to a computer in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.
 
 In the code below we use `A` for arrows, `V` for vertices, and define them as `Ob`jects. `Hom(X,Y)` is AlgebraicJulia syntax meaning a "chunky arrow from X to Y." We use it to define the source and target of the chunky arrows `src` and `tgt`.
 
