@@ -1,6 +1,6 @@
 # Guide to add contents and build the book
 
-This repo contains files to build a Jupyter Book with Thebe live code execution for code in Algebraic Julia. The book has been published online via Github Pages at https://toposinstitute.github.io/AlgJulia-Book/intro.html.
+This repo contains files to build a Jupyter Book with Thebe live code execution for code in Algebraic Julia. The book has been published online via Github Pages at [toposinstitute.github.io/RelationalThinking-Book/](https://toposinstitute.github.io/RelationalThinking-Book/).
 
 Clone this repo into a local folder. 
 
