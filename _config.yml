@@ -3,8 +3,9 @@
 
 #title: Diagrammatic Approaches to Relational Thinking
 title: "Relational thinking: from Abstractions to Applications" 
-author: The Jupyter Book Community
+author: Angeline Aguinaldo, Paul Dancstep, Brendan Fong, Priyaa Varshinee Srinivasan
 logo: assets/logo/logo-white.jpg
+copyright: "2024"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
