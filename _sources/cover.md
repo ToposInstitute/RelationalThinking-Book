@@ -12,8 +12,13 @@ kernelspec:
 
 # Cover
 
+<div style="width: 600px;border: 2px solid;border-radius: 20px; border-color: lightgray;">
+
+
 ```{image} assets/logo/mozilla-cover.jpg
 :alt: Whoopsy!
 :width: 500px
 :align: center
 ```
+
+</div>
