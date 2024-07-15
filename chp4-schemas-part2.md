@@ -323,7 +323,6 @@ It's important to note that Petri nets were developed by practitioners, not math
 AlgebraicJulia's implementation of Petri nets is called AlgebraicPetri.jl.[^1] Documentation can be found [here](https://algebraicjulia.github.io/AlgebraicPetri.jl/dev/) along with several examples of scientific models, including population dynamics, epidemiological models and enzyme reactions.
 
 ### Databases
-
 The whole concept of a schema originally comes from database theory. We can think of the underlying connections in a schema as linked data. For example the grey circles may represent a database of 'people' and a given arrow may repesent a tabulated relationship between those people (Who loves whom? Who is the enemy of whom? etc.) Structuring a query on that database is then just building a schema to define new relationships in terms of existing ones.
 
 

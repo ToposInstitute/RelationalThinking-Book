@@ -135,16 +135,16 @@ The live code environment may take a little time[^3] to start up (status is show
 
 Each chapter contains a few puzzles. These puzzles provide an opportunity to take an active role in exploring and internalising the key lessons of the chapter. We encourage to you attempt them, spend some time with them, and play, even use them as a jumping off point for daydreaming about relational thinking. There is no rush.
 
-:::{admonition} Puzzle
-You can edit the code blocks, and run them again! See if you can edit the program below so it prints a sentence describing your motivation for reading this book, instead of just "My in-line code is working, yay!". You need to click the "rocket icon" at the top right corner of this page, and select "Live code" to start editing.
+  :::{admonition} Puzzle
+  You can edit the code blocks, and run them again! See if you can edit the program below so it prints a sentence describing your motivation for reading this book, instead of just "My in-line code is working, yay!". You need to click the "rocket icon" at the top right corner of this page, and select "Live code" to start editing.
 
-:::
+  :::
 
-+++
-```{code-cell}
-print( "My in-line code is working, yay!" )
-```
-+++
+  +++
+  ```{code-cell}
+  print( "My in-line code is working, yay!" )
+  ```
+  +++
 
 ## A new medium for systems thinking
 As Andy Matuschak and Michael Nielsen write in their essay "How can we develop transformative tools for thought?":[^4]

@@ -1145,7 +1145,7 @@ to_graphviz(codom(fromR))
 
 Congratulations for making it this far! Relational thinking might feel hard but it also brings so much value to our thinking and how we interact with the world around us! Here is our two cents on why we think so!
 
-#### Relational thinking shifts vocabulary
+### Relational thinking shifts vocabulary
 
 We would first like to bring reader's attention to the some vocabulary commonly found in practice. As we all may agree, language influences thinking and vice versa.
 
@@ -1162,7 +1162,7 @@ The mathematics we used to "find-and-replace" in graphs tells us that it is not 
 
 This slogan probably is the answer to all the political issues which have been brought up at the beginning of this chapter. 
 
-#### The order of processes
+### The order of processes
 
 Let us take a moment reflect on the process of modifying a graph guided by relational thinking! 
 
