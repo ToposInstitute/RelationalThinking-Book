@@ -2,8 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: cover
 chapters:
+- file: intro
 - file: chp0
 - file: chp1-directed-graphs
 - file: chp2-dwd
