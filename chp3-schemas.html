@@ -233,6 +233,55 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ToposInstitute/AlgJulia-Book/main?urlpath=tree/./chp3-schemas.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -285,6 +334,23 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chp3-schemas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
       
       
       
@@ -466,6 +532,21 @@ This is just like in an algebra equation where, when we see the variable ‘x’
 <br>
 <p>You may have noticed that our blueprint is <em>itself</em> a directed graph! This is where things get interesting! This means we can input the schema to a computer in AlgebraicJulia using the concept of source and target maps, as we learned about in Chapter 1.</p>
 <p>In the code below we use <code class="docutils literal notranslate"><span class="pre">A</span></code> for arrows, <code class="docutils literal notranslate"><span class="pre">V</span></code> for vertices, and define them as <code class="docutils literal notranslate"><span class="pre">Ob</span></code>jects. <code class="docutils literal notranslate"><span class="pre">Hom(X,Y)</span></code> is AlgebraicJulia syntax meaning a “chunky arrow from X to Y.” We use it to define the source and target of the chunky arrows <code class="docutils literal notranslate"><span class="pre">src</span></code> and <code class="docutils literal notranslate"><span class="pre">tgt</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@present</span><span class="w"> </span><span class="n">Graph</span><span class="p">(</span><span class="n">FreeSchema</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+
+<span class="w">  </span><span class="n">V</span><span class="o">::</span><span class="kt">Ob</span>
+<span class="w">  </span><span class="n">A</span><span class="o">::</span><span class="kt">Ob</span>
+
+<span class="w">  </span><span class="n">src</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+<span class="w">  </span><span class="n">tgt</span><span class="o">::</span><span class="n">Hom</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>And that’s how AlgebraicJulia sees a directed graph to be!</p>
 </section>
 </section>
@@ -485,16 +566,16 @@ This is just like in an algebra equation where, when we see the variable ‘x’
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.10"
         },
         kernelOptions: {
-            name: "python3",
+            name: "julia-1.10",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.10'</script>
 
                 </article>
               

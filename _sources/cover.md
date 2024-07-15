@@ -17,5 +17,3 @@ kernelspec:
 :width: 500px
 :align: center
 ```
-
-
