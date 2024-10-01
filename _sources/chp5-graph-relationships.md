@@ -41,7 +41,7 @@ Given a schema such as the ones above, there are *infinite* number of graphs tha
 
 <br>
 
-How boring a universe will be if each one of its objects just exist by itself with no connection to another object like the endless warm of things above? Richness and complexity arises from connections. Our physical world is incredibly rich and complex because of the relationships between individual things. 
+How boring a universe will be if each one of its objects just exist by itself with no connection to another object like the endless swarm of things above? Richness and complexity arises from connections. Our physical world is incredibly rich and complex because of the relationships between individual things. 
 
 :::{Attention}
 So our goal for this chapter is to *say* what does it mean for two graphs to be related!

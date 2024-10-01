@@ -17,6 +17,6 @@ The process of learning something new is like building a machine by collecting i
 
 [^1]: Eisenberg, Marilyn. "Compassionate math." The Journal of Humanistic Education and Development 30.4 (1992): 157-166. 
 
-[^2]: Aly, Gelilan. "Professional development and consulting in math education". www.compassionatmath.com Accessed 27 Sep 2024".
+[^2]: Aly, Gelilan. "Professional development and consulting in math education". www.compassionatemath.com Accessed 27 Sep 2024".
 
 [^3]: Priyaa Varshinee Srinivasan. "[Compassionate mathematics: the mathematics that accepts who I am](https://topos.site/blog/2024-06-10-compassionate-mathematics/)" Blog at Topos Institute, June 2024.
