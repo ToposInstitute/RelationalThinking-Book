@@ -968,8 +968,8 @@ host = path_graph(SymmetricGraph, 3)
 
 # There is only one homomorphism (up to symmetry)
 # So we can pick an arbitrary one
-del = homomorphism(overlap, find)
-match = homomorphism(find, host)
+del = homomorphism(overlap, find, any=true)
+match = homomorphism(find, host, any=true)
 
 # We can check whether or not the pushout complement exists
 can_pushout_complement(del, match)
@@ -1008,10 +1008,10 @@ find = path_graph(SymmetricGraph, 2)
 
 # There is only one homomorphism (up to symmetry)
 # So we can pick an arbitrary one
-del = homomorphism(overlap, find)
+del = homomorphism(overlap, find, any=true)
 
 host = @acset SymmetricGraph begin V=1; E=2; src=[1,1]; tgt=[1,1]; inv=[2,1] end
-match = homomorphism(find, host)
+match = homomorphism(find, host, any=true)
 
 # We can check whether or not the pushout complement exists
 can_pushout_complement(del, match)
@@ -1071,7 +1071,7 @@ Compute the pushout:
 
 # Monic=true enforces that the two vertices in Overlap are not mapped to a
 # single vertex in the single-edge graph.
-add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
+add = homomorphism(Overlap, path_graph(SymmetricGraph, 2), any=true; monic=true)
 
 fromR, fromPC = pushout(O_PC₅, add)
 to_graphviz(codom(fromR))
@@ -1132,7 +1132,7 @@ Complete the pushout
 
 # Monic=true enforces that the two vertices in Overlap are not mapped to a
 # single vertex in the single-edge graph.
-add = homomorphism(Overlap, path_graph(SymmetricGraph, 2); monic=true)
+add = homomorphism(Overlap, path_graph(SymmetricGraph, 2), any=true; monic=true)
 
 fromR, fromPC = pushout(O_PC₆, add)
 to_graphviz(codom(fromR))
