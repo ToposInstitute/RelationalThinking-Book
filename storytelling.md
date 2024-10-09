@@ -1,8 +1,8 @@
 # Mathematics through story-telling
 
-This book has been inspired by the following idea:
+This book has been inspired by the following principle:
 
-> "Different learners take different roads to understanding the same mathematical idea and encourages one to consider this inherent plurality of thought patterns when communicating mathematics.”
+> "We acknowledge that different learners take different roads to understanding the same mathematical idea, and work to consider this inherent plurality of thought patterns when communicating mathematics.”
 
 Accordingly, this book attempts to reveal the thought-process behind creating mathematics (category theory) using story-telling, lots of illustrations, and visualization of computations. Minimizing the requirement for coding background, we have incorporated live-coding whenever possible. As such, this book is close to a creative non-fiction in formal mathematics. It is a new kind of experiment.
 
